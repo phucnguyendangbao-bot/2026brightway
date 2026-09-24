@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BrightWay Scholars – Sửa & Nhận xét Portfolio Học Bổng</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/cv-review.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">BrightWay Scholars</a>
+    <a href="page2.html" class="nav-back" style="margin-right:10px;">🎓 Học bổng theo trường</a>
+    <a href="index.html" class="nav-back">← Trang chủ</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🎯 AI chuyên cho portfolio học bổng — không phải chatbot chung chung</div>
+  <h1 class="hero-title">Biết portfolio của bạn <span>yếu ở đâu</span> — và sửa đúng chỗ</h1>
+  <p class="hero-sub">Phân tích portfolio theo đúng tiêu chí hội đồng học bổng quan tâm: Leadership, Impact, Storytelling, Scholarship Fit. Nhận điểm số, điểm yếu cụ thể và gợi ý viết lại có thể dùng ngay — trong chưa đầy 30 giây.</p>
+</div>
+
+<!-- MAIN -->
+<div class="main-card">
+  <div class="card-box">
+
+    <!-- STEPS -->
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num active" id="step1Num">1</div>
+        <div class="step-label active" id="step1Label">Nhập nội dung</div>
+      </div>
+      <div class="step-line" id="line1"></div>
+      <div class="step-item">
+        <div class="step-num" id="step2Num">2</div>
+        <div class="step-label" id="step2Label">Chọn loại đánh giá</div>
+      </div>
+      <div class="step-line" id="line2"></div>
+      <div class="step-item">
+        <div class="step-num" id="step3Num">3</div>
+        <div class="step-label" id="step3Label">Xem kết quả</div>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <div class="form-area" id="formArea">
+
+      <div class="section-label">📝 Dán nội dung Portfolio / Bài luận của bạn</div>
+      <div class="input-wrap">
+        <textarea id="cvInput" class="cv-textarea"
+          placeholder="Dán toàn bộ nội dung Portfolio, Bài luận, hoặc CV của bạn vào đây...&#10;&#10;Mẹo: mở file PDF/Word → Ctrl+A → Ctrl+C → Ctrl+V vào ô này."
+          rows="12"
+          data-action="cv-input"></textarea>
+        <div class="cv-counter" id="cvCounter">0 ký tự</div>
+      </div>
+
+      <div class="section-label">🔍 Chọn tiêu chí đánh giá</div>
+      <div class="options-grid" id="optGrid">
+        <label class="opt-card selected" data-action="toggle-opt">
+          <input type="checkbox" checked>
+          <div class="opt-card-head">
+            <span class="opt-icon">📊</span>
+            <span class="opt-name">Cấu trúc & Trình bày</span>
+            <span class="opt-check"><span class="opt-check-icon">✓</span></span>
+          </div>
+          <div class="opt-desc">Bố cục rõ ràng, thứ tự hợp lý, dễ đọc</div>
+        </label>
+        <label class="opt-card selected" data-action="toggle-opt">
+          <input type="checkbox" checked>
+          <div class="opt-card-head">
+            <span class="opt-icon">🏆</span>
+            <span class="opt-name">Thành tích & Minh chứng</span>
+            <span class="opt-check"><span class="opt-check-icon">✓</span></span>
+          </div>
+          <div class="opt-desc">Thành tích có số liệu, cụ thể và thuyết phục</div>
+        </label>
+        <label class="opt-card selected" data-action="toggle-opt">
+          <input type="checkbox" checked>
+          <div class="opt-card-head">
+            <span class="opt-icon">🎯</span>
+            <span class="opt-name">Mục tiêu & Định hướng</span>
+            <span class="opt-check"><span class="opt-check-icon">✓</span></span>
+          </div>
+          <div class="opt-desc">Mục tiêu rõ ràng, phù hợp với học bổng</div>
+        </label>
+        <label class="opt-card selected" data-action="toggle-opt">
+          <input type="checkbox" checked>
+          <div class="opt-card-head">
+            <span class="opt-icon">✍️</span>
+            <span class="opt-name">Ngôn ngữ & Văn phong</span>
+            <span class="opt-check"><span class="opt-check-icon">✓</span></span>
+          </div>
+          <div class="opt-desc">Dùng từ chuyên nghiệp, tránh lỗi diễn đạt</div>
+        </label>
+        <label class="opt-card selected" data-action="toggle-opt">
+          <input type="checkbox" checked>
+          <div class="opt-card-head">
+            <span class="opt-icon">💡</span>
+            <span class="opt-name">Điểm nổi bật cá nhân</span>
+            <span class="opt-check"><span class="opt-check-icon">✓</span></span>
+          </div>
+          <div class="opt-desc">Câu chuyện riêng, tạo ấn tượng với hội đồng</div>
+        </label>
+        <label class="opt-card selected" data-action="toggle-opt">
+          <input type="checkbox" checked>
+          <div class="opt-card-head">
+            <span class="opt-icon">🔧</span>
+            <span class="opt-name">Gợi ý cải thiện cụ thể</span>
+            <span class="opt-check"><span class="opt-check-icon">✓</span></span>
+          </div>
+          <div class="opt-desc">Đề xuất viết lại hoặc bổ sung những phần yếu</div>
+        </label>
+      </div>
+
+      <button class="submit-btn" id="submitBtn" data-action="submit-cv">
+        <span class="btn-text">🚀 Phân tích portfolio ngay</span>
+        <div class="spinner"></div>
+      </button>
+    </div>
+
+    <!-- RESULT -->
+    <div class="result-area" id="resultArea">
+      <!-- Score -->
+      <div class="score-section" id="scoreSection">
+        <div class="score-ring" id="scoreRing">
+          <svg viewBox="0 0 84 84" width="84" height="84">
+            <circle class="score-ring-bg" cx="42" cy="42" r="35"/>
+            <circle class="score-ring-fill" id="scoreCircle" cx="42" cy="42" r="35"
+              stroke-dasharray="219.9" stroke-dashoffset="219.9"
+              stroke="url(#ringGrad)"/>
+            <defs>
+              <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#6366f1"/>
+                <stop offset="100%" stop-color="#7c3aed"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="score-value" id="scoreValue">--<span>/ 100</span></div>
+        </div>
+        <div class="score-meta">
+          <div class="score-level" id="scoreLevel">Đang phân tích...</div>
+          <div class="score-verdict" id="scoreVerdict">AI đang xem xét nội dung portfolio của bạn.</div>
+        </div>
+      </div>
+
+      <!-- Result blocks (dynamic) -->
+      <div class="result-blocks" id="resultBlocks"></div>
+
+      <!-- Actions -->
+      <div class="result-actions">
+        <button class="action-btn action-btn-primary" data-action="reset-form">🔄 Phân tích lại</button>
+        <button class="action-btn action-btn-secondary" data-action="copy-result">📋 Sao chép kết quả</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════ SECTION: CV PROGRESS HISTORY ══════ -->
+<div class="section-wrap" id="scoreBreakdownSection">
+  <div class="section-head">
+    <div class="section-eyebrow">📈 Tiến triển của bạn</div>
+    <h2 class="section-title">Theo dõi <span>portfolio cải thiện</span> qua từng lần phân tích</h2>
+    <p class="section-sub">Mỗi lần bạn phân tích portfolio, kết quả được lưu lại để bạn thấy chính xác mình đã tiến bộ ở năng lực nào — và còn yếu ở đâu.</p>
+  </div>
+
+  <!-- Empty state: chưa có lần nào -->
+  <div class="progress-empty" id="progressEmpty">
+    <div class="progress-empty-icon">📊</div>
+    <div class="progress-empty-title">Chưa có dữ liệu phân tích</div>
+    <div class="progress-empty-desc">Phân tích portfolio lần đầu ở trên, biểu đồ tiến triển sẽ hiện ngay tại đây.</div>
+  </div>
+
+  <!-- Có data: hiện chart + breakdown + so sánh -->
+  <div class="progress-wrap" id="progressWrap" style="display:none;">
+
+    <!-- Top: tổng điểm + so sánh lần trước -->
+    <div class="sb-top">
+      <div class="sb-overall">
+        <div class="sb-overall-num" id="progOverallNum">--</div>
+        <div class="sb-overall-max">/ 100</div>
+        <div class="sb-overall-label" id="progOverallLabel">Lần mới nhất</div>
+      </div>
+      <div class="sb-top-text">
+        <div class="sb-top-title" id="progTopTitle">Portfolio của bạn</div>
+        <div class="sb-top-desc" id="progTopDesc">Đây là lần phân tích đầu tiên. Hãy quay lại sau khi chỉnh sửa portfolio để thấy tiến triển.</div>
+        <span class="sb-badge-good" id="progBadge" style="display:none;"></span>
+      </div>
+    </div>
+
+    <!-- Line chart tiến triển -->
+    <div class="progress-chart-wrap" id="progressChartWrap" style="display:none;">
+      <div class="progress-chart-head">
+        <span class="progress-chart-title">📈 Điểm tổng qua các lần phân tích</span>
+        <span class="progress-chart-count" id="progressCount">0 lần</span>
+      </div>
+      <div class="progress-chart" id="progressChart"></div>
+    </div>
+
+    <!-- 5 trục rubric: hiện điểm hiện tại + so sánh với lần trước -->
+    <div class="sb-items" id="progRubricItems"></div>
+
+    <!-- Note + nút xóa lịch sử -->
+    <div class="progress-bottom">
+      <div class="sb-note">
+        💡 Dữ liệu lịch sử được lưu trên trình duyệt của bạn. Nếu xóa cache, lịch sử sẽ mất.
+      </div>
+      <button class="progress-clear-btn" data-action="clear-progress">🗑️ Xóa lịch sử</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SECTION: WHY NOT CHATGPT ══════ -->
+<div class="section-wrap" id="whyNotGpt">
+  <div class="section-head">
+    <div class="section-eyebrow">⚡ Khác biệt cốt lõi</div>
+    <h2 class="section-title">Vì sao không chỉ <span>dùng ChatGPT</span>?</h2>
+    <p class="section-sub">ChatGPT là công cụ tổng quát. BrightWay Scholars được thiết kế riêng cho một việc duy nhất: giúp portfolio học bổng của bạn qua vòng hồ sơ.</p>
+  </div>
+
+  <div class="why-grid">
+
+    <div class="why-card">
+      <div class="why-icon-wrap">🧠</div>
+      <div>
+        <div class="why-card-title">Không cần biết cách prompt</div>
+        <div class="why-card-desc">Chỉ dán portfolio, chọn tiêu chí, nhận kết quả. Bạn không phải học cách “hỏi AI cho đúng” — workflow đã được chuẩn hoá sẵn cho portfolio học bổng.</div>
+        <div class="why-compare">
+          <span class="why-compare-gpt">“Bạn hãy xem portfolio này giúp mình”</span>
+          <span class="why-compare-arrow">→</span>
+          <span class="why-compare-us">1 click, có kết quả</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="why-card">
+      <div class="why-icon-wrap">🎯</div>
+      <div>
+        <div class="why-card-title">Chấm theo tiêu chí học bổng</div>
+        <div class="why-card-desc">Rubric 5 trục: Leadership, Impact, Clarity, Storytelling, Scholarship Fit — đúng những gì hội đồng nhìn vào, thay vì nhận xét chung chung kiểu “Portfolio của bạn khá ổn”.</div>
+        <div class="why-compare">
+          <span class="why-compare-gpt">Góp ý chung chung</span>
+          <span class="why-compare-arrow">→</span>
+          <span class="why-compare-us">Rubric rõ ràng</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="why-card">
+      <div class="why-icon-wrap">🔍</div>
+      <div>
+        <div class="why-card-title">Chỉ điểm yếu theo nhóm năng lực</div>
+        <div class="why-card-desc">Biết chính xác bạn đang yếu ở Leadership hay Storytelling, câu nào cần viết lại, phần nào thiếu số liệu — không phải đoán mò.</div>
+        <div class="why-compare">
+          <span class="why-compare-gpt">“Hãy viết hay hơn”</span>
+          <span class="why-compare-arrow">→</span>
+          <span class="why-compare-us">Yếu ở đâu, sửa gì</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="why-card">
+      <div class="why-icon-wrap">✏️</div>
+      <div>
+        <div class="why-card-title">Output dùng được ngay</div>
+        <div class="why-card-desc">Mỗi gợi ý đi kèm một phiên bản viết lại có thể copy-paste thẳng vào portfolio. Bạn biết phải làm gì tiếp theo, không mất thêm một buổi để “diễn giải AI”.</div>
+        <div class="why-compare">
+          <span class="why-compare-gpt">Đoạn văn dài dòng</span>
+          <span class="why-compare-arrow">→</span>
+          <span class="why-compare-us">Câu viết lại sẵn</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════ SECTION: BEFORE / AFTER ══════ -->
+<div class="section-wrap" id="beforeAfter">
+  <div class="section-head">
+    <div class="section-eyebrow">✨ Ví dụ thực tế</div>
+    <h2 class="section-title">Một dòng portfolio, <span>hai thế giới khác nhau</span></h2>
+    <p class="section-sub">Cùng một trải nghiệm, nhưng hội đồng học bổng đọc hoàn toàn khác nhau. Đây là cách BrightWay Scholars viết lại theo tinh thần “rõ hành động — rõ tác động — rõ kết quả”.</p>
+  </div>
+
+  <div class="ba-grid">
+
+    <div class="ba-card before">
+      <div class="ba-label">❌ Trước khi tối ưu</div>
+      <div class="ba-text">
+        “Tham gia câu lạc bộ tình nguyện và hỗ trợ nhiều hoạt động cho sinh viên.”
+      </div>
+      <div class="ba-meta">
+        <span class="ba-tag">Không có số liệu</span>
+        <span class="ba-tag">Không rõ vai trò</span>
+        <span class="ba-tag">Không đo được impact</span>
+      </div>
+    </div>
+
+    <div class="ba-arrow">→</div>
+
+    <div class="ba-card after">
+      <div class="ba-label">✅ Sau khi tối ưu</div>
+      <div class="ba-text">
+        “<mark>Điều phối 12 thành viên</mark> trong câu lạc bộ tình nguyện, tổ chức <mark>4 hoạt động</mark> hỗ trợ tân sinh viên, tiếp cận <mark>hơn 300 sinh viên</mark> trong học kỳ đầu.”
+      </div>
+      <div class="ba-meta">
+        <span class="ba-tag">Leadership rõ</span>
+        <span class="ba-tag">Số liệu cụ thể</span>
+        <span class="ba-tag">Impact đo lường được</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TIPS -->
+<div class="tips-strip">
+  <div class="tips-grid">
+    <div class="tip-mini">
+      <div class="tip-mini-icon">📌</div>
+      <div class="tip-mini-title">Nhập nội dung đầy đủ</div>
+      <div class="tip-mini-desc">Nội dung càng đầy đủ, AI càng phân tích chính xác. Bao gồm thông tin cá nhân, thành tích, mục tiêu.</div>
+    </div>
+    <div class="tip-mini">
+      <div class="tip-mini-icon">🎯</div>
+      <div class="tip-mini-title">Chọn đúng tiêu chí</div>
+      <div class="tip-mini-desc">Nếu bạn cần gợi ý viết lại, hãy giữ lại mục "Gợi ý cải thiện cụ thể".</div>
+    </div>
+    <div class="tip-mini">
+      <div class="tip-mini-icon">🔁</div>
+      <div class="tip-mini-title">Thử nhiều lần</div>
+      <div class="tip-mini-desc">Sau khi chỉnh sửa, dán lại nội dung để xem điểm số có cải thiện chưa.</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <a href="index.html">BrightWay Scholars</a> © 2025 — Kết quả chỉ mang tính tham khảo từ AI.
+</div>
+
+<script type="module" src="/assets/js/cv-review.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "brightway-chatbot-vercel",
+  "version": "1.0.0",
+  "description": "BrightWay chatbot backend deploy trên Vercel",
+  "type": "module",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.30.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

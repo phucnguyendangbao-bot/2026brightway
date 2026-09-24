@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Trắc nghiệm Holland RIASEC – Khám phá tính cách nghề nghiệp | BrightWay Career</title>
+<meta name="description" content="Trắc nghiệm Holland RIASEC 42 câu – chỉ 7 phút – giúp bạn biết mình thuộc nhóm tính cách nghề nghiệp nào: Thực tế, Nghiên cứu, Nghệ thuật, Xã hội, Lãnh đạo hay Quy củ." />
+<meta name="keywords" content="Holland, RIASEC, trắc nghiệm tính cách, hướng nghiệp, ngành nghề phù hợp" />
+<link rel="icon" type="image/png" href="images/img-a84652d05567.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Quicksand:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/holland.css">
+</head>
+<body>
+<div id="bg-layer" aria-hidden="true"></div>
+
+<!-- NAVBAR -->
+<nav class="bw-nav">
+  <div class="bw-nav-inner">
+    <a href="index.html" class="bw-logo">🌟 BrightWay Career</a>
+    <div class="bw-nav-links">
+      <a href="index.html">Trang chủ</a>
+      <a href="careers.html">Tra cứu nghề</a>
+      <a href="holland.html" class="active">Test Holland</a>
+      <a href="essay-review.html">Bài luận mẫu</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="bw-hero">
+  <div class="container">
+    <div class="badge">🧭 Trắc nghiệm miễn phí · Cập nhật 2026</div>
+    <h1>Khám phá <span class="grad">tính cách nghề nghiệp</span><br/>của bạn trong 7 phút</h1>
+    <p class="lede">
+      Trắc nghiệm Holland RIASEC — mô hình được hơn <strong>60 triệu học sinh</strong> trên thế giới sử dụng để tìm ra nhóm ngành nghề phù hợp nhất với bản thân.
+    </p>
+    <div class="meta">
+      <span>42 câu hỏi</span>
+      <span>7 phút hoàn thành</span>
+      <span>Tự động lưu kết quả</span>
+    </div>
+  </div>
+</section>
+
+<!-- 6 NHÓM HOLLAND INTRO -->
+<section class="types-intro">
+  <div class="container">
+    <h2>6 nhóm tính cách nghề nghiệp</h2>
+    <p class="sub">Mỗi người thuộc một hoặc vài nhóm trong số này — biết trước nhóm sẽ giúp bạn lọc ngành và nghề phù hợp.</p>
+    <div class="types-grid" id="typesGrid"></div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="quiz-section" id="quizSection">
+  <div class="quiz-card" id="quizCard">
+    <div class="quiz-progress-wrap">
+      <div class="quiz-progress-top">
+        <span id="qProgressText">0/42 câu</span>
+        <span class="q-timer" id="qTimer" title="Thời gian còn lại">⏱️ 7:00</span>
+        <span class="quiz-progress-pct" id="qProgressPct">0%</span>
+      </div>
+      <div class="quiz-progress-bar">
+        <div class="quiz-progress-fill" id="qProgressFill"></div>
+      </div>
+    </div>
+
+    <!-- Multi-question per page -->
+    <div class="q-list" id="qList"></div>
+
+    <div class="quiz-nav">
+      <button class="quiz-btn quiz-btn-secondary" id="btnPrev" onclick="HollandApp.hollandNav(-1)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Trang trước
+      </button>
+      <button class="quiz-btn quiz-btn-primary" id="btnNext" onclick="HollandApp.hollandNav(1)">
+        Trang tiếp
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+      <button class="quiz-btn quiz-btn-finish" id="btnFinish" onclick="HollandApp.hollandSubmit()" style="display:none;">
+        Xem kết quả
+        <span style="font-size:18px;">🎉</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Jump bar -->
+  <div class="jump-bar-wrap" id="jumpBarWrap">
+    <div class="jump-bar-label">Nhảy nhanh đến trang</div>
+    <div class="jump-bar" id="jumpBar"></div>
+  </div>
+</section>
+
+<!-- RESULT -->
+<div class="container">
+  <div class="result-card" id="resultCard">
+    <div class="result-top">
+      <span class="result-emoji" id="rEmoji">🔬</span>
+      <div class="result-type" id="rType">Nhóm tính cách</div>
+      <div class="result-code" id="rCode">CODE</div>
+      <p class="result-desc" id="rDesc"></p>
+    </div>
+    <div class="result-bars" id="rBars"></div>
+    <div class="majors" id="rMajors"></div>
+    <div class="result-actions">
+      <button class="quiz-btn quiz-btn-secondary" onclick="HollandApp.hollandReset()">🔄 Làm lại</button>
+      <a href="careers.html" class="quiz-btn quiz-btn-primary" style="text-decoration:none;">🔍 Tra cứu ngành phù hợp</a>
+    </div>
+  </div>
+</div>
+
+<footer class="bw-footer">
+  <div class="logo">🌟 BrightWay Career</div>
+  <p>Đồng hành cùng học sinh Lớp 12 trên hành trình hướng nghiệp</p>
+  <p class="small">© 2026 BrightWay Career · Thông tin chỉ mang tính tham khảo, không thay thế tư vấn chuyên gia.</p>
+</footer>
+
+<script src="assets/js/holland.js"></script>
+</body>
+</html>

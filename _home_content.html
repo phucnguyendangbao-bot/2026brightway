@@ -1,0 +1,1450 @@
+<!-- ===========================
+     BRIGHTWAY CAREER - HOME v2
+     Focus LỚP 12 · Palette gốc (indigo→purple gradient)
+     =========================== -->
+
+<style>
+  #home-view {
+    background: linear-gradient(145deg, #e8eeff 0%, #dde8ff 20%, #e5deff 50%, #d6e9ff 80%, #e0f0ff 100%);
+    color: #1a1a3e;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    padding-bottom: 0;
+    position: relative;
+  }
+  #home-view::before {
+    content:'';position:fixed;top:-15%;left:-10%;width:55vw;height:55vw;
+    background:radial-gradient(circle,rgba(130,100,255,0.18),transparent 65%);
+    border-radius:50%;pointer-events:none;z-index:0;
+  }
+  #home-view::after {
+    content:'';position:fixed;bottom:-15%;right:-10%;width:50vw;height:50vw;
+    background:radial-gradient(circle,rgba(99,165,255,0.16),transparent 65%);
+    border-radius:50%;pointer-events:none;z-index:0;
+  }
+  #home-view * { position: relative; z-index: 1; }
+
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  /* === HERO === */
+  .bw-hero {
+    padding: 88px 24px 64px;
+    text-align: center;
+  }
+  .bw-hero .badge {
+    display:inline-flex; align-items:center; gap:6px;
+    background: rgba(99,102,241,0.12);
+    border: 1px solid rgba(99,102,241,0.22);
+    color: #6366f1; font-weight: 700; font-size: 13px;
+    padding: 8px 16px; border-radius: 999px;
+    margin-bottom: 24px;
+  }
+  .bw-hero h1 {
+    font-size: clamp(36px, 5.5vw, 56px);
+    font-weight: 800;
+    line-height: 1.12;
+    margin: 0 0 20px;
+    color: #1a1a3e;
+    letter-spacing: -0.02em;
+  }
+  .bw-hero h1 .grad {
+    background: linear-gradient(135deg,#5b7cfa 0%,#7c5bf5 50%,#9f5bea 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .bw-hero .lede {
+    font-size: 18px;
+    color: #3a3a6e;
+    max-width: 640px;
+    margin: 0 auto 32px;
+    line-height: 1.6;
+  }
+  .bw-hero .lede strong { color: #6366f1; font-weight: 700; }
+
+  /* Buttons */
+  .bw-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-weight: 700; font-size: 16px;
+    text-decoration: none;
+    transition: all 0.18s ease;
+    cursor: pointer; border: none;
+  }
+  .bw-btn-primary {
+    background: linear-gradient(135deg,#6b8eff 0%,#8b6bff 100%);
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(99,102,241,0.32);
+  }
+  .bw-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(99,102,241,0.42);
+  }
+  .bw-btn-outline {
+    background: rgba(255,255,255,0.72);
+    color: #6366f1;
+    border: 1.5px solid rgba(99,102,241,0.3);
+  }
+  .bw-btn-outline:hover {
+    background: #fff; border-color: #6366f1;
+    transform: translateY(-2px);
+  }
+
+  /* === STAGE PICKER === */
+  .bw-stage {
+    padding: 56px 24px;
+  }
+  .section-eyebrow {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: #6366f1;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 800;
+    margin: 0 0 12px;
+    color: #1a1a3e;
+    letter-spacing: -0.02em;
+  }
+  .section-sub {
+    text-align: center;
+    color: #3a3a6e;
+    font-size: 16px;
+    margin: 0 0 40px;
+  }
+  .bw-stage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .bw-stage-card {
+    background: rgba(255,255,255,0.65);
+    backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(255,255,255,0.85);
+    border-radius: 16px;
+    padding: 24px 18px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.18s ease;
+  }
+  .bw-stage-card:hover {
+    border-color: #a78bfa;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(99,102,241,0.12);
+  }
+  .bw-stage-card.active {
+    border-color: #6366f1;
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 12px 32px rgba(99,102,241,0.22);
+  }
+  .bw-stage-card .emoji { font-size: 32px; margin-bottom: 6px; }
+  .bw-stage-card .label { font-size: 17px; font-weight: 700; color: #1a1a3e; }
+  .bw-stage-card .desc { font-size: 13px; color: #6b7aaa; margin-top: 2px; }
+
+  /* === ROADMAP === */
+  .bw-roadmap {
+    padding: 80px 24px;
+  }
+  .bw-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .bw-step {
+    background: rgba(255,255,255,0.78);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 28px 24px;
+    border: 1.5px solid rgba(255,255,255,0.9);
+    box-shadow: 0 4px 16px rgba(99,102,241,0.06);
+    transition: all 0.2s ease;
+  }
+  .bw-step:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(99,102,241,0.18);
+  }
+  .bw-step-num {
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,#6b8eff 0%,#8b6bff 100%);
+    color: #fff;
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 14px;
+    box-shadow: 0 6px 16px rgba(99,102,241,0.32);
+  }
+  .bw-step h3 {
+    font-size: 18px; font-weight: 700;
+    margin: 0 0 6px; color: #1a1a3e;
+  }
+  .bw-step p.goal {
+    font-size: 13px;
+    color: #6366f1;
+    font-weight: 700;
+    margin: 0 0 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .bw-step ul { list-style: none; padding: 0; margin: 0 0 18px; }
+  .bw-step ul li {
+    font-size: 14px;
+    color: #3a3a6e;
+    padding: 5px 0 5px 22px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .bw-step ul li::before {
+    content: "✓"; position: absolute; left: 0;
+    color: #7c5bf5; font-weight: 700;
+  }
+  .bw-step .step-cta {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: #6366f1; font-weight: 700; font-size: 14px;
+    text-decoration: none;
+  }
+  .bw-step .step-cta:hover { gap: 10px; }
+
+  /* === TIMELINE (LỚP 12 - đặc trưng) === */
+  .bw-timeline {
+    padding: 80px 24px;
+    background: rgba(255,255,255,0.4);
+  }
+  .bw-timeline-track {
+    position: relative;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 24px 0;
+  }
+  .bw-timeline-track::before {
+    content: '';
+    position: absolute;
+    left: 24px; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, #6366f1 0%, #a78bfa 100%);
+  }
+  .bw-tl-item {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 28px;
+    align-items: flex-start;
+  }
+  .bw-tl-dot {
+    flex-shrink: 0;
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid #6366f1;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 13px;
+    color: #6366f1;
+    box-shadow: 0 4px 12px rgba(99,102,241,0.2);
+    z-index: 1;
+  }
+  .bw-tl-dot.now {
+    background: linear-gradient(135deg,#6b8eff 0%,#8b6bff 100%);
+    color: #fff;
+    border-color: #fff;
+    box-shadow: 0 6px 18px rgba(99,102,241,0.4);
+  }
+  .bw-tl-content {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(8px);
+    border-radius: 14px;
+    padding: 18px 22px;
+    border: 1px solid rgba(255,255,255,0.9);
+    flex-grow: 1;
+  }
+  .bw-tl-content .when {
+    display: inline-block;
+    font-size: 12px; font-weight: 700;
+    color: #7c5bf5;
+    background: rgba(167,139,250,0.15);
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 8px;
+  }
+  .bw-tl-content h4 {
+    margin: 0 0 6px;
+    font-size: 16px;
+    color: #1a1a3e;
+    font-weight: 700;
+  }
+  .bw-tl-content p {
+    margin: 0;
+    font-size: 14px;
+    color: #3a3a6e;
+    line-height: 1.5;
+  }
+
+  /* === TOOLS === */
+  .bw-tools {
+    padding: 80px 24px;
+  }
+  .bw-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .bw-tool-card {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(255,255,255,0.9);
+    border-radius: 18px;
+    padding: 28px 24px;
+    text-align: center;
+    transition: all 0.18s ease;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+    box-shadow: 0 4px 16px rgba(99,102,241,0.06);
+  }
+  .bw-tool-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(99,102,241,0.18);
+    border-color: #a78bfa;
+  }
+  .bw-tool-card .icon {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  .bw-tool-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 6px;
+    color: #1a1a3e;
+  }
+  .bw-tool-card p {
+    font-size: 14px;
+    color: #3a3a6e;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* === NEXT STEP === */
+  .bw-next {
+    padding: 64px 24px 96px;
+  }
+  .bw-next-card {
+    max-width: 760px;
+    margin: 0 auto;
+    background: linear-gradient(135deg,#5b7cfa 0%,#7c5bf5 50%,#9f5bea 100%);
+    border-radius: 24px;
+    padding: 40px 36px;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(99,102,241,0.32);
+  }
+  .bw-next-card .label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    opacity: 0.85;
+    margin-bottom: 12px;
+  }
+  .bw-next-card h3 {
+    font-size: 26px;
+    font-weight: 800;
+    margin: 0 0 12px;
+  }
+  .bw-next-card p {
+    font-size: 16px;
+    margin: 0 0 24px;
+    opacity: 0.95;
+    line-height: 1.55;
+  }
+  .bw-next-card .bw-btn {
+    background: #fff;
+    color: #6366f1;
+  }
+  .bw-next-card .bw-btn:hover {
+    background: #f8fafc;
+    color: #4f46e5;
+  }
+
+  /* === FAQ === */
+  .bw-faq {
+    padding: 80px 24px;
+    background: rgba(255,255,255,0.5);
+  }
+  .bw-faq-list {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .bw-faq-item {
+    background: rgba(255,255,255,0.9);
+    border: 1px solid rgba(99,102,241,0.12);
+    border-radius: 14px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+  }
+  .bw-faq-item summary {
+    padding: 18px 24px;
+    font-weight: 600;
+    color: #1a1a3e;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+  }
+  .bw-faq-item summary::-webkit-details-marker { display: none; }
+  .bw-faq-item summary::after {
+    content: "+"; font-size: 24px;
+    color: #6366f1;
+    font-weight: 300;
+    transition: transform 0.2s;
+  }
+  .bw-faq-item[open] summary::after { transform: rotate(45deg); }
+  .bw-faq-item .faq-body {
+    padding: 0 24px 20px;
+    color: #3a3a6e;
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  /* === FOOTER === */
+  .bw-footer {
+    background: rgba(26,26,62,0.92);
+    color: #c7c9e0;
+    padding: 48px 24px 32px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+  }
+  .bw-footer .logo {
+    font-size: 20px;
+    font-weight: 800;
+    background: linear-gradient(135deg,#a78bfa 0%,#c4b5fd 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  .bw-footer p { margin: 4px 0; font-size: 14px; }
+  .bw-footer .small { font-size: 13px; color: #9ca3c8; margin-top: 16px; }
+
+  /* MOBILE */
+  @media (max-width: 640px) {
+    .bw-hero { padding: 56px 20px 48px; }
+    .bw-hero h1 { font-size: 32px; }
+    .bw-hero .lede { font-size: 16px; }
+    .bw-stage, .bw-roadmap, .bw-tools, .bw-next, .bw-faq, .bw-timeline {
+      padding: 56px 20px;
+    }
+    .bw-next-card { padding: 32px 24px; }
+    .bw-next-card h3 { font-size: 22px; }
+    .bw-timeline-track::before { left: 18px; }
+    .bw-tl-item { gap: 16px; }
+    .bw-tl-dot { width: 40px; height: 40px; font-size: 11px; }
+  }
+</style>
+
+<!-- ===== HERO ===== -->
+<section class="bw-hero">
+  <div class="container">
+    <div class="badge">
+      ✨ Lớp 12 — Năm bản lề cuối cùng
+    </div>
+    <h1>Hành trình <span class="grad">Lớp 12</span><br/>không còn là áp lực</h1>
+    <p class="lede">
+      Hướng dẫn <strong>4 bước rõ ràng</strong> + <strong>mốc thời gian cụ thể</strong> theo từng tháng — để bạn biết hôm nay phải làm gì, tháng sau làm gì, và không bỏ lỡ deadline quan trọng nào.
+    </p>
+    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+      <a href="#timeline" class="bw-btn bw-btn-primary">
+        Xem lịch Lớp 12
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#roadmap" class="bw-btn bw-btn-outline">
+        4 bước hướng nghiệp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LỚP 12 — TIMELINE 12 THÁNG ===== -->
+<section class="bw-timeline" id="timeline">
+  <div class="container">
+    <div class="section-eyebrow">Mốc thời gian</div>
+    <h2 class="section-title">Lộ trình Lớp 12 — từng tháng</h2>
+    <p class="section-sub">Bắt đầu từ tháng 9 (đầu năm học) đến tháng 8 (nhập học)</p>
+
+    <div class="bw-timeline-track">
+
+      <div class="bw-tl-item">
+        <div class="bw-tl-dot">T9</div>
+        <div class="bw-tl-content">
+          <span class="when">Tháng 9 — Đầu năm học</span>
+          <h4>Xác định nguyện vọng &amp; xếp hạng</h4>
+          <p>Chốt 3-5 trường nguyện vọng. Tìm hiểu tổ hợp môn xét tuyển từng trường. Lập file Excel theo dõi.</p>
+        </div>
+      </div>
+
+      <div class="bw-tl-item">
+        <div class="bw-tl-dot">T10</div>
+        <div class="bw-tl-content">
+          <span class="when">Tháng 10 — Thi học kỳ &amp; săn học bổng</span>
+          <h4>Giữ GPA + săn học bổng sớm</h4>
+          <p>Ôn thi giữa kỳ để giữ GPA. Nộp hồ sơ học bổng doanh nghiệp (nộp sớm thường dễ đậu hơn).</p>
+        </div>
+      </div>
+
+      <div class="bw-tl-item">
+        <div class="bw-tl-dot">T11</div>
+        <div class="bw-tl-content">
+          <span class="when">Tháng 11 — Viết bài luận cá nhân</span>
+          <h4>Hoàn thiện portfolio + bài luận</h4>
+          <p>Viết 1-2 bài luận 500-800 từ. Chuẩn bị thư giới thiệu. Xin chứng chỉ tiếng Anh IELTS/TOEFL nếu cần.</p>
+        </div>
+      </div>
+
+      <div class="bw-tl-item">
+        <div class="bw-tl-dot now">T12</div>
+        <div class="bw-tl-content">
+          <span class="when">Tháng 12 — Học kỳ 1 kết thúc</span>
+          <h4>Chốt chiến lược ôn thi</h4>
+          <p>Đánh giá năng lực thật qua điểm thi thử. Lên kế hoạch ôn tập 6 tháng (T1-T6). Hạn chế hoạt động ngoại khóa.</p>
+        </div>
+      </div>
+
+      <div class="bw-tl-item">
+        <div class="bw-tl-dot">T1</div>
+        <div class="bw-tl-content">
+          <span class="when">Tháng 1 — Khởi động ôn thi</span>
+          <h4>Ôn tổng quát + làm đề thi năm trước</h4>
+          <p>Bắt đầu luyện đề. Xác định môn yếu cần thu gia sư hoặc nhóm ôn. Lên lịch học cố định mỗi tuần.</p>
+        </div>
+      </div>
+
+      <div class="bw-tl-item">
+        <div class="bw-tl-dot">T2</div>
+        <div class="bw-tl-content">
+          <span class="when">Tháng 2 — Tăng tốc</span>
+          <h4>Tăng thời gian ôn, giảm giải trí</h4>
+          <p>Ôn 4-6 tiếng/ngày ngoài giờ học. Luyện đề theo tổ hợp. Tham gia kỳ thi thử tại trường hoặc trung tâm.</p>
+        </div>
+      </div>
+
+      <div class="bw-tl-item">
+        <div class="bw-tl-dot">T3</div>
+        <div class="bw-tl-content">
+          <span class="when">Tháng 3 — Nghỉ phép ôn thi</span>
+          <h4>Ôn chuyên sâu — giả lập như thi thật</h4>
+          <p>Ôn 8-10 tiếng/ngày. Thi thử mỗi tuần. Rà soát kiến thức lỗ hổng. Giữ sức khỏe + ngủ đủ giấc.</p>
+        </div>
+      </div>
+
+      <div class="bw-tl-item">
+        <div class="bw-tl-dot">T4</div>
+        <div class="bw-tl-content">
+          <span class="when">Tháng 4 — Thi tốt nghiệp THPT</span>
+          <h4>Thi THPT Quốc gia + nộp hồ sơ</h4>
+          <p>Thi tốt nghiệp (~3 ngày). Ngay sau đó nộp hồ sơ xét tuyển vào các trường. Không bỏ lỡ deadline.</p>
+        </div>
+      </div>
+
+      <div class="bw-tl-item">
+        <div class="bw-tl-dot">T5</div>
+        <div class="bw-tl-content">
+          <span class="when">Tháng 5-6 — Điều chỉnh nguyện vọng</span>
+          <h4>Có điểm thi thật, tính toán lại</h4>
+          <p>Dùng công cụ "Tính điểm xét tuyển" để so sánh điểm mình với điểm chuẩn năm ngoái. Điều chỉnh nguyện vọng nếu cần.</p>
+        </div>
+      </div>
+
+      <div class="bw-tl-item">
+        <div class="bw-tl-dot">T7</div>
+        <div class="bw-tl-content">
+          <span class="when">Tháng 7 — Công bố trúng tuyển</span>
+          <h4>Xác nhận nhập học + chuẩn bị</h4>
+          <p>Xem kết quả trúng tuyển. Xác nhận nhập học online đúng hạn. Chuẩn bị hồ sơ nhập học, tìm phòng trọ nếu xa nhà.</p>
+        </div>
+      </div>
+
+      <div class="bw-tl-item">
+        <div class="bw-tl-dot">T8</div>
+        <div class="bw-tl-content">
+          <span class="when">Tháng 8 — Nhập học 🎓</span>
+          <h4>Bắt đầu hành trình đại học</h4>
+          <p>Nhập học, làm thẻ sinh viên, tìm hiểu câu lạc bộ, học bổng, quy chế. Chúc bạn thành công!</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== STAGE PICKER ===== -->
+<section class="bw-stage" id="stage-picker">
+  <div class="container">
+    <div class="section-eyebrow">Khám phá</div>
+    <h2 class="section-title">Bạn đang ở đâu trong năm học?</h2>
+    <p class="section-sub">Chọn mốc thời gian — mình gợi ý bước tiếp theo phù hợp</p>
+    <div class="bw-stage-grid" id="bwStageGrid">
+      <div class="bw-stage-card" data-stage="start">📘<div class="label">Đầu năm (T9-T11)</div><div class="desc">Chuẩn bị hồ sơ</div></div>
+      <div class="bw-stage-card" data-stage="mid">📗<div class="label">Giữa năm (T12-T1)</div><div class="desc">Lên kế hoạch ôn thi</div></div>
+      <div class="bw-stage-card active" data-stage="rush">📙<div class="label">Tăng tốc (T2-T3)</div><div class="desc">Ôn thi chuyên sâu</div></div>
+      <div class="bw-stage-card" data-stage="submit">📕<div class="label">Nộp hồ sơ (T4-T7)</div><div class="desc">Hoàn tất xét tuyển</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ROADMAP 4 BƯỚC ===== -->
+<section class="bw-roadmap" id="roadmap">
+  <div class="container">
+    <div class="section-eyebrow">Phương pháp</div>
+    <h2 class="section-title">4 bước hướng nghiệp — gọn, dễ nhớ</h2>
+    <p class="section-sub">Bạn có thể làm song song cả 4 bước — không nhất thiết phải xong bước 1 mới sang bước 2</p>
+
+    <div class="bw-steps">
+
+      <div class="bw-step">
+        <div class="bw-step-num">1</div>
+        <h3>Hiểu mình</h3>
+        <p class="goal">Biết mình muốn gì</p>
+        <ul>
+          <li>Trắc nghiệm Holland (30 câu, 5 phút)</li>
+          <li>Liệt kê 5 môn học thích + 5 môn học giỏi</li>
+          <li>Hỏi giáo viên chủ nhiệm nhận xét</li>
+        </ul>
+        <a href="careers.html" class="step-cta">Làm trắc nghiệm →</a>
+      </div>
+
+      <div class="bw-step">
+        <div class="bw-step-num">2</div>
+        <h3>Tìm ngành phù hợp</h3>
+        <p class="goal">Biết ngành nào hợp</p>
+        <ul>
+          <li>Xem 100+ ngành theo nhóm Holland</li>
+          <li>So sánh điểm chuẩn 3 năm gần nhất</li>
+          <li>Chọn 2-3 ngành, đọc review từ sinh viên</li>
+        </ul>
+        <a href="#tool" class="step-cta">Xem ngành →</a>
+      </div>
+
+      <div class="bw-step" id="bw-step-3">
+        <div class="bw-step-num">3</div>
+        <h3>Chọn trường</h3>
+        <p class="goal">Chốt danh sách nguyện vọng</p>
+        <ul>
+          <li>Chọn 3 trường "chắc" + 2 trường "mơ"</li>
+          <li>Ghi rõ tổ hợp môn + chỉ tiêu</li>
+          <li>Bấm "Tìm hiểu" để xem chi tiết từng trường</li>
+        </ul>
+        <button type="button" class="step-cta" id="openSchoolModal" style="background:none;border:none;cursor:pointer;padding:0;">
+          🏫 Chọn trường ngay →
+        </button>
+        <div id="selectedSchoolsPreview" style="margin-top:12px;font-size:13px;color:#3a3a6e;"></div>
+      </div>
+
+      <div class="bw-step">
+        <div class="bw-step-num">4</div>
+        <h3>Hành động</h3>
+        <p class="goal">Nộp đúng hạn, đúng cách</p>
+        <ul>
+          <li>Ôn theo tổ hợp đã chọn</li>
+          <li>Viết bài luận cá nhân (có mẫu)</li>
+          <li>Theo dõi deadline từ nguyện vọng đã chọn</li>
+        </ul>
+        <a href="essay-review.html" class="step-cta">Xem bài luận mẫu →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== TOOLS ===== -->
+<section class="bw-tools" id="tool">
+  <div class="container">
+    <div class="section-eyebrow">Công cụ</div>
+    <h2 class="section-title">Trợ thủ Lớp 12</h2>
+    <p class="section-sub">Những công cụ nhỏ — hữu ích lớn</p>
+    <div class="bw-tools-grid">
+
+      <a href="careers.html" class="bw-tool-card">
+        <div class="icon">🎯</div>
+        <h3>Trắc nghiệm Holland</h3>
+        <p>Biết nhóm tính cách nghề nghiệp trong 5 phút — từ đó lọc ngành phù hợp.</p>
+      </a>
+
+      <a href="#timeline" class="bw-tool-card">
+        <div class="icon">📅</div>
+        <h3>Lịch Lớp 12</h3>
+        <p>Mốc thời gian chi tiết từng tháng — bạn không cần tự nhớ mình phải làm gì.</p>
+      </a>
+
+      <a href="#" class="bw-tool-card" id="consultLink">
+        <div class="icon">💬</div>
+        <h3>Tư vấn cá nhân</h3>
+        <p>Đặt lịch 1-1 với cố vấn hướng nghiệp. Miễn phí 30 phút cho học sinh Lớp 12.</p>
+      </a>
+
+      <a href="essay-review.html" class="bw-tool-card">
+        <div class="icon">📝</div>
+        <h3>Bài luận mẫu</h3>
+        <p>5 bài luận cá nhân hay — phân tích điểm mạnh/yếu để bạn viết tốt hơn.</p>
+      </a>
+
+      <a href="scholarship-roadmap.html" class="bw-tool-card">
+        <div class="icon">🎓</div>
+        <h3>Học bổng</h3>
+        <p>Danh sách học bổng doanh nghiệp, chính phủ, trường — cập nhật 2026.</p>
+      </a>
+
+      <a href="#" class="bw-tool-card" id="checklistLink">
+        <div class="icon">✅</div>
+        <h3>Checklist nộp hồ sơ</h3>
+        <p>Danh sách đầy đủ giấy tờ cần chuẩn bị — không bỏ sót giấy nào.</p>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== NEXT STEP (dynamic theo stage) ===== -->
+<section class="bw-next" id="bw-next-section">
+  <div class="container">
+    <div class="bw-next-card" id="bwNextCard">
+      <div class="label">Bước tiếp theo</div>
+      <h3 id="bwNextTitle">Bạn đang ở giai đoạn "Tăng tốc ôn thi"</h3>
+      <p id="bwNextDesc">Tập trung 8-10 tiếng/ngày, luyện đề mỗi tuần, giữ sức khỏe. Đừng quên xem điểm chuẩn các trường để điều chỉnh kế hoạch.</p>
+      <a href="#timeline" class="bw-btn">Xem lịch chi tiết →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="bw-faq">
+  <div class="container">
+    <div class="section-eyebrow">Hỏi đáp</div>
+    <h2 class="section-title">Câu hỏi thường gặp của Lớp 12</h2>
+    <div class="bw-faq-list">
+
+      <details class="bw-faq-item" open>
+        <summary>Đầu năm Lớp 12, mình nên chuẩn bị gì đầu tiên?</summary>
+        <div class="faq-body">3 việc quan trọng nhất: (1) Chốt 3-5 nguyện vọng, ghi rõ tổ hợp môn xét tuyển; (2) Đánh giá năng lực thật qua điểm thi thử hoặc điểm học kỳ; (3) Lập kế hoạch ôn tập 6 tháng. Đừng ôn ngay — cần hiểu mình trước.</div>
+      </details>
+
+      <details class="bw-faq-item">
+        <summary>Mình chưa biết mình thích ngành nào — phải làm sao?</summary>
+        <div class="faq-body">Bắt đầu bằng Trắc nghiệm Holland để lọc nhóm tính cách. Sau đó xem 5-10 ngành trong nhóm đó, chọn 2-3 ngành đọc kỹ. Không cần chắc chắn 100% — chỉ cần đủ thông tin để bắt đầu ôn thi một tổ hợp.</div>
+      </details>
+
+      <details class="bw-faq-item">
+        <summary>Điểm chuẩn năm nay sẽ tăng hay giảm?</summary>
+        <div class="faq-body">Không ai dự đoán chính xác. Cách an toàn: xem điểm chuẩn 3 năm gần nhất, chọn mức "bình thường" và cố gắng đạt. Tránh chọn ngành chỉ vì năm ngoái điểm thấp — năm nay có thể tăng đột biến.</div>
+      </details>
+
+      <details class="bw-faq-item">
+        <summary>Có nên nộp hồ sơ vào nhiều trường không?</summary>
+        <div class="faq-body">Nên. Hiện tại Bộ GD&ĐT cho phép đăng ký nhiều nguyện vọng (không giới hạn số trường). Chọn 3-5 trường theo chiến lược: 2 "chắc" + 2 "phù hợp" + 1 "mơ".</div>
+      </details>
+
+      <details class="bw-faq-item">
+        <summary>Bài luận cá nhân có quan trọng không?</summary>
+        <div class="faq-body">Quan trọng với một số trường (như ĐH Fulbright, VinUni, các trường tư có xét tuyển riêng). Với đa số trường công lập, điểm thi vẫn là yếu tố chính. Tuy nhiên, nên chuẩn bị sẵn — không mất gì.</div>
+      </details>
+
+      <details class="bw-faq-item">
+        <summary>Làm sao vừa ôn thi vừa giữ sức khỏe?</summary>
+        <div class="faq-body">Ngủ 7-8 tiếng/đêm là quan trọng nhất. Ôn 8-10 tiếng/ngày nhưng chia 3 ca (sáng-chiều-tối), không ôn 1-2 ca kéo dài. Ăn đủ, tập thể dục nhẹ 30 phút/ngày. Đừng hy sinh sức khỏe vì 2-3 tiếng ôn thêm.</div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== MODAL CHỌN TRƯỜNG ===== -->
+<div id="schoolModal" style="display:none;position:fixed;inset:0;background:rgba(15,15,40,0.55);z-index:9999;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(6px);">
+  <div style="background:#fff;border-radius:20px;width:100%;max-width:720px;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(99,102,241,0.35);">
+    <div style="padding:20px 24px;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,#eef2ff,#f5f3ff);">
+      <div>
+        <h3 style="margin:0;font-size:18px;color:#1a1a3e;">🏫 Chọn trường đại học</h3>
+        <p style="margin:4px 0 0;font-size:13px;color:#6b7aaa;">Đã chọn <span id="modalCount">0</span> trường</p>
+      </div>
+      <button id="closeSchoolModal" style="background:none;border:none;font-size:24px;color:#6b7aaa;cursor:pointer;line-height:1;">×</button>
+    </div>
+
+    <div style="padding:14px 24px;background:#f8fafc;border-bottom:1px solid #e2e8f0;">
+      <input id="schoolSearch" type="text" placeholder="🔍 Tìm trường theo tên..." style="width:100%;padding:10px 14px;border:1px solid #cbd5e1;border-radius:10px;font-size:14px;outline:none;box-sizing:border-box;">
+      <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;font-size:12px;">
+        <button class="region-btn" data-region="all" style="padding:6px 12px;border-radius:999px;border:1px solid #cbd5e1;background:#6366f1;color:#fff;cursor:pointer;font-weight:600;">Tất cả</button>
+        <button class="region-btn" data-region="mb" style="padding:6px 12px;border-radius:999px;border:1px solid #cbd5e1;background:#fff;color:#3a3a6e;cursor:pointer;">Miền Bắc</button>
+        <button class="region-btn" data-region="mt" style="padding:6px 12px;border-radius:999px;border:1px solid #cbd5e1;background:#fff;color:#3a3a6e;cursor:pointer;">Miền Trung</button>
+        <button class="region-btn" data-region="mn" style="padding:6px 12px;border-radius:999px;border:1px solid #cbd5e1;background:#fff;color:#3a3a6e;cursor:pointer;">Miền Nam</button>
+      </div>
+    </div>
+
+    <div id="schoolList" style="flex:1;overflow-y:auto;padding:12px 24px;"></div>
+
+    <div style="padding:14px 24px;border-top:1px solid #e2e8f0;display:flex;gap:10px;background:#f8fafc;">
+      <button id="saveSchools" style="flex:1;background:linear-gradient(135deg,#6b8eff,#8b6bff);color:#fff;border:none;padding:12px 20px;border-radius:10px;font-weight:700;cursor:pointer;font-size:14px;">Lưu &amp; đóng</button>
+      <button id="clearSchools" style="background:#fff;border:1.5px solid #cbd5e1;color:#3a3a6e;padding:12px 20px;border-radius:10px;font-weight:600;cursor:pointer;font-size:14px;">Xóa hết</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="bw-footer">
+  <div class="logo">BrightWay Career</div>
+  <p>Đồng hành cùng học sinh Lớp 12 trên hành trình hướng nghiệp</p>
+  <p class="small">© 2026 BrightWay Career · Thông tin chỉ mang tính tham khảo, không thay thế tư vấn chuyên gia.</p>
+</footer>
+
+<script>
+  // ==== Stage picker → update next-step card ====
+  (function(){
+    var tips = {
+      'start': {
+        title: 'Đang ở đầu năm Lớp 12 — còn 10 tháng',
+        desc: 'Tập trung chốt 3-5 nguyện vọng và xếp hạng ngay. Càng chốt sớm, càng có nhiều thời gian chuẩn bị hồ sơ, học bổng, và bài luận.',
+        cta: 'Xem lịch chi tiết'
+      },
+      'mid': {
+        title: 'Đang ở giữa năm — chuẩn bị vào guồng',
+        desc: 'Đánh giá năng lực qua thi thử. Chốt chiến lược ôn (tự học, gia sư, nhóm). Tránh thay đổi nguyện vọng quá nhiều lần.',
+        cta: 'Xem chiến lược ôn'
+      },
+      'rush': {
+        title: 'Đang ở giai đoạn "Tăng tốc ôn thi"',
+        desc: 'Tập trung 8-10 tiếng/ngày, luyện đề mỗi tuần, giữ sức khỏe. Đừng quên xem điểm chuẩn các trường để điều chỉnh kế hoạch.',
+        cta: 'Xem lịch chi tiết'
+      },
+      'submit': {
+        title: 'Đang ở giai đoạn nộp hồ sơ — cẩn thận deadline',
+        desc: 'Tính điểm thật của mình. Điều chỉnh nguyện vọng cho phù hợp. Nộp đúng hạn, chuẩn bị hồ sơ nhập học nếu trúng tuyển.',
+        cta: 'Tính điểm xét tuyển'
+      }
+    };
+    var cards = document.querySelectorAll('#bwStageGrid .bw-stage-card');
+    var titleEl = document.getElementById('bwNextTitle');
+    var descEl  = document.getElementById('bwNextDesc');
+    var ctaEl   = document.querySelector('#bwNextCard .bw-btn');
+
+    if (!cards.length || !titleEl) return;
+
+    function activate(card) {
+      cards.forEach(function(c){ c.classList.remove('active'); });
+      card.classList.add('active');
+      var t = tips[card.getAttribute('data-stage')];
+      if (!t) return;
+      titleEl.textContent = t.title;
+      descEl.textContent  = t.desc;
+      ctaEl.textContent   = t.cta + ' →';
+    }
+
+    cards.forEach(function(card){
+      card.addEventListener('click', function(){
+        activate(card);
+        document.getElementById('bw-next-section').scrollIntoView({behavior:'smooth', block:'center'});
+      });
+    });
+
+    // Default active = "rush" (đã set trong HTML), stage hiển thị đúng theo active
+  })();
+
+  // ====================================================
+  //  REALTIME CALENDAR — auto highlight theo ngày thực
+  // ====================================================
+  (function(){
+    var now = new Date();
+    var month = now.getMonth() + 1; // 1-12
+    var day = now.getDate();
+    var year = now.getFullYear();
+    var today = new Date(year, month - 1, day);
+
+    // Map tháng → stage
+    var monthToStage = { 9:'start', 10:'start', 11:'start', 12:'mid', 1:'mid', 2:'rush', 3:'rush', 4:'submit', 5:'submit', 6:'submit', 7:'submit', 8:'submit' };
+    // Map tháng → timeline dot index (T9..T8 theo thứ tự 0..11)
+    var monthToTimeline = { 9:0, 10:1, 11:2, 12:3, 1:4, 2:5, 3:6, 4:7, 5:8, 6:8, 7:9, 8:10 };
+    var monthNames = ['','Tháng 1','Tháng 2','Tháng 3','Tháng 4','Tháng 5','Tháng 6','Tháng 7','Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12'];
+
+    var stage = monthToStage[month];
+    var tlIdx = monthToTimeline[month];
+
+    // 1) Update hero badge với ngày thực
+    var badge = document.querySelector('.bw-hero .badge');
+    if (badge) badge.innerHTML = '✨ Hôm nay — ' + monthNames[month] + ', ' + year;
+
+    // 2) Auto-active stage card theo tháng hiện tại
+    var cards = document.querySelectorAll('#bwStageGrid .bw-stage-card');
+    var activeCard = null;
+    cards.forEach(function(c){
+      c.classList.remove('active');
+      if (c.getAttribute('data-stage') === stage) {
+        c.classList.add('active');
+        activeCard = c;
+      }
+    });
+
+    // 3) Click programmatically để update next-step card
+    if (activeCard) {
+      // Trigger click event để next-card cập nhật
+      activeCard.dispatchEvent(new Event('click', { bubbles: true }));
+      // Sau khi click, bỏ smooth scroll vì user chưa yêu cầu
+    }
+
+    // 4) Highlight timeline item hiện tại
+    var tlItems = document.querySelectorAll('.bw-tl-item');
+    tlItems.forEach(function(item, i){
+      item.style.opacity = (i === tlIdx) ? '1' : '0.55';
+      item.style.transform = (i === tlIdx) ? 'translateX(4px)' : '';
+    });
+
+    // Đánh dấu dot
+    var dots = document.querySelectorAll('.bw-tl-dot');
+    dots.forEach(function(d, i){
+      d.classList.remove('now');
+      if (i === tlIdx) d.classList.add('now');
+    });
+
+    // 5) Thêm badge "Hôm nay" vào timeline item hiện tại
+    var targetItem = tlItems[tlIdx];
+    if (targetItem && !targetItem.querySelector('.bw-tl-now-badge')) {
+      var lbl = document.createElement('span');
+      lbl.className = 'bw-tl-now-badge';
+      lbl.textContent = '🔴 Bạn đang ở đây';
+      lbl.style.cssText = 'display:inline-block;font-size:11px;font-weight:700;color:#fff;background:#6366f1;padding:3px 8px;border-radius:999px;margin-left:8px;';
+      var when = targetItem.querySelector('.when');
+      if (when) when.appendChild(lbl);
+    }
+  })();
+
+  // ====================================================
+  //  MODAL CHỌN TRƯỜNG — danh sách + search + filter
+  // ====================================================
+  (function(){
+    var SCHOOLS = [
+      // ===================== MIỀN BẮC =====================
+      { name:'ĐH Bách Khoa Hà Nội', code:'BK', region:'mb',
+        combo:'A00, A01, D07',
+        desc:'Trường kỹ thuật hàng đầu VN, mạnh về kỹ thuật, công nghệ, IT, cơ khí. Điểm chuẩn thuộc nhóm cao nhất cả nước. Sinh viên được thực tập sớm tại doanh nghiệp.',
+        website:'page2.html#bk-hn',
+        strengths:['Kỹ thuật hàng đầu VN','Kết nối doanh nghiệp mạnh','Cơ hội việc làm cao','Nghiên cứu khoa học'],
+        scholarships:['Học bổng khuyến khích tài năng (50% - 100%)','Học bổng doanh nghiệp (Vingroup, Samsung...)','Học bổng hỗ trợ sinh viên khó khăn'],
+        note:'A00 (Toán Lý Hóa) là tổ hợp phổ biến nhất. Điểm chuẩn thường 27-29.'
+      },
+      { name:'ĐH Quốc gia Hà Nội (KHTN)', code:'KHTN', region:'mb',
+        combo:'A00, A01, B00, D07',
+        desc:'Trường đại học trọng điểm quốc gia về khoa học tự nhiên. Nổi bật về nghiên cứu, công nghệ sinh học, vật lý, hóa học, toán học. Nhiều phòng thí nghiệm hiện đại.',
+        website:'page2.html#husc',
+        strengths:['Nghiên cứu khoa học mạnh','Công nghệ sinh học','Vật lý, Hóa học','Cơ hội học thêm chứng chỉ quốc tế'],
+        scholarships:['Học bổng sinh viên tài năng VNU','Học bổng nghiên cứu sinh','Học bổng doanh nghiệp'],
+        note:'Thuộc ĐHQGHN. Sinh viên có cơ hội tham gia các đề tài nghiên cứu từ năm 2.'
+      },
+      { name:'ĐH Quốc gia Hà Nội (XH&NV)', code:'XHNV', region:'mb',
+        combo:'C00, D01, D14, D15',
+        desc:'Trường khoa học xã hội - nhân văn hàng đầu VN. Mạnh về luật, kinh tế, sư phạm, báo chí, quan hệ quốc tế, tâm lý học.',
+        website:'page2.html#ussh',
+        strengths:['Luật học uy tín','Kinh tế & Tài chính','Báo chí - Truyền thông','Quan hệ quốc tế'],
+        scholarships:['Học bổng sinh viên tài năng VNU','Học bổng cho sinh viên xuất sắc','Học bổng doanh nghiệp'],
+        note:'Thuộc ĐHQGHN. C00 (Văn Sử Địa) phù hợp khối XH. D14, D15 dành cho khối A.'
+      },
+      { name:'ĐH Ngoại thương (Hà Nội)', code:'FTU', region:'mb',
+        combo:'A01, D01, D09, D10',
+        desc:'Trường top đầu về thương mại quốc tế, tài chính, ngân hàng, marketing. Sinh viên FTU nổi tiếng giao tiếp tốt, ngoại ngữ lưu loát. Điểm chuẩn thuộc nhóm cao nhất.',
+        website:'page2.html#ftu',
+        strengths:['Thương mại quốc tế','Tài chính - Ngân hàng','Marketing quốc tế','Tiếng Anh chuyên ngành mạnh'],
+        scholarships:['Học bổng sinh viên xuất sắc (miễn 50-100% học phí)','Học bổng doanh nghiệp (TPBank, VPBank...)','Học bổng trao đổi quốc tế'],
+        note:'A01 phù hợp học sinh giỏi Toán + Lí. D01 cho khối A02. Điểm chuẩn thường 27-29.'
+      },
+      { name:'ĐH Kinh tế Quốc dân', code:'NEU', region:'mb',
+        combo:'A00, A01, D01, D09',
+        desc:'Trường kinh tế hàng đầu VN, mạnh về kinh tế học, tài chính, kế toán, kiểm toán, quản trị kinh doanh. Điểm chuẩn ổn định nhóm cao.',
+        website:'page2.html#neu',
+        strengths:['Kinh tế học','Tài chính - Kế toán','Quản trị kinh doanh','Kiểm toán'],
+        scholarships:['Học bổng sinh viên tài năng (50-100%)','Học bổng hỗ trợ học phí','Học bổng doanh nghiệp (Big4, ngân hàng...)'],
+        note:'A00 phổ biến nhất. D09 dành cho khối A. Điểm chuẩn thường 26-28.'
+      },
+      { name:'ĐH Sư phạm Hà Nội', code:'HNUE', region:'mb',
+        combo:'A00, B00, C00, D14',
+        desc:'Trường sư phạm uy tín hàng đầu VN. Đào tạo giáo viên và nghiên cứu giáo dục. Nhiều ngành mở rộng: tâm lý học, quản lý giáo dục, sư phạm mầm non.',
+        website:'page2.html#hnue',
+        strengths:['Đào tạo giáo viên chất lượng','Sư phạm mầm non, tiểu học, THCS','Tâm lý học','Quản lý giáo dục'],
+        scholarships:['Miễn học phí cho sinh viên sư phạm','Học bổng khuyến khích tài năng','Học bổng hỗ trợ sinh viên'],
+        note:'Ngành sư phạm được Nhà nước hỗ trợ học phí. Tốt nghiệp dễ xin việc trong ngành giáo dục.'
+      },
+      { name:'ĐH Y Hà Nội', code:'HMU', region:'mb',
+        combo:'B00, B08, D08',
+        desc:'Trường Y hàng đầu miền Bắc. Đào tạo bác sĩ đa khoa, răng hàm mặt, y học cổ truyền. Thực tập tại các bệnh viện lớn: Bạch Mai, Việt Đức.',
+        website:'page2.html#hmu',
+        strengths:['Bác sĩ đa khoa','Răng hàm mặt','Y học cổ truyền','Thực tập tại bệnh viện lớn'],
+        scholarships:['Miễn học phí theo chính sách Nhà nước','Học bổng cho sinh viên xuất sắc','Hỗ trợ sinh viên y khoa'],
+        note:'Điểm chuẩn rất cao (thường 27-29). Yêu cầu sức khỏe và đạo đức tốt. Thời gian đào tạo 6 năm.'
+      },
+      { name:'Học viện Công nghệ Bưu chính Viễn thông', code:'PTIT', region:'mb',
+        combo:'A00, A01, D07',
+        desc:'Trường công nghệ thông tin - viễn thông hàng đầu, trực thuộc Bộ Thông tin & Truyền thông. Sinh viên được đào tạo bài bản về CNTT, an toàn mạng, IoT.',
+        website:'page2.html#ptit',
+        strengths:['Công nghệ thông tin','An toàn mạng','Viễn thông','IoT - Kỹ thuật số'],
+        scholarships:['Học bổng doanh nghiệp (VNPT, Viettel, FPT...)','Học bổng khuyến khích tài năng','Miễn học phí cho sinh viên xuất sắc năm đầu'],
+        note:'Kết nối doanh nghiệp viễn thông mạnh. Sinh viên VNPT/Viettel được thực tập và tuyển dụng sớm.'
+      },
+      { name:'Học viện Ngân hàng', code:'HVNH', region:'mb',
+        combo:'A00, A01, D01',
+        desc:'Trường hàng đầu về tài chính - ngân hàng, trực thuộc Ngân hàng Nhà nước VN. Đào tạo chuyên sâu về ngân hàng, bảo hiểm, tài chính doanh nghiệp.',
+        website:'page2.html#hvnh',
+        strengths:['Tài chính - Ngân hàng','Bảo hiểm','Tài chính doanh nghiệp','Thanh toán quốc tế'],
+        scholarships:['Học bổng Ngân hàng Nhà nước','Học bổng doanh nghiệp ngân hàng','Học bổng cho sinh viên xuất sắc'],
+        note:'A01 phổ biến nhất. Tỷ lệ sinh viên có việc làm ngành tài chính - ngân hàng sau tốt nghiệp rất cao.'
+      },
+      { name:'Học viện Báo chí & Tuyên truyền', code:'HVAJ', region:'mb',
+        combo:'C00, D14, D15',
+        desc:'Trường đào tạo báo chí - truyền thông chính thống của VN. Mạnh về báo chí, quan hệ công chúng, quảng cáo, truyền thông đa phương tiện.',
+        website:'page2.html#hvaj',
+        strengths:['Báo chí - Phát thanh - Truyền hình','Quan hệ công chúng (PR)','Truyền thông đa phương tiện','Quảng cáo - Marketing'],
+        scholarships:['Học bổng khuyến khích tài năng','Học bổng doanh nghiệp truyền thông','Học bổng cho sinh viên xuất sắc'],
+        note:'Phù hợp học sinh khối C00 (Văn Sử Địa) hoặc D14/D15. Cần có kỹ năng viết và giao tiếp tốt.'
+      },
+      { name:'ĐH FPT', code:'FPT', region:'mb',
+        combo:'Riêng (kỳ thi riêng)',
+        desc:'Trường đại học tư thục top đầu VN, đào tạo CNTT, Kinh doanh, Design. Sinh viên học 50% tiếng Anh chuyên ngành. Có ký túc xá. Điểm chuẩn tự chủ.',
+        website:'page2.html#fpt',
+        strengths:['CNTT - Phần mềm','Kinh doanh số','Thiết kế đồ họa','Tiếng Anh chuyên ngành mạnh'],
+        scholarships:['Học bổng Tài năng (50-100% học phí)','Học bổng Doanh nghiệp (FPT, Intel, Google...)','Học bổng Hỗ trợ tài chính'],
+        note:'Xét tuyển bằng học bạ THPT. Có kỳ thi riêng. Học phí tương đối cao nhưng chất lượng đào tạo tốt. Cam kết việc làm sau tốt nghiệp.'
+      },
+      // ===================== MIỀN TRUNG =====================
+      { name:'ĐH Bách Khoa (ĐH Đà Nẵng)', code:'DUT', region:'mt',
+        combo:'A00, A01, D07',
+        desc:'Trường kỹ thuật lớn nhất miền Trung, trực thuộc ĐH Đà Nẵng. Mạnh về kỹ thuật, công nghệ, cơ khí, điện tử. Sinh viên khu vực miền Trung - Tây Nguyên.',
+        website:'page2.html#dut',
+        strengths:['Kỹ thuật công nghiệp','Cơ khí - Chế tạo','Điện - Điện tử','CNTT'],
+        scholarships:['Học bổng ĐH Đà Nẵng','Học bổng doanh nghiệp miền Trung','Hỗ trợ sinh viên khó khăn'],
+        note:'Điểm chuẩn thường thấp hơn miền Bắc 1-2 điểm. Phù hợp học sinh miền Trung muốn ở gần nhà.'
+      },
+      { name:'ĐH Kinh tế (ĐH Đà Nẵng)', code:'DUE', region:'mt',
+        combo:'A00, A01, D01',
+        desc:'Trường kinh tế hàng đầu miền Trung, thuộc ĐH Đà Nẵng. Đào tạo tài chính, kế toán, marketing, quản trị. Sinh viên TP Đà Nẵng có cơ hội việc làm tốt.',
+        website:'page2.html#due',
+        strengths:['Tài chính - Ngân hàng','Kế toán - Kiểm toán','Marketing - Kinh doanh','Du lịch - Khách sạn'],
+        scholarships:['Học bổng ĐH Đà Nẵng','Học bổng doanh nghiệp Đà Nẵng','Hỗ trợ học phí'],
+        note:'A01 phổ biến. Đà Nẵng là thành phố du lịch nên ngành du lịch - khách sạn có cơ hội việc làm tốt.'
+      },
+      { name:'ĐH Sư phạm (ĐH Đà Nẵng)', code:'UED', region:'mt',
+        combo:'A00, B00, C00',
+        desc:'Trường sư phạm lớn nhất miền Trung, thuộc ĐH Đà Nẵng. Đào tạo giáo viên các cấp, quản lý giáo dục. Nhiều ngành sư phạm được miễn học phí.',
+        website:'page2.html#smp-udn',
+        strengths:['Sư phạm THPT, THCS, Tiểu học','Sư phạm mầm non','Quản lý giáo dục','Tâm lý học'],
+        scholarships:['Miễn học phí ngành sư phạm','Học bổng ĐH Đà Nẵng','Hỗ trợ sinh viên'],
+        note:'Ngành sư phạm được miễn học phí theo Nghị định 116. Tỷ lệ có việc làm trong ngành giáo dục cao.'
+      },
+      { name:'ĐH Y Dược Huế', code:'HUMP', region:'mt',
+        combo:'B00, B08',
+        desc:'Trường Y hàng đầu miền Trung, thuộc ĐH Huế. Đào tạo bác sĩ đa khoa, dược sĩ, y học cổ truyền. Thực tập tại Bệnh viện Trung ương Huế.',
+        website:'page2.html#huemed',
+        strengths:['Y đa khoa','Dược học','Y học cổ truyền','Y tế công cộng'],
+        scholarships:['Miễn học phí theo chính sách Nhà nước','Học bổng cho sinh viên xuất sắc','Hỗ trợ sinh viên y khoa'],
+        note:'Điểm chuẩn thường thấp hơn Y Hà Nội và Y TP.HCM. Phù hợp học sinh miền Trung có đam mê y khoa.'
+      },
+      { name:'ĐH Vinh', code:'VHU', region:'mt',
+        combo:'A00, B00, C00',
+        desc:'Trường đại học lớn nhất Nghệ An, trực thuộc Bộ GD&ĐT. Đa dạng ngành: kỹ thuật, sư phạm, kinh tế, nông nghiệp. Học phí thấp, phù hợp gia đình có thu nhập trung bình.',
+        website:'page2.html#vhu',
+        strengths:['Đa ngành (kỹ thuật, SP, KT, NN)','Sư phạm','Kỹ thuật','Kinh tế'],
+        scholarships:['Miễn/giảm học phí theo chính sách','Học bổng hỗ trợ sinh viên Nghệ An','Học bổng doanh nghiệp'],
+        note:'Học phí thuộc nhóm thấp nhất cả nước. Phù hợp học sinh miền Trung muốn tiết kiệm chi phí.'
+      },
+      { name:'ĐH Quy Nhơn', code:'QNU', region:'mt',
+        combo:'A00, B00, C00',
+        desc:'Trường đại học trọng điểm miền Trung, đào tạo đa ngành. Nổi bật về kỹ thuật, sư phạm, nông lâm, thủy sản, du lịch. Khuôn viên rộng gần biển.',
+        website:'page2.html#qnu',
+        strengths:['Kỹ thuật','Sư phạm','Thủy sản - Nông nghiệp','Du lịch - Khách sạn'],
+        scholarships:['Miễn học phí ngành sư phạm, nông nghiệp','Học bổng Bình Định','Hỗ trợ sinh viên'],
+        note:'Ngành thủy sản và nông nghiệp được miễn học phí. Du lịch Bình Định đang phát triển mạnh.'
+      },
+      { name:'ĐH Nha Trang', code:'NTU', region:'mt',
+        combo:'A00, B00, D07',
+        desc:'Trường đại học đa ngành tại Nha Trang. Nổi bật về thủy sản, dược học, du lịch, công nghệ. ĐH Nha Trang có phòng thí nghiệm hàng đầu về thủy sản.',
+        website:'page2.html#ntu',
+        strengths:['Thủy sản - Hải sản','Dược học','Du lịch - Khách sạn','CNTT'],
+        scholarships:['Miễn học phí ngành thủy sản','Học bổng Khánh Hòa','Hỗ trợ sinh viên'],
+        note:'Thủy sản là thế mạnh quốc tế. Dược học có điểm chuẩn cao. Nha Trang là thành phố du lịch nên ngành du lịch có cơ hội việc làm tốt.'
+      },
+      // ===================== MIỀN NAM =====================
+      { name:'ĐH Quốc gia TP.HCM (KHTN)', code:'HCMUS', region:'mn',
+        combo:'A00, A01, B00, D07',
+        desc:'Trường đại học trọng điểm quốc gia về khoa học tự nhiên tại TP.HCM. Mạnh về toán, lý, hóa, sinh học, CNTT, khoa học vật liệu. Nghiên cứu khoa học rất mạnh.',
+        website:'page2.html#hcmus',
+        strengths:['Khoa học tự nhiên','CNTT','Toán ứng dụng','Sinh học - Công nghệ sinh học'],
+        scholarships:['Học bổng sinh viên tài năng ĐHQG TP.HCM','Học bổng nghiên cứu','Học bổng doanh nghiệp'],
+        note:'Thuộc ĐHQG TP.HCM. Sinh viên có cơ hội học chuyển tiếp, trao đổi quốc tế. A00, B00 phổ biến nhất.'
+      },
+      { name:'ĐH Quốc gia TP.HCM (KHXH&NV)', code:'USSH', region:'mn',
+        combo:'C00, D01, D14, D15',
+        desc:'Trường khoa học xã hội - nhân văn hàng đầu miền Nam, thuộc ĐHQG TP.HCM. Mạnh về luật, kinh tế, sư phạm, báo chí, ngôn ngữ.',
+        website:'page2.html#ussh',
+        strengths:['Luật học','Kinh tế - Tài chính','Sư phạm','Báo chí - Truyền thông'],
+        scholarships:['Học bổng sinh viên tài năng ĐHQG','Học bổng doanh nghiệp','Hỗ trợ học phí'],
+        note:'C00 phổ biến cho khối XH. D01, D14 cho khối A. Thuộc ĐHQG TP.HCM nên có nhiều cơ hội học thêm.'
+      },
+      { name:'ĐH Bách Khoa TP.HCM', code:'HCMUT', region:'mn',
+        combo:'A00, A01, D07',
+        desc:'Trường kỹ thuật lớn nhất miền Nam, trực thuộc ĐHQG TP.HCM. Mạnh về kỹ thuật, công nghệ, CNTT, cơ khí, điện tử. Điểm chuẩn thuộc nhóm cao nhất cả nước.',
+        website:'page2.html#hcmut-oisp',
+        strengths:['Kỹ thuật công nghiệp','CNTT','Cơ khí - Chế tạo máy','Điện - Điện tử - Tự động hóa'],
+        scholarships:['Học bổng sinh viên tài năng','Học bổng doanh nghiệp (Samsung, Intel, Bosch...)','Học bổng nghiên cứu khoa học'],
+        note:'A00 (Toán Lý Hóa) là tổ hợp phổ biến nhất. Điểm chuẩn thường 27-29. Ký túc xá cho sinh viên xa.'
+      },
+      { name:'ĐH Kinh tế TP.HCM (UEH)', code:'UEH', region:'mn',
+        combo:'A00, A01, D01',
+        desc:'Trường kinh tế hàng đầu miền Nam, trực thuộc ĐHQG TP.HCM. Đào tạo tài chính, kế toán, ngân hàng, marketing, quản trị. Điểm chuẩn ổn định cao.',
+        website:'page2.html#ueh',
+        strengths:['Tài chính - Ngân hàng','Kế toán - Kiểm toán','Quản trị kinh doanh','Marketing - Digital Marketing'],
+        scholarships:['Học bổng sinh viên tài năng','Học bổng doanh nghiệp tài chính','Hỗ trợ học phí cho sinh viên khó khăn'],
+        note:'D01 phổ biến nhất. UEH có liên kết với nhiều doanh nghiệp tài chính - ngân hàng lớn tại TP.HCM.'
+      },
+      { name:'ĐH Ngoại thương (TP.HCM)', code:'FTU2', region:'mn',
+        combo:'A01, D01, D09, D10',
+        desc:'Phân hiệu TP.HCM của ĐH Ngoại thương. Đào tạo thương mại quốc tế, tài chính, marketing quốc tế. Sinh viên nổi tiếng giao tiếp tốt, ngoại ngữ lưu loát.',
+        website:'page2.html#ftu',
+        strengths:['Thương mại quốc tế','Tài chính quốc tế','Marketing quốc tế','Tiếng Anh chuyên ngành'],
+        scholarships:['Học bổng xuất sắc (miễn 50-100%)','Học bổng doanh nghiệp','Trao đổi quốc tế'],
+        note:'A01 phổ biến. D10 cho khối A03. Điểm chuẩn thường 26-28. Cơ hội việc làm trong doanh nghiệp xuất nhập khẩu rất tốt.'
+      },
+      { name:'ĐH Sư phạm Kỹ thuật TP.HCM', code:'HCMUTE', region:'mn',
+        combo:'A00, A01, D07',
+        desc:'Trường sư phạm kỹ thuật duy nhất miền Nam. Đào tạo giáo viên kỹ thuật và kỹ sư công nghiệp. Kết hợp sư phạm và kỹ thuật.',
+        website:'page2.html#hcmute',
+        strengths:['Sư phạm kỹ thuật','Cơ khí - Chế tạo','CNTT - Kỹ thuật số','Điện - Tự động hóa'],
+        scholarships:['Miễn học phí ngành sư phạm','Học bổng doanh nghiệp kỹ thuật','Hỗ trợ học phí'],
+        note:'Sư phạm kỹ thuật được miễn học phí. Kỹ sư công nghiệp ra trường dễ xin việc trong các khu công nghiệp TP.HCM.'
+      },
+      { name:'ĐH Sư phạm TP.HCM', code:'HCMUE', region:'mn',
+        combo:'A00, B00, C00',
+        desc:'Trường sư phạm lớn nhất miền Nam, trực thuộc ĐHQG TP.HCM. Đào tạo giáo viên chất lượng cao. Nhiều ngành sư phạm được miễn học phí.',
+        website:'page2.html#hcmue',
+        strengths:['Sư phạm các cấp','Tâm lý học','Quản lý giáo dục','Sư phạm mầm non'],
+        scholarships:['Miễn học phí ngành sư phạm','Học bổng ĐHQG TP.HCM','Hỗ trợ sinh viên'],
+        note:'Ngành sư phạm được miễn học phí. Thuộc ĐHQG TP.HCM nên được đánh giá cao trong ngành giáo dục.'
+      },
+      { name:'ĐH Y Dược TP.HCM', code:'UMP', region:'mn',
+        combo:'B00, B08',
+        desc:'Trường Y hàng đầu miền Nam. Đào tạo bác sĩ đa khoa, dược sĩ, y tá, y học cổ truyền. Thực tập tại các bệnh viện lớn: Chợ Rẫy, Bình Dân.',
+        website:'page2.html#ump',
+        strengths:['Y đa khoa','Dược học','Y tá','Y học cổ truyền'],
+        scholarships:['Miễn học phí theo chính sách Nhà nước','Học bổng bệnh viện','Hỗ trợ sinh viên y khoa'],
+        note:'Điểm chuẩn rất cao (27-29). Thời gian đào tạo bác sĩ 6 năm. Y tá đào tạo 4 năm, dễ xin việc.'
+      },
+      { name:'ĐH Công nghiệp TP.HCM (IUH)', code:'IUH', region:'mn',
+        combo:'A00, A01, D07',
+        desc:'Trường đại học công nghiệp lớn nhất TP.HCM. Đào tạo kỹ sư công nghiệp, CNTT, cơ khí, điện tử. Học phí thuộc nhóm trung bình, chất lượng tốt.',
+        website:'page2.html#iuh',
+        strengths:['Kỹ thuật công nghiệp','CNTT','Cơ khí','Điện - Điện tử'],
+        scholarships:['Học bổng doanh nghiệp khu công nghiệp','Học bổng khuyến khích tài năng','Hỗ trợ học phí'],
+        note:'Học phí thuộc nhóm thấp hơn trường top đầu. Nằm gần các khu công nghiệp nên sinh viên dễ thực tập và việc làm.'
+      },
+      { name:'ĐH Giao thông Vận tải (CS2)', code:'GTVT2', region:'mn',
+        combo:'A00, A01, D07',
+        desc:'Trường đại học chuyên ngành giao thông - vận tải tại TP.HCM. Đào tạo kỹ sư cầu đường, xây dựng, logistics, vận tải. Ngành khan hiếm nhân lực.',
+        website:'page2.html#gtvt',
+        strengths:['Cầu đường - Xây dựng','Logistics - Chuỗi cung ứng','Vận tải','Kỹ thuật công trình'],
+        scholarships:['Học bổng doanh nghiệp xây dựng','Học bổng ngành logistics','Hỗ trợ học phí'],
+        note:'Ngành cầu đường và logistics đang khan hiếm nhân lực. Sinh viên ra trường dễ xin việc trong các công ty xây dựng, logistics.'
+      },
+      { name:'ĐH Tôn Đức Thắng', code:'TDT', region:'mn',
+        combo:'A00, A01, D01, Riêng',
+        desc:'Trường đại học tư thục lớn tại TP.HCM. Đào tạo đa ngành: kỹ thuật, kinh tế, luật, sư phạm. Có ký túc xá, học phí hợp lý, chất lượng đào tạo ổn định.',
+        website:'page2.html#tdt',
+        strengths:['Kỹ thuật','Kinh tế - Tài chính','Luật','Sư phạm'],
+        scholarships:['Học bổng Tài năng (50-100%)','Học bổng Doanh nghiệp','Học bổng hỗ trợ tài chính'],
+        note:'Xét tuyển bằng học bạ hoặc kỳ thi riêng. Có ký túc xá. Học phí tương đối cao nhưng chất lượng tốt.'
+      },
+      { name:'ĐH Mở TP.HCM', code:'OU', region:'mn',
+        combo:'A00, B00, C00, D01',
+        desc:'Trường đại học đa ngành, đào tạo mở, linh hoạt. Mạnh về luật, kinh tế, sư phạm, kỹ thuật, CNTT. Phù hợp sinh viên muốn học kết hợp làm thêm.',
+        website:'page2.html#ou',
+        strengths:['Luật','Kinh tế','Sư phạm','CNTT'],
+        scholarships:['Học bổng xuất sắc','Học bổng doanh nghiệp','Hỗ trợ học phí'],
+        note:'Đào tạo theo tín chỉ, linh hoạt về thời gian. Phù hợp sinh viên đi làm sớm. Điểm chuẩn thuộc nhóm trung bình.'
+      },
+      { name:'ĐH FPT (TP.HCM)', code:'FPT2', region:'mn',
+        combo:'Riêng (kỳ thi riêng)',
+        desc:'Phân hiệu TP.HCM của ĐH FPT. Đào tạo CNTT, Kinh doanh, Design. Học 50% tiếng Anh chuyên ngành. Ký túc xá. Cam kết việc làm sau tốt nghiệp.',
+        website:'page2.html#fpt',
+        strengths:['CNTT - Phần mềm','Kinh doanh số','Thiết kế đồ họa','Tiếng Anh chuyên ngành'],
+        scholarships:['Học bổng Tài năng (50-100%)','Học bổng Doanh nghiệp (FPT, Google...)','Học bổng Hỗ trợ tài chính'],
+        note:'Xét tuyển bằng học bạ. Học phí cao nhưng chất lượng tốt, việc làm bảo đảm. Có ký túc xá.'
+      },
+      { name:'ĐH Cần Thơ', code:'CTU', region:'mn',
+        combo:'A00, B00, D07',
+        desc:'Trường đại học lớn nhất ĐBSCL, trực thuộc Bộ GD&ĐT. Đào tạo đa ngành: kỹ thuật, nông nghiệp, kinh tế, sư phạm, CNTT. Học phí thuộc nhóm thấp.',
+        website:'page2.html#ctu',
+        strengths:['Nông nghiệp - Thủy sản','Kỹ thuật','Kinh tế','Sư phạm'],
+        scholarships:['Miễn học phí ngành nông nghiệp','Học bổng ĐH Cần Thơ','Hỗ trợ sinh viên ĐBSCL'],
+        note:'Học phí thuộc nhóm thấp nhất miền Nam. Ngành nông nghiệp, thủy sản được miễn học phí. Phù hợp học sinh ĐBSCL.'
+      },
+      { name:'ĐH An Giang', code:'AGU', region:'mn',
+        combo:'A00, B00, C00',
+        desc:'Trường đại học trọng điểm vùng ĐBSCL, trực thuộc ĐH Quốc gia TP.HCM. Đào tạo sư phạm, nông nghiệp, kinh tế. Học phí rất thấp, hỗ trợ sinh viên vùng sâu.',
+        website:'page2.html#agu',
+        strengths:['Sư phạm','Nông nghiệp','Kinh tế','CNTT'],
+        scholarships:['Miễn học phí','Học bổng hỗ trợ ĐBSCL','Học bổng doanh nghiệp'],
+        note:'Học phí thuộc nhóm thấp nhất cả nước. Thuộc ĐHQG TP.HCM nên được công nhận rộng rãi. Phù hợp học sinh vùng sâu, gia đình khó khăn.'
+      },
+      { name:'ĐH Ngân hàng TP.HCM', code:'BUH', region:'mn',
+        combo:'A00, A01, D01',
+        desc:'Trường đại học chuyên ngành ngân hàng - tài chính tại TP.HCM. Đào tạo chuyên sâu về ngân hàng, bảo hiểm, tài chính doanh nghiệp.',
+        website:'page2.html#buh',
+        strengths:['Ngân hàng','Tài chính doanh nghiệp','Bảo hiểm','Thanh toán'],
+        scholarships:['Học bổng doanh nghiệp ngân hàng','Học bổng khuyến khích tài năng','Hỗ trợ học phí'],
+        note:'A01 phổ biến. TP.HCM là trung tâm tài chính nên cơ hội việc làm trong ngành ngân hàng rất tốt.'
+      }
+    ];
+
+    var STORAGE_KEY = 'bw_schools_selected';
+    var selected = [];
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) selected = JSON.parse(raw);
+    } catch(e) { selected = []; }
+
+    var modal     = document.getElementById('schoolModal');
+    var listEl    = document.getElementById('schoolList');
+    var searchEl  = document.getElementById('schoolSearch');
+    var countEl   = document.getElementById('modalCount');
+    var openBtn   = document.getElementById('openSchoolModal');
+    var closeBtn  = document.getElementById('closeSchoolModal');
+    var saveBtn   = document.getElementById('saveSchools');
+    var clearBtn  = document.getElementById('clearSchools');
+    var previewEl = document.getElementById('selectedSchoolsPreview');
+    var currentRegion = 'all';
+
+    if (!modal || !openBtn) return;
+
+    function regionLabel(r) {
+      if (r==='mb') return 'Miền Bắc';
+      if (r==='mt') return 'Miền Trung';
+      if (r==='mn') return 'Miền Nam';
+      return '';
+    }
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, function(c){
+        return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];
+      });
+    }
+
+    function renderList() {
+      var q = (searchEl.value || '').trim().toLowerCase();
+      var filtered = SCHOOLS.filter(function(s){
+        var matchQ = !q || s.name.toLowerCase().indexOf(q) !== -1 || s.code.toLowerCase().indexOf(q) !== -1;
+        var matchR = currentRegion === 'all' || s.region === currentRegion;
+        return matchQ && matchR;
+      });
+      if (!filtered.length) {
+        listEl.innerHTML = '<div style="text-align:center;color:#9ca3c8;padding:40px 0;font-size:14px;">Không tìm thấy trường nào phù hợp.</div>';
+        return;
+      }
+      var html = '<div style="display:flex;flex-direction:column;gap:8px;">';
+      filtered.forEach(function(s){
+        var isSelected = selected.indexOf(s.code) !== -1;
+        html += '<label style="display:flex;align-items:center;gap:12px;padding:12px;border:1.5px solid ' + (isSelected ? '#6366f1' : '#e2e8f0') + ';border-radius:12px;cursor:pointer;background:' + (isSelected ? '#eef2ff' : '#fff') + ';transition:all .15s;">';
+        html += '<input type="checkbox" data-code="' + s.code + '" ' + (isSelected ? 'checked' : '') + ' style="width:18px;height:18px;accent-color:#6366f1;cursor:pointer;">';
+        html += '<div style="flex:1;">';
+        html += '<div style="font-weight:700;color:#1a1a3e;font-size:14px;">' + escapeHtml(s.name) + '</div>';
+        html += '<div style="font-size:12px;color:#6b7aaa;margin-top:2px;">Tổ hợp: ' + escapeHtml(s.combo) + ' · ' + regionLabel(s.region) + '</div>';
+        html += '</div>';
+        html += '</label>';
+      });
+      html += '</div>';
+      listEl.innerHTML = html;
+
+      listEl.querySelectorAll('input[type=checkbox]').forEach(function(cb){
+        cb.addEventListener('change', function(){
+          var code = cb.getAttribute('data-code');
+          if (cb.checked && selected.indexOf(code) === -1) selected.push(code);
+          else if (!cb.checked) selected = selected.filter(function(x){ return x !== code; });
+          countEl.textContent = selected.length;
+          // Re-render để update highlight
+          renderList();
+        });
+      });
+    }
+
+    function renderPreview() {
+      if (!selected.length) {
+        previewEl.innerHTML = '<em style="color:#9ca3c8;">Chưa chọn trường nào.</em>';
+        return;
+      }
+      var html = '<div style="margin-top:10px;">';
+      selected.forEach(function(code){
+        var s = SCHOOLS.find(function(x){ return x.code === code; });
+        if (!s) return;
+        html += '<div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:10px;padding:10px;background:#f8faff;border-radius:10px;border:1px solid #e2e8f0;">';
+        html += '<span style="color:#6366f1;margin-top:2px;">✓</span>';
+        html += '<div style="flex:1;">';
+        html += '<div style="font-weight:700;color:#1a1a3e;font-size:14px;">' + escapeHtml(s.name) + '</div>';
+        html += '<div style="font-size:12px;color:#6b7aaa;margin-top:2px;">' + escapeHtml(s.combo) + ' · ' + regionLabel(s.region) + '</div>';
+        html += '</div>';
+        html += '<button type="button" data-code="' + s.code + '" class="school-detail-btn" style="flex-shrink:0;padding:5px 10px;background:linear-gradient(135deg,#6b8eff,#8b6bff);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;">Tìm hiểu →</button>';
+        html += '</div>';
+      });
+      html += '</div>';
+      previewEl.innerHTML = '<strong style="color:#6366f1;">Nguyện vọng đã chọn (' + selected.length + ' trường):</strong>' + html;
+      // Gắn sự kiện cho nút "Tìm hiểu"
+      previewEl.querySelectorAll('.school-detail-btn').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          openSchoolDetail(btn.getAttribute('data-code'));
+        });
+      });
+    }
+
+    // ====================================================
+    //  SCHOOL DETAIL MODAL
+    // ====================================================
+    function openSchoolDetail(code) {
+      var s = SCHOOLS.find(function(x){ return x.code === code; });
+      if (!s) return;
+      // Tạo modal nếu chưa có
+      var existing = document.getElementById('schoolDetailModal');
+      if (existing) existing.remove();
+      var overlay = document.createElement('div');
+      overlay.id = 'schoolDetailModal';
+      overlay.style.cssText = 'position:fixed;inset:0;background:rgba(15,15,40,0.55);z-index:99999;display:flex;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(6px);';
+
+      var regionColor = {'mb':'#3b82f6','mt':'#10b981','mn':'#f59e0b'}[s.region] || '#6366f1';
+      var regionText = {'mb':'Miền Bắc','mt':'Miền Trung','mn':'Miền Nam'}[s.region] || s.region;
+
+      overlay.innerHTML = '\
+<div style="background:#fff;border-radius:20px;width:100%;max-width:680px;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(99,102,241,0.35);">\
+  <div style="padding:20px 24px;border-bottom:1px solid #e2e8f0;display:flex;align-items:flex-start;justify-content:space-between;background:linear-gradient(135deg,#eef2ff,#f5f3ff);">\
+    <div style="flex:1;padding-right:16px;">\
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">\
+        <span style="font-size:13px;font-weight:700;color:#fff;background:' + regionColor + ';padding:3px 10px;border-radius:999px;">' + regionText + '</span>\
+        <span style="font-size:12px;color:#6b7aaa;">' + escapeHtml(s.combo) + '</span>\
+      </div>\
+      <h3 style="margin:0;font-size:20px;color:#1a1a3e;line-height:1.3;">' + escapeHtml(s.name) + '</h3>\
+    </div>\
+    <button id="closeSchoolDetail" style="background:none;border:none;font-size:28px;color:#9ca3c8;cursor:pointer;line-height:1;flex-shrink:0;margin-top:-4px;">×</button>\
+  </div>\
+  <div style="flex:1;overflow-y:auto;padding:20px 24px;">\
+    <p style="margin:0 0 20px;font-size:14px;color:#3a3a6e;line-height:1.6;background:#f8faff;padding:14px;border-radius:12px;border-left:3px solid #6366f1;">' + escapeHtml(s.desc) + '</p>\
+    <div style="font-size:12px;color:#6b7aaa;margin-bottom:6px;">📌 Ghi chú</div>\
+    <div style="font-size:13px;color:#475569;margin-bottom:20px;padding:10px 14px;background:#fffbeb;border-radius:10px;border:1px solid #fde68a;">' + escapeHtml(s.note) + '</div>\
+    <div style="font-size:14px;font-weight:700;color:#1a1a3e;margin-bottom:10px;">💪 Điểm mạnh</div>\
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;">' +
+      s.strengths.map(function(st){ return '<span style="font-size:12px;font-weight:600;color:#6366f1;background:#eef2ff;padding:5px 10px;border-radius:999px;border:1px solid #c7d2fe;">' + escapeHtml(st) + '</span>'; }).join('') +
+    '</div>\
+    <div style="font-size:14px;font-weight:700;color:#1a1a3e;margin-bottom:10px;">🎓 Học bổng</div>\
+    <div style="background:#f0fdf4;border-radius:12px;padding:14px;margin-bottom:20px;">' +
+      s.scholarships.map(function(sc){ return '<div style="font-size:13px;color:#166534;padding:4px 0;display:flex;gap:8px;align-items:flex-start;"><span style="color:#22c55e;font-weight:700;margin-top:1px;">✓</span><span>' + escapeHtml(sc) + '</span></div>'; }).join('') +
+    '</div>\
+    <a href="' + escapeHtml(s.website) + '" class="school-website-btn" style="display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:linear-gradient(135deg,#6b8eff,#8b6bff);color:#fff;border-radius:10px;text-decoration:none;font-size:14px;font-weight:700;box-shadow:0 4px 12px rgba(99,102,241,0.25);transition:transform .15s;" onmouseover="this.style.transform=\'translateY(-2px)\'" onmouseout="this.style.transform=\'translateY(0)\'">📚 Xem học bổng & chi tiết →</a>\
+  </div>\
+</div>';
+
+      document.body.appendChild(overlay);
+      document.getElementById('closeSchoolDetail').addEventListener('click', function(){
+        overlay.remove();
+      });
+      overlay.addEventListener('click', function(e){
+        if (e.target === overlay) overlay.remove();
+      });
+    }
+
+    // Trong renderList() cũng thêm nút "Tìm hiểu" vào mỗi school card
+    function renderList() {
+      var q = (searchEl.value || '').trim().toLowerCase();
+      var filtered = SCHOOLS.filter(function(s){
+        var matchQ = !q || s.name.toLowerCase().indexOf(q) !== -1 || s.code.toLowerCase().indexOf(q) !== -1;
+        var matchR = currentRegion === 'all' || s.region === currentRegion;
+        return matchQ && matchR;
+      });
+      if (!filtered.length) {
+        listEl.innerHTML = '<div style="text-align:center;color:#9ca3c8;padding:40px 0;font-size:14px;">Không tìm thấy trường nào phù hợp.</div>';
+        return;
+      }
+      var html = '<div style="display:flex;flex-direction:column;gap:8px;">';
+      filtered.forEach(function(s){
+        var isSelected = selected.indexOf(s.code) !== -1;
+        html += '<div style="display:flex;align-items:center;gap:10px;padding:12px;border:1.5px solid ' + (isSelected ? '#6366f1' : '#e2e8f0') + ';border-radius:12px;background:' + (isSelected ? '#eef2ff' : '#fff') + ';transition:all .15s;">';
+        html += '<input type="checkbox" data-code="' + s.code + '" ' + (isSelected ? 'checked' : '') + ' style="width:18px;height:18px;accent-color:#6366f1;cursor:pointer;flex-shrink:0;">';
+        html += '<div style="flex:1;min-width:0;">';
+        html += '<div style="font-weight:700;color:#1a1a3e;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + escapeHtml(s.name) + '</div>';
+        html += '<div style="font-size:12px;color:#6b7aaa;margin-top:2px;">' + escapeHtml(s.combo) + ' · ' + regionLabel(s.region) + '</div>';
+        html += '</div>';
+        html += '<button type="button" data-code="' + s.code + '" class="list-detail-btn" style="flex-shrink:0;padding:5px 10px;background:#f1f5f9;color:#475569;border:1px solid #e2e8f0;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;">ℹ️</button>';
+        html += '</div>';
+      });
+      html += '</div>';
+      listEl.innerHTML = html;
+
+      // Gắn checkbox events
+      listEl.querySelectorAll('input[type=checkbox]').forEach(function(cb){
+        cb.addEventListener('change', function(){
+          var code = cb.getAttribute('data-code');
+          if (cb.checked && selected.indexOf(code) === -1) selected.push(code);
+          else if (!cb.checked) selected = selected.filter(function(x){ return x !== code; });
+          countEl.textContent = selected.length;
+          renderList();
+        });
+      });
+      // Gắn nút ℹ️
+      listEl.querySelectorAll('.list-detail-btn').forEach(function(btn){
+        btn.addEventListener('click', function(e){
+          e.stopPropagation();
+          openSchoolDetail(btn.getAttribute('data-code'));
+        });
+      });
+    }
+
+    function openModal() {
+      modal.style.display = 'flex';
+      countEl.textContent = selected.length;
+      renderList();
+      setTimeout(function(){ searchEl.focus(); }, 100);
+    }
+    function closeModal() { modal.style.display = 'none'; }
+
+    function persist() {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(selected)); } catch(e) {}
+      renderPreview();
+    }
+
+    openBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', function(){ closeModal(); persist(); });
+    saveBtn.addEventListener('click', function(){ closeModal(); persist(); });
+    clearBtn.addEventListener('click', function(){
+      if (confirm('Xóa hết trường đã chọn?')) {
+        selected = [];
+        countEl.textContent = 0;
+        renderList();
+        renderPreview();
+        persist();
+      }
+    });
+    searchEl.addEventListener('input', renderList);
+    modal.addEventListener('click', function(e){
+      if (e.target === modal) { closeModal(); persist(); }
+    });
+
+    document.querySelectorAll('.region-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        document.querySelectorAll('.region-btn').forEach(function(b){
+          b.style.background = '#fff';
+          b.style.color = '#3a3a6e';
+        });
+        btn.style.background = '#6366f1';
+        btn.style.color = '#fff';
+        currentRegion = btn.getAttribute('data-region');
+        renderList();
+      });
+    });
+
+    renderPreview();
+    persist();
+  })();
+</script>

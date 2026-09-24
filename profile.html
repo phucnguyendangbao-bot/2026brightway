@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tài khoản của tôi – BrightWay Career</title>
+<link rel="icon" type="image/png" href="images/img-a84652d05567.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Quicksand:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/careers.css">
+<link rel="stylesheet" href="assets/css/auth.css">
+<link rel="stylesheet" href="assets/css/profile.css">
+</head>
+<body>
+
+<button id="themeToggle" class="theme-toggle" aria-label="Chuyển sáng/tối" title="Chuyển sáng/tối">
+  <svg class="ico-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.2" y1="4.2" x2="6.3" y2="6.3"/><line x1="17.7" y1="17.7" x2="19.8" y2="19.8"/><line x1="4.2" y1="19.8" x2="6.3" y2="17.7"/><line x1="17.7" y1="6.3" x2="19.8" y2="4.2"/></g></svg>
+  <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+</button>
+
+<nav class="bw-nav">
+  <div class="bw-nav-inner">
+    <a href="index.html" class="bw-logo">🌟 BrightWay Career</a>
+    <div class="bw-nav-links" id="navLinks">
+      <a href="index.html">Trang chủ</a>
+      <a href="careers-holland.html">Tra cứu & Test</a>
+      <a href="essay-review.html">Bài luận mẫu</a>
+    </div>
+  </div>
+</nav>
+
+<section class="profile-page">
+  <div class="container">
+    <div id="notSignedIn" hidden>
+      <div class="empty-state">
+        <div style="font-size:64px;margin-bottom:12px;">🔐</div>
+        <h2>Bạn chưa đăng nhập</h2>
+        <p>Vui lòng đăng nhập để xem và chỉnh sửa tài khoản.</p>
+        <a href="login.html" class="btn-primary" style="display:inline-block;padding:12px 28px;text-decoration:none;margin-top:12px;">
+          Đăng nhập ngay
+        </a>
+      </div>
+    </div>
+
+    <div id="profileContent" hidden>
+      <!-- HEADER -->
+      <div class="profile-header">
+        <div class="profile-avatar" id="profileAvatar">
+          <span id="profileInitials">U</span>
+        </div>
+        <div class="profile-info">
+          <h1 id="profileName">—</h1>
+          <p id="profileEmail">—</p>
+          <div class="profile-meta">
+            <span class="badge-provider" id="profileProvider">email</span>
+            <span class="badge-meta" id="profileMeta">Lớp 12 · Miền Nam</span>
+          </div>
+        </div>
+        <button class="btn-logout" id="logoutBtn">Đăng xuất</button>
+      </div>
+
+      <!-- TABS -->
+      <div class="profile-tabbar">
+        <button class="profile-tab active" data-tab="info">👤 Thông tin</button>
+        <button class="profile-tab" data-tab="favorites">❤️ Nghề yêu thích</button>
+        <button class="profile-tab" data-tab="history">🔍 Lịch sử tìm</button>
+        <button class="profile-tab" data-tab="essays">✍️ Bài luận</button>
+      </div>
+
+      <!-- INFO PANEL -->
+      <div class="profile-panel active" data-panel="info">
+        <div class="info-card">
+          <h3>📋 Hồ sơ cá nhân</h3>
+          <form id="profileForm">
+            <div class="form-row">
+              <label class="auth-field">
+                <span>Họ và tên</span>
+                <input type="text" id="iName" placeholder="Nguyễn Văn A" />
+              </label>
+              <label class="auth-field">
+                <span>Lớp hiện tại</span>
+                <select id="iGrade">
+                  <option value="">— Chọn —</option>
+                  <option value="Lớp 10">Lớp 10</option>
+                  <option value="Lớp 11">Lớp 11</option>
+                  <option value="Lớp 12">Lớp 12</option>
+                  <option value="Sinh viên">Sinh viên</option>
+                </select>
+              </label>
+            </div>
+            <div class="form-row">
+              <label class="auth-field">
+                <span>Khu vực</span>
+                <select id="iRegion">
+                  <option value="">— Chọn —</option>
+                  <option value="Miền Bắc">Miền Bắc</option>
+                  <option value="Miền Trung">Miền Trung</option>
+                  <option value="Miền Nam">Miền Nam</option>
+                </select>
+              </label>
+              <label class="auth-field">
+                <span>Mục tiêu GPA (0-10)</span>
+                <input type="number" id="iTarget" step="0.1" min="0" max="10" placeholder="8.5" />
+              </label>
+            </div>
+            <label class="auth-field">
+              <span>Holland RIASEC của bạn (nếu đã làm test)</span>
+              <input type="text" id="iHolland" placeholder="VD: ISA" maxlength="3" />
+            </label>
+            <div id="profileStatus" class="auth-status" hidden></div>
+            <button type="submit" class="btn-primary" style="margin-top:6px;">💾 Lưu thay đổi</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- FAVORITES PANEL -->
+      <div class="profile-panel" data-panel="favorites">
+        <div class="profile-list" id="favoritesList">
+          <p class="empty-msg">Đang tải...</p>
+        </div>
+      </div>
+
+      <!-- HISTORY PANEL -->
+      <div class="profile-panel" data-panel="history">
+        <div class="profile-list" id="historyList">
+          <p class="empty-msg">Đang tải...</p>
+        </div>
+      </div>
+
+      <!-- ESSAYS PANEL -->
+      <div class="profile-panel" data-panel="essays">
+        <div class="profile-list" id="essaysList">
+          <p class="empty-msg">Đang tải...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bw-footer">
+  <div class="logo">🌟 BrightWay Career</div>
+  <p>Đồng hành cùng học sinh Lớp 12 trên hành trình hướng nghiệp</p>
+  <p class="small">© 2026 BrightWay Career · Thông tin chỉ mang tính tham khảo, không thay thế tư vấn chuyên gia.</p>
+</footer>
+
+<script src="assets/js/supabase-client.js"></script>
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/sync.js"></script>
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/profile.js"></script>
+</body>
+</html>

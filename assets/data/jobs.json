@@ -1,0 +1,2056 @@
+[
+  {
+    "name": "Giảng viên đại học",
+    "en": "University Teacher",
+    "code": "2311",
+    "group": "Ngôn ngữ",
+    "desc": "Người có chuyên môn sâu về một ngành học, giảng dạy lý thuyết và thực hành bậc đại học và sau đại học. Tham gia nghiên cứu khoa học, biên soạn giáo trình, hướng dẫn sinh viên làm luận văn/luận án và phát triển tri thức chuyên ngành.",
+    "skills": [
+      "Năng lực ngôn ngữ và truyền đạt",
+      "Làm việc với con người",
+      "Tư duy phản biện và nghiên cứu",
+      "Chuyên môn sâu về ngành đào tạo"
+    ],
+    "edu": "Tối thiểu Thạc sĩ, ưu tiên Tiến sĩ. Học ngành chuyên môn bậc đại học, sau đó học lên Thạc sĩ/Tiến sĩ + chứng chỉ nghiệp vụ sư phạm đại học.",
+    "salary": "15 – 40 triệu/tháng",
+    "outlook": "Ổn định. Nhu cầu cao ở các trường đại học tư thục và các ngành công nghệ, kinh tế. Có thể thăng tiến lên trưởng bộ môn, trưởng khoa, hiệu trưởng.",
+    "holland": [
+      "S",
+      "A",
+      "E"
+    ]
+  },
+  {
+    "name": "Giáo viên trung học phổ thông",
+    "en": "Upper Secondary Teacher",
+    "code": "2332",
+    "group": "Ngôn ngữ",
+    "desc": "Dạy học sinh khối 10–12 ở một hoặc nhiều môn học. Thiết kế giáo án, chấm bài, tổ chức hoạt động ngoại khóa và phối hợp với phụ huynh trong việc giáo dục học sinh.",
+    "skills": [
+      "Kỹ năng sư phạm và truyền đạt",
+      "Kiên nhẫn, yêu trẻ",
+      "Làm việc với con người",
+      "Chuyên môn môn học"
+    ],
+    "edu": "Cử nhân Sư phạm, hoặc cử nhân chuyên ngành + chứng chỉ nghiệp vụ sư phạm.",
+    "salary": "7 – 18 triệu (công lập), 12 – 35 triệu (tư thục/quốc tế)",
+    "outlook": "Nhu cầu ổn định, đặc biệt giáo viên Toán, Văn, Anh, Khoa học tự nhiên. Triển vọng tốt tại trường tư và quốc tế.",
+    "holland": [
+      "S",
+      "A"
+    ]
+  },
+  {
+    "name": "Giáo viên trung học cơ sở",
+    "en": "Lower Secondary Teacher",
+    "code": "2333",
+    "group": "Ngôn ngữ",
+    "desc": "Giảng dạy học sinh khối 6–9. Phát triển kỹ năng cơ bản, hướng dẫn học sinh hình thành phương pháp học tập và định hướng nghề nghiệp ban đầu.",
+    "skills": [
+      "Kỹ năng sư phạm",
+      "Làm việc với con người",
+      "Sự kiên nhẫn",
+      "Quản lý lớp học"
+    ],
+    "edu": "Cử nhân Sư phạm (đào tạo giáo viên THCS).",
+    "salary": "6 – 15 triệu/tháng",
+    "outlook": "Nhu cầu cao, nhất là ở thành phố lớn. Có thể thăng tiến lên tổ trưởng chuyên môn, hiệu phó, hiệu trưởng.",
+    "holland": [
+      "S",
+      "A",
+      "E"
+    ]
+  },
+  {
+    "name": "Giáo viên ngoại ngữ",
+    "en": "Foreign Language Teacher",
+    "code": "2353",
+    "group": "Ngôn ngữ",
+    "desc": "Dạy ngoại ngữ (Anh, Nhật, Hàn, Trung, Pháp...) ở các cấp học hoặc trung tâm. Rèn luyện 4 kỹ năng nghe–nói–đọc–viết và văn hóa giao tiếp của ngôn ngữ đích.",
+    "skills": [
+      "Thành thạo ngoại ngữ (IELTS 7.0+ / tương đương)",
+      "Kỹ năng sư phạm",
+      "Giao tiếp linh hoạt",
+      "Hiểu văn hóa đa ngôn ngữ"
+    ],
+    "edu": "Cử nhân Sư phạm Ngoại ngữ hoặc Ngôn ngữ học + chứng chỉ TESOL/CELTA.",
+    "salary": "10 – 40 triệu/tháng (tùy cấp độ và trung tâm)",
+    "outlook": "Rất tốt. Nhu cầu học ngoại ngữ tăng mạnh, đặc biệt tiếng Anh, Nhật, Hàn, Trung. Có thể làm freelance, mở lớp riêng.",
+    "holland": [
+      "S",
+      "A",
+      "R"
+    ]
+  },
+  {
+    "name": "Chuyên viên quan hệ công chúng",
+    "en": "Public Relations Officer",
+    "code": "2432",
+    "group": "Ngôn ngữ",
+    "desc": "Xây dựng và duy trì hình ảnh của tổ chức/doanh nghiệp trước công chúng và truyền thông. Viết thông cáo báo chí, tổ chức sự kiện, xử lý khủng hoảng truyền thông.",
+    "skills": [
+      "Viết lách tốt",
+      "Giao tiếp và thuyết phục",
+      "Quan hệ báo chí",
+      "Tư duy chiến lược"
+    ],
+    "edu": "Cử nhân Báo chí, Truyền thông, Marketing, Quan hệ quốc tế.",
+    "salary": "10 – 30 triệu/tháng",
+    "outlook": "Tốt. Nhu cầu tăng khi doanh nghiệp chú trọng thương hiệu và truyền thông số.",
+    "holland": [
+      "S",
+      "A"
+    ]
+  },
+  {
+    "name": "Luật sư",
+    "en": "Lawyer",
+    "code": "2611",
+    "group": "Ngôn ngữ",
+    "desc": "Tư vấn pháp luật, đại diện thân chủ trong các vụ kiện dân sự, hình sự, kinh tế. Soạn thảo hợp đồng, bào chữa tại tòa và bảo vệ quyền lợi hợp pháp cho khách hàng.",
+    "skills": [
+      "Tư duy phản biện và logic",
+      "Khả năng phân tích pháp lý",
+      "Kỹ năng tranh luận",
+      "Viết và đọc hiểu văn bản pháp luật"
+    ],
+    "edu": "Cử nhân Luật + 12 tháng đào tạo nghề luật sư + 12 tháng tập sự + kỳ thi cấp chứng chỉ hành nghề.",
+    "salary": "15 – 100+ triệu/tháng (tùy kinh nghiệm và lĩnh vực)",
+    "outlook": "Rất tốt ở lĩnh vực doanh nghiệp, sở hữu trí tuệ, đầu tư nước ngoài. Cạnh tranh cao ở giai đoạn mới vào nghề.",
+    "holland": [
+      "S",
+      "A"
+    ]
+  },
+  {
+    "name": "Biên dịch và phiên dịch",
+    "en": "Translator and Interpreter",
+    "code": "2643",
+    "group": "Ngôn ngữ",
+    "desc": "Chuyển ngữ văn bản (biên dịch) hoặc lời nói (phiên dịch) giữa hai ngôn ngữ. Làm việc tại cơ quan ngoại giao, doanh nghiệp đa quốc gia, nhà xuất bản hoặc làm tự do.",
+    "skills": [
+      "Thành thạo ít nhất 2 ngôn ngữ",
+      "Am hiểu văn hóa",
+      "Phản xạ ngôn ngữ nhanh (phiên dịch)",
+      "Viết chính xác, tinh tế (biên dịch)"
+    ],
+    "edu": "Cử nhân Ngôn ngữ hoặc Biên-phiên dịch. Chứng chỉ chuyên ngành là lợi thế.",
+    "salary": "12 – 50 triệu/tháng (phiên dịch cabin có thể 5–10 triệu/ngày)",
+    "outlook": "Tốt. Phiên dịch hội nghị cao cấp và biên dịch chuyên ngành (y, luật, kỹ thuật) luôn thiếu nhân lực chất lượng.",
+    "holland": [
+      "S",
+      "A",
+      "R"
+    ]
+  },
+  {
+    "name": "Nhà báo",
+    "en": "Journalist",
+    "code": "2642",
+    "group": "Ngôn ngữ",
+    "desc": "Thu thập, xác minh thông tin và viết tin bài cho báo in, báo điện tử, truyền hình, phát thanh. Tham gia phóng sự điều tra, phỏng vấn nhân vật và đưa tin thời sự.",
+    "skills": [
+      "Viết lách sắc bén",
+      "Nhạy bén thông tin",
+      "Kỹ năng phỏng vấn",
+      "Đạo đức nghề nghiệp"
+    ],
+    "edu": "Cử nhân Báo chí, Truyền thông hoặc ngành xã hội + thẻ nhà báo.",
+    "salary": "8 – 25 triệu/tháng",
+    "outlook": "Ngành đang chuyển dịch mạnh sang số. Nhà báo đa phương tiện (viết + quay + dựng) được ưa chuộng.",
+    "holland": [
+      "S",
+      "A"
+    ]
+  },
+  {
+    "name": "Hướng dẫn viên du lịch",
+    "en": "Tour Guide",
+    "code": "5113",
+    "group": "Ngôn ngữ",
+    "desc": "Dẫn đoàn khách tham quan các điểm du lịch, thuyết minh về văn hóa, lịch sử, địa lý. Xử lý các tình huống phát sinh trong tour và đảm bảo an toàn cho khách.",
+    "skills": [
+      "Giao tiếp tốt, hoạt bát",
+      "Ngoại ngữ (nếu dẫn khách quốc tế)",
+      "Kiến thức lịch sử – văn hóa",
+      "Sức khỏe và sự linh hoạt"
+    ],
+    "edu": "Trung cấp/Cao đẳng/Đại học Du lịch + thẻ hướng dẫn viên do Sở Du lịch cấp.",
+    "salary": "8 – 30 triệu/tháng (cao điểm mùa du lịch)",
+    "outlook": "Phục hồi mạnh sau đại dịch. HDV inbound tiếng Hàn, Nhật, Trung, Anh luôn thiếu hụt.",
+    "holland": [
+      "S",
+      "A"
+    ]
+  },
+  {
+    "name": "Nhà hóa học",
+    "en": "Chemist",
+    "code": "2113",
+    "group": "Phân tích – Logic",
+    "desc": "Nghiên cứu thành phần, cấu trúc, tính chất và phản ứng của các chất. Làm việc trong phòng thí nghiệm, nhà máy sản xuất hóa chất, dược phẩm, thực phẩm hoặc viện nghiên cứu.",
+    "skills": [
+      "Tư duy logic và phân tích",
+      "Tỉ mỉ, cẩn thận",
+      "An toàn phòng thí nghiệm",
+      "Kiến thức hóa học chuyên sâu"
+    ],
+    "edu": "Cử nhân Hóa học, Công nghệ Hóa học. Nghiên cứu cần Thạc sĩ/Tiến sĩ.",
+    "salary": "10 – 30 triệu/tháng",
+    "outlook": "Tốt trong công nghiệp dược, mỹ phẩm, thực phẩm, vật liệu mới.",
+    "holland": [
+      "I",
+      "C"
+    ]
+  },
+  {
+    "name": "Nhà toán học",
+    "en": "Mathematician",
+    "code": "2121",
+    "group": "Phân tích – Logic",
+    "desc": "Nghiên cứu các vấn đề toán học thuần túy hoặc ứng dụng vào khoa học, kỹ thuật, tài chính, mật mã. Làm việc ở viện nghiên cứu, trường đại học hoặc bộ phận R&D.",
+    "skills": [
+      "Tư duy trừu tượng",
+      "Lập luận logic chặt chẽ",
+      "Kiên trì",
+      "Sáng tạo trong giải quyết vấn đề"
+    ],
+    "edu": "Cử nhân Toán học. Nghề nghiên cứu cần Thạc sĩ/Tiến sĩ.",
+    "salary": "12 – 40 triệu/tháng (cao hơn trong tài chính định lượng)",
+    "outlook": "Nhà toán học ứng dụng rất được săn đón trong fintech, AI, bảo hiểm.",
+    "holland": [
+      "I",
+      "C",
+      "A"
+    ]
+  },
+  {
+    "name": "Nhà sinh vật học",
+    "en": "Biologist",
+    "code": "2131",
+    "group": "Phân tích – Logic",
+    "desc": "Nghiên cứu các sinh vật sống: cấu trúc, chức năng, sự tiến hóa, phân bố. Ứng dụng trong y học, nông nghiệp, bảo tồn thiên nhiên, công nghệ sinh học.",
+    "skills": [
+      "Quan sát tỉ mỉ",
+      "Tư duy nghiên cứu",
+      "Kỹ thuật phòng thí nghiệm",
+      "Kiên nhẫn"
+    ],
+    "edu": "Cử nhân Sinh học, Công nghệ Sinh học. Nghiên cứu cần bằng cao hơn.",
+    "salary": "9 – 25 triệu/tháng",
+    "outlook": "Tốt trong y sinh, công nghệ gen, nông nghiệp công nghệ cao.",
+    "holland": [
+      "I",
+      "C"
+    ]
+  },
+  {
+    "name": "Kỹ sư xây dựng",
+    "en": "Civil Engineer",
+    "code": "2142",
+    "group": "Phân tích – Logic",
+    "desc": "Thiết kế, thi công, giám sát các công trình: nhà ở, cầu đường, hạ tầng đô thị. Tính toán kết cấu, lập dự toán, quản lý chất lượng và tiến độ công trình.",
+    "skills": [
+      "Tư duy không gian",
+      "Đọc hiểu bản vẽ kỹ thuật",
+      "Quản lý dự án",
+      "Sức khỏe tốt (làm công trường)"
+    ],
+    "edu": "Cử nhân Kỹ sư Xây dựng (4–5 năm) + chứng chỉ hành nghề.",
+    "salary": "10 – 35 triệu/tháng",
+    "outlook": "Ổn định. Nhu cầu cao ở hạ tầng giao thông, đô thị hóa, khu công nghiệp.",
+    "holland": [
+      "I",
+      "C",
+      "A"
+    ]
+  },
+  {
+    "name": "Kỹ sư ô tô",
+    "en": "Automobile Engineer",
+    "code": "2144",
+    "group": "Phân tích – Logic",
+    "desc": "Thiết kế, chế tạo, thử nghiệm các bộ phận và hệ thống của xe hơi. Làm việc tại nhà máy lắp ráp, trung tâm R&D hoặc dịch vụ kỹ thuật cao cấp.",
+    "skills": [
+      "Tư duy cơ khí",
+      "CAD/CAE",
+      "Am hiểu động cơ và điện tử xe",
+      "Làm việc nhóm"
+    ],
+    "edu": "Cử nhân Kỹ thuật Ô tô.",
+    "salary": "12 – 40 triệu/tháng",
+    "outlook": "Rất tốt khi các hãng xe (VinFast, Thaco, Toyota, Hyundai) mở rộng sản xuất tại Việt Nam. Xu hướng xe điện mở nhiều cơ hội mới.",
+    "holland": [
+      "I",
+      "C",
+      "R"
+    ]
+  },
+  {
+    "name": "Kỹ sư cơ khí",
+    "en": "Mechanical Engineer",
+    "code": "2144",
+    "group": "Phân tích – Logic",
+    "desc": "Thiết kế, chế tạo và bảo trì máy móc, thiết bị cơ khí. Làm việc trong sản xuất, năng lượng, hàng không, dầu khí.",
+    "skills": [
+      "Tư duy kỹ thuật",
+      "Phần mềm thiết kế (SolidWorks, AutoCAD)",
+      "Giải quyết vấn đề",
+      "Kiến thức vật liệu"
+    ],
+    "edu": "Cử nhân Kỹ thuật Cơ khí.",
+    "salary": "10 – 30 triệu/tháng",
+    "outlook": "Ổn định, đặc biệt trong ngành sản xuất công nghiệp, tự động hóa.",
+    "holland": [
+      "I",
+      "C",
+      "A"
+    ]
+  },
+  {
+    "name": "Kỹ sư điện",
+    "en": "Electrical Engineer",
+    "code": "2151",
+    "group": "Phân tích – Logic",
+    "desc": "Thiết kế hệ thống điện: phát, truyền tải, phân phối và sử dụng điện năng. Làm việc ở nhà máy điện, công ty truyền tải, khu công nghiệp hoặc tư vấn thiết kế.",
+    "skills": [
+      "Tư duy hệ thống",
+      "An toàn điện",
+      "Đọc bản vẽ điện",
+      "Kiến thức tự động hóa"
+    ],
+    "edu": "Cử nhân Kỹ thuật Điện.",
+    "salary": "11 – 35 triệu/tháng",
+    "outlook": "Rất tốt. Nhu cầu cao với năng lượng tái tạo (điện gió, điện mặt trời) và hạ tầng công nghiệp.",
+    "holland": [
+      "I",
+      "C",
+      "R"
+    ]
+  },
+  {
+    "name": "Kỹ sư điện tử",
+    "en": "Electronics Engineer",
+    "code": "2152",
+    "group": "Phân tích – Logic",
+    "desc": "Thiết kế và phát triển các thiết bị điện tử: mạch, vi xử lý, cảm biến, thiết bị viễn thông, IoT.",
+    "skills": [
+      "Tư duy logic",
+      "Lập trình nhúng",
+      "Thiết kế PCB",
+      "Đo lường và kiểm thử"
+    ],
+    "edu": "Cử nhân Kỹ thuật Điện tử, Điện tử – Viễn thông.",
+    "salary": "12 – 40 triệu/tháng",
+    "outlook": "Rất tốt. Các hãng như Samsung, Intel, LG mở rộng R&D tại VN; ngành bán dẫn đang bùng nổ.",
+    "holland": [
+      "I",
+      "C",
+      "A"
+    ]
+  },
+  {
+    "name": "Bác sĩ thú y",
+    "en": "Veterinarian",
+    "code": "2250",
+    "group": "Phân tích – Logic",
+    "desc": "Chẩn đoán, điều trị và phòng bệnh cho động vật (vật nuôi, gia súc, động vật hoang dã). Tư vấn chăn nuôi, kiểm dịch thú y, nghiên cứu dịch bệnh.",
+    "skills": [
+      "Yêu thương động vật",
+      "Kỹ năng lâm sàng",
+      "Tỉ mỉ, bình tĩnh",
+      "Kiến thức sinh y"
+    ],
+    "edu": "Bác sĩ Thú y (5–6 năm) + chứng chỉ hành nghề.",
+    "salary": "10 – 35 triệu/tháng",
+    "outlook": "Tăng mạnh. Xu hướng nuôi thú cưng phát triển; ngành chăn nuôi công nghiệp cần nhiều bác sĩ thú y.",
+    "holland": [
+      "I",
+      "C",
+      "S"
+    ]
+  },
+  {
+    "name": "Dược sĩ",
+    "en": "Pharmacist",
+    "code": "2262",
+    "group": "Phân tích – Logic",
+    "desc": "Nghiên cứu, sản xuất, phân phối và tư vấn sử dụng thuốc. Làm việc tại nhà thuốc, bệnh viện, công ty dược, cơ quan quản lý hoặc viện nghiên cứu.",
+    "skills": [
+      "Am hiểu hóa dược",
+      "Tư vấn và giao tiếp",
+      "Tỉ mỉ, chính xác",
+      "Đạo đức nghề nghiệp"
+    ],
+    "edu": "Dược sĩ đại học (5 năm) + chứng chỉ hành nghề.",
+    "salary": "12 – 40 triệu/tháng (cao hơn ở công ty dược đa quốc gia)",
+    "outlook": "Rất tốt. Ngành dược Việt Nam tăng trưởng 2 chữ số mỗi năm.",
+    "holland": [
+      "I",
+      "C",
+      "S"
+    ]
+  },
+  {
+    "name": "Kế toán",
+    "en": "Accountant",
+    "code": "2411",
+    "group": "Phân tích – Logic",
+    "desc": "Ghi chép, phân tích, báo cáo các giao dịch tài chính của tổ chức. Lập báo cáo tài chính, quyết toán thuế, kiểm soát nội bộ và tham mưu tài chính cho lãnh đạo.",
+    "skills": [
+      "Tỉ mỉ, trung thực",
+      "Phần mềm kế toán (MISA, Fast, SAP)",
+      "Tư duy số",
+      "Am hiểu luật thuế"
+    ],
+    "edu": "Cử nhân Kế toán, Kiểm toán, Tài chính. Chứng chỉ CPA/ACCA là lợi thế lớn.",
+    "salary": "8 – 30 triệu/tháng (CPA có thể 40–80 triệu)",
+    "outlook": "Ổn định. Kế toán chuyên sâu (thuế, kiểm toán Big4) luôn có nhu cầu cao.",
+    "holland": [
+      "I",
+      "C"
+    ]
+  },
+  {
+    "name": "Chuyên gia phân tích tài chính",
+    "en": "Financial Analyst",
+    "code": "2413",
+    "group": "Phân tích – Logic",
+    "desc": "Phân tích số liệu tài chính, đánh giá hiệu quả đầu tư, dự báo xu hướng và tư vấn quyết định tài chính cho doanh nghiệp hoặc nhà đầu tư.",
+    "skills": [
+      "Phân tích định lượng",
+      "Excel nâng cao, Python/R",
+      "Tư duy kinh doanh",
+      "Am hiểu thị trường"
+    ],
+    "edu": "Cử nhân Tài chính, Kinh tế. Chứng chỉ CFA rất được ưa chuộng.",
+    "salary": "15 – 60+ triệu/tháng",
+    "outlook": "Rất tốt ở ngân hàng đầu tư, quỹ đầu tư, công ty chứng khoán và fintech.",
+    "holland": [
+      "I",
+      "C",
+      "E"
+    ]
+  },
+  {
+    "name": "Lập trình viên / Phát triển phần mềm",
+    "en": "Software Developer",
+    "code": "2512",
+    "group": "Phân tích – Logic",
+    "desc": "Phân tích yêu cầu, thiết kế, viết mã và bảo trì phần mềm. Làm việc với các ngôn ngữ lập trình, framework và công cụ phát triển hiện đại.",
+    "skills": [
+      "Lập trình (Java, Python, JS, ...)",
+      "Tư duy thuật toán",
+      "Làm việc nhóm Agile",
+      "Học công nghệ mới liên tục"
+    ],
+    "edu": "Cử nhân CNTT, Khoa học Máy tính. Bootcamp 6–12 tháng cũng đủ để vào nghề.",
+    "salary": "15 – 80+ triệu/tháng",
+    "outlook": "Rất tốt. Ngành IT vẫn thiếu hàng trăm nghìn nhân lực mỗi năm. Cơ hội làm remote cho công ty nước ngoài rất nhiều.",
+    "holland": [
+      "I",
+      "C"
+    ]
+  },
+  {
+    "name": "Nhà kinh tế học",
+    "en": "Economist",
+    "code": "2631",
+    "group": "Phân tích – Logic",
+    "desc": "Nghiên cứu cách thức sản xuất, phân phối và tiêu thụ hàng hóa – dịch vụ. Tư vấn chính sách kinh tế cho chính phủ, doanh nghiệp hoặc tổ chức quốc tế.",
+    "skills": [
+      "Tư duy phân tích",
+      "Thống kê và mô hình kinh tế",
+      "Viết báo cáo",
+      "Ngoại ngữ"
+    ],
+    "edu": "Cử nhân Kinh tế. Vị trí nghiên cứu cần Thạc sĩ/Tiến sĩ.",
+    "salary": "15 – 50 triệu/tháng",
+    "outlook": "Tốt ở các viện nghiên cứu, tổ chức quốc tế (WB, IMF, ADB), ngân hàng trung ương, tập đoàn lớn.",
+    "holland": [
+      "I",
+      "C"
+    ]
+  },
+  {
+    "name": "Chuyên viên ngân hàng",
+    "en": "Bank Specialist",
+    "code": "3312",
+    "group": "Phân tích – Logic",
+    "desc": "Tư vấn sản phẩm tài chính, thẩm định khoản vay, quản lý quan hệ khách hàng tại ngân hàng hoặc quỹ đầu tư.",
+    "skills": [
+      "Giao tiếp và bán hàng",
+      "Phân tích tín dụng",
+      "Am hiểu sản phẩm tài chính",
+      "Chịu áp lực KPI"
+    ],
+    "edu": "Cử nhân Tài chính – Ngân hàng, Kinh tế.",
+    "salary": "10 – 40 triệu/tháng (có thưởng KPI)",
+    "outlook": "Ổn định. Ngân hàng số và fintech đang chuyển dịch vai trò này theo hướng tư vấn.",
+    "holland": [
+      "I",
+      "C",
+      "E"
+    ]
+  },
+  {
+    "name": "Giáo viên công nghệ thông tin",
+    "en": "IT Teacher",
+    "code": "2356",
+    "group": "Phân tích – Logic",
+    "desc": "Dạy tin học, lập trình, khoa học máy tính ở các cấp học hoặc trung tâm. Xây dựng chương trình đào tạo kỹ năng số cho học sinh.",
+    "skills": [
+      "Chuyên môn CNTT",
+      "Sư phạm",
+      "Cập nhật công nghệ mới",
+      "Sáng tạo trong giảng dạy"
+    ],
+    "edu": "Cử nhân Sư phạm Tin học hoặc CNTT + nghiệp vụ sư phạm.",
+    "salary": "10 – 30 triệu/tháng",
+    "outlook": "Rất tốt. Chương trình giáo dục mới bắt buộc Tin học từ tiểu học; trung tâm lập trình cho trẻ em bùng nổ.",
+    "holland": [
+      "I",
+      "C",
+      "A"
+    ]
+  },
+  {
+    "name": "Quản trị cơ sở dữ liệu và mạng",
+    "en": "Database and Network Administrator",
+    "code": "2521",
+    "group": "Phân tích – Logic",
+    "desc": "Thiết kế, vận hành, bảo mật hệ thống cơ sở dữ liệu và mạng máy tính. Đảm bảo hệ thống chạy ổn định 24/7 và dữ liệu an toàn.",
+    "skills": [
+      "SQL, NoSQL",
+      "Quản trị hệ thống Linux/Windows",
+      "Bảo mật",
+      "Giải quyết sự cố"
+    ],
+    "edu": "Cử nhân CNTT + chứng chỉ (Cisco, Microsoft, Oracle, AWS).",
+    "salary": "15 – 50 triệu/tháng",
+    "outlook": "Rất tốt. Chuyển đổi số và điện toán đám mây khiến nhu cầu tăng liên tục.",
+    "holland": [
+      "I",
+      "C"
+    ]
+  },
+  {
+    "name": "Kỹ thuật viên công nghệ thông tin",
+    "en": "IT Technician",
+    "code": "3511",
+    "group": "Phân tích – Logic",
+    "desc": "Cài đặt, cấu hình, bảo trì máy tính, thiết bị ngoại vi và phần mềm. Hỗ trợ người dùng trong văn phòng, trường học, bệnh viện.",
+    "skills": [
+      "Phần cứng máy tính",
+      "Hệ điều hành",
+      "Xử lý sự cố nhanh",
+      "Giao tiếp tốt với người dùng"
+    ],
+    "edu": "Trung cấp/Cao đẳng CNTT.",
+    "salary": "7 – 18 triệu/tháng",
+    "outlook": "Ổn định. Là bước khởi đầu tốt để tiến lên các vị trí IT cao hơn.",
+    "holland": [
+      "I",
+      "C",
+      "R"
+    ]
+  },
+  {
+    "name": "Kiến trúc sư",
+    "en": "Architect",
+    "code": "2161",
+    "group": "Nghệ thuật – Sáng tạo",
+    "desc": "Thiết kế công trình xây dựng (nhà ở, công trình công cộng, khu đô thị) đảm bảo công năng, thẩm mỹ và phù hợp quy chuẩn xây dựng.",
+    "skills": [
+      "Tư duy không gian và thẩm mỹ",
+      "Vẽ tay và AutoCAD/Revit/Sketchup",
+      "Sáng tạo",
+      "Hiểu vật liệu và kết cấu"
+    ],
+    "edu": "Kiến trúc sư (5 năm) + chứng chỉ hành nghề.",
+    "salary": "12 – 50 triệu/tháng (freelance/sở hữu studio có thể cao hơn nhiều)",
+    "outlook": "Tốt. Đô thị hóa và xu hướng kiến trúc xanh mở nhiều cơ hội.",
+    "holland": [
+      "A"
+    ]
+  },
+  {
+    "name": "Kiến trúc sư cảnh quan",
+    "en": "Landscape Architect",
+    "code": "2162",
+    "group": "Nghệ thuật – Sáng tạo",
+    "desc": "Thiết kế không gian ngoài trời: công viên, sân vườn, khu đô thị, cảnh quan đường phố. Kết hợp yếu tố tự nhiên và kiến trúc.",
+    "skills": [
+      "Thẩm mỹ và tư duy sinh thái",
+      "Kiến thức thực vật",
+      "Phần mềm thiết kế",
+      "Quản lý dự án"
+    ],
+    "edu": "Cử nhân Kiến trúc Cảnh quan hoặc Thiết kế Cảnh quan.",
+    "salary": "12 – 40 triệu/tháng",
+    "outlook": "Tăng mạnh do xu hướng 'đô thị xanh' và các khu đô thị cao cấp.",
+    "holland": [
+      "A",
+      "E"
+    ]
+  },
+  {
+    "name": "Nhà thiết kế thời trang",
+    "en": "Fashion Designer",
+    "code": "2163",
+    "group": "Nghệ thuật – Sáng tạo",
+    "desc": "Sáng tạo bộ sưu tập quần áo, phụ kiện. Nghiên cứu xu hướng, phác thảo, chọn chất liệu, làm mẫu và hợp tác với nhà sản xuất.",
+    "skills": [
+      "Thẩm mỹ và sáng tạo",
+      "Vẽ phác thảo và draping",
+      "Hiểu chất liệu vải",
+      "Nhạy bén xu hướng"
+    ],
+    "edu": "Cử nhân Thiết kế Thời trang.",
+    "salary": "10 – 40 triệu/tháng (thương hiệu riêng có thể cao hơn nhiều)",
+    "outlook": "Cạnh tranh nhưng nhiều cơ hội với thương mại điện tử và thời trang bền vững.",
+    "holland": [
+      "A"
+    ]
+  },
+  {
+    "name": "Nhà thiết kế đồ họa",
+    "en": "Graphic Designer",
+    "code": "2166",
+    "group": "Nghệ thuật – Sáng tạo",
+    "desc": "Thiết kế ấn phẩm truyền thông: logo, bao bì, website, quảng cáo, giao diện ứng dụng. Truyền tải thông điệp qua hình ảnh và typography.",
+    "skills": [
+      "Photoshop, Illustrator, Figma",
+      "Typography và bố cục",
+      "Tư duy thương hiệu",
+      "Ngoại ngữ để làm remote"
+    ],
+    "edu": "Cử nhân Thiết kế Đồ họa hoặc tự học + portfolio mạnh.",
+    "salary": "10 – 40 triệu/tháng (freelance quốc tế có thể cao hơn)",
+    "outlook": "Rất tốt. Mọi doanh nghiệp đều cần thiết kế; cơ hội làm remote quốc tế rất nhiều.",
+    "holland": [
+      "A"
+    ]
+  },
+  {
+    "name": "Nhiếp ảnh gia",
+    "en": "Photographer",
+    "code": "3431",
+    "group": "Nghệ thuật – Sáng tạo",
+    "desc": "Chụp ảnh chân dung, sự kiện, sản phẩm, báo chí, nghệ thuật. Làm hậu kỳ, in ấn, xuất bản và thiết kế bộ ảnh hoàn chỉnh.",
+    "skills": [
+      "Sử dụng máy ảnh chuyên nghiệp",
+      "Ánh sáng và bố cục",
+      "Hậu kỳ (Lightroom, Photoshop)",
+      "Giao tiếp với mẫu/khách hàng"
+    ],
+    "edu": "Không yêu cầu bằng cấp bắt buộc; có thể học trung cấp/cao đẳng nhiếp ảnh hoặc tự học.",
+    "salary": "8 – 50 triệu/tháng (tùy thương hiệu cá nhân)",
+    "outlook": "Tốt ở mảng cưới, sản phẩm thương mại điện tử, content creator.",
+    "holland": [
+      "A",
+      "R"
+    ]
+  },
+  {
+    "name": "Nhà thiết kế nội thất",
+    "en": "Interior Designer",
+    "code": "3432",
+    "group": "Nghệ thuật – Sáng tạo",
+    "desc": "Thiết kế không gian nội thất: nhà ở, văn phòng, khách sạn, nhà hàng. Lên phương án bố trí, chọn vật liệu, màu sắc, ánh sáng.",
+    "skills": [
+      "Thẩm mỹ",
+      "3D (Sketchup, 3DsMax, Enscape)",
+      "Giao tiếp với khách hàng",
+      "Quản lý thi công"
+    ],
+    "edu": "Cử nhân Thiết kế Nội thất hoặc Kiến trúc.",
+    "salary": "10 – 40 triệu/tháng",
+    "outlook": "Rất tốt. Bùng nổ chung cư cao cấp và thị hiếu thẩm mỹ nâng cao.",
+    "holland": [
+      "A",
+      "E",
+      "R"
+    ]
+  },
+  {
+    "name": "Phi công",
+    "en": "Pilot",
+    "code": "3153",
+    "group": "Kỹ thuật – Vận hành",
+    "desc": "Điều khiển máy bay chở khách hoặc hàng hóa. Tuân thủ quy trình bay, giao tiếp với kiểm soát không lưu và đảm bảo an toàn chuyến bay.",
+    "skills": [
+      "Sức khỏe đặc biệt",
+      "Tiếng Anh hàng không (ICAO 4+)",
+      "Phản xạ nhanh và bình tĩnh",
+      "Kỹ năng ra quyết định"
+    ],
+    "edu": "Đào tạo phi công cơ bản (2 năm, chi phí rất cao – 2–5 tỷ) + huấn luyện chuyển loại.",
+    "salary": "80 – 300 triệu/tháng",
+    "outlook": "Tốt khi ngành hàng không phục hồi. Vietnam Airlines, Vietjet, Bamboo thường xuyên tuyển.",
+    "holland": [
+      "R",
+      "C"
+    ]
+  },
+  {
+    "name": "Kiểm soát viên không lưu",
+    "en": "Air Traffic Controller",
+    "code": "3154",
+    "group": "Kỹ thuật – Vận hành",
+    "desc": "Điều phối và hướng dẫn máy bay cất cánh, hạ cánh và bay trên không phận được phân công. Đảm bảo an toàn và giãn cách giữa các máy bay.",
+    "skills": [
+      "Tập trung cao độ",
+      "Ra quyết định dưới áp lực",
+      "Tiếng Anh ICAO 4+",
+      "Sức khỏe tốt"
+    ],
+    "edu": "Đào tạo chuyên ngành tại Học viện Hàng không Việt Nam.",
+    "salary": "20 – 60 triệu/tháng",
+    "outlook": "Ổn định. Nghề đặc thù, tuyển dụng có giới hạn.",
+    "holland": [
+      "R",
+      "C"
+    ]
+  },
+  {
+    "name": "Cảnh sát cứu hỏa",
+    "en": "Firefighter",
+    "code": "5401",
+    "group": "Kỹ thuật – Vận hành",
+    "desc": "Chữa cháy, cứu nạn cứu hộ, tuyên truyền phòng cháy. Làm nhiệm vụ tại các đơn vị Cảnh sát PCCC và CNCH.",
+    "skills": [
+      "Sức khỏe và thể lực xuất sắc",
+      "Bản lĩnh, dũng cảm",
+      "Làm việc nhóm",
+      "Tuân thủ kỷ luật"
+    ],
+    "edu": "Đại học PCCC hoặc trung cấp PCCC (tuyển từ thi tuyển công an).",
+    "salary": "10 – 25 triệu/tháng + phụ cấp đặc thù",
+    "outlook": "Ổn định, là công việc nhà nước. Nhu cầu tăng theo tốc độ đô thị hóa.",
+    "holland": [
+      "R",
+      "C"
+    ]
+  },
+  {
+    "name": "Thợ hàn",
+    "en": "Welder",
+    "code": "7212",
+    "group": "Kỹ thuật – Vận hành",
+    "desc": "Dùng nhiệt để nối các chi tiết kim loại trong xây dựng, đóng tàu, chế tạo máy. Có nhiều cấp bậc: 3G, 4G, 6G (quốc tế).",
+    "skills": [
+      "Khéo tay",
+      "Hiểu bản vẽ kỹ thuật",
+      "Cẩn thận, chịu khó",
+      "Sức khỏe tốt"
+    ],
+    "edu": "Trung cấp nghề Hàn + chứng chỉ bậc thợ (3G/6G).",
+    "salary": "10 – 40 triệu/tháng (thợ 6G xuất khẩu lao động có thể 50–100 triệu)",
+    "outlook": "Rất tốt. Luôn thiếu thợ hàn bậc cao; cơ hội đi Nhật, Hàn, châu Âu rất nhiều.",
+    "holland": [
+      "R"
+    ]
+  },
+  {
+    "name": "Thợ cơ khí ô tô",
+    "en": "Auto Mechanic",
+    "code": "7231",
+    "group": "Kỹ thuật – Vận hành",
+    "desc": "Kiểm tra, sửa chữa, bảo dưỡng xe hơi, xe tải. Chẩn đoán hư hỏng bằng thiết bị chuyên dụng và thay thế linh kiện.",
+    "skills": [
+      "Hiểu cấu tạo xe",
+      "Sử dụng máy chẩn đoán",
+      "Khéo tay",
+      "Học hỏi công nghệ mới (xe điện)"
+    ],
+    "edu": "Trung cấp/Cao đẳng Kỹ thuật Ô tô.",
+    "salary": "8 – 25 triệu/tháng",
+    "outlook": "Tốt. Xe điện và xe công nghệ cao đòi hỏi thợ có tay nghề mới.",
+    "holland": [
+      "R"
+    ]
+  },
+  {
+    "name": "Thợ điện",
+    "en": "Electrician",
+    "code": "7411",
+    "group": "Xây dựng – Thủ công",
+    "desc": "Lắp đặt, sửa chữa, bảo trì hệ thống điện trong nhà ở, tòa nhà, nhà máy. Đọc bản vẽ điện và tuân thủ tiêu chuẩn an toàn.",
+    "skills": [
+      "Am hiểu điện dân dụng và công nghiệp",
+      "An toàn điện",
+      "Khéo tay, cẩn thận",
+      "Giải quyết sự cố"
+    ],
+    "edu": "Trung cấp/Cao đẳng Điện công nghiệp.",
+    "salary": "9 – 25 triệu/tháng",
+    "outlook": "Rất tốt. Luôn thiếu thợ điện có tay nghề; cơ hội xuất khẩu lao động cao.",
+    "holland": [
+      "R"
+    ]
+  },
+  {
+    "name": "Đầu bếp",
+    "en": "Chef",
+    "code": "3434",
+    "group": "Dịch vụ",
+    "desc": "Chế biến món ăn tại nhà hàng, khách sạn, bếp tập thể. Sáng tạo thực đơn, quản lý nguyên liệu, bếp và nhân viên phụ bếp.",
+    "skills": [
+      "Khéo tay và nhạy vị giác",
+      "Sáng tạo ẩm thực",
+      "Quản lý bếp",
+      "Sức khỏe và chịu áp lực"
+    ],
+    "edu": "Trung cấp/Cao đẳng Nấu ăn hoặc học nghề.",
+    "salary": "10 – 60+ triệu/tháng (bếp trưởng khách sạn 5 sao)",
+    "outlook": "Rất tốt. Ngành F&B và du lịch phát triển mạnh.",
+    "holland": [
+      "S",
+      "A",
+      "E"
+    ]
+  },
+  {
+    "name": "Thợ làm đẹp",
+    "en": "Beauty Therapist",
+    "code": "5142",
+    "group": "Dịch vụ",
+    "desc": "Làm đẹp da, trang điểm, chăm sóc móng, tóc cho khách hàng tại spa, salon hoặc dịch vụ tại nhà.",
+    "skills": [
+      "Khéo tay và thẩm mỹ",
+      "Giao tiếp tốt",
+      "Cập nhật xu hướng",
+      "Kiên nhẫn"
+    ],
+    "edu": "Học nghề tại trung tâm thẩm mỹ + chứng chỉ.",
+    "salary": "8 – 30 triệu/tháng (thợ chính có tên tuổi có thể cao hơn)",
+    "outlook": "Rất tốt. Thị trường làm đẹp tăng trưởng 2 chữ số mỗi năm.",
+    "holland": [
+      "S",
+      "R"
+    ]
+  },
+  {
+    "name": "Nhân viên marketing",
+    "en": "Marketing Staff",
+    "code": "5223",
+    "group": "Ngôn ngữ",
+    "desc": "Xây dựng và triển khai các chiến dịch quảng cáo, truyền thông, khuyến mãi. Phân tích thị trường, khách hàng và đo lường hiệu quả.",
+    "skills": [
+      "Sáng tạo và viết content",
+      "Am hiểu digital marketing",
+      "Phân tích dữ liệu",
+      "Ngoại ngữ"
+    ],
+    "edu": "Cử nhân Marketing, Kinh tế, Truyền thông.",
+    "salary": "10 – 40 triệu/tháng",
+    "outlook": "Rất tốt. Digital marketing, performance marketing, content creator liên tục thiếu nhân lực.",
+    "holland": [
+      "S",
+      "A",
+      "I"
+    ]
+  },
+  {
+    "name": "Trồng trọt",
+    "en": "Crop Grower",
+    "code": "6111",
+    "group": "Nông – Lâm – Thủy sản",
+    "desc": "Trồng, chăm sóc và thu hoạch cây lương thực, cây công nghiệp, rau quả. Có thể áp dụng nông nghiệp công nghệ cao, hữu cơ, nhà lưới.",
+    "skills": [
+      "Kiến thức nông học",
+      "Chăm chỉ, kiên nhẫn",
+      "Quản lý mùa vụ",
+      "Ứng dụng công nghệ mới"
+    ],
+    "edu": "Không yêu cầu bắt buộc; trung cấp/cao đẳng Nông nghiệp là lợi thế.",
+    "salary": "5 – 30 triệu/tháng (nông trại công nghệ cao có thể cao hơn)",
+    "outlook": "Chuyển dịch mạnh sang nông nghiệp hữu cơ, công nghệ cao và xuất khẩu.",
+    "holland": [
+      "R",
+      "E"
+    ]
+  },
+  {
+    "name": "Nuôi trồng thủy sản",
+    "en": "Aquaculture Worker",
+    "code": "6221",
+    "group": "Nông – Lâm – Thủy sản",
+    "desc": "Nuôi tôm, cá, thủy hải sản trong ao, lồng biển, hệ thống tuần hoàn. Quản lý chất lượng nước, thức ăn, phòng dịch bệnh.",
+    "skills": [
+      "Kiến thức sinh học thủy sản",
+      "Quản lý chất lượng nước",
+      "Chăm chỉ, chịu khó",
+      "Công nghệ nuôi mới"
+    ],
+    "edu": "Trung cấp/Cao đẳng/Đại học Nuôi trồng Thủy sản.",
+    "salary": "8 – 25 triệu/tháng",
+    "outlook": "Tốt, đặc biệt ở ĐBSCL. Xuất khẩu tôm, cá tra là thế mạnh của Việt Nam.",
+    "holland": [
+      "R",
+      "E"
+    ]
+  },
+  {
+    "name": "Bác sĩ đa khoa",
+    "en": "General Practitioner",
+    "code": "2211",
+    "group": "Phân tích – Logic",
+    "desc": "Khám, chẩn đoán và điều trị các bệnh lý thông thường tại bệnh viện, phòng khám. Định hướng chuyên khoa sau khi học chuyên sâu.",
+    "skills": [
+      "Kiến thức y học vững",
+      "Kỹ năng lâm sàng",
+      "Giao tiếp với bệnh nhân",
+      "Chịu áp lực cao"
+    ],
+    "edu": "Bác sĩ Đa khoa (6 năm) + chứng chỉ hành nghề + thực hành 18 tháng.",
+    "salary": "15 – 60 triệu/tháng (chuyên khoa giỏi có thể cao hơn nhiều)",
+    "outlook": "Rất tốt. Ngành y luôn thiếu nhân lực, đặc biệt bác sĩ chuyên khoa sâu.",
+    "holland": [
+      "I",
+      "C",
+      "S"
+    ]
+  },
+  {
+    "name": "Bác sĩ răng hàm mặt",
+    "en": "Dentist",
+    "code": "2261",
+    "group": "Phân tích – Logic",
+    "desc": "Khám, điều trị, phục hình và phòng ngừa các bệnh về răng miệng. Làm việc tại bệnh viện, phòng khám tư hoặc mở phòng khám riêng.",
+    "skills": [
+      "Khéo tay, tỉ mỉ",
+      "Kiến thức y khoa",
+      "Giao tiếp tốt",
+      "Tư duy thẩm mỹ"
+    ],
+    "edu": "Bác sĩ Răng Hàm Mặt (6 năm) + chứng chỉ hành nghề.",
+    "salary": "20 – 100+ triệu/tháng (phòng khám tư rất cao)",
+    "outlook": "Rất tốt. Nhu cầu thẩm mỹ nha khoa và niềng răng tăng mạnh.",
+    "holland": [
+      "I",
+      "C",
+      "S"
+    ]
+  },
+  {
+    "name": "Điều dưỡng",
+    "en": "Nurse",
+    "code": "2221",
+    "group": "Dịch vụ",
+    "desc": "Chăm sóc bệnh nhân, thực hiện y lệnh của bác sĩ, theo dõi dấu hiệu sinh tồn. Hỗ trợ điều trị và tư vấn sức khỏe.",
+    "skills": [
+      "Tỉ mỉ, kiên nhẫn",
+      "Yêu nghề, yêu người bệnh",
+      "Sức khỏe tốt",
+      "Kỹ năng y khoa cơ bản"
+    ],
+    "edu": "Cao đẳng/Đại học Điều dưỡng + chứng chỉ hành nghề.",
+    "salary": "8 – 25 triệu/tháng (đi nước ngoài có thể 60–100 triệu)",
+    "outlook": "Rất tốt. Cơ hội xuất khẩu lao động sang Đức, Nhật, Đài Loan rất nhiều.",
+    "holland": [
+      "S"
+    ]
+  },
+  {
+    "name": "Kỹ thuật viên xét nghiệm y học",
+    "en": "Medical Lab Technician",
+    "code": "3212",
+    "group": "Phân tích – Logic",
+    "desc": "Thực hiện các xét nghiệm máu, nước tiểu, mô bệnh học để hỗ trợ chẩn đoán. Vận hành thiết bị xét nghiệm hiện đại.",
+    "skills": [
+      "Tỉ mỉ, chính xác",
+      "An toàn sinh học",
+      "Vận hành máy móc",
+      "Kiến thức y sinh"
+    ],
+    "edu": "Cao đẳng/Đại học Xét nghiệm Y học.",
+    "salary": "9 – 22 triệu/tháng",
+    "outlook": "Tốt. Nhu cầu cao ở các bệnh viện tư và phòng xét nghiệm chuyên sâu.",
+    "holland": [
+      "I",
+      "C",
+      "R"
+    ]
+  },
+  {
+    "name": "Hộ sinh",
+    "en": "Midwife",
+    "code": "2222",
+    "group": "Dịch vụ",
+    "desc": "Chăm sóc thai phụ, đỡ đẻ và chăm sóc mẹ - bé sau sinh. Tư vấn sức khỏe sinh sản và kế hoạch hóa gia đình.",
+    "skills": [
+      "Kiên nhẫn, tinh tế",
+      "Kỹ năng lâm sàng",
+      "Bình tĩnh xử lý tình huống",
+      "Yêu trẻ"
+    ],
+    "edu": "Cao đẳng/Đại học Hộ sinh + chứng chỉ hành nghề.",
+    "salary": "8 – 22 triệu/tháng",
+    "outlook": "Ổn định. Bệnh viện sản và phòng khám tư đều có nhu cầu cao.",
+    "holland": [
+      "S"
+    ]
+  },
+  {
+    "name": "Kỹ thuật viên vật lý trị liệu",
+    "en": "Physiotherapist",
+    "code": "2264",
+    "group": "Dịch vụ",
+    "desc": "Phục hồi chức năng vận động cho người bệnh sau chấn thương, tai biến hoặc phẫu thuật. Sử dụng các bài tập, thiết bị trị liệu.",
+    "skills": [
+      "Kiến thức giải phẫu",
+      "Kiên nhẫn",
+      "Sức khỏe tốt",
+      "Giao tiếp với bệnh nhân"
+    ],
+    "edu": "Cử nhân Vật lý Trị liệu/Phục hồi Chức năng.",
+    "salary": "10 – 30 triệu/tháng",
+    "outlook": "Rất tốt. Dân số già hóa và nhu cầu phục hồi sau chấn thương tăng cao.",
+    "holland": [
+      "S"
+    ]
+  },
+  {
+    "name": "Chuyên viên dinh dưỡng",
+    "en": "Nutritionist",
+    "code": "2265",
+    "group": "Phân tích – Logic",
+    "desc": "Tư vấn chế độ ăn uống cho cá nhân, bệnh viện, trường học, doanh nghiệp. Xây dựng thực đơn cho người bệnh, vận động viên.",
+    "skills": [
+      "Kiến thức dinh dưỡng",
+      "Tư vấn và giao tiếp",
+      "Cập nhật khoa học mới",
+      "Tỉ mỉ"
+    ],
+    "edu": "Cử nhân Dinh dưỡng hoặc Y khoa Dự phòng.",
+    "salary": "10 – 30 triệu/tháng",
+    "outlook": "Tăng nhanh. Người dân ngày càng quan tâm sức khỏe và dinh dưỡng.",
+    "holland": [
+      "I",
+      "C",
+      "S"
+    ]
+  },
+  {
+    "name": "Chuyên viên tâm lý",
+    "en": "Psychologist",
+    "code": "2634",
+    "group": "Dịch vụ",
+    "desc": "Tư vấn, trị liệu các vấn đề tâm lý, cảm xúc, hành vi cho cá nhân và nhóm. Làm việc tại trung tâm tâm lý, trường học, bệnh viện.",
+    "skills": [
+      "Lắng nghe và đồng cảm",
+      "Kiến thức tâm lý học",
+      "Giữ bí mật nghề nghiệp",
+      "Kiên nhẫn"
+    ],
+    "edu": "Cử nhân Tâm lý học + Thạc sĩ Tâm lý Lâm sàng để hành nghề trị liệu.",
+    "salary": "12 – 50 triệu/tháng",
+    "outlook": "Rất tốt. Nhu cầu tham vấn tâm lý tăng nhanh, đặc biệt ở giới trẻ và đô thị.",
+    "holland": [
+      "S"
+    ]
+  },
+  {
+    "name": "Công tác xã hội",
+    "en": "Social Worker",
+    "code": "2635",
+    "group": "Dịch vụ",
+    "desc": "Hỗ trợ người yếu thế: trẻ em, người khuyết tật, nạn nhân bạo lực, người nghiện. Kết nối nguồn lực xã hội và tư vấn pháp lý.",
+    "skills": [
+      "Đồng cảm",
+      "Kết nối nguồn lực",
+      "Kiên nhẫn",
+      "Hiểu chính sách xã hội"
+    ],
+    "edu": "Cử nhân Công tác Xã hội.",
+    "salary": "7 – 18 triệu/tháng",
+    "outlook": "Tăng dần. Các tổ chức phi chính phủ và quỹ từ thiện cần nhiều nhân sự.",
+    "holland": [
+      "S"
+    ]
+  },
+  {
+    "name": "Nhà khoa học dữ liệu",
+    "en": "Data Scientist",
+    "code": "2511",
+    "group": "Phân tích – Logic",
+    "desc": "Thu thập, phân tích dữ liệu lớn để rút ra thông tin hữu ích cho doanh nghiệp. Xây dựng mô hình dự báo, học máy.",
+    "skills": [
+      "Python, R, SQL",
+      "Thống kê và machine learning",
+      "Tư duy kinh doanh",
+      "Trực quan hóa dữ liệu"
+    ],
+    "edu": "Cử nhân CNTT, Toán, Thống kê. Thạc sĩ là lợi thế lớn.",
+    "salary": "25 – 100+ triệu/tháng",
+    "outlook": "Cực kỳ tốt. Một trong các nghề có lương cao nhất ngành IT.",
+    "holland": [
+      "I",
+      "C",
+      "E"
+    ]
+  },
+  {
+    "name": "Kỹ sư trí tuệ nhân tạo",
+    "en": "AI Engineer",
+    "code": "2512",
+    "group": "Phân tích – Logic",
+    "desc": "Thiết kế và triển khai các hệ thống AI: chatbot, nhận dạng hình ảnh, xử lý ngôn ngữ tự nhiên, xe tự lái.",
+    "skills": [
+      "Deep learning, NLP, CV",
+      "Python, TensorFlow, PyTorch",
+      "Toán cao cấp",
+      "Nghiên cứu mô hình mới"
+    ],
+    "edu": "Cử nhân CNTT/Khoa học Máy tính + chuyên sâu AI.",
+    "salary": "30 – 150+ triệu/tháng",
+    "outlook": "Bùng nổ. AI là xu hướng công nghệ hàng đầu, lương rất cao.",
+    "holland": [
+      "I",
+      "C"
+    ]
+  },
+  {
+    "name": "Chuyên viên an ninh mạng",
+    "en": "Cybersecurity Specialist",
+    "code": "2529",
+    "group": "Phân tích – Logic",
+    "desc": "Bảo vệ hệ thống, mạng và dữ liệu của tổ chức khỏi các cuộc tấn công mạng. Phát hiện lỗ hổng và ứng phó sự cố bảo mật.",
+    "skills": [
+      "Hiểu biết hệ thống và mạng",
+      "Kỹ thuật pentest",
+      "Tư duy 'kẻ tấn công'",
+      "Chứng chỉ CEH/OSCP/CISSP"
+    ],
+    "edu": "Cử nhân CNTT/An toàn Thông tin + chứng chỉ quốc tế.",
+    "salary": "20 – 80 triệu/tháng",
+    "outlook": "Rất tốt. Tấn công mạng tăng khiến nhu cầu chuyên gia bảo mật bùng nổ.",
+    "holland": [
+      "I",
+      "C"
+    ]
+  },
+  {
+    "name": "Kỹ sư DevOps",
+    "en": "DevOps Engineer",
+    "code": "2519",
+    "group": "Phân tích – Logic",
+    "desc": "Tự động hóa quy trình phát triển, triển khai và vận hành phần mềm. Quản lý hạ tầng cloud (AWS, Azure, GCP).",
+    "skills": [
+      "Linux, Docker, Kubernetes",
+      "CI/CD pipeline",
+      "Cloud (AWS/Azure/GCP)",
+      "Scripting (Bash, Python)"
+    ],
+    "edu": "Cử nhân CNTT + chứng chỉ cloud.",
+    "salary": "25 – 80 triệu/tháng",
+    "outlook": "Rất tốt. DevOps là vị trí khó tuyển và lương cao trong ngành IT.",
+    "holland": [
+      "I",
+      "C"
+    ]
+  },
+  {
+    "name": "Lập trình viên di động",
+    "en": "Mobile Developer",
+    "code": "2512",
+    "group": "Phân tích – Logic",
+    "desc": "Phát triển ứng dụng cho iOS (Swift) và Android (Kotlin/Java) hoặc cross-platform (React Native, Flutter).",
+    "skills": [
+      "Swift/Kotlin/Flutter",
+      "UI/UX di động",
+      "API integration",
+      "Xuất bản app store"
+    ],
+    "edu": "Cử nhân CNTT hoặc bootcamp + portfolio app.",
+    "salary": "15 – 60 triệu/tháng",
+    "outlook": "Rất tốt. Mọi doanh nghiệp đều cần app di động.",
+    "holland": [
+      "I",
+      "C"
+    ]
+  },
+  {
+    "name": "Nhà thiết kế UX/UI",
+    "en": "UX/UI Designer",
+    "code": "2166",
+    "group": "Nghệ thuật – Sáng tạo",
+    "desc": "Thiết kế trải nghiệm và giao diện người dùng cho website, ứng dụng. Nghiên cứu hành vi người dùng và tối ưu trải nghiệm.",
+    "skills": [
+      "Figma, Sketch, Adobe XD",
+      "Tư duy UX, wireframe, prototype",
+      "Hiểu tâm lý người dùng",
+      "Giao tiếp với developer"
+    ],
+    "edu": "Cử nhân Thiết kế Đồ họa, CNTT hoặc tự học + portfolio.",
+    "salary": "15 – 50 triệu/tháng",
+    "outlook": "Rất tốt. UX/UI ngày càng được coi trọng trong sản phẩm số.",
+    "holland": [
+      "A",
+      "I",
+      "S"
+    ]
+  },
+  {
+    "name": "Chuyên viên SEO",
+    "en": "SEO Specialist",
+    "code": "2434",
+    "group": "Phân tích – Logic",
+    "desc": "Tối ưu website để xếp hạng cao trên Google. Nghiên cứu từ khóa, content, kỹ thuật SEO on-page và off-page.",
+    "skills": [
+      "Google Analytics, Search Console",
+      "SEO tools (Ahrefs, SEMrush)",
+      "Content và copywriting",
+      "Hiểu thuật toán Google"
+    ],
+    "edu": "Cử nhân Marketing/CNTT + tự học SEO.",
+    "salary": "10 – 40 triệu/tháng",
+    "outlook": "Tốt. Mọi doanh nghiệp đều cần SEO; freelance SEO rất phát triển.",
+    "holland": [
+      "I",
+      "C",
+      "A"
+    ]
+  },
+  {
+    "name": "Chuyên viên Performance Marketing",
+    "en": "Performance Marketing Specialist",
+    "code": "2434",
+    "group": "Phân tích – Logic",
+    "desc": "Chạy quảng cáo trả phí trên Google Ads, Facebook Ads, TikTok Ads. Tối ưu chi phí, đo lường ROI và tối đa hóa chuyển đổi.",
+    "skills": [
+      "Google/Facebook/TikTok Ads",
+      "Phân tích dữ liệu",
+      "A/B testing",
+      "Tư duy hiệu suất"
+    ],
+    "edu": "Cử nhân Marketing/Kinh tế + chứng chỉ quảng cáo.",
+    "salary": "15 – 60 triệu/tháng",
+    "outlook": "Rất tốt. Ngành thương mại điện tử và D2C đang bùng nổ.",
+    "holland": [
+      "I",
+      "C",
+      "E"
+    ]
+  },
+  {
+    "name": "Sáng tạo nội dung",
+    "en": "Content Creator",
+    "code": "2641",
+    "group": "Nghệ thuật – Sáng tạo",
+    "desc": "Sản xuất video, ảnh, bài viết trên TikTok, YouTube, Instagram, Facebook. Xây dựng thương hiệu cá nhân hoặc kênh giải trí, giáo dục.",
+    "skills": [
+      "Quay dựng video",
+      "Viết script",
+      "Hiểu xu hướng mạng xã hội",
+      "Thương hiệu cá nhân"
+    ],
+    "edu": "Không yêu cầu bằng cấp; cần sáng tạo và bền bỉ.",
+    "salary": "5 – 200+ triệu/tháng (KOL nổi tiếng có thể tỷ đồng)",
+    "outlook": "Bùng nổ. Đây là một trong những nghề được giới trẻ theo đuổi nhiều nhất.",
+    "holland": [
+      "A"
+    ]
+  },
+  {
+    "name": "Người mẫu",
+    "en": "Model",
+    "code": "3435",
+    "group": "Nghệ thuật – Sáng tạo",
+    "desc": "Trình diễn thời trang, chụp hình quảng cáo, đóng MV, sự kiện. Có thể chuyên về catwalk, ảnh, runway hoặc thương mại.",
+    "skills": [
+      "Ngoại hình và thần thái",
+      "Tạo dáng tốt",
+      "Tự tin trước ống kính",
+      "Quản lý thương hiệu cá nhân"
+    ],
+    "edu": "Không yêu cầu bằng cấp; cần đào tạo tại trung tâm và kinh nghiệm.",
+    "salary": "5 – 100+ triệu/tháng (top model rất cao)",
+    "outlook": "Cạnh tranh khốc liệt. Cơ hội tốt cho người ngoại hình nổi bật và có thương hiệu.",
+    "holland": [
+      "A",
+      "E"
+    ]
+  },
+  {
+    "name": "Diễn viên",
+    "en": "Actor",
+    "code": "2655",
+    "group": "Nghệ thuật – Sáng tạo",
+    "desc": "Đóng phim, kịch, MV, quảng cáo. Hóa thân vào nhân vật, học thoại, biểu cảm và phối hợp với đạo diễn.",
+    "skills": [
+      "Diễn xuất",
+      "Trí nhớ tốt",
+      "Cảm xúc đa dạng",
+      "Sức khỏe và sự kiên nhẫn"
+    ],
+    "edu": "Cử nhân Sân khấu Điện ảnh hoặc tự học + casting.",
+    "salary": "5 – 200+ triệu/tháng (sao hạng A có thể tỷ đồng/dự án)",
+    "outlook": "Cạnh tranh cao nhưng nhiều cơ hội với phim Việt và web drama phát triển.",
+    "holland": [
+      "A"
+    ]
+  },
+  {
+    "name": "Ca sĩ",
+    "en": "Singer",
+    "code": "2652",
+    "group": "Nghệ thuật – Sáng tạo",
+    "desc": "Biểu diễn ca hát chuyên nghiệp tại sân khấu, phòng trà, phòng thu, sự kiện. Phát hành album, MV, tổ chức show diễn.",
+    "skills": [
+      "Giọng hát tốt",
+      "Cảm âm và nhịp điệu",
+      "Biểu diễn sân khấu",
+      "Thương hiệu cá nhân"
+    ],
+    "edu": "Học viện Âm nhạc hoặc tự học + chứng minh tài năng qua biểu diễn.",
+    "salary": "5 – 500+ triệu/tháng (ca sĩ hạng A có thể tỷ đồng/show)",
+    "outlook": "Cạnh tranh khốc liệt. Cần tài năng, may mắn và đầu tư hình ảnh.",
+    "holland": [
+      "A"
+    ]
+  },
+  {
+    "name": "Nhạc sĩ",
+    "en": "Composer",
+    "code": "2652",
+    "group": "Nghệ thuật – Sáng tạo",
+    "desc": "Sáng tác nhạc, phối khí, sản xuất âm nhạc cho ca sĩ, phim, quảng cáo, game. Làm việc tại studio hoặc freelance.",
+    "skills": [
+      "Cảm âm và sáng tác",
+      "DAW (Logic, Cubase, FL Studio)",
+      "Lý thuyết âm nhạc",
+      "Hiểu xu hướng âm nhạc"
+    ],
+    "edu": "Học viện Âm nhạc hoặc tự học + portfolio.",
+    "salary": "10 – 100+ triệu/tháng",
+    "outlook": "Tốt. Nhu cầu nhạc cho phim, quảng cáo, content tăng nhanh.",
+    "holland": [
+      "A"
+    ]
+  },
+  {
+    "name": "Đạo diễn phim",
+    "en": "Film Director",
+    "code": "2654",
+    "group": "Nghệ thuật – Sáng tạo",
+    "desc": "Chỉ đạo nghệ thuật toàn bộ quá trình sản xuất phim: kịch bản, diễn xuất, quay dựng. Định hình phong cách và thông điệp tác phẩm.",
+    "skills": [
+      "Tư duy hình ảnh",
+      "Lãnh đạo ekip",
+      "Cảm thụ nghệ thuật",
+      "Quản lý dự án"
+    ],
+    "edu": "Cử nhân Đạo diễn (Đại học Sân khấu Điện ảnh) hoặc tự học.",
+    "salary": "20 – 200+ triệu/dự án",
+    "outlook": "Cạnh tranh nhưng phim Việt và web series đang phát triển mạnh.",
+    "holland": [
+      "A",
+      "E"
+    ]
+  },
+  {
+    "name": "Biên kịch",
+    "en": "Screenwriter",
+    "code": "2641",
+    "group": "Ngôn ngữ",
+    "desc": "Viết kịch bản phim, kịch sân khấu, web series, MV, quảng cáo. Xây dựng cốt truyện, nhân vật và lời thoại.",
+    "skills": [
+      "Sáng tạo và viết lách",
+      "Cấu trúc kịch bản",
+      "Hiểu tâm lý nhân vật",
+      "Làm việc với đạo diễn"
+    ],
+    "edu": "Cử nhân Biên kịch hoặc Văn học + portfolio.",
+    "salary": "10 – 80 triệu/dự án",
+    "outlook": "Tốt. Ngành phim truyền hình, web drama, OTT cần biên kịch.",
+    "holland": [
+      "S",
+      "A"
+    ]
+  },
+  {
+    "name": "Phóng viên ảnh",
+    "en": "Photojournalist",
+    "code": "3431",
+    "group": "Nghệ thuật – Sáng tạo",
+    "desc": "Chụp ảnh tin tức, phóng sự, sự kiện cho báo chí và truyền thông. Kể chuyện qua hình ảnh chân thực và có chiều sâu.",
+    "skills": [
+      "Nhiếp ảnh tin tức",
+      "Nhạy bén thông tin",
+      "Sức khỏe và sự dũng cảm",
+      "Đạo đức nghề nghiệp"
+    ],
+    "edu": "Cử nhân Báo chí hoặc Nhiếp ảnh + thẻ nhà báo.",
+    "salary": "10 – 30 triệu/tháng",
+    "outlook": "Ổn định. Báo điện tử và các tạp chí cần ảnh chất lượng cao.",
+    "holland": [
+      "A"
+    ]
+  },
+  {
+    "name": "Vận động viên chuyên nghiệp",
+    "en": "Professional Athlete",
+    "code": "3421",
+    "group": "Kỹ thuật – Vận hành",
+    "desc": "Tập luyện và thi đấu chuyên nghiệp các môn thể thao: bóng đá, bóng chuyền, võ thuật, eSports. Đại diện CLB hoặc đội tuyển quốc gia.",
+    "skills": [
+      "Thể lực xuất sắc",
+      "Kỹ thuật chuyên môn",
+      "Tinh thần thép",
+      "Kỷ luật cao"
+    ],
+    "edu": "Đào tạo tại trung tâm thể thao + thi đấu chuyên nghiệp.",
+    "salary": "10 – 500+ triệu/tháng (cầu thủ ngoại hạng có thể tỷ đồng)",
+    "outlook": "Tốt. Bóng đá, eSports và golf đang phát triển mạnh tại Việt Nam.",
+    "holland": [
+      "R"
+    ]
+  },
+  {
+    "name": "Huấn luyện viên thể thao",
+    "en": "Sports Coach",
+    "code": "3422",
+    "group": "Dịch vụ",
+    "desc": "Huấn luyện cá nhân hoặc đội tuyển thi đấu. Lập giáo án, theo dõi thể lực, chiến thuật và tâm lý vận động viên.",
+    "skills": [
+      "Chuyên môn thể thao",
+      "Sư phạm và tâm lý",
+      "Lãnh đạo",
+      "Cập nhật phương pháp huấn luyện"
+    ],
+    "edu": "Cử nhân Thể dục Thể thao + chứng chỉ HLV.",
+    "salary": "10 – 50 triệu/tháng (HLV cá nhân giỏi có thể cao hơn)",
+    "outlook": "Rất tốt. Phòng gym, golf, yoga, thể thao trẻ em phát triển mạnh.",
+    "holland": [
+      "S",
+      "E"
+    ]
+  },
+  {
+    "name": "Huấn luyện viên cá nhân",
+    "en": "Personal Trainer",
+    "code": "3423",
+    "group": "Dịch vụ",
+    "desc": "Hướng dẫn tập luyện cá nhân tại phòng gym, tư vấn dinh dưỡng và thiết kế chương trình tập theo mục tiêu.",
+    "skills": [
+      "Kiến thức giải phẫu, dinh dưỡng",
+      "Kỹ thuật tập luyện",
+      "Giao tiếp tốt",
+      "Sức khỏe và hình thể tốt"
+    ],
+    "edu": "Chứng chỉ PT (NASM, ACE, ISSA) + kinh nghiệm.",
+    "salary": "15 – 80 triệu/tháng",
+    "outlook": "Bùng nổ. Người Việt ngày càng quan tâm sức khỏe và hình thể.",
+    "holland": [
+      "S"
+    ]
+  },
+  {
+    "name": "Tiếp viên hàng không",
+    "en": "Flight Attendant",
+    "code": "5111",
+    "group": "Dịch vụ",
+    "desc": "Phục vụ và đảm bảo an toàn cho hành khách trên các chuyến bay. Hướng dẫn quy trình an toàn, phục vụ ăn uống, xử lý tình huống.",
+    "skills": [
+      "Ngoại hình và sức khỏe tốt",
+      "Tiếng Anh giao tiếp",
+      "Kỹ năng dịch vụ",
+      "Bình tĩnh xử lý tình huống"
+    ],
+    "edu": "Tốt nghiệp THPT trở lên + đào tạo nghiệp vụ tại hãng bay.",
+    "salary": "15 – 50 triệu/tháng",
+    "outlook": "Tốt. Ngành hàng không phục hồi và mở rộng đường bay quốc tế.",
+    "holland": [
+      "S",
+      "R",
+      "C"
+    ]
+  },
+  {
+    "name": "Nhân viên lễ tân",
+    "en": "Receptionist",
+    "code": "4226",
+    "group": "Dịch vụ",
+    "desc": "Đón tiếp khách, trả lời điện thoại, hỗ trợ thông tin tại khách sạn, văn phòng, bệnh viện. Quản lý lịch hẹn và check-in/check-out.",
+    "skills": [
+      "Giao tiếp tốt",
+      "Ngoại ngữ",
+      "Ngoại hình ưa nhìn",
+      "Tin học văn phòng"
+    ],
+    "edu": "Trung cấp/Cao đẳng Du lịch, Khách sạn hoặc các ngành khác.",
+    "salary": "7 – 18 triệu/tháng",
+    "outlook": "Ổn định. Cơ hội tốt ở khách sạn 4-5 sao.",
+    "holland": [
+      "S"
+    ]
+  },
+  {
+    "name": "Quản lý khách sạn",
+    "en": "Hotel Manager",
+    "code": "1411",
+    "group": "Dịch vụ",
+    "desc": "Điều hành toàn bộ hoạt động khách sạn: nhân sự, tài chính, dịch vụ khách hàng, marketing. Đảm bảo chất lượng và lợi nhuận.",
+    "skills": [
+      "Lãnh đạo",
+      "Quản lý vận hành",
+      "Ngoại ngữ",
+      "Hiểu thị trường du lịch"
+    ],
+    "edu": "Cử nhân Quản trị Khách sạn/Du lịch + kinh nghiệm 5–10 năm.",
+    "salary": "30 – 150 triệu/tháng (khách sạn 5 sao)",
+    "outlook": "Rất tốt. Khách sạn cao cấp và resort đang mở rộng mạnh.",
+    "holland": [
+      "S",
+      "E",
+      "R"
+    ]
+  },
+  {
+    "name": "Bếp trưởng bếp bánh",
+    "en": "Pastry Chef",
+    "code": "3434",
+    "group": "Nghệ thuật – Sáng tạo",
+    "desc": "Sáng tạo và chế biến bánh ngọt, bánh kem, bánh mì cho khách sạn, nhà hàng, tiệm bánh. Quản lý bếp bánh và đào tạo phụ bếp.",
+    "skills": [
+      "Khéo tay và thẩm mỹ",
+      "Hiểu nguyên liệu bánh",
+      "Sáng tạo",
+      "Quản lý bếp"
+    ],
+    "edu": "Trung cấp/Cao đẳng Làm bánh hoặc học nghề + chứng chỉ.",
+    "salary": "12 – 50 triệu/tháng",
+    "outlook": "Tốt. Tiệm bánh boutique và khách sạn cao cấp luôn cần bếp bánh giỏi.",
+    "holland": [
+      "A",
+      "E"
+    ]
+  },
+  {
+    "name": "Pha chế (Bartender)",
+    "en": "Bartender",
+    "code": "5132",
+    "group": "Dịch vụ",
+    "desc": "Pha chế cocktail, mocktail, cà phê tại quán bar, khách sạn, café. Sáng tạo công thức và biểu diễn pha chế nghệ thuật.",
+    "skills": [
+      "Kiến thức rượu và pha chế",
+      "Khéo tay",
+      "Giao tiếp với khách",
+      "Sáng tạo"
+    ],
+    "edu": "Học nghề tại trung tâm pha chế + chứng chỉ.",
+    "salary": "8 – 30 triệu/tháng (bar cao cấp có tip rất tốt)",
+    "outlook": "Tốt. Văn hóa cocktail và specialty coffee đang lên ở Việt Nam.",
+    "holland": [
+      "S",
+      "A"
+    ]
+  },
+  {
+    "name": "Barista",
+    "en": "Barista",
+    "code": "5132",
+    "group": "Dịch vụ",
+    "desc": "Pha chế cà phê chuyên nghiệp tại quán café, đặc biệt specialty coffee. Hiểu hạt cà phê, máy espresso và kỹ thuật latte art.",
+    "skills": [
+      "Hiểu cà phê",
+      "Kỹ thuật pha chế",
+      "Latte art",
+      "Phục vụ khách hàng"
+    ],
+    "edu": "Học nghề tại trung tâm + chứng chỉ SCA là lợi thế.",
+    "salary": "7 – 25 triệu/tháng",
+    "outlook": "Tốt. Specialty coffee đang là xu hướng tại các đô thị lớn.",
+    "holland": [
+      "S",
+      "R"
+    ]
+  },
+  {
+    "name": "Nhân viên bán hàng",
+    "en": "Sales Executive",
+    "code": "3322",
+    "group": "Dịch vụ",
+    "desc": "Tư vấn và bán sản phẩm/dịch vụ cho khách hàng cá nhân hoặc doanh nghiệp. Đạt KPI doanh số và chăm sóc khách hàng.",
+    "skills": [
+      "Giao tiếp và thuyết phục",
+      "Hiểu sản phẩm",
+      "Chịu áp lực KPI",
+      "Xây dựng quan hệ"
+    ],
+    "edu": "Tốt nghiệp THPT trở lên; ưu tiên cử nhân Kinh tế/Marketing.",
+    "salary": "8 – 50 triệu/tháng (có hoa hồng)",
+    "outlook": "Luôn cần. Sales B2B, bất động sản, ô tô có thu nhập rất cao.",
+    "holland": [
+      "S",
+      "A",
+      "E"
+    ]
+  },
+  {
+    "name": "Quản lý bán lẻ",
+    "en": "Retail Manager",
+    "code": "1420",
+    "group": "Dịch vụ",
+    "desc": "Quản lý hoạt động cửa hàng bán lẻ: nhân viên, hàng tồn, doanh số, trưng bày. Đảm bảo trải nghiệm khách hàng tốt.",
+    "skills": [
+      "Lãnh đạo",
+      "Quản lý hàng tồn kho",
+      "Phân tích doanh số",
+      "Dịch vụ khách hàng"
+    ],
+    "edu": "Cử nhân Kinh tế/Quản trị + kinh nghiệm bán lẻ.",
+    "salary": "15 – 40 triệu/tháng",
+    "outlook": "Tốt. Chuỗi bán lẻ (Vinmart, Bách Hóa Xanh, Circle K) mở rộng mạnh.",
+    "holland": [
+      "S",
+      "E",
+      "R"
+    ]
+  },
+  {
+    "name": "Chuyên viên nhân sự",
+    "en": "HR Specialist",
+    "code": "2423",
+    "group": "Dịch vụ",
+    "desc": "Tuyển dụng, đào tạo, đánh giá và quản lý chính sách nhân sự cho doanh nghiệp. Xây dựng văn hóa công ty.",
+    "skills": [
+      "Giao tiếp tốt",
+      "Hiểu luật lao động",
+      "Phỏng vấn và đánh giá",
+      "Tâm lý học tổ chức"
+    ],
+    "edu": "Cử nhân Quản trị Nhân lực, Kinh tế, Tâm lý.",
+    "salary": "12 – 40 triệu/tháng",
+    "outlook": "Tốt. HRBP và Talent Acquisition là vị trí khó tuyển.",
+    "holland": [
+      "S"
+    ]
+  },
+  {
+    "name": "Chuyên viên đào tạo",
+    "en": "Training Specialist",
+    "code": "2424",
+    "group": "Dịch vụ",
+    "desc": "Thiết kế chương trình đào tạo, tổ chức khóa học cho nhân viên doanh nghiệp. Đánh giá hiệu quả đào tạo.",
+    "skills": [
+      "Sư phạm doanh nghiệp",
+      "Thiết kế khóa học",
+      "Giao tiếp và truyền cảm hứng",
+      "Đo lường hiệu quả"
+    ],
+    "edu": "Cử nhân Sư phạm, Quản trị Nhân lực hoặc chuyên môn liên quan.",
+    "salary": "15 – 50 triệu/tháng",
+    "outlook": "Tốt. Doanh nghiệp ngày càng đầu tư phát triển nhân sự nội bộ.",
+    "holland": [
+      "S",
+      "A",
+      "E"
+    ]
+  },
+  {
+    "name": "Chuyên viên logistics",
+    "en": "Logistics Specialist",
+    "code": "3331",
+    "group": "Phân tích – Logic",
+    "desc": "Quản lý vận chuyển, kho bãi, thủ tục hải quan cho hàng hóa xuất nhập khẩu. Tối ưu chi phí và thời gian giao hàng.",
+    "skills": [
+      "Hiểu chuỗi cung ứng",
+      "Tin học văn phòng",
+      "Tiếng Anh",
+      "Kỹ năng đàm phán"
+    ],
+    "edu": "Cử nhân Logistics, Kinh tế Đối ngoại, Ngoại thương.",
+    "salary": "12 – 40 triệu/tháng",
+    "outlook": "Rất tốt. Thương mại điện tử và xuất khẩu Việt Nam tăng trưởng mạnh.",
+    "holland": [
+      "I",
+      "C"
+    ]
+  },
+  {
+    "name": "Quản lý chuỗi cung ứng",
+    "en": "Supply Chain Manager",
+    "code": "1324",
+    "group": "Phân tích – Logic",
+    "desc": "Quản lý toàn bộ chuỗi cung ứng từ nhà cung cấp đến khách hàng cuối. Tối ưu tồn kho, chi phí và thời gian.",
+    "skills": [
+      "Tư duy hệ thống",
+      "Phân tích dữ liệu",
+      "Đàm phán",
+      "Phần mềm SAP/Oracle"
+    ],
+    "edu": "Cử nhân Logistics/Quản trị + kinh nghiệm + chứng chỉ SCM.",
+    "salary": "30 – 100 triệu/tháng",
+    "outlook": "Rất tốt. Vị trí cấp quản lý lương cao và nhu cầu lớn.",
+    "holland": [
+      "I",
+      "C",
+      "E"
+    ]
+  },
+  {
+    "name": "Chuyên viên xuất nhập khẩu",
+    "en": "Import-Export Specialist",
+    "code": "3324",
+    "group": "Phân tích – Logic",
+    "desc": "Thực hiện thủ tục hải quan, chứng từ xuất nhập khẩu, vận chuyển quốc tế. Làm việc với hãng tàu, hãng bay, hải quan.",
+    "skills": [
+      "Hiểu Incoterms, L/C",
+      "Tiếng Anh thương mại",
+      "Tỉ mỉ với chứng từ",
+      "Đàm phán"
+    ],
+    "edu": "Cử nhân Kinh tế Đối ngoại/Ngoại thương.",
+    "salary": "10 – 35 triệu/tháng",
+    "outlook": "Tốt. Việt Nam là quốc gia xuất nhập khẩu lớn, ngành logistics phát triển.",
+    "holland": [
+      "I",
+      "C"
+    ]
+  },
+  {
+    "name": "Tài xế xe tải / Container",
+    "en": "Truck Driver",
+    "code": "8332",
+    "group": "Kỹ thuật – Vận hành",
+    "desc": "Vận chuyển hàng hóa bằng xe tải, container đường dài hoặc nội thành. Tuân thủ luật giao thông và bảo quản hàng.",
+    "skills": [
+      "Bằng lái xe FC/E",
+      "Sức khỏe tốt",
+      "Định vị và GPS",
+      "Cẩn thận, tỉnh táo"
+    ],
+    "edu": "Có bằng lái phù hợp + đào tạo nghề.",
+    "salary": "15 – 40 triệu/tháng (đường dài)",
+    "outlook": "Rất tốt. Thương mại điện tử và xuất nhập khẩu cần nhiều tài xế.",
+    "holland": [
+      "R"
+    ]
+  },
+  {
+    "name": "Thuyền viên / Sĩ quan tàu biển",
+    "en": "Ship Officer",
+    "code": "3151",
+    "group": "Kỹ thuật – Vận hành",
+    "desc": "Vận hành tàu biển vận tải quốc tế hoặc tàu khách. Có các vị trí: thủy thủ, sĩ quan boong, sĩ quan máy, thuyền trưởng.",
+    "skills": [
+      "Sức khỏe và sự bền bỉ",
+      "Tiếng Anh hàng hải",
+      "Kỹ thuật hàng hải",
+      "Chấp nhận xa nhà dài ngày"
+    ],
+    "edu": "Đại học Hàng hải + chứng chỉ thuyền viên quốc tế.",
+    "salary": "30 – 200 triệu/tháng (lương quốc tế)",
+    "outlook": "Rất tốt. Lương cao, cơ hội đi nước ngoài nhiều.",
+    "holland": [
+      "R"
+    ]
+  },
+  {
+    "name": "Thợ may",
+    "en": "Tailor",
+    "code": "7531",
+    "group": "Xây dựng – Thủ công",
+    "desc": "May đo, sửa chữa quần áo theo yêu cầu khách hàng hoặc trong nhà máy may công nghiệp. Có thể chuyên về vest, áo dài, đầm cưới.",
+    "skills": [
+      "Khéo tay",
+      "Đo, cắt, may chính xác",
+      "Hiểu chất liệu vải",
+      "Sáng tạo (may đo cao cấp)"
+    ],
+    "edu": "Học nghề may hoặc trung cấp/cao đẳng May.",
+    "salary": "7 – 30 triệu/tháng (thợ may đo cao cấp có thể cao hơn)",
+    "outlook": "Ổn định. May đo cao cấp, áo dài, đầm cưới luôn có khách.",
+    "holland": [
+      "R",
+      "A"
+    ]
+  },
+  {
+    "name": "Thợ mộc",
+    "en": "Carpenter",
+    "code": "7522",
+    "group": "Xây dựng – Thủ công",
+    "desc": "Chế tác đồ gỗ nội thất, đóng tủ, giường, bàn ghế hoặc thi công nội thất gỗ tại công trình.",
+    "skills": [
+      "Khéo tay và tỉ mỉ",
+      "Đọc bản vẽ",
+      "Hiểu loại gỗ",
+      "Sử dụng máy mộc CNC"
+    ],
+    "edu": "Trung cấp nghề Mộc hoặc học việc tại xưởng.",
+    "salary": "10 – 30 triệu/tháng",
+    "outlook": "Tốt. Thị trường nội thất gỗ và cao cấp đang phát triển.",
+    "holland": [
+      "R"
+    ]
+  },
+  {
+    "name": "Thợ nề / Thợ xây",
+    "en": "Mason",
+    "code": "7112",
+    "group": "Xây dựng – Thủ công",
+    "desc": "Xây tường, ốp lát, hoàn thiện các công trình nhà ở, công trình dân dụng. Đọc bản vẽ và tính toán vật liệu.",
+    "skills": [
+      "Sức khỏe tốt",
+      "Khéo tay",
+      "Đọc bản vẽ cơ bản",
+      "Chịu khó"
+    ],
+    "edu": "Học nghề hoặc đào tạo tại công trường.",
+    "salary": "10 – 25 triệu/tháng",
+    "outlook": "Luôn có nhu cầu cao. Thợ giỏi (ốp lát đá, sơn nghệ thuật) lương rất tốt.",
+    "holland": [
+      "R"
+    ]
+  },
+  {
+    "name": "Thợ làm tóc",
+    "en": "Hairdresser",
+    "code": "5141",
+    "group": "Dịch vụ",
+    "desc": "Cắt, uốn, nhuộm tóc theo yêu cầu khách hàng tại salon hoặc dịch vụ tại nhà. Tư vấn kiểu tóc phù hợp.",
+    "skills": [
+      "Khéo tay và thẩm mỹ",
+      "Cập nhật xu hướng",
+      "Giao tiếp với khách",
+      "Sức khỏe đôi tay"
+    ],
+    "edu": "Học nghề tại trung tâm tóc + chứng chỉ.",
+    "salary": "7 – 30 triệu/tháng (stylist nổi tiếng có thể cao hơn nhiều)",
+    "outlook": "Rất tốt. Salon cao cấp và stylist cá nhân có thu nhập hấp dẫn.",
+    "holland": [
+      "S",
+      "R"
+    ]
+  },
+  {
+    "name": "Cảnh sát",
+    "en": "Police Officer",
+    "code": "5412",
+    "group": "Dịch vụ",
+    "desc": "Bảo vệ an ninh trật tự, phòng chống tội phạm, điều tra vụ án. Có nhiều chuyên ngành: cảnh sát hình sự, giao thông, kinh tế, ma túy.",
+    "skills": [
+      "Sức khỏe và bản lĩnh",
+      "Tuân thủ pháp luật",
+      "Tư duy điều tra",
+      "Kỷ luật cao"
+    ],
+    "edu": "Học viện Cảnh sát Nhân dân hoặc trường Trung cấp Cảnh sát.",
+    "salary": "10 – 30 triệu/tháng + phụ cấp",
+    "outlook": "Ổn định, là công việc nhà nước có nhiều phúc lợi.",
+    "holland": [
+      "S",
+      "R",
+      "C"
+    ]
+  },
+  {
+    "name": "Quân nhân chuyên nghiệp",
+    "en": "Military Officer",
+    "code": "0110",
+    "group": "Kỹ thuật – Vận hành",
+    "desc": "Phục vụ trong Quân đội Nhân dân Việt Nam ở các quân chủng: bộ binh, hải quân, không quân, biên phòng. Bảo vệ Tổ quốc.",
+    "skills": [
+      "Thể lực và bản lĩnh",
+      "Tuân thủ kỷ luật",
+      "Kỹ năng quân sự",
+      "Yêu nước"
+    ],
+    "edu": "Học viện/Trường Sĩ quan Quân đội.",
+    "salary": "10 – 40 triệu/tháng + phụ cấp",
+    "outlook": "Ổn định, có nhiều phúc lợi nhà nước.",
+    "holland": [
+      "R"
+    ]
+  },
+  {
+    "name": "Thẩm phán",
+    "en": "Judge",
+    "code": "2612",
+    "group": "Ngôn ngữ",
+    "desc": "Xét xử các vụ án dân sự, hình sự, kinh tế, hành chính tại tòa án. Đưa ra phán quyết dựa trên pháp luật và chứng cứ.",
+    "skills": [
+      "Kiến thức pháp luật sâu",
+      "Tư duy phản biện",
+      "Đạo đức nghề nghiệp",
+      "Bình tĩnh, công tâm"
+    ],
+    "edu": "Cử nhân Luật + chứng chỉ Thẩm phán + bổ nhiệm sau nhiều năm làm trong ngành.",
+    "salary": "15 – 40 triệu/tháng + phụ cấp",
+    "outlook": "Ổn định, là vị trí cao quý trong ngành tư pháp.",
+    "holland": [
+      "S",
+      "A"
+    ]
+  },
+  {
+    "name": "Công chứng viên",
+    "en": "Notary",
+    "code": "2619",
+    "group": "Ngôn ngữ",
+    "desc": "Chứng nhận tính hợp pháp của hợp đồng, giao dịch dân sự, di chúc. Làm việc tại Văn phòng Công chứng.",
+    "skills": [
+      "Cẩn thận, tỉ mỉ",
+      "Hiểu luật dân sự",
+      "Giao tiếp với khách",
+      "Đạo đức nghề nghiệp"
+    ],
+    "edu": "Cử nhân Luật + đào tạo nghề công chứng + chứng chỉ hành nghề.",
+    "salary": "20 – 80 triệu/tháng",
+    "outlook": "Tốt. Giao dịch bất động sản và dân sự nhiều khiến nhu cầu cao.",
+    "holland": [
+      "S",
+      "A"
+    ]
+  },
+  {
+    "name": "Chuyên viên bảo hiểm",
+    "en": "Insurance Agent",
+    "code": "3321",
+    "group": "Dịch vụ",
+    "desc": "Tư vấn và bán các sản phẩm bảo hiểm nhân thọ, phi nhân thọ, sức khỏe. Chăm sóc khách hàng và xử lý quyền lợi.",
+    "skills": [
+      "Giao tiếp và thuyết phục",
+      "Hiểu sản phẩm bảo hiểm",
+      "Xây dựng quan hệ",
+      "Chịu áp lực doanh số"
+    ],
+    "edu": "Tốt nghiệp THPT trở lên + chứng chỉ đại lý bảo hiểm.",
+    "salary": "10 – 100+ triệu/tháng (hoa hồng cao)",
+    "outlook": "Rất tốt. Thị trường bảo hiểm Việt Nam còn nhiều dư địa phát triển.",
+    "holland": [
+      "S",
+      "A"
+    ]
+  },
+  {
+    "name": "Môi giới bất động sản",
+    "en": "Real Estate Broker",
+    "code": "3334",
+    "group": "Dịch vụ",
+    "desc": "Kết nối người mua và người bán bất động sản. Tư vấn pháp lý, thẩm định giá, hoàn tất thủ tục mua bán.",
+    "skills": [
+      "Giao tiếp và thuyết phục",
+      "Hiểu thị trường BĐS",
+      "Pháp lý nhà đất",
+      "Xây dựng mạng lưới khách"
+    ],
+    "edu": "Tốt nghiệp THPT + chứng chỉ môi giới BĐS.",
+    "salary": "10 – 200+ triệu/tháng (hoa hồng cao theo deal)",
+    "outlook": "Phụ thuộc thị trường. Khi BĐS sôi động, thu nhập rất cao.",
+    "holland": [
+      "S",
+      "A",
+      "E"
+    ]
+  },
+  {
+    "name": "Quản lý dự án xây dựng",
+    "en": "Construction Project Manager",
+    "code": "1323",
+    "group": "Phân tích – Logic",
+    "desc": "Quản lý tiến độ, chi phí, chất lượng và an toàn của dự án xây dựng. Phối hợp các nhà thầu và bên liên quan.",
+    "skills": [
+      "Quản lý dự án (PMP)",
+      "Đọc bản vẽ kỹ thuật",
+      "Lãnh đạo",
+      "Đàm phán hợp đồng"
+    ],
+    "edu": "Cử nhân Kỹ sư Xây dựng + kinh nghiệm 5–10 năm + PMP.",
+    "salary": "30 – 100+ triệu/tháng",
+    "outlook": "Rất tốt. Các dự án hạ tầng và bất động sản lớn cần PM giỏi.",
+    "holland": [
+      "I",
+      "C",
+      "A"
+    ]
+  },
+  {
+    "name": "Trắc địa viên",
+    "en": "Surveyor",
+    "code": "3112",
+    "group": "Phân tích – Logic",
+    "desc": "Đo đạc địa hình, lập bản đồ, định vị công trình xây dựng. Sử dụng máy toàn đạc, GPS, drone.",
+    "skills": [
+      "Sử dụng máy đo đạc",
+      "Tin học bản đồ (CAD, GIS)",
+      "Tính toán chính xác",
+      "Sức khỏe (làm ngoài trời)"
+    ],
+    "edu": "Trung cấp/Cao đẳng/Đại học Trắc địa.",
+    "salary": "10 – 30 triệu/tháng",
+    "outlook": "Tốt. Nhu cầu cao ở các dự án xây dựng và quy hoạch đô thị.",
+    "holland": [
+      "I",
+      "C"
+    ]
+  },
+  {
+    "name": "Kỹ sư môi trường",
+    "en": "Environmental Engineer",
+    "code": "2143",
+    "group": "Phân tích – Logic",
+    "desc": "Thiết kế hệ thống xử lý nước thải, khí thải, chất thải rắn. Đánh giá tác động môi trường cho các dự án.",
+    "skills": [
+      "Hiểu hóa - sinh môi trường",
+      "Thiết kế hệ thống xử lý",
+      "Pháp luật môi trường",
+      "Quản lý dự án"
+    ],
+    "edu": "Cử nhân Kỹ thuật Môi trường.",
+    "salary": "10 – 35 triệu/tháng",
+    "outlook": "Tăng nhanh. Quy định môi trường nghiêm ngặt khiến doanh nghiệp cần chuyên gia.",
+    "holland": [
+      "I",
+      "C",
+      "A"
+    ]
+  },
+  {
+    "name": "Kỹ sư năng lượng tái tạo",
+    "en": "Renewable Energy Engineer",
+    "code": "2151",
+    "group": "Phân tích – Logic",
+    "desc": "Thiết kế và vận hành hệ thống điện mặt trời, điện gió, sinh khối. Tối ưu hiệu suất và chi phí.",
+    "skills": [
+      "Kỹ thuật điện",
+      "Hiểu công nghệ năng lượng",
+      "Phần mềm mô phỏng (PVsyst)",
+      "Quản lý dự án"
+    ],
+    "edu": "Cử nhân Kỹ thuật Điện/Năng lượng tái tạo.",
+    "salary": "15 – 50 triệu/tháng",
+    "outlook": "Bùng nổ. Việt Nam đang dẫn đầu Đông Nam Á về điện mặt trời.",
+    "holland": [
+      "I",
+      "C",
+      "E"
+    ]
+  },
+  {
+    "name": "Kỹ sư hàng không",
+    "en": "Aerospace Engineer",
+    "code": "2145",
+    "group": "Phân tích – Logic",
+    "desc": "Thiết kế, bảo trì máy bay và linh kiện hàng không. Làm việc tại Vietnam Airlines, Vietjet, hoặc các công ty bảo dưỡng MRO.",
+    "skills": [
+      "Cơ khí và điện tử hàng không",
+      "Tiếng Anh kỹ thuật",
+      "Tỉ mỉ và an toàn tuyệt đối",
+      "Cập nhật công nghệ mới"
+    ],
+    "edu": "Cử nhân Kỹ thuật Hàng không (Đại học Bách Khoa, Học viện Hàng không).",
+    "salary": "20 – 80 triệu/tháng",
+    "outlook": "Rất tốt. Ngành hàng không phục hồi và mở rộng đội bay.",
+    "holland": [
+      "I",
+      "C",
+      "R"
+    ]
+  }
+]

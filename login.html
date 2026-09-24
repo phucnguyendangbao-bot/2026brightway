@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Đăng nhập / Đăng ký – BrightWay Career</title>
+<link rel="icon" type="image/png" href="images/img-a84652d05567.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Quicksand:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/careers.css">
+<link rel="stylesheet" href="assets/css/auth.css">
+</head>
+<body>
+
+<button id="themeToggle" class="theme-toggle" aria-label="Chuyển sáng/tối" title="Chuyển sáng/tối">
+  <svg class="ico-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.2" y1="4.2" x2="6.3" y2="6.3"/><line x1="17.7" y1="17.7" x2="19.8" y2="19.8"/><line x1="4.2" y1="19.8" x2="6.3" y2="17.7"/><line x1="17.7" y1="6.3" x2="19.8" y2="4.2"/></g></svg>
+  <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+</button>
+
+<nav class="bw-nav">
+  <div class="bw-nav-inner">
+    <a href="index.html" class="bw-logo">🌟 BrightWay Career</a>
+    <div class="bw-nav-links">
+      <a href="index.html">Trang chủ</a>
+      <a href="careers-holland.html">Tra cứu & Test</a>
+      <a href="essay-review.html">Bài luận mẫu</a>
+    </div>
+  </div>
+</nav>
+
+<section class="auth-page">
+  <div class="auth-card">
+    <h1 class="auth-title">Chào mừng 👋</h1>
+    <p class="auth-sub">Đăng nhập để lưu nghề yêu thích, đồng bộ dữ liệu giữa các thiết bị và nhiều hơn nữa.</p>
+
+    <!-- TABS -->
+    <div class="auth-tabbar" role="tablist">
+      <button class="auth-tab active" data-tab="google" role="tab" aria-selected="true">
+        🔵 Google
+      </button>
+      <button class="auth-tab" data-tab="password" role="tab" aria-selected="false">
+        🔑 Mật khẩu
+      </button>
+      <button class="auth-tab" data-tab="otp" role="tab" aria-selected="false">
+        ✉️ OTP
+      </button>
+    </div>
+
+    <!-- PANEL: Google -->
+    <div class="auth-panel active" data-panel="google">
+      <p class="auth-panel-desc">Đăng nhập nhanh với tài khoản Google của bạn.</p>
+      <button id="googleSignInBtn" class="btn-google">
+        <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        Tiếp tục với Google
+      </button>
+      <div class="auth-divider"><span>hoặc</span></div>
+      <p class="auth-foot">
+        Chưa có tài khoản? <a href="#" data-switch="password">Đăng ký ngay</a>
+      </p>
+    </div>
+
+    <!-- PANEL: Password -->
+    <div class="auth-panel" data-panel="password">
+      <p class="auth-panel-desc">Đăng ký hoặc đăng nhập với email + mật khẩu.</p>
+      <form id="passwordForm" class="auth-form">
+        <label class="auth-field" id="nameField" hidden>
+          <span>Họ và tên</span>
+          <input type="text" id="pName" placeholder="Nguyễn Văn A" autocomplete="name" />
+        </label>
+        <label class="auth-field">
+          <span>Email</span>
+          <input type="email" id="pEmail" placeholder="email@example.com" required autocomplete="email" />
+        </label>
+        <label class="auth-field">
+          <span>Mật khẩu</span>
+          <input type="password" id="pPassword" placeholder="Ít nhất 8 ký tự" required minlength="8" autocomplete="current-password" />
+        </label>
+        <button type="submit" class="btn-primary" id="passwordSubmit">Đăng nhập</button>
+      </form>
+      <p class="auth-foot">
+        <a href="#" id="toggleSignup">Chưa có tài khoản? Đăng ký</a>
+      </p>
+    </div>
+
+    <!-- PANEL: OTP -->
+    <div class="auth-panel" data-panel="otp">
+      <p class="auth-panel-desc">Nhận mã xác thực qua email — không cần mật khẩu.</p>
+      <form id="otpForm" class="auth-form">
+        <label class="auth-field">
+          <span>Email</span>
+          <input type="email" id="otpEmail" placeholder="email@example.com" required autocomplete="email" />
+        </label>
+        <button type="submit" id="otpSendBtn" class="btn-primary">📧 Gửi mã OTP</button>
+        <div id="otpStep2" hidden>
+          <label class="auth-field">
+            <span>Mã 6 số đã gửi tới email</span>
+            <input type="text" id="otpCode" placeholder="123456" maxlength="6" pattern="\d{6}" inputmode="numeric" />
+          </label>
+          <button type="button" id="otpVerifyBtn" class="btn-primary">✅ Xác thực</button>
+          <button type="button" id="otpResendBtn" class="btn-link">↺ Gửi lại</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Status / Error -->
+    <div id="authStatus" class="auth-status" hidden></div>
+
+    <div class="auth-terms">
+      Bằng việc đăng nhập, bạn đồng ý với
+      <a href="#" onclick="return false">Điều khoản</a> và
+      <a href="#" onclick="return false">Chính sách bảo mật</a> của BrightWay Career.
+    </div>
+  </div>
+</section>
+
+<footer class="bw-footer">
+  <div class="logo">🌟 BrightWay Career</div>
+  <p>Đồng hành cùng học sinh Lớp 12 trên hành trình hướng nghiệp</p>
+  <p class="small">© 2026 BrightWay Career · Thông tin chỉ mang tính tham khảo, không thay thế tư vấn chuyên gia.</p>
+</footer>
+
+<script src="assets/js/supabase-client.js"></script>
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/login.js"></script>
+</body>
+</html>
