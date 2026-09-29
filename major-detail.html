@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chi tiết ngành – BrightWay Career</title>
+<link rel="icon" type="image/png" href="images/img-a84652d05567.png">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg: linear-gradient(145deg, #e8eeff 0%, #dde8ff 20%, #e5deff 50%, #d6e9ff 80%, #e0f0ff 100%);
+  --glass: rgba(255,255,255,0.62);
+  --glass-border: rgba(255,255,255,0.85);
+  --grad: linear-gradient(135deg,#5b7cfa 0%,#7c5bf5 50%,#9f5bea 100%);
+  --text-dark: #1a1a3e;
+  --text-mid: #3a3a6e;
+  --text-soft: #6b7aaa;
+  --accent: #6366f1;
+  --white: #ffffff;
+  --shadow: 0 8px 32px rgba(99,102,241,0.15);
+  --font: 'Be Vietnam Pro', system-ui, sans-serif;
+  --font-display: 'Nunito', sans-serif;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--text-dark);min-height:100vh;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+
+.nav{position:sticky;top:0;z-index:100;background:var(--glass);backdrop-filter:blur(20px);border-bottom:1px solid var(--glass-border);padding:14px 24px;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:24px;}
+.nav-brand{font-family:var(--font-display);font-weight:800;font-size:20px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:20px;align-items:center;margin-left:auto;}
+.nav-links a{padding:8px 14px;border-radius:10px;font-weight:600;color:var(--text-mid);transition:0.2s;}
+.nav-links a:hover{background:rgba(99,102,241,0.1);color:var(--accent);}
+
+.container{max-width:900px;margin:0 auto;padding:48px 24px;}
+.back-btn{display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-weight:600;margin-bottom:24px;cursor:pointer;}
+
+.header-card{background:var(--white);border-radius:24px;padding:40px;box-shadow:var(--shadow);margin-bottom:24px;border:1px solid var(--glass-border);position:relative;overflow:hidden;}
+.header-card::before{content:'';position:absolute;top:0;left:0;right:0;height:120px;background:var(--grad);opacity:0.1;}
+.header-content{position:relative;}
+
+.tag{display:inline-block;padding:6px 14px;border-radius:99px;background:rgba(99,102,241,0.1);color:var(--accent);font-size:13px;font-weight:700;margin-bottom:16px;}
+h1.title{font-family:var(--font-display);font-weight:900;font-size:38px;line-height:1.2;margin-bottom:8px;}
+.subtitle{color:var(--text-soft);font-size:18px;font-style:italic;margin-bottom:24px;}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:32px;}
+.stat{background:linear-gradient(135deg, rgba(99,102,241,0.05), rgba(167,139,250,0.05));padding:20px;border-radius:16px;border:1px solid rgba(99,102,241,0.1);}
+.stat-icon{font-size:24px;margin-bottom:8px;}
+.stat-label{color:var(--text-soft);font-size:13px;margin-bottom:4px;}
+.stat-value{color:var(--text-dark);font-weight:700;font-size:15px;}
+
+.section{background:var(--white);border-radius:20px;padding:32px;box-shadow:var(--shadow);margin-bottom:20px;border:1px solid var(--glass-border);}
+.section h2{font-family:var(--font-display);font-weight:800;font-size:22px;margin-bottom:16px;color:var(--accent);display:flex;align-items:center;gap:10px;}
+.section p{color:var(--text-mid);margin-bottom:12px;}
+.section ul{margin-left:20px;color:var(--text-mid);}
+.section li{margin-bottom:8px;}
+
+.universities{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-top:16px;}
+.uni{background:linear-gradient(135deg, rgba(99,102,241,0.05), rgba(167,139,250,0.05));padding:16px 20px;border-radius:12px;border:1px solid rgba(99,102,241,0.1);font-weight:600;color:var(--text-dark);display:flex;align-items:center;gap:10px;}
+.uni-icon{font-size:20px;}
+
+.cta-box{background:var(--grad);color:#fff;padding:32px;border-radius:20px;text-align:center;margin-top:24px;}
+.cta-box h2{font-family:var(--font-display);font-size:24px;margin-bottom:8px;}
+.cta-box p{opacity:0.95;margin-bottom:20px;}
+.cta-btn{display:inline-block;padding:14px 28px;background:#fff;color:var(--accent);border-radius:99px;font-weight:700;transition:0.2s;}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,0.2);}
+
+.state{padding:80px 24px;text-align:center;}
+.state .icon{font-size:64px;margin-bottom:16px;}
+.state h2{font-family:var(--font-display);font-size:24px;margin-bottom:8px;}
+.state p{color:var(--text-soft);margin-bottom:24px;}
+.spinner{display:inline-block;width:40px;height:40px;border:4px solid rgba(99,102,241,0.2);border-top-color:var(--accent);border-radius:50%;animation:spin 0.8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+@media(max-width:768px){
+  .container{padding:24px 20px;}
+  .header-card{padding:24px;}
+  h1.title{font-size:26px;}
+  .section{padding:24px;}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">BrightWay Career</a>
+    <div class="nav-links">
+      <a href="index.html">Trang chủ</a>
+      <a href="news.html">Tin tức</a>
+      <a href="majors.html">Ngành nghề</a>
+      <a href="holland.html">Trắc nghiệm</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container" id="container">
+  <div class="state">
+    <div class="spinner"></div>
+    <p>Đang tải thông tin ngành...</p>
+  </div>
+</main>
+
+<script src="assets/js/supabase-client.js"></script>
+<script src="assets/js/cms-service.js"></script>
+<script>
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"']/g, m => ({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  }[m]));
+}
+
+async function load() {
+  const container = document.getElementById('container');
+  const params = new URLSearchParams(location.search);
+  const slug = params.get('slug');
+
+  if (!slug) {
+    container.innerHTML = `
+      <div class="state">
+        <div class="icon">❌</div>
+        <h2>Không tìm thấy ngành</h2>
+        <a href="majors.html" class="back-btn">← Quay lại</a>
+      </div>`;
+    return;
+  }
+
+  try {
+    await window.getSupabase();
+    const m = await window.CMS.getMajorBySlug(slug);
+
+    const tagText = window.CMS.categoryLabel(m.category);
+
+    container.innerHTML = `
+      <a href="majors.html" class="back-btn">← Quay lại danh sách ngành</a>
+
+      <div class="header-card">
+        <div class="header-content">
+          <span class="tag">${tagText}</span>
+          <h1 class="title">${escapeHtml(m.name_vi)}</h1>
+          ${m.name_en ? `<div class="subtitle">${escapeHtml(m.name_en)}</div>` : ''}
+
+          <div class="stats">
+            ${m.job_prospects ? `
+              <div class="stat">
+                <div class="stat-icon">💼</div>
+                <div class="stat-label">Cơ hội việc làm</div>
+                <div class="stat-value">${escapeHtml(m.job_prospects)}</div>
+              </div>` : ''}
+            ${m.salary_range ? `
+              <div class="stat">
+                <div class="stat-icon">💰</div>
+                <div class="stat-label">Mức lương</div>
+                <div class="stat-value">${escapeHtml(m.salary_range)}</div>
+              </div>` : ''}
+            ${(m.top_universities || []).length ? `
+              <div class="stat">
+                <div class="stat-icon">🎓</div>
+                <div class="stat-label">Số trường đào tạo</div>
+                <div class="stat-value">${m.top_universities.length} trường hàng đầu</div>
+              </div>` : ''}
+            <div class="stat">
+              <div class="stat-icon">👁️</div>
+              <div class="stat-label">Lượt quan tâm</div>
+              <div class="stat-value">${m.views_count || 0} lượt</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      ${m.description ? `
+        <div class="section">
+          <h2>📖 Mô tả ngành</h2>
+          <p>${escapeHtml(m.description)}</p>
+        </div>` : ''}
+
+      ${m.required_skills ? `
+        <div class="section">
+          <h2>🎯 Kỹ năng cần có</h2>
+          <p>${escapeHtml(m.required_skills)}</p>
+        </div>` : ''}
+
+      ${(m.top_universities || []).length ? `
+        <div class="section">
+          <h2>🎓 Trường đào tạo hàng đầu</h2>
+          <div class="universities">
+            ${m.top_universities.map(u => `
+              <div class="uni">
+                <span class="uni-icon">🏛️</span>
+                <span>${escapeHtml(u)}</span>
+              </div>`).join('')}
+          </div>
+        </div>` : ''}
+
+      <div class="cta-box">
+        <h2>Muốn tìm hiểu ngành phù hợp với bạn?</h2>
+        <p>Làm trắc nghiệm Holland MIỄN PHÍ để khám phá tính cách nghề nghiệp</p>
+        <a href="holland.html" class="cta-btn">Làm trắc nghiệm ngay →</a>
+      </div>
+    `;
+
+    document.title = `${m.name_vi} – BrightWay Career`;
+  } catch (err) {
+    console.error(err);
+    container.innerHTML = `
+      <div class="state">
+        <div class="icon">⚠️</div>
+        <h2>Không thể tải thông tin</h2>
+        <p>${escapeHtml(err.message)}</p>
+        <a href="majors.html" class="back-btn">← Quay lại</a>
+      </div>`;
+  }
+}
+load();
+</script>
+
+</body>
+</html>
