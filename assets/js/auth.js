@@ -1,5 +1,8 @@
 /* ════════════════════════════════════════════════════════
-   AUTH — Google OAuth + Email/password + Email OTP
+   AUTH — Google OAuth + Email/password
+   Không có OTP. Đơn giản, chỉ 2 cách đăng nhập:
+   1. Google (1 cú click)
+   2. Email + password (admin cấp tài khoản sẵn)
    ════════════════════════════════════════════════════════ */
 (function () {
   'use strict';
@@ -27,9 +30,7 @@
     sb.auth.onAuthStateChange(async (event, session) => {
       _user = session?.user || null;
       _profile = null;
-      if (_user) {
-        await fetchProfile();
-      }
+      if (_user) await fetchProfile();
       notify(event);
     });
 
@@ -68,43 +69,29 @@
   }
 
   // ─── Email/password ───
-  async function signUpWithEmail(email, password, fullName) {
-    const sb = await window.getSupabase();
-    return sb.auth.signUp({
-      email,
-      password,
-      options: {
-        data: { full_name: fullName },
-        emailRedirectTo: window.location.origin + '/index.html'
-      }
-    });
-  }
-
   async function signInWithEmail(email, password) {
     const sb = await window.getSupabase();
     return sb.auth.signInWithPassword({ email, password });
   }
 
-  // ─── Email OTP (magic link) ───
-  async function signInWithOTP(email) {
+  // ─── Admin: tạo user mới (chỉ admin dùng) ───
+  async function adminCreateUser(email, password, fullName, role = 'student') {
+    // Gọi RPC function để tạo user + profile
     const sb = await window.getSupabase();
-    return sb.auth.signInWithOtp({
-      email,
-      options: {
-        emailRedirectTo: window.location.origin + '/index.html',
-        shouldCreateUser: true
-      }
+    const { data: userId, error: rpcErr } = await sb.rpc('signin_with_email', {
+      email_input: email
     });
-  }
+    if (rpcErr) throw rpcErr;
 
-  // ─── Verify OTP ───
-  async function verifyOTP(email, token) {
-    const sb = await window.getSupabase();
-    return sb.auth.verifyOtp({
-      email,
-      token,
-      type: 'email'
+    // Update profile
+    const { error } = await sb.from('profiles').upsert({
+      id: userId,
+      full_name: fullName || email.split('@')[0],
+      role
     });
+    if (error) throw error;
+
+    return userId;
   }
 
   // ─── Sign out ───
@@ -148,10 +135,8 @@
     requireAuth,
     fetchProfile,
     signInWithGoogle,
-    signUpWithEmail,
     signInWithEmail,
-    signInWithOTP,
-    verifyOTP,
+    adminCreateUser,
     signOut,
     updateProfile
   };

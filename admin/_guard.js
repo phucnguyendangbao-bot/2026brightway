@@ -74,6 +74,14 @@
       </div>
 
       <div class="sidebar-section">
+        <div class="sidebar-label">Quản lý</div>
+        <a class="sidebar-link ${activePage==='users'?'active':''}" href="users.html">
+          <span class="sidebar-link-icon">👥</span>
+          <span>Tài khoản</span>
+        </a>
+      </div>
+
+      <div class="sidebar-section">
         <div class="sidebar-label">Công cụ</div>
         <a class="sidebar-link" href="../index.html" target="_blank">
           <span class="sidebar-link-icon">🌐</span>
