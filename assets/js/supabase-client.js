@@ -9,7 +9,7 @@
 window.SUPABASE_CONFIG = window.SUPABASE_CONFIG || {
   // ⬇️ CẤU HÌNH ĐÚNG CHO PROJECT CỦA BẠN
   url: 'https://nybtwbkkbiqedqqxqcc.supabase.co',
-  anonKey: 'PASTE-YOUR-ANON-KEY-HERE'   // <-- Thay bằng anon key từ Supabase Dashboard > Project Settings > API
+  anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55YnR3YmtrYmlxZWRxcXhxY2MiLCJyb2xlIjoiYW5vbiIsImlhdCI6MTc5MDI2MDkyNywiZXhwIjoyMTA1ODM2OTI3fQ.Qgp9vulhBlmjXqu0ElbSXGXdabxJkElrnlETzPHm3mE'
 };
 
 (function () {

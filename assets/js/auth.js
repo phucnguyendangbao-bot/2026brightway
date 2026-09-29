@@ -56,7 +56,7 @@
   }
 
   // ─── Google OAuth ───
-  async function signInWithGoogle(redirectTo = window.location.origin + '/careers-holland.html') {
+  async function signInWithGoogle(redirectTo = window.location.origin + '/index.html') {
     const sb = await window.getSupabase();
     return sb.auth.signInWithOAuth({
       provider: 'google',
@@ -75,7 +75,7 @@
       password,
       options: {
         data: { full_name: fullName },
-        emailRedirectTo: window.location.origin + '/careers-holland.html'
+        emailRedirectTo: window.location.origin + '/index.html'
       }
     });
   }
@@ -91,7 +91,7 @@
     return sb.auth.signInWithOtp({
       email,
       options: {
-        emailRedirectTo: window.location.origin + '/careers-holland.html',
+        emailRedirectTo: window.location.origin + '/index.html',
         shouldCreateUser: true
       }
     });

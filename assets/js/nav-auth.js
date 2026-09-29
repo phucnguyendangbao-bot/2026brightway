@@ -1,20 +1,44 @@
 /* ════════════════════════════════════════════════════════
    NAV-AUTH — Đăng nhập/Avatar widget cho navbar
-   Inject vào .bw-nav-links của mọi trang
+   Inject vào navbar của mọi trang (hỗ trợ nhiều layout)
    ════════════════════════════════════════════════════════ */
 (function () {
   'use strict';
 
+  // Tìm container nav phù hợp — ưu tiên #navLinks, fallback các pattern khác
+  function findNavContainer() {
+    if (document.getElementById('navLinks')) {
+      const links = document.getElementById('navLinks');
+      return { container: links, mode: 'append' };
+    }
+    // BrightWay Scholars pages
+    const lpNavLinks = document.querySelector('.lp-nav-links');
+    if (lpNavLinks) return { container: lpNavLinks, mode: 'append' };
+    // page2 / cv-review — nav có nhiều thành phần, append 1 div riêng
+    const navInner = document.querySelector('.nav-inner, .p2-nav-inner');
+    if (navInner) return { container: navInner, mode: 'append-sibling' };
+    return null;
+  }
+
   function ensureNavSlot() {
-    const links = document.getElementById('navLinks');
-    if (!links) return null;
-    if (document.getElementById('navAuthBtn')) return links;
+    const found = findNavContainer();
+    if (!found) return null;
+    const { container, mode } = found;
+    if (document.getElementById('navAuthBtn')) return container;
     const slot = document.createElement('div');
     slot.id = 'navAuthSlot';
-    slot.style.cssText = 'display:flex;align-items:center;gap:8px;';
+    slot.style.cssText = 'display:flex;align-items:center;gap:8px;margin-left:8px;';
     slot.innerHTML = '<a href="login.html" id="navAuthBtn" class="btn-nav-login">Đăng nhập</a>';
-    links.appendChild(slot);
-    return slot;
+    if (mode === 'append') {
+      container.appendChild(slot);
+    } else {
+      // append-sibling: tạo wrapper riêng, chèn sau container
+      const wrap = document.createElement('div');
+      wrap.style.cssText = 'display:flex;align-items:center;';
+      wrap.appendChild(slot);
+      container.parentNode.insertBefore(wrap, container.nextSibling);
+    }
+    return container;
   }
 
   function style() {
