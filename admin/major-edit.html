@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Thêm/Sửa ngành – BrightWay Admin</title>
+<link rel="icon" type="image/png" href="../images/img-a84652d05567.png">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_layout.css">
+</head>
+<body>
+
+<button class="mobile-toggle" onclick="Admin.toggleSidebar()">☰</button>
+
+<aside class="sidebar" id="sidebar">
+  <div id="sidebar-content"></div>
+</aside>
+
+<main class="main">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title" id="page-title">➕ Thêm ngành mới</h1>
+      <p class="page-subtitle">Điền thông tin chi tiết về ngành nghề</p>
+    </div>
+    <div class="page-actions">
+      <a href="majors.html" class="btn btn-secondary">← Quay lại</a>
+      <button class="btn btn-primary" onclick="save()">💾 Lưu ngành</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Tên ngành (Tiếng Việt) <span class="required">*</span></label>
+        <input type="text" id="name_vi" class="form-input" placeholder="VD: Công nghệ thông tin" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Tên ngành (Tiếng Anh)</label>
+        <input type="text" id="name_en" class="form-input" placeholder="VD: Information Technology">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Slug (URL) <span class="required">*</span></label>
+        <input type="text" id="slug" class="form-input" placeholder="cntt" required>
+        <div class="form-help">Để trống sẽ tự động tạo từ tên ngành</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Khối <span class="required">*</span></label>
+        <select id="category" class="form-select">
+          <option value="khoi_A">Khối A (Toán, Lý, Hóa)</option>
+          <option value="khoi_B">Khối B (Toán, Hóa, Sinh)</option>
+          <option value="khoi_C">Khối C (Văn, Sử, Địa)</option>
+          <option value="khoi_D">Khối D (Ngoại ngữ)</option>
+          <option value="khoi_khac">Khối khác</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Mô tả ngành</label>
+      <textarea id="description" class="form-textarea" rows="3" placeholder="Mô tả ngắn gọn về ngành..."></textarea>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Cơ hội việc làm</label>
+        <textarea id="job_prospects" class="form-textarea" rows="3" placeholder="VD: Lập trình viên, kỹ sư phần mềm, chuyên gia AI..."></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Mức lương</label>
+        <input type="text" id="salary_range" class="form-input" placeholder="VD: 15-80 triệu VNĐ/tháng">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Kỹ năng cần có</label>
+      <textarea id="required_skills" class="form-textarea" rows="3" placeholder="VD: Tư duy logic, làm việc nhóm, tiếng Anh..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Top trường đào tạo (mỗi dòng 1 trường)</label>
+      <textarea id="universities" class="form-textarea" rows="6" placeholder="ĐH Bách Khoa Hà Nội
+ĐH CNTT - ĐHQG TP.HCM
+ĐH FPT
+ĐH Khoa học Tự nhiên - ĐHQG"></textarea>
+      <div class="form-help">Mỗi dòng sẽ là một trường</div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">URL ảnh bìa</label>
+      <input type="url" id="cover_image" class="form-input" placeholder="https://...">
+    </div>
+
+    <div style="display:flex;gap:10px;margin-top:24px;justify-content:flex-end;">
+      <a href="majors.html" class="btn btn-secondary">Hủy</a>
+      <button class="btn btn-primary" onclick="save()">💾 Lưu ngành</button>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/supabase-client.js"></script>
+<script src="../assets/js/cms-service.js"></script>
+<script src="_guard.js"></script>
+<script>
+let currentId = null;
+
+(async function () {
+  const profile = await Admin.requireAdmin();
+  if (!profile) return;
+  document.getElementById('sidebar-content').innerHTML = Admin.buildSidebar('majors', profile);
+
+  const params = new URLSearchParams(location.search);
+  currentId = params.get('id');
+  if (currentId) {
+    document.getElementById('page-title').textContent = '✏️ Sửa ngành nghề';
+    await loadMajor(currentId);
+  }
+
+  // Auto-slug
+  let slugTouched = false;
+  document.getElementById('slug').addEventListener('input', () => slugTouched = true);
+  document.getElementById('name_vi').addEventListener('input', () => {
+    if (!slugTouched && !currentId) {
+      document.getElementById('slug').value = window.CMS.slugify(document.getElementById('name_vi').value);
+    }
+  });
+})();
+
+async function loadMajor(id) {
+  try {
+    const sb = window.supabaseClient;
+    const { data, error } = await sb.from('majors').select('*').eq('id', id).single();
+    if (error) throw error;
+    if (!data) throw new Error('Không tìm thấy ngành');
+
+    document.getElementById('name_vi').value = data.name_vi || '';
+    document.getElementById('name_en').value = data.name_en || '';
+    document.getElementById('slug').value = data.slug || '';
+    document.getElementById('category').value = data.category || 'khoi_A';
+    document.getElementById('description').value = data.description || '';
+    document.getElementById('job_prospects').value = data.job_prospects || '';
+    document.getElementById('salary_range').value = data.salary_range || '';
+    document.getElementById('required_skills').value = data.required_skills || '';
+    document.getElementById('universities').value = (data.top_universities || []).join('\n');
+    document.getElementById('cover_image').value = data.cover_image || '';
+  } catch (err) {
+    Admin.showToast('Lỗi: ' + err.message, 'error');
+    setTimeout(() => location.href = 'majors.html', 1500);
+  }
+}
+
+async function save() {
+  const name_vi = document.getElementById('name_vi').value.trim();
+  if (!name_vi) {
+    Admin.showToast('Vui lòng nhập tên ngành', 'warn');
+    return;
+  }
+
+  let slug = document.getElementById('slug').value.trim();
+  if (!slug) slug = window.CMS.slugify(name_vi);
+
+  const universities = document.getElementById('universities').value
+    .split('\n').map(s => s.trim()).filter(Boolean);
+
+  const payload = {
+    name_vi,
+    name_en: document.getElementById('name_en').value.trim() || null,
+    slug,
+    category: document.getElementById('category').value,
+    description: document.getElementById('description').value.trim() || null,
+    job_prospects: document.getElementById('job_prospects').value.trim() || null,
+    salary_range: document.getElementById('salary_range').value.trim() || null,
+    required_skills: document.getElementById('required_skills').value.trim() || null,
+    top_universities: universities,
+    cover_image: document.getElementById('cover_image').value.trim() || null
+  };
+
+  try {
+    if (currentId) {
+      await window.CMS.updateMajor(currentId, payload);
+      Admin.showToast('Đã cập nhật ngành', 'success');
+    } else {
+      await window.CMS.createMajor(payload);
+      Admin.showToast('Đã tạo ngành mới', 'success');
+    }
+    setTimeout(() => location.href = 'majors.html', 800);
+  } catch (err) {
+    Admin.showToast('Lỗi: ' + err.message, 'error');
+  }
+}
+</script>
+
+</body>
+</html>

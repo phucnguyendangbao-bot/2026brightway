@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dashboard – BrightWay Admin</title>
+<link rel="icon" type="image/png" href="../images/img-a84652d05567.png">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_layout.css">
+</head>
+<body>
+
+<button class="mobile-toggle" onclick="Admin.toggleSidebar()">☰</button>
+
+<aside class="sidebar" id="sidebar">
+  <div id="sidebar-content"></div>
+</aside>
+
+<main class="main">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">👋 Xin chào!</h1>
+      <p class="page-subtitle">Tổng quan hoạt động của trang hướng nghiệp</p>
+    </div>
+    <div class="page-actions">
+      <a href="post-edit.html" class="btn btn-primary">✍️ Viết bài mới</a>
+      <a href="../index.html" target="_blank" class="btn btn-secondary">🌐 Xem trang</a>
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-card-icon">📝</div>
+      <div class="stat-card-value" id="stat-posts">—</div>
+      <div class="stat-card-label">Tổng bài viết</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-icon">✅</div>
+      <div class="stat-card-value" id="stat-published">—</div>
+      <div class="stat-card-label">Đã đăng</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-icon">📝</div>
+      <div class="stat-card-value" id="stat-drafts">—</div>
+      <div class="stat-card-label">Bản nháp</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-icon">🎯</div>
+      <div class="stat-card-value" id="stat-majors">—</div>
+      <div class="stat-card-label">Ngành nghề</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-icon">👁️</div>
+      <div class="stat-card-value" id="stat-views">—</div>
+      <div class="stat-card-label">Lượt xem bài viết</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:24px;">
+    <div class="card-header">
+      <div class="card-title">📰 Bài viết mới nhất</div>
+      <a href="posts.html" class="btn btn-ghost">Xem tất cả →</a>
+    </div>
+    <div id="recent-posts">
+      <div style="text-align:center;padding:40px;"><div class="spinner"></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">🎯 Ngành nghề mới nhất</div>
+      <a href="majors.html" class="btn btn-ghost">Xem tất cả →</a>
+    </div>
+    <div id="recent-majors">
+      <div style="text-align:center;padding:40px;"><div class="spinner"></div></div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/supabase-client.js"></script>
+<script src="../assets/js/cms-service.js"></script>
+<script src="_guard.js"></script>
+<script>
+(async function () {
+  const profile = await Admin.requireAdmin();
+  if (!profile) return;
+  document.getElementById('sidebar-content').innerHTML = Admin.buildSidebar('dashboard', profile);
+
+  const sb = window.supabaseClient;
+
+  try {
+    // Posts stats
+    const { data: posts } = await sb.from('posts').select('id, status, views_count');
+    if (posts) {
+      document.getElementById('stat-posts').textContent = posts.length;
+      document.getElementById('stat-published').textContent = posts.filter(p => p.status === 'published').length;
+      document.getElementById('stat-drafts').textContent = posts.filter(p => p.status === 'draft').length;
+      document.getElementById('stat-views').textContent = posts.reduce((sum, p) => sum + (p.views_count || 0), 0);
+    }
+
+    // Majors stats
+    const { count: majorsCount } = await sb.from('majors').select('*', { count: 'exact', head: true });
+    document.getElementById('stat-majors').textContent = majorsCount || 0;
+
+    // Recent posts
+    const { data: recent } = await sb
+      .from('posts')
+      .select('id, slug, title, status, category, views_count, published_at, created_at')
+      .order('created_at', { ascending: false })
+      .limit(5);
+
+    const recentDiv = document.getElementById('recent-posts');
+    if (!recent || !recent.length) {
+      recentDiv.innerHTML = `
+        <div class="state" style="padding:30px;">
+          <div class="state-icon">📭</div>
+          <div class="state-desc">Chưa có bài viết nào</div>
+          <a href="post-edit.html" class="btn btn-primary">✍️ Viết bài đầu tiên</a>
+        </div>`;
+    } else {
+      recentDiv.innerHTML = `
+        <div class="table-wrapper">
+          <table class="table">
+            <thead><tr><th>Tiêu đề</th><th>Danh mục</th><th>Trạng thái</th><th>Lượt xem</th><th></th></tr></thead>
+            <tbody>${recent.map(p => `
+              <tr>
+                <td><strong>${Admin.escapeHtml(p.title)}</strong></td>
+                <td>${Admin.categoryBadge(p.category)}</td>
+                <td>${Admin.statusBadge(p.status)}</td>
+                <td>${p.views_count || 0}</td>
+                <td><a href="post-edit.html?id=${p.id}" class="btn btn-ghost">Sửa →</a></td>
+              </tr>`).join('')}
+            </tbody>
+          </table>
+        </div>`;
+    }
+
+    // Recent majors
+    const { data: recentMajors } = await sb
+      .from('majors')
+      .select('id, slug, name_vi, category, views_count')
+      .order('name_vi')
+      .limit(5);
+
+    const recentMajorsDiv = document.getElementById('recent-majors');
+    if (!recentMajors || !recentMajors.length) {
+      recentMajorsDiv.innerHTML = `
+        <div class="state" style="padding:30px;">
+          <div class="state-icon">🎯</div>
+          <div class="state-desc">Chưa có ngành nào</div>
+        </div>`;
+    } else {
+      recentMajorsDiv.innerHTML = `
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;">
+          ${recentMajors.map(m => `
+            <a href="major-edit.html?id=${m.id}" style="padding:14px;border-radius:10px;background:rgba(99,102,241,0.05);display:flex;justify-content:space-between;align-items:center;">
+              <div>
+                <div style="font-weight:700;">${Admin.escapeHtml(m.name_vi)}</div>
+                <div style="font-size:12px;color:var(--text-soft);">👁️ ${m.views_count || 0} lượt xem</div>
+              </div>
+              <span style="color:var(--text-soft);">→</span>
+            </a>`).join('')}
+        </div>`;
+    }
+  } catch (err) {
+    console.error(err);
+    Admin.showToast('Lỗi tải dashboard: ' + err.message, 'error');
+  }
+})();
+</script>
+
+</body>
+</html>

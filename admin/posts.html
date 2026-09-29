@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quản lý bài viết – BrightWay Admin</title>
+<link rel="icon" type="image/png" href="../images/img-a84652d05567.png">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_layout.css">
+</head>
+<body>
+
+<button class="mobile-toggle" onclick="Admin.toggleSidebar()">☰</button>
+
+<aside class="sidebar" id="sidebar">
+  <div id="sidebar-content"></div>
+</aside>
+
+<main class="main">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">📝 Quản lý bài viết</h1>
+      <p class="page-subtitle">Tạo, sửa, ẩn bài viết hướng nghiệp</p>
+    </div>
+    <div class="page-actions">
+      <a href="post-edit.html" class="btn btn-primary">✍️ Viết bài mới</a>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:20px;">
+    <div class="card-header">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="btn btn-ghost filter-btn active" data-status="all">Tất cả</button>
+        <button class="btn btn-ghost filter-btn" data-status="published">Đã đăng</button>
+        <button class="btn btn-ghost filter-btn" data-status="draft">Bản nháp</button>
+        <button class="btn btn-ghost filter-btn" data-status="archived">Đã ẩn</button>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <select id="filter-cat" class="form-select" style="width:auto;padding:8px 12px;">
+          <option value="">Tất cả danh mục</option>
+          <option value="chia_se">Chia sẻ</option>
+          <option value="tu_van">Tư vấn</option>
+          <option value="su_kien">Sự kiện</option>
+          <option value="khoi_thpt">Khối THPT</option>
+          <option value="nganh_hoc">Ngành học</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="posts-container">
+      <div class="state"><div class="spinner"></div><p style="margin-top:16px;">Đang tải...</p></div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/supabase-client.js"></script>
+<script src="../assets/js/cms-service.js"></script>
+<script src="_guard.js"></script>
+<script>
+let currentStatus = 'all';
+let currentCategory = '';
+
+(async function () {
+  const profile = await Admin.requireAdmin();
+  if (!profile) return;
+  document.getElementById('sidebar-content').innerHTML = Admin.buildSidebar('posts', profile);
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentStatus = btn.dataset.status;
+      loadPosts();
+    });
+  });
+
+  document.getElementById('filter-cat').addEventListener('change', e => {
+    currentCategory = e.target.value;
+    loadPosts();
+  });
+
+  await loadPosts();
+})();
+
+async function loadPosts() {
+  const container = document.getElementById('posts-container');
+  container.innerHTML = `<div class="state"><div class="spinner"></div></div>`;
+
+  try {
+    const sb = window.supabaseClient;
+    let q = sb
+      .from('posts')
+      .select('id, slug, title, category, status, views_count, published_at, created_at, updated_at, author_id')
+      .order('created_at', { ascending: false });
+
+    if (currentStatus !== 'all') q = q.eq('status', currentStatus);
+    if (currentCategory) q = q.eq('category', currentCategory);
+
+    const { data: posts, error } = await q;
+    if (error) throw error;
+
+    if (!posts || !posts.length) {
+      container.innerHTML = `
+        <div class="state">
+          <div class="state-icon">📭</div>
+          <div class="state-title">Chưa có bài viết nào</div>
+          <div class="state-desc">Bắt đầu bằng cách viết bài đầu tiên</div>
+          <a href="post-edit.html" class="btn btn-primary">✍️ Viết bài mới</a>
+        </div>`;
+      return;
+    }
+
+    container.innerHTML = `
+      <div class="table-wrapper">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Tiêu đề</th>
+              <th>Danh mục</th>
+              <th>Trạng thái</th>
+              <th>Ngày tạo</th>
+              <th>Lượt xem</th>
+              <th style="text-align:right;">Thao tác</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${posts.map(p => `
+              <tr>
+                <td>
+                  <strong>${Admin.escapeHtml(p.title)}</strong>
+                  ${p.summary ? `<div style="color:var(--text-soft);font-size:13px;margin-top:4px;">${Admin.escapeHtml(p.summary.slice(0, 80))}${p.summary.length > 80 ? '...' : ''}</div>` : ''}
+                </td>
+                <td>${Admin.categoryBadge(p.category)}</td>
+                <td>${Admin.statusBadge(p.status)}</td>
+                <td>${Admin.formatDate(p.created_at)}</td>
+                <td>${p.views_count || 0}</td>
+                <td>
+                  <div class="table-actions" style="justify-content:flex-end;">
+                    ${p.status === 'published' ? `<a href="../news-detail.html?slug=${p.slug}" target="_blank" class="btn btn-ghost" title="Xem">👁️</a>` : ''}
+                    <a href="post-edit.html?id=${p.id}" class="btn btn-ghost" title="Sửa">✏️</a>
+                    <button class="btn btn-ghost" onclick="toggleStatus('${p.id}', '${p.status}')" title="${p.status === 'published' ? 'Ẩn' : 'Đăng'}">${p.status === 'published' ? '🔒' : '🚀'}</button>
+                    <button class="btn btn-ghost" style="color:var(--danger);" onclick="deletePost('${p.id}', '${Admin.escapeHtml(p.title)}')" title="Xoá">🗑️</button>
+                  </div>
+                </td>
+              </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>`;
+  } catch (err) {
+    console.error(err);
+    container.innerHTML = `<div class="state"><div class="state-icon">⚠️</div><div class="state-desc">${Admin.escapeHtml(err.message)}</div></div>`;
+  }
+}
+
+async function toggleStatus(id, currentStatus) {
+  const newStatus = currentStatus === 'published' ? 'archived' : 'published';
+  const action = currentStatus === 'published' ? 'ẩn' : 'đăng';
+  const ok = await Admin.confirmAction(`Bạn có chắc muốn ${action} bài viết này?`, `${action.charAt(0).toUpperCase()+action.slice(1)} bài viết`);
+  if (!ok) return;
+  try {
+    const sb = window.supabaseClient;
+    const update = { status: newStatus };
+    if (newStatus === 'published') update.published_at = new Date().toISOString();
+    const { error } = await sb.from('posts').update(update).eq('id', id);
+    if (error) throw error;
+    Admin.showToast(`Đã ${action} bài viết`, 'success');
+    loadPosts();
+  } catch (err) {
+    Admin.showToast('Lỗi: ' + err.message, 'error');
+  }
+}
+
+async function deletePost(id, title) {
+  const ok = await Admin.confirmAction(`Xoá vĩnh viễn bài "${title}"? Không thể hoàn tác.`, 'Xoá bài viết');
+  if (!ok) return;
+  try {
+    await window.CMS.deletePost(id);
+    Admin.showToast('Đã xoá bài viết', 'success');
+    loadPosts();
+  } catch (err) {
+    Admin.showToast('Lỗi: ' + err.message, 'error');
+  }
+}
+</script>
+
+</body>
+</html>

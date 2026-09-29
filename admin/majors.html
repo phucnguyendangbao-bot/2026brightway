@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quản lý ngành nghề – BrightWay Admin</title>
+<link rel="icon" type="image/png" href="../images/img-a84652d05567.png">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_layout.css">
+</head>
+<body>
+
+<button class="mobile-toggle" onclick="Admin.toggleSidebar()">☰</button>
+
+<aside class="sidebar" id="sidebar">
+  <div id="sidebar-content"></div>
+</aside>
+
+<main class="main">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">🎯 Quản lý ngành nghề</h1>
+      <p class="page-subtitle">Thêm, sửa, xoá các ngành trong danh mục</p>
+    </div>
+    <div class="page-actions">
+      <a href="major-edit.html" class="btn btn-primary">➕ Thêm ngành</a>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:20px;">
+    <div class="card-header">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="btn btn-ghost filter-btn active" data-cat="">Tất cả</button>
+        <button class="btn btn-ghost filter-btn" data-cat="khoi_A">Khối A</button>
+        <button class="btn btn-ghost filter-btn" data-cat="khoi_B">Khối B</button>
+        <button class="btn btn-ghost filter-btn" data-cat="khoi_C">Khối C</button>
+        <button class="btn btn-ghost filter-btn" data-cat="khoi_D">Khối D</button>
+      </div>
+    </div>
+
+    <div id="majors-container">
+      <div class="state"><div class="spinner"></div></div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/supabase-client.js"></script>
+<script src="../assets/js/cms-service.js"></script>
+<script src="_guard.js"></script>
+<script>
+let currentCategory = '';
+
+(async function () {
+  const profile = await Admin.requireAdmin();
+  if (!profile) return;
+  document.getElementById('sidebar-content').innerHTML = Admin.buildSidebar('majors', profile);
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentCategory = btn.dataset.cat;
+      loadMajors();
+    });
+  });
+
+  await loadMajors();
+})();
+
+async function loadMajors() {
+  const container = document.getElementById('majors-container');
+  container.innerHTML = `<div class="state"><div class="spinner"></div></div>`;
+  try {
+    const majors = await window.CMS.listMajors({ category: currentCategory || null });
+    if (!majors.length) {
+      container.innerHTML = `
+        <div class="state">
+          <div class="state-icon">🎯</div>
+          <div class="state-title">Chưa có ngành nào</div>
+          <a href="major-edit.html" class="btn btn-primary">➕ Thêm ngành đầu tiên</a>
+        </div>`;
+      return;
+    }
+    container.innerHTML = `
+      <div class="table-wrapper">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Tên ngành</th>
+              <th>Khối</th>
+              <th>Cơ hội việc làm</th>
+              <th>Số trường</th>
+              <th>Lượt xem</th>
+              <th style="text-align:right;">Thao tác</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${majors.map(m => `
+              <tr>
+                <td>
+                  <strong>${Admin.escapeHtml(m.name_vi)}</strong>
+                  ${m.name_en ? `<div style="color:var(--text-soft);font-size:13px;">${Admin.escapeHtml(m.name_en)}</div>` : ''}
+                </td>
+                <td>${Admin.categoryBadge(m.category)}</td>
+                <td style="max-width:280px;">${Admin.escapeHtml((m.job_prospects || '').slice(0, 80))}${(m.job_prospects||'').length > 80 ? '...' : ''}</td>
+                <td>${(m.top_universities || []).length}</td>
+                <td>${m.views_count || 0}</td>
+                <td>
+                  <div class="table-actions" style="justify-content:flex-end;">
+                    <a href="../major-detail.html?slug=${m.slug}" target="_blank" class="btn btn-ghost" title="Xem">👁️</a>
+                    <a href="major-edit.html?id=${m.id}" class="btn btn-ghost" title="Sửa">✏️</a>
+                    <button class="btn btn-ghost" style="color:var(--danger);" onclick="deleteMajor('${m.id}', '${Admin.escapeHtml(m.name_vi)}')" title="Xoá">🗑️</button>
+                  </div>
+                </td>
+              </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>`;
+  } catch (err) {
+    container.innerHTML = `<div class="state"><div class="state-icon">⚠️</div><div class="state-desc">${Admin.escapeHtml(err.message)}</div></div>`;
+  }
+}
+
+async function deleteMajor(id, name) {
+  const ok = await Admin.confirmAction(`Xoá vĩnh viễn ngành "${name}"?`, 'Xoá ngành nghề');
+  if (!ok) return;
+  try {
+    await window.CMS.deleteMajor(id);
+    Admin.showToast('Đã xoá ngành', 'success');
+    loadMajors();
+  } catch (err) {
+    Admin.showToast('Lỗi: ' + err.message, 'error');
+  }
+}
+</script>
+
+</body>
+</html>
