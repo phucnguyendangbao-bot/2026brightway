@@ -1,8 +1,8 @@
 /* ════════════════════════════════════════════════════════
-   AUTH — Google OAuth + Email/password
-   Không có OTP. Đơn giản, chỉ 2 cách đăng nhập:
-   1. Google (1 cú click)
-   2. Email + password (admin cấp tài khoản sẵn)
+   AUTH — Google OAuth + Email/Password
+   KHÔNG có OTP. Đơn giản:
+   1. Google: 1 cú click
+   2. Email + password: admin tạo tài khoản sẵn → user nhập email/pass → vào
    ════════════════════════════════════════════════════════ */
 (function () {
   'use strict';
@@ -74,24 +74,37 @@
     return sb.auth.signInWithPassword({ email, password });
   }
 
-  // ─── Admin: tạo user mới (chỉ admin dùng) ───
+  // ─── Admin: tạo user mới (gọi RPC) ───
   async function adminCreateUser(email, password, fullName, role = 'student') {
-    // Gọi RPC function để tạo user + profile
     const sb = await window.getSupabase();
-    const { data: userId, error: rpcErr } = await sb.rpc('signin_with_email', {
-      email_input: email
-    });
-    if (rpcErr) throw rpcErr;
-
-    // Update profile
-    const { error } = await sb.from('profiles').upsert({
-      id: userId,
-      full_name: fullName || email.split('@')[0],
-      role
+    const { data, error } = await sb.rpc('admin_create_user', {
+      email_input: email,
+      password_input: password,
+      full_name_input: fullName,
+      role_input: role
     });
     if (error) throw error;
+    return data;
+  }
 
-    return userId;
+  // ─── Admin: reset password user ───
+  async function adminResetPassword(userId, newPassword) {
+    const sb = await window.getSupabase();
+    const { data, error } = await sb.rpc('admin_set_password', {
+      user_id_input: userId,
+      new_password_input: newPassword
+    });
+    if (error) throw error;
+    return data;
+  }
+
+  // ─── User tự đổi mật khẩu ───
+  async function changeMyPassword(currentPassword, newPassword) {
+    const sb = await window.getSupabase();
+    // Cập nhật qua Supabase Auth
+    const { error } = await sb.auth.updateUser({ password: newPassword });
+    if (error) throw error;
+    return true;
   }
 
   // ─── Sign out ───
@@ -127,18 +140,11 @@
 
   // ─── Expose ───
   window.BWAuth = {
-    init,
-    on,
-    getUser,
-    getProfile,
-    isSignedIn,
-    requireAuth,
-    fetchProfile,
-    signInWithGoogle,
-    signInWithEmail,
-    adminCreateUser,
-    signOut,
-    updateProfile
+    init, on,
+    getUser, getProfile, isSignedIn, requireAuth, fetchProfile,
+    signInWithGoogle, signInWithEmail,
+    adminCreateUser, adminResetPassword, changeMyPassword,
+    signOut, updateProfile
   };
 
   // Auto-init

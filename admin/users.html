@@ -20,7 +20,7 @@
   <div class="page-header">
     <div>
       <h1 class="page-title">👥 Quản lý tài khoản</h1>
-      <p class="page-subtitle">Tạo tài khoản cho giáo viên/học sinh — chỉ cần email, không cần OTP</p>
+      <p class="page-subtitle">Tạo tài khoản email + password cho giáo viên/học sinh — không cần OTP</p>
     </div>
     <div class="page-actions">
       <button class="btn btn-primary" onclick="openCreateModal()">➕ Tạo tài khoản mới</button>
@@ -42,11 +42,17 @@
 <div id="createBackdrop" class="modal-backdrop" style="display:none;">
   <div class="modal" style="max-width:480px;">
     <div class="modal-title">➕ Tạo tài khoản mới</div>
-    <div class="modal-desc">User sẽ đăng nhập được ngay bằng email (không cần OTP, không cần verify).</div>
+    <div class="modal-desc">User sẽ đăng nhập được ngay bằng email + password.</div>
 
     <div class="form-group">
       <label class="form-label">Email <span class="required">*</span></label>
       <input type="email" id="newEmail" class="form-input" placeholder="gv1@truong.edu.vn" required>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Mật khẩu <span class="required">*</span></label>
+      <input type="text" id="newPassword" class="form-input" placeholder="brightway2026" value="brightway2026">
+      <p class="form-hint">Mặc định: brightway2026 (user có thể đổi sau khi đăng nhập)</p>
     </div>
 
     <div class="form-group">
@@ -70,11 +76,28 @@
   </div>
 </div>
 
+<!-- Modal reset password -->
+<div id="resetBackdrop" class="modal-backdrop" style="display:none;">
+  <div class="modal" style="max-width:420px;">
+    <div class="modal-title">🔑 Đặt lại mật khẩu</div>
+    <div class="modal-desc">Đặt mật khẩu mới cho <strong id="resetUserEmail"></strong></div>
+    <div class="form-group">
+      <label class="form-label">Mật khẩu mới</label>
+      <input type="text" id="newResetPassword" class="form-input" value="brightway2026">
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeResetModal()">Hủy</button>
+      <button class="btn btn-primary" onclick="submitResetPassword()">💾 Đặt lại</button>
+    </div>
+  </div>
+</div>
+
 <script src="../assets/js/supabase-client.js"></script>
 <script src="../assets/js/cms-service.js"></script>
 <script src="_guard.js"></script>
 <script>
 let allUsers = [];
+let resetUserId = null;
 
 (async function () {
   const profile = await Admin.requireAdmin();
@@ -89,15 +112,13 @@ async function loadUsers() {
   const container = document.getElementById('users-container');
   try {
     const sb = window.supabaseClient;
-    const { data, error } = await sb
-      .from('profiles')
-      .select('id, full_name, role, created_at, updated_at')
-      .order('created_at', { ascending: false });
+    // Gọi RPC để lấy cả email (vì auth.users không accessible từ anon key)
+    const { data, error } = await sb.rpc('admin_list_users');
     if (error) throw error;
     allUsers = data || [];
     renderUsers();
   } catch (err) {
-    container.innerHTML = `<div class="state"><div class="state-icon">⚠️</div><div class="state-desc">${Admin.escapeHtml(err.message)}</div></div>`;
+    container.innerHTML = `<div class="state"><div class="state-icon">⚠️</div><div class="state-desc">${Admin.escapeHtml(err.message)}</div><p style="margin-top:12px;font-size:13px;color:var(--text-soft);">Bạn cần chạy SQL setup trước. Mở supabase/admin-functions.sql</p></div>`;
   }
 }
 
@@ -106,8 +127,9 @@ function renderUsers() {
   const q = (document.getElementById('searchBox').value || '').toLowerCase();
   const filtered = allUsers.filter(u =>
     !q ||
+    (u.email || '').toLowerCase().includes(q) ||
     (u.full_name || '').toLowerCase().includes(q) ||
-    u.role.toLowerCase().includes(q)
+    (u.role || '').toLowerCase().includes(q)
   );
 
   if (!filtered.length) {
@@ -119,31 +141,35 @@ function renderUsers() {
     <div class="table-wrapper">
       <table class="table">
         <thead>
-          <tr><th>Họ tên</th><th>Vai trò</th><th>Ngày tạo</th><th style="text-align:right;">Thao tác</th></tr>
+          <tr><th>Email</th><th>Họ tên</th><th>Vai trò</th><th>Ngày tạo</th><th style="text-align:right;">Thao tác</th></tr>
         </thead>
         <tbody>
           ${filtered.map(u => `
             <tr>
               <td>
-                <strong>${Admin.escapeHtml(u.full_name || '—')}</strong>
-                <div style="color:var(--text-soft);font-size:13px;">${Admin.escapeHtml(u.id)}</div>
+                <strong style="font-size:13px;">${Admin.escapeHtml(u.email || '—')}</strong>
               </td>
+              <td>${Admin.escapeHtml(u.full_name || '—')}</td>
               <td>${roleBadge(u.role)}</td>
-              <td>${Admin.formatDate(u.created_at)}</td>
+              <td style="font-size:13px;color:var(--text-soft);">${Admin.formatDate(u.created_at)}</td>
               <td>
-                <div class="table-actions" style="justify-content:flex-end;">
-                  <select onchange="changeRole('${u.id}', this.value)" class="form-select" style="padding:6px 10px;font-size:13px;">
+                <div class="table-actions" style="justify-content:flex-end;gap:6px;">
+                  <select onchange="changeRole('${u.id}', this.value)" class="form-select" style="padding:6px 8px;font-size:12px;width:auto;">
                     <option value="student" ${u.role==='student'?'selected':''}>HS</option>
                     <option value="teacher" ${u.role==='teacher'?'selected':''}>GV</option>
                     <option value="admin" ${u.role==='admin'?'selected':''}>Admin</option>
                   </select>
-                  <button class="btn btn-ghost" style="color:var(--danger);" onclick="deleteUser('${u.id}', '${Admin.escapeHtml(u.full_name||'')}')">🗑️</button>
+                  <button class="btn btn-ghost" title="Đặt lại mật khẩu" onclick="openResetModal('${u.id}', '${Admin.escapeHtml(u.email||'')}')">🔑</button>
+                  <button class="btn btn-ghost" title="Xoá" style="color:var(--danger);" onclick="deleteUser('${u.id}', '${Admin.escapeHtml(u.email||u.full_name||'')}')">🗑️</button>
                 </div>
               </td>
             </tr>`).join('')}
         </tbody>
       </table>
-    </div>`;
+    </div>
+    <p style="margin-top:16px;font-size:13px;color:var(--text-soft);">
+      💡 Mật khẩu mặc định khi tạo: <code style="background:rgba(99,102,241,0.1);padding:2px 8px;border-radius:6px;">brightway2026</code>
+    </p>`;
 }
 
 function roleBadge(role) {
@@ -167,6 +193,7 @@ function closeCreateModal() {
 
 async function createUser() {
   const email = document.getElementById('newEmail').value.trim();
+  const password = document.getElementById('newPassword').value.trim();
   const name = document.getElementById('newName').value.trim();
   const role = document.getElementById('newRole').value;
 
@@ -174,17 +201,22 @@ async function createUser() {
     Admin.showToast('Vui lòng nhập email hợp lệ', 'warn');
     return;
   }
+  if (!password || password.length < 6) {
+    Admin.showToast('Mật khẩu phải ít nhất 6 ký tự', 'warn');
+    return;
+  }
 
   try {
     const sb = window.supabaseClient;
     const { data, error } = await sb.rpc('admin_create_user', {
       email_input: email,
+      password_input: password,
       full_name_input: name,
       role_input: role
     });
     if (error) throw error;
 
-    Admin.showToast(`Đã tạo tài khoản ${email}`, 'success');
+    Admin.showToast(`Đã tạo tài khoản ${email} (password: ${password})`, 'success');
     closeCreateModal();
     await loadUsers();
   } catch (err) {
@@ -204,15 +236,43 @@ async function changeRole(userId, newRole) {
   }
 }
 
-async function deleteUser(userId, name) {
-  const ok = await Admin.confirmAction(`Xoá tài khoản "${name || userId}"?`, 'Xoá tài khoản');
+function openResetModal(userId, email) {
+  resetUserId = userId;
+  document.getElementById('resetUserEmail').textContent = email;
+  document.getElementById('resetBackdrop').style.display = 'flex';
+}
+function closeResetModal() {
+  document.getElementById('resetBackdrop').style.display = 'none';
+  resetUserId = null;
+}
+async function submitResetPassword() {
+  const newPwd = document.getElementById('newResetPassword').value.trim();
+  if (!newPwd || newPwd.length < 6) {
+    Admin.showToast('Mật khẩu phải ít nhất 6 ký tự', 'warn');
+    return;
+  }
+  try {
+    const sb = window.supabaseClient;
+    const { error } = await sb.rpc('admin_set_password', {
+      user_id_input: resetUserId,
+      new_password_input: newPwd
+    });
+    if (error) throw error;
+    Admin.showToast(`Đã đặt lại mật khẩu`, 'success');
+    closeResetModal();
+  } catch (err) {
+    Admin.showToast('Lỗi: ' + err.message, 'error');
+  }
+}
+
+async function deleteUser(userId, label) {
+  const ok = await Admin.confirmAction(`Xoá tài khoản "${label}"?`, 'Xoá');
   if (!ok) return;
   try {
     const sb = window.supabaseClient;
-    // Xoá profile trước (không thể xoá auth.users qua anon key)
     const { error } = await sb.from('profiles').delete().eq('id', userId);
     if (error) throw error;
-    Admin.showToast('Đã xoá profile (auth.user vẫn còn trong DB)', 'success');
+    Admin.showToast('Đã xoá profile', 'success');
     await loadUsers();
   } catch (err) {
     Admin.showToast('Lỗi: ' + err.message, 'error');

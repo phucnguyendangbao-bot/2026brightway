@@ -1,8 +1,8 @@
 /* ════════════════════════════════════════════════════════
-   LOGIN PAGE — Google OAuth + Email Magic Link
+   LOGIN PAGE — Google OAuth + Email/Password
    - Google: 1 cú click → vào thẳng
-   - Email: nhập email → nhận link qua email → click → vào
-   - KHÔNG có OTP, KHÔNG có password
+   - Email: nhập email + password → vào thẳng
+   - KHÔNG có OTP
    ════════════════════════════════════════════════════════ */
 (function () {
   'use strict';
@@ -39,37 +39,29 @@
     });
   }
 
-  // ─── Email Magic Link ───
+  // ─── Email + Password ───
   const emailForm = $('emailForm');
   if (emailForm) {
     emailForm.addEventListener('submit', async e => {
       e.preventDefault();
       const email = $('emailOnly').value.trim();
-      if (!email) return;
+      const password = $('emailPassword').value;
+      if (!email || !password) return;
 
       const submitBtn = $('emailSubmit');
       try {
         submitBtn.disabled = true;
-        showStatus('📧 Đang gửi link đăng nhập...', 'info');
+        showStatus('🔄 Đang đăng nhập...', 'info');
 
-        // Gọi RPC để tạo user (nếu chưa có) + gửi magic link
-        // signInWithOtp với shouldCreateUser=true sẽ auto tạo user nếu chưa tồn tại
-        const sb = await window.getSupabase();
-        const { error } = await sb.auth.signInWithOtp({
-          email,
-          options: {
-            emailRedirectTo: window.location.origin + '/index.html',
-            shouldCreateUser: true
-          }
-        });
-
+        const { error } = await window.BWAuth.signInWithEmail(email, password);
         if (error) throw error;
 
-        showStatus('✅ Đã gửi link tới ' + email + '. Mở email và click link để vào.', 'success');
+        showStatus('✅ Đăng nhập thành công!', 'success');
+        setTimeout(() => redirectAfterLogin(), 800);
       } catch (e) {
         let msg = e.message;
-        if (msg.includes('rate limit')) msg = 'Gửi quá nhiều. Vui lòng đợi 1 phút.';
-        if (msg.includes('invalid email')) msg = 'Email không hợp lệ';
+        if (msg.includes('Invalid login')) msg = 'Email hoặc mật khẩu không đúng';
+        if (msg.includes('Email not confirmed')) msg = 'Email chưa xác nhận — liên hệ admin';
         showStatus('❌ ' + msg, 'error');
         submitBtn.disabled = false;
       }
