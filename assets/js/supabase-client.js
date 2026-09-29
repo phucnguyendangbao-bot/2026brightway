@@ -8,8 +8,8 @@
 
 window.SUPABASE_CONFIG = window.SUPABASE_CONFIG || {
   // ⬇️ CẤU HÌNH ĐÚNG CHO PROJECT CỦA BẠN
-  url: 'https://nybtwbkkbiqedqqxqcc.supabase.co',
-  anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55YnR3YmtrYmlxZWRxcXhxY2MiLCJyb2xlIjoiYW5vbiIsImlhdCI6MTc5MDI2MDkyNywiZXhwIjoyMTA1ODM2OTI3fQ.Qgp9vulhBlmjXqu0ElbSXGXdabxJkElrnlETzPHm3mE'
+  url: 'https://nybtwbkkbiqedqqqxqcc.supabase.co',
+  anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55YnR3YmtrYmlxZWRxcXF4cWNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAyNjA5MjcsImV4cCI6MjEwNTgzNjkyN30.Qgp9vulhBlmjXqu0ElbSXGXdabxJkElrnlETzPHm3mE'
 };
 
 (function () {
