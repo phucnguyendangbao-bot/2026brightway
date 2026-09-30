@@ -80,10 +80,11 @@ a{color:inherit;text-decoration:none;}
 @keyframes spin{to{transform:rotate(360deg);}}
 
 /* Hàng logo các trường đào tạo trong card */
-.major-uni-row{display:flex;align-items:center;gap:6px;margin-top:8px;flex-wrap:wrap;}
-.major-uni-logos{display:flex;gap:-8px;}
-.major-uni-logos .uni-mini-logo{margin-right:-8px;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.08);}
-.major-uni-more{font-size:11px;font-weight:700;color:var(--text-soft);background:rgba(99,102,241,0.1);padding:2px 8px;border-radius:99px;}
+.major-uni-row{display:flex;align-items:center;gap:6px;margin-top:10px;flex-wrap:wrap;}
+.major-uni-logos{display:flex;}
+.major-uni-logos .uni-mini-logo{width:32px;height:32px;margin-right:-10px;border:2px solid #fff;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,0.08);object-fit:contain;background:#fff;padding:2px;}
+.major-uni-logos .uni-mini-fallback{background:linear-gradient(135deg,#6366f1,#a78bfa);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;letter-spacing:0.5px;}
+.major-uni-more{font-size:11px;font-weight:700;color:var(--text-soft);background:rgba(99,102,241,0.1);padding:2px 8px;border-radius:99px;margin-left:14px;}
 
 @media(max-width:768px){
   .hero h1{font-size:26px;}
@@ -174,7 +175,15 @@ async function loadMajors() {
       const prospects = m.job_prospects ? `<span class="major-meta-item">💼 Cơ hội việc làm</span>` : '';
       // Hiển thị logo các trường đào tạo thật
       const uniList = m.top_universities || [];
-      const uniLogos = uniList.slice(0, 5).map(u => window.UNILogoImg(u, { size: 36, class: 'uni-mini-logo' })).join('');
+      const uniLogos = uniList.slice(0, 5).map(u => {
+        const info = window.UNILogo(u);
+        if (info) {
+          return `<img src="${info.logo}" alt="${info.name}" class="uni-mini-logo" title="${info.name}" onerror="this.onerror=null;this.src='${info.fallback}'" />`;
+        }
+        // Fallback: badge gradient với initials
+        const initials = (u || '?').replace(/ĐH\s*/i, '').split(' ').slice(0,2).map(w=>w[0]).join('').toUpperCase();
+        return `<div class="uni-mini-logo uni-mini-fallback" title="${escapeHtml(u)}">${initials}</div>`;
+      }).join('');
       const unis = uniList.length ? `
         <div class="major-uni-row">
           <div class="major-uni-logos">${uniLogos}</div>

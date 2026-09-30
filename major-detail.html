@@ -62,6 +62,15 @@ h1.title{font-family:var(--font-display);font-weight:900;font-size:38px;line-hei
 .uni-icon{font-size:20px;flex-shrink:0;}
 .uni-img{width:36px;height:36px;object-fit:contain;border-radius:8px;background:#fff;padding:2px;flex-shrink:0;box-shadow:0 1px 4px rgba(0,0,0,0.08);}
 
+/* Card đẹp kiểu UEH: logo vuông + tên + nhãn */
+.universities-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:14px;}
+.uni-card{display:flex;align-items:center;gap:14px;padding:14px;background:#fff;border-radius:14px;border:1.5px solid rgba(99,102,241,0.1);box-shadow:0 2px 6px rgba(99,102,241,0.06);transition:all .25s;}
+.uni-card:hover{border-color:rgba(99,102,241,0.3);box-shadow:0 8px 20px rgba(99,102,241,0.12);transform:translateY(-2px);}
+.uni-card-logo{width:56px;height:56px;object-fit:contain;border-radius:12px;background:#fff;padding:6px;flex-shrink:0;box-shadow:0 2px 8px rgba(99,102,241,0.1);}
+.uni-card-text{flex:1;min-width:0;}
+.uni-card-name{font-weight:700;font-size:14px;color:var(--text-dark);line-height:1.3;margin-bottom:4px;}
+.uni-card-badge{display:inline-block;font-size:10px;font-weight:800;color:#fff;background:var(--grad);padding:3px 10px;border-radius:99px;letter-spacing:0.5px;text-transform:uppercase;}
+
 .cta-box{background:var(--grad);color:#fff;padding:32px;border-radius:20px;text-align:center;margin-top:24px;}
 .cta-box h2{font-family:var(--font-display);font-size:24px;margin-bottom:8px;}
 .cta-box p{opacity:0.95;margin-bottom:20px;}
@@ -188,17 +197,8 @@ async function load() {
       ${(m.top_universities || []).length ? `
         <div class="section">
           <h2>🎓 Trường đào tạo hàng đầu</h2>
-          <div class="universities">
-            ${m.top_universities.map(u => {
-              const logo = window.UNILogo(u);
-              return `
-                <div class="uni">
-                  ${logo
-                    ? `<img src="${logo.logo}" alt="${escapeHtml(u)}" class="uni-img" onerror="this.onerror=null;this.src='${logo.fallback}'" />`
-                    : `<span class="uni-icon">🏛️</span>`}
-                  <span>${escapeHtml(u)}</span>
-                </div>`;
-            }).join('')}
+          <div class="universities-grid">
+            ${m.top_universities.map(u => window.UNILogoCard(u)).join('')}
           </div>
         </div>` : ''}
 

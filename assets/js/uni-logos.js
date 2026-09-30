@@ -114,3 +114,27 @@ window.UNILogoImg = function(codeOrName, options = {}) {
   }
   return `<img src="${info.logo}" alt="${info.name}" class="${cls}" style="width:${size}px;height:${size}px;object-fit:contain;border-radius:8px;background:#fff;padding:2px;" onerror="this.onerror=null;this.src='${info.fallback}'" />`;
 };
+
+// Render card đầy đủ: logo + tên trường + nhãn code (kiểu UEH)
+window.UNILogoCard = function(codeOrName, options = {}) {
+  const info = window.UNILogo(codeOrName);
+  const size = options.size || 56;
+  if (!info) {
+    return `
+      <div class="uni-card uni-card-unknown">
+        <div class="uni-card-logo" style="background:linear-gradient(135deg,#6366f1,#a78bfa);">${(codeOrName||'?').slice(0,2).toUpperCase()}</div>
+        <div class="uni-card-text">
+          <div class="uni-card-name">${codeOrName || 'Trường khác'}</div>
+        </div>
+      </div>`;
+  }
+  return `
+    <div class="uni-card">
+      <img src="${info.logo}" alt="${info.name}" class="uni-card-logo"
+           onerror="this.onerror=null;this.src='${info.fallback}'" />
+      <div class="uni-card-text">
+        <div class="uni-card-name">${info.name}</div>
+        <span class="uni-card-badge">${info.short}</span>
+      </div>
+    </div>`;
+};
