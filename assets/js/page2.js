@@ -496,28 +496,54 @@ function renderSchools(schools) {
     `;
   }).join('');
 
-  // Inject logos: Clearbit -> Google Favicon -> emoji
+  // Inject logos: Ưu tiên Wikipedia (từ uni-logos.js) → Google Favicon → gradient badge
   schools.forEach(s => {
     const iconEl = document.getElementById('icon-' + s.id);
     if (!iconEl) return;
+
+    // 1. Thử logo từ uni-logos.js (match theo short, alias, tên)
+    const uniInfo = (window.UNILogo && window.UNILogo(s.short || s.name)) || null;
+    const wikiLogo = uniInfo ? uniInfo.logo : null;
+
     function getDomain(url) { try { return new URL(url).hostname; } catch(e) { return null; } }
     const domain = getDomain(s.website) || getDomain(s.logoUrl);
     const googleFav = domain ? `https://www.google.com/s2/favicons?sz=64&domain=${domain}` : null;
-    const srcs = [s.logoUrl, googleFav].filter(Boolean);
+
+    // Build chuỗi URL fallback chain
+    const srcs = [];
+    if (wikiLogo) srcs.push(wikiLogo);
+    if (s.logoUrl && !s.logoUrl.includes('logo.clearbit.com')) srcs.push(s.logoUrl);
+    if (googleFav) srcs.push(googleFav);
+
     if (srcs.length > 0) {
       const img = document.createElement('img');
       img.alt = s.short;
+      img.title = s.name;
+      img.loading = 'lazy';
       img.style.cssText = 'width:100%;height:100%;object-fit:contain;padding:4px;display:block;';
       let step = 0;
       img.onerror = () => {
         step++;
         if (step < srcs.length) { img.src = srcs[step]; }
-        else { iconEl.innerHTML = ''; iconEl.textContent = s.logoFallback || '🏫'; }
+        else { renderFallbackBadge(); }
       };
       img.src = srcs[0];
       iconEl.appendChild(img);
     } else {
-      iconEl.textContent = s.logoFallback || '🏫';
+      renderFallbackBadge();
+    }
+
+    function renderFallbackBadge() {
+      iconEl.innerHTML = '';
+      // Gradient badge với initials
+      const initials = (s.short || s.name || '?')
+        .replace(/ĐH\s*/i, '')
+        .replace(/[^A-Za-zÀ-ỹ\s]/g, '')
+        .split(/\s+/).slice(0, 2)
+        .map(w => w[0] || '')
+        .join('').toUpperCase() || '?';
+      iconEl.style.cssText = 'display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:linear-gradient(135deg,#6366f1,#a78bfa);color:#fff;font-weight:800;font-size:18px;border-radius:8px;font-family:"Nunito",sans-serif;';
+      iconEl.textContent = initials;
     }
   });
 }
