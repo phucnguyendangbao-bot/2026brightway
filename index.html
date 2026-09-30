@@ -5529,6 +5529,38 @@ Bạn cần hỏi gì nào?</div>
 <!-- Auth + Sync (Supabase) — shared login cho mọi trang -->
 <script src="assets/js/supabase-client.js"></script>
 <script src="assets/js/auth.js"></script>
+<script src="assets/js/uni-logos.js"></script>
+<script>
+// Render logo thật cho school-mini grid trên trang chủ
+(function () {
+  const map = {
+    'ĐH Bách Khoa TP.HCM': 'BK_HCM',
+    'ĐH Bách Khoa Hà Nội': 'BK',
+    'ĐH CNTT (UIT)': 'UIT',
+    'ĐH FPT': 'FPT',
+    'ĐH Kinh tế TP.HCM': 'UEH'
+    // RMIT, Nha Trang, Bách khoa Đà Nẵng: giữ emoji (chưa có logo free)
+  };
+  function apply() {
+    document.querySelectorAll('.school-mini').forEach(el => {
+      const name = el.querySelector('.name')?.textContent?.trim();
+      if (!name) return;
+      const code = map[name];
+      if (!code || !window.UNILogo) return;
+      const info = window.UNILogo(code);
+      const logoBox = el.querySelector('.emo');
+      if (logoBox && info) {
+        logoBox.innerHTML = `<img src="${info.logo}" alt="${name}" style="width:32px;height:32px;object-fit:contain;border-radius:6px;padding:2px;" onerror="this.onerror=null;this.src='${info.fallback}'" />`;
+      }
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', apply);
+  } else {
+    apply();
+  }
+})();
+</script>
 <script src="assets/js/nav-auth.js"></script>
 <script src="assets/js/cms-service.js"></script>
 <script src="assets/js/admin-quick.js"></script>

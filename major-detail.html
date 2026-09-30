@@ -57,8 +57,10 @@ h1.title{font-family:var(--font-display);font-weight:900;font-size:38px;line-hei
 .section li{margin-bottom:8px;}
 
 .universities{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-top:16px;}
-.uni{background:linear-gradient(135deg, rgba(99,102,241,0.05), rgba(167,139,250,0.05));padding:16px 20px;border-radius:12px;border:1px solid rgba(99,102,241,0.1);font-weight:600;color:var(--text-dark);display:flex;align-items:center;gap:10px;}
-.uni-icon{font-size:20px;}
+.uni{background:linear-gradient(135deg, rgba(99,102,241,0.05), rgba(167,139,250,0.05));padding:12px 16px;border-radius:12px;border:1px solid rgba(99,102,241,0.1);font-weight:600;color:var(--text-dark);display:flex;align-items:center;gap:12px;transition:all .2s;}
+.uni:hover{background:linear-gradient(135deg, rgba(99,102,241,0.12), rgba(167,139,250,0.12));transform:translateX(4px);}
+.uni-icon{font-size:20px;flex-shrink:0;}
+.uni-img{width:36px;height:36px;object-fit:contain;border-radius:8px;background:#fff;padding:2px;flex-shrink:0;box-shadow:0 1px 4px rgba(0,0,0,0.08);}
 
 .cta-box{background:var(--grad);color:#fff;padding:32px;border-radius:20px;text-align:center;margin-top:24px;}
 .cta-box h2{font-family:var(--font-display);font-size:24px;margin-bottom:8px;}
@@ -105,6 +107,7 @@ h1.title{font-family:var(--font-display);font-weight:900;font-size:38px;line-hei
 <script src="assets/js/supabase-client.js"></script>
 <script src="assets/js/cms-service.js"></script>
 <script src="assets/js/admin-quick.js"></script>
+<script src="assets/js/uni-logos.js"></script>
 <script>
 function escapeHtml(s) {
   return String(s || '').replace(/[&<>"']/g, m => ({
@@ -186,11 +189,16 @@ async function load() {
         <div class="section">
           <h2>🎓 Trường đào tạo hàng đầu</h2>
           <div class="universities">
-            ${m.top_universities.map(u => `
-              <div class="uni">
-                <span class="uni-icon">🏛️</span>
-                <span>${escapeHtml(u)}</span>
-              </div>`).join('')}
+            ${m.top_universities.map(u => {
+              const logo = window.UNILogo(u);
+              return `
+                <div class="uni">
+                  ${logo
+                    ? `<img src="${logo.logo}" alt="${escapeHtml(u)}" class="uni-img" onerror="this.onerror=null;this.src='${logo.fallback}'" />`
+                    : `<span class="uni-icon">🏛️</span>`}
+                  <span>${escapeHtml(u)}</span>
+                </div>`;
+            }).join('')}
           </div>
         </div>` : ''}
 

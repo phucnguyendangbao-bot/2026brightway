@@ -48,9 +48,17 @@
     const roleLabel = profile?.role === 'admin' ? 'Quản trị viên' : 'Giáo viên';
 
     return `
-      <div class="sidebar-brand">
-        <div class="sidebar-brand-icon">🎓</div>
-        <div class="sidebar-brand-text">BrightWay Admin</div>
+      <!-- Hero ảnh thật: cô giáo / lớp học -->
+      <div class="sidebar-hero" style="margin:-16px -16px 16px;padding:14px;border-radius:0;background:linear-gradient(135deg,rgba(99,102,241,0.85),rgba(167,139,250,0.85)),url('https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&h=240&fit=crop&q=80') center/cover;color:#fff;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,0.2);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;font-size:18px;">🎓</div>
+          <div style="font-family:var(--font-display);font-weight:900;font-size:16px;">BrightWay Admin</div>
+        </div>
+        <div style="font-size:11px;opacity:0.92;line-height:1.4;margin-bottom:10px;">Nền tảng hướng nghiệp THPT — Quản trị nội dung & tài liệu</div>
+        <a href="../index.html" style="display:flex;align-items:center;gap:6px;padding:7px 12px;background:rgba(255,255,255,0.95);color:var(--accent);border-radius:8px;font-weight:700;font-size:12px;text-decoration:none;transition:all .2s;" onmouseover="this.style.background='#fff';this.style.transform='translateY(-1px)';" onmouseout="this.style.background='rgba(255,255,255,0.95)';this.style.transform='translateY(0)';">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Về trang chủ</span>
+        </a>
       </div>
 
       <div class="sidebar-section">
