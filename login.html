@@ -57,19 +57,24 @@
       </p>
     </div>
 
-    <!-- PANEL: Admin/Teacher (chỉ cần email) -->
+    <!-- PANEL: Admin/Teacher (Email + Password) -->
     <div class="auth-panel" data-panel="admin">
-      <p class="auth-panel-desc">Dành cho giáo viên & quản trị viên. Chỉ cần nhập email.</p>
+      <p class="auth-panel-desc">Dành cho giáo viên & quản trị viên. Cần email + mật khẩu chung.</p>
       <form id="emailForm" class="auth-form">
         <label class="auth-field">
           <span>Email</span>
           <input type="email" id="emailOnly" placeholder="admin@brightway.vn" required autocomplete="email" />
         </label>
+        <label class="auth-field">
+          <span>Mật khẩu</span>
+          <input type="password" id="emailPassword" placeholder="admin123fpt" required autocomplete="current-password" />
+          <small class="auth-hint">Mật khẩu chung cho admin/giáo viên: <code>admin123fpt</code></small>
+        </label>
         <button type="submit" id="emailSubmit" class="btn-primary">
           🔑 Đăng nhập
         </button>
         <p class="auth-foot" style="margin-top:12px;font-size:13px;color:var(--text-soft);">
-          Tài khoản do admin cấp. Mật khẩu được cấu hình sẵn.
+          Tài khoản do admin cấp. Liên hệ admin để lấy email + mật khẩu.
         </p>
       </form>
     </div>

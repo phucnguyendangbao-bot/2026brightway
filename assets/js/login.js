@@ -61,31 +61,28 @@
     });
   }
 
-  // ─── Email (cho giáo viên/admin) — chỉ cần nhập email ───
+  // ─── Email + Password (cho giáo viên/admin) ───
   const emailForm = $('emailForm');
   if (emailForm) {
     emailForm.addEventListener('submit', async e => {
       e.preventDefault();
       const email = $('emailOnly').value.trim();
-      if (!email) return;
+      const password = $('emailPassword').value;
+      if (!email || !password) return;
 
       const submitBtn = $('emailSubmit');
       try {
         submitBtn.disabled = true;
         showStatus('🔄 Đang đăng nhập...', 'info');
 
-        // Mật khẩu mặc định cho tài khoản admin/giáo viên
-        // (được set khi admin tạo user, user không cần nhập)
-        const DEFAULT_ADMIN_PWD = 'admin123fpt';
-
-        const { error } = await window.BWAuth.signInWithEmail(email, DEFAULT_ADMIN_PWD);
+        const { error } = await window.BWAuth.signInWithEmail(email, password);
         if (error) throw error;
 
         showStatus('✅ Đăng nhập thành công!', 'success');
         setTimeout(() => redirectAfterLogin(), 800);
       } catch (e) {
         let msg = e.message;
-        if (msg.includes('Invalid login')) msg = 'Email không tồn tại trong hệ thống. Liên hệ admin.';
+        if (msg.includes('Invalid login')) msg = 'Email hoặc mật khẩu không đúng. Vui lòng kiểm tra lại.';
         if (msg.includes('Email not confirmed')) msg = 'Email chưa xác nhận — liên hệ admin';
         showStatus('❌ ' + msg, 'error');
         submitBtn.disabled = false;
