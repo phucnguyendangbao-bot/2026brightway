@@ -120,7 +120,7 @@ INSERT INTO public.resources (title, category, provider, image, description, url
 
 ('Kênh YouTube Giáo dục VN', 'Video', 'YouTube',
  'https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=400&h=240&fit=crop',
- 'Tổng hợp các kênh YouTube giáo dục uy tín: Thầy Vũ, Thầy Hiếu, 2K, ...',
+ 'Tổng hợp các kênh YouTube giáo dục uy tín – Thầy Vũ, Thầy Hiếu, 2K...',
  'https://www.youtube.com/results?search_query=luy%E1%BB%87n+thi+THPT+2026',
  ARRAY['Video','Tiếng Việt','Miễn phí'], 1, 'Mọi cấp độ', 10);
 
