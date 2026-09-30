@@ -150,6 +150,10 @@
       return;
     }
 
+    // Chỉ hiện nút "Vào trang quản lý" khi role là admin hoặc teacher
+    const role = profile?.role || user.user_metadata?.role || 'student';
+    const isStaff = role === 'admin' || role === 'teacher';
+
     const name = profile?.full_name || user.user_metadata?.full_name || user.email?.split('@')[0] || 'User';
     const initials = (name[0] || 'U').toUpperCase();
     const avatarUrl = profile?.avatar_url || user.user_metadata?.avatar_url || user.user_metadata?.picture;
@@ -168,6 +172,12 @@
           <a href="profile.html?tab=history">🔍 Lịch sử tra cứu</a>
           <a href="profile.html?tab=essays">✍️ Bài luận</a>
           <div class="divider"></div>
+          ${isStaff ? `
+            <a href="admin/index.html" style="background:rgba(99,102,241,0.08);color:var(--accent);font-weight:800;">
+              ⚙️ Vào trang quản lý
+            </a>
+            <div class="divider"></div>
+          ` : ''}
           <button class="danger" id="navLogoutBtn">🚪 Đăng xuất</button>
         </div>
       </div>
