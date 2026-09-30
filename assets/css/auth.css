@@ -70,6 +70,57 @@
   box-shadow: 0 3px 10px rgba(99,102,241,0.30);
 }
 
+/* Tab Admin — phân biệt rõ ràng với tab Student */
+.auth-tab-admin {
+  position: relative;
+  background: linear-gradient(135deg, rgba(245,158,11,0.08), rgba(239,68,68,0.06));
+  color: #b45309;
+  font-weight: 800;
+}
+.auth-tab-admin::before {
+  content: '👑';
+  margin-right: 4px;
+  font-size: 12px;
+}
+.auth-tab-admin:hover { background: linear-gradient(135deg, rgba(245,158,11,0.15), rgba(239,68,68,0.12)); }
+:root[data-theme="dark"] .auth-tab-admin {
+  background: linear-gradient(135deg, rgba(245,158,11,0.18), rgba(239,68,68,0.14));
+  color: #fbbf24;
+}
+:root[data-theme="dark"] .auth-tab-admin:hover { background: linear-gradient(135deg, rgba(245,158,11,0.28), rgba(239,68,68,0.22)); }
+.auth-tab-admin.active {
+  background: linear-gradient(135deg, #f59e0b, #ef4444);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(239,68,68,0.38);
+}
+
+/* Badge "Quản trị viên" trong panel admin */
+.auth-admin-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #f59e0b, #ef4444);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin: 0 auto 14px;
+  box-shadow: 0 3px 10px rgba(239,68,68,0.30);
+}
+.auth-panel[data-panel="admin"] .auth-admin-badge {
+  display: flex;
+  width: fit-content;
+}
+[data-panel="admin"].auth-panel { padding-top: 4px; }
+[data-panel="admin"].auth-panel .auth-panel-desc {
+  font-weight: 600;
+  color: var(--text-mid);
+  margin-bottom: 18px;
+}
+
 .auth-panel { display: none; }
 .auth-panel.active { display: block; animation: fadeIn .25s ease; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
