@@ -40,6 +40,11 @@
       <div class="stat-card-label">Đã đăng</div>
     </div>
     <div class="stat-card">
+      <div class="stat-card-icon">📋</div>
+      <div class="stat-card-value" id="stat-drafts">—</div>
+      <div class="stat-card-label">Bài nháp</div>
+    </div>
+    <div class="stat-card">
       <div class="stat-card-icon">📚</div>
       <div class="stat-card-value" id="stat-resources">—</div>
       <div class="stat-card-label">Tài liệu</div>
@@ -89,82 +94,110 @@
   const sb = window.supabaseClient;
 
   try {
+    // Helper: set text an toàn (không crash khi element thiếu)
+    const safeSet = (id, value) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    };
+
     // Posts stats
     const { data: posts } = await sb.from('posts').select('id, status, views_count');
     if (posts) {
-      document.getElementById('stat-posts').textContent = posts.length;
-      document.getElementById('stat-published').textContent = posts.filter(p => p.status === 'published').length;
-      document.getElementById('stat-drafts').textContent = posts.filter(p => p.status === 'draft').length;
-      document.getElementById('stat-views').textContent = posts.reduce((sum, p) => sum + (p.views_count || 0), 0);
+      safeSet('stat-posts', posts.length);
+      safeSet('stat-published', posts.filter(p => p.status === 'published').length);
+      safeSet('stat-drafts', posts.filter(p => p.status === 'draft').length);
+      safeSet('stat-views', posts.reduce((sum, p) => sum + (p.views_count || 0), 0));
     }
 
-    // Majors stats
-    const { count: majorsCount } = await sb.from('majors').select('*', { count: 'exact', head: true });
-    document.getElementById('stat-majors').textContent = majorsCount || 0;
+    // Majors stats — bọc try riêng để bảng resources lỗi không phá majors
+    try {
+      const { count: majorsCount } = await sb.from('majors').select('*', { count: 'exact', head: true });
+      safeSet('stat-majors', majorsCount || 0);
+    } catch (e) {
+      console.warn('[dashboard] majors:', e.message);
+      safeSet('stat-majors', '—');
+    }
 
-    // Resources stats
-    const { count: resourcesCount } = await sb.from('resources').select('*', { count: 'exact', head: true });
-    document.getElementById('stat-resources').textContent = resourcesCount || 0;
+    // Resources stats — try riêng (bảng có thể chưa tồn tại)
+    try {
+      const { count: resourcesCount } = await sb.from('resources').select('*', { count: 'exact', head: true });
+      safeSet('stat-resources', resourcesCount || 0);
+    } catch (e) {
+      console.warn('[dashboard] resources:', e.message);
+      safeSet('stat-resources', '—');
+    }
 
     // Recent posts
-    const { data: recent } = await sb
-      .from('posts')
-      .select('id, slug, title, status, category, views_count, published_at, created_at')
-      .order('created_at', { ascending: false })
-      .limit(5);
-
     const recentDiv = document.getElementById('recent-posts');
-    if (!recent || !recent.length) {
-      recentDiv.innerHTML = `
-        <div class="state" style="padding:30px;">
-          <div class="state-icon">📭</div>
-          <div class="state-desc">Chưa có bài viết nào</div>
-          <a href="post-edit.html" class="btn btn-primary">✍️ Viết bài đầu tiên</a>
-        </div>`;
-    } else {
-      recentDiv.innerHTML = `
-        <div class="table-wrapper">
-          <table class="table">
-            <thead><tr><th>Tiêu đề</th><th>Danh mục</th><th>Trạng thái</th><th>Lượt xem</th><th></th></tr></thead>
-            <tbody>${recent.map(p => `
-              <tr>
-                <td><strong>${Admin.escapeHtml(p.title)}</strong></td>
-                <td>${Admin.categoryBadge(p.category)}</td>
-                <td>${Admin.statusBadge(p.status)}</td>
-                <td>${p.views_count || 0}</td>
-                <td><a href="post-edit.html?id=${p.id}" class="btn btn-ghost">Sửa →</a></td>
-              </tr>`).join('')}
-            </tbody>
-          </table>
-        </div>`;
+    try {
+      const { data: recent } = await sb
+        .from('posts')
+        .select('id, slug, title, status, category, views_count, published_at, created_at')
+        .order('created_at', { ascending: false })
+        .limit(5);
+
+      if (!recentDiv) { /* skip if missing */ }
+      else if (!recent || !recent.length) {
+        recentDiv.innerHTML = `
+          <div class="state" style="padding:30px;">
+            <div class="state-icon">📭</div>
+            <div class="state-desc">Chưa có bài viết nào</div>
+            <a href="post-edit.html" class="btn btn-primary">✍️ Viết bài đầu tiên</a>
+          </div>`;
+      } else {
+        recentDiv.innerHTML = `
+          <div class="table-wrapper">
+            <table class="table">
+              <thead><tr><th>Tiêu đề</th><th>Danh mục</th><th>Trạng thái</th><th>Lượt xem</th><th></th></tr></thead>
+              <tbody>${recent.map(p => `
+                <tr>
+                  <td><strong>${Admin.escapeHtml(p.title)}</strong></td>
+                  <td>${Admin.categoryBadge(p.category)}</td>
+                  <td>${Admin.statusBadge(p.status)}</td>
+                  <td>${p.views_count || 0}</td>
+                  <td><a href="post-edit.html?id=${p.id}" class="btn btn-ghost">Sửa →</a></td>
+                </tr>`).join('')}
+              </tbody>
+            </table>
+          </div>`;
+      }
+    } catch (e) {
+      console.warn('[dashboard] recent posts:', e.message);
+      if (recentDiv) recentDiv.innerHTML = '<div class="state" style="padding:30px;color:var(--text-soft);">Không tải được bài viết</div>';
     }
 
     // Recent majors
-    const { data: recentMajors } = await sb
-      .from('majors')
-      .select('id, slug, name_vi, category, views_count')
-      .order('name_vi')
-      .limit(5);
-
     const recentMajorsDiv = document.getElementById('recent-majors');
-    if (!recentMajors || !recentMajors.length) {
-      recentMajorsDiv.innerHTML = `
-        <div class="state" style="padding:30px;">
-          <div class="state-icon">🎯</div>
-          <div class="state-desc">Chưa có ngành nào</div>
-        </div>`;
-    } else {
-      recentMajorsDiv.innerHTML = `
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;">
-          ${recentMajors.map(m => `
-            <a href="major-edit.html?id=${m.id}" style="padding:14px;border-radius:10px;background:rgba(99,102,241,0.05);display:flex;justify-content:space-between;align-items:center;">
-              <div>
-                <div style="font-weight:700;">${Admin.escapeHtml(m.name_vi)}</div>
-                <div style="font-size:12px;color:var(--text-soft);">👁️ ${m.views_count || 0} lượt xem</div>
-              </div>
-              <span style="color:var(--text-soft);">→</span>
-            </a>`).join('')}
-        </div>`;
+    try {
+      const { data: recentMajors } = await sb
+        .from('majors')
+        .select('id, slug, name_vi, category, views_count')
+        .order('name_vi')
+        .limit(5);
+
+      if (!recentMajorsDiv) { /* skip */ }
+      else if (!recentMajors || !recentMajors.length) {
+        recentMajorsDiv.innerHTML = `
+          <div class="state" style="padding:30px;">
+            <div class="state-icon">🎯</div>
+            <div class="state-desc">Chưa có ngành nào</div>
+          </div>`;
+      } else {
+        recentMajorsDiv.innerHTML = `
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;">
+            ${recentMajors.map(m => `
+              <a href="major-edit.html?id=${m.id}" style="padding:14px;border-radius:10px;background:rgba(99,102,241,0.05);display:flex;justify-content:space-between;align-items:center;">
+                <div>
+                  <div style="font-weight:700;">${Admin.escapeHtml(m.name_vi)}</div>
+                  <div style="font-size:12px;color:var(--text-soft);">👁️ ${m.views_count || 0} lượt xem</div>
+                </div>
+                <span style="color:var(--text-soft);">→</span>
+              </a>`).join('')}
+          </div>`;
+      }
+    } catch (e) {
+      console.warn('[dashboard] recent majors:', e.message);
+      if (recentMajorsDiv) recentMajorsDiv.innerHTML = '<div class="state" style="padding:30px;color:var(--text-soft);">Không tải được ngành</div>';
     }
   } catch (err) {
     console.error(err);
