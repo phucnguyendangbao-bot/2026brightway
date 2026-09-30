@@ -51,8 +51,8 @@
 
     <div class="form-group">
       <label class="form-label">Mật khẩu <span class="required">*</span></label>
-      <input type="text" id="newPassword" class="form-input" placeholder="brightway2026" value="brightway2026">
-      <p class="form-hint">Mặc định: brightway2026 (user có thể đổi sau khi đăng nhập)</p>
+      <input type="text" id="newPassword" class="form-input" placeholder="admin123fpt" value="admin123fpt">
+      <p class="form-hint">Mặc định: admin123fpt (user không cần nhập, hệ thống tự điền)</p>
     </div>
 
     <div class="form-group">
@@ -83,7 +83,7 @@
     <div class="modal-desc">Đặt mật khẩu mới cho <strong id="resetUserEmail"></strong></div>
     <div class="form-group">
       <label class="form-label">Mật khẩu mới</label>
-      <input type="text" id="newResetPassword" class="form-input" value="brightway2026">
+      <input type="text" id="newResetPassword" class="form-input" value="admin123fpt">
     </div>
     <div class="modal-actions">
       <button class="btn btn-secondary" onclick="closeResetModal()">Hủy</button>
@@ -168,7 +168,7 @@ function renderUsers() {
       </table>
     </div>
     <p style="margin-top:16px;font-size:13px;color:var(--text-soft);">
-      💡 Mật khẩu mặc định khi tạo: <code style="background:rgba(99,102,241,0.1);padding:2px 8px;border-radius:6px;">brightway2026</code>
+      💡 Mật khẩu mặc định khi tạo: <code style="background:rgba(99,102,241,0.1);padding:2px 8px;border-radius:6px;">admin123fpt</code>
     </p>`;
 }
 
@@ -216,7 +216,7 @@ async function createUser() {
     });
     if (error) throw error;
 
-    Admin.showToast(`Đã tạo tài khoản ${email} (password: ${password})`, 'success');
+    Admin.showToast(`Đã tạo tài khoản ${email} (password: admin123fpt)`, 'success');
     closeCreateModal();
     await loadUsers();
   } catch (err) {

@@ -145,7 +145,7 @@ CREATE TRIGGER on_auth_user_created
 -- Tài khoản admin chính (ĐỔI EMAIL thành email thật của bạn)
 SELECT public.admin_create_user(
   'admin@brightway.vn',
-  'brightway2026',
+  'admin123fpt',
   'Admin BrightWay',
   'admin'
 );
@@ -153,10 +153,10 @@ SELECT public.admin_create_user(
 -- Tài khoản giáo viên mẫu
 SELECT public.admin_create_user(
   'gv1@brightway.vn',
-  'brightway2026',
+  'admin123fpt',
   'Giáo viên 1',
   'teacher'
 );
 
 -- (Optional) Thêm giáo viên khác nếu cần
--- SELECT public.admin_create_user('gv2@brightway.vn', 'brightway2026', 'GV 2', 'teacher');
+-- SELECT public.admin_create_user('gv2@brightway.vn', 'admin123fpt', 'GV 2', 'teacher');
