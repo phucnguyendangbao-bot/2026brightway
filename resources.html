@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tài liệu tham khảo – BrightWay Career</title>
+<link rel="icon" type="image/png" href="images/img-a84652d05567.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Quicksand:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/careers.css">
+<link rel="stylesheet" href="assets/css/resources.css">
+</head>
+<body>
+
+<button id="themeToggle" class="theme-toggle" aria-label="Chuyển sáng/tối" title="Chuyển sáng/tối">
+  <svg class="ico-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.2" y1="4.2" x2="6.3" y2="6.3"/><line x1="17.7" y1="17.7" x2="19.8" y2="19.8"/><line x1="4.2" y1="19.8" x2="6.3" y2="17.7"/><line x1="17.7" y1="6.3" x2="19.8" y2="4.2"/></g></svg>
+  <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+</button>
+
+<nav class="bw-nav">
+  <div class="bw-nav-inner">
+    <a href="index.html" class="bw-logo">🌟 BrightWay Career</a>
+    <div class="bw-nav-links">
+      <a href="index.html">Trang chủ</a>
+      <a href="careers-holland.html">Tra cứu & Test</a>
+      <a href="resources.html" class="active">📚 Tài liệu</a>
+      <a href="essay-review.html">Bài luận mẫu</a>
+    </div>
+  </div>
+</nav>
+
+<section class="res-page">
+  <div class="res-hero">
+    <h1 class="res-hero-title">📚 Tài liệu tham khảo & Khoá học</h1>
+    <p class="res-hero-sub">Nguồn học liệu uy tín từ các trường, tổ chức hàng đầu trong & ngoài nước. Click "TÌM HIỂU THÊM" để mở link ngoài.</p>
+  </div>
+
+  <!-- BỘ LỌC -->
+  <div class="res-filter">
+    <button class="res-filter-btn active" data-filter="all">🌐 Tất cả</button>
+    <button class="res-filter-btn" data-filter="Khóa học">🎓 Khóa học</button>
+    <button class="res-filter-btn" data-filter="Tài liệu">📖 Tài liệu</button>
+    <button class="res-filter-btn" data-filter="Video">🎬 Video</button>
+    <button class="res-filter-btn" data-filter="Công cụ">🛠️ Công cụ</button>
+    <button class="res-filter-btn" data-filter="Tổ chức">🏛️ Tổ chức</button>
+    <input id="resSearch" class="res-search" type="search" placeholder="🔍 Tìm kiếm tài liệu..." aria-label="Tìm kiếm" />
+  </div>
+
+  <!-- GRID TÀI LIỆU -->
+  <div id="resGrid" class="res-grid"></div>
+
+  <p id="resEmpty" class="res-empty" hidden>Không tìm thấy tài liệu phù hợp. Thử từ khóa khác nhé!</p>
+
+  <div class="res-info">
+    <h3>💡 Mẹo sử dụng</h3>
+    <ul>
+      <li>Click vào <strong>ảnh</strong> hoặc nút <strong>"TÌM HIỂU THÊM"</strong> để mở link ngoài trong tab mới.</li>
+      <li>Tài liệu <strong>miễn phí</strong> được đánh dấu xanh. Tài liệu <strong>trả phí</strong> đánh dấu vàng.</li>
+      <li>Dùng bộ lọc để xem theo nhóm (Khóa học, Tài liệu, Video, Công cụ, Tổ chức).</li>
+      <li>Nguồn từ <strong>WHO, Bộ Y tế, Bộ GD&amp;ĐT, Coursera, FPT, FUNiX, Khan Academy</strong> — đã được admin kiểm duyệt.</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="bw-footer">
+  <div class="logo">🌟 BrightWay Career</div>
+  <p>Đồng hành cùng học sinh Lớp 12 trên hành trình hướng nghiệp</p>
+  <p class="small">© 2026 BrightWay Career · Thông tin chỉ mang tính tham khảo, không thay thế tư vấn chuyên gia.</p>
+</footer>
+
+<script src="assets/js/resources-data.js"></script>
+<script src="assets/js/theme.js"></script>
+<script>
+(function() {
+  const grid = document.getElementById('resGrid');
+  const empty = document.getElementById('resEmpty');
+  const search = document.getElementById('resSearch');
+  const filterBtns = document.querySelectorAll('.res-filter-btn');
+  let activeFilter = 'all';
+  let activeKeyword = '';
+
+  function paint() {
+    const kw = activeKeyword.trim().toLowerCase();
+    const list = RESOURCES.filter(r => {
+      const okCat = (activeFilter === 'all') || (r.category === activeFilter);
+      if (!okCat) return false;
+      if (!kw) return true;
+      const hay = [r.title, r.provider, r.description, (r.tags || []).join(' ')].join(' ').toLowerCase();
+      return hay.includes(kw);
+    });
+    grid.innerHTML = list.map(renderResourceCard).join('');
+    empty.hidden = list.length !== 0;
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter = btn.dataset.filter;
+      paint();
+    });
+  });
+
+  search.addEventListener('input', e => {
+    activeKeyword = e.target.value;
+    paint();
+  });
+
+  paint();
+})();
+</script>
+</body>
+</html>
