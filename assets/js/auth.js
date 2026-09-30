@@ -52,7 +52,42 @@
       console.warn('[auth] fetchProfile:', error.message);
       return null;
     }
-    _profile = data;
+
+    // Nếu chưa có profile (Google user lần đầu) → tự tạo với role 'student'
+    if (!data) {
+      const fullName = _user.user_metadata?.full_name
+        || _user.user_metadata?.name
+        || (_user.email ? _user.email.split('@')[0] : 'User');
+      const avatar = _user.user_metadata?.avatar_url || _user.user_metadata?.picture || null;
+
+      const { data: newProfile, error: insertErr } = await sb
+        .from('profiles')
+        .insert({
+          id: _user.id,
+          full_name: fullName,
+          avatar_url: avatar,
+          role: 'student',  // Google user luôn là student
+          created_at: new Date().toISOString()
+        })
+        .select()
+        .single();
+
+      if (insertErr) {
+        console.warn('[auth] auto-create profile:', insertErr.message);
+        // Trigger trong DB có thể đã tạo rồi, thử lại select
+        const { data: reSelect } = await sb
+          .from('profiles')
+          .select('*')
+          .eq('id', _user.id)
+          .maybeSingle();
+        _profile = reSelect || null;
+      } else {
+        _profile = newProfile;
+      }
+    } else {
+      _profile = data;
+    }
+
     return _profile;
   }
 

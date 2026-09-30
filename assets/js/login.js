@@ -1,7 +1,7 @@
 /* ════════════════════════════════════════════════════════
-   LOGIN PAGE — Google OAuth + Email/Password
-   - Google: 1 cú click → vào thẳng
-   - Email: nhập email + password → vào thẳng
+   LOGIN PAGE — Google OAuth (HS) + Email/Password (GV/Admin)
+   - Học sinh: Google (1 cú click)
+   - Giáo viên / Admin: Email + Password (admin cấp sẵn)
    - KHÔNG có OTP
    ════════════════════════════════════════════════════════ */
 (function () {
@@ -23,7 +23,29 @@
     status.className = 'auth-status';
   }
 
-  // ─── Google ───
+  // ─── Tab switching ───
+  document.querySelectorAll('.auth-tab').forEach(t => {
+    t.addEventListener('click', () => switchTab(t.dataset.tab));
+  });
+
+  function switchTab(tab) {
+    document.querySelectorAll('.auth-tab').forEach(t => {
+      const active = t.dataset.tab === tab;
+      t.classList.toggle('active', active);
+      t.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    document.querySelectorAll('.auth-panel').forEach(p => {
+      p.classList.toggle('active', p.dataset.panel === tab);
+    });
+    hideStatus();
+    // Focus input đầu tiên
+    setTimeout(() => {
+      const firstInput = document.querySelector('.auth-panel.active input');
+      if (firstInput) firstInput.focus();
+    }, 100);
+  }
+
+  // ─── Google (cho học sinh) ───
   const googleBtn = $('googleSignInBtn');
   if (googleBtn) {
     googleBtn.addEventListener('click', async () => {
@@ -39,7 +61,7 @@
     });
   }
 
-  // ─── Email + Password ───
+  // ─── Email + Password (cho giáo viên/admin) ───
   const emailForm = $('emailForm');
   if (emailForm) {
     emailForm.addEventListener('submit', async e => {
