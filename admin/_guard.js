@@ -71,6 +71,10 @@
           <span class="sidebar-link-icon">🎯</span>
           <span>Ngành nghề</span>
         </a>
+        <a class="sidebar-link ${activePage==='resources'?'active':''}" href="resources.html">
+          <span class="sidebar-link-icon">📚</span>
+          <span>Tài liệu</span>
+        </a>
       </div>
 
       <div class="sidebar-section">

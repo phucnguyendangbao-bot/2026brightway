@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quản lý Tài liệu – BrightWay Admin</title>
+<link rel="icon" type="image/png" href="../images/img-a84652d05567.png">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_layout.css">
+<style>
+  .res-admin-toolbar {
+    display: flex; gap: 10px; align-items: center;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 12px 14px; margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .res-admin-toolbar input, .res-admin-toolbar select {
+    padding: 8px 12px; border: 1px solid var(--border);
+    border-radius: 8px; font-size: 14px; font-family: inherit;
+    background: var(--surface-2); color: var(--text);
+  }
+  .res-admin-toolbar input { flex: 1; min-width: 200px; }
+  .res-thumb-sm {
+    width: 80px; height: 48px; object-fit: cover; border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .res-thumb-placeholder {
+    width: 80px; height: 48px; border-radius: 6px;
+    background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(168,85,247,0.2));
+    display: flex; align-items: center; justify-content: center; font-size: 22px;
+  }
+  .table td { vertical-align: middle; }
+  .res-link-ext {
+    color: var(--primary); text-decoration: none; font-size: 12px;
+    display: inline-flex; align-items: center; gap: 3px;
+  }
+  .res-link-ext:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<button class="mobile-toggle" onclick="Admin.toggleSidebar()">☰</button>
+
+<aside class="sidebar" id="sidebar"><div id="sidebar-content"></div></aside>
+
+<main class="main">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">📚 Tài liệu tham khảo</h1>
+      <p class="page-subtitle">Quản lý các tài liệu, khóa học hiển thị cho học sinh</p>
+    </div>
+    <div class="page-actions">
+      <a href="resource-edit.html" class="btn btn-primary">+ Thêm tài liệu</a>
+      <a href="../resources.html" target="_blank" class="btn btn-secondary">🌐 Xem trang</a>
+    </div>
+  </div>
+
+  <div class="res-admin-toolbar">
+    <input type="search" id="searchInput" placeholder="🔍 Tìm kiếm theo tiêu đề, mô tả..." />
+    <select id="filterCategory">
+      <option value="">Tất cả thể loại</option>
+      <option>Khóa học</option>
+      <option>Tài liệu</option>
+      <option>Video</option>
+      <option>Công cụ</option>
+      <option>Tổ chức</option>
+    </select>
+    <select id="filterStatus">
+      <option value="">Tất cả trạng thái</option>
+      <option value="1">Đã xuất bản</option>
+      <option value="0">Bản nháp</option>
+    </select>
+    <span id="statInfo" style="color:var(--text-soft); font-size:13px; margin-left:auto;"></span>
+  </div>
+
+  <div class="card">
+    <div id="tableContainer">
+      <div style="text-align:center;padding:40px;"><div class="spinner"></div></div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/supabase-client.js"></script>
+<script src="../assets/js/cms-service.js"></script>
+<script src="_guard.js"></script>
+<script>
+(async function () {
+  const profile = await Admin.requireAdmin();
+  if (!profile) return;
+  document.getElementById('sidebar-content').innerHTML = Admin.buildSidebar('resources', profile);
+
+  let allRows = [];
+
+  async function loadData() {
+    const { data, error } = await window.supabaseClient
+      .from('resources')
+      .select('*')
+      .order('display_order', { ascending: true })
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      Admin.showToast('Lỗi tải dữ liệu: ' + error.message, 'error');
+      return;
+    }
+    allRows = data || [];
+    render();
+  }
+
+  function render() {
+    const kw = document.getElementById('searchInput').value.trim().toLowerCase();
+    const cat = document.getElementById('filterCategory').value;
+    const status = document.getElementById('filterStatus').value;
+
+    let list = allRows.filter(r => {
+      if (cat && r.category !== cat) return false;
+      if (status !== '' && String(!!r.is_published) !== status) return false;
+      if (kw) {
+        const hay = [r.title, r.description || '', r.provider || '', (r.tags || []).join(' ')].join(' ').toLowerCase();
+        if (!hay.includes(kw)) return false;
+      }
+      return true;
+    });
+
+    document.getElementById('statInfo').textContent = `${list.length} / ${allRows.length} tài liệu`;
+
+    const c = document.getElementById('tableContainer');
+    if (!list.length) {
+      c.innerHTML = `
+        <div class="state" style="padding:40px;">
+          <div class="state-icon">📚</div>
+          <div class="state-desc">Chưa có tài liệu nào</div>
+          <a href="resource-edit.html" class="btn btn-primary">+ Thêm tài liệu đầu tiên</a>
+        </div>`;
+      return;
+    }
+
+    c.innerHTML = `
+      <div class="table-wrapper">
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="width:90px;">Ảnh</th>
+              <th>Tiêu đề</th>
+              <th>Thể loại</th>
+              <th>Nhà cung cấp</th>
+              <th>Link</th>
+              <th>Trạng thái</th>
+              <th style="width:120px;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            ${list.map(r => `
+              <tr>
+                <td>
+                  ${r.image
+                    ? `<img src="${Admin.escapeHtml(r.image)}" class="res-thumb-sm" alt="" onerror="this.outerHTML='<div class=\\'res-thumb-placeholder\\'>📚</div>'"/>`
+                    : `<div class="res-thumb-placeholder">📚</div>`}
+                </td>
+                <td>
+                  <strong>${Admin.escapeHtml(r.title)}</strong>
+                  ${r.description ? `<div style="font-size:12px;color:var(--text-soft);margin-top:4px;">${Admin.escapeHtml(r.description.substring(0,80))}${r.description.length > 80 ? '…' : ''}</div>` : ''}
+                </td>
+                <td><span class="badge badge-info">${Admin.escapeHtml(r.category)}</span></td>
+                <td style="font-size:13px;">${Admin.escapeHtml(r.provider || '—')}</td>
+                <td>
+                  <a href="${Admin.escapeHtml(r.url)}" target="_blank" rel="noopener noreferrer" class="res-link-ext">
+                    ↗ Mở link
+                  </a>
+                </td>
+                <td>
+                  ${r.is_published
+                    ? '<span class="badge badge-success">Đã đăng</span>'
+                    : '<span class="badge badge-warning">Bản nháp</span>'}
+                </td>
+                <td>
+                  <a href="resource-edit.html?id=${r.id}" class="btn btn-ghost btn-sm">✏️ Sửa</a>
+                  <button class="btn btn-ghost btn-sm" onclick="window.__del(${r.id}, '${Admin.escapeHtml(r.title).replace(/'/g,"\\'")}')">🗑️</button>
+                </td>
+              </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>`;
+  }
+
+  window.__del = async (id, title) => {
+    if (!confirm(`Xoá tài liệu "${title}"?\n\nHành động này không thể hoàn tác.`)) return;
+    try {
+      await CMS.deleteResource(id);
+      Admin.showToast('Đã xoá tài liệu', 'success');
+      loadData();
+    } catch (err) {
+      Admin.showToast('Lỗi: ' + err.message, 'error');
+    }
+  };
+
+  document.getElementById('searchInput').addEventListener('input', render);
+  document.getElementById('filterCategory').addEventListener('change', render);
+  document.getElementById('filterStatus').addEventListener('change', render);
+
+  loadData();
+})();
+</script>
+</body>
+</html>

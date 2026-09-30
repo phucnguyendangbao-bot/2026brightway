@@ -40,9 +40,9 @@
       <div class="stat-card-label">Đã đăng</div>
     </div>
     <div class="stat-card">
-      <div class="stat-card-icon">📝</div>
-      <div class="stat-card-value" id="stat-drafts">—</div>
-      <div class="stat-card-label">Bản nháp</div>
+      <div class="stat-card-icon">📚</div>
+      <div class="stat-card-value" id="stat-resources">—</div>
+      <div class="stat-card-label">Tài liệu</div>
     </div>
     <div class="stat-card">
       <div class="stat-card-icon">🎯</div>
@@ -101,6 +101,10 @@
     // Majors stats
     const { count: majorsCount } = await sb.from('majors').select('*', { count: 'exact', head: true });
     document.getElementById('stat-majors').textContent = majorsCount || 0;
+
+    // Resources stats
+    const { count: resourcesCount } = await sb.from('resources').select('*', { count: 'exact', head: true });
+    document.getElementById('stat-resources').textContent = resourcesCount || 0;
 
     // Recent posts
     const { data: recent } = await sb

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title id="pageTitle">Thêm tài liệu – BrightWay Admin</title>
+<link rel="icon" type="image/png" href="../images/img-a84652d05567.png">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_layout.css">
+<style>
+  .res-edit-grid {
+    display: grid; grid-template-columns: 2fr 1fr;
+    gap: 20px; align-items: start;
+  }
+  @media (max-width: 900px) { .res-edit-grid { grid-template-columns: 1fr; } }
+  .res-form-group { margin-bottom: 16px; }
+  .res-form-group label {
+    display: block; font-weight: 700; font-size: 13px;
+    color: var(--text-mid); margin-bottom: 6px;
+  }
+  .res-form-group label .req { color: #ef4444; }
+  .res-form-control {
+    width: 100%; padding: 10px 12px; border: 1px solid var(--border);
+    border-radius: 8px; font-size: 14px; font-family: inherit;
+    background: var(--surface-2); color: var(--text);
+    transition: all .2s;
+  }
+  .res-form-control:focus {
+    outline: none; border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(99,102,241,0.10);
+  }
+  .res-form-help { font-size: 12px; color: var(--text-soft); margin-top: 4px; }
+  .res-preview {
+    width: 100%; aspect-ratio: 16/9; border-radius: 10px;
+    border: 2px dashed var(--border); background: var(--surface-2);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-soft); font-size: 13px; overflow: hidden;
+  }
+  .res-preview img { width: 100%; height: 100%; object-fit: cover; }
+  .res-checkbox-row {
+    display: flex; align-items: center; gap: 8px;
+    padding: 10px; background: var(--surface-2);
+    border: 1px solid var(--border); border-radius: 8px;
+    cursor: pointer;
+  }
+  .res-checkbox-row input { width: 18px; height: 18px; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<button class="mobile-toggle" onclick="Admin.toggleSidebar()">☰</button>
+
+<aside class="sidebar" id="sidebar"><div id="sidebar-content"></div></aside>
+
+<main class="main">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title" id="formTitle">+ Thêm tài liệu mới</h1>
+      <p class="page-subtitle">Điền thông tin tài liệu/khóa học cho học sinh tham khảo</p>
+    </div>
+    <div class="page-actions">
+      <a href="resources.html" class="btn btn-secondary">← Quay lại</a>
+    </div>
+  </div>
+
+  <form id="resForm" class="card">
+    <div class="res-edit-grid">
+      <!-- CỘT TRÁI: Form -->
+      <div>
+        <div class="res-form-group">
+          <label>Tiêu đề <span class="req">*</span></label>
+          <input type="text" name="title" class="res-form-control" required maxlength="200"
+                 placeholder="VD: CS50 — Khoa học Máy tính Harvard" />
+        </div>
+
+        <div class="res-form-group">
+          <label>Link ngoài <span class="req">*</span></label>
+          <input type="url" name="url" class="res-form-control" required
+                 placeholder="https://..." />
+          <div class="res-form-help">Học sinh click "TÌM HIỂU THÊM" sẽ mở link này trong tab mới</div>
+        </div>
+
+        <div class="res-form-group">
+          <label>Mô tả ngắn</label>
+          <textarea name="description" class="res-form-control" rows="3" maxlength="500"
+                    placeholder="1-2 câu mô tả tài liệu/khoá học"></textarea>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+          <div class="res-form-group">
+            <label>Thể loại <span class="req">*</span></label>
+            <select name="category" class="res-form-control" required>
+              <option value="Khóa học">🎓 Khóa học</option>
+              <option value="Tài liệu">📖 Tài liệu</option>
+              <option value="Video">🎬 Video</option>
+              <option value="Công cụ">🛠️ Công cụ</option>
+              <option value="Tổ chức">🏛️ Tổ chức</option>
+            </select>
+          </div>
+
+          <div class="res-form-group">
+            <label>Cấp độ</label>
+            <select name="level" class="res-form-control">
+              <option value="Mọi cấp độ">Mọi cấp độ</option>
+              <option value="Cơ bản">Cơ bản</option>
+              <option value="Nâng cao">Nâng cao</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="res-form-group">
+          <label>Nhà cung cấp</label>
+          <input type="text" name="provider" class="res-form-control" maxlength="200"
+                 placeholder="VD: Coursera (Harvard), FPT, WHO" />
+        </div>
+
+        <div class="res-form-group">
+          <label>Tags (phân cách bằng dấu phẩy)</label>
+          <input type="text" name="tags" class="res-form-control"
+                 placeholder="VD: CNTT, Lập trình, Miễn phí" />
+          <div class="res-form-help">Mỗi tag hiển thị dưới dạng #tag nhỏ trong card</div>
+        </div>
+
+        <div class="res-form-group">
+          <label>Link ảnh đại diện</label>
+          <input type="url" name="image" id="imageInput" class="res-form-control"
+                 placeholder="https://... (để trống sẽ dùng ảnh mặc định)" />
+          <div class="res-form-help">Tip: dùng ảnh tỉ lệ 16:9, ví dụ https://images.unsplash.com/photo-.../?w=400&h=240&fit=crop</div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+          <label class="res-checkbox-row">
+            <input type="checkbox" name="is_free" checked />
+            <div>
+              <div style="font-weight:700;">Tài liệu miễn phí</div>
+              <div style="font-size:12px;color:var(--text-soft);">Hiển thị badge xanh "Miễn phí"</div>
+            </div>
+          </label>
+
+          <label class="res-checkbox-row">
+            <input type="checkbox" name="is_published" checked />
+            <div>
+              <div style="font-weight:700;">Xuất bản ngay</div>
+              <div style="font-size:12px;color:var(--text-soft);">Bỏ tick = lưu bản nháp</div>
+            </div>
+          </label>
+        </div>
+
+        <div class="res-form-group" style="margin-top:20px;">
+          <button type="submit" class="btn btn-primary" style="margin-right:8px;">💾 Lưu tài liệu</button>
+          <a href="resources.html" class="btn btn-ghost">Huỷ</a>
+        </div>
+      </div>
+
+      <!-- CỘT PHẢI: Preview -->
+      <div>
+        <div class="card" style="position:sticky;top:20px;">
+          <h3 style="margin:0 0 14px;font-size:15px;font-weight:800;">👁️ Preview card</h3>
+          <div class="res-preview" id="imagePreview">
+            <span>Chưa có ảnh</span>
+          </div>
+          <div style="margin-top:14px;">
+            <div style="font-size:11px;color:var(--text-soft);margin-bottom:4px;">TIÊU ĐỀ</div>
+            <div id="prevTitle" style="font-weight:700;font-size:15px;">—</div>
+          </div>
+          <div style="margin-top:10px;">
+            <div style="font-size:11px;color:var(--text-soft);margin-bottom:4px;">MÔ TẢ</div>
+            <div id="prevDesc" style="font-size:13px;color:var(--text-mid);">—</div>
+          </div>
+          <div style="margin-top:10px;">
+            <div style="font-size:11px;color:var(--text-soft);margin-bottom:4px;">LINK</div>
+            <div id="prevUrl" style="font-size:12px;color:var(--primary);word-break:break-all;">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</main>
+
+<script src="../assets/js/supabase-client.js"></script>
+<script src="../assets/js/cms-service.js"></script>
+<script src="_guard.js"></script>
+<script>
+(async function () {
+  const profile = await Admin.requireAdmin();
+  if (!profile) return;
+  document.getElementById('sidebar-content').innerHTML = Admin.buildSidebar('resources', profile);
+
+  const params = new URLSearchParams(location.search);
+  const editId = params.get('id');
+  if (editId) {
+    document.getElementById('formTitle').textContent = '✏️ Sửa tài liệu';
+    document.getElementById('pageTitle').textContent = 'Sửa tài liệu – BrightWay Admin';
+  }
+
+  const sb = window.supabaseClient;
+
+  // Load existing data if editing
+  if (editId) {
+    const { data, error } = await sb.from('resources').select('*').eq('id', editId).single();
+    if (error) { Admin.showToast('Lỗi: ' + error.message, 'error'); return; }
+    if (data) {
+      const f = document.getElementById('resForm');
+      f.title.value = data.title || '';
+      f.url.value = data.url || '';
+      f.description.value = data.description || '';
+      f.category.value = data.category || 'Khóa học';
+      f.level.value = data.level || 'Mọi cấp độ';
+      f.provider.value = data.provider || '';
+      f.tags.value = (data.tags || []).join(', ');
+      f.image.value = data.image || '';
+      f.is_free.checked = data.is_free !== false;
+      f.is_published.checked = data.is_published !== false;
+      updatePreview();
+    }
+  }
+
+  // Live preview
+  function updatePreview() {
+    const f = document.getElementById('resForm');
+    const img = f.image.value.trim();
+    const prev = document.getElementById('imagePreview');
+    if (img) {
+      prev.innerHTML = `<img src="${img}" alt="" onerror="this.outerHTML='<span>Ảnh lỗi</span>'"/>`;
+    } else {
+      prev.innerHTML = '<span>Chưa có ảnh</span>';
+    }
+    document.getElementById('prevTitle').textContent = f.title.value.trim() || '—';
+    document.getElementById('prevDesc').textContent = f.description.value.trim() || '—';
+    document.getElementById('prevUrl').textContent = f.url.value.trim() || '—';
+  }
+
+  document.getElementById('resForm').addEventListener('input', updatePreview);
+
+  // Submit
+  document.getElementById('resForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const f = e.target;
+
+    const payload = {
+      title: f.title.value.trim(),
+      url: f.url.value.trim(),
+      description: f.description.value.trim() || null,
+      category: f.category.value,
+      level: f.level.value,
+      provider: f.provider.value.trim() || null,
+      tags: f.tags.value.split(',').map(s => s.trim()).filter(Boolean),
+      image: f.image.value.trim() || null,
+      is_free: f.is_free.checked,
+      is_published: f.is_published.checked
+    };
+
+    if (!payload.title || !payload.url) {
+      Admin.showToast('Vui lòng nhập Tiêu đề và Link', 'error');
+      return;
+    }
+
+    try {
+      if (editId) {
+        await CMS.updateResource(editId, payload);
+        Admin.showToast('Đã cập nhật tài liệu', 'success');
+      } else {
+        await CMS.createResource(payload);
+        Admin.showToast('Đã thêm tài liệu mới', 'success');
+      }
+      setTimeout(() => location.href = 'resources.html', 800);
+    } catch (err) {
+      Admin.showToast('Lỗi: ' + err.message, 'error');
+    }
+  });
+})();
+</script>
+</body>
+</html>

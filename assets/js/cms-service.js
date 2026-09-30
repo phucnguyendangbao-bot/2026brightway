@@ -10,7 +10,8 @@
     majors: 'majors',
     profiles: 'profiles',
     tags: 'tags',
-    postTags: 'post_tags'
+    postTags: 'post_tags',
+    resources: 'resources'
   };
 
   // ============ POSTS ============
@@ -155,6 +156,74 @@
     if (error) throw error;
   }
 
+  // ============ RESOURCES ============
+  async function listResources({ category = null, search = null, onlyPublished = true } = {}) {
+    const sb = await window.getSupabase();
+    let q = sb
+      .from(TABLES.resources)
+      .select('*')
+      .order('display_order', { ascending: true })
+      .order('created_at', { ascending: false });
+
+    if (onlyPublished) q = q.eq('is_published', true);
+    if (category) q = q.eq('category', category);
+    if (search) q = q.or(`title.ilike.%${search}%,description.ilike.%${search}%,provider.ilike.%${search}%`);
+
+    const { data, error } = await q;
+    if (error) throw error;
+    return data || [];
+  }
+
+  async function createResource(payload) {
+    const sb = await window.getSupabase();
+    const { data: { user } } = await sb.auth.getUser();
+    if (!user) throw new Error('Chưa đăng nhập');
+
+    const row = {
+      title: payload.title,
+      category: payload.category || 'Khóa học',
+      provider: payload.provider || null,
+      image: payload.image || null,
+      description: payload.description || null,
+      url: payload.url,
+      tags: payload.tags || [],
+      is_free: payload.is_free !== false,
+      level: payload.level || 'Mọi cấp độ',
+      is_published: payload.is_published !== false,
+      display_order: payload.display_order || 0,
+      created_by: user.id
+    };
+
+    const { data, error } = await sb.from(TABLES.resources).insert(row).select().single();
+    if (error) throw error;
+    return data;
+  }
+
+  async function updateResource(id, payload) {
+    const sb = await window.getSupabase();
+    const update = { ...payload };
+    delete update.id;
+    delete update.created_by;
+
+    const { data, error } = await sb.from(TABLES.resources).update(update).eq('id', id).select().single();
+    if (error) throw error;
+    return data;
+  }
+
+  async function deleteResource(id) {
+    const sb = await window.getSupabase();
+    const { error } = await sb.from(TABLES.resources).delete().eq('id', id);
+    if (error) throw error;
+  }
+
+  async function incrementResourceViews(id) {
+    const sb = await window.getSupabase();
+    const { data } = await sb.from(TABLES.resources).select('views_count').eq('id', id).single();
+    if (data) {
+      await sb.from(TABLES.resources).update({ views_count: (data.views_count || 0) + 1 }).eq('id', id);
+    }
+  }
+
   // ============ PROFILE / ROLE ============
   async function getMyProfile() {
     const sb = await window.getSupabase();
@@ -218,6 +287,7 @@
     TABLES,
     listPublishedPosts, getPostBySlug, createPost, updatePost, deletePost,
     listMajors, getMajorBySlug, createMajor, updateMajor, deleteMajor,
+    listResources, createResource, updateResource, deleteResource, incrementResourceViews,
     getMyProfile, isAdmin, isTeacherOrAdmin,
     slugify, formatDate, categoryLabel
   };

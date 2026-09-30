@@ -69,20 +69,26 @@
   <p class="small">© 2026 BrightWay Career · Thông tin chỉ mang tính tham khảo, không thay thế tư vấn chuyên gia.</p>
 </footer>
 
+<script src="assets/js/supabase-client.js"></script>
+<script src="assets/js/cms-service.js"></script>
 <script src="assets/js/resources-data.js"></script>
 <script src="assets/js/theme.js"></script>
 <script>
-(function() {
+(async function() {
   const grid = document.getElementById('resGrid');
   const empty = document.getElementById('resEmpty');
   const search = document.getElementById('resSearch');
   const filterBtns = document.querySelectorAll('.res-filter-btn');
+  let ALL = [];
   let activeFilter = 'all';
   let activeKeyword = '';
 
+  ALL = await loadResources();
+  paint();
+
   function paint() {
     const kw = activeKeyword.trim().toLowerCase();
-    const list = RESOURCES.filter(r => {
+    const list = ALL.filter(r => {
       const okCat = (activeFilter === 'all') || (r.category === activeFilter);
       if (!okCat) return false;
       if (!kw) return true;
@@ -106,8 +112,6 @@
     activeKeyword = e.target.value;
     paint();
   });
-
-  paint();
 })();
 </script>
 </body>
