@@ -496,7 +496,9 @@ function renderSchools(schools) {
     `;
   }).join('');
 
-  // Inject logos: Ưu tiên Wikipedia (từ uni-logos.js) → Google Favicon → gradient badge
+  // Inject logos:
+  //   - Trường có logo Wikimedia verified → dùng Wikimedia URL chain
+  //   - Trường chưa có logo Wikimedia verified → render SVG brand gradient (luôn hoạt động, đẹp, đúng màu trường)
   schools.forEach(s => {
     const iconEl = document.getElementById('icon-' + s.id);
     if (!iconEl) return;
@@ -506,15 +508,18 @@ function renderSchools(schools) {
     const wikiLogo = uniInfo ? uniInfo.logo : null;
     const wikiLogoAlt = uniInfo ? uniInfo.logoAlt : null;
 
+    // Check xem logo hiện tại có phải là Wikipedia thật (verified) không
+    // Quy tắc: chỉ chain img src nếu URL gốc là Wikimedia Commons thumb đã verify
+    const hasVerifiedLogo = (url) => url && typeof url === 'string' && url.includes('thumb.wikimedia.org/wikipedia/commons/');
+
     function getDomain(url) { try { return new URL(url).hostname; } catch(e) { return null; } }
     const domain = getDomain(s.website) || getDomain(s.logoUrl);
     const googleFav = domain ? `https://www.google.com/s2/favicons?sz=64&domain=${domain}` : null;
 
-    // Build chuỗi URL fallback chain: Wiki primary → Wiki alt → s.logoUrl → Google favicon
+    // Build chuỗi URL fallback chain (chỉ Wikimedia verified)
     const srcs = [];
-    if (wikiLogo) srcs.push(wikiLogo);
-    if (wikiLogoAlt && wikiLogoAlt !== wikiLogo) srcs.push(wikiLogoAlt);
-    if (s.logoUrl && !s.logoUrl.includes('logo.clearbit.com')) srcs.push(s.logoUrl);
+    if (hasVerifiedLogo(wikiLogo)) srcs.push(wikiLogo);
+    if (hasVerifiedLogo(wikiLogoAlt) && wikiLogoAlt !== wikiLogo) srcs.push(wikiLogoAlt);
     if (googleFav) srcs.push(googleFav);
 
     if (srcs.length > 0) {
@@ -532,6 +537,7 @@ function renderSchools(schools) {
       img.src = srcs[0];
       iconEl.appendChild(img);
     } else {
+      // Không có logo Wikimedia verified → render SVG brand gradient luôn (đẹp, đúng màu, không lỗi)
       renderFallbackBadge();
     }
 

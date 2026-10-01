@@ -384,7 +384,10 @@ window.UNILogo = function(codeOrName) {
   return candidates[0].info;
 };
 
-// Render ra thẻ img HTML (kèm fallback onerror)
+// Helper: check xem URL có phải Wikimedia verified không
+const isWikimediaVerified = (url) => url && typeof url === 'string' && url.includes('thumb.wikimedia.org/wikipedia/commons/');
+
+// Render ra thẻ img HTML (kèm fallback onerror chain + SVG brand cuối cùng)
 window.UNILogoImg = function(codeOrName, options = {}) {
   const info = window.UNILogo(codeOrName);
   const size = options.size || 48;
@@ -392,7 +395,23 @@ window.UNILogoImg = function(codeOrName, options = {}) {
   if (!info) {
     return `<div class="${cls}" style="width:${size}px;height:${size}px;display:flex;align-items:center;justify-content:center;background:rgba(99,102,241,0.1);border-radius:8px;font-size:${size/2.5}px;">🎓</div>`;
   }
-  return `<img src="${info.logo}" alt="${info.name}" class="${cls}" style="width:${size}px;height:${size}px;object-fit:contain;border-radius:8px;background:#fff;padding:2px;" onerror="this.onerror=null;this.src='${info.fallback}'" />`;
+  // Build fallback chain (chỉ Wikimedia verified)
+  const fallbackChain = [];
+  if (isWikimediaVerified(info.logo)) fallbackChain.push(info.logo);
+  if (isWikimediaVerified(info.logoAlt) && info.logoAlt !== info.logo) fallbackChain.push(info.logoAlt);
+  // Onerror chain qua từng URL, cuối cùng thay bằng SVG brand
+  let onerror = '';
+  if (fallbackChain.length > 1) {
+    const rest = fallbackChain.slice(1).map(u => `'${u}'`).join(',');
+    onerror = `var chain=[${rest}];var i=0;function next(){if(i<chain.length){this.src=chain[i++];}else if(window.UNILogoSvg){this.outerHTML=window.UNILogoSvg('${(codeOrName||'').replace(/'/g, "\\'")}',{size:${size}});}}this.onerror=next;next.call(this);`;
+  } else {
+    onerror = `if(window.UNILogoSvg){this.outerHTML=window.UNILogoSvg('${(codeOrName||'').replace(/'/g, "\\'")}',{size:${size}});}else this.style.display='none';`;
+  }
+  // Nếu không có Wikimedia verified → render SVG brand luôn
+  if (fallbackChain.length === 0) {
+    return window.UNILogoSvg ? window.UNILogoSvg(codeOrName, { size }) : '';
+  }
+  return `<img src="${fallbackChain[0]}" alt="${info.name}" class="${cls}" style="width:${size}px;height:${size}px;object-fit:contain;border-radius:8px;background:#fff;padding:2px;" onerror="${onerror}" />`;
 };
 
 // Render card đầy đủ: logo + tên trường + nhãn code (kiểu UEH)
@@ -408,10 +427,27 @@ window.UNILogoCard = function(codeOrName, options = {}) {
         </div>
       </div>`;
   }
+  // Quyết định render: nếu có Wikimedia verified → img + fallback chain, không thì SVG brand
+  const safeName = (codeOrName || '').replace(/'/g, "\\'");
+  const fallbackChain = [];
+  if (isWikimediaVerified(info.logo)) fallbackChain.push(info.logo);
+  if (isWikimediaVerified(info.logoAlt) && info.logoAlt !== info.logo) fallbackChain.push(info.logoAlt);
+  let logoHtml;
+  if (fallbackChain.length > 0) {
+    let onerror = '';
+    if (fallbackChain.length > 1) {
+      const rest = fallbackChain.slice(1).map(u => `'${u}'`).join(',');
+      onerror = `var chain=[${rest}];var i=0;function next(){if(i<chain.length){this.src=chain[i++];}else if(window.UNILogoSvg){this.outerHTML=window.UNILogoSvg('${safeName}',{size:${size}});}}this.onerror=next;next.call(this);`;
+    } else {
+      onerror = `if(window.UNILogoSvg){this.outerHTML=window.UNILogoSvg('${safeName}',{size:${size}});}else this.style.display='none';`;
+    }
+    logoHtml = `<img src="${fallbackChain[0]}" alt="${info.name}" class="uni-card-logo" onerror="${onerror}" />`;
+  } else {
+    logoHtml = window.UNILogoSvg ? window.UNILogoSvg(codeOrName, { size }) : '';
+  }
   return `
     <div class="uni-card">
-      <img src="${info.logo}" alt="${info.name}" class="uni-card-logo"
-           onerror="this.onerror=null;this.src='${info.fallback}'" />
+      ${logoHtml}
       <div class="uni-card-text">
         <div class="uni-card-name">${info.name}</div>
         <span class="uni-card-badge">${info.short}</span>
