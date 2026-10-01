@@ -504,14 +504,16 @@ function renderSchools(schools) {
     // 1. Thử logo từ uni-logos.js (match theo short, alias, tên)
     const uniInfo = (window.UNILogo && window.UNILogo(s.short || s.name)) || null;
     const wikiLogo = uniInfo ? uniInfo.logo : null;
+    const wikiLogoAlt = uniInfo ? uniInfo.logoAlt : null;
 
     function getDomain(url) { try { return new URL(url).hostname; } catch(e) { return null; } }
     const domain = getDomain(s.website) || getDomain(s.logoUrl);
     const googleFav = domain ? `https://www.google.com/s2/favicons?sz=64&domain=${domain}` : null;
 
-    // Build chuỗi URL fallback chain
+    // Build chuỗi URL fallback chain: Wiki primary → Wiki alt → s.logoUrl → Google favicon
     const srcs = [];
     if (wikiLogo) srcs.push(wikiLogo);
+    if (wikiLogoAlt && wikiLogoAlt !== wikiLogo) srcs.push(wikiLogoAlt);
     if (s.logoUrl && !s.logoUrl.includes('logo.clearbit.com')) srcs.push(s.logoUrl);
     if (googleFav) srcs.push(googleFav);
 
@@ -535,15 +537,20 @@ function renderSchools(schools) {
 
     function renderFallbackBadge() {
       iconEl.innerHTML = '';
-      // Gradient badge với initials
-      const initials = (s.short || s.name || '?')
-        .replace(/ĐH\s*/i, '')
-        .replace(/[^A-Za-zÀ-ỹ\s]/g, '')
-        .split(/\s+/).slice(0, 2)
-        .map(w => w[0] || '')
-        .join('').toUpperCase() || '?';
-      iconEl.style.cssText = 'display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:linear-gradient(135deg,#6366f1,#a78bfa);color:#fff;font-weight:800;font-size:18px;border-radius:8px;font-family:"Nunito",sans-serif;';
-      iconEl.textContent = initials;
+      // Gradient badge với initials + màu brand thật của trường
+      if (window.UNILogoSvg) {
+        iconEl.innerHTML = window.UNILogoSvg(s.short || s.name, { size: 56 });
+        iconEl.style.cssText = 'display:flex;align-items:center;justify-content:center;width:100%;height:100%;';
+      } else {
+        const initials = (s.short || s.name || '?')
+          .replace(/ĐH\s*/i, '')
+          .replace(/[^A-Za-zÀ-ỹ\s]/g, '')
+          .split(/\s+/).slice(0, 2)
+          .map(w => w[0] || '')
+          .join('').toUpperCase() || '?';
+        iconEl.style.cssText = 'display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:linear-gradient(135deg,#6366f1,#a78bfa);color:#fff;font-weight:800;font-size:18px;border-radius:8px;font-family:"Nunito",sans-serif;';
+        iconEl.textContent = initials;
+      }
     }
   });
 }
