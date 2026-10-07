@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+  </defs>
+  <rect width="240" height="240" rx="32" fill="url(#bg)"/>
+  <text x="120" y="110" font-family="'Nunito','Be Vietnam Pro',sans-serif" font-weight="900"
+        font-size="64" text-anchor="middle" fill="#fff" letter-spacing="-1">NEU</text>
+  <text x="120" y="160" font-family="'Nunito','Be Vietnam Pro',sans-serif" font-weight="700"
+        font-size="20" text-anchor="middle" fill="#fff" opacity="0.85" letter-spacing="2">KINH TẾ</text>
+</svg>
