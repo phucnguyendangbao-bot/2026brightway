@@ -24,7 +24,9 @@
     const found = findNavContainer();
     if (!found) return null;
     const { container, mode } = found;
-    if (document.getElementById('navAuthBtn')) return container;
+    // Nếu đã có slot thì return
+    const existing = document.getElementById('navAuthSlot');
+    if (existing) return existing;
     const slot = document.createElement('div');
     slot.id = 'navAuthSlot';
     slot.style.cssText = 'display:flex;align-items:center;gap:8px;margin-left:8px;';
@@ -38,7 +40,7 @@
       wrap.appendChild(slot);
       container.parentNode.insertBefore(wrap, container.nextSibling);
     }
-    return container;
+    return slot;
   }
 
   function style() {
