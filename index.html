@@ -3750,7 +3750,7 @@ body.spa-active #spa-topbar { display: flex; }
     <h2 class="section-title">Top trường được quan tâm</h2>
     <p class="section-sub">8 trường nổi bật — mở rộng để xem 30+ trường khác.</p>
     <div class="schools-mini-grid">
-      <a href="page2.html#bk-tp" class="school-mini"><div class="emo">🏛️</div><div class="name">ĐH Bách Khoa TP.HCM</div></a>
+      <a href="page2.html#hcmut-ai" class="school-mini"><div class="emo">🏛️</div><div class="name">ĐH Bách Khoa TP.HCM</div></a>
       <a href="page2.html#bk-hn" class="school-mini"><div class="emo">🎓</div><div class="name">ĐH Bách Khoa Hà Nội</div></a>
       <a href="page2.html#uit" class="school-mini"><div class="emo">💻</div><div class="name">ĐH CNTT (UIT)</div></a>
       <a href="page2.html#fpt" class="school-mini"><div class="emo">🎯</div><div class="name">ĐH FPT</div></a>
@@ -3760,7 +3760,7 @@ body.spa-active #spa-topbar { display: flex; }
       <a href="page2.html#dut" class="school-mini"><div class="emo">⚙️</div><div class="name">ĐH Bách khoa Đà Nẵng</div></a>
     </div>
     <div class="schools-mini-more">
-      <a href="page2.html">Xem tất cả 34+ trường →</a>
+      <a href="page2.html">Xem tất cả 40+ trường →</a>
     </div>
   </div>
 </section>
@@ -4544,8 +4544,14 @@ body.spa-active #spa-topbar { display: flex; }
       var html = '<div style="display:flex;flex-direction:column;gap:8px;">';
       filtered.forEach(function(s){
         var isSelected = selected.indexOf(s.code) !== -1;
+        // Render logo nếu có code trong uni-logos
+        var logoHtml = '';
+        if (typeof window.UNILogoImg === 'function') {
+          logoHtml = '<div style="flex-shrink:0;">' + window.UNILogoImg(s.code, { size: 36, class: 'school-list-logo' }) + '</div>';
+        }
         html += '<label style="display:flex;align-items:center;gap:12px;padding:12px;border:1.5px solid ' + (isSelected ? '#6366f1' : '#e2e8f0') + ';border-radius:12px;cursor:pointer;background:' + (isSelected ? '#eef2ff' : '#fff') + ';transition:all .15s;">';
         html += '<input type="checkbox" data-code="' + s.code + '" ' + (isSelected ? 'checked' : '') + ' style="width:18px;height:18px;accent-color:#6366f1;cursor:pointer;">';
+        html += logoHtml;
         html += '<div style="flex:1;">';
         html += '<div style="font-weight:700;color:#1a1a3e;font-size:14px;">' + escapeHtml(s.name) + '</div>';
         html += '<div style="font-size:12px;color:#6b7aaa;margin-top:2px;">Tổ hợp: ' + escapeHtml(s.combo) + ' · ' + regionLabel(s.region) + '</div>';
@@ -4576,9 +4582,13 @@ body.spa-active #spa-topbar { display: flex; }
       selected.forEach(function(code){
         var s = SCHOOLS.find(function(x){ return x.code === code; });
         if (!s) return;
-        html += '<div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:10px;padding:10px;background:#f8faff;border-radius:10px;border:1px solid #e2e8f0;">';
-        html += '<span style="color:#6366f1;margin-top:2px;">✓</span>';
-        html += '<div style="flex:1;">';
+        var logoHtml = '';
+        if (typeof window.UNILogoImg === 'function') {
+          logoHtml = '<div style="flex-shrink:0;">' + window.UNILogoImg(s.code, { size: 32, class: 'school-preview-logo' }) + '</div>';
+        }
+        html += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;padding:10px;background:#f8faff;border-radius:10px;border:1px solid #e2e8f0;">';
+        html += logoHtml;
+        html += '<div style="flex:1;min-width:0;">';
         html += '<div style="font-weight:700;color:#1a1a3e;font-size:14px;">' + escapeHtml(s.name) + '</div>';
         html += '<div style="font-size:12px;color:#6b7aaa;margin-top:2px;">' + escapeHtml(s.combo) + ' · ' + regionLabel(s.region) + '</div>';
         html += '</div>';
@@ -4614,13 +4624,15 @@ body.spa-active #spa-topbar { display: flex; }
       overlay.innerHTML = '\
 <div style="background:#fff;border-radius:20px;width:100%;max-width:680px;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(99,102,241,0.35);">\
   <div style="padding:20px 24px;border-bottom:1px solid #e2e8f0;display:flex;align-items:flex-start;justify-content:space-between;background:linear-gradient(135deg,#eef2ff,#f5f3ff);">\
-    <div style="flex:1;padding-right:16px;">\
+    <div style="flex:1;padding-right:16px;display:flex;align-items:center;gap:14px;">' +
+      (typeof window.UNILogoImg === 'function' ? '<div style="flex-shrink:0;">' + window.UNILogoImg(s.code, { size: 56, class: 'school-detail-logo' }) + '</div>' : '') +
+      '<div style="flex:1;">\
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">\
         <span style="font-size:13px;font-weight:700;color:#fff;background:' + regionColor + ';padding:3px 10px;border-radius:999px;">' + regionText + '</span>\
         <span style="font-size:12px;color:#6b7aaa;">' + escapeHtml(s.combo) + '</span>\
       </div>\
       <h3 style="margin:0;font-size:20px;color:#1a1a3e;line-height:1.3;">' + escapeHtml(s.name) + '</h3>\
-    </div>\
+    </div></div>\
     <button id="closeSchoolDetail" style="background:none;border:none;font-size:28px;color:#9ca3c8;cursor:pointer;line-height:1;flex-shrink:0;margin-top:-4px;">×</button>\
   </div>\
   <div style="flex:1;overflow-y:auto;padding:20px 24px;">\
@@ -4663,8 +4675,13 @@ body.spa-active #spa-topbar { display: flex; }
       var html = '<div style="display:flex;flex-direction:column;gap:8px;">';
       filtered.forEach(function(s){
         var isSelected = selected.indexOf(s.code) !== -1;
+        var logoHtml = '';
+        if (typeof window.UNILogoImg === 'function') {
+          logoHtml = '<div style="flex-shrink:0;">' + window.UNILogoImg(s.code, { size: 36, class: 'school-list-logo' }) + '</div>';
+        }
         html += '<div style="display:flex;align-items:center;gap:10px;padding:12px;border:1.5px solid ' + (isSelected ? '#6366f1' : '#e2e8f0') + ';border-radius:12px;background:' + (isSelected ? '#eef2ff' : '#fff') + ';transition:all .15s;">';
         html += '<input type="checkbox" data-code="' + s.code + '" ' + (isSelected ? 'checked' : '') + ' style="width:18px;height:18px;accent-color:#6366f1;cursor:pointer;flex-shrink:0;">';
+        html += logoHtml;
         html += '<div style="flex:1;min-width:0;">';
         html += '<div style="font-weight:700;color:#1a1a3e;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + escapeHtml(s.name) + '</div>';
         html += '<div style="font-size:12px;color:#6b7aaa;margin-top:2px;">' + escapeHtml(s.combo) + ' · ' + regionLabel(s.region) + '</div>';
@@ -5533,25 +5550,30 @@ Bạn cần hỏi gì nào?</div>
 <script src="assets/js/uni-logo-svg.js"></script>
 <script>
 // Render logo thật cho school-mini grid trên trang chủ
+// Ưu tiên logoLocal (ưu có) → fallback Wikimedia → cuối cùng SVG brand
 (function () {
   const map = {
-    'ĐH Bách Khoa TP.HCM': 'BK_HCM',
-    'ĐH Bách Khoa Hà Nội': 'BK',
-    'ĐH CNTT (UIT)': 'UIT',
-    'ĐH FPT': 'FPT',
-    'ĐH Kinh tế TP.HCM': 'UEH'
-    // RMIT, Nha Trang, Bách khoa Đà Nẵng: giữ emoji (chưa có logo free)
+    'ĐH Bách Khoa TP.HCM': 'BK_HCM',      // → page2#hcmut-ai
+    'ĐH Bách Khoa Hà Nội': 'BK',           // → fallback SVG brand
+    'ĐH CNTT (UIT)': 'UIT',                // → page2#uit
+    'ĐH FPT': 'FPT',                       // → page2#fpt
+    'ĐH Kinh tế TP.HCM': 'UEH',            // → page2#ueh
+    'RMIT Vietnam': 'RMIT',                // → page2#rmit (ĐÃ có logo local mới)
+    'ĐH Nha Trang': 'NTU',                 // → page2#ntu (ĐÃ có logo local mới)
+    'ĐH Bách khoa Đà Nẵng': 'DUT'         // → page2#dut (ĐÃ có logo local mới)
   };
   function apply() {
     document.querySelectorAll('.school-mini').forEach(el => {
-      const name = el.querySelector('.name')?.textContent?.trim();
+      const name = el.querySelector('.name') && el.querySelector('.name').textContent && el.querySelector('.name').textContent.trim();
       if (!name) return;
       const code = map[name];
-      if (!code || !window.UNILogo) return;
-      const info = window.UNILogo(code);
+      if (!code) return;
+      if (typeof window.UNILogoImg !== 'function') return;
       const logoBox = el.querySelector('.emo');
-      if (logoBox && info) {
-        logoBox.innerHTML = `<img src="${info.logo}" alt="${name}" style="width:32px;height:32px;object-fit:contain;border-radius:6px;padding:2px;" onerror="this.onerror=null;this.src='${info.fallback}'" />`;
+      const html = window.UNILogoImg(code, { size: 36 });
+      if (logoBox && html) {
+        logoBox.innerHTML = html;
+        logoBox.style.cssText = 'display:flex;align-items:center;justify-content:center;';
       }
     });
   }

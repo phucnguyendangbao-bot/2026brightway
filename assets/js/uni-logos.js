@@ -27,6 +27,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Bách Khoa TPHCM',
     short: 'HCMUT',
     aliases: ['HCMUT', 'ĐH Bách khoa TP', 'Bách khoa TP.HCM', 'Đại học Bách khoa ĐHQG TP.HCM', 'Đại học Bách khoa Đà Nẵng'],
+    logoLocal: 'assets/images/logos/hcmut.png',
     logo: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/HCMUT_official_logo.png/330px-HCMUT_official_logo.png',
     logoAlt: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/HCMCUT.svg/330px-HCMCUT.svg.png',
     fallback: 'https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=120&h=120&fit=crop'
@@ -35,6 +36,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Khoa học Tự nhiên - ĐHQG Hà Nội',
     short: 'KHTN HN',
     aliases: ['HUS', 'ĐH KHTN Hà Nội'],
+    logoLocal: 'assets/images/logos/khtn.png',
     logo: 'https://upload.wikimedia.org/wikipedia/vi/thumb/c/c6/Logo_HUS.png/330px-Logo_HUS.png',
     fallback: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=120&h=120&fit=crop'
   },
@@ -42,6 +44,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Khoa học Tự nhiên - ĐHQG TPHCM',
     short: 'HCMUS',
     aliases: ['ĐH KHTN TP.HCM', 'Đại học Khoa học Tự nhiên ĐHQG TPHCM', 'Khoa học Tự nhiên ĐHQG TP.HCM'],
+    logoLocal: 'assets/images/logos/hcmus.png',
     logo: 'https://upload.wikimedia.org/wikipedia/vi/thumb/5/5c/HCMUS_logo.png/330px-HCMUS_logo.png',
     fallback: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=120&h=120&fit=crop'
   },
@@ -56,6 +59,7 @@ window.UNI_LOGOS = {
     name: 'ĐH KHXH & NV – ĐHQG TP.HCM',
     short: 'USSH HCM',
     aliases: ['ĐH KHXH & NV TP.HCM'],
+    logoLocal: 'assets/images/logos/ussh.png',
     logo: 'https://upload.wikimedia.org/wikipedia/vi/thumb/4/4f/Logo_USSH.png/330px-Logo_USSH.png',
     fallback: 'https://images.unsplash.com/photo-1543269664-7eef42226a21?w=120&h=120&fit=crop'
   },
@@ -63,6 +67,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Kinh tế Quốc dân',
     short: 'NEU',
     aliases: ['KTQD'],
+    logoLocal: 'assets/images/logos/neu.png',
     logo: 'https://upload.wikimedia.org/wikipedia/vi/thumb/f/f0/Logo_NEU.png/330px-Logo_NEU.png',
     fallback: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=120&h=120&fit=crop'
   },
@@ -71,6 +76,7 @@ window.UNI_LOGOS = {
     short: 'FTU',
     aliases: ['ĐH Ngoại thương – Cơ sở II TP.HCM', 'Ngoại thương', 'FTU2'],
     // Verified from 'File:FTU_logo_2020.png' on vi.wikipedia
+    logoLocal: 'assets/images/logos/ftu2.png',
     logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/FTU_logo_2020.png/330px-FTU_logo_2020.png',
     logoAlt: 'https://upload.wikimedia.org/wikipedia/commons/2/2a/FTU_logo_2020.png',
     fallback: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=120&h=120&fit=crop'
@@ -80,6 +86,7 @@ window.UNI_LOGOS = {
     name: 'Chương trình OISP – ĐH Bách khoa ĐHQG TP.HCM',
     short: 'HCMUT OISP',
     aliases: ['OISP', 'HCMUT OISP', 'ĐH Bách khoa – ĐHQG TP.HCM (OISP)'],
+    logoLocal: 'assets/images/logos/hcmutoisp.png',
     logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/HCMUT_official_logo.png/330px-HCMUT_official_logo.png',
     logoAlt: 'https://upload.wikimedia.org/wikipedia/commons/d/de/HCMUT_official_logo.png',
     fallback: 'https://images.unsplash.com/photo-1562774053-701939374585?w=120&h=120&fit=crop'
@@ -91,6 +98,7 @@ window.UNI_LOGOS = {
     name: 'ĐH CNTT - ĐHQG TPHCM',
     short: 'UIT',
     aliases: ['ĐH Công nghệ Thông tin – ĐHQG TP.HCM', 'ĐH CNTT TP.HCM'],
+    logoLocal: 'assets/images/logos/uit.png',
     logo: 'https://upload.wikimedia.org/wikipedia/vi/thumb/7/74/Logo_UIT.png/330px-Logo_UIT.png',
     fallback: 'https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=120&h=120&fit=crop'
   },
@@ -98,6 +106,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Kinh tế TPHCM',
     short: 'UEH',
     aliases: ['ĐH Kinh tế TP.HCM'],
+    logoLocal: 'assets/images/logos/ueh.png',
     logo: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Logo_UEH_xanh.jpg/330px-Logo_UEH_xanh.jpg',
     logoAlt: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Logo_Tr%C6%B0%E1%BB%9Dng_Kinh_doanh_UEH.png/330px-Logo_Tr%C6%B0%E1%BB%9Dng_Kinh_doanh_UEH.png',
     fallback: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=120&h=120&fit=crop'
@@ -106,6 +115,7 @@ window.UNI_LOGOS = {
     name: 'ĐH FPT',
     short: 'FPT',
     aliases: ['FPTU', 'ĐH FPT'],
+    logoLocal: 'assets/images/logos/fptu.png',
     logo: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Logo_fpt_university.jpg/330px-Logo_fpt_university.jpg',
     logoAlt: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Logo_FPT_Education.png/330px-Logo_FPT_Education.png',
     fallback: 'https://images.unsplash.com/photo-1562774053-701939374585?w=120&h=120&fit=crop'
@@ -121,6 +131,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Tôn Đức Thắng',
     short: 'TDTU',
     aliases: ['Tôn Đức Thắng'],
+    logoLocal: 'assets/images/logos/tdtu.png',
     logo: 'https://upload.wikimedia.org/wikipedia/vi/thumb/c/c4/Logo-TDTU.png/330px-Logo-TDTU.png',
     fallback: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?w=120&h=120&fit=crop'
   },
@@ -128,6 +139,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Nguyễn Tất Thành',
     short: 'NTTU',
     aliases: ['Nguyễn Tất Thành'],
+    logoLocal: 'assets/images/logos/nttu.jpg',
     logo: 'https://upload.wikimedia.org/wikipedia/vi/thumb/8/8e/Logo_NTTU.png/330px-Logo_NTTU.png',
     fallback: 'https://images.unsplash.com/photo-1562774053-701939374585?w=120&h=120&fit=crop'
   },
@@ -135,6 +147,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Quốc tế - ĐHQG TPHCM',
     short: 'HCMIU',
     aliases: ['ĐH Quốc tế TP.HCM'],
+    logoLocal: 'assets/images/logos/hcmiu.png',
     logo: 'https://upload.wikimedia.org/wikipedia/vi/thumb/5/55/HCMIU_logo.png/330px-HCMIU_logo.png',
     fallback: 'https://images.unsplash.com/photo-1562774053-701939374585?w=120&h=120&fit=crop'
   },
@@ -142,6 +155,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Nông Lâm TPHCM',
     short: 'NLU',
     aliases: ['HCMUAF', 'Nông Lâm TP.HCM'],
+    logoLocal: 'assets/images/logos/nlu.jpg',
     logo: 'https://upload.wikimedia.org/wikipedia/vi/thumb/4/49/HCMUAF_logo.png/330px-HCMUAF_logo.png',
     fallback: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=120&h=120&fit=crop'
   },
@@ -149,6 +163,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Công nghiệp Thực phẩm TPHCM',
     short: 'HUFI',
     aliases: ['ĐH Công nghiệp Thực phẩm TP.HCM'],
+    logoLocal: 'assets/images/logos/hufi.png',
     logo: 'https://upload.wikimedia.org/wikipedia/vi/thumb/2/2a/HUFI_logo.png/330px-HUFI_logo.png',
     fallback: 'https://images.unsplash.com/photo-1543269664-7eef42226a21?w=120&h=120&fit=crop'
   },
@@ -156,6 +171,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Ngân hàng TPHCM',
     short: 'HUB',
     aliases: ['ĐH Ngân hàng TP.HCM'],
+    logoLocal: 'assets/images/logos/hub.jpg',
     logo: 'https://upload.wikimedia.org/wikipedia/vi/thumb/1/1a/HUB_logo.png/330px-HUB_logo.png',
     fallback: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=120&h=120&fit=crop'
   },
@@ -163,6 +179,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Sư phạm TPHCM',
     short: 'HCMUE',
     aliases: ['ĐH Sư phạm TP.HCM'],
+    logoLocal: 'assets/images/logos/hcmue.png',
     logo: 'https://upload.wikimedia.org/wikipedia/vi/thumb/9/9a/HCMUE_logo.png/330px-HCMUE_logo.png',
     fallback: 'https://images.unsplash.com/photo-1543269664-7eef42226a21?w=120&h=120&fit=crop'
   },
@@ -170,6 +187,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Văn Lang',
     short: 'VLU',
     aliases: ['Văn Lang'],
+    logoLocal: 'assets/images/logos/vlu.png',
     logo: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d1/Logo_VLU_2022.png/330px-Logo_VLU_2022.png',
     logoAlt: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Logo_van_lang.webp/330px-Logo_van_lang.webp',
     fallback: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=120&h=120&fit=crop'
@@ -178,6 +196,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Y khoa Phạm Ngọc Thạch',
     short: 'PNTU',
     aliases: ['Phạm Ngọc Thạch', 'PNT'],
+    logoLocal: 'assets/images/logos/pntu.png',
     logo: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Logo_of_Pham_Ngoc_Thach_Medical_College.png/330px-Logo_of_Pham_Ngoc_Thach_Medical_College.png',
     fallback: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=120&h=120&fit=crop'
   },
@@ -185,6 +204,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Y Dược TPHCM',
     short: 'UMP',
     aliases: ['Y Dược TP.HCM'],
+    logoLocal: 'assets/images/logos/ump.png',
     logo: 'https://upload.wikimedia.org/wikipedia/vi/thumb/9/9f/Logo_UMP.png/330px-Logo_UMP.png',
     fallback: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=120&h=120&fit=crop'
   },
@@ -192,6 +212,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Y Dược Cần Thơ',
     short: 'CTUMP',
     aliases: ['Y Dược Cần Thơ'],
+    logoLocal: 'assets/images/logos/ctump.png',
     logo: 'https://upload.wikimedia.org/wikipedia/vi/thumb/7/7e/CTUMP_logo.png/330px-CTUMP_logo.png',
     fallback: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=120&h=120&fit=crop'
   },
@@ -201,6 +222,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Cần Thơ',
     short: 'CTU',
     aliases: ['ĐH Cần Thơ'],
+    logoLocal: 'assets/images/logos/ctu.png',
     logo: 'https://upload.wikimedia.org/wikipedia/vi/thumb/0/0e/Logo_CTU.png/330px-Logo_CTU.png',
     fallback: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=120&h=120&fit=crop'
   },
@@ -208,6 +230,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Đồng Tháp',
     short: 'DThU',
     aliases: ['Đồng Tháp'],
+    logoLocal: 'assets/images/logos/dthu.png',
     logo: 'https://upload.wikimedia.org/wikipedia/vi/thumb/a/a1/Logo_DThU.png/330px-Logo_DThU.png',
     fallback: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=120&h=120&fit=crop'
   },
@@ -215,6 +238,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Bách khoa - ĐH Đà Nẵng',
     short: 'DUT',
     aliases: ['ĐH Bách khoa Đà Nẵng', 'Đại học Bách khoa Đại học Đà Nẵng', 'Bách khoa Đại học Đà Nẵng'],
+    logoLocal: 'assets/images/logos/dut.png',
     logo: 'https://upload.wikimedia.org/wikipedia/vi/thumb/3/3a/DUT_Logo.png/330px-DUT_Logo.png',
     fallback: 'https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=120&h=120&fit=crop'
   },
@@ -222,6 +246,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Kinh tế - ĐH Đà Nẵng',
     short: 'DUE',
     aliases: ['ĐH Kinh tế Đà Nẵng', 'Đại học Kinh tế Đại học Đà Nẵng', 'Kinh tế Đại học Đà Nẵng'],
+    logoLocal: 'assets/images/logos/due.png',
     logo: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Logo_DUE.jpg/330px-Logo_DUE.jpg',
     fallback: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=120&h=120&fit=crop'
   },
@@ -229,6 +254,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Duy Tân',
     short: 'DTU',
     aliases: ['Duy Tân'],
+    logoLocal: 'assets/images/logos/dtu.jpg',
     logo: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Logo_Duy_Tan_University.png/330px-Logo_Duy_Tan_University.png',
     fallback: 'https://images.unsplash.com/photo-1562774053-701939374585?w=120&h=120&fit=crop'
   },
@@ -236,6 +262,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Nha Trang',
     short: 'NTU',
     aliases: ['Nha Trang'],
+    logoLocal: 'assets/images/logos/ntu.png',
     logo: 'https://upload.wikimedia.org/wikipedia/commons/c/c1/Nha_Trang_University_Seal.png',
     fallback: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=120&h=120&fit=crop'
   },
@@ -243,6 +270,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Quy Nhơn',
     short: 'QNU',
     aliases: ['Quy Nhơn'],
+    logoLocal: 'assets/images/logos/qnu.jpg',
     logo: 'https://upload.wikimedia.org/wikipedia/vi/thumb/d/d3/QNU_logo.png/330px-QNU_logo.png',
     fallback: 'https://images.unsplash.com/photo-1562774053-701939374585?w=120&h=120&fit=crop'
   },
@@ -250,6 +278,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Đông Á',
     short: 'DAU',
     aliases: ['Đông Á'],
+    logoLocal: 'assets/images/logos/dau.jpg',
     logo: 'https://upload.wikimedia.org/wikipedia/vi/thumb/c/c5/DAU_logo.png/330px-DAU_logo.png',
     fallback: 'https://images.unsplash.com/photo-1562774053-701939374585?w=120&h=120&fit=crop'
   },
@@ -257,6 +286,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Nông Lâm - ĐH Huế',
     short: 'HUAF',
     aliases: ['Nông Lâm Huế', 'Đại học Nông Lâm Đại học Huế', 'Nông Lâm Đại học Huế'],
+    logoLocal: 'assets/images/logos/huaf.png',
     logo: 'https://upload.wikimedia.org/wikipedia/vi/thumb/9/9a/HUAF_logo.png/330px-HUAF_logo.png',
     fallback: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=120&h=120&fit=crop'
   },
@@ -264,6 +294,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Khoa học - ĐH Huế',
     short: 'HUSC',
     aliases: ['Khoa học Huế', 'Đại học Khoa học Đại học Huế', 'Khoa học Đại học Huế'],
+    logoLocal: 'assets/images/logos/husc.png',
     logo: 'https://upload.wikimedia.org/wikipedia/vi/thumb/b/b3/HUSC_logo.png/330px-HUSC_logo.png',
     fallback: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=120&h=120&fit=crop'
   },
@@ -271,6 +302,7 @@ window.UNI_LOGOS = {
     name: 'ĐH KHXH & NV - ĐH Huế',
     short: 'HUCFL',
     aliases: ['KHXH NV Huế', 'Đại học KHXH NV Đại học Huế', 'KHXH NV Đại học Huế'],
+    logoLocal: 'assets/images/logos/hucfl.svg',
     logo: 'https://upload.wikimedia.org/wikipedia/vi/thumb/c/c7/HUCFL_logo.png/330px-HUCFL_logo.png',
     fallback: 'https://images.unsplash.com/photo-1543269664-7eef42226a21?w=120&h=120&fit=crop'
   },
@@ -278,6 +310,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Y Dược - ĐH Huế',
     short: 'HuemedU',
     aliases: ['Y Dược Huế', 'Đại học Y Dược Đại học Huế', 'Y Dược Đại học Huế'],
+    logoLocal: 'assets/images/logos/huemedu.jpg',
     logo: 'https://upload.wikimedia.org/wikipedia/vi/thumb/d/d8/HUEMED_logo.png/330px-HUEMED_logo.png',
     fallback: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=120&h=120&fit=crop'
   },
@@ -285,6 +318,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Phú Xuân',
     short: 'PXU',
     aliases: ['Phú Xuân'],
+    logoLocal: 'assets/images/logos/pxu.png',
     logo: 'https://upload.wikimedia.org/wikipedia/vi/thumb/a/a4/PXU_logo.png/330px-PXU_logo.png',
     fallback: 'https://images.unsplash.com/photo-1562774053-701939374585?w=120&h=120&fit=crop'
   },
@@ -292,6 +326,7 @@ window.UNI_LOGOS = {
     name: 'ĐH CNTT TT&TT Việt - Hàn',
     short: 'VKU',
     aliases: ['VKU', 'Việt Hàn', 'ĐH CNTT TT&TT Việt Hàn', 'ĐH Công nghệ TT&TT Việt Hàn'],
+    logoLocal: 'assets/images/logos/vku.png',
     logo: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Logo_VKU_new_tran.jpg/330px-Logo_VKU_new_tran.jpg',
     logoAlt: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Logo_vku-01.jpg/330px-Logo_vku-01.jpg',
     fallback: 'https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=120&h=120&fit=crop'
@@ -300,6 +335,7 @@ window.UNI_LOGOS = {
     name: 'RMIT University Vietnam',
     short: 'RMIT',
     aliases: [],
+    logoLocal: 'assets/images/logos/rmit.png',
     logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/8/8e/RMIT_University_logo.svg/330px-RMIT_University_logo.svg.png',
     fallback: 'https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=120&h=120&fit=crop'
   },
@@ -399,7 +435,7 @@ window.UNILogo = function(codeOrName) {
 // Helper: check xem URL có phải Wikimedia verified không
 const isWikimediaVerified = (url) => url && typeof url === 'string' && url.includes('thumb.wikimedia.org/wikipedia/commons/');
 
-// Render ra thẻ img HTML (kèm fallback onerror chain + SVG brand cuối cùng)
+// Render ra thẻ img HTML (ưu tiên logoLocal → Wikimedia → SVG brand)
 window.UNILogoImg = function(codeOrName, options = {}) {
   const info = window.UNILogo(codeOrName);
   const size = options.size || 48;
@@ -407,8 +443,9 @@ window.UNILogoImg = function(codeOrName, options = {}) {
   if (!info) {
     return `<div class="${cls}" style="width:${size}px;height:${size}px;display:flex;align-items:center;justify-content:center;background:rgba(99,102,241,0.1);border-radius:8px;font-size:${size/2.5}px;">🎓</div>`;
   }
-  // Build fallback chain (chỉ Wikimedia verified)
+  // Build fallback chain: ưu tiên logoLocal (file local không lỗi mạng) → Wikimedia
   const fallbackChain = [];
+  if (info.logoLocal) fallbackChain.push(info.logoLocal);
   if (isWikimediaVerified(info.logo)) fallbackChain.push(info.logo);
   if (isWikimediaVerified(info.logoAlt) && info.logoAlt !== info.logo) fallbackChain.push(info.logoAlt);
   // Onerror chain qua từng URL, cuối cùng thay bằng SVG brand
@@ -419,7 +456,7 @@ window.UNILogoImg = function(codeOrName, options = {}) {
   } else {
     onerror = `if(window.UNILogoSvg){this.outerHTML=window.UNILogoSvg('${(codeOrName||'').replace(/'/g, "\\'")}',{size:${size}});}else this.style.display='none';`;
   }
-  // Nếu không có Wikimedia verified → render SVG brand luôn
+  // Nếu không có URL nào → render SVG brand luôn
   if (fallbackChain.length === 0) {
     return window.UNILogoSvg ? window.UNILogoSvg(codeOrName, { size }) : '';
   }
@@ -439,9 +476,10 @@ window.UNILogoCard = function(codeOrName, options = {}) {
         </div>
       </div>`;
   }
-  // Quyết định render: nếu có Wikimedia verified → img + fallback chain, không thì SVG brand
+  // Quyết định render: ưu tiên logoLocal → Wikimedia → SVG brand
   const safeName = (codeOrName || '').replace(/'/g, "\\'");
   const fallbackChain = [];
+  if (info.logoLocal) fallbackChain.push(info.logoLocal);
   if (isWikimediaVerified(info.logo)) fallbackChain.push(info.logo);
   if (isWikimediaVerified(info.logoAlt) && info.logoAlt !== info.logo) fallbackChain.push(info.logoAlt);
   let logoHtml;
