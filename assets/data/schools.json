@@ -1,13 +1,13 @@
 [
   {
-    "id": "hcmut-oisp",
-    "name": "Đại học Bách khoa – ĐHQG TP.HCM (OISP)",
-    "short": "HCMUT OISP",
+    "id": "hcmut",
+    "name": "Đại học Bách khoa – ĐHQG TP.HCM",
+    "short": "HCMUT",
     "city": "TP.HCM",
     "logoUrl": "assets/images/logos/hcmutoisp.png",
     "logoFallback": "🏛️",
-    "website": "https://oisp.hcmut.edu.vn/scholarships",
-    "admissionUrl": "https://oisp.hcmut.edu.vn/",
+    "website": "https://hcmut.edu.vn/hoc-bong",
+    "admissionUrl": "https://hcmut.edu.vn/tuyen-sinh-dh/dai-hoc-chinh-quy",
     "scholarships": [
       {
         "title": "Học bổng khuyến khích học tập theo kỳ",
@@ -29,6 +29,61 @@
         "requirements": "Thủ khoa hoặc top điểm cao nhất theo phương thức xét tuyển",
         "timeline": "Xét khi nhập học",
         "note": "Nên kiểm tra mục học bổng/tài chính của từng chương trình (chuẩn, tiên tiến, OISP)"
+      }
+    ],
+    "variants": [
+      {
+        "id": "hcmut-oisp",
+        "label": "Chương trình OISP / Tiên tiến",
+        "name": "Đại học Bách khoa – ĐHQG TP.HCM (OISP)",
+        "website": "https://oisp.hcmut.edu.vn/scholarships",
+        "admissionUrl": "https://oisp.hcmut.edu.vn/",
+        "scholarships": [
+          {
+            "title": "Học bổng khuyến khích học tập theo kỳ",
+            "target": "Sinh viên đang học tại trường",
+            "requirements": "Đạt kết quả học tập tốt trong kỳ/năm học, không vi phạm kỷ luật",
+            "timeline": "Xét theo kỳ học",
+            "note": "Tỷ lệ và mức học bổng thay đổi theo năm"
+          },
+          {
+            "title": "Học bổng IELTS / Ngoại ngữ",
+            "target": "Sinh viên chưng trình OISP, tiên tiến",
+            "requirements": "Đạt điểm IELTS hoặc chứng chỉ ngoại ngữ quốc tế theo mức quy định",
+            "timeline": "Theo thông báo từng đợt",
+            "note": "Mức thưởng phụ thuộc vào band score đạt được"
+          },
+          {
+            "title": "Học bổng thủ khoa đầu vào",
+            "target": "Thí sinh trúng tuyển điểm cao nhất ngành",
+            "requirements": "Thủ khoa hoặc top điểm cao nhất theo phương thức xét tuyển",
+            "timeline": "Xét khi nhập học",
+            "note": "Nên kiểm tra mục học bổng/tài chính của từng chương trình (chuẩn, tiên tiến, OISP)"
+          }
+        ]
+      },
+      {
+        "id": "hcmut-ai",
+        "label": "Chương trình AI / Robotics",
+        "name": "Đại học Bách khoa – ĐHQG TP.HCM",
+        "website": "https://oisp.hcmut.edu.vn/scholarships",
+        "admissionUrl": "https://hcmut.edu.vn/tuyen-sinh-dh/dai-hoc-chinh-quy",
+        "scholarships": [
+          {
+            "title": "Học bổng khuyến khích học tập",
+            "target": "Sinh viên đang học",
+            "requirements": "GPA & rèn luyện theo quy định học kỳ",
+            "timeline": "Xét theo học kỳ",
+            "note": "Có thể đạt mức cao tùy kết quả"
+          },
+          {
+            "title": "Học bổng doanh nghiệp AI/Robotics",
+            "target": "Sinh viên có dự án/portfolio",
+            "requirements": "Tham gia CLB, dự án, NCKH; phỏng vấn (tùy đợt)",
+            "timeline": "Theo đợt",
+            "note": "Theo dõi thông báo Khoa/CTSV"
+          }
+        ]
       }
     ]
   },
@@ -76,6 +131,31 @@
         "requirements": "IELTS hoặc chứng chỉ tiếng Anh tương đương, GPA tốt",
         "timeline": "Theo đợt mở đăng ký",
         "note": "Một số học bổng xét theo thành tích sau khi nhập học"
+      }
+    ],
+    "variants": [
+      {
+        "id": "uit-ai",
+        "label": "UIT AI / Chương trình AI & Data",
+        "name": "Đại học Công nghệ Thông tin – ĐHQG TP.HCM (AI/Data)",
+        "website": "https://www.uit.edu.vn/hoc-bong",
+        "admissionUrl": "https://tuyensinh.uit.edu.vn/",
+        "scholarships": [
+          {
+            "title": "Học bổng khuyến khích học tập",
+            "target": "Sinh viên đang học",
+            "requirements": "GPA tốt + rèn luyện đạt chuẩn",
+            "timeline": "Theo học kỳ/năm",
+            "note": "Thường xét theo kết quả học tập"
+          },
+          {
+            "title": "Học bổng doanh nghiệp (AI/Data)",
+            "target": "Sinh viên có năng lực nổi bật",
+            "requirements": "Thành tích học tập/giải thưởng/portfolio là lợi thế",
+            "timeline": "Theo đợt",
+            "note": "Các đơn vị tài trợ thay đổi theo năm"
+          }
+        ]
       }
     ]
   },
@@ -583,58 +663,6 @@
         "requirements": "Hồ sơ minh chứng + kết quả học tập/rèn luyện phù hợp",
         "timeline": "Theo đợt",
         "note": "Số lượng & mức hỗ trợ tùy quỹ"
-      }
-    ]
-  },
-  {
-    "id": "hcmut-ai",
-    "name": "Đại học Bách khoa – ĐHQG TP.HCM",
-    "short": "HCMUT",
-    "city": "TP.HCM",
-    "logoUrl": "assets/images/logos/hcmut.png",
-    "logoFallback": "🤖",
-    "website": "https://oisp.hcmut.edu.vn/scholarships",
-    "admissionUrl": "https://hcmut.edu.vn/tuyen-sinh-dh/dai-hoc-chinh-quy",
-    "scholarships": [
-      {
-        "title": "Học bổng khuyến khích học tập",
-        "target": "Sinh viên đang học",
-        "requirements": "GPA & rèn luyện theo quy định học kỳ",
-        "timeline": "Xét theo học kỳ",
-        "note": "Có thể đạt mức cao tùy kết quả"
-      },
-      {
-        "title": "Học bổng doanh nghiệp AI/Robotics",
-        "target": "Sinh viên có dự án/portfolio",
-        "requirements": "Tham gia CLB, dự án, NCKH; phỏng vấn (tùy đợt)",
-        "timeline": "Theo đợt",
-        "note": "Theo dõi thông báo Khoa/CTSV"
-      }
-    ]
-  },
-  {
-    "id": "uit-ai",
-    "name": "Đại học Công nghệ Thông tin – ĐHQG TP.HCM (AI/Data)",
-    "short": "UIT AI",
-    "city": "TP.HCM",
-    "logoUrl": "assets/images/logos/uitai.svg",
-    "logoFallback": "🤖",
-    "website": "https://www.uit.edu.vn/hoc-bong",
-    "admissionUrl": "https://tuyensinh.uit.edu.vn/",
-    "scholarships": [
-      {
-        "title": "Học bổng khuyến khích học tập",
-        "target": "Sinh viên đang học",
-        "requirements": "GPA tốt + rèn luyện đạt chuẩn",
-        "timeline": "Theo học kỳ/năm",
-        "note": "Thường xét theo kết quả học tập"
-      },
-      {
-        "title": "Học bổng doanh nghiệp (AI/Data)",
-        "target": "Sinh viên có năng lực nổi bật",
-        "requirements": "Thành tích học tập/giải thưởng/portfolio là lợi thế",
-        "timeline": "Theo đợt",
-        "note": "Các đơn vị tài trợ thay đổi theo năm"
       }
     ]
   },

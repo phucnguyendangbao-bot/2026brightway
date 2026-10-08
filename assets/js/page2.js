@@ -457,9 +457,13 @@ function renderSidebar(schools) {
   try {
     const titleHtml = '<div class="p2-sidebar-title">📚 Danh sách trường</div>';
     const safeSchools = Array.isArray(schools) ? schools : [];
-    const linksHtml = safeSchools.map(s =>
-      `<a href="#${s.id}" data-id="${s.id}" data-action="highlight-section" data-school-id="${s.id}">${s.logoFallback || '🏫'} ${s.short || s.name || '---'}</a>`
-    ).join('');
+    const linksHtml = safeSchools.map(s => {
+      const mainLink = `<a href="#${s.id}" data-id="${s.id}" data-action="highlight-section" data-school-id="${s.id}">${s.logoFallback || '🏫'} ${s.short || s.name || '---'}</a>`;
+      const variantLinks = (s.variants && s.variants.length)
+        ? s.variants.map(v => `<a href="#${v.id}" data-id="${v.id}" data-action="highlight-section" data-school-id="${v.id}" class="p2-sidebar-variant">↳ ${v.label || v.short || v.name}</a>`).join('')
+        : '';
+      return mainLink + variantLinks;
+    }).join('');
     const emptyMsg = safeSchools.length === 0
       ? '<div style="padding:12px;color:#6b7280;font-size:.8rem;">Không có trường nào khớp từ khóa.</div>'
       : '';
@@ -495,6 +499,44 @@ function renderSchools(schools) {
       </div>
     `).join('');
 
+    // Render variants (chương trình con) nếu có
+    const variantsHtml = (s.variants && s.variants.length)
+      ? s.variants.map(v => {
+          const vCards = v.scholarships.map(sc => `
+            <div class="sc-card sc-card-variant">
+              <div class="sc-card-title">🎓 ${sc.title}</div>
+              <div class="sc-row">
+                <span class="sc-label">Đối tượng:</span>
+                <span class="sc-value">${sc.target}</span>
+              </div>
+              <div class="sc-row">
+                <span class="sc-label">Yêu cầu:</span>
+                <span class="sc-value">${sc.requirements}</span>
+              </div>
+              <div class="sc-row">
+                <span class="sc-label">Thời gian:</span>
+                <span class="sc-value"><span class="sc-tag sc-tag-green">${sc.timeline}</span></span>
+              </div>
+              ${sc.note ? `<div class="sc-note">💡 ${sc.note}</div>` : ''}
+            </div>
+          `).join('');
+          return `
+            <div class="school-variant" id="${v.id}">
+              <div class="school-variant-header">
+                <h3 class="school-variant-title">
+                  ${v.website ? `<a href="${v.website}" target="_blank" rel="noopener" class="school-name-link">${v.name} <svg style="display:inline;vertical-align:middle;margin-left:4px;opacity:.5" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>` : v.name}
+                </h3>
+                <span class="school-variant-tag">${v.label || ''}</span>
+                ${v.admissionUrl ? `<a href="${v.admissionUrl}" target="_blank" rel="noopener" class="school-admission-link" title="Cổng thông tin tuyển sinh chính thức">📋 Tuyển sinh</a>` : ''}
+              </div>
+              <div class="school-cards school-cards-variant">
+                ${vCards}
+              </div>
+            </div>
+          `;
+        }).join('')
+      : '';
+
     return `
       <section class="school-section" id="${s.id}">
         <div class="school-header">
@@ -505,12 +547,14 @@ function renderSchools(schools) {
             <div class="school-badges">
               <span class="school-badge-short">${s.short}</span>
               <span class="school-badge-city">📍 ${s.city}</span>
+              ${s.variants && s.variants.length ? `<span class="school-badge-variants">+ ${s.variants.length} chương trình</span>` : ''}
             </div>
           </div>
         </div>
         <div class="school-cards">
           ${cardsHtml}
         </div>
+        ${variantsHtml ? `<div class="school-variants">${variantsHtml}</div>` : ''}
       </section>
     `;
   }).join('');
