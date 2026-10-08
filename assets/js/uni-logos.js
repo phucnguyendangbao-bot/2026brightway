@@ -356,6 +356,20 @@ window.UNI_LOGOS = {
     logo: 'https://upload.wikimedia.org/wikipedia/commons/c/ca/VNU.logo.jpg',
     logoAlt: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Logo_VNU.png/330px-Logo_VNU.png',
     fallback: 'https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=120&h=120&fit=crop'
+  },
+  'SGU': {
+    name: 'Đại học Sài Gòn',
+    short: 'SGU',
+    aliases: ['ĐH Sài Gòn', 'ĐH SG', 'Saigon University', 'SGU'],
+    logoLocal: 'assets/images/logos/sgu.png',
+    fallback: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=120&h=120&fit=crop'
+  },
+  'UEL': {
+    name: 'Đại học Kinh tế - Luật – ĐHQG TP.HCM',
+    short: 'UEL',
+    aliases: ['ĐH Kinh tế Luật', 'ĐH KT-Luật', 'University of Economics and Law', 'UEL'],
+    logoLocal: 'assets/images/logos/uel.png',
+    fallback: 'https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=120&h=120&fit=crop'
   }
 };
 

@@ -1206,5 +1206,71 @@
         "note": ""
       }
     ]
+  },
+  {
+    "id": "sgu",
+    "name": "Đại học Sài Gòn",
+    "short": "SGU",
+    "city": "TP.HCM",
+    "logoUrl": "assets/images/logos/sgu.png",
+    "logoFallback": "🎓",
+    "website": "https://sgu.edu.vn/",
+    "admissionUrl": "https://tuyensinh.sgu.edu.vn/",
+    "scholarships": [
+      {
+        "title": "Học bổng khuyến khích học tập",
+        "target": "Sinh viên đang theo học",
+        "requirements": "Kết quả học tập xuất sắc, hạnh kiểm tốt, không vi phạm kỷ luật",
+        "timeline": "Xét theo học kỳ/năm",
+        "note": ""
+      },
+      {
+        "title": "Học bổng tân sinh viên / đầu vào",
+        "target": "Tân sinh viên điểm cao",
+        "requirements": "Đạt mốc điểm THPT hoặc ĐGNL theo quy định từng năm",
+        "timeline": "Năm nhất",
+        "note": ""
+      },
+      {
+        "title": "Học bổng hỗ trợ sinh viên",
+        "target": "Sinh viên có hoàn cảnh khó khăn nhưng thành tích tốt",
+        "requirements": "Hồ sơ hoàn cảnh + kết quả học tập/rèn luyện",
+        "timeline": "Theo thông báo từng đợt",
+        "note": ""
+      }
+    ]
+  },
+  {
+    "id": "uel",
+    "name": "Đại học Kinh tế - Luật – ĐHQG TP.HCM",
+    "short": "UEL",
+    "city": "TP.HCM",
+    "logoUrl": "assets/images/logos/uel.png",
+    "logoFallback": "⚖️",
+    "website": "https://www.uel.edu.vn/",
+    "admissionUrl": "https://tuyensinh.uel.edu.vn/",
+    "scholarships": [
+      {
+        "title": "Học bổng khuyến khích học tập",
+        "target": "Sinh viên đang theo học",
+        "requirements": "GPA đạt loại giỏi, xuất sắc; rèn luyện tốt",
+        "timeline": "Xét theo học kỳ/năm",
+        "note": ""
+      },
+      {
+        "title": "Học bổng đầu vào / thành tích tân sinh viên",
+        "target": "Tân sinh viên điểm cao",
+        "requirements": "Đạt mốc điểm THPT/ĐGNL/học bạ theo quy định từng năm",
+        "timeline": "Năm nhất",
+        "note": ""
+      },
+      {
+        "title": "Học bổng doanh nghiệp / đối tác",
+        "target": "Sinh viên có thành tích nổi bật",
+        "requirements": "Theo tiêu chí từng nhà tài trợ; ưu tiên sinh viên ngành Kế toán, Tài chính, Luật",
+        "timeline": "Theo đợt thông báo",
+        "note": ""
+      }
+    ]
   }
 ]
