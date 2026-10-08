@@ -1267,8 +1267,8 @@ body::after-disabled{
 .contact-item a:hover{ text-decoration: underline; }
 
 
-/* ===== PAGE 1 UI REMAKE ===== */
-body{
+/* ===== PAGE 1 UI REMAKE (chỉ áp dụng cho page1, có class page1-body) ===== */
+body.page1-body{
   background:linear-gradient(180deg,#dff4fb 0%,#edf6ff 38%,#f5f7fb 100%);
 }
 .lp-nav,.lp-hero,.lp-section#sectors,.lp-section#features{display:none !important;}
@@ -1291,8 +1291,8 @@ body{
 .page1-left,.page1-right{padding:22px 26px 26px;}
 .page1-right{display:flex; flex-direction:column; gap:0;}
 .page1-right section + section{margin-top:30px;padding-top:28px;border-top:1px solid #e6eef7;}
-/* ── SIDEBAR LAYOUT ── */
-body{
+/* ── SIDEBAR LAYOUT (chỉ áp dụng cho page1, không phải index) ── */
+body.page1-body{
   padding-left:64px !important;
 }
 .page1-shell{
@@ -1461,7 +1461,7 @@ body{
 #sidebarOverlay.open{display:block;}
 
 @media(max-width:900px){
-  body{ padding-left:0 !important; }
+  body.page1-body{ padding-left:0 !important; }
   .page1-shell{ flex-direction:column !important; padding:0 12px 24px !important; }
   .page1-left{ display:none !important; }
   .page1-right{ margin:68px 0 24px !important; border-radius:20px; }
