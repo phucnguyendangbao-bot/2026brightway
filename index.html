@@ -3434,19 +3434,21 @@ body.spa-active #spa-topbar { display: flex; }
     box-shadow: 0 4px 12px rgba(99,102,241,0.30);
   }
 
-  /* === HERO COMPACT (1 viewport max) === */
-  .bw-hero { padding: 32px 24px 28px !important; }
-  .bw-hero-grid {
-    grid-template-columns: 1fr !important;
-    gap: 20px !important;
-    text-align: center;
+  /* === HERO COMPACT (chỉ áp dụng khi < 860px) === */
+  @media (max-width: 860px) {
+    .bw-hero { padding: 32px 24px 28px !important; }
+    .bw-hero-grid {
+      grid-template-columns: 1fr !important;
+      gap: 20px !important;
+      text-align: center;
+    }
+    .bw-hero-text { text-align: center !important; }
+    .bw-hero-text h1 { font-size: clamp(28px, 4vw, 40px) !important; margin: 0 0 10px !important; }
+    .bw-hero-text .lede { margin: 0 auto 16px !important; font-size: 15px !important; }
+    .bw-hero-cta-row { justify-content: center !important; margin-bottom: 0 !important; }
+    .bw-hero-meta { justify-content: center !important; margin-top: 14px !important; }
+    .bw-hero-visual { display: none !important; }
   }
-  .bw-hero-text { text-align: center !important; }
-  .bw-hero-text h1 { font-size: clamp(28px, 4vw, 40px) !important; margin: 0 0 10px !important; }
-  .bw-hero-text .lede { margin: 0 auto 16px !important; font-size: 15px !important; }
-  .bw-hero-cta-row { justify-content: center !important; margin-bottom: 0 !important; }
-  .bw-hero-meta { justify-content: center !important; margin-top: 14px !important; }
-  .bw-hero-visual { display: none !important; }
 
   /* === ACTION GRID — 4 ô lớn ngay sau hero === */
   .bw-actions {
