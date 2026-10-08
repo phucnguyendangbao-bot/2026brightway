@@ -2878,31 +2878,42 @@ body.spa-active #spa-topbar { display: flex; }
   /* Stepper 4 bước - trong hero */
   .bw-stepper {
     display: flex;
-    align-items: center;
-    gap: 8px;
+    align-items: stretch;
+    gap: 6px;
     margin: 0 0 18px 0;
-    padding: 10px 14px;
+    padding: 8px;
     background: rgba(255,255,255,0.65);
     border: 1px solid rgba(99,102,241,0.18);
     border-radius: 14px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    width: 100%;
+    box-sizing: border-box;
   }
   .bw-stepper .step {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
-    padding: 6px 12px;
-    border-radius: 999px;
+    padding: 8px 12px;
+    border-radius: 10px;
     background: rgba(99,102,241,0.06);
     color: #6b7aaa;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     transition: all .2s;
+    flex: 1 1 0;
+    min-width: 0;
+    white-space: nowrap;
+  }
+  .bw-stepper .step .label {
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .bw-stepper .step.active {
     background: linear-gradient(135deg, #6366f1, #8b5cf6);
     color: #fff;
     box-shadow: 0 6px 16px rgba(99,102,241,0.30);
+    flex: 1.4 1 0;
   }
   .bw-stepper .step .num {
     width: 22px; height: 22px;
@@ -2913,6 +2924,7 @@ body.spa-active #spa-topbar { display: flex; }
     justify-content: center;
     font-weight: 800;
     font-size: 12px;
+    flex-shrink: 0;
   }
   .bw-stepper .step:not(.active) .num {
     background: rgba(99,102,241,0.12);
@@ -2922,6 +2934,14 @@ body.spa-active #spa-topbar { display: flex; }
     color: #cbd5e1;
     font-weight: 800;
     font-size: 14px;
+    flex-shrink: 0;
+    align-self: center;
+  }
+  /* Mobile: 2 bước/dòng */
+  @media (max-width: 600px) {
+    .bw-stepper { flex-wrap: wrap; }
+    .bw-stepper .step { flex: 1 1 calc(50% - 12px); min-width: 0; padding: 7px 10px; font-size: 12px; }
+    .bw-stepper .step-arrow { display: none; }
   }
 
   /* Audience compact + collapsible */
