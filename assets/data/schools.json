@@ -37,7 +37,7 @@
     "name": "Đại học Công nghệ Thông tin – ĐHQG TP.HCM",
     "short": "UIT",
     "city": "TP.HCM",
-    "logoUrl": "assets/images/logos/uit.svg",
+    "logoUrl": "assets/images/logos/uit.png",
     "logoFallback": "💻",
     "website": "https://www.uit.edu.vn/hoc-bong",
     "admissionUrl": "https://tuyensinh.uit.edu.vn/",
@@ -84,7 +84,7 @@
     "name": "Đại học FPT",
     "short": "FPTU",
     "city": "TP.HCM / Hà Nội / Đà Nẵng / Cần Thơ",
-    "logoUrl": "assets/images/logos/fptu.svg",
+    "logoUrl": "assets/images/logos/fptu.png",
     "logoFallback": "🎯",
     "website": "https://fpt.edu.vn/scholarship",
     "admissionUrl": "https://fpt.edu.vn/tuyen-sinh",
@@ -150,7 +150,7 @@
     "name": "Đại học Ngoại thương – Cơ sở II TP.HCM",
     "short": "FTU2",
     "city": "TP.HCM",
-    "logoUrl": "assets/images/logos/ftu2.svg",
+    "logoUrl": "assets/images/logos/ftu2.png",
     "logoFallback": "🌍",
     "website": "https://ftu.edu.vn/hoc-bong",
     "admissionUrl": "https://tuyensinh.ftu.edu.vn/",
@@ -216,7 +216,7 @@
     "name": "Đại học Y khoa Phạm Ngọc Thạch",
     "short": "PNTU",
     "city": "TP.HCM",
-    "logoUrl": "assets/images/logos/pntu.svg",
+    "logoUrl": "assets/images/logos/pntu.png",
     "logoFallback": "🩺",
     "website": "https://pnt.edu.vn/hoc-bong",
     "admissionUrl": "https://pts.pnt.edu.vn/",
@@ -348,7 +348,7 @@
     "name": "RMIT University Vietnam",
     "short": "RMIT",
     "city": "TP.HCM / Hà Nội",
-    "logoUrl": "assets/images/logos/rmit.svg",
+    "logoUrl": "assets/images/logos/rmit.png",
     "logoFallback": "🌐",
     "website": "https://www.rmit.edu.vn/study-at-rmit/scholarships",
     "admissionUrl": "https://www.rmit.edu.vn/vi/hoc-tap-tai-rmit/chuong-trinh-cu-nhan",
@@ -447,7 +447,7 @@
     "name": "Đại học Cần Thơ",
     "short": "CTU",
     "city": "Cần Thơ",
-    "logoUrl": "assets/images/logos/ctu.svg",
+    "logoUrl": "assets/images/logos/ctu.png",
     "logoFallback": "🌾",
     "website": "https://www.ctu.edu.vn/hoc-bong",
     "admissionUrl": "https://tuyensinh.ctu.edu.vn/dai-hoc-chinh-quy/thong-tin-tuyen-sinh.html",
@@ -480,7 +480,7 @@
     "name": "Đại học Đồng Tháp",
     "short": "DThU",
     "city": "Đồng Tháp",
-    "logoUrl": "assets/images/logos/dthu.svg",
+    "logoUrl": "assets/images/logos/dthu.png",
     "logoFallback": "🌱",
     "website": "",
     "admissionUrl": "https://tuyensinh.dthu.edu.vn/",
@@ -539,7 +539,7 @@
     "name": "Đại học Tôn Đức Thắng",
     "short": "TDTU",
     "city": "TP.HCM",
-    "logoUrl": "assets/images/logos/tdtu.svg",
+    "logoUrl": "assets/images/logos/tdtu.png",
     "logoFallback": "🌿",
     "website": "https://tdtu.edu.vn/hoc-bong",
     "admissionUrl": "https://tuyensinh.tdtu.edu.vn/",
@@ -565,7 +565,7 @@
     "name": "Đại học Nguyễn Tất Thành",
     "short": "NTTU",
     "city": "TP.HCM",
-    "logoUrl": "assets/images/logos/nttu.svg",
+    "logoUrl": "assets/images/logos/nttu.jpg",
     "logoFallback": "🌿",
     "website": "https://ntt.edu.vn/hoc-bong",
     "admissionUrl": "https://tuyensinh.ntt.edu.vn/",
@@ -643,7 +643,7 @@
     "name": "Đại học FPT",
     "short": "FPTU",
     "city": "TP.HCM/Cần Thơ/...",
-    "logoUrl": "assets/images/logos/fptu.svg",
+    "logoUrl": "assets/images/logos/fptu.png",
     "logoFallback": "🤖",
     "website": "https://fpt.edu.vn/scholarship",
     "admissionUrl": "https://fpt.edu.vn/tuyen-sinh",
@@ -799,7 +799,7 @@
     "name": "Đại học Duy Tân",
     "short": "DTU",
     "city": "Đà Nẵng",
-    "logoUrl": "assets/images/logos/dtu.png",
+    "logoUrl": "assets/images/logos/dtu.jpg",
     "logoFallback": "🎯",
     "website": "https://duytan.edu.vn/tuyen-sinh/hoc-bong",
     "admissionUrl": "https://tuyensinh.duytan.edu.vn/",
@@ -936,7 +936,7 @@
     "name": "Đại học Quy Nhơn",
     "short": "QNU",
     "city": "Bình Định",
-    "logoUrl": "assets/images/logos/qnu.png",
+    "logoUrl": "assets/images/logos/qnu.jpg",
     "logoFallback": "💻",
     "website": "https://qnu.edu.vn/vi/hoc-bong",
     "admissionUrl": "https://tuyensinh.qnu.edu.vn/",
@@ -962,7 +962,7 @@
     "name": "Đại học Khoa học – Đại học Huế",
     "short": "HUSC",
     "city": "Huế",
-    "logoUrl": "assets/images/logos/husc.svg",
+    "logoUrl": "assets/images/logos/husc.png",
     "logoFallback": "🧬",
     "website": "https://husc.hueuni.edu.vn/hoc-bong",
     "admissionUrl": "https://husc.hueuni.edu.vn/tuyen-sinh",
@@ -988,7 +988,7 @@
     "name": "Đại học Nông Lâm – Đại học Huế",
     "short": "HUAF",
     "city": "Huế",
-    "logoUrl": "assets/images/logos/huaf.svg",
+    "logoUrl": "assets/images/logos/huaf.png",
     "logoFallback": "🌱",
     "website": "https://huaf.edu.vn/hoc-bong",
     "admissionUrl": "https://huaf.edu.vn/tuyen-sinh",
@@ -1084,6 +1084,98 @@
         "requirements": "Theo tiêu chí từng đối tác doanh nghiệp",
         "timeline": "Theo thông báo",
         "note": "Theo dõi thông báo từ phòng HTDN của trường"
+      }
+    ]
+  },
+  {
+    "id": "dnu",
+    "name": "Đại học Đà Nẵng",
+    "short": "DN",
+    "city": "Đà Nẵng",
+    "logoUrl": "assets/images/logos/dn.png",
+    "logoFallback": "🏛️",
+    "website": "https://udn.vn/hoc-bong",
+    "admissionUrl": "https://udn.vn/tuyen-sinh",
+    "scholarships": [
+      {
+        "title": "Học bổng ĐH Đà Nẵng theo thành tích học tập",
+        "target": "Sinh viên đang theo học tại các trường thành viên",
+        "requirements": "GPA kỳ trước đạt loại giỏi, xuất sắc; hạnh kiểm tốt",
+        "timeline": "Xét theo học kỳ/năm",
+        "note": "Áp dụng thống nhất cho các trường thành viên ĐH Đà Nẵng"
+      },
+      {
+        "title": "Học bổng doanh nghiệp / tài trợ",
+        "target": "Sinh viên có thành tích hoặc hoàn cảnh nổi bật",
+        "requirements": "Theo tiêu chí từng nhà tài trợ",
+        "timeline": "Theo thông báo",
+        "note": ""
+      },
+      {
+        "title": "Hỗ trợ sinh viên ngành sư phạm theo chính sách",
+        "target": "Sinh viên ngành sư phạm",
+        "requirements": "Theo chính sách nhà nước về đào tạo sư phạm",
+        "timeline": "Suốt thời gian học",
+        "note": ""
+      }
+    ]
+  },
+  {
+    "id": "khtn-hcm",
+    "name": "Đại học Khoa học Tự nhiên – ĐHQG TP.HCM",
+    "short": "KHTN",
+    "city": "TP.HCM",
+    "logoUrl": "assets/images/logos/khtn.png",
+    "logoFallback": "🧪",
+    "website": "https://hcmus.edu.vn/hoc-bong",
+    "admissionUrl": "https://tuyensinh.hcmus.edu.vn/",
+    "scholarships": [
+      {
+        "title": "Học bổng khuyến khích học tập",
+        "target": "Sinh viên có thành tích học tập tốt",
+        "requirements": "GPA & rèn luyện đạt chuẩn theo quy định từng học kỳ/năm",
+        "timeline": "Xét theo học kỳ/năm",
+        "note": "Theo dõi thông báo từ phòng CTSV / website trường"
+      },
+      {
+        "title": "Học bổng nghiên cứu Toán – Lý – Hóa – Sinh",
+        "target": "Sinh viên tham gia NCKH/CLB/đề tài nghiên cứu",
+        "requirements": "Có đề tài/dự án, thành tích/giải thưởng là lợi thế",
+        "timeline": "Theo đợt / dự án",
+        "note": "Thường có từ doanh nghiệp/đối tác"
+      }
+    ]
+  },
+  {
+    "id": "hue-uni",
+    "name": "Đại học Huế",
+    "short": "YHUE",
+    "city": "Huế",
+    "logoUrl": "assets/images/logos/yhue.svg",
+    "logoFallback": "🏯",
+    "website": "https://hueuni.edu.vn/hoc-bong",
+    "admissionUrl": "https://hueuni.edu.vn/tuyen-sinh",
+    "scholarships": [
+      {
+        "title": "Học bổng ĐH Huế theo thành tích học tập",
+        "target": "Sinh viên đang theo học tại các trường thành viên",
+        "requirements": "GPA kỳ trước đạt loại giỏi, xuất sắc; hạnh kiểm tốt",
+        "timeline": "Xét theo học kỳ/năm",
+        "note": "Áp dụng thống nhất cho các trường thành viên ĐH Huế"
+      },
+      {
+        "title": "Học bổng tài trợ doanh nghiệp / cựu sinh viên",
+        "target": "Sinh viên có hoàn cảnh hoặc thành tích nổi bật",
+        "requirements": "Theo tiêu chí từng nhà tài trợ",
+        "timeline": "Theo thông báo",
+        "note": ""
+      },
+      {
+        "title": "Học bổng theo thành tích đầu vào",
+        "target": "Tân sinh viên điểm cao",
+        "requirements": "Điểm THPT hoặc ĐGNL vượt mốc quy định",
+        "timeline": "Năm nhất",
+        "note": ""
       }
     ]
   }
