@@ -3182,6 +3182,55 @@ body.spa-active #spa-topbar { display: flex; }
     width: 26px;
     border-radius: 4px;
   }
+  /* Nút prev/next — overlay lên ảnh */
+  .bw-hero-carousel .nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(6px);
+    border: none;
+    color: #1a1a3e;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 4;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    transition: all .2s;
+    padding: 0;
+  }
+  .bw-hero-carousel .nav:hover {
+    background: #fff;
+    transform: translateY(-50%) scale(1.08);
+  }
+  .bw-hero-carousel .nav:focus-visible {
+    outline: 2px solid #6366f1;
+    outline-offset: 3px;
+  }
+  .bw-hero-carousel .nav.prev { left: 12px; }
+  .bw-hero-carousel .nav.next { right: 12px; }
+  .bw-hero-carousel .nav svg {
+    width: 18px;
+    height: 18px;
+    stroke: #1a1a3e;
+    stroke-width: 2.5;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  @media (max-width: 480px) {
+    .bw-hero-carousel .nav { width: 34px; height: 34px; }
+    .bw-hero-carousel .nav svg { width: 16px; height: 16px; }
+    .bw-hero-carousel .nav.prev { left: 8px; }
+    .bw-hero-carousel .nav.next { right: 8px; }
+  }
   .bw-hero-visual::before {
     content: '';
     position: absolute;
@@ -3947,6 +3996,8 @@ body.spa-active #spa-topbar { display: flex; }
                onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=800&h=1000&fit=crop&q=80';">
           <div class="school-tag"><small>Kỹ thuật lâu đời</small>ĐH Bách Khoa TP.HCM (HCMUT)</div>
         </div>
+        <button type="button" class="nav prev" id="bwHeroPrev" aria-label="Ảnh trước">‹</button>
+        <button type="button" class="nav next" id="bwHeroNext" aria-label="Ảnh tiếp theo">›</button>
         <div class="dots" role="tablist" aria-label="Chọn ảnh trường">
           <button type="button" class="is-active" data-i="0" aria-label="Ảnh 1"></button>
           <button type="button" data-i="1" aria-label="Ảnh 2"></button>
@@ -5909,17 +5960,19 @@ Bạn cần hỏi gì nào?</div>
 })();
 </script>
 
-<!-- Hero carousel — tự xoay 4 ảnh các trường -->
+<!-- Hero carousel — tự xoay 5s/ảnh + prev/next + touch swipe -->
 <script>
 (function () {
   const root = document.getElementById('bwHeroCarousel');
   if (!root) return;
   const slides = root.querySelectorAll('.slide');
   const dots = root.querySelectorAll('.dots button');
+  const prevBtn = document.getElementById('bwHeroPrev');
+  const nextBtn = document.getElementById('bwHeroNext');
   if (slides.length < 2) return;
 
   let i = 0, timer = null;
-  const INTERVAL = 4500;
+  const INTERVAL = 5000; // 5s/ảnh
 
   function go(n) {
     i = (n + slides.length) % slides.length;
@@ -5927,19 +5980,48 @@ Bạn cần hỏi gì nào?</div>
     dots.forEach((d, idx) => d.classList.toggle('is-active', idx === i));
   }
   function next() { go(i + 1); }
+  function prev() { go(i - 1); }
   function start() {
     stop();
-    // Chỉ auto-rotate khi user không prefers-reduced-motion
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     timer = setInterval(next, INTERVAL);
   }
   function stop() { if (timer) { clearInterval(timer); timer = null; } }
 
+  // Click dots
   dots.forEach((d, idx) => {
     d.addEventListener('click', () => { go(idx); start(); });
   });
 
-  // Pause khi hover/touch
+  // Click prev/next
+  if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prev(); start(); });
+  if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); next(); start(); });
+
+  // Touch swipe trên mobile
+  let touchStartX = 0, touchStartY = 0, touchEndX = 0, touchEndY = 0;
+  const SWIPE_THRESHOLD = 40; // px
+  root.addEventListener('touchstart', (e) => {
+    const t = e.changedTouches[0];
+    touchStartX = t.screenX; touchStartY = t.screenY;
+  }, { passive: true });
+  root.addEventListener('touchend', (e) => {
+    const t = e.changedTouches[0];
+    touchEndX = t.screenX; touchEndY = t.screenY;
+    const dx = touchEndX - touchStartX;
+    const dy = touchEndY - touchStartY;
+    if (Math.abs(dx) > SWIPE_THRESHOLD && Math.abs(dx) > Math.abs(dy)) {
+      if (dx < 0) next(); else prev();
+      start();
+    }
+  }, { passive: true });
+
+  // Keyboard: ←/→
+  root.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { prev(); start(); }
+    else if (e.key === 'ArrowRight') { next(); start(); }
+  });
+
+  // Pause khi hover/focus
   root.addEventListener('mouseenter', stop);
   root.addEventListener('mouseleave', start);
   root.addEventListener('focusin', stop);
@@ -5949,6 +6031,11 @@ Bạn cần hỏi gì nào?</div>
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) stop(); else start();
   });
+
+  // Cho carousel focus được (để keyboard hoạt động)
+  root.setAttribute('tabindex', '0');
+  root.setAttribute('role', 'region');
+  root.setAttribute('aria-label', 'Carousel ảnh các trường đại học');
 
   start();
 })();
