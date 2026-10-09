@@ -3104,35 +3104,91 @@ body.spa-active #spa-topbar { display: flex; }
 
   body.has-sticky { padding-bottom: 64px; }
 
-  /* Hero visual — ảnh người + blob nền */
+  /* Hero visual — carousel 4 ảnh trường thật */
   .bw-hero-visual {
     position: relative;
     aspect-ratio: 4 / 5;
     border-radius: 28px;
     overflow: hidden;
     box-shadow: 0 30px 80px rgba(99,102,241,0.25);
+    background: #0f1535;
   }
-  .bw-hero-visual img {
+  .bw-hero-carousel {
+    position: absolute;
+    inset: 0;
+  }
+  .bw-hero-carousel .slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+    will-change: opacity;
+  }
+  .bw-hero-carousel .slide.is-active {
+    opacity: 1;
+  }
+  .bw-hero-carousel .slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
+  .bw-hero-carousel .slide .school-tag {
+    position: absolute;
+    left: 18px;
+    bottom: 56px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(6px);
+    border-radius: 12px;
+    padding: 8px 14px 9px;
+    font-size: 13px;
+    font-weight: 800;
+    color: #1a1a3e;
+    line-height: 1.25;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    max-width: calc(100% - 36px);
+  }
+  .bw-hero-carousel .slide .school-tag small {
+    display: block;
+    font-size: 10px;
+    color: #6b7aaa;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .bw-hero-carousel .dots {
+    position: absolute;
+    bottom: 18px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    z-index: 3;
+  }
+  .bw-hero-carousel .dots button {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.45);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all .25s;
+  }
+  .bw-hero-carousel .dots button.is-active {
+    background: #fff;
+    width: 26px;
+    border-radius: 4px;
+  }
   .bw-hero-visual::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(99,102,241,0) 60%, rgba(99,102,241,0.35) 100%);
-    z-index: 1;
-  }
-  .bw-hero-visual::after {
-    content: '';
-    position: absolute;
-    bottom: 18px; left: 18px; right: 18px;
-    height: 4px;
-    background: rgba(255,255,255,0.6);
-    border-radius: 2px;
+    background: linear-gradient(180deg, rgba(15,21,53,0) 40%, rgba(15,21,53,0.55) 100%);
     z-index: 2;
+    pointer-events: none;
   }
   /* Floating card trên hero image */
   .bw-hero-float {
@@ -3870,10 +3926,34 @@ body.spa-active #spa-topbar { display: flex; }
       </div>
     </div>
     <div class="bw-hero-visual">
-      <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&h=1000&fit=crop&q=80"
-           alt="Học sinh Việt Nam trên hành trình hướng nghiệp"
-           loading="eager"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=1000&fit=crop&q=80';">
+      <div class="bw-hero-carousel" id="bwHeroCarousel" aria-roledescription="carousel" aria-label="Ảnh các trường đại học nổi bật">
+        <div class="slide is-active" data-school="FPT - Hà Nội">
+          <img src="assets/images/hero/fpt-hanoi.jpg" alt="Đại học FPT - cơ sở Hà Nội" loading="eager"
+               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1562774053-701939374585?w=800&h=1000&fit=crop&q=80';">
+          <div class="school-tag"><small>Campus nổi bật</small>ĐH FPT — Hà Nội</div>
+        </div>
+        <div class="slide" data-school="RMIT Vietnam">
+          <img src="assets/images/hero/rmit.jpg" alt="RMIT Vietnam campus" loading="lazy"
+               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&h=1000&fit=crop&q=80';">
+          <div class="school-tag"><small>Campus quốc tế</small>RMIT Vietnam</div>
+        </div>
+        <div class="slide" data-school="UEH - TP.HCM">
+          <img src="assets/images/hero/ueh.jpg" alt="ĐH Kinh tế TP.HCM - Campus A" loading="lazy"
+               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=800&h=1000&fit=crop&q=80';">
+          <div class="school-tag"><small>Kinh tế hàng đầu</small>ĐH Kinh tế TP.HCM (UEH)</div>
+        </div>
+        <div class="slide" data-school="BK TP.HCM">
+          <img src="assets/images/hero/bk-hcm.jpg" alt="ĐH Bách Khoa TP.HCM - Thư viện" loading="lazy"
+               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=800&h=1000&fit=crop&q=80';">
+          <div class="school-tag"><small>Kỹ thuật lâu đời</small>ĐH Bách Khoa TP.HCM (HCMUT)</div>
+        </div>
+        <div class="dots" role="tablist" aria-label="Chọn ảnh trường">
+          <button type="button" class="is-active" data-i="0" aria-label="Ảnh 1"></button>
+          <button type="button" data-i="1" aria-label="Ảnh 2"></button>
+          <button type="button" data-i="2" aria-label="Ảnh 3"></button>
+          <button type="button" data-i="3" aria-label="Ảnh 4"></button>
+        </div>
+      </div>
       <div class="bw-hero-float f1">
         <div class="ico">🎯</div>
         <div>
@@ -5826,6 +5906,51 @@ Bạn cần hỏi gì nào?</div>
       window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
     });
   });
+})();
+</script>
+
+<!-- Hero carousel — tự xoay 4 ảnh các trường -->
+<script>
+(function () {
+  const root = document.getElementById('bwHeroCarousel');
+  if (!root) return;
+  const slides = root.querySelectorAll('.slide');
+  const dots = root.querySelectorAll('.dots button');
+  if (slides.length < 2) return;
+
+  let i = 0, timer = null;
+  const INTERVAL = 4500;
+
+  function go(n) {
+    i = (n + slides.length) % slides.length;
+    slides.forEach((s, idx) => s.classList.toggle('is-active', idx === i));
+    dots.forEach((d, idx) => d.classList.toggle('is-active', idx === i));
+  }
+  function next() { go(i + 1); }
+  function start() {
+    stop();
+    // Chỉ auto-rotate khi user không prefers-reduced-motion
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    timer = setInterval(next, INTERVAL);
+  }
+  function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+  dots.forEach((d, idx) => {
+    d.addEventListener('click', () => { go(idx); start(); });
+  });
+
+  // Pause khi hover/touch
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', start);
+  root.addEventListener('focusin', stop);
+  root.addEventListener('focusout', start);
+
+  // Pause khi tab ẩn
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stop(); else start();
+  });
+
+  start();
 })();
 </script>
 
