@@ -2,6 +2,9 @@
 # BrightWay Career — .gitignore
 # ════════════════════════════════════════════════════
 
+# Hero source (anh goc + script tai - khong can commit)
+assets/images/hero-source/
+
 # Node / Vercel
 node_modules/
 .vercel/
