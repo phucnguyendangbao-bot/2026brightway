@@ -3164,23 +3164,48 @@ body.spa-active #spa-topbar { display: flex; }
     right: 0;
     display: flex;
     justify-content: center;
-    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
     z-index: 3;
+    padding: 0 36px;
   }
   .bw-hero-carousel .dots button {
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
     background: rgba(255,255,255,0.45);
     border: none;
     padding: 0;
     cursor: pointer;
     transition: all .25s;
+    flex-shrink: 0;
   }
   .bw-hero-carousel .dots button.is-active {
     background: #fff;
-    width: 26px;
+    width: 22px;
     border-radius: 4px;
+  }
+  /* Progress bar — chạy theo thời gian auto-rotate */
+  .bw-hero-carousel .progress {
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 0;
+    height: 3px;
+    background: rgba(255,255,255,0.15);
+    overflow: hidden;
+    z-index: 3;
+  }
+  .bw-hero-carousel .progress .bar {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #fff, rgba(255,255,255,0.7));
+    transition: none;
+  }
+  .bw-hero-carousel .progress .bar.is-running {
+    width: 100%;
+    transition: width var(--hero-dur, 4000ms) linear;
   }
   /* Nút prev/next — overlay lên ảnh */
   .bw-hero-carousel .nav {
@@ -3996,14 +4021,39 @@ body.spa-active #spa-topbar { display: flex; }
                onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=800&h=1000&fit=crop&q=80';">
           <div class="school-tag"><small>Kỹ thuật lâu đời</small>ĐH Bách Khoa TP.HCM (HCMUT)</div>
         </div>
+        <div class="slide" data-school="UIT - TP.HCM">
+          <img src="assets/images/hero/uit.jpg" alt="ĐH CNTT (UIT) - Block E" loading="lazy"
+               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=800&h=1000&fit=crop&q=80';">
+          <div class="school-tag"><small>Công nghệ thông tin</small>ĐH CNTT — ĐHQG TP.HCM (UIT)</div>
+        </div>
+        <div class="slide" data-school="FPT - Cần Thơ">
+          <img src="assets/images/hero/fpt-can-tho.jpg" alt="ĐH FPT - cơ sở Cần Thơ" loading="lazy"
+               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1562774053-701939374585?w=800&h=1000&fit=crop&q=80';">
+          <div class="school-tag"><small>Miền Tây</small>ĐH FPT — Cần Thơ</div>
+        </div>
+        <div class="slide" data-school="FPT - TP.HCM">
+          <img src="assets/images/hero/fpt-hcm.jpg" alt="ĐH FPT - cơ sở TP.HCM" loading="lazy"
+               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1562774053-701939374585?w=800&h=1000&fit=crop&q=80';">
+          <div class="school-tag"><small>Toàn cảnh campus</small>ĐH FPT — TP.HCM</div>
+        </div>
+        <div class="slide" data-school="DUT - Đà Nẵng">
+          <img src="assets/images/hero/dut.jpg" alt="ĐH Bách khoa Đà Nẵng" loading="lazy"
+               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=800&h=1000&fit=crop&q=80';">
+          <div class="school-tag"><small>Miền Trung</small>ĐH Bách khoa Đà Nẵng (DUT)</div>
+        </div>
         <button type="button" class="nav prev" id="bwHeroPrev" aria-label="Ảnh trước">‹</button>
         <button type="button" class="nav next" id="bwHeroNext" aria-label="Ảnh tiếp theo">›</button>
         <div class="dots" role="tablist" aria-label="Chọn ảnh trường">
-          <button type="button" class="is-active" data-i="0" aria-label="Ảnh 1"></button>
-          <button type="button" data-i="1" aria-label="Ảnh 2"></button>
-          <button type="button" data-i="2" aria-label="Ảnh 3"></button>
-          <button type="button" data-i="3" aria-label="Ảnh 4"></button>
+          <button type="button" class="is-active" data-i="0" aria-label="FPT Hà Nội"></button>
+          <button type="button" data-i="1" aria-label="RMIT Vietnam"></button>
+          <button type="button" data-i="2" aria-label="UEH"></button>
+          <button type="button" data-i="3" aria-label="HCMUT"></button>
+          <button type="button" data-i="4" aria-label="UIT"></button>
+          <button type="button" data-i="5" aria-label="FPT Cần Thơ"></button>
+          <button type="button" data-i="6" aria-label="FPT TP.HCM"></button>
+          <button type="button" data-i="7" aria-label="DUT"></button>
         </div>
+        <div class="progress" aria-hidden="true"><span class="bar"></span></div>
       </div>
       <div class="bw-hero-float f1">
         <div class="ico">🎯</div>
@@ -5960,7 +6010,7 @@ Bạn cần hỏi gì nào?</div>
 })();
 </script>
 
-<!-- Hero carousel — tự xoay 5s/ảnh + prev/next + touch swipe -->
+<!-- Hero carousel — 8 ảnh trường thật, tự xoay 4s + prev/next + touch swipe + progress bar -->
 <script>
 (function () {
   const root = document.getElementById('bwHeroCarousel');
@@ -5969,10 +6019,29 @@ Bạn cần hỏi gì nào?</div>
   const dots = root.querySelectorAll('.dots button');
   const prevBtn = document.getElementById('bwHeroPrev');
   const nextBtn = document.getElementById('bwHeroNext');
+  const bar = root.querySelector('.progress .bar');
   if (slides.length < 2) return;
 
   let i = 0, timer = null;
-  const INTERVAL = 5000; // 5s/ảnh
+  const INTERVAL = 4000; // 4s/ảnh
+
+  // Progress bar animation
+  let barTimer = null;
+  function startBar() {
+    if (!bar) return;
+    // Reset + restart CSS transition
+    bar.classList.remove('is-running');
+    void bar.offsetWidth; // force reflow
+    bar.style.setProperty('--hero-dur', INTERVAL + 'ms');
+    bar.classList.add('is-running');
+  }
+  function stopBar() {
+    if (!bar) return;
+    const computed = getComputedStyle(bar);
+    const w = computed.width;
+    bar.classList.remove('is-running');
+    bar.style.width = w; // freeze at current
+  }
 
   function go(n) {
     i = (n + slides.length) % slides.length;
@@ -5985,8 +6054,12 @@ Bạn cần hỏi gì nào?</div>
     stop();
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     timer = setInterval(next, INTERVAL);
+    startBar();
   }
-  function stop() { if (timer) { clearInterval(timer); timer = null; } }
+  function stop() {
+    if (timer) { clearInterval(timer); timer = null; }
+    stopBar();
+  }
 
   // Click dots
   dots.forEach((d, idx) => {
@@ -5997,9 +6070,9 @@ Bạn cần hỏi gì nào?</div>
   if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prev(); start(); });
   if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); next(); start(); });
 
-  // Touch swipe trên mobile
+  // Touch swipe
   let touchStartX = 0, touchStartY = 0, touchEndX = 0, touchEndY = 0;
-  const SWIPE_THRESHOLD = 40; // px
+  const SWIPE_THRESHOLD = 40;
   root.addEventListener('touchstart', (e) => {
     const t = e.changedTouches[0];
     touchStartX = t.screenX; touchStartY = t.screenY;
@@ -6015,7 +6088,7 @@ Bạn cần hỏi gì nào?</div>
     }
   }, { passive: true });
 
-  // Keyboard: ←/→
+  // Keyboard
   root.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') { prev(); start(); }
     else if (e.key === 'ArrowRight') { next(); start(); }
@@ -6032,7 +6105,6 @@ Bạn cần hỏi gì nào?</div>
     if (document.hidden) stop(); else start();
   });
 
-  // Cho carousel focus được (để keyboard hoạt động)
   root.setAttribute('tabindex', '0');
   root.setAttribute('role', 'region');
   root.setAttribute('aria-label', 'Carousel ảnh các trường đại học');
