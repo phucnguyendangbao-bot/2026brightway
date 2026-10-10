@@ -8,82 +8,50 @@
     "logoFallback": "🏛️",
     "website": "https://hcmut.edu.vn/hoc-bong",
     "admissionUrl": "https://hcmut.edu.vn/tuyen-sinh-dh/dai-hoc-chinh-quy",
-    "scholarships": [
-      {
-        "title": "Học bổng khuyến khích học tập theo kỳ",
-        "target": "Sinh viên đang học tại trường",
-        "requirements": "Đạt kết quả học tập tốt trong kỳ/năm học, không vi phạm kỷ luật",
-        "timeline": "Xét theo kỳ học",
-        "note": "Tỷ lệ và mức học bổng thay đổi theo năm"
-      },
-      {
-        "title": "Học bổng IELTS / Ngoại ngữ",
-        "target": "Sinh viên chưng trình OISP, tiên tiến",
-        "requirements": "Đạt điểm IELTS hoặc chứng chỉ ngoại ngữ quốc tế theo mức quy định",
-        "timeline": "Theo thông báo từng đợt",
-        "note": "Mức thưởng phụ thuộc vào band score đạt được"
-      },
-      {
-        "title": "Học bổng thủ khoa đầu vào",
-        "target": "Thí sinh trúng tuyển điểm cao nhất ngành",
-        "requirements": "Thủ khoa hoặc top điểm cao nhất theo phương thức xét tuyển",
-        "timeline": "Xét khi nhập học",
-        "note": "Nên kiểm tra mục học bổng/tài chính của từng chương trình (chuẩn, tiên tiến, OISP)"
-      }
-    ],
     "variants": [
       {
         "id": "hcmut-oisp",
         "label": "Chương trình OISP / Tiên tiến",
         "name": "Đại học Bách khoa – ĐHQG TP.HCM (OISP)",
         "website": "https://oisp.hcmut.edu.vn/scholarships",
-        "admissionUrl": "https://oisp.hcmut.edu.vn/",
-        "scholarships": [
-          {
-            "title": "Học bổng khuyến khích học tập theo kỳ",
-            "target": "Sinh viên đang học tại trường",
-            "requirements": "Đạt kết quả học tập tốt trong kỳ/năm học, không vi phạm kỷ luật",
-            "timeline": "Xét theo kỳ học",
-            "note": "Tỷ lệ và mức học bổng thay đổi theo năm"
-          },
-          {
-            "title": "Học bổng IELTS / Ngoại ngữ",
-            "target": "Sinh viên chưng trình OISP, tiên tiến",
-            "requirements": "Đạt điểm IELTS hoặc chứng chỉ ngoại ngữ quốc tế theo mức quy định",
-            "timeline": "Theo thông báo từng đợt",
-            "note": "Mức thưởng phụ thuộc vào band score đạt được"
-          },
-          {
-            "title": "Học bổng thủ khoa đầu vào",
-            "target": "Thí sinh trúng tuyển điểm cao nhất ngành",
-            "requirements": "Thủ khoa hoặc top điểm cao nhất theo phương thức xét tuyển",
-            "timeline": "Xét khi nhập học",
-            "note": "Nên kiểm tra mục học bổng/tài chính của từng chương trình (chuẩn, tiên tiến, OISP)"
-          }
-        ]
+        "admissionUrl": "https://oisp.hcmut.edu.vn/"
       },
       {
         "id": "hcmut-ai",
         "label": "Chương trình AI / Robotics",
         "name": "Đại học Bách khoa – ĐHQG TP.HCM",
         "website": "https://oisp.hcmut.edu.vn/scholarships",
-        "admissionUrl": "https://hcmut.edu.vn/tuyen-sinh-dh/dai-hoc-chinh-quy",
-        "scholarships": [
-          {
-            "title": "Học bổng khuyến khích học tập",
-            "target": "Sinh viên đang học",
-            "requirements": "GPA & rèn luyện theo quy định học kỳ",
-            "timeline": "Xét theo học kỳ",
-            "note": "Có thể đạt mức cao tùy kết quả"
-          },
-          {
-            "title": "Học bổng doanh nghiệp AI/Robotics",
-            "target": "Sinh viên có dự án/portfolio",
-            "requirements": "Tham gia CLB, dự án, NCKH; phỏng vấn (tùy đợt)",
-            "timeline": "Theo đợt",
-            "note": "Theo dõi thông báo Khoa/CTSV"
-          }
-        ]
+        "admissionUrl": "https://hcmut.edu.vn/tuyen-sinh-dh/dai-hoc-chinh-quy"
+      }
+    ],
+    "admissionMethods": [
+      {
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
+      },
+      {
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
+      },
+      {
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
     ]
   },
@@ -96,66 +64,43 @@
     "logoFallback": "💻",
     "website": "https://www.uit.edu.vn/hoc-bong",
     "admissionUrl": "https://tuyensinh.uit.edu.vn/",
-    "scholarships": [
-      {
-        "title": "Học bổng tuyển sinh đầu vào",
-        "target": "Thí sinh trúng tuyển với điểm số xuất sắc",
-        "requirements": "Đạt mốc điểm theo quy định của trường (THPT, ĐGNL, hoặc xét học bạ)",
-        "timeline": "Xét khi nhập học năm nhất",
-        "note": ""
-      },
-      {
-        "title": "Học bổng thủ khoa",
-        "target": "Thủ khoa từng phương thức xét tuyển",
-        "requirements": "Điểm cao nhất trong số thí sinh trúng tuyển",
-        "timeline": "Năm nhất",
-        "note": ""
-      },
-      {
-        "title": "UIT Advance Scholarship",
-        "target": "Sinh viên chương trình tiên tiến",
-        "requirements": "Theo tiêu chí riêng của chương trình Advance, thường yêu cầu tiếng Anh tốt",
-        "timeline": "Theo thông báo",
-        "note": ""
-      },
-      {
-        "title": "Học bổng khuyến khích học tập",
-        "target": "Sinh viên đang theo học",
-        "requirements": "GPA kỳ trước đạt loại giỏi trở lên",
-        "timeline": "Xét theo kỳ",
-        "note": ""
-      },
-      {
-        "title": "UIT Global – Học bổng quốc tế",
-        "target": "Sinh viên tham gia chương trình trao đổi, hợp tác quốc tế",
-        "requirements": "IELTS hoặc chứng chỉ tiếng Anh tương đương, GPA tốt",
-        "timeline": "Theo đợt mở đăng ký",
-        "note": "Một số học bổng xét theo thành tích sau khi nhập học"
-      }
-    ],
     "variants": [
       {
         "id": "uit-ai",
         "label": "UIT AI / Chương trình AI & Data",
         "name": "Đại học Công nghệ Thông tin – ĐHQG TP.HCM (AI/Data)",
         "website": "https://www.uit.edu.vn/hoc-bong",
-        "admissionUrl": "https://tuyensinh.uit.edu.vn/",
-        "scholarships": [
-          {
-            "title": "Học bổng khuyến khích học tập",
-            "target": "Sinh viên đang học",
-            "requirements": "GPA tốt + rèn luyện đạt chuẩn",
-            "timeline": "Theo học kỳ/năm",
-            "note": "Thường xét theo kết quả học tập"
-          },
-          {
-            "title": "Học bổng doanh nghiệp (AI/Data)",
-            "target": "Sinh viên có năng lực nổi bật",
-            "requirements": "Thành tích học tập/giải thưởng/portfolio là lợi thế",
-            "timeline": "Theo đợt",
-            "note": "Các đơn vị tài trợ thay đổi theo năm"
-          }
-        ]
+        "admissionUrl": "https://tuyensinh.uit.edu.vn/"
+      }
+    ],
+    "admissionMethods": [
+      {
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
+      },
+      {
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
+      },
+      {
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
     ]
   },
@@ -168,27 +113,41 @@
     "logoFallback": "🎯",
     "website": "https://fpt.edu.vn/scholarship",
     "admissionUrl": "https://fpt.edu.vn/tuyen-sinh",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng tài năng (50–100% học phí)",
-        "target": "Thí sinh có thành tích xuất sắc, giải quốc gia/quốc tế",
-        "requirements": "Giải HSG cấp quốc gia/quốc tế, hoặc đạt điểm thi đầu vào FPT rất cao",
-        "timeline": "Xét khi nộp hồ sơ nhập học",
-        "note": ""
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng ưu tiên lĩnh vực",
-        "target": "Thí sinh đăng ký ngành ưu tiên của FPT trong năm",
-        "requirements": "Theo chính sách từng năm, có thể yêu cầu điểm IELTS hoặc portfolio",
-        "timeline": "Theo đợt tuyển sinh",
-        "note": ""
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
       },
       {
-        "title": "Học bổng 30–50% từ kỳ thi học bổng riêng",
-        "target": "Thí sinh thi học bổng do FPT tổ chức",
-        "requirements": "Đăng ký và dự thi kỳ thi học bổng FPT, đạt kết quả theo mốc",
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+      },
+      {
+        "name": "Xét tuyển riêng của FPT (bài thi riêng + phỏng vấn)",
+        "subjects": "Toán, Ngữ văn, Tiếng Anh + bài thi tư duy logic",
+        "quota": "30-50%",
         "timeline": "Nhiều đợt trong năm",
-        "note": "Điều kiện học bổng thay đổi theo đợt tuyển sinh"
+        "note": "Thi trực tiếp tại campus hoặc online; có thể phỏng vấn bổ sung"
       }
     ]
   },
@@ -201,27 +160,34 @@
     "logoFallback": "📊",
     "website": "https://www.ueh.edu.vn/hoc-bong",
     "admissionUrl": "https://tuyensinh.ueh.edu.vn/",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng tân sinh viên theo thành tích đầu vào",
-        "target": "Thí sinh trúng tuyển điểm cao",
-        "requirements": "Điểm THPT hoặc ĐGNL đạt mốc theo quy định từng năm",
-        "timeline": "Xét khi nhập học",
-        "note": ""
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng khuyến khích học tập",
-        "target": "Sinh viên đang theo học",
-        "requirements": "GPA kỳ trước đạt loại giỏi, xuất sắc",
-        "timeline": "Xét theo kỳ/năm",
-        "note": ""
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
       },
       {
-        "title": "Học bổng doanh nghiệp",
-        "target": "Sinh viên có hoàn cảnh hoặc thành tích nổi bật",
-        "requirements": "Theo tiêu chí từng nhà tài trợ",
-        "timeline": "Theo thông báo",
-        "note": "Điểm và học bổng thay đổi theo đề án từng năm"
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
     ]
   },
@@ -234,27 +200,34 @@
     "logoFallback": "🌍",
     "website": "https://ftu.edu.vn/hoc-bong",
     "admissionUrl": "https://tuyensinh.ftu.edu.vn/",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng đầu vào / thành tích cao",
-        "target": "Thủ khoa hoặc thí sinh điểm rất cao",
-        "requirements": "Điểm THPT ≥ 25 (tham khảo) hoặc ĐGNL ≥ 900",
-        "timeline": "Xét khi nhập học",
-        "note": ""
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng chương trình quốc tế (GENIE, v.v.)",
-        "target": "Sinh viên chương trình quốc tế",
-        "requirements": "IELTS ≥ 6.5, GPA tốt, bài luận + phỏng vấn (tùy chương trình)",
-        "timeline": "Theo đề án từng năm",
-        "note": ""
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
       },
       {
-        "title": "Học bổng nghiên cứu, ngoại khóa",
-        "target": "Sinh viên có hoạt động nghiên cứu / lãnh đạo nổi bật",
-        "requirements": "Hồ sơ hoạt động, giấy xác nhận",
-        "timeline": "Theo thông báo",
-        "note": "Nên xem kỹ đề án tuyển sinh và học bổng chương trình cụ thể"
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
     ]
   },
@@ -267,27 +240,41 @@
     "logoFallback": "🎨",
     "website": "https://www.vanlanguni.edu.vn/hoc-bong",
     "admissionUrl": "https://tuyensinh.vanlanguni.edu.vn/",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng tuyển sinh theo điểm đầu vào",
-        "target": "Thí sinh trúng tuyển với mốc điểm cao",
-        "requirements": "Theo bảng mốc điểm của trường (THPT, học bạ, ĐGNL)",
-        "timeline": "Xét khi nhập học",
-        "note": "Nhiều mức học bổng theo từng mốc điểm"
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng khuyến khích học tập",
-        "target": "Sinh viên đang theo học",
-        "requirements": "GPA tốt, không vi phạm kỷ luật",
-        "timeline": "Xét theo kỳ",
-        "note": ""
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
       },
       {
-        "title": "Học bổng tài năng / hoạt động",
-        "target": "Sinh viên có thành tích nghệ thuật, thể thao, hoạt động xã hội",
-        "requirements": "Hồ sơ minh chứng, portfolio (nếu ngành thiết kế/truyền thông)",
-        "timeline": "Theo thông báo",
-        "note": ""
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+      },
+      {
+        "name": "Xét tuyển riêng (thi năng khiếu / phỏng vấn / portfolio)",
+        "subjects": "Tùy ngành: thi vẽ, thi năng khiếu, phỏng vấn, hoặc bài luận",
+        "quota": "20-40%",
+        "timeline": "Theo lịch riêng từng trường",
+        "note": "Phù hợp thí sinh có thành tích ngoại khóa/portfolio nổi bật"
       }
     ]
   },
@@ -300,27 +287,34 @@
     "logoFallback": "🩺",
     "website": "https://pnt.edu.vn/hoc-bong",
     "admissionUrl": "https://pts.pnt.edu.vn/",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng khuyến khích học tập",
-        "target": "Sinh viên đang theo học",
-        "requirements": "Kết quả học tập xuất sắc trong kỳ/năm",
-        "timeline": "Xét theo kỳ/năm",
-        "note": ""
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "5-10%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng tân sinh viên",
-        "target": "Tân sinh viên điểm đầu vào cao (tùy năm)",
-        "requirements": "Điểm THPT B00 ≥ 24.5 (tham khảo), hạnh kiểm tốt",
-        "timeline": "Năm nhất",
-        "note": ""
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "B00 (Toán - Hóa - Sinh) | A00 (Toán - Lý - Hóa) | D08 (Toán - Sinh - Anh) | tùy ngành",
+        "quota": "60-70%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
       },
       {
-        "title": "Quỹ hỗ trợ sinh viên",
-        "target": "Sinh viên khó khăn, có thành tích tốt",
-        "requirements": "Hồ sơ hoàn cảnh + kết quả học tập",
-        "timeline": "Theo thông báo đầu năm học",
-        "note": "Theo dõi thông báo học bổng đầu năm học"
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "B00, A00, D08 | theo tổ hợp môn trường quy định",
+        "quota": "20-30%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Một số ngành Y chỉ xét học bạ 6 học kỳ (cả lớp 10, 11, 12)"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA (ĐHQG TP.HCM) hoặc V-SAT (ĐHQG Hà Nội)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
     ]
   },
@@ -333,27 +327,34 @@
     "logoFallback": "💊",
     "website": "https://ctump.edu.vn/hoc-bong",
     "admissionUrl": "https://tuyensinh.ctump.edu.vn/",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng theo thành tích học tập",
-        "target": "Sinh viên có GPA xuất sắc",
-        "requirements": "GPA kỳ trước đạt loại giỏi, xuất sắc",
-        "timeline": "Xét theo kỳ",
-        "note": ""
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "5-10%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Hỗ trợ theo hoàn cảnh, quỹ sinh viên",
-        "target": "Sinh viên khó khăn",
-        "requirements": "Hồ sơ hoàn cảnh + hạnh kiểm tốt",
-        "timeline": "Theo từng đợt",
-        "note": ""
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "B00 (Toán - Hóa - Sinh) | A00 (Toán - Lý - Hóa) | D08 (Toán - Sinh - Anh) | tùy ngành",
+        "quota": "60-70%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
       },
       {
-        "title": "Học bổng khuyến khích học kỳ",
-        "target": "Sinh viên đang theo học",
-        "requirements": "Thành tích tốt, không vi phạm kỷ luật",
-        "timeline": "Xét theo kỳ",
-        "note": "Một số học bổng công bố theo từng đợt"
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "B00, A00, D08 | theo tổ hợp môn trường quy định",
+        "quota": "20-30%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Một số ngành Y chỉ xét học bạ 6 học kỳ (cả lớp 10, 11, 12)"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA (ĐHQG TP.HCM) hoặc V-SAT (ĐHQG Hà Nội)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
     ]
   },
@@ -366,27 +367,34 @@
     "logoFallback": "⚕️",
     "website": "https://ump.edu.vn/hoc-bong",
     "admissionUrl": "https://ump.edu.vn/tuyen-sinh-dao-tao/dai-hoc/tuyen-sinh",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng khuyến khích học tập theo học kỳ/năm",
-        "target": "Sinh viên đang theo học",
-        "requirements": "Kết quả học tập xuất sắc, hạnh kiểm tốt",
-        "timeline": "Xét theo kỳ/năm",
-        "note": ""
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "5-10%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng cho sinh viên thành tích cao",
-        "target": "Sinh viên có thành tích đặc biệt trong nghiên cứu, học thuật",
-        "requirements": "Bài nghiên cứu, giải thưởng, thành tích nổi bật",
-        "timeline": "Theo thông báo",
-        "note": ""
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "B00 (Toán - Hóa - Sinh) | A00 (Toán - Lý - Hóa) | D08 (Toán - Sinh - Anh) | tùy ngành",
+        "quota": "60-70%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
       },
       {
-        "title": "Học bổng hỗ trợ từ quỹ/trợ cấp",
-        "target": "Sinh viên có hoàn cảnh khó khăn",
-        "requirements": "Hồ sơ hoàn cảnh + kết quả học tập đạt yêu cầu",
-        "timeline": "Theo từng đợt",
-        "note": "Ngành Y thường có mức cạnh tranh rất cao"
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "B00, A00, D08 | theo tổ hợp môn trường quy định",
+        "quota": "20-30%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Một số ngành Y chỉ xét học bạ 6 học kỳ (cả lớp 10, 11, 12)"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA (ĐHQG TP.HCM) hoặc V-SAT (ĐHQG Hà Nội)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
     ]
   },
@@ -399,27 +407,34 @@
     "logoFallback": "📣",
     "website": "",
     "admissionUrl": "https://hcmussh.edu.vn/tuyensinh",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng khuyến khích học tập",
-        "target": "Sinh viên đang theo học",
-        "requirements": "GPA đạt loại giỏi, xuất sắc",
-        "timeline": "Xét theo kỳ",
-        "note": ""
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng tài trợ doanh nghiệp / cựu sinh viên",
-        "target": "Sinh viên có hoàn cảnh hoặc thành tích nổi bật",
-        "requirements": "Theo tiêu chí từng nhà tài trợ",
-        "timeline": "Theo thông báo",
-        "note": ""
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
       },
       {
-        "title": "Học bổng theo thành tích đầu vào (tùy khoa/chương trình)",
-        "target": "Tân sinh viên điểm cao",
-        "requirements": "Điểm THPT hoặc ĐGNL vượt mốc, có hoạt động/portfolio truyền thông (lợi thế)",
-        "timeline": "Năm nhất",
-        "note": "Ngành truyền thông có thể ưu tiên hồ sơ hoạt động nổi bật"
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
     ]
   },
@@ -432,27 +447,27 @@
     "logoFallback": "🌐",
     "website": "https://www.rmit.edu.vn/study-at-rmit/scholarships",
     "admissionUrl": "https://www.rmit.edu.vn/vi/hoc-tap-tai-rmit/chuong-trinh-cu-nhan",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Opportunity Scholarship",
-        "target": "Thí sinh có hoàn cảnh khó khăn và thành tích tốt",
-        "requirements": "Hồ sơ hoàn cảnh, GPA ≥ 8.5, IELTS ≥ 6.5, bài luận + phỏng vấn",
-        "timeline": "Có deadline cụ thể (thường đầu năm)",
-        "note": ""
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Academic Merit / Achievement Scholarships",
-        "target": "Thí sinh có thành tích học thuật xuất sắc",
-        "requirements": "GPA tốt, chứng chỉ tiếng Anh, hoạt động ngoại khóa nổi bật",
-        "timeline": "Theo đợt tuyển sinh",
-        "note": ""
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "title": "Scholarships có hồ sơ riêng và deadline cụ thể",
-        "target": "Tùy loại học bổng",
-        "requirements": "Tùy loại – thường bao gồm bài luận cá nhân, phỏng vấn",
-        "timeline": "Xem website RMIT",
-        "note": "Nên chuẩn bị hồ sơ sớm vì có deadline. Học phí cao, học bổng cạnh tranh"
+        "name": "Đánh giá năng lực riêng RMIT (portfolio + phỏng vấn)",
+        "subjects": "Tiếng Anh (IELTS ≥ 6.5) + bài luận cá nhân + phỏng vấn",
+        "quota": "100% (xét riêng)",
+        "timeline": "Tháng 9 - tháng 12 hàng năm cho năm nhập học tiếp theo",
+        "note": "Không xét điểm thi; chỉ dựa trên hồ sơ học thuật + tiếng Anh"
       }
     ]
   },
@@ -465,27 +480,34 @@
     "logoFallback": "🏦",
     "website": "https://scc.hub.edu.vn/ho-tro-nguoi-hoc/hoc-bong",
     "admissionUrl": "https://tuyensinh.hub.edu.vn/",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng tuyển sinh đầu vào",
-        "target": "Tân sinh viên điểm cao",
-        "requirements": "Điểm THPT, ĐGNL hoặc học bạ đạt mốc theo quy định",
-        "timeline": "Năm nhất",
-        "note": ""
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng khuyến khích học tập",
-        "target": "Sinh viên đang theo học",
-        "requirements": "GPA đạt loại giỏi, xuất sắc",
-        "timeline": "Xét theo kỳ",
-        "note": ""
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
       },
       {
-        "title": "Học bổng tài trợ từ ngân hàng/doanh nghiệp",
-        "target": "Sinh viên có hoàn cảnh, thành tích nổi bật",
-        "requirements": "Theo tiêu chí từng nhà tài trợ",
-        "timeline": "Theo thông báo",
-        "note": "Có thể có nhiều đợt xét học bổng tân sinh viên"
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
     ]
   },
@@ -498,27 +520,41 @@
     "logoFallback": "📘",
     "website": "https://hcmue.edu.vn/vi/hoc-bong",
     "admissionUrl": "https://tuyensinh.hcmue.edu.vn/",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Miễn/giảm học phí theo chính sách ngành sư phạm",
-        "target": "Sinh viên ngành sư phạm",
-        "requirements": "Đăng ký ngành sư phạm, cam kết theo chính sách nhà nước",
-        "timeline": "Suốt thời gian học",
-        "note": "Cần đọc kỹ chính sách hỗ trợ và nghĩa vụ sau tốt nghiệp"
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT + ưu tiên ngành sư phạm",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng khuyến khích học tập",
-        "target": "Sinh viên đang theo học",
-        "requirements": "Kết quả học tập tốt, hạnh kiểm tốt",
-        "timeline": "Xét theo kỳ",
-        "note": ""
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
       },
       {
-        "title": "Học bổng hỗ trợ sinh viên sư phạm",
-        "target": "Sinh viên có hoàn cảnh đặc biệt",
-        "requirements": "Hồ sơ hoàn cảnh + kết quả học tập",
-        "timeline": "Theo thông báo",
-        "note": ""
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, C00, D01 + ưu tiên điểm Toán, Ngữ văn",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+      },
+      {
+        "name": "Chính sách ưu tiên ngành Sư phạm (Bộ GD&ĐT)",
+        "subjects": "Hỗ trợ học phí + sinh hoạt phí theo Nghị định 116/2020",
+        "quota": "Theo chỉ tiêu sư phạm",
+        "timeline": "Áp dụng từ năm nhất",
+        "note": "Sinh viên cam kết công tác trong ngành giáo dục sau tốt nghiệp"
       }
     ]
   },
@@ -531,27 +567,34 @@
     "logoFallback": "🌾",
     "website": "https://www.ctu.edu.vn/hoc-bong",
     "admissionUrl": "https://tuyensinh.ctu.edu.vn/dai-hoc-chinh-quy/thong-tin-tuyen-sinh.html",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng tân sinh viên / thành tích đầu vào",
-        "target": "Tân sinh viên điểm cao",
-        "requirements": "Điểm THPT hoặc học bạ vượt mốc quy định",
-        "timeline": "Năm nhất",
-        "note": ""
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng khuyến khích học tập",
-        "target": "Sinh viên đang theo học",
-        "requirements": "GPA tốt, không vi phạm kỷ luật",
-        "timeline": "Xét theo kỳ",
-        "note": ""
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
       },
       {
-        "title": "Chính sách hỗ trợ cho một số ngành sư phạm",
-        "target": "Sinh viên ngành sư phạm",
-        "requirements": "Theo chính sách nhà nước về đào tạo sư phạm",
-        "timeline": "Suốt thời gian học",
-        "note": "Rất phù hợp cho học sinh miền Tây"
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
     ]
   },
@@ -564,27 +607,41 @@
     "logoFallback": "🌱",
     "website": "",
     "admissionUrl": "https://tuyensinh.dthu.edu.vn/",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng khuyến khích học tập",
-        "target": "Sinh viên đang theo học",
-        "requirements": "GPA tốt, hạnh kiểm tốt",
-        "timeline": "Xét theo kỳ",
-        "note": ""
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT + ưu tiên ngành sư phạm",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Hỗ trợ sinh viên sư phạm theo chính sách",
-        "target": "Sinh viên ngành sư phạm",
-        "requirements": "Theo chính sách nhà nước về đào tạo sư phạm",
-        "timeline": "Suốt thời gian học",
-        "note": ""
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
       },
       {
-        "title": "Quỹ hỗ trợ sinh viên",
-        "target": "Sinh viên có hoàn cảnh khó khăn",
-        "requirements": "Hồ sơ hoàn cảnh + kết quả học tập",
-        "timeline": "Theo thông báo",
-        "note": "Có thể bổ sung mục cơ hội việc làm địa phương"
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, C00, D01 + ưu tiên điểm Toán, Ngữ văn",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+      },
+      {
+        "name": "Chính sách ưu tiên ngành Sư phạm (Bộ GD&ĐT)",
+        "subjects": "Hỗ trợ học phí + sinh hoạt phí theo Nghị định 116/2020",
+        "quota": "Theo chỉ tiêu sư phạm",
+        "timeline": "Áp dụng từ năm nhất",
+        "note": "Sinh viên cam kết công tác trong ngành giáo dục sau tốt nghiệp"
       }
     ]
   },
@@ -597,20 +654,34 @@
     "logoFallback": "🌿",
     "website": "https://hcmus.edu.vn/hoc-bong",
     "admissionUrl": "https://tuyensinh.hcmus.edu.vn/",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng khuyến khích học tập",
-        "target": "Sinh viên có thành tích học tập tốt",
-        "requirements": "GPA & rèn luyện đạt chuẩn theo quy định từng học kỳ/năm",
-        "timeline": "Xét theo học kỳ/năm",
-        "note": "Theo dõi thông báo từ phòng CTSV / website trường"
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng nghiên cứu / dự án bền vững",
-        "target": "Sinh viên tham gia NCKH/CLB/hoạt động môi trường",
-        "requirements": "Có đề tài/dự án, thành tích/giải thưởng là lợi thế",
-        "timeline": "Theo đợt / dự án",
-        "note": "Thường có từ doanh nghiệp/đối tác"
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
+      },
+      {
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
     ]
   },
@@ -623,20 +694,34 @@
     "logoFallback": "🌿",
     "website": "https://tdtu.edu.vn/hoc-bong",
     "admissionUrl": "https://tuyensinh.tdtu.edu.vn/",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng TDTU (đầu vào)",
-        "target": "Tân sinh viên",
-        "requirements": "Đạt mốc điểm theo thông báo từng năm/đợt",
-        "timeline": "Mùa tuyển sinh",
-        "note": "Có nhiều mức 30%–100% tùy điều kiện"
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng khuyến khích học tập",
-        "target": "Sinh viên đang học",
-        "requirements": "Kết quả học tập tốt, không vi phạm kỷ luật",
-        "timeline": "Theo học kỳ",
-        "note": "Xét tự động hoặc theo hồ sơ"
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
+      },
+      {
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
     ]
   },
@@ -649,20 +734,41 @@
     "logoFallback": "🌿",
     "website": "https://ntt.edu.vn/hoc-bong",
     "admissionUrl": "https://tuyensinh.ntt.edu.vn/",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng tài năng / khuyến học",
-        "target": "Tân sinh viên & sinh viên",
-        "requirements": "Điểm đầu vào/GPA đạt chuẩn từng mức học bổng",
-        "timeline": "Theo đợt",
-        "note": "Kiểm tra website học bổng từng năm"
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng vượt khó",
-        "target": "Sinh viên có hoàn cảnh khó khăn",
-        "requirements": "Hồ sơ minh chứng + kết quả học tập/rèn luyện phù hợp",
-        "timeline": "Theo đợt",
-        "note": "Số lượng & mức hỗ trợ tùy quỹ"
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
+      },
+      {
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+      },
+      {
+        "name": "Xét tuyển riêng (thi năng khiếu / phỏng vấn / portfolio)",
+        "subjects": "Tùy ngành: thi vẽ, thi năng khiếu, phỏng vấn, hoặc bài luận",
+        "quota": "20-40%",
+        "timeline": "Theo lịch riêng từng trường",
+        "note": "Phù hợp thí sinh có thành tích ngoại khóa/portfolio nổi bật"
       }
     ]
   },
@@ -675,20 +781,41 @@
     "logoFallback": "🤖",
     "website": "https://fpt.edu.vn/scholarship",
     "admissionUrl": "https://fpt.edu.vn/tuyen-sinh",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng toàn phần / bán phần (toàn khóa)",
-        "target": "Tân sinh viên",
-        "requirements": "Xét học bạ/điểm thi + thành tích + phỏng vấn/thi (tùy đợt)",
-        "timeline": "Theo đợt tuyển sinh",
-        "note": "Điều kiện thay đổi theo năm"
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng theo kỳ thi học bổng",
-        "target": "Học sinh THPT",
-        "requirements": "Tham gia kỳ thi học bổng của FPTU",
-        "timeline": "Theo lịch trường",
-        "note": "Cần theo dõi lịch thi/đăng ký"
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
+      },
+      {
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+      },
+      {
+        "name": "Xét tuyển riêng của FPT (bài thi riêng + phỏng vấn)",
+        "subjects": "Toán, Ngữ văn, Tiếng Anh + bài thi tư duy logic",
+        "quota": "30-50%",
+        "timeline": "Nhiều đợt trong năm",
+        "note": "Thi trực tiếp tại campus hoặc online; có thể phỏng vấn bổ sung"
       }
     ]
   },
@@ -701,20 +828,41 @@
     "logoFallback": "🧬",
     "website": "https://hcmiu.edu.vn/scholarships",
     "admissionUrl": "https://tuyensinh.hcmiu.edu.vn/",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng chương trình quốc tế",
-        "target": "Tân sinh viên",
-        "requirements": "Điểm đầu vào/IELTS theo yêu cầu từng chương trình",
-        "timeline": "Mùa tuyển sinh",
-        "note": "Một số chương trình học hoàn toàn bằng tiếng Anh"
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng học tập / nghiên cứu",
-        "target": "Sinh viên đang học",
-        "requirements": "GPA tốt, tham gia NCKH là lợi thế",
-        "timeline": "Theo học kỳ/đợt",
-        "note": "Theo dõi CTSV/khoa"
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
+      },
+      {
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+      },
+      {
+        "name": "Xét tuyển riêng (thi năng khiếu / phỏng vấn / portfolio)",
+        "subjects": "Tùy ngành: thi vẽ, thi năng khiếu, phỏng vấn, hoặc bài luận",
+        "quota": "20-40%",
+        "timeline": "Theo lịch riêng từng trường",
+        "note": "Phù hợp thí sinh có thành tích ngoại khóa/portfolio nổi bật"
       }
     ]
   },
@@ -727,20 +875,34 @@
     "logoFallback": "🧬",
     "website": "https://hcmuaf.edu.vn/hoc-bong",
     "admissionUrl": "https://ts.hcmuaf.edu.vn/",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng khuyến khích học tập",
-        "target": "Sinh viên đang học",
-        "requirements": "Kết quả học tập tốt theo tiêu chí từng học kỳ/năm",
-        "timeline": "Theo học kỳ/năm",
-        "note": "Xét theo quy định trường"
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng dự án/đối tác (CN sinh học)",
-        "target": "Sinh viên ngành liên quan",
-        "requirements": "Tham gia dự án, NCKH, CLB chuyên môn",
-        "timeline": "Theo đợt",
-        "note": "Tùy đối tác tài trợ"
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
+      },
+      {
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
     ]
   },
@@ -753,20 +915,34 @@
     "logoFallback": "🧬",
     "website": "https://hufi.edu.vn/hoc-bong",
     "admissionUrl": "https://ts.huit.edu.vn/dai-hoc",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng khuyến học / vượt khó",
-        "target": "Tân sinh viên & sinh viên",
-        "requirements": "Hồ sơ + kết quả học tập/rèn luyện phù hợp",
-        "timeline": "Theo đợt",
-        "note": "Mức hỗ trợ tùy quỹ"
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng theo mốc điểm",
-        "target": "Tân sinh viên",
-        "requirements": "Đạt mốc điểm theo thông báo từng năm",
-        "timeline": "Mùa tuyển sinh",
-        "note": "Xem chi tiết trên website trường"
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
+      },
+      {
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
     ]
   },
@@ -779,20 +955,34 @@
     "logoFallback": "🏫",
     "website": "https://huemed-univ.edu.vn/hoc-bong",
     "admissionUrl": "https://tuyensinh.huemed-univ.edu.vn/",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng khuyến khích học tập",
-        "target": "Sinh viên đang theo học",
-        "requirements": "GPA kỳ trước đạt loại giỏi, xuất sắc; hạnh kiểm tốt",
-        "timeline": "Xét theo học kỳ",
-        "note": "Có thể đạt 100% học phí học kỳ – cạnh tranh cao"
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "5-10%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng nghiên cứu y sinh & quốc tế",
-        "target": "Sinh viên có năng lực nghiên cứu",
-        "requirements": "Tham gia đề tài NCKH hoặc hợp tác quốc tế của trường",
-        "timeline": "Theo từng đợt / dự án",
-        "note": "Theo dõi thông báo từ phòng CTSV và các khoa"
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "B00 (Toán - Hóa - Sinh) | A00 (Toán - Lý - Hóa) | D08 (Toán - Sinh - Anh) | tùy ngành",
+        "quota": "60-70%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
+      },
+      {
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "B00, A00, D08 | theo tổ hợp môn trường quy định",
+        "quota": "20-30%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Một số ngành Y chỉ xét học bạ 6 học kỳ (cả lớp 10, 11, 12)"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA (ĐHQG TP.HCM) hoặc V-SAT (ĐHQG Hà Nội)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
     ]
   },
@@ -805,20 +995,34 @@
     "logoFallback": "🏫",
     "website": "https://smp.udn.vn/hoc-bong",
     "admissionUrl": "https://smp.udn.vn/tuyen-sinh",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng ĐH Đà Nẵng",
-        "target": "Sinh viên đang theo học",
-        "requirements": "GPA đạt chuẩn theo quy định ĐH Đà Nẵng",
-        "timeline": "Xét theo học kỳ/năm",
-        "note": ""
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "5-10%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng hỗ trợ sinh viên ngành y",
-        "target": "Sinh viên ngành y có hoàn cảnh hoặc thành tích nổi bật",
-        "requirements": "Theo tiêu chí từng đợt thông báo",
-        "timeline": "Theo thông báo",
-        "note": "Theo dõi website khoa để cập nhật đợt xét"
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "B00 (Toán - Hóa - Sinh) | A00 (Toán - Lý - Hóa) | D08 (Toán - Sinh - Anh) | tùy ngành",
+        "quota": "60-70%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
+      },
+      {
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "B00, A00, D08 | theo tổ hợp môn trường quy định",
+        "quota": "20-30%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Một số ngành Y chỉ xét học bạ 6 học kỳ (cả lớp 10, 11, 12)"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA (ĐHQG TP.HCM) hoặc V-SAT (ĐHQG Hà Nội)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
     ]
   },
@@ -831,20 +1035,41 @@
     "logoFallback": "🎯",
     "website": "https://duytan.edu.vn/tuyen-sinh/hoc-bong",
     "admissionUrl": "https://tuyensinh.duytan.edu.vn/",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng tuyển sinh (50–100% học phí)",
-        "target": "Tân sinh viên",
-        "requirements": "Đạt mốc điểm theo thông báo tuyển sinh từng năm (THPT, học bạ, ĐGNL)",
-        "timeline": "Mùa tuyển sinh",
-        "note": "Nhiều mức học bổng, khả năng đạt cao – phù hợp cho nhiều ngành"
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng y khoa / CNTT / AI / Biotech",
-        "target": "Sinh viên ngành y, CNTT, AI, kỹ thuật sinh học",
-        "requirements": "Theo tiêu chí từng ngành; có suất toàn phần cho thành tích xuất sắc",
-        "timeline": "Theo đợt / kỳ học",
-        "note": "Trường tư thục với nhiều suất học bổng lớn – nên kiểm tra website trường thường xuyên"
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
+      },
+      {
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+      },
+      {
+        "name": "Xét tuyển riêng (thi năng khiếu / phỏng vấn / portfolio)",
+        "subjects": "Tùy ngành: thi vẽ, thi năng khiếu, phỏng vấn, hoặc bài luận",
+        "quota": "20-40%",
+        "timeline": "Theo lịch riêng từng trường",
+        "note": "Phù hợp thí sinh có thành tích ngoại khóa/portfolio nổi bật"
       }
     ]
   },
@@ -857,20 +1082,34 @@
     "logoFallback": "📊",
     "website": "https://due.udn.vn/vi-vn/hoc-bong",
     "admissionUrl": "https://due.udn.vn/vi-vn/tuyen-sinh",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng doanh nghiệp",
-        "target": "Sinh viên có thành tích nổi bật",
-        "requirements": "Theo tiêu chí từng nhà tài trợ doanh nghiệp",
-        "timeline": "Theo thông báo",
-        "note": ""
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng khuyến học theo GPA",
-        "target": "Sinh viên đang theo học",
-        "requirements": "GPA kỳ trước đạt loại giỏi, xuất sắc",
-        "timeline": "Xét theo kỳ/năm",
-        "note": "Có mức cao theo GPA – theo dõi thông báo từng học kỳ"
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
+      },
+      {
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
     ]
   },
@@ -883,20 +1122,34 @@
     "logoFallback": "🌊",
     "website": "https://ntu.edu.vn/hoc-bong",
     "admissionUrl": "https://tuyensinh.ntu.edu.vn/",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng kinh tế biển & quản trị",
-        "target": "Sinh viên ngành kinh tế, quản trị, công nghệ sinh học biển",
-        "requirements": "GPA đạt chuẩn từng kỳ",
-        "timeline": "Xét theo kỳ",
-        "note": "Có thể đạt 100% học phí theo kỳ"
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng công nghệ sinh học biển",
-        "target": "Sinh viên ngành công nghệ sinh học",
-        "requirements": "Kết quả học tập tốt, tham gia nghiên cứu là lợi thế",
-        "timeline": "Theo đợt / dự án",
-        "note": "Trường mạnh về biotech biển – nổi bật tại miền Trung"
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
+      },
+      {
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
     ]
   },
@@ -909,20 +1162,41 @@
     "logoFallback": "💰",
     "website": "https://donga.edu.vn/hoc-bong",
     "admissionUrl": "https://tuyensinh.donga.edu.vn/",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng nhập học",
-        "target": "Tân sinh viên",
-        "requirements": "Theo mốc điểm tuyển sinh từng năm (THPT, học bạ)",
-        "timeline": "Mùa tuyển sinh",
-        "note": "Có hỗ trợ học phí lớn cho tân sinh viên"
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng khuyến khích học tập",
-        "target": "Sinh viên đang theo học",
-        "requirements": "Kết quả học tập tốt, hạnh kiểm tốt",
-        "timeline": "Xét theo kỳ",
-        "note": "Trường dễ đạt học bổng so với các trường công"
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
+      },
+      {
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+      },
+      {
+        "name": "Xét tuyển riêng (thi năng khiếu / phỏng vấn / portfolio)",
+        "subjects": "Tùy ngành: thi vẽ, thi năng khiếu, phỏng vấn, hoặc bài luận",
+        "quota": "20-40%",
+        "timeline": "Theo lịch riêng từng trường",
+        "note": "Phù hợp thí sinh có thành tích ngoại khóa/portfolio nổi bật"
       }
     ]
   },
@@ -935,27 +1209,34 @@
     "logoFallback": "⚙️",
     "website": "https://dut.udn.vn/hoc-bong",
     "admissionUrl": "https://dut.udn.vn/tuyen-sinh",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng kỹ thuật / CNTT / AI / Robotics",
-        "target": "Sinh viên ngành kỹ thuật, CNTT, AI",
-        "requirements": "GPA đạt loại giỏi, xuất sắc; có thể cần hồ sơ hoạt động",
-        "timeline": "Xét theo kỳ/năm",
-        "note": "Có thể đạt 100% học phí học kỳ – trường đầu ngành tại miền Trung"
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng kỹ thuật môi trường",
-        "target": "Sinh viên ngành môi trường, bền vững",
-        "requirements": "GPA đạt chuẩn theo quy định",
-        "timeline": "Xét theo kỳ",
-        "note": "Mạnh về kỹ thuật môi trường và năng lượng tái tạo"
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
       },
       {
-        "title": "Học bổng theo thành tích đặc biệt",
-        "target": "Sinh viên đạt giải hoặc có dự án nổi bật",
-        "requirements": "Giải thi quốc gia/quốc tế, dự án nghiên cứu, NCKH",
-        "timeline": "Theo thông báo",
-        "note": ""
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
     ]
   },
@@ -968,20 +1249,41 @@
     "logoFallback": "💻",
     "website": "https://qnu.edu.vn/vi/hoc-bong",
     "admissionUrl": "https://tuyensinh.qnu.edu.vn/",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng CNTT",
-        "target": "Sinh viên ngành Công nghệ thông tin",
-        "requirements": "GPA đạt chuẩn theo quy định từng kỳ",
-        "timeline": "Xét theo kỳ",
-        "note": ""
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT + ưu tiên ngành sư phạm",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng nghiên cứu",
-        "target": "Sinh viên có đề tài nghiên cứu",
-        "requirements": "Tham gia NCKH, có công bố hoặc đề tài được duyệt",
-        "timeline": "Theo từng đợt / dự án",
-        "note": "Theo dõi thông báo từ phòng CTSV"
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
+      },
+      {
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, C00, D01 + ưu tiên điểm Toán, Ngữ văn",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+      },
+      {
+        "name": "Chính sách ưu tiên ngành Sư phạm (Bộ GD&ĐT)",
+        "subjects": "Hỗ trợ học phí + sinh hoạt phí theo Nghị định 116/2020",
+        "quota": "Theo chỉ tiêu sư phạm",
+        "timeline": "Áp dụng từ năm nhất",
+        "note": "Sinh viên cam kết công tác trong ngành giáo dục sau tốt nghiệp"
       }
     ]
   },
@@ -994,20 +1296,34 @@
     "logoFallback": "🧬",
     "website": "https://husc.hueuni.edu.vn/hoc-bong",
     "admissionUrl": "https://husc.hueuni.edu.vn/tuyen-sinh",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng nghiên cứu sinh học & môi trường",
-        "target": "Sinh viên ngành sinh học, môi trường, biến đổi khí hậu",
-        "requirements": "GPA cao; tham gia nghiên cứu là lợi thế lớn",
-        "timeline": "Theo kỳ / đợt dự án",
-        "note": "Trường mạnh về biotech & môi trường tại miền Trung"
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng theo GPA (khuyến khích học tập)",
-        "target": "Sinh viên đang theo học",
-        "requirements": "GPA đạt loại giỏi, xuất sắc; hạnh kiểm tốt",
-        "timeline": "Xét theo học kỳ",
-        "note": "Có suất cao theo GPA"
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
+      },
+      {
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
     ]
   },
@@ -1020,20 +1336,34 @@
     "logoFallback": "🌱",
     "website": "https://huaf.edu.vn/hoc-bong",
     "admissionUrl": "https://huaf.edu.vn/tuyen-sinh",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng nông nghiệp bền vững",
-        "target": "Sinh viên ngành nông lâm, môi trường, phát triển bền vững",
-        "requirements": "GPA đạt chuẩn theo quy định",
-        "timeline": "Xét theo kỳ",
-        "note": "Hỗ trợ học phí tốt – phù hợp cho hướng nông nghiệp & bền vững"
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng khuyến khích học tập",
-        "target": "Sinh viên đang theo học",
-        "requirements": "Kết quả học tập tốt, không vi phạm kỷ luật",
-        "timeline": "Xét theo học kỳ/năm",
-        "note": ""
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
+      },
+      {
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
     ]
   },
@@ -1046,20 +1376,41 @@
     "logoFallback": "📣",
     "website": "https://husc.hueuni.edu.vn/",
     "admissionUrl": "https://hucfl.hueuni.edu.vn/tuyen-sinh",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng ngành báo chí – truyền thông",
-        "target": "Sinh viên ngành truyền thông, báo chí",
-        "requirements": "GPA đạt chuẩn; có hoạt động truyền thông là lợi thế",
-        "timeline": "Xét theo kỳ",
-        "note": "Top miền Trung về ngành truyền thông & khoa học xã hội"
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT + ưu tiên ngành sư phạm",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng ĐH Huế",
-        "target": "Sinh viên đang theo học tại ĐH Huế",
-        "requirements": "GPA loại giỏi, xuất sắc; hạnh kiểm tốt",
-        "timeline": "Xét theo học kỳ/năm",
-        "note": ""
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
+      },
+      {
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, C00, D01 + ưu tiên điểm Toán, Ngữ văn",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+      },
+      {
+        "name": "Chính sách ưu tiên ngành Sư phạm (Bộ GD&ĐT)",
+        "subjects": "Hỗ trợ học phí + sinh hoạt phí theo Nghị định 116/2020",
+        "quota": "Theo chỉ tiêu sư phạm",
+        "timeline": "Áp dụng từ năm nhất",
+        "note": "Sinh viên cam kết công tác trong ngành giáo dục sau tốt nghiệp"
       }
     ]
   },
@@ -1072,20 +1423,41 @@
     "logoFallback": "📺",
     "website": "https://phuxuan.edu.vn/hoc-bong",
     "admissionUrl": "https://phuxuan.edu.vn/tuyen-sinh",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng sáng tạo – truyền thông",
-        "target": "Sinh viên ngành truyền thông, thiết kế sáng tạo",
-        "requirements": "Portfolio, thành tích hoạt động sáng tạo",
-        "timeline": "Theo đợt tuyển sinh / xét hàng kỳ",
-        "note": "Hỗ trợ học phí cao – dễ đạt hơn so với trường công"
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng nhập học",
-        "target": "Tân sinh viên",
-        "requirements": "Đạt mốc điểm theo thông báo tuyển sinh từng năm",
-        "timeline": "Mùa tuyển sinh",
-        "note": ""
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
+      },
+      {
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+      },
+      {
+        "name": "Xét tuyển riêng (thi năng khiếu / phỏng vấn / portfolio)",
+        "subjects": "Tùy ngành: thi vẽ, thi năng khiếu, phỏng vấn, hoặc bài luận",
+        "quota": "20-40%",
+        "timeline": "Theo lịch riêng từng trường",
+        "note": "Phù hợp thí sinh có thành tích ngoại khóa/portfolio nổi bật"
       }
     ]
   },
@@ -1098,20 +1470,34 @@
     "logoFallback": "🤖",
     "website": "https://vku.udn.vn/hoc-bong",
     "admissionUrl": "https://vku.udn.vn/tuyen-sinh",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng CNTT & AI",
-        "target": "Sinh viên ngành CNTT, AI, truyền thông số",
-        "requirements": "GPA đạt chuẩn; tham gia CLB kỹ thuật là lợi thế",
-        "timeline": "Xét theo kỳ/năm",
-        "note": "Hợp tác chặt với doanh nghiệp Hàn Quốc – cơ hội học bổng từ đối tác"
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng hợp tác doanh nghiệp",
-        "target": "Sinh viên có thành tích nổi bật",
-        "requirements": "Theo tiêu chí từng đối tác doanh nghiệp",
-        "timeline": "Theo thông báo",
-        "note": "Theo dõi thông báo từ phòng HTDN của trường"
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
+      },
+      {
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
     ]
   },
@@ -1124,27 +1510,34 @@
     "logoFallback": "🏛️",
     "website": "https://udn.vn/hoc-bong",
     "admissionUrl": "https://udn.vn/tuyen-sinh",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng ĐH Đà Nẵng theo thành tích học tập",
-        "target": "Sinh viên đang theo học tại các trường thành viên",
-        "requirements": "GPA kỳ trước đạt loại giỏi, xuất sắc; hạnh kiểm tốt",
-        "timeline": "Xét theo học kỳ/năm",
-        "note": "Áp dụng thống nhất cho các trường thành viên ĐH Đà Nẵng"
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng doanh nghiệp / tài trợ",
-        "target": "Sinh viên có thành tích hoặc hoàn cảnh nổi bật",
-        "requirements": "Theo tiêu chí từng nhà tài trợ",
-        "timeline": "Theo thông báo",
-        "note": ""
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
       },
       {
-        "title": "Hỗ trợ sinh viên ngành sư phạm theo chính sách",
-        "target": "Sinh viên ngành sư phạm",
-        "requirements": "Theo chính sách nhà nước về đào tạo sư phạm",
-        "timeline": "Suốt thời gian học",
-        "note": ""
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
     ]
   },
@@ -1157,20 +1550,34 @@
     "logoFallback": "🧪",
     "website": "https://hcmus.edu.vn/hoc-bong",
     "admissionUrl": "https://tuyensinh.hcmus.edu.vn/",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng khuyến khích học tập",
-        "target": "Sinh viên có thành tích học tập tốt",
-        "requirements": "GPA & rèn luyện đạt chuẩn theo quy định từng học kỳ/năm",
-        "timeline": "Xét theo học kỳ/năm",
-        "note": "Theo dõi thông báo từ phòng CTSV / website trường"
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng nghiên cứu Toán – Lý – Hóa – Sinh",
-        "target": "Sinh viên tham gia NCKH/CLB/đề tài nghiên cứu",
-        "requirements": "Có đề tài/dự án, thành tích/giải thưởng là lợi thế",
-        "timeline": "Theo đợt / dự án",
-        "note": "Thường có từ doanh nghiệp/đối tác"
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
+      },
+      {
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
     ]
   },
@@ -1183,27 +1590,34 @@
     "logoFallback": "🏯",
     "website": "https://hueuni.edu.vn/hoc-bong",
     "admissionUrl": "https://hueuni.edu.vn/tuyen-sinh",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng ĐH Huế theo thành tích học tập",
-        "target": "Sinh viên đang theo học tại các trường thành viên",
-        "requirements": "GPA kỳ trước đạt loại giỏi, xuất sắc; hạnh kiểm tốt",
-        "timeline": "Xét theo học kỳ/năm",
-        "note": "Áp dụng thống nhất cho các trường thành viên ĐH Huế"
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng tài trợ doanh nghiệp / cựu sinh viên",
-        "target": "Sinh viên có hoàn cảnh hoặc thành tích nổi bật",
-        "requirements": "Theo tiêu chí từng nhà tài trợ",
-        "timeline": "Theo thông báo",
-        "note": ""
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
       },
       {
-        "title": "Học bổng theo thành tích đầu vào",
-        "target": "Tân sinh viên điểm cao",
-        "requirements": "Điểm THPT hoặc ĐGNL vượt mốc quy định",
-        "timeline": "Năm nhất",
-        "note": ""
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
     ]
   },
@@ -1216,27 +1630,34 @@
     "logoFallback": "🎓",
     "website": "https://sgu.edu.vn/",
     "admissionUrl": "https://tuyensinh.sgu.edu.vn/",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng khuyến khích học tập",
-        "target": "Sinh viên đang theo học",
-        "requirements": "Kết quả học tập xuất sắc, hạnh kiểm tốt, không vi phạm kỷ luật",
-        "timeline": "Xét theo học kỳ/năm",
-        "note": ""
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng tân sinh viên / đầu vào",
-        "target": "Tân sinh viên điểm cao",
-        "requirements": "Đạt mốc điểm THPT hoặc ĐGNL theo quy định từng năm",
-        "timeline": "Năm nhất",
-        "note": ""
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
       },
       {
-        "title": "Học bổng hỗ trợ sinh viên",
-        "target": "Sinh viên có hoàn cảnh khó khăn nhưng thành tích tốt",
-        "requirements": "Hồ sơ hoàn cảnh + kết quả học tập/rèn luyện",
-        "timeline": "Theo thông báo từng đợt",
-        "note": ""
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
     ]
   },
@@ -1249,27 +1670,34 @@
     "logoFallback": "⚖️",
     "website": "https://www.uel.edu.vn/",
     "admissionUrl": "https://tuyensinh.uel.edu.vn/",
-    "scholarships": [
+    "admissionMethods": [
       {
-        "title": "Học bổng khuyến khích học tập",
-        "target": "Sinh viên đang theo học",
-        "requirements": "GPA đạt loại giỏi, xuất sắc; rèn luyện tốt",
-        "timeline": "Xét theo học kỳ/năm",
-        "note": ""
+        "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
+        "subjects": "Theo quy chế Bộ GD&ĐT (thủ khoa, giải HSG QG/quốc tế, chứng chỉ quốc tế)",
+        "quota": "10-20%",
+        "timeline": "Tháng 3 - tháng 5",
+        "note": "Đăng ký trên cổng tuyển sinh của Bộ GD&ĐT hoặc trường"
       },
       {
-        "title": "Học bổng đầu vào / thành tích tân sinh viên",
-        "target": "Tân sinh viên điểm cao",
-        "requirements": "Đạt mốc điểm THPT/ĐGNL/học bạ theo quy định từng năm",
-        "timeline": "Năm nhất",
-        "note": ""
+        "name": "Xét điểm thi tốt nghiệp THPT (THPTQG)",
+        "subjects": "A00, A01, B00, C00, D01... (theo tổ hợp môn từng ngành)",
+        "quota": "40-60%",
+        "timeline": "Tháng 7 (sau kỳ thi THPTQG)",
+        "note": "Thí sinh dự thi tốt nghiệp THPT năm 2026; dựa trên điểm các tổ hợp"
       },
       {
-        "title": "Học bổng doanh nghiệp / đối tác",
-        "target": "Sinh viên có thành tích nổi bật",
-        "requirements": "Theo tiêu chí từng nhà tài trợ; ưu tiên sinh viên ngành Kế toán, Tài chính, Luật",
-        "timeline": "Theo đợt thông báo",
-        "note": ""
+        "name": "Xét học bạ THPT (5 hoặc 6 học kỳ)",
+        "subjects": "A00, A01, B00, C00, D01, D07... (theo ngành)",
+        "quota": "20-40%",
+        "timeline": "Tháng 4 - tháng 6",
+        "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
+      },
+      {
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
+        "quota": "15-30%",
+        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
+        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
     ]
   }

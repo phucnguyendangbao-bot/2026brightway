@@ -173,24 +173,6 @@ html { scroll-behavior: smooth; }
   color: var(--accent);
   border-color: var(--accent);
 }
-.school-admission-link {
-  display: inline-flex; align-items: center; gap: 4px;
-  margin-top: 6px;
-  font-size: .78rem; font-weight: 600;
-  color: #0369a1;
-  background: linear-gradient(135deg, rgba(56,189,248,0.1), rgba(14,165,233,0.15));
-  border: 1px solid rgba(14,165,233,0.28);
-  border-radius: 999px;
-  padding: 3px 10px;
-  text-decoration: none;
-  transition: all .2s;
-}
-.school-admission-link:hover {
-  background: linear-gradient(135deg, rgba(56,189,248,0.18), rgba(14,165,233,0.25));
-  border-color: #0369a1;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(14,165,233,0.2);
-}
 .school-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
 .school-badge-short {
   display: inline-block; border-radius: 999px; padding: 2px 10px;
@@ -239,22 +221,9 @@ html { scroll-behavior: smooth; }
   background: rgba(139,92,246,0.12); color: #6d28d9;
   border: 1px solid rgba(139,92,246,0.25);
 }
-.school-cards-variant {
-  background: transparent !important;
-  border: none !important;
-  border-radius: 0 !important;
-  backdrop-filter: none !important;
-  padding: 0 !important;
-  gap: 12px !important;
-}
-.sc-card-variant {
-  background: rgba(255,255,255,0.85);
-  border-color: rgba(139,92,246,0.18);
-  padding: 14px 16px;
-}
 
-/* ── SCHOLARSHIP CARDS ── */
-.school-cards {
+/* ── ADMISSION CARDS (phương thức xét tuyển) ── */
+.ad-cards {
   background: rgba(255,255,255,0.55);
   border: 1.5px solid rgba(255,255,255,0.85);
   border-top: none;
@@ -263,50 +232,95 @@ html { scroll-behavior: smooth; }
   padding: 20px 24px;
   display: flex; flex-direction: column; gap: 16px;
 }
-.sc-card {
-  background: rgba(255,255,255,0.72);
-  border: 1.5px solid rgba(255,255,255,0.9);
-  border-radius: 16px; padding: 18px;
+.ad-card {
+  background: rgba(255,255,255,0.85);
+  border: 1.5px solid rgba(99,102,241,0.18);
+  border-left: 4px solid var(--accent);
+  border-radius: 14px; padding: 18px;
   box-shadow: var(--shadow);
-  transition: transform .2s, box-shadow .2s;
+  transition: transform .2s, box-shadow .2s, border-color .2s;
 }
-.sc-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-.sc-card-title {
-  font-family: var(--font-display); font-weight: 700;
-  font-size: .95rem; color: var(--accent); margin-bottom: 10px;
+.ad-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-left-color: var(--accent2);
+}
+.ad-card-title {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: 1rem; color: var(--accent); margin-bottom: 12px;
   display: flex; align-items: center; gap: 8px;
+  line-height: 1.4;
 }
-.sc-row { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 8px; }
-.sc-label {
-  font-size: .78rem; font-weight: 700; color: var(--text-dark); min-width: 120px;
+.ad-row { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 8px; align-items: flex-start; }
+.ad-label {
+  font-size: .78rem; font-weight: 700; color: var(--text-dark); min-width: 130px;
+  display: inline-flex; align-items: center; gap: 4px;
 }
-.sc-value { font-size: .82rem; color: var(--text-soft); flex: 1; line-height: 1.6; }
-.sc-tag {
+.ad-value { font-size: .82rem; color: var(--text-soft); flex: 1; line-height: 1.6; }
+.ad-tag {
   display: inline-block; border-radius: 8px; padding: 3px 10px;
   font-size: .73rem; font-weight: 600;
   background: rgba(99,102,241,0.08); color: var(--accent);
   border: 1px solid rgba(99,102,241,0.15);
 }
-.sc-tag-green {
+.ad-tag-blue {
+  background: rgba(14,165,233,0.1); color: #0369a1;
+  border-color: rgba(14,165,233,0.25);
+}
+.ad-tag-green {
   background: rgba(16,185,129,0.08); color: #059669;
   border-color: rgba(16,185,129,0.2);
 }
-.sc-tag-amber {
-  background: rgba(245,158,11,0.08); color: #d97706;
-  border-color: rgba(245,158,11,0.2);
-}
-.sc-note {
+.ad-note {
   border-radius: 10px; border: 1px solid rgba(251,191,36,0.35);
   background: rgba(254,249,195,0.7); padding: 10px 14px;
   font-size: .82rem; color: #92400e; line-height: 1.6;
-  margin-top: 8px;
+  margin-top: 10px;
 }
-.sc-updating {
-  text-align: center; padding: 24px;
-  color: var(--text-soft); font-size: .88rem;
+.ad-card-variant {
+  border-left-color: #8b5cf6;
+  padding: 14px 16px;
+}
+.ad-card-variant .ad-card-title { color: #6d28d9; }
+.ad-cards-variant {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  backdrop-filter: none !important;
+  padding: 0 !important;
+  gap: 12px !important;
 }
 
-/* ── FOOTER ── */
+/* ── ADMISSION CTA (nút Xem chi tiết) ── */
+.school-admission-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: .82rem; font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+  border: none;
+  border-radius: 999px;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: all .2s;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(14,165,233,0.25);
+}
+.school-admission-cta:hover {
+  background: linear-gradient(135deg, #0891b2, #0284c7);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(14,165,233,0.35);
+}
+.school-admission-cta-main {
+  font-size: .88rem;
+  padding: 10px 20px;
+}
+@media(max-width:640px) {
+  .school-admission-cta { font-size: .76rem; padding: 6px 12px; }
+  .school-admission-cta-main { font-size: .82rem; padding: 8px 14px; }
+  .school-header { flex-direction: column; align-items: flex-start; }
+  .ad-row { flex-direction: column; gap: 4px; }
+  .ad-label { min-width: auto; }
+}/* ── FOOTER ── */
 .p2-footer {
   background: rgba(255,255,255,0.55);
   backdrop-filter: blur(12px);
