@@ -293,13 +293,36 @@ function filterSchools(val) {
 }
 
 function highlightSection(id) {
-  document.querySelectorAll('.school-section.highlight').forEach(el => el.classList.remove('highlight'));
-  const el = document.getElementById(id);
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    setTimeout(() => el.classList.add('highlight'), 100);
-  }
+  // Xóa highlight cũ
+  document.querySelectorAll('.school-section.highlight, .school-variant.highlight').forEach(el => el.classList.remove('highlight'));
   document.querySelectorAll('.p2-sidebar a').forEach(a => a.classList.remove('active'));
+
+  // Tìm element theo id (có thể là school-section hoặc school-variant)
+  let el = document.getElementById(id);
+  if (!el) return;
+
+  // Nếu click vào variant → scroll tới section cha, rồi highlight variant
+  if (el.classList.contains('school-variant')) {
+    const parentSection = el.closest('.school-section');
+    if (parentSection) {
+      // Scroll tới section cha trước (tránh header che)
+      const rect = parentSection.getBoundingClientRect();
+      const targetY = window.scrollY + rect.top - 96; // 96 = nav height + buffer
+      window.scrollTo({ top: targetY, behavior: 'smooth' });
+      // Sau khi scroll xong, highlight variant
+      setTimeout(() => {
+        el.classList.add('highlight');
+        // Đánh dấu active trên sidebar
+        const link = document.querySelector(`.p2-sidebar a[data-id="${id}"]`);
+        if (link) link.classList.add('active');
+      }, 500);
+      return;
+    }
+  }
+
+  // School section bình thường
+  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  setTimeout(() => el.classList.add('highlight'), 100);
   const link = document.querySelector(`.p2-sidebar a[data-id="${id}"]`);
   if (link) link.classList.add('active');
 }
