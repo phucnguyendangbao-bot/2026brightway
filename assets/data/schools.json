@@ -53,6 +53,10 @@
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
         "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
+    ],
+    "fields": [
+      "it",
+      "engineering"
     ]
   },
   {
@@ -102,6 +106,9 @@
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
         "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
+    ],
+    "fields": [
+      "it"
     ]
   },
   {
@@ -149,6 +156,11 @@
         "timeline": "Nhiều đợt trong năm",
         "note": "Thi trực tiếp tại campus hoặc online; có thể phỏng vấn bổ sung"
       }
+    ],
+    "fields": [
+      "it",
+      "business",
+      "private"
     ]
   },
   {
@@ -189,6 +201,9 @@
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
         "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
+    ],
+    "fields": [
+      "business"
     ]
   },
   {
@@ -229,6 +244,9 @@
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
         "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
+    ],
+    "fields": [
+      "business"
     ]
   },
   {
@@ -276,6 +294,9 @@
         "timeline": "Theo lịch riêng từng trường",
         "note": "Phù hợp thí sinh có thành tích ngoại khóa/portfolio nổi bật"
       }
+    ],
+    "fields": [
+      "private"
     ]
   },
   {
@@ -316,6 +337,9 @@
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
         "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
+    ],
+    "fields": [
+      "medicine"
     ]
   },
   {
@@ -356,6 +380,9 @@
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
         "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
+    ],
+    "fields": [
+      "medicine"
     ]
   },
   {
@@ -396,6 +423,9 @@
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
         "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
+    ],
+    "fields": [
+      "medicine"
     ]
   },
   {
@@ -436,6 +466,9 @@
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
         "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
+    ],
+    "fields": [
+      "social"
     ]
   },
   {
@@ -469,6 +502,9 @@
         "timeline": "Tháng 9 - tháng 12 hàng năm cho năm nhập học tiếp theo",
         "note": "Không xét điểm thi; chỉ dựa trên hồ sơ học thuật + tiếng Anh"
       }
+    ],
+    "fields": [
+      "private"
     ]
   },
   {
@@ -509,6 +545,9 @@
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
         "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
+    ],
+    "fields": [
+      "business"
     ]
   },
   {
@@ -556,6 +595,9 @@
         "timeline": "Áp dụng từ năm nhất",
         "note": "Sinh viên cam kết công tác trong ngành giáo dục sau tốt nghiệp"
       }
+    ],
+    "fields": [
+      "education"
     ]
   },
   {
@@ -596,6 +638,11 @@
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
         "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
+    ],
+    "fields": [
+      "education",
+      "science",
+      "agriculture"
     ]
   },
   {
@@ -643,6 +690,9 @@
         "timeline": "Áp dụng từ năm nhất",
         "note": "Sinh viên cam kết công tác trong ngành giáo dục sau tốt nghiệp"
       }
+    ],
+    "fields": [
+      "education"
     ]
   },
   {
@@ -683,6 +733,10 @@
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
         "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
+    ],
+    "fields": [
+      "it",
+      "science"
     ]
   },
   {
@@ -723,6 +777,12 @@
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
         "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
+    ],
+    "fields": [
+      "it",
+      "business",
+      "engineering",
+      "social"
     ]
   },
   {
@@ -770,6 +830,9 @@
         "timeline": "Theo lịch riêng từng trường",
         "note": "Phù hợp thí sinh có thành tích ngoại khóa/portfolio nổi bật"
       }
+    ],
+    "fields": [
+      "private"
     ]
   },
   {
@@ -817,6 +880,10 @@
         "timeline": "Nhiều đợt trong năm",
         "note": "Thi trực tiếp tại campus hoặc online; có thể phỏng vấn bổ sung"
       }
+    ],
+    "fields": [
+      "it",
+      "private"
     ]
   },
   {
@@ -864,6 +931,11 @@
         "timeline": "Theo lịch riêng từng trường",
         "note": "Phù hợp thí sinh có thành tích ngoại khóa/portfolio nổi bật"
       }
+    ],
+    "fields": [
+      "it",
+      "social",
+      "private"
     ]
   },
   {
@@ -904,6 +976,9 @@
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
         "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
+    ],
+    "fields": [
+      "agriculture"
     ]
   },
   {
@@ -944,6 +1019,9 @@
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
         "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
+    ],
+    "fields": [
+      "engineering"
     ]
   },
   {
@@ -984,6 +1062,9 @@
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
         "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
+    ],
+    "fields": [
+      "medicine"
     ]
   },
   {
@@ -1024,6 +1105,9 @@
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
         "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
+    ],
+    "fields": [
+      "medicine"
     ]
   },
   {
@@ -1071,6 +1155,9 @@
         "timeline": "Theo lịch riêng từng trường",
         "note": "Phù hợp thí sinh có thành tích ngoại khóa/portfolio nổi bật"
       }
+    ],
+    "fields": [
+      "private"
     ]
   },
   {
@@ -1111,6 +1198,10 @@
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
         "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
+    ],
+    "fields": [
+      "business",
+      "education"
     ]
   },
   {
@@ -1151,6 +1242,9 @@
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
         "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
+    ],
+    "fields": [
+      "agriculture"
     ]
   },
   {
@@ -1198,6 +1292,9 @@
         "timeline": "Theo lịch riêng từng trường",
         "note": "Phù hợp thí sinh có thành tích ngoại khóa/portfolio nổi bật"
       }
+    ],
+    "fields": [
+      "private"
     ]
   },
   {
@@ -1238,6 +1335,9 @@
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
         "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
+    ],
+    "fields": [
+      "engineering"
     ]
   },
   {
@@ -1285,6 +1385,9 @@
         "timeline": "Áp dụng từ năm nhất",
         "note": "Sinh viên cam kết công tác trong ngành giáo dục sau tốt nghiệp"
       }
+    ],
+    "fields": [
+      "education"
     ]
   },
   {
@@ -1325,6 +1428,10 @@
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
         "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
+    ],
+    "fields": [
+      "science",
+      "education"
     ]
   },
   {
@@ -1365,6 +1472,11 @@
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
         "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
+    ],
+    "fields": [
+      "agriculture",
+      "science",
+      "education"
     ]
   },
   {
@@ -1412,6 +1524,10 @@
         "timeline": "Áp dụng từ năm nhất",
         "note": "Sinh viên cam kết công tác trong ngành giáo dục sau tốt nghiệp"
       }
+    ],
+    "fields": [
+      "social",
+      "education"
     ]
   },
   {
@@ -1459,6 +1575,9 @@
         "timeline": "Theo lịch riêng từng trường",
         "note": "Phù hợp thí sinh có thành tích ngoại khóa/portfolio nổi bật"
       }
+    ],
+    "fields": [
+      "private"
     ]
   },
   {
@@ -1499,6 +1618,9 @@
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
         "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
+    ],
+    "fields": [
+      "it"
     ]
   },
   {
@@ -1539,6 +1661,9 @@
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
         "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
+    ],
+    "fields": [
+      "education"
     ]
   },
   {
@@ -1579,6 +1704,10 @@
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
         "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
+    ],
+    "fields": [
+      "science",
+      "it"
     ]
   },
   {
@@ -1619,6 +1748,9 @@
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
         "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
+    ],
+    "fields": [
+      "education"
     ]
   },
   {
@@ -1659,6 +1791,10 @@
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
         "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
+    ],
+    "fields": [
+      "it",
+      "education"
     ]
   },
   {
@@ -1699,6 +1835,9 @@
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
         "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
       }
+    ],
+    "fields": [
+      "business"
     ]
   }
 ]

@@ -33,22 +33,79 @@ let searchTerm = '';
 function renderSidebar(schools) {
   if (!sidebar) return;
   try {
-    const titleHtml = '<div class="p2-sidebar-title">📚 Danh sách trường</div>';
+    const titleHtml = '<div class="p2-sidebar-title">📚 Phương thức xét tuyển theo trường</div>';
+
+    // Thứ tự nhóm ngành hiển thị
+    const FIELD_LABELS = {
+      'it':           { label: '💻 Công nghệ thông tin',          order: 1 },
+      'engineering':  { label: '⚙️ Kỹ thuật – Công nghệ',         order: 2 },
+      'science':      { label: '🔬 Khoa học tự nhiên',              order: 3 },
+      'medicine':     { label: '🏥 Y khoa – Sức khỏe',             order: 4 },
+      'agriculture':  { label: '🌾 Nông nghiệp – Thủy sản',        order: 5 },
+      'business':     { label: '💼 Kinh tế – Quản trị',            order: 6 },
+      'social':       { label: '📚 Xã hội – Nhân văn',              order: 7 },
+      'education':    { label: '🎓 Sư phạm – Giáo dục',            order: 8 },
+      'private':      { label: '🌐 Tư thục – Quốc tế',             order: 9 },
+      'other':        { label: '🏫 Khác',                            order: 99 }
+    };
+
+    // Group trường theo fields[0] (nhóm chính)
+    const grouped = {};
     const safeSchools = Array.isArray(schools) ? schools : [];
-    const linksHtml = safeSchools.map(s => {
-      const mainLink = `<a href="#${s.id}" data-id="${s.id}" data-action="highlight-section" data-school-id="${s.id}">${s.logoFallback || '🏫'} ${s.short || s.name || '---'}</a>`;
-      const variantLinks = (s.variants && s.variants.length)
-        ? s.variants.map(v => `<a href="#${v.id}" data-id="${v.id}" data-action="highlight-section" data-school-id="${v.id}" class="p2-sidebar-variant">↳ ${v.label || v.short || v.name}</a>`).join('')
-        : '';
-      return mainLink + variantLinks;
-    }).join('');
+    safeSchools.forEach(s => {
+      const fields = s.fields && s.fields.length ? s.fields : ['other'];
+      const mainField = fields[0];
+      if (!grouped[mainField]) grouped[mainField] = [];
+      grouped[mainField].push(s);
+    });
+
+    // Sort nhóm theo order
+    const sortedFields = Object.keys(grouped).sort((a, b) => {
+      const oa = FIELD_LABELS[a]?.order || 99;
+      const ob = FIELD_LABELS[b]?.order || 99;
+      return oa - ob;
+    });
+
+    let linksHtml = '';
+    sortedFields.forEach(field => {
+      const fieldInfo = FIELD_LABELS[field] || FIELD_LABELS['other'];
+      linksHtml += `<div class="p2-sidebar-field-title">${fieldInfo.label}</div>`;
+      grouped[field].forEach(s => {
+        // Logo thật: dùng UNILogoImg (logoLocal -> Wikimedia -> SVG fallback)
+        const logoHtml = (window.UNILogoImg && s.short)
+          ? window.UNILogoImg(s.short, { size: 28, class: 'p2-sidebar-logo' })
+          : `<span class="p2-sidebar-emoji">${s.logoFallback || '🏫'}</span>`;
+        const mainLink = `<a href="#${s.id}" data-id="${s.id}" data-action="highlight-section" data-school-id="${s.id}" class="p2-sidebar-school">
+          <span class="p2-sidebar-logo-wrap">${logoHtml}</span>
+          <span class="p2-sidebar-school-text">
+            <span class="p2-sidebar-school-name">${s.short || s.name || '---'}</span>
+            <span class="p2-sidebar-school-city">${s.city || ''}</span>
+          </span>
+        </a>`;
+        const variantLinks = (s.variants && s.variants.length)
+          ? s.variants.map(v => {
+              const vLogo = (window.UNILogoImg && s.short)
+                ? window.UNILogoImg(s.short, { size: 22, class: 'p2-sidebar-logo p2-sidebar-logo-sm' })
+                : `<span class="p2-sidebar-emoji">${s.logoFallback || '🏫'}</span>`;
+              return `<a href="#${v.id}" data-id="${v.id}" data-action="highlight-section" data-school-id="${v.id}" class="p2-sidebar-school p2-sidebar-variant">
+                <span class="p2-sidebar-logo-wrap">${vLogo}</span>
+                <span class="p2-sidebar-school-text">
+                  <span class="p2-sidebar-school-name">↳ ${v.label || v.short || v.name}</span>
+                </span>
+              </a>`;
+            }).join('')
+          : '';
+        linksHtml += mainLink + variantLinks;
+      });
+    });
+
     const emptyMsg = safeSchools.length === 0
-      ? '<div style="padding:12px;color:#6b7280;font-size:.8rem;">Không có trường nào khớp từ khóa.</div>'
+      ? '<div class="p2-sidebar-empty">Không có trường nào khớp từ khóa.</div>'
       : '';
     sidebar.innerHTML = titleHtml + linksHtml + emptyMsg;
   } catch (err) {
     console.error('[renderSidebar] error:', err);
-    sidebar.innerHTML = '<div class="p2-sidebar-title">📚 Danh sách trường</div><div style="padding:12px;color:#dc2626;font-size:.8rem;">Lỗi hiển thị danh sách. Vui lòng tải lại trang.</div>';
+    sidebar.innerHTML = '<div class="p2-sidebar-title">📚 Phương thức xét tuyển theo trường</div><div class="p2-sidebar-error">Lỗi hiển thị danh sách. Vui lòng tải lại trang.</div>';
   }
 }
 
