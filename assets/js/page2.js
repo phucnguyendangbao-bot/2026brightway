@@ -188,6 +188,26 @@ function renderSchools(schools) {
           </div>
           ${s.admissionUrl ? `<a href="${s.admissionUrl}" target="_blank" rel="noopener" class="school-admission-cta school-admission-cta-main" title="Xem chi tiết phương thức xét tuyển trên trang chính thức của trường">Xem chi tiết tuyển sinh →</a>` : ''}
         </div>
+
+        <!-- THÔNG TIN BỔ SUNG: Cơ sở, Chương trình, Tỉnh điểm -->
+        <div class="school-info-grid">
+          ${s.campuses && s.campuses.length ? `
+          <div class="info-grid-item">
+            <div class="info-grid-label">🏫 Cơ sở đào tạo</div>
+            <div class="info-grid-value">${s.campuses.map(c => `<span class="info-tag">${c}</span>`).join('')}</div>
+          </div>` : ''}
+          ${s.programs && s.programs.length ? `
+          <div class="info-grid-item">
+            <div class="info-grid-label">📖 Chương trình đào tạo</div>
+            <div class="info-grid-value">${s.programs.map(p => `<span class="info-tag info-tag-purple">${p}</span>`).join('')}</div>
+          </div>` : ''}
+          ${s.provinces ? `
+          <div class="info-grid-item info-grid-item-full">
+            <div class="info-grid-label">🗺️ Tỉnh điểm tuyển sinh</div>
+            <div class="info-grid-value">${s.provinces}</div>
+          </div>` : ''}
+        </div>
+
         <div class="ad-cards">
           ${cardsHtml}
         </div>

@@ -355,7 +355,62 @@ html { scroll-behavior: smooth; }
   .school-header { flex-direction: column; align-items: flex-start; }
   .ad-row { flex-direction: column; gap: 4px; }
   .ad-label { min-width: auto; }
-}/* ── FOOTER ── */
+}/* ── INFO GRID (cơ sở, chương trình, tỉnh điểm) ── */
+.school-info-grid {
+  background: linear-gradient(135deg, rgba(99,102,241,0.04), rgba(139,92,246,0.04));
+  border-left: 1.5px solid rgba(255,255,255,0.85);
+  border-right: 1.5px solid rgba(255,255,255,0.85);
+  padding: 14px 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px 20px;
+}
+.info-grid-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.info-grid-item-full {
+  grid-column: 1 / -1;
+}
+.info-grid-label {
+  font-size: .72rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.info-grid-value {
+  font-size: .82rem;
+  color: var(--text-dark);
+  line-height: 1.6;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+}
+.info-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255,255,255,0.85);
+  border: 1.5px solid rgba(99,102,241,0.18);
+  border-radius: 8px;
+  padding: 3px 10px;
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--text-mid);
+}
+.info-tag-purple {
+  background: rgba(139,92,246,0.08);
+  border-color: rgba(139,92,246,0.25);
+  color: #6d28d9;
+}
+
+/* ── FOOTER ── */
 .p2-footer {
   background: rgba(255,255,255,0.55);
   backdrop-filter: blur(12px);
