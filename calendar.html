@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Lịch tuyển sinh 2026 – BrightWay Calendar</title>
-<meta name="description" content="Lịch thi, nộp hồ sơ, công bố điểm chuẩn 2026 theo dòng thời gian trực quan." />
+<title>Lịch tuyển sinh 2026 – BrightWay</title>
+<meta name="description" content="Lịch thi, nộp hồ sơ, công bố điểm chuẩn 2026 theo dòng thời gian." />
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,18 +19,10 @@
   --text-mid: #3a3a6e;
   --text-soft: #6b7aaa;
   --accent: #6366f1;
-  --white: #ffffff;
   --shadow: 0 8px 32px rgba(99,102,241,0.15);
-  --shadow-lg: 0 16px 48px rgba(99,102,241,0.22);
+  --shadow-sm: 0 2px 10px rgba(99,102,241,0.08);
   --font: 'Be Vietnam Pro', system-ui, sans-serif;
   --font-display: 'Nunito', 'Be Vietnam Pro', sans-serif;
-  /* category colors */
-  --c-thi: #ef4444;     /* Kỳ thi - đỏ */
-  --c-nop: #f59e0b;     /* Nộp hồ sơ - cam */
-  --c-cbt: #6366f1;     /* Công bố - tím */
-  --c-phong: #8b5cf6;   /* Phỏng vấn - tím nhạt */
-  --c-hocba: #10b981;   /* Học bạ - xanh lá */
-  --c-tuvan: #0ea5e9;   /* Tư vấn - xanh dương */
 }
 html{scroll-behavior:smooth;}
 body{
@@ -39,8 +31,7 @@ body{
   background-attachment:fixed;
   color:var(--text-dark);
   min-height:100vh;
-  overflow-x:hidden;
-  line-height:1.6;
+  overflow-x:hidden;line-height:1.6;
 }
 body::before{
   content:'';position:fixed;top:-15%;left:-10%;width:55vw;height:55vw;
@@ -65,368 +56,180 @@ body::after{
   box-shadow:0 2px 20px rgba(99,102,241,0.08);
 }
 .lp-nav-inner{
-  max-width:1280px;margin:0 auto;padding:0 24px;
-  height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  max-width:1200px;margin:0 auto;padding:0 24px;
+  height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px;
 }
 .lp-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
 .lp-logo-emoji{
-  width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;
-  background:var(--grad);font-size:20px;
-  box-shadow:0 4px 16px rgba(99,102,241,0.3);
+  width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  background:var(--grad);font-size:18px;
+  box-shadow:0 4px 14px rgba(99,102,241,0.3);
 }
-.lp-logo-text{font-family:var(--font-display);font-weight:900;font-size:1.05rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap;}
-.lp-nav-links{display:flex;align-items:center;gap:24px;}
-.lp-nav-links a{font-size:.875rem;font-weight:600;color:var(--text-mid);text-decoration:none;transition:color .2s;}
+.lp-logo-text{font-family:var(--font-display);font-weight:900;font-size:1rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap;}
+.lp-nav-links{display:flex;align-items:center;gap:22px;}
+.lp-nav-links a{font-size:.85rem;font-weight:600;color:var(--text-mid);text-decoration:none;transition:color .2s;}
 .lp-nav-links a:hover{color:var(--accent);}
 .lp-nav-cta{
   display:inline-flex;align-items:center;gap:6px;
-  background:var(--grad-btn);color:#fff;font-weight:700;font-size:.875rem;
-  padding:9px 20px;border-radius:999px;border:none;cursor:pointer;
-  box-shadow:0 6px 20px rgba(99,102,241,0.35);
+  background:var(--grad-btn);color:#fff;font-weight:700;font-size:.85rem;
+  padding:8px 18px;border-radius:999px;border:none;cursor:pointer;
+  box-shadow:0 6px 18px rgba(99,102,241,0.35);
   transition:transform .2s;white-space:nowrap;text-decoration:none;
 }
 .lp-nav-cta:hover{transform:translateY(-2px);}
 @media(max-width:768px){.lp-nav-links{display:none;}}
 
 /* ── HERO ── */
-.cal-hero{padding:48px 24px 24px;text-align:center;position:relative;z-index:1;max-width:920px;margin:0 auto;}
+.cal-hero{
+  padding:36px 24px 12px;text-align:center;position:relative;z-index:1;max-width:800px;margin:0 auto;
+}
 .cal-tag{
-  display:inline-flex;align-items:center;gap:8px;
+  display:inline-flex;align-items:center;gap:6px;
   background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.22);
-  color:var(--accent);font-weight:700;font-size:.78rem;
-  padding:5px 14px;border-radius:999px;margin-bottom:16px;letter-spacing:.04em;
+  color:var(--accent);font-weight:700;font-size:.74rem;
+  padding:4px 12px;border-radius:999px;margin-bottom:12px;letter-spacing:.04em;
 }
 .cal-hero h1{
   font-family:var(--font-display);font-weight:800;
-  font-size:clamp(1.6rem,3.8vw,2.4rem);line-height:1.2;
-  color:var(--text-dark);margin-bottom:14px;
+  font-size:clamp(1.5rem,3.4vw,2.1rem);line-height:1.2;
+  color:var(--text-dark);margin-bottom:10px;
 }
 .cal-hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
-.cal-hero-sub{font-size:.95rem;color:var(--text-soft);line-height:1.7;max-width:680px;margin:0 auto 20px;}
+.cal-hero-sub{font-size:.9rem;color:var(--text-soft);line-height:1.6;max-width:580px;margin:0 auto;}
 
-/* ── LEGEND (chú thích màu) ── */
-.cal-legend{
-  display:flex;flex-wrap:wrap;justify-content:center;gap:8px 16px;
-  margin:0 auto 28px;max-width:920px;padding:0 24px;position:relative;z-index:1;
+/* ── COUNTDOWN ── */
+.cal-countdown{
+  background:linear-gradient(135deg,rgba(99,102,241,0.05),rgba(139,92,246,0.05));
+  border:1.5px solid rgba(99,102,241,0.18);
+  border-radius:16px;padding:14px 18px;
+  margin:20px auto 0;max-width:800px;
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  position:relative;z-index:1;
 }
-.legend-item{
-  display:inline-flex;align-items:center;gap:6px;
-  background:rgba(255,255,255,0.65);
-  border:1.5px solid rgba(255,255,255,0.9);
-  padding:6px 12px;border-radius:999px;
-  font-size:.78rem;font-weight:600;color:var(--text-mid);
-  cursor:pointer;transition:all .2s;
-  user-select:none;
+.cal-countdown-icon{
+  width:44px;height:44px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;background:var(--grad);color:#fff;flex-shrink:0;
 }
-.legend-item:hover{background:#fff;transform:translateY(-1px);box-shadow:var(--shadow);}
-.legend-item.dim{opacity:.35;}
-.legend-dot{
-  width:10px;height:10px;border-radius:50%;
-  flex-shrink:0;
+.cal-countdown-body{flex:1;min-width:160px;}
+.cal-countdown-label{
+  font-size:.65rem;font-weight:700;text-transform:uppercase;
+  color:var(--accent);letter-spacing:.08em;margin-bottom:2px;
+}
+.cal-countdown-title{
+  font-family:var(--font-display);font-weight:800;font-size:.95rem;
+  color:var(--text-dark);
+}
+.cal-countdown-date{font-size:.72rem;color:var(--text-soft);}
+.cal-countdown-timer{display:flex;gap:6px;}
+.cd-unit{
+  background:#fff;border:1.5px solid rgba(99,102,241,0.2);
+  border-radius:8px;padding:5px 8px;text-align:center;min-width:46px;
+}
+.cd-unit-num{
+  font-family:var(--font-display);font-weight:900;font-size:1.1rem;
+  color:var(--accent);line-height:1;display:block;
+}
+.cd-unit-label{
+  font-size:.58rem;font-weight:700;color:var(--text-soft);
+  text-transform:uppercase;letter-spacing:.04em;margin-top:2px;
 }
 
-/* ── VIEW TOGGLE ── */
-.cal-toggle{
-  display:inline-flex;gap:4px;
-  background:rgba(255,255,255,0.65);
-  border:1.5px solid rgba(255,255,255,0.9);
-  border-radius:999px;padding:4px;
-  margin:0 auto 24px;position:relative;z-index:1;
+/* ── QUICK JUMP ── */
+.cal-jump{
+  display:flex;flex-wrap:wrap;gap:6px;
+  margin:18px auto 0;max-width:800px;padding:0 24px;
+  position:relative;z-index:1;justify-content:center;
 }
-.cal-toggle button{
-  border:none;background:transparent;
-  padding:8px 18px;border-radius:999px;
-  font-size:.85rem;font-weight:700;color:var(--text-mid);
-  cursor:pointer;font-family:inherit;transition:all .2s;
-}
-.cal-toggle button.active{
-  background:var(--grad-btn);color:#fff;
-  box-shadow:0 4px 12px rgba(99,102,241,0.3);
-}
-.cal-toggle-wrap{text-align:center;position:relative;z-index:1;}
-
-/* ════════════════════════════════════════
-   MONTH VIEW — Dạng lịch tháng
-   ════════════════════════════════════════ */
-.cal-container{
-  max-width:1280px;margin:0 auto;padding:0 24px 60px;position:relative;z-index:1;
-}
-.cal-month-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
-}
-@media(max-width:980px){.cal-month-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:640px){.cal-month-grid{grid-template-columns:1fr;}}
-.cal-month{
+.cal-jump a{
+  font-size:.74rem;font-weight:700;color:var(--text-mid);
   background:rgba(255,255,255,0.7);
   border:1.5px solid rgba(255,255,255,0.9);
-  border-radius:18px;padding:16px 18px;
-  backdrop-filter:blur(12px);box-shadow:var(--shadow);
-  display:flex;flex-direction:column;gap:10px;
-  transition:transform .25s,box-shadow .25s;
-  position:relative;overflow:hidden;
+  padding:5px 12px;border-radius:999px;text-decoration:none;
+  transition:all .2s;
 }
-.cal-month:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);}
+.cal-jump a:hover{background:#fff;color:var(--accent);transform:translateY(-1px);box-shadow:var(--shadow-sm);}
+
+/* ── GRID 12 THÁNG ── */
+.cal-container{
+  max-width:1100px;margin:0 auto;padding:24px 24px 48px;position:relative;z-index:1;
+}
+.cal-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+}
+@media(max-width:900px){.cal-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.cal-grid{grid-template-columns:1fr;}}
+
+.cal-month{
+  background:rgba(255,255,255,0.72);
+  border:1.5px solid rgba(255,255,255,0.9);
+  border-radius:14px;padding:12px 14px;
+  backdrop-filter:blur(10px);box-shadow:var(--shadow-sm);
+  display:flex;flex-direction:column;gap:8px;
+  transition:transform .2s,box-shadow .2s;
+  position:relative;overflow:hidden;
+  scroll-margin-top:80px;
+}
+.cal-month:hover{transform:translateY(-2px);box-shadow:var(--shadow);}
 .cal-month::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
   background:var(--grad);
 }
 .cal-month.is-current{
   border-color:var(--accent);
-  box-shadow:0 8px 24px rgba(99,102,241,0.25);
+  box-shadow:0 4px 18px rgba(99,102,241,0.22);
 }
 .cal-month.is-current::before{
   background:linear-gradient(90deg,#ef4444,#f59e0b);
-  height:5px;
+  height:4px;
 }
 .cal-month-hd{
   display:flex;align-items:baseline;justify-content:space-between;
-  padding-bottom:8px;border-bottom:1.5px dashed rgba(99,102,241,0.18);
+  padding-bottom:6px;border-bottom:1.5px dashed rgba(99,102,241,0.18);
 }
 .cal-month-name{
-  font-family:var(--font-display);font-weight:800;font-size:1.1rem;
-  color:var(--text-dark);
-}
-.cal-month-year{
-  font-size:.78rem;font-weight:700;color:var(--text-soft);
+  font-family:var(--font-display);font-weight:800;font-size:.95rem;
+  color:var(--text-dark);display:flex;align-items:center;gap:6px;
 }
 .cal-month-badge{
-  display:inline-block;font-size:.7rem;font-weight:700;
-  background:linear-gradient(135deg,#ef4444,#f59e0b);color:#fff;
-  padding:2px 8px;border-radius:999px;letter-spacing:.04em;
-  margin-left:6px;vertical-align:middle;
+  font-size:.58rem;font-weight:700;color:#fff;
+  background:linear-gradient(135deg,#ef4444,#f59e0b);
+  padding:1px 6px;border-radius:999px;letter-spacing:.04em;
 }
-.cal-events{display:flex;flex-direction:column;gap:6px;}
+.cal-month-year{font-size:.7rem;font-weight:700;color:var(--text-soft);}
+.cal-events{display:flex;flex-direction:column;gap:5px;}
 
-/* event item */
 .cal-event{
-  display:grid;grid-template-columns:auto 1fr;gap:10px;
-  padding:8px 10px;border-radius:10px;
-  background:rgba(255,255,255,0.7);
-  border-left:3px solid var(--cat, var(--accent));
-  transition:transform .15s,background .15s;
-  cursor:default;
+  display:grid;grid-template-columns:30px 1fr;gap:8px;align-items:start;
+  padding:6px 8px;border-radius:8px;
+  background:rgba(255,255,255,0.55);
+  border-left:2.5px solid var(--cat,var(--accent));
+  transition:background .15s;
 }
-.cal-event:hover{transform:translateX(2px);background:#fff;}
+.cal-event:hover{background:#fff;}
 .cal-event-date{
-  font-family:var(--font-display);font-weight:800;font-size:.85rem;
-  color:var(--cat, var(--accent));
-  line-height:1.2;text-align:center;min-width:32px;
+  font-family:var(--font-display);font-weight:800;
+  color:var(--cat,var(--accent));line-height:1.1;text-align:center;
 }
-.cal-event-date .day{
-  display:block;font-size:1.1rem;
-}
+.cal-event-date .day{display:block;font-size:1rem;}
 .cal-event-date .month{
-  display:block;font-size:.6rem;text-transform:uppercase;
-  letter-spacing:.04em;color:var(--text-soft);font-weight:700;
+  display:block;font-size:.55rem;text-transform:uppercase;
+  letter-spacing:.04em;color:var(--text-soft);font-weight:700;margin-top:1px;
 }
 .cal-event-body{min-width:0;}
 .cal-event-title{
-  font-size:.85rem;font-weight:700;color:var(--text-dark);
-  line-height:1.35;margin-bottom:2px;
+  font-size:.78rem;font-weight:700;color:var(--text-dark);
+  line-height:1.3;margin-bottom:1px;
 }
 .cal-event-sub{
-  font-size:.72rem;color:var(--text-soft);line-height:1.4;
+  font-size:.68rem;color:var(--text-soft);line-height:1.4;
 }
-.cal-event-tag{
-  display:inline-block;font-size:.62rem;font-weight:700;
-  padding:1px 6px;border-radius:4px;
-  color:#fff;background:var(--cat,var(--accent));
-  letter-spacing:.03em;margin-right:4px;
-}
+.cal-event-ico{margin-right:3px;}
 
-/* ════════════════════════════════════════
-   LIST VIEW — Dạng danh sách dọc
-   ════════════════════════════════════════ */
-.cal-list{display:none;flex-direction:column;gap:14px;}
-.cal-list.active{display:flex;}
-.cal-month-grid.hidden{display:none;}
-
-.cal-list-month{
-  background:rgba(255,255,255,0.7);
-  border:1.5px solid rgba(255,255,255,0.9);
-  border-radius:18px;padding:18px 22px;
-  backdrop-filter:blur(12px);box-shadow:var(--shadow);
+.cal-empty{
+  font-size:.72rem;color:var(--text-soft);text-align:center;padding:8px;
+  font-style:italic;
 }
-.cal-list-month-hd{
-  font-family:var(--font-display);font-weight:800;font-size:1.15rem;
-  color:var(--text-dark);margin-bottom:12px;
-  padding-bottom:10px;border-bottom:2px solid rgba(99,102,241,0.15);
-  display:flex;align-items:center;gap:10px;
-}
-.cal-list-month-hd .count{
-  font-size:.72rem;font-weight:700;color:var(--text-soft);
-  background:rgba(99,102,241,0.1);padding:2px 10px;border-radius:999px;
-}
-.cal-list-items{display:flex;flex-direction:column;gap:8px;}
-.cal-list-item{
-  display:grid;grid-template-columns:80px 1fr auto;gap:14px;align-items:center;
-  padding:12px 14px;border-radius:12px;
-  background:rgba(255,255,255,0.5);
-  border-left:4px solid var(--cat,var(--accent));
-  transition:background .15s;
-}
-.cal-list-item:hover{background:#fff;}
-.cal-list-date{
-  text-align:center;
-  background:rgba(255,255,255,0.8);
-  padding:6px 4px;border-radius:8px;
-  border:1px solid var(--cat,var(--accent));
-}
-.cal-list-date .day{
-  display:block;font-family:var(--font-display);font-weight:900;font-size:1.3rem;
-  color:var(--cat,var(--accent));line-height:1;
-}
-.cal-list-date .mon{
-  display:block;font-size:.62rem;font-weight:700;color:var(--text-soft);
-  text-transform:uppercase;letter-spacing:.04em;margin-top:2px;
-}
-.cal-list-body{min-width:0;}
-.cal-list-title{
-  font-weight:700;font-size:.95rem;color:var(--text-dark);margin-bottom:3px;
-}
-.cal-list-sub{
-  font-size:.78rem;color:var(--text-soft);line-height:1.5;
-}
-.cal-list-cat{
-  display:inline-block;font-size:.7rem;font-weight:700;
-  padding:3px 9px;border-radius:999px;color:#fff;
-  background:var(--cat,var(--accent));
-  white-space:nowrap;
-}
-
-/* ════════════════════════════════════════
-   TIMELINE VIEW — Dạng đường thẳng dọc
-   ════════════════════════════════════════ */
-.cal-tl-view{display:none;position:relative;padding:20px 0;}
-.cal-tl-view.active{display:block;}
-.cal-tl-line{
-  position:absolute;left:50%;top:0;bottom:0;width:3px;
-  background:linear-gradient(180deg,#ef4444 0%,#f59e0b 30%,#6366f1 60%,#10b981 100%);
-  border-radius:3px;transform:translateX(-50%);
-}
-@media(max-width:768px){.cal-tl-line{left:24px;}}
-.cal-tl-row{
-  display:grid;grid-template-columns:1fr 60px 1fr;gap:20px;align-items:start;
-  margin-bottom:24px;position:relative;
-}
-@media(max-width:768px){
-  .cal-tl-row{grid-template-columns:50px 1fr;gap:14px;}
-  .cal-tl-empty{display:none;}
-}
-.cal-tl-dot{
-  grid-column:2;justify-self:center;
-  width:40px;height:40px;border-radius:50%;
-  background:#fff;border:4px solid var(--cat,var(--accent));
-  box-shadow:0 4px 14px rgba(99,102,241,0.18);
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.1rem;z-index:1;
-}
-@media(max-width:768px){.cal-tl-dot{grid-column:1;width:36px;height:36px;border-width:3px;}}
-.cal-tl-card{
-  background:rgba(255,255,255,0.78);
-  border:1.5px solid rgba(255,255,255,0.92);
-  border-left:4px solid var(--cat,var(--accent));
-  border-radius:14px;padding:14px 18px;
-  backdrop-filter:blur(10px);box-shadow:var(--shadow);
-  transition:transform .2s;
-}
-.cal-tl-card:hover{transform:translateY(-2px);}
-.cal-tl-card.right{grid-column:3;}
-.cal-tl-card.left{grid-column:1;text-align:right;}
-@media(max-width:768px){
-  .cal-tl-card.right,.cal-tl-card.left{grid-column:2;text-align:left;}
-}
-.cal-tl-month{
-  display:inline-block;font-family:var(--font-display);font-weight:800;
-  font-size:.72rem;color:#fff;
-  background:var(--cat,var(--accent));
-  padding:3px 10px;border-radius:999px;margin-bottom:6px;
-  letter-spacing:.04em;
-}
-.cal-tl-title{
-  font-family:var(--font-display);font-weight:800;font-size:.98rem;
-  color:var(--text-dark);margin-bottom:4px;
-}
-.cal-tl-sub{font-size:.82rem;color:var(--text-soft);line-height:1.55;}
-
-/* ════════════════════════════════════════
-   COUNTDOWN — Đếm ngược đến sự kiện tiếp theo
-   ════════════════════════════════════════ */
-.cal-countdown{
-  background:linear-gradient(135deg,rgba(99,102,241,0.05),rgba(139,92,246,0.05));
-  border:1.5px solid rgba(99,102,241,0.18);
-  border-radius:20px;padding:18px 22px;
-  margin:0 auto 28px;max-width:920px;
-  display:flex;align-items:center;gap:18px;flex-wrap:wrap;
-  position:relative;z-index:1;
-}
-.cal-countdown-icon{
-  width:54px;height:54px;border-radius:14px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.6rem;background:var(--grad);color:#fff;flex-shrink:0;
-  box-shadow:0 6px 18px rgba(99,102,241,0.3);
-}
-.cal-countdown-body{flex:1;min-width:200px;}
-.cal-countdown-label{
-  font-size:.7rem;font-weight:700;text-transform:uppercase;
-  color:var(--accent);letter-spacing:.08em;margin-bottom:2px;
-}
-.cal-countdown-title{
-  font-family:var(--font-display);font-weight:800;font-size:1.05rem;
-  color:var(--text-dark);margin-bottom:3px;
-}
-.cal-countdown-date{
-  font-size:.78rem;color:var(--text-soft);
-}
-.cal-countdown-timer{
-  display:flex;gap:8px;align-items:center;
-}
-.cd-unit{
-  background:#fff;border:1.5px solid rgba(99,102,241,0.2);
-  border-radius:10px;padding:6px 10px;text-align:center;min-width:54px;
-}
-.cd-unit-num{
-  font-family:var(--font-display);font-weight:900;font-size:1.3rem;
-  color:var(--accent);line-height:1;display:block;
-}
-.cd-unit-label{
-  font-size:.62rem;font-weight:700;color:var(--text-soft);
-  text-transform:uppercase;letter-spacing:.04em;margin-top:2px;
-}
-
-/* ── CTA ── */
-.cal-cta{
-  background:var(--grad);color:#fff;
-  border-radius:28px;padding:40px 32px;text-align:center;
-  position:relative;overflow:hidden;
-  box-shadow:0 20px 50px rgba(99,102,241,0.35);
-  margin:24px auto;max-width:920px;
-}
-.cal-cta::before{
-  content:'';position:absolute;top:-30%;right:-10%;width:280px;height:280px;
-  border-radius:50%;background:rgba(255,255,255,0.08);
-}
-.cal-cta h2{
-  font-family:var(--font-display);font-size:clamp(1.3rem,2.8vw,1.7rem);font-weight:800;
-  margin-bottom:10px;position:relative;z-index:1;
-}
-.cal-cta p{font-size:.95rem;opacity:.92;max-width:600px;margin:0 auto 20px;position:relative;z-index:1;}
-.cal-cta-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;position:relative;z-index:1;}
-.btn-light{
-  display:inline-flex;align-items:center;gap:8px;
-  background:#fff;color:var(--accent);font-weight:700;font-size:.92rem;
-  padding:11px 24px;border-radius:999px;border:none;cursor:pointer;
-  text-decoration:none;transition:transform .2s;
-  box-shadow:0 6px 20px rgba(0,0,0,0.15);
-}
-.btn-light:hover{transform:translateY(-2px);}
-.btn-ghost{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,255,255,0.15);color:#fff;font-weight:700;font-size:.92rem;
-  padding:11px 24px;border-radius:999px;border:1.5px solid rgba(255,255,255,0.4);cursor:pointer;
-  text-decoration:none;transition:all .2s;
-}
-.btn-ghost:hover{background:rgba(255,255,255,0.25);}
 
 /* ── FOOTER ── */
 .lp-footer{
@@ -434,425 +237,250 @@ body::after{
   background:rgba(255,255,255,0.55);
   backdrop-filter:blur(12px);
   border-top:1px solid rgba(255,255,255,0.85);
-  margin-top:24px;
+  margin-top:12px;
 }
 .lp-footer-inner{
-  max-width:1200px;margin:0 auto;padding:24px;
-  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
+  max-width:1200px;margin:0 auto;padding:20px 24px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
 }
 .lp-footer-logo{display:flex;align-items:center;gap:8px;}
-.lp-footer-logo .emoji{width:32px;height:32px;border-radius:8px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:16px;}
-.lp-footer-logo span{font-family:var(--font-display);font-weight:900;font-size:.9rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
-.lp-footer-links{display:flex;gap:20px;flex-wrap:wrap;}
-.lp-footer-links a{font-size:.82rem;color:var(--text-soft);text-decoration:none;font-weight:600;transition:color .2s;}
+.lp-footer-logo .emoji{width:28px;height:28px;border-radius:8px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:14px;}
+.lp-footer-logo span{font-family:var(--font-display);font-weight:900;font-size:.85rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.lp-footer-links{display:flex;gap:18px;flex-wrap:wrap;}
+.lp-footer-links a{font-size:.8rem;color:var(--text-soft);text-decoration:none;font-weight:600;transition:color .2s;}
 .lp-footer-links a:hover{color:var(--accent);}
 </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
+<!-- NAV -->
 <nav class="lp-nav">
   <div class="lp-nav-inner">
     <a href="index.html" class="lp-logo">
       <div class="lp-logo-emoji">🎓</div>
-      <span class="lp-logo-text">BrightWay Scholars</span>
+      <span class="lp-logo-text">BrightWay</span>
     </a>
     <div class="lp-nav-links">
       <a href="index.html">Trang chủ</a>
-      <a href="page2.html">Tra cứu trường</a>
-      <a href="cv-review.html">Sửa CV</a>
-      <a href="scholarship-roadmap.html">Lộ trình</a>
+      <a href="page2.html">Trường</a>
+      <a href="score-calculator.html">Tính điểm</a>
       <a href="calendar.html" style="color:var(--accent);">📅 Lịch</a>
     </div>
-    <a href="score-calculator.html" class="lp-nav-cta">🧮 Tính điểm →</a>
+    <a href="scholarship-roadmap.html" class="lp-nav-cta">Lộ trình →</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <header class="cal-hero">
   <span class="cal-tag">📅 Lịch tuyển sinh ĐH 2026</span>
-  <h1>Mọi mốc thời gian <span>quan trọng</span> trong một lịch</h1>
-  <p class="cal-hero-sub">Thi, nộp hồ sơ, công bố điểm chuẩn, phỏng vấn, tư vấn xét tuyển… Tất cả được sắp xếp theo dòng thời gian để bạn không bỏ lỡ bất kỳ deadline nào.</p>
+  <h1>Tất cả mốc thời gian <span>trong một lịch</span></h1>
+  <p class="cal-hero-sub">Thi, nộp hồ sơ, công bố điểm chuẩn — đầy đủ theo tháng, dễ theo dõi.</p>
 </header>
 
 <!-- COUNTDOWN -->
 <div class="cal-countdown" id="countdown">
   <div class="cal-countdown-icon">⏰</div>
   <div class="cal-countdown-body">
-    <div class="cal-countdown-label">Sự kiện tiếp theo</div>
+    <div class="cal-countdown-label">Sắp tới</div>
     <div class="cal-countdown-title" id="cdTitle">—</div>
     <div class="cal-countdown-date" id="cdDate">—</div>
   </div>
-  <div class="cal-countdown-timer" id="cdTimer">
+  <div class="cal-countdown-timer">
     <div class="cd-unit"><span class="cd-unit-num" id="cdDays">--</span><span class="cd-unit-label">ngày</span></div>
     <div class="cd-unit"><span class="cd-unit-num" id="cdHours">--</span><span class="cd-unit-label">giờ</span></div>
     <div class="cd-unit"><span class="cd-unit-num" id="cdMins">--</span><span class="cd-unit-label">phút</span></div>
   </div>
 </div>
 
-<!-- LEGEND -->
-<div class="cal-legend" id="legend">
-  <div class="legend-item" data-cat="all"><span class="legend-dot" style="background:var(--grad)"></span>Tất cả</div>
-  <div class="legend-item" data-cat="thi"><span class="legend-dot" style="background:var(--c-thi)"></span>📝 Kỳ thi</div>
-  <div class="legend-item" data-cat="nop"><span class="legend-dot" style="background:var(--c-nop)"></span>📤 Nộp hồ sơ</div>
-  <div class="legend-item" data-cat="cbt"><span class="legend-dot" style="background:var(--c-cbt)"></span>📊 Công bố điểm</div>
-  <div class="legend-item" data-cat="phong"><span class="legend-dot" style="background:var(--c-phong)"></span>🎤 Phỏng vấn</div>
-  <div class="legend-item" data-cat="hocba"><span class="legend-dot" style="background:var(--c-hocba)"></span>📚 Học bạ</div>
-  <div class="legend-item" data-cat="tuvan"><span class="legend-dot" style="background:var(--c-tuvan)"></span>💡 Tư vấn</div>
-</div>
+<!-- JUMP -->
+<div class="cal-jump" id="jumpBar"></div>
 
-<!-- TOGGLE -->
-<div class="cal-toggle-wrap">
-  <div class="cal-toggle">
-    <button class="active" data-view="month">📅 Lịch tháng</button>
-    <button data-view="list">📋 Danh sách</button>
-    <button data-view="timeline">📍 Dòng thời gian</button>
-  </div>
-</div>
-
-<!-- MONTH VIEW -->
+<!-- GRID 12 THÁNG -->
 <div class="cal-container">
-  <div class="cal-month-grid" id="monthGrid">
-    <!-- 12 tháng render bằng JS -->
-  </div>
+  <div class="cal-grid" id="grid"></div>
 </div>
-
-<!-- LIST VIEW -->
-<div class="cal-container">
-  <div class="cal-list" id="listView">
-    <!-- render bằng JS -->
-  </div>
-</div>
-
-<!-- TIMELINE VIEW -->
-<div class="cal-container">
-  <div class="cal-tl-view" id="tlView">
-    <div class="cal-tl-line"></div>
-    <!-- render bằng JS -->
-  </div>
-</div>
-
-<!-- CTA -->
-<section class="container" style="padding-bottom:24px;">
-  <div class="cal-cta">
-    <h2>Sẵn sàng cho mùa tuyển sinh 2026?</h2>
-    <p>Tra cứu trường, tính điểm xét tuyển và xem lộ trình apply học bổng ngay.</p>
-    <div class="cal-cta-btns">
-      <a href="page2.html" class="btn-light">🔍 Tra cứu trường</a>
-      <a href="score-calculator.html" class="btn-ghost">🧮 Tính điểm</a>
-    </div>
-  </div>
-</section>
 
 <!-- FOOTER -->
 <footer class="lp-footer">
   <div class="lp-footer-inner">
     <div class="lp-footer-logo">
       <div class="emoji">🎓</div>
-      <span>BrightWay Scholars</span>
+      <span>BrightWay</span>
     </div>
     <div class="lp-footer-links">
       <a href="index.html">Trang chủ</a>
-      <a href="calendar.html">Lịch</a>
-      <a href="scholarship-roadmap.html">Lộ trình</a>
-      <a href="page2.html">Tra cứu trường</a>
+      <a href="page2.html">Trường</a>
       <a href="score-calculator.html">Tính điểm</a>
+      <a href="scholarship-roadmap.html">Lộ trình</a>
     </div>
-    <div style="font-size:.78rem;color:var(--text-soft);">© 2026 BrightWay Scholars</div>
+    <div style="font-size:.74rem;color:var(--text-soft);">© 2026</div>
   </div>
 </footer>
 
 <script>
 // ════════════════════════════════════════════
-// DATA: Tất cả sự kiện tuyển sinh 2026
+// DATA — 41 sự kiện tuyển sinh 2026
 // ════════════════════════════════════════════
-const CATEGORIES = {
-  thi:   { label: 'Kỳ thi',     color: '#ef4444', icon: '📝' },
-  nop:   { label: 'Nộp hồ sơ',  color: '#f59e0b', icon: '📤' },
-  cbt:   { label: 'Công bố',    color: '#6366f1', icon: '📊' },
-  phong: { label: 'Phỏng vấn',  color: '#8b5cf6', icon: '🎤' },
-  hocba: { label: 'Học bạ',     color: '#10b981', icon: '📚' },
-  tuvan: { label: 'Tư vấn',     color: '#0ea5e9', icon: '💡' },
+// cat: thi (đỏ) | nop (cam) | cbt (tím) | phong (tím nhạt) | hocba (xanh) | tuvan (xanh dương)
+const CAT = {
+  thi:   { color: '#ef4444', icon: '📝' },
+  nop:   { color: '#f59e0b', icon: '📤' },
+  cbt:   { color: '#6366f1', icon: '📊' },
+  phong: { color: '#8b5cf6', icon: '🎤' },
+  hocba: { color: '#10b981', icon: '📚' },
+  tuvan: { color: '#0ea5e9', icon: '💡' },
 };
 
 const EVENTS = [
-  // ─── Tháng 1 ───
-  { d: '2026-01-15', cat: 'tuvan', title: 'Mở đăng ký nguyện vọng xét tuyển sớm', sub: 'Một số trường ĐH mở cổng đăng ký NV đợt đầu (tùy trường).' },
-  { d: '2026-01-20', cat: 'hocba', title: 'Bắt đầu nhận hồ sơ xét học bạ đợt 1', sub: 'Nhiều trường bắt đầu nhận hồ sơ xét học bạ 5 học kỳ.' },
+  { d: '2026-01-15', cat: 'tuvan', title: 'Mở ĐK nguyện vọng xét tuyển sớm', sub: 'Một số trường ĐH mở cổng ĐK NV đợt đầu.' },
+  { d: '2026-01-20', cat: 'hocba', title: 'Nhận hồ sơ xét học bạ đợt 1', sub: 'Nhiều trường bắt đầu nhận hồ sơ xét học bạ 5 HK.' },
 
-  // ─── Tháng 2 ───
-  { d: '2026-02-10', cat: 'tuvan', title: 'Tư vấn xét tuyển tại các trường THPT', sub: 'Đoàn tư vấn của các ĐH đến tư vấn trực tiếp tại trường.' },
-  { d: '2026-02-15', cat: 'nop', title: 'Deadline nộp hồ sơ xét tuyển sớm (đợt 1)', sub: 'Hết hạn đăng ký NV cho nhiều trường xét sớm — kiểm tra từng trường.' },
-  { d: '2026-02-25', cat: 'thi', title: 'Thi HSA đợt 1 (ĐHQG Hà Nội)', sub: 'Kỳ thi Đánh giá năng lực HSA do ĐHQG Hà Nội tổ chức. Đăng ký trước đó 1 tháng.' },
+  { d: '2026-02-10', cat: 'tuvan', title: 'Tư vấn xét tuyển tại trường THPT', sub: 'Đoàn tư vấn các ĐH đến tư vấn trực tiếp.' },
+  { d: '2026-02-15', cat: 'nop', title: 'Deadline nộp hồ sơ xét tuyển sớm', sub: 'Hết hạn ĐK NV xét sớm đợt 1.' },
+  { d: '2026-02-25', cat: 'thi', title: 'Thi HSA đợt 1 (ĐHQG HN)', sub: 'Kỳ thi ĐGNL HSA. ĐK trước ~1 tháng.' },
 
-  // ─── Tháng 3 ───
-  { d: '2026-03-05', cat: 'cbt', title: 'Công bố kết quả xét tuyển sớm đợt 1', sub: 'Các trường công bố danh sách trúng tuyển đợt sớm (đợt 1).' },
-  { d: '2026-03-10', cat: 'hocba', title: 'Deadline nộp hồ sơ xét học bạ đợt 1', sub: 'Hết hạn nộp hồ sơ xét học bạ đợt 1 tại nhiều trường.' },
-  { d: '2026-03-15', cat: 'thi', title: 'Thi V-ACT đợt 1 (ĐHQG TP.HCM)', sub: 'Kỳ thi Đánh giá năng lực V-ACT. Đăng ký tại thinangluc.vnuhcm.edu.vn.' },
-  { d: '2026-03-20', cat: 'tuvan', title: 'Open Day các trường ĐH lớn', sub: 'HCMUT, UIT, UEH, FTU… mở cửa cho học sinh tham quan, tư vấn.' },
-  { d: '2026-03-25', cat: 'cbt', title: 'Công bố kết quả trúng tuyển học bạ đợt 1', sub: 'Nhiều trường công bố danh sách trúng tuyển theo học bạ.' },
+  { d: '2026-03-05', cat: 'cbt', title: 'Công bố trúng tuyển sớm đợt 1', sub: 'Các trường công bố DS trúng tuyển đợt sớm.' },
+  { d: '2026-03-10', cat: 'hocba', title: 'Deadline nộp hồ sơ học bạ đợt 1', sub: 'Hết hạn nộp hồ sơ xét học bạ đợt 1.' },
+  { d: '2026-03-15', cat: 'thi', title: 'Thi V-ACT đợt 1 (ĐHQG HCM)', sub: 'Kỳ thi V-ACT. ĐK tại thinangluc.vnuhcm.edu.vn.' },
+  { d: '2026-03-20', cat: 'tuvan', title: 'Open Day các trường ĐH lớn', sub: 'HCMUT, UIT, UEH, FTU… mở cửa tham quan, tư vấn.' },
+  { d: '2026-03-25', cat: 'cbt', title: 'Công bố trúng tuyển học bạ đợt 1', sub: 'DS trúng tuyển theo học bạ được công bố.' },
 
-  // ─── Tháng 4 ───
-  { d: '2026-04-05', cat: 'thi', title: 'Thi V-ACT đợt 2 (ĐHQG TP.HCM)', sub: 'Đợt thi V-ACT thứ hai trong năm.' },
-  { d: '2026-04-10', cat: 'hocba', title: 'Bắt đầu nhận hồ sơ xét học bạ đợt 2', sub: 'Đợt xét học bạ tiếp theo tại các trường có tổ chức đợt 2.' },
-  { d: '2026-04-15', cat: 'tuvan', title: 'Ngày hội tư vấn tuyển sinh toàn quốc', sub: 'Bộ GD&ĐT và các Sở GD&ĐT tổ chức ngày hội tư vấn xét tuyển.' },
-  { d: '2026-04-25', cat: 'thi', title: 'Thi TSA (ĐHBK Hà Nội)', sub: 'Kỳ thi TSA do Đại học Bách khoa Hà Nội tổ chức.' },
+  { d: '2026-04-05', cat: 'thi', title: 'Thi V-ACT đợt 2', sub: 'Đợt thi V-ACT thứ hai.' },
+  { d: '2026-04-10', cat: 'hocba', title: 'Nhận hồ sơ học bạ đợt 2', sub: 'Đợt xét học bạ tiếp theo.' },
+  { d: '2026-04-15', cat: 'tuvan', title: 'Ngày hội tư vấn tuyển sinh toàn quốc', sub: 'Bộ GD&ĐT và Sở GD&ĐT tổ chức.' },
+  { d: '2026-04-25', cat: 'thi', title: 'Thi TSA (ĐHBK HN)', sub: 'Kỳ thi TSA do ĐHBK Hà Nội tổ chức.' },
 
-  // ─── Tháng 5 ───
-  { d: '2026-05-05', cat: 'nop', title: 'Đăng ký dự thi tốt nghiệp THPT 2026', sub: 'Thí sinh đăng ký dự thi tốt nghiệp THPT trên cổng của Bộ GD&ĐT.' },
-  { d: '2026-05-15', cat: 'hocba', title: 'Deadline nộp hồ sơ xét học bạ đợt 2', sub: 'Hết hạn đợt 2 xét học bạ tại nhiều trường.' },
-  { d: '2026-05-20', cat: 'cbt', title: 'Công bố kết quả trúng tuyển học bạ đợt 2', sub: 'Đợt công bố cuối cùng cho xét học bạ.' },
-  { d: '2026-05-24', cat: 'thi', title: 'Thi V-ACT đợt 3 (ĐHQG TP.HCM)', sub: 'Đợt thi V-ACT cuối cùng trước kỳ thi THPT.' },
-  { d: '2026-05-30', cat: 'tuvan', title: 'Hạn cuối đăng ký xét tuyển thẳng', sub: 'Thí sinh thuộc diện xét tuyển thẳng nộp hồ sơ tại trường.' },
+  { d: '2026-05-05', cat: 'nop', title: 'ĐK dự thi tốt nghiệp THPT 2026', sub: 'ĐK trên cổng Bộ GD&ĐT.' },
+  { d: '2026-05-15', cat: 'hocba', title: 'Deadline nộp học bạ đợt 2', sub: 'Hết hạn đợt 2 xét học bạ.' },
+  { d: '2026-05-20', cat: 'cbt', title: 'Công bố trúng tuyển học bạ đợt 2', sub: 'Đợt công bố cuối cho xét học bạ.' },
+  { d: '2026-05-24', cat: 'thi', title: 'Thi V-ACT đợt 3', sub: 'Đợt thi V-ACT cuối trước kỳ thi THPT.' },
+  { d: '2026-05-30', cat: 'tuvan', title: 'Hạn cuối ĐK xét tuyển thẳng', sub: 'Nộp hồ sơ xét tuyển thẳng tại trường.' },
 
-  // ─── Tháng 6 ───
-  { d: '2026-06-10', cat: 'thi', title: 'Thi H-SCA (ĐHSP TP.HCM)', sub: 'Kỳ thi Đánh giá năng lực chuyên biệt H-SCA.' },
-  { d: '2026-06-15', cat: 'tuvan', title: 'Họp phụ huynh cuối cấp tại các trường THPT', sub: 'Trường THPT tổ chức họp phụ huynh cuối năm, phổ biến quy chế thi.' },
-  { d: '2026-06-25', cat: 'cbt', title: 'Công bố lịch thi THPT Quốc gia 2026', sub: 'Bộ GD&ĐT công bố lịch thi chính thức.' },
+  { d: '2026-06-10', cat: 'thi', title: 'Thi H-SCA (ĐHSP TPHCM)', sub: 'Kỳ thi ĐGNL chuyên biệt H-SCA.' },
+  { d: '2026-06-15', cat: 'tuvan', title: 'Họp phụ huynh cuối cấp', sub: 'Trường THPT phổ biến quy chế thi.' },
+  { d: '2026-06-25', cat: 'cbt', title: 'Công bố lịch thi THPT Quốc gia', sub: 'Bộ GD&ĐT công bố lịch thi chính thức.' },
 
-  // ─── Tháng 7 ───
-  { d: '2026-07-01', cat: 'thi', title: 'Bắt đầu Kỳ thi tốt nghiệp THPT 2026', sub: 'Khai mạc kỳ thi tốt nghiệp THPT Quốc gia — các ngày thi diễn ra trong tuần đầu tháng 7.' },
-  { d: '2026-07-03', cat: 'thi', title: 'Ngày thi thứ 2 — tổ hợp KHXH, KHTN', sub: 'Thi các môn tổ hợp Khoa học Xã hội và Khoa học Tự nhiên.' },
-  { d: '2026-07-15', cat: 'nop', title: 'Mở cổng đăng ký nguyện vọng xét tuyển', sub: 'Cổng đăng ký NV của Bộ GD&ĐT mở — thí sinh đăng ký không giới hạn NV.' },
-  { d: '2026-07-20', cat: 'cbt', title: 'Công bố kết quả thi tốt nghiệp THPT', sub: 'Bộ GD&ĐT công bố điểm thi tốt nghiệp THPT năm 2026.' },
-  { d: '2026-07-30', cat: 'nop', title: 'Deadline đăng ký nguyện vọng xét tuyển', sub: 'Hết hạn đăng ký NV trên cổng Bộ GD&ĐT — thường là cuối tháng 7.' },
+  { d: '2026-07-01', cat: 'thi', title: 'Khai mạc kỳ thi tốt nghiệp THPT', sub: 'Các ngày thi diễn ra trong tuần đầu tháng 7.' },
+  { d: '2026-07-03', cat: 'thi', title: 'Thi tổ hợp KHXH, KHTN', sub: 'Thi các môn tổ hợp KHXH và KHTN.' },
+  { d: '2026-07-15', cat: 'nop', title: 'Mở ĐK nguyện vọng xét tuyển', sub: 'Cổng ĐK NV của Bộ GD&ĐT mở — không giới hạn NV.' },
+  { d: '2026-07-20', cat: 'cbt', title: 'Công bố điểm thi tốt nghiệp THPT', sub: 'Bộ GD&ĐT công bố điểm thi.' },
+  { d: '2026-07-30', cat: 'nop', title: 'Deadline ĐK nguyện vọng', sub: 'Hết hạn ĐK NV trên cổng Bộ GD&ĐT.' },
 
-  // ─── Tháng 8 ───
-  { d: '2026-08-05', cat: 'cbt', title: 'Lọc ảo, xét tuyển đợt 1', sub: 'Các trường nhận kết quả và tiến hành lọc ảo, xét tuyển đợt 1.' },
-  { d: '2026-08-15', cat: 'cbt', title: 'Công bố điểm chuẩn đợt 1', sub: 'Các trường công bố điểm chuẩn trúng tuyển đợt 1.' },
-  { d: '2026-08-18', cat: 'nop', title: 'Xác nhận nhập học đợt 1', sub: 'Thí sinh trúng tuyển xác nhận nhập học trên hệ thống.' },
-  { d: '2026-08-25', cat: 'cbt', title: 'Xét tuyển bổ sung đợt 1', sub: 'Các trường thông báo xét tuyển bổ sung cho các ngành còn chỉ tiêu.' },
-  { d: '2026-08-30', cat: 'phong', title: 'Phỏng vấn học bổng (một số trường)', sub: 'Một số chương trình học bổng tổ chức vòng phỏng vấn đầu vào.' },
+  { d: '2026-08-05', cat: 'cbt', title: 'Lọc ảo, xét tuyển đợt 1', sub: 'Các trường nhận kết quả và tiến hành lọc ảo.' },
+  { d: '2026-08-15', cat: 'cbt', title: 'Công bố điểm chuẩn đợt 1', sub: 'Các trường công bố điểm chuẩn trúng tuyển.' },
+  { d: '2026-08-18', cat: 'nop', title: 'Xác nhận nhập học đợt 1', sub: 'Thí sinh xác nhận nhập học trên hệ thống.' },
+  { d: '2026-08-25', cat: 'cbt', title: 'Xét tuyển bổ sung đợt 1', sub: 'Cho các ngành còn chỉ tiêu.' },
+  { d: '2026-08-30', cat: 'phong', title: 'Phỏng vấn học bổng (một số trường)', sub: 'Một số CT học bổng tổ chức PV đầu vào.' },
 
-  // ─── Tháng 9 ───
-  { d: '2026-09-05', cat: 'nop', title: 'Deadline nộp hồ sơ xét tuyển bổ sung', sub: 'Hết hạn nộp hồ sơ xét tuyển bổ sung đợt 1.' },
-  { d: '2026-09-10', cat: 'cbt', title: 'Công bố điểm chuẩn bổ sung đợt 1', sub: 'Điểm chuẩn bổ sung đợt 1 được công bố.' },
-  { d: '2026-09-15', cat: 'cbt', title: 'Nhập học đợt đầu tiên', sub: 'Sinh viên năm nhất bắt đầu nhập học, làm thủ tục nhập trường.' },
-  { d: '2026-09-25', cat: 'nop', title: 'Xét tuyển bổ sung đợt 2 (nếu còn chỉ tiêu)', sub: 'Một số trường tổ chức xét tuyển bổ sung đợt 2.' },
+  { d: '2026-09-05', cat: 'nop', title: 'Deadline nộp hồ sơ xét bổ sung', sub: 'Hết hạn nộp hồ sơ xét tuyển bổ sung đợt 1.' },
+  { d: '2026-09-10', cat: 'cbt', title: 'Công bố điểm chuẩn bổ sung đợt 1', sub: 'Điểm chuẩn bổ sung đợt 1.' },
+  { d: '2026-09-15', cat: 'cbt', title: 'Nhập học đợt đầu tiên', sub: 'Sinh viên năm nhất bắt đầu nhập học.' },
+  { d: '2026-09-25', cat: 'nop', title: 'Xét tuyển bổ sung đợt 2', sub: 'Nếu còn chỉ tiêu.' },
 
-  // ─── Tháng 10 ───
-  { d: '2026-10-01', cat: 'cbt', title: 'Công bố điểm chuẩn bổ sung đợt 2', sub: 'Đợt cuối cùng công bố điểm chuẩn trong năm.' },
-  { d: '2026-10-10', cat: 'tuvan', title: 'Mở đăng ký xét tuyển sớm 2027 (một số trường)', sub: 'Một số trường ĐH mở đăng ký xét tuyển sớm cho năm tiếp theo.' },
-  { d: '2026-10-15', cat: 'phong', title: 'Phỏng vấn học bổng tại các trường tư thục', sub: 'ĐH FPT, ĐH Duy Tân, RMIT… tổ chức phỏng vấn học bổng.' },
+  { d: '2026-10-01', cat: 'cbt', title: 'Công bố điểm chuẩn bổ sung đợt 2', sub: 'Đợt cuối cùng công bố điểm chuẩn.' },
+  { d: '2026-10-10', cat: 'tuvan', title: 'Mở ĐK xét tuyển sớm 2027', sub: 'Một số trường mở ĐK xét sớm cho năm sau.' },
+  { d: '2026-10-15', cat: 'phong', title: 'PV học bổng tại các trường tư thục', sub: 'FPT, Duy Tân, RMIT… tổ chức PV.' },
 
-  // ─── Tháng 11 ───
-  { d: '2026-11-05', cat: 'nop', title: 'Deadline nộp hồ sơ học bổng quốc tế', sub: 'Hết hạn nộp nhiều học bổng quốc tế cho năm học tiếp theo.' },
-  { d: '2026-11-15', cat: 'phong', title: 'Vòng phỏng vấn học bổng chính phủ', sub: 'Chevening, Fulbright, MEXT… tổ chức vòng phỏng vấn.' },
+  { d: '2026-11-05', cat: 'nop', title: 'Deadline nộp hồ sơ HB quốc tế', sub: 'Hết hạn nộp nhiều học bổng quốc tế.' },
+  { d: '2026-11-15', cat: 'phong', title: 'Vòng PV học bổng chính phủ', sub: 'Chevening, Fulbright, MEXT… tổ chức PV.' },
 
-  // ─── Tháng 12 ───
-  { d: '2026-12-01', cat: 'cbt', title: 'Công bố kết quả học bổng quốc tế đợt 1', sub: 'Nhiều chương trình học bổng công bố kết quả đợt đầu.' },
-  { d: '2026-12-15', cat: 'tuvan', title: 'Tổng kết mùa tuyển sinh 2026', sub: 'Tổng kết, rút kinh nghiệm cho mùa tuyển sinh tiếp theo.' },
+  { d: '2026-12-01', cat: 'cbt', title: 'Công bố kết quả HB quốc tế đợt 1', sub: 'Nhiều CT học bổng công bố kết quả.' },
+  { d: '2026-12-15', cat: 'tuvan', title: 'Tổng kết mùa tuyển sinh 2026', sub: 'Rút kinh nghiệm cho mùa sau.' },
 ];
 
-// ════════════════════════════════════════════
-// RENDER MONTH VIEW
-// ════════════════════════════════════════════
-const MONTH_NAMES = ['Tháng 1','Tháng 2','Tháng 3','Tháng 4','Tháng 5','Tháng 6',
-                     'Tháng 7','Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12'];
-
+const MONTHS = ['Tháng 1','Tháng 2','Tháng 3','Tháng 4','Tháng 5','Tháng 6',
+                'Tháng 7','Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12'];
+const MONTH_SHORT = ['T1','T2','T3','T4','T5','T6','T7','T8','T9','T10','T11','T12'];
 const now = new Date();
-const currentMonth = now.getMonth(); // 0-11
-let activeCategory = 'all';
+const currentMonth = now.getFullYear() === 2026 ? now.getMonth() : -1;
 
-function renderMonthView() {
-  const grid = document.getElementById('monthGrid');
+// ── Quick jump bar ──
+function renderJump() {
+  const bar = document.getElementById('jumpBar');
+  bar.innerHTML = MONTHS.map((m, i) =>
+    `<a href="#m${i+1}">${m}</a>`
+  ).join('');
+}
+
+// ── Grid 12 tháng ──
+function renderGrid() {
+  const grid = document.getElementById('grid');
   grid.innerHTML = '';
   for (let m = 0; m < 12; m++) {
-    const monthEvents = EVENTS.filter(e => {
-      const d = new Date(e.d);
-      return d.getMonth() === m && (activeCategory === 'all' || e.cat === activeCategory);
-    });
-    const isCurrent = m === currentMonth && now.getFullYear() === 2026;
+    const evs = EVENTS.filter(e => new Date(e.d).getMonth() === m)
+                      .sort((a,b) => new Date(a.d) - new Date(b.d));
+    const isCurrent = m === currentMonth;
     const card = document.createElement('div');
     card.className = 'cal-month' + (isCurrent ? ' is-current' : '');
-    const eventsHtml = monthEvents.length === 0
-      ? '<div style="font-size:.78rem;color:var(--text-soft);text-align:center;padding:10px;">— Chưa có sự kiện —</div>'
-      : monthEvents.map(e => {
-          const d = new Date(e.d);
-          const day = d.getDate();
-          const monthShort = ['T1','T2','T3','T4','T5','T6','T7','T8','T9','T10','T11','T12'][d.getMonth()];
-          const cat = CATEGORIES[e.cat];
-          return `
-            <div class="cal-event" style="--cat:${cat.color}">
-              <div class="cal-event-date">
-                <span class="day">${day}</span>
-                <span class="month">${monthShort}</span>
-              </div>
-              <div class="cal-event-body">
-                <div class="cal-event-title">
-                  <span class="cal-event-tag" style="background:${cat.color}">${cat.icon}</span>${e.title}
-                </div>
-                <div class="cal-event-sub">${e.sub}</div>
-              </div>
-            </div>
-          `;
-        }).join('');
+    card.id = 'm' + (m+1);
     card.innerHTML = `
       <div class="cal-month-hd">
-        <div>
-          <span class="cal-month-name">${MONTH_NAMES[m]}</span>
+        <div class="cal-month-name">
+          ${MONTHS[m]}
           ${isCurrent ? '<span class="cal-month-badge">HIỆN TẠI</span>' : ''}
         </div>
         <span class="cal-month-year">2026</span>
       </div>
-      <div class="cal-events">${eventsHtml}</div>
+      <div class="cal-events">
+        ${evs.length === 0
+          ? '<div class="cal-empty">Chưa có sự kiện</div>'
+          : evs.map(e => {
+              const d = new Date(e.d);
+              const c = CAT[e.cat];
+              return `
+                <div class="cal-event" style="--cat:${c.color}">
+                  <div class="cal-event-date">
+                    <span class="day">${d.getDate()}</span>
+                    <span class="month">${MONTH_SHORT[d.getMonth()]}</span>
+                  </div>
+                  <div class="cal-event-body">
+                    <div class="cal-event-title">
+                      <span class="cal-event-ico">${c.icon}</span>${e.title}
+                    </div>
+                    <div class="cal-event-sub">${e.sub}</div>
+                  </div>
+                </div>
+              `;
+            }).join('')
+        }
+      </div>
     `;
     grid.appendChild(card);
   }
 }
 
-// ════════════════════════════════════════════
-// RENDER LIST VIEW
-// ════════════════════════════════════════════
-function renderListView() {
-  const list = document.getElementById('listView');
-  list.innerHTML = '';
-  for (let m = 0; m < 12; m++) {
-    const monthEvents = EVENTS.filter(e => {
-      const d = new Date(e.d);
-      return d.getMonth() === m && (activeCategory === 'all' || e.cat === activeCategory);
-    });
-    if (monthEvents.length === 0) continue;
-    const block = document.createElement('div');
-    block.className = 'cal-list-month';
-    block.innerHTML = `
-      <div class="cal-list-month-hd">
-        ${MONTH_NAMES[m]} 2026
-        <span class="count">${monthEvents.length} sự kiện</span>
-      </div>
-      <div class="cal-list-items">
-        ${monthEvents.map(e => {
-          const d = new Date(e.d);
-          const day = d.getDate();
-          const monthShort = ['T1','T2','T3','T4','T5','T6','T7','T8','T9','T10','T11','T12'][d.getMonth()];
-          const cat = CATEGORIES[e.cat];
-          return `
-            <div class="cal-list-item" style="--cat:${cat.color}">
-              <div class="cal-list-date">
-                <span class="day">${day}</span>
-                <span class="mon">${monthShort}</span>
-              </div>
-              <div class="cal-list-body">
-                <div class="cal-list-title">${e.title}</div>
-                <div class="cal-list-sub">${e.sub}</div>
-              </div>
-              <div class="cal-list-cat">${cat.icon} ${cat.label}</div>
-            </div>
-          `;
-        }).join('')}
-      </div>
-    `;
-    list.appendChild(block);
-  }
-}
-
-// ════════════════════════════════════════════
-// RENDER TIMELINE VIEW
-// ════════════════════════════════════════════
-function renderTimelineView() {
-  const view = document.getElementById('tlView');
-  let html = '<div class="cal-tl-line"></div>';
-  const filtered = EVENTS.filter(e => activeCategory === 'all' || e.cat === activeCategory)
-                         .sort((a,b) => new Date(a.d) - new Date(b.d));
-  filtered.forEach((e, idx) => {
-    const d = new Date(e.d);
-    const cat = CATEGORIES[e.cat];
-    const monthShort = ['T1','T2','T3','T4','T5','T6','T7','T8','T9','T10','T11','T12'][d.getMonth()];
-    const side = idx % 2 === 0 ? 'right' : 'left';
-    const isPast = d < now;
-    html += `
-      <div class="cal-tl-row" style="--cat:${cat.color}">
-        ${side === 'left' ? `
-          <div class="cal-tl-card left" style="${isPast ? 'opacity:.65;' : ''}">
-            <div class="cal-tl-month">${monthShort} 2026</div>
-            <div class="cal-tl-title">${cat.icon} ${e.title}</div>
-            <div class="cal-tl-sub">${e.sub}</div>
-          </div>
-        ` : '<div class="cal-tl-empty"></div>'}
-        <div class="cal-tl-dot">${cat.icon}</div>
-        ${side === 'right' ? `
-          <div class="cal-tl-card right" style="${isPast ? 'opacity:.65;' : ''}">
-            <div class="cal-tl-month">${monthShort} 2026</div>
-            <div class="cal-tl-title">${cat.icon} ${e.title}</div>
-            <div class="cal-tl-sub">${e.sub}</div>
-          </div>
-        ` : '<div class="cal-tl-empty"></div>'}
-      </div>
-    `;
-  });
-  view.innerHTML = html;
-}
-
-// ════════════════════════════════════════════
-// COUNTDOWN
-// ════════════════════════════════════════════
+// ── Countdown ──
 function updateCountdown() {
   const upcoming = EVENTS
     .map(e => ({...e, dt: new Date(e.d)}))
     .filter(e => e.dt >= now)
     .sort((a,b) => a.dt - b.dt);
-  if (upcoming.length === 0) {
-    document.getElementById('cdTitle').textContent = 'Đã hết sự kiện trong năm';
-    document.getElementById('cdDate').textContent = 'Hẹn gặp bạn ở mùa tuyển sinh 2027!';
+  if (!upcoming.length) {
+    document.getElementById('cdTitle').textContent = 'Hết sự kiện năm 2026';
+    document.getElementById('cdDate').textContent = 'Hẹn gặp ở mùa 2027!';
     return;
   }
   const next = upcoming[0];
-  const cat = CATEGORIES[next.cat];
-  document.getElementById('cdTitle').textContent = `${cat.icon} ${next.title}`;
-  const day = next.dt.getDate();
-  const monthShort = ['T1','T2','T3','T4','T5','T6','T7','T8','T9','T10','T11','T12'][next.dt.getMonth()];
-  document.getElementById('cdDate').textContent = `📅 ${day} ${monthShort} 2026 · ${cat.label}`;
+  const c = CAT[next.cat];
+  document.getElementById('cdTitle').textContent = `${c.icon} ${next.title}`;
+  const d = next.dt.getDate();
+  const ms = MONTH_SHORT[next.dt.getMonth()];
+  document.getElementById('cdDate').textContent = `📅 ${d} ${ms} 2026`;
 
   const diff = next.dt - now;
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  document.getElementById('cdDays').textContent = String(days).padStart(2, '0');
-  document.getElementById('cdHours').textContent = String(hours).padStart(2, '0');
-  document.getElementById('cdMins').textContent = String(mins).padStart(2, '0');
+  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff % 86400000) / 3600000);
+  const mins = Math.floor((diff % 3600000) / 60000);
+  document.getElementById('cdDays').textContent  = String(days).padStart(2,'0');
+  document.getElementById('cdHours').textContent = String(hours).padStart(2,'0');
+  document.getElementById('cdMins').textContent  = String(mins).padStart(2,'0');
 }
-
-// ════════════════════════════════════════════
-// INTERACTIONS
-// ════════════════════════════════════════════
-function switchView(view) {
-  document.querySelectorAll('.cal-toggle button').forEach(b => b.classList.remove('active'));
-  document.querySelector(`.cal-toggle button[data-view="${view}"]`).classList.add('active');
-  document.getElementById('monthGrid').classList.toggle('hidden', view !== 'month');
-  document.getElementById('listView').classList.toggle('active', view === 'list');
-  document.getElementById('tlView').classList.toggle('active', view === 'timeline');
-}
-
-function applyFilter() {
-  renderMonthView();
-  renderListView();
-  renderTimelineView();
-}
-
-document.querySelectorAll('.cal-toggle button').forEach(btn => {
-  btn.addEventListener('click', () => switchView(btn.dataset.view));
-});
-
-document.querySelectorAll('.legend-item').forEach(item => {
-  item.addEventListener('click', () => {
-    const cat = item.dataset.cat;
-    document.querySelectorAll('.legend-item').forEach(i => i.classList.remove('dim'));
-    if (activeCategory === cat) {
-      activeCategory = 'all';
-    } else {
-      activeCategory = cat;
-      document.querySelectorAll('.legend-item').forEach(i => {
-        if (i.dataset.cat !== 'all' && i.dataset.cat !== cat) i.classList.add('dim');
-      });
-    }
-    applyFilter();
-  });
-});
 
 // Init
-applyFilter();
+renderJump();
+renderGrid();
 updateCountdown();
-setInterval(updateCountdown, 60000); // cập nhật mỗi phút
+setInterval(updateCountdown, 60000);
 </script>
 
 </body>
