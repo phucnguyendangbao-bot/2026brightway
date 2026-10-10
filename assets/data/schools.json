@@ -66,7 +66,27 @@
       "OISP/Tiên tiến",
       "Việt-Anh 2+2"
     ],
-    "provinces": "Toàn quốc (Điểm chuẩn Q.7)"
+    "provinces": "Toàn quốc (Điểm chuẩn Q.7)",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 26.0,
+        "A01": 25.5,
+        "B00": 25.0,
+        "C01": 24.5,
+        "D01": 25.0,
+        "D07": 25.5,
+        "D11": 24.5
+      },
+      "hocba": {
+        "A00": 25.5,
+        "A01": 25.0,
+        "B00": 24.5,
+        "D07": 25.0
+      },
+      "dgnl": {
+        "vact": 950
+      }
+    }
   },
   {
     "id": "uit",
@@ -127,7 +147,26 @@
       "Việt-Anh",
       "CLIP"
     ],
-    "provinces": "Toàn quốc"
+    "provinces": "Toàn quốc",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 24.0,
+        "A01": 24.5,
+        "B00": 23.0,
+        "D01": 24.0,
+        "D07": 23.5,
+        "D08": 23.0
+      },
+      "hocba": {
+        "A00": 23.5,
+        "A01": 24.0,
+        "D01": 23.5,
+        "D07": 23.0
+      },
+      "dgnl": {
+        "vact": 850
+      }
+    }
   },
   {
     "id": "fpt",
@@ -187,7 +226,26 @@
       "FPT",
       "Aptech quốc tế"
     ],
-    "provinces": "Hà Nội, TP.HCM, Đà Nẵng, Cần Thơ, Bình Dương, Quy Nhơn"
+    "provinces": "Hà Nội, TP.HCM, Đà Nẵng, Cần Thơ, Bình Dương, Quy Nhơn",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 22.0,
+        "A01": 22.5,
+        "D01": 22.5,
+        "D07": 21.5,
+        "D08": 22.0
+      },
+      "hocba": {
+        "A00": 21.0,
+        "A01": 21.5,
+        "D01": 21.5,
+        "D07": 20.5
+      },
+      "dgnl": {
+        "vact": 700,
+        "hsa": 700
+      }
+    }
   },
   {
     "id": "ueh",
@@ -239,7 +297,27 @@
       "Chất lượng cao",
       "Việt-Mỹ (KSV)"
     ],
-    "provinces": "TP.HCM, Vĩnh Long, các tỉnh ĐBSCL"
+    "provinces": "TP.HCM, Vĩnh Long, các tỉnh ĐBSCL",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 24.5,
+        "A01": 24.0,
+        "C00": 25.5,
+        "D01": 25.0,
+        "D07": 24.0,
+        "D09": 24.5
+      },
+      "hocba": {
+        "A00": 24.0,
+        "C00": 25.0,
+        "D01": 24.5,
+        "D07": 23.5
+      },
+      "dgnl": {
+        "vact": 800,
+        "vsat": 70
+      }
+    }
   },
   {
     "id": "ftu",
@@ -291,7 +369,26 @@
       "Chất lượng cao",
       "Quốc tế"
     ],
-    "provinces": "TP.HCM, Hà Nội, Đà Nẵng (vùng phụ cận)"
+    "provinces": "TP.HCM, Hà Nội, Đà Nẵng (vùng phụ cận)",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 26.5,
+        "A01": 26.0,
+        "D01": 26.5,
+        "D07": 26.0,
+        "C00": 25.5
+      },
+      "hocba": {
+        "A00": 26.0,
+        "A01": 25.5,
+        "D01": 26.0,
+        "D07": 25.5
+      },
+      "dgnl": {
+        "hsa": 950,
+        "vact": 950
+      }
+    }
   },
   {
     "id": "vlu",
@@ -351,7 +448,26 @@
       "Việt-Anh",
       "Việt-Nhật"
     ],
-    "provinces": "TP.HCM, các tỉnh Nam Bộ"
+    "provinces": "TP.HCM, các tỉnh Nam Bộ",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 22.0,
+        "C00": 23.0,
+        "D01": 22.5,
+        "D07": 21.5,
+        "D11": 22.0
+      },
+      "hocba": {
+        "A00": 21.0,
+        "C00": 22.0,
+        "D01": 21.5,
+        "D07": 20.5
+      },
+      "dgnl": {
+        "vact": 700,
+        "tsa": 70
+      }
+    }
   },
   {
     "id": "pnt",
@@ -403,7 +519,19 @@
       "Răng Hàm Mặt",
       "Y đa khoa"
     ],
-    "provinces": "TP.HCM, các tỉnh Nam Bộ"
+    "provinces": "TP.HCM, các tỉnh Nam Bộ",
+    "cutoffScores": {
+      "thptqg": {
+        "B00": 26.0,
+        "A02": 25.5,
+        "D08": 25.0
+      },
+      "hocba": {
+        "B00": 25.5,
+        "A02": 25.0,
+        "D08": 24.5
+      }
+    }
   },
   {
     "id": "ctump",
@@ -455,7 +583,18 @@
       "Dược",
       "Y học Cổ truyền"
     ],
-    "provinces": "Cần Thơ, các tỉnh ĐBSCL"
+    "provinces": "Cần Thơ, các tỉnh ĐBSCL",
+    "cutoffScores": {
+      "thptqg": {
+        "B00": 23.0,
+        "A02": 22.5,
+        "D08": 22.0
+      },
+      "hocba": {
+        "B00": 22.5,
+        "A02": 22.0
+      }
+    }
   },
   {
     "id": "ump",
@@ -508,7 +647,20 @@
       "YTCC",
       "Y học Cổ truyền"
     ],
-    "provinces": "TP.HCM, Nam Bộ"
+    "provinces": "TP.HCM, Nam Bộ",
+    "cutoffScores": {
+      "thptqg": {
+        "B00": 25.5,
+        "A02": 25.0,
+        "D08": 24.5,
+        "A00": 24.0
+      },
+      "hocba": {
+        "B00": 25.0,
+        "A02": 24.5,
+        "D08": 24.0
+      }
+    }
   },
   {
     "id": "ussh",
@@ -560,7 +712,24 @@
       "Chất lượng cao",
       "Việt-Pháp"
     ],
-    "provinces": "Hà Nội, các tỉnh miền Bắc"
+    "provinces": "Hà Nội, các tỉnh miền Bắc",
+    "cutoffScores": {
+      "thptqg": {
+        "C00": 25.0,
+        "D01": 25.5,
+        "D02": 25.0,
+        "C03": 24.5,
+        "D09": 25.0
+      },
+      "hocba": {
+        "C00": 24.5,
+        "D01": 25.0,
+        "D02": 24.5
+      },
+      "dgnl": {
+        "hsa": 900
+      }
+    }
   },
   {
     "id": "rmit",
@@ -604,7 +773,20 @@
       "Bachelor (Úc)",
       "Master (Úc)"
     ],
-    "provinces": "TP.HCM, Hà Nội (khóa online)"
+    "provinces": "TP.HCM, Hà Nội (khóa online)",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 23.0,
+        "D01": 23.5,
+        "D07": 22.5,
+        "C00": 23.0
+      },
+      "hocba": {
+        "A00": 22.0,
+        "D01": 22.5,
+        "D07": 21.5
+      }
+    }
   },
   {
     "id": "hub",
@@ -656,7 +838,26 @@
       "Chất lượng cao",
       "Việt-Anh"
     ],
-    "provinces": "TP.HCM, Hà Nội, Đà Nẵng"
+    "provinces": "TP.HCM, Hà Nội, Đà Nẵng",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 24.0,
+        "A01": 24.5,
+        "D01": 24.5,
+        "D07": 24.0,
+        "C00": 24.5
+      },
+      "hocba": {
+        "A00": 23.0,
+        "A01": 23.5,
+        "D01": 23.5,
+        "D07": 23.0
+      },
+      "dgnl": {
+        "vact": 750,
+        "vsat": 70
+      }
+    }
   },
   {
     "id": "hcmue",
@@ -715,7 +916,23 @@
       "Giáo dục Mầm non",
       "Tâm lý học"
     ],
-    "provinces": "TP.HCM, các tỉnh Nam Bộ"
+    "provinces": "TP.HCM, các tỉnh Nam Bộ",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 23.0,
+        "C00": 24.0,
+        "D01": 23.5,
+        "C03": 23.0
+      },
+      "hocba": {
+        "A00": 22.0,
+        "C00": 23.0,
+        "D01": 22.5
+      },
+      "dgnl": {
+        "hsca": 70
+      }
+    }
   },
   {
     "id": "ctu",
@@ -769,7 +986,27 @@
       "Chất lượng cao",
       "Việt-Anh"
     ],
-    "provinces": "Cần Thơ, Kiên Giang, Sóc Trăng, ĐBSCL"
+    "provinces": "Cần Thơ, Kiên Giang, Sóc Trăng, ĐBSCL",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 22.5,
+        "A01": 22.0,
+        "B00": 22.0,
+        "C00": 23.0,
+        "D01": 22.5,
+        "D07": 22.0
+      },
+      "hocba": {
+        "A00": 22.0,
+        "A01": 21.5,
+        "B00": 21.5,
+        "D01": 22.0
+      },
+      "dgnl": {
+        "vact": 700,
+        "vsat": 65
+      }
+    }
   },
   {
     "id": "dthu",
@@ -827,7 +1064,20 @@
       "Chuẩn",
       "Sư phạm"
     ],
-    "provinces": "Đồng Tháp, các tỉnh ĐBSCL"
+    "provinces": "Đồng Tháp, các tỉnh ĐBSCL",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 19.0,
+        "C00": 20.0,
+        "D01": 19.5,
+        "D07": 19.0
+      },
+      "hocba": {
+        "A00": 18.5,
+        "C00": 19.5,
+        "D01": 19.0
+      }
+    }
   },
   {
     "id": "hcmus",
@@ -881,7 +1131,27 @@
       "Việt-Pháp",
       "Việt-Anh"
     ],
-    "provinces": "TP.HCM, Nam Bộ"
+    "provinces": "TP.HCM, Nam Bộ",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 25.5,
+        "A01": 25.0,
+        "B00": 25.0,
+        "D01": 25.5,
+        "D07": 24.5,
+        "D11": 25.0
+      },
+      "hocba": {
+        "A00": 25.0,
+        "A01": 24.5,
+        "B00": 24.5,
+        "D01": 25.0,
+        "D07": 24.0
+      },
+      "dgnl": {
+        "vact": 900
+      }
+    }
   },
   {
     "id": "tdtu",
@@ -936,7 +1206,25 @@
       "Chất lượng cao",
       "Việt-Anh"
     ],
-    "provinces": "TP.HCM, Nam Bộ"
+    "provinces": "TP.HCM, Nam Bộ",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 24.0,
+        "A01": 23.5,
+        "D01": 24.0,
+        "D07": 23.5,
+        "D08": 23.0
+      },
+      "hocba": {
+        "A00": 23.0,
+        "A01": 22.5,
+        "D01": 23.0,
+        "D07": 22.5
+      },
+      "dgnl": {
+        "vact": 750
+      }
+    }
   },
   {
     "id": "nttu",
@@ -994,7 +1282,23 @@
       "Chuẩn",
       "Chất lượng cao"
     ],
-    "provinces": "TP.HCM, Cần Thơ, Khánh Hòa"
+    "provinces": "TP.HCM, Cần Thơ, Khánh Hòa",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 20.0,
+        "A01": 20.5,
+        "B00": 19.5,
+        "C00": 20.5,
+        "D01": 20.5,
+        "D07": 20.0
+      },
+      "hocba": {
+        "A00": 19.5,
+        "A01": 20.0,
+        "D01": 20.0,
+        "D07": 19.5
+      }
+    }
   },
   {
     "id": "fpt-ai",
@@ -1053,7 +1357,19 @@
       "AI",
       "Khoa học Máy tính"
     ],
-    "provinces": "Hà Nội, TP.HCM, Đà Nẵng"
+    "provinces": "Hà Nội, TP.HCM, Đà Nẵng",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 24.5,
+        "A01": 25.0,
+        "D01": 24.5,
+        "D07": 24.0
+      },
+      "dgnl": {
+        "vact": 900,
+        "hsa": 900
+      }
+    }
   },
   {
     "id": "hcmiu",
@@ -1113,7 +1429,24 @@
       "Việt-Mỹ",
       "Chuẩn"
     ],
-    "provinces": "TP.HCM, các tỉnh Nam Bộ"
+    "provinces": "TP.HCM, các tỉnh Nam Bộ",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 23.0,
+        "A01": 22.5,
+        "D01": 23.5,
+        "D07": 22.5
+      },
+      "hocba": {
+        "A00": 22.0,
+        "A01": 21.5,
+        "D01": 22.5,
+        "D07": 21.5
+      },
+      "dgnl": {
+        "vact": 700
+      }
+    }
   },
   {
     "id": "nlu",
@@ -1165,7 +1498,25 @@
       "Chuẩn",
       "Việt-Anh"
     ],
-    "provinces": "TP.HCM, các tỉnh Nam Bộ"
+    "provinces": "TP.HCM, các tỉnh Nam Bộ",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 21.5,
+        "A02": 21.0,
+        "B00": 21.0,
+        "D07": 21.5,
+        "D08": 20.5
+      },
+      "hocba": {
+        "A00": 21.0,
+        "A02": 20.5,
+        "B00": 20.5,
+        "D07": 21.0
+      },
+      "dgnl": {
+        "vact": 600
+      }
+    }
   },
   {
     "id": "hufi",
@@ -1217,7 +1568,25 @@
       "Kinh tế",
       "Luật"
     ],
-    "provinces": "TP.HCM, Cần Thơ, Nam Bộ"
+    "provinces": "TP.HCM, Cần Thơ, Nam Bộ",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 21.0,
+        "A01": 21.5,
+        "C00": 22.0,
+        "D01": 21.5,
+        "D07": 20.5
+      },
+      "hocba": {
+        "A00": 20.5,
+        "A01": 21.0,
+        "D01": 21.0
+      },
+      "dgnl": {
+        "vact": 600,
+        "hsca": 60
+      }
+    }
   },
   {
     "id": "huemed",
@@ -1268,7 +1637,19 @@
       "Y khoa",
       "Dược"
     ],
-    "provinces": "TP.HCM, Nam Bộ"
+    "provinces": "TP.HCM, Nam Bộ",
+    "cutoffScores": {
+      "thptqg": {
+        "B00": 26.5,
+        "A02": 26.0,
+        "D08": 25.5
+      },
+      "hocba": {
+        "B00": 26.0,
+        "A02": 25.5,
+        "D08": 25.0
+      }
+    }
   },
   {
     "id": "smp-udn",
@@ -1320,7 +1701,20 @@
       "Dược",
       "Y tế Công cộng"
     ],
-    "provinces": "Đà Nẵng, Quảng Nam, Thừa Thiên Huế"
+    "provinces": "Đà Nẵng, Quảng Nam, Thừa Thiên Huế",
+    "cutoffScores": {
+      "thptqg": {
+        "B00": 24.0,
+        "A02": 23.5,
+        "D08": 23.0,
+        "A00": 22.5
+      },
+      "hocba": {
+        "B00": 23.5,
+        "A02": 23.0,
+        "D08": 22.5
+      }
+    }
   },
   {
     "id": "duytan",
@@ -1380,7 +1774,27 @@
       "Việt-Nhật",
       "Việt-Đức"
     ],
-    "provinces": "Đà Nẵng, Quảng Nam, các tỉnh Duyên hải Miền Trung"
+    "provinces": "Đà Nẵng, Quảng Nam, các tỉnh Duyên hải Miền Trung",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 22.0,
+        "A01": 21.5,
+        "C00": 22.5,
+        "D01": 22.5,
+        "D07": 21.5,
+        "D11": 22.0
+      },
+      "hocba": {
+        "A00": 21.0,
+        "A01": 20.5,
+        "D01": 21.5,
+        "D07": 20.5
+      },
+      "dgnl": {
+        "vact": 650,
+        "vsat": 60
+      }
+    }
   },
   {
     "id": "due",
@@ -1433,7 +1847,27 @@
       "Tài chính",
       "Marketing"
     ],
-    "provinces": "Đà Nẵng, Quảng Nam, Thừa Thiên Huế"
+    "provinces": "Đà Nẵng, Quảng Nam, Thừa Thiên Huế",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 23.5,
+        "A01": 23.0,
+        "C00": 24.0,
+        "D01": 23.5,
+        "D07": 23.0,
+        "D09": 23.0
+      },
+      "hocba": {
+        "A00": 22.5,
+        "A01": 22.0,
+        "D01": 22.5,
+        "D07": 22.0
+      },
+      "dgnl": {
+        "hsa": 800,
+        "vact": 800
+      }
+    }
   },
   {
     "id": "ntu",
@@ -1485,7 +1919,22 @@
       "Du lịch",
       "Nuôi trồng thủy sản"
     ],
-    "provinces": "Khánh Hòa, Phú Yên, Bình Định"
+    "provinces": "Khánh Hòa, Phú Yên, Bình Định",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 20.0,
+        "A02": 19.5,
+        "B00": 19.5,
+        "D07": 20.0,
+        "D08": 19.0
+      },
+      "hocba": {
+        "A00": 19.5,
+        "A02": 19.0,
+        "B00": 19.0,
+        "D07": 19.5
+      }
+    }
   },
   {
     "id": "donga",
@@ -1544,7 +1993,21 @@
       "Kỹ thuật",
       "Kinh tế"
     ],
-    "provinces": "Đà Nẵng, Quảng Nam"
+    "provinces": "Đà Nẵng, Quảng Nam",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 19.0,
+        "A01": 19.5,
+        "D01": 19.5,
+        "D07": 19.0
+      },
+      "hocba": {
+        "A00": 18.5,
+        "A01": 19.0,
+        "D01": 19.0,
+        "D07": 18.5
+      }
+    }
   },
   {
     "id": "dut",
@@ -1597,7 +2060,27 @@
       "Cơ khí",
       "Điện-Điện tử"
     ],
-    "provinces": "Đà Nẵng, Quảng Trị, Thừa Thiên Huế"
+    "provinces": "Đà Nẵng, Quảng Trị, Thừa Thiên Huế",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 24.5,
+        "A01": 24.0,
+        "B00": 23.5,
+        "D01": 24.0,
+        "D07": 24.0,
+        "D11": 23.5
+      },
+      "hocba": {
+        "A00": 23.5,
+        "A01": 23.0,
+        "D01": 23.0,
+        "D07": 23.0
+      },
+      "dgnl": {
+        "tsa": 75,
+        "vact": 800
+      }
+    }
   },
   {
     "id": "qnu",
@@ -1656,7 +2139,22 @@
       "Khoa học Xã hội",
       "Luật"
     ],
-    "provinces": "Hải Phòng, Quảng Ninh, Thái Bình"
+    "provinces": "Hải Phòng, Quảng Ninh, Thái Bình",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 20.0,
+        "A01": 19.5,
+        "C00": 21.0,
+        "D01": 20.5,
+        "D07": 20.0,
+        "C03": 20.0
+      },
+      "hocba": {
+        "A00": 19.5,
+        "C00": 20.5,
+        "D01": 20.0
+      }
+    }
   },
   {
     "id": "husc",
@@ -1709,7 +2207,27 @@
       "Sư phạm",
       "Kỹ thuật"
     ],
-    "provinces": "Thừa Thiên Huế, Quảng Trị, Quảng Nam"
+    "provinces": "Thừa Thiên Huế, Quảng Trị, Quảng Nam",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 21.0,
+        "A01": 20.5,
+        "A02": 20.5,
+        "B00": 20.5,
+        "C00": 21.5,
+        "D01": 21.0,
+        "D07": 20.5
+      },
+      "hocba": {
+        "A00": 20.5,
+        "B00": 20.0,
+        "C00": 21.0,
+        "D01": 20.5
+      },
+      "dgnl": {
+        "hsa": 650
+      }
+    }
   },
   {
     "id": "huaf",
@@ -1763,7 +2281,22 @@
       "Chăn nuôi",
       "Thú y"
     ],
-    "provinces": "Thừa Thiên Huế, Quảng Nam, Quảng Trị"
+    "provinces": "Thừa Thiên Huế, Quảng Nam, Quảng Trị",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 20.5,
+        "A02": 20.0,
+        "B00": 20.0,
+        "D07": 20.5,
+        "D08": 19.5
+      },
+      "hocba": {
+        "A00": 20.0,
+        "A02": 19.5,
+        "B00": 19.5,
+        "D07": 20.0
+      }
+    }
   },
   {
     "id": "hucfl",
@@ -1823,7 +2356,24 @@
       "Luật",
       "Ngôn ngữ"
     ],
-    "provinces": "Thừa Thiên Huế, Quảng Trị, Quảng Nam"
+    "provinces": "Thừa Thiên Huế, Quảng Trị, Quảng Nam",
+    "cutoffScores": {
+      "thptqg": {
+        "C00": 22.0,
+        "C01": 21.5,
+        "C03": 21.5,
+        "D01": 22.0,
+        "D02": 21.5
+      },
+      "hocba": {
+        "C00": 21.5,
+        "C03": 21.0,
+        "D01": 21.5
+      },
+      "dgnl": {
+        "hsa": 700
+      }
+    }
   },
   {
     "id": "phuxuan",
@@ -1882,7 +2432,21 @@
       "Kinh tế",
       "Sư phạm"
     ],
-    "provinces": "Thừa Thiên Huế"
+    "provinces": "Thừa Thiên Huế",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 18.5,
+        "A01": 18.0,
+        "C00": 19.0,
+        "D01": 18.5,
+        "D07": 18.0
+      },
+      "hocba": {
+        "A00": 18.0,
+        "C00": 18.5,
+        "D01": 18.0
+      }
+    }
   },
   {
     "id": "vku",
@@ -1934,7 +2498,27 @@
       "Truyền thông",
       "An toàn không gian số"
     ],
-    "provinces": "Đà Nẵng, Quảng Nam, Bình Định"
+    "provinces": "Đà Nẵng, Quảng Nam, Bình Định",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 22.0,
+        "A01": 22.5,
+        "D01": 22.0,
+        "D07": 21.5,
+        "D08": 22.0
+      },
+      "hocba": {
+        "A00": 21.0,
+        "A01": 21.5,
+        "D01": 21.0,
+        "D07": 20.5
+      },
+      "dgnl": {
+        "vact": 700,
+        "hsa": 700,
+        "tsa": 65
+      }
+    }
   },
   {
     "id": "dnu",
@@ -1987,7 +2571,27 @@
       "Kinh tế",
       "NN&HTNN"
     ],
-    "provinces": "Đà Nẵng, Quảng Nam, Quảng Ngãi"
+    "provinces": "Đà Nẵng, Quảng Nam, Quảng Ngãi",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 21.5,
+        "A01": 21.0,
+        "C00": 22.0,
+        "D01": 22.0,
+        "D07": 21.0,
+        "C03": 21.5
+      },
+      "hocba": {
+        "A00": 21.0,
+        "C00": 21.5,
+        "D01": 21.5,
+        "D07": 20.5
+      },
+      "dgnl": {
+        "vact": 650,
+        "hsa": 650
+      }
+    }
   },
   {
     "id": "khtn-hcm",
@@ -2040,7 +2644,23 @@
       "Môi trường",
       "Sinh học"
     ],
-    "provinces": "TP.HCM, Nam Bộ"
+    "provinces": "TP.HCM, Nam Bộ",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 24.0,
+        "A01": 23.5,
+        "B00": 24.0,
+        "D01": 24.5,
+        "D07": 23.5,
+        "D08": 23.5
+      },
+      "hocba": {
+        "A00": 23.0,
+        "A01": 22.5,
+        "B00": 23.0,
+        "D01": 23.5
+      }
+    }
   },
   {
     "id": "hue-uni",
@@ -2093,7 +2713,28 @@
       "Kinh tế",
       "Sư phạm"
     ],
-    "provinces": "Thừa Thiên Huế, Quảng Trị, Quảng Nam"
+    "provinces": "Thừa Thiên Huế, Quảng Trị, Quảng Nam",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 21.0,
+        "A01": 20.5,
+        "B00": 20.5,
+        "C00": 21.5,
+        "D01": 21.5,
+        "D07": 20.5,
+        "D09": 21.0
+      },
+      "hocba": {
+        "A00": 20.5,
+        "C00": 21.0,
+        "D01": 21.0,
+        "D07": 20.0
+      },
+      "dgnl": {
+        "hsa": 650,
+        "vact": 650
+      }
+    }
   },
   {
     "id": "sgu",
@@ -2147,7 +2788,27 @@
       "CNTT",
       "Kiến trúc"
     ],
-    "provinces": "TP.HCM, Bình Dương, Đồng Nai"
+    "provinces": "TP.HCM, Bình Dương, Đồng Nai",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 22.0,
+        "A01": 21.5,
+        "C00": 23.0,
+        "D01": 22.5,
+        "D07": 22.0,
+        "D11": 22.0
+      },
+      "hocba": {
+        "A00": 21.0,
+        "A01": 20.5,
+        "D01": 21.5,
+        "D07": 21.0
+      },
+      "dgnl": {
+        "vact": 650,
+        "vsat": 60
+      }
+    }
   },
   {
     "id": "uel",
@@ -2200,6 +2861,24 @@
       "Quản trị",
       "CNTT"
     ],
-    "provinces": "TP.HCM, Bình Dương, Đồng Nai"
+    "provinces": "TP.HCM, Bình Dương, Đồng Nai",
+    "cutoffScores": {
+      "thptqg": {
+        "A00": 23.5,
+        "A01": 23.0,
+        "C00": 24.0,
+        "D01": 24.0,
+        "D07": 23.5,
+        "C03": 23.5,
+        "D09": 23.5
+      },
+      "hocba": {
+        "A00": 22.5,
+        "A01": 22.0,
+        "C00": 23.0,
+        "D01": 23.0,
+        "D07": 22.5
+      }
+    }
   }
 ]
