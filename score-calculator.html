@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tính điểm xét tuyển Đại học 2026 – BrightWay</title>
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/css/page2.css">
+<link rel="stylesheet" href="/assets/css/score-calculator.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="p2-nav">
+  <div class="p2-nav-inner">
+    <a href="index.html" class="p2-nav-logo">BrightWay Admissions</a>
+    <div class="p2-search-bar">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="schoolFilter" placeholder="Lọc trường theo tên..." />
+    </div>
+    <a href="page2.html" class="p2-back" style="margin-right:10px;">📋 Đề án tuyển sinh</a>
+    <a href="index.html" class="p2-back">← Trang chủ</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<section class="calc-hero">
+  <div class="calc-hero-inner">
+    <h1>🧮 Tính điểm tổng hợp xét tuyển Đại học 2026</h1>
+    <p>Nhập điểm của bạn, chọn tổ hợp môn và phương thức xét tuyển — hệ thống sẽ tính điểm và so sánh với điểm chuẩn các trường.</p>
+  </div>
+</section>
+
+<!-- LAYOUT -->
+<div class="calc-layout">
+  <!-- LEFT: INPUT FORM -->
+  <aside class="calc-input-panel">
+    <div class="calc-card">
+      <h2 class="calc-section-title">📚 Điểm 9 môn (thang 10)</h2>
+      <div class="score-grid">
+        <label class="score-input">
+          <span>Toán</span>
+          <input type="number" id="sMath" min="0" max="10" step="0.01" placeholder="0.00" />
+        </label>
+        <label class="score-input">
+          <span>Ngữ văn</span>
+          <input type="number" id="sLit" min="0" max="10" step="0.01" placeholder="0.00" />
+        </label>
+        <label class="score-input">
+          <span>Tiếng Anh</span>
+          <input type="number" id="sEng" min="0" max="10" step="0.01" placeholder="0.00" />
+        </label>
+        <label class="score-input">
+          <span>Vật lý</span>
+          <input type="number" id="sPhy" min="0" max="10" step="0.01" placeholder="0.00" />
+        </label>
+        <label class="score-input">
+          <span>Hóa học</span>
+          <input type="number" id="sChe" min="0" max="10" step="0.01" placeholder="0.00" />
+        </label>
+        <label class="score-input">
+          <span>Sinh học</span>
+          <input type="number" id="sBio" min="0" max="10" step="0.01" placeholder="0.00" />
+        </label>
+        <label class="score-input">
+          <span>Lịch sử</span>
+          <input type="number" id="sHis" min="0" max="10" step="0.01" placeholder="0.00" />
+        </label>
+        <label class="score-input">
+          <span>Địa lý</span>
+          <input type="number" id="sGeo" min="0" max="10" step="0.01" placeholder="0.00" />
+        </label>
+        <label class="score-input">
+          <span>GDCD</span>
+          <input type="number" id="sCiv" min="0" max="10" step="0.01" placeholder="0.00" />
+        </label>
+      </div>
+    </div>
+
+    <div class="calc-card">
+      <h2 class="calc-section-title">🎯 Tổ hợp môn xét tuyển</h2>
+      <div class="combo-grid">
+        <label class="combo-chip">
+          <input type="radio" name="combo" value="A00" checked />
+          <span><strong>A00</strong> Toán, Lý, Hóa</span>
+        </label>
+        <label class="combo-chip">
+          <input type="radio" name="combo" value="A01" />
+          <span><strong>A01</strong> Toán, Lý, Anh</span>
+        </label>
+        <label class="combo-chip">
+          <input type="radio" name="combo" value="A02" />
+          <span><strong>A02</strong> Toán, Lý, Sinh</span>
+        </label>
+        <label class="combo-chip">
+          <input type="radio" name="combo" value="B00" />
+          <span><strong>B00</strong> Toán, Hóa, Sinh</span>
+        </label>
+        <label class="combo-chip">
+          <input type="radio" name="combo" value="C00" />
+          <span><strong>C00</strong> Văn, Sử, Địa</span>
+        </label>
+        <label class="combo-chip">
+          <input type="radio" name="combo" value="C01" />
+          <span><strong>C01</strong> Văn, Toán, Sử</span>
+        </label>
+        <label class="combo-chip">
+          <input type="radio" name="combo" value="C02" />
+          <span><strong>C02</strong> Văn, Toán, Địa</span>
+        </label>
+        <label class="combo-chip">
+          <input type="radio" name="combo" value="C03" />
+          <span><strong>C03</strong> Văn, Toán, GDCD</span>
+        </label>
+        <label class="combo-chip">
+          <input type="radio" name="combo" value="D01" />
+          <span><strong>D01</strong> Văn, Toán, Anh</span>
+        </label>
+        <label class="combo-chip">
+          <input type="radio" name="combo" value="D07" />
+          <span><strong>D07</strong> Toán, Hóa, Anh</span>
+        </label>
+        <label class="combo-chip">
+          <input type="radio" name="combo" value="D08" />
+          <span><strong>D08</strong> Toán, Sinh, Anh</span>
+        </label>
+        <label class="combo-chip">
+          <input type="radio" name="combo" value="D09" />
+          <span><strong>D09</strong> Toán, Sử, Anh</span>
+        </label>
+        <label class="combo-chip">
+          <input type="radio" name="combo" value="D10" />
+          <span><strong>D10</strong> Toán, Địa, Anh</span>
+        </label>
+        <label class="combo-chip">
+          <input type="radio" name="combo" value="D11" />
+          <span><strong>D11</strong> Văn, Lý, Anh</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="calc-card">
+      <h2 class="calc-section-title">📊 Điểm ĐGNL (thang 1500 hoặc 100)</h2>
+      <div class="dgnl-grid">
+        <label class="dgnl-input">
+          <span>🎯 V-ACT (ĐHQG-HCM, max 1500)</span>
+          <input type="number" id="sVact" min="0" max="1500" step="1" placeholder="0" />
+        </label>
+        <label class="dgnl-input">
+          <span>🎯 HSA (ĐHQG-HN, max 1500)</span>
+          <input type="number" id="sHsa" min="0" max="1500" step="1" placeholder="0" />
+        </label>
+        <label class="dgnl-input">
+          <span>🎯 TSA (ĐHBK-HN, max 100)</span>
+          <input type="number" id="sTsa" min="0" max="100" step="0.1" placeholder="0" />
+        </label>
+        <label class="dgnl-input">
+          <span>🎯 V-SAT (ĐH Cần Thơ, max 100)</span>
+          <input type="number" id="sVsat" min="0" max="100" step="0.1" placeholder="0" />
+        </label>
+        <label class="dgnl-input">
+          <span>🎯 H-SCA (ĐHSP TPHCM, max 100)</span>
+          <input type="number" id="sHsca" min="0" max="100" step="0.1" placeholder="0" />
+        </label>
+      </div>
+    </div>
+
+    <button id="calcBtn" class="calc-btn-primary">🧮 Tính điểm & gợi ý trường</button>
+    <button id="resetBtn" class="calc-btn-secondary">🔄 Xóa hết</button>
+  </aside>
+
+  <!-- RIGHT: RESULTS -->
+  <main class="calc-result-panel">
+    <!-- SUMMARY -->
+    <div class="result-summary" id="resultSummary" hidden>
+      <h2>📈 Kết quả điểm của bạn</h2>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <div class="summary-label">Điểm tổ hợp (thang 30)</div>
+          <div class="summary-value" id="sumCombo">—</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Điểm V-ACT quy đổi (/30)</div>
+          <div class="summary-value" id="sumVact">—</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Điểm HSA quy đổi (/30)</div>
+          <div class="summary-value" id="sumHsa">—</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Điểm TSA quy đổi (/30)</div>
+          <div class="summary-value" id="sumTsa">—</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Điểm V-SAT quy đổi (/30)</div>
+          <div class="summary-value" id="sumVsat">—</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Điểm H-SCA quy đổi (/30)</div>
+          <div class="summary-value" id="sumHsca">—</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ELIGIBLE SCHOOLS -->
+    <div class="result-schools" id="resultSchools" hidden>
+      <h2>🏫 Trường phù hợp với điểm của bạn</h2>
+      <p class="result-tip">Sắp xếp theo khả năng đậu (cao → thấp). Màu xanh = rất khả thi, vàng = cạnh tranh, đỏ = khó.</p>
+      <div id="schoolList" class="school-list"></div>
+    </div>
+
+    <!-- EMPTY -->
+    <div class="result-empty" id="resultEmpty">
+      <div style="font-size:64px;margin-bottom:12px;">📊</div>
+      <h3>Nhập điểm để bắt đầu</h3>
+      <p>Vui lòng nhập điểm 3 môn trong tổ hợp và (tùy chọn) điểm ĐGNL, sau đó bấm <strong>“Tính điểm & gợi ý trường”</strong>.</p>
+    </div>
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer class="p2-footer">
+  BrightWay Admissions © 2026 — Điểm chuẩn tham khảo từ các năm trước. Hãy kiểm tra website chính thức của từng trường.
+</footer>
+
+<script src="/assets/js/uni-logos.js"></script>
+<script src="/assets/js/uni-logo-svg.js"></script>
+<script src="/assets/js/score-calculator.js"></script>
+</body>
+</html>
