@@ -4,11 +4,11 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Lịch tuyển sinh 2026 – BrightWay</title>
-<meta name="description" content="Lịch thi, nộp hồ sơ, công bố điểm chuẩn 2026 theo dòng thời gian." />
+<meta name="description" content="Lịch thi, nộp hồ sơ, công bố điểm chuẩn 2026 dạng cuốn lịch 12 tháng." />
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&family=Pacifico&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
@@ -20,9 +20,9 @@
   --text-soft: #6b7aaa;
   --accent: #6366f1;
   --shadow: 0 8px 32px rgba(99,102,241,0.15);
-  --shadow-sm: 0 2px 10px rgba(99,102,241,0.08);
   --font: 'Be Vietnam Pro', system-ui, sans-serif;
   --font-display: 'Nunito', 'Be Vietnam Pro', sans-serif;
+  --font-script: 'Pacifico', cursive;
 }
 html{scroll-behavior:smooth;}
 body{
@@ -81,7 +81,7 @@ body::after{
 
 /* ── HERO ── */
 .cal-hero{
-  padding:36px 24px 12px;text-align:center;position:relative;z-index:1;max-width:800px;margin:0 auto;
+  padding:32px 24px 20px;text-align:center;position:relative;z-index:1;max-width:800px;margin:0 auto;
 }
 .cal-tag{
   display:inline-flex;align-items:center;gap:6px;
@@ -91,145 +91,230 @@ body::after{
 }
 .cal-hero h1{
   font-family:var(--font-display);font-weight:800;
-  font-size:clamp(1.5rem,3.4vw,2.1rem);line-height:1.2;
-  color:var(--text-dark);margin-bottom:10px;
+  font-size:clamp(1.4rem,3.2vw,1.9rem);line-height:1.25;
+  color:var(--text-dark);margin-bottom:8px;
 }
 .cal-hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
-.cal-hero-sub{font-size:.9rem;color:var(--text-soft);line-height:1.6;max-width:580px;margin:0 auto;}
+.cal-hero-sub{font-size:.88rem;color:var(--text-soft);max-width:560px;margin:0 auto;}
 
 /* ── COUNTDOWN ── */
 .cal-countdown{
-  background:linear-gradient(135deg,rgba(99,102,241,0.05),rgba(139,92,246,0.05));
+  background:linear-gradient(135deg,rgba(99,102,241,0.06),rgba(139,92,246,0.06));
   border:1.5px solid rgba(99,102,241,0.18);
-  border-radius:16px;padding:14px 18px;
-  margin:20px auto 0;max-width:800px;
+  border-radius:14px;padding:12px 18px;
+  margin:18px auto 0;max-width:720px;
   display:flex;align-items:center;gap:14px;flex-wrap:wrap;
   position:relative;z-index:1;
 }
 .cal-countdown-icon{
-  width:44px;height:44px;border-radius:12px;
+  width:42px;height:42px;border-radius:10px;
   display:flex;align-items:center;justify-content:center;
-  font-size:1.3rem;background:var(--grad);color:#fff;flex-shrink:0;
+  font-size:1.2rem;background:var(--grad);color:#fff;flex-shrink:0;
 }
 .cal-countdown-body{flex:1;min-width:160px;}
 .cal-countdown-label{
-  font-size:.65rem;font-weight:700;text-transform:uppercase;
-  color:var(--accent);letter-spacing:.08em;margin-bottom:2px;
+  font-size:.62rem;font-weight:700;text-transform:uppercase;
+  color:var(--accent);letter-spacing:.08em;margin-bottom:1px;
 }
 .cal-countdown-title{
-  font-family:var(--font-display);font-weight:800;font-size:.95rem;
+  font-family:var(--font-display);font-weight:800;font-size:.9rem;
   color:var(--text-dark);
 }
-.cal-countdown-date{font-size:.72rem;color:var(--text-soft);}
-.cal-countdown-timer{display:flex;gap:6px;}
+.cal-countdown-date{font-size:.7rem;color:var(--text-soft);}
+.cal-countdown-timer{display:flex;gap:5px;}
 .cd-unit{
   background:#fff;border:1.5px solid rgba(99,102,241,0.2);
-  border-radius:8px;padding:5px 8px;text-align:center;min-width:46px;
+  border-radius:8px;padding:4px 7px;text-align:center;min-width:42px;
 }
 .cd-unit-num{
-  font-family:var(--font-display);font-weight:900;font-size:1.1rem;
+  font-family:var(--font-display);font-weight:900;font-size:1rem;
   color:var(--accent);line-height:1;display:block;
 }
 .cd-unit-label{
-  font-size:.58rem;font-weight:700;color:var(--text-soft);
-  text-transform:uppercase;letter-spacing:.04em;margin-top:2px;
+  font-size:.55rem;font-weight:700;color:var(--text-soft);
+  text-transform:uppercase;letter-spacing:.04em;margin-top:1px;
 }
 
-/* ── QUICK JUMP ── */
-.cal-jump{
-  display:flex;flex-wrap:wrap;gap:6px;
-  margin:18px auto 0;max-width:800px;padding:0 24px;
-  position:relative;z-index:1;justify-content:center;
+/* ════════════════════════════════════════
+   BANNER HEADER — giống "2026 CALENDAR"
+   ════════════════════════════════════════ */
+.cal-banner{
+  max-width:1100px;margin:24px auto 16px;
+  position:relative;z-index:1;
+  background:linear-gradient(135deg,#4a7bf7 0%,#6b5bf5 60%,#9c5bea 100%);
+  border-radius:18px;padding:0;
+  overflow:hidden;
+  display:flex;align-items:stretch;
+  box-shadow:0 12px 40px rgba(99,102,241,0.3);
+  min-height:120px;
 }
-.cal-jump a{
-  font-size:.74rem;font-weight:700;color:var(--text-mid);
-  background:rgba(255,255,255,0.7);
-  border:1.5px solid rgba(255,255,255,0.9);
-  padding:5px 12px;border-radius:999px;text-decoration:none;
-  transition:all .2s;
+.cal-banner-year{
+  flex:1;display:flex;align-items:center;justify-content:center;
+  padding:24px 32px;
+  position:relative;
+  background:linear-gradient(135deg,#3b6ce8 0%,#5a4ae0 100%);
 }
-.cal-jump a:hover{background:#fff;color:var(--accent);transform:translateY(-1px);box-shadow:var(--shadow-sm);}
+.cal-banner-year::after{
+  content:'';position:absolute;right:-20px;top:0;bottom:0;width:40px;
+  background:linear-gradient(135deg,transparent 50%,#ef4444 50%);
+}
+.cal-banner-year h2{
+  font-family:var(--font-display);font-weight:900;
+  font-size:clamp(2.4rem,6vw,4rem);
+  color:#fff;letter-spacing:.04em;
+  text-shadow:0 4px 16px rgba(0,0,0,0.18);
+  line-height:1;
+}
+.cal-banner-title{
+  flex:1.2;
+  background:#ef4444;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:20px 24px;color:#fff;
+  text-align:center;
+  clip-path:polygon(20px 0, 100% 0, 100% 100%, 0 100%);
+  margin-left:-20px;
+}
+.cal-banner-title h2{
+  font-family:var(--font-display);font-weight:900;
+  font-size:clamp(1.6rem,4vw,2.6rem);
+  color:#fff;letter-spacing:.06em;line-height:1;
+  text-shadow:0 2px 10px rgba(0,0,0,0.15);
+}
+.cal-banner-sub{
+  font-family:var(--font-script);font-size:clamp(.95rem,2vw,1.25rem);
+  margin-top:6px;opacity:.95;
+}
+@media(max-width:600px){
+  .cal-banner{flex-direction:column;}
+  .cal-banner-year::after{display:none;}
+  .cal-banner-title{clip-path:none;margin-left:0;}
+}
 
-/* ── GRID 12 THÁNG ── */
+/* ════════════════════════════════════════
+   12-CALENDAR GRID — 4 cột × 3 hàng
+   ════════════════════════════════════════ */
 .cal-container{
-  max-width:1100px;margin:0 auto;padding:24px 24px 48px;position:relative;z-index:1;
+  max-width:1100px;margin:0 auto;padding:0 24px 48px;position:relative;z-index:1;
 }
 .cal-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:12px;
 }
-@media(max-width:900px){.cal-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:600px){.cal-grid{grid-template-columns:1fr;}}
+@media(max-width:900px){.cal-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:680px){.cal-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:440px){.cal-grid{grid-template-columns:1fr;}}
 
-.cal-month{
-  background:rgba(255,255,255,0.72);
-  border:1.5px solid rgba(255,255,255,0.9);
-  border-radius:14px;padding:12px 14px;
-  backdrop-filter:blur(10px);box-shadow:var(--shadow-sm);
-  display:flex;flex-direction:column;gap:8px;
+.cal-m{
+  background:#fff;
+  border-radius:8px;padding:0;
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);
+  border:1px solid rgba(0,0,0,0.04);
+  display:flex;flex-direction:column;
+  overflow:hidden;
   transition:transform .2s,box-shadow .2s;
-  position:relative;overflow:hidden;
   scroll-margin-top:80px;
 }
-.cal-month:hover{transform:translateY(-2px);box-shadow:var(--shadow);}
-.cal-month::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:var(--grad);
-}
-.cal-month.is-current{
-  border-color:var(--accent);
-  box-shadow:0 4px 18px rgba(99,102,241,0.22);
-}
-.cal-month.is-current::before{
-  background:linear-gradient(90deg,#ef4444,#f59e0b);
-  height:4px;
-}
-.cal-month-hd{
-  display:flex;align-items:baseline;justify-content:space-between;
-  padding-bottom:6px;border-bottom:1.5px dashed rgba(99,102,241,0.18);
-}
-.cal-month-name{
-  font-family:var(--font-display);font-weight:800;font-size:.95rem;
-  color:var(--text-dark);display:flex;align-items:center;gap:6px;
-}
-.cal-month-badge{
-  font-size:.58rem;font-weight:700;color:#fff;
-  background:linear-gradient(135deg,#ef4444,#f59e0b);
-  padding:1px 6px;border-radius:999px;letter-spacing:.04em;
-}
-.cal-month-year{font-size:.7rem;font-weight:700;color:var(--text-soft);}
-.cal-events{display:flex;flex-direction:column;gap:5px;}
+.cal-m:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(99,102,241,0.15);}
 
-.cal-event{
-  display:grid;grid-template-columns:30px 1fr;gap:8px;align-items:start;
-  padding:6px 8px;border-radius:8px;
-  background:rgba(255,255,255,0.55);
-  border-left:2.5px solid var(--cat,var(--accent));
+/* header mỗi tháng */
+.cal-m-head{
+  background:linear-gradient(135deg,#4a7bf7 0%,#7c5bf5 100%);
+  color:#fff;
+  padding:6px 8px;
+  text-align:center;
+  position:relative;
+}
+.cal-m-name{
+  font-family:var(--font-display);font-weight:900;
+  font-size:.82rem;letter-spacing:.02em;
+}
+.cal-m-current{
+  position:absolute;top:3px;right:4px;
+  background:linear-gradient(135deg,#ef4444,#f59e0b);
+  color:#fff;font-size:.5rem;font-weight:800;
+  padding:1px 5px;border-radius:999px;letter-spacing:.04em;
+}
+
+/* header thứ */
+.cal-m-week{
+  display:grid;grid-template-columns:repeat(7,1fr);
+  background:#f3f4f8;
+  border-bottom:1px solid rgba(0,0,0,0.06);
+}
+.cal-m-week div{
+  text-align:center;
+  font-size:.55rem;font-weight:800;
+  color:#6b7aaa;
+  padding:4px 0;
+  text-transform:uppercase;letter-spacing:.02em;
+}
+.cal-m-week div.sun{color:#ef4444;}
+.cal-m-week div.sat{color:#2563eb;}
+
+/* body ngày */
+.cal-m-body{
+  display:grid;grid-template-columns:repeat(7,1fr);
+  padding:4px;
+  gap:1px;
+  flex:1;
+}
+.cal-m-day{
+  aspect-ratio:1;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  position:relative;
+  font-size:.7rem;font-weight:600;
+  color:var(--text-dark);
+  border-radius:4px;
+  cursor:default;
   transition:background .15s;
 }
-.cal-event:hover{background:#fff;}
-.cal-event-date{
-  font-family:var(--font-display);font-weight:800;
-  color:var(--cat,var(--accent));line-height:1.1;text-align:center;
+.cal-m-day.empty{visibility:hidden;}
+.cal-m-day.sun{color:#ef4444;}
+.cal-m-day.sat{color:#2563eb;}
+.cal-m-day:hover{background:rgba(99,102,241,0.08);}
+.cal-m-day.has-event{
+  font-weight:800;
+  color:#fff;
+  background:var(--ev-color, var(--accent));
+  box-shadow:0 2px 6px rgba(0,0,0,0.1);
 }
-.cal-event-date .day{display:block;font-size:1rem;}
-.cal-event-date .month{
-  display:block;font-size:.55rem;text-transform:uppercase;
-  letter-spacing:.04em;color:var(--text-soft);font-weight:700;margin-top:1px;
+.cal-m-day.has-event.sun,
+.cal-m-day.has-event.sat{color:#fff;}
+.cal-m-day.today{
+  outline:2px solid #f59e0b;
+  outline-offset:-2px;
 }
-.cal-event-body{min-width:0;}
-.cal-event-title{
-  font-size:.78rem;font-weight:700;color:var(--text-dark);
-  line-height:1.3;margin-bottom:1px;
-}
-.cal-event-sub{
-  font-size:.68rem;color:var(--text-soft);line-height:1.4;
-}
-.cal-event-ico{margin-right:3px;}
+.cal-m-day.today.has-event{outline-color:#fff;}
 
-.cal-empty{
-  font-size:.72rem;color:var(--text-soft);text-align:center;padding:8px;
-  font-style:italic;
+/* tooltip nhỏ dưới ngày có sự kiện */
+.cal-m-day.has-event::after{
+  content:'';
+  position:absolute;bottom:1px;left:50%;transform:translateX(-50%);
+  width:4px;height:4px;border-radius:50%;
+  background:#fff;
+  box-shadow:0 0 0 1px rgba(0,0,0,0.1);
 }
+
+/* popup chi tiết khi hover */
+.cal-m-tip{
+  position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);
+  background:var(--text-dark);color:#fff;
+  padding:8px 10px;border-radius:8px;
+  font-size:.7rem;font-weight:500;
+  white-space:nowrap;max-width:240px;
+  z-index:20;
+  pointer-events:none;
+  opacity:0;visibility:hidden;
+  transition:opacity .15s,visibility .15s;
+  box-shadow:0 6px 18px rgba(0,0,0,0.25);
+  line-height:1.4;text-align:left;
+}
+.cal-m-tip::after{
+  content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  border:5px solid transparent;border-top-color:var(--text-dark);
+}
+.cal-m-tip strong{color:#fcd34d;}
+.cal-m-day:hover .cal-m-tip{opacity:1;visibility:visible;}
 
 /* ── FOOTER ── */
 .lp-footer{
@@ -292,8 +377,16 @@ body::after{
   </div>
 </div>
 
-<!-- JUMP -->
-<div class="cal-jump" id="jumpBar"></div>
+<!-- BANNER -->
+<div class="cal-banner">
+  <div class="cal-banner-year">
+    <h2>2026</h2>
+  </div>
+  <div class="cal-banner-title">
+    <h2>CALENDAR</h2>
+    <div class="cal-banner-sub">Tuyển sinh Đại học</div>
+  </div>
+</div>
 
 <!-- GRID 12 THÁNG -->
 <div class="cal-container">
@@ -320,15 +413,15 @@ body::after{
 <script>
 // ════════════════════════════════════════════
 // DATA — 41 sự kiện tuyển sinh 2026
+// cat: thi (đỏ) | nop (cam) | cbt (xanh dương) | phong (tím) | hocba (xanh lá) | tuvan (cyan)
 // ════════════════════════════════════════════
-// cat: thi (đỏ) | nop (cam) | cbt (tím) | phong (tím nhạt) | hocba (xanh) | tuvan (xanh dương)
 const CAT = {
   thi:   { color: '#ef4444', icon: '📝' },
   nop:   { color: '#f59e0b', icon: '📤' },
-  cbt:   { color: '#6366f1', icon: '📊' },
+  cbt:   { color: '#3b82f6', icon: '📊' },
   phong: { color: '#8b5cf6', icon: '🎤' },
   hocba: { color: '#10b981', icon: '📚' },
-  tuvan: { color: '#0ea5e9', icon: '💡' },
+  tuvan: { color: '#06b6d4', icon: '💡' },
 };
 
 const EVENTS = [
@@ -342,7 +435,7 @@ const EVENTS = [
   { d: '2026-03-05', cat: 'cbt', title: 'Công bố trúng tuyển sớm đợt 1', sub: 'Các trường công bố DS trúng tuyển đợt sớm.' },
   { d: '2026-03-10', cat: 'hocba', title: 'Deadline nộp hồ sơ học bạ đợt 1', sub: 'Hết hạn nộp hồ sơ xét học bạ đợt 1.' },
   { d: '2026-03-15', cat: 'thi', title: 'Thi V-ACT đợt 1 (ĐHQG HCM)', sub: 'Kỳ thi V-ACT. ĐK tại thinangluc.vnuhcm.edu.vn.' },
-  { d: '2026-03-20', cat: 'tuvan', title: 'Open Day các trường ĐH lớn', sub: 'HCMUT, UIT, UEH, FTU… mở cửa tham quan, tư vấn.' },
+  { d: '2026-03-20', cat: 'tuvan', title: 'Open Day các trường ĐH lớn', sub: 'HCMUT, UIT, UEH, FTU… mở cửa tham quan.' },
   { d: '2026-03-25', cat: 'cbt', title: 'Công bố trúng tuyển học bạ đợt 1', sub: 'DS trúng tuyển theo học bạ được công bố.' },
 
   { d: '2026-04-05', cat: 'thi', title: 'Thi V-ACT đợt 2', sub: 'Đợt thi V-ACT thứ hai.' },
@@ -370,7 +463,7 @@ const EVENTS = [
   { d: '2026-08-15', cat: 'cbt', title: 'Công bố điểm chuẩn đợt 1', sub: 'Các trường công bố điểm chuẩn trúng tuyển.' },
   { d: '2026-08-18', cat: 'nop', title: 'Xác nhận nhập học đợt 1', sub: 'Thí sinh xác nhận nhập học trên hệ thống.' },
   { d: '2026-08-25', cat: 'cbt', title: 'Xét tuyển bổ sung đợt 1', sub: 'Cho các ngành còn chỉ tiêu.' },
-  { d: '2026-08-30', cat: 'phong', title: 'Phỏng vấn học bổng (một số trường)', sub: 'Một số CT học bổng tổ chức PV đầu vào.' },
+  { d: '2026-08-30', cat: 'phong', title: 'Phỏng vấn học bổng', sub: 'Một số CT học bổng tổ chức PV đầu vào.' },
 
   { d: '2026-09-05', cat: 'nop', title: 'Deadline nộp hồ sơ xét bổ sung', sub: 'Hết hạn nộp hồ sơ xét tuyển bổ sung đợt 1.' },
   { d: '2026-09-10', cat: 'cbt', title: 'Công bố điểm chuẩn bổ sung đợt 1', sub: 'Điểm chuẩn bổ sung đợt 1.' },
@@ -390,60 +483,78 @@ const EVENTS = [
 
 const MONTHS = ['Tháng 1','Tháng 2','Tháng 3','Tháng 4','Tháng 5','Tháng 6',
                 'Tháng 7','Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12'];
-const MONTH_SHORT = ['T1','T2','T3','T4','T5','T6','T7','T8','T9','T10','T11','T12'];
 const now = new Date();
-const currentMonth = now.getFullYear() === 2026 ? now.getMonth() : -1;
+const isYear2026 = now.getFullYear() === 2026;
+const currentMonth = isYear2026 ? now.getMonth() : -1;
+const todayDate = isYear2026 ? now.getDate() : -1;
 
-// ── Quick jump bar ──
-function renderJump() {
-  const bar = document.getElementById('jumpBar');
-  bar.innerHTML = MONTHS.map((m, i) =>
-    `<a href="#m${i+1}">${m}</a>`
-  ).join('');
+// Map ngày → events để tra nhanh
+const EVENTS_BY_DATE = {};
+EVENTS.forEach(e => {
+  if (!EVENTS_BY_DATE[e.d]) EVENTS_BY_DATE[e.d] = [];
+  EVENTS_BY_DATE[e.d].push(e);
+});
+
+// Tính số ngày trong tháng + thứ ngày đầu tiên
+function getMonthLayout(year, month) {
+  const firstDay = new Date(year, month, 1).getDay(); // 0=CN
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  return { firstDay, daysInMonth };
 }
 
-// ── Grid 12 tháng ──
 function renderGrid() {
   const grid = document.getElementById('grid');
   grid.innerHTML = '';
   for (let m = 0; m < 12; m++) {
-    const evs = EVENTS.filter(e => new Date(e.d).getMonth() === m)
-                      .sort((a,b) => new Date(a.d) - new Date(b.d));
+    const { firstDay, daysInMonth } = getMonthLayout(2026, m);
     const isCurrent = m === currentMonth;
     const card = document.createElement('div');
-    card.className = 'cal-month' + (isCurrent ? ' is-current' : '');
+    card.className = 'cal-m';
     card.id = 'm' + (m+1);
+
+    // Header thứ
+    const week = ['CN','T2','T3','T4','T5','T6','T7']
+      .map((w, i) => `<div class="${i===0?'sun':i===6?'sat':''}">${w}</div>`)
+      .join('');
+
+    // Body ngày
+    let body = '';
+    // ô trống trước ngày 1
+    for (let i = 0; i < firstDay; i++) {
+      body += '<div class="cal-m-day empty"></div>';
+    }
+    // các ngày
+    for (let d = 1; d <= daysInMonth; d++) {
+      const dateStr = `2026-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+      const evs = EVENTS_BY_DATE[dateStr];
+      const dow = new Date(2026, m, d).getDay();
+      const isSun = dow === 0;
+      const isSat = dow === 6;
+      const isToday = isCurrent && d === todayDate;
+      let cls = 'cal-m-day';
+      if (isSun) cls += ' sun';
+      else if (isSat) cls += ' sat';
+      if (isToday) cls += ' today';
+      if (evs && evs.length) {
+        const ev = evs[0];
+        const cat = CAT[ev.cat];
+        cls += ' has-event';
+        const tipHtml = evs.length === 1
+          ? `<div class="cal-m-tip"><strong>${cat.icon} ${ev.title}</strong><br>${ev.sub}</div>`
+          : `<div class="cal-m-tip"><strong>${evs.length} sự kiện</strong><br>${evs.map(x => '• '+x.title).join('<br>')}</div>`;
+        body += `<div class="${cls}" style="--ev-color:${cat.color}">${d}${tipHtml}</div>`;
+      } else {
+        body += `<div class="${cls}">${d}</div>`;
+      }
+    }
+
     card.innerHTML = `
-      <div class="cal-month-hd">
-        <div class="cal-month-name">
-          ${MONTHS[m]}
-          ${isCurrent ? '<span class="cal-month-badge">HIỆN TẠI</span>' : ''}
-        </div>
-        <span class="cal-month-year">2026</span>
+      <div class="cal-m-head">
+        ${isCurrent ? '<span class="cal-m-current">HIỆN TẠI</span>' : ''}
+        <div class="cal-m-name">${MONTHS[m]} 2026</div>
       </div>
-      <div class="cal-events">
-        ${evs.length === 0
-          ? '<div class="cal-empty">Chưa có sự kiện</div>'
-          : evs.map(e => {
-              const d = new Date(e.d);
-              const c = CAT[e.cat];
-              return `
-                <div class="cal-event" style="--cat:${c.color}">
-                  <div class="cal-event-date">
-                    <span class="day">${d.getDate()}</span>
-                    <span class="month">${MONTH_SHORT[d.getMonth()]}</span>
-                  </div>
-                  <div class="cal-event-body">
-                    <div class="cal-event-title">
-                      <span class="cal-event-ico">${c.icon}</span>${e.title}
-                    </div>
-                    <div class="cal-event-sub">${e.sub}</div>
-                  </div>
-                </div>
-              `;
-            }).join('')
-        }
-      </div>
+      <div class="cal-m-week">${week}</div>
+      <div class="cal-m-body">${body}</div>
     `;
     grid.appendChild(card);
   }
@@ -464,7 +575,7 @@ function updateCountdown() {
   const c = CAT[next.cat];
   document.getElementById('cdTitle').textContent = `${c.icon} ${next.title}`;
   const d = next.dt.getDate();
-  const ms = MONTH_SHORT[next.dt.getMonth()];
+  const ms = ['T1','T2','T3','T4','T5','T6','T7','T8','T9','T10','T11','T12'][next.dt.getMonth()];
   document.getElementById('cdDate').textContent = `📅 ${d} ${ms} 2026`;
 
   const diff = next.dt - now;
@@ -477,7 +588,6 @@ function updateCountdown() {
 }
 
 // Init
-renderJump();
 renderGrid();
 updateCountdown();
 setInterval(updateCountdown, 60000);
