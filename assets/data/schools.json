@@ -47,11 +47,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-ACT (ĐGNL ĐHQG-HCM)",
+        "quota": "20-40%",
+        "timeline": "V-ACT đợt 1 (5/4) hoặc đợt 2 (24/5)",
+        "note": "V-ACT: đăng ký tại thinangluc.vnuhcm.edu.vn (ĐHQG-HCM)"
       }
     ],
     "fields": [
@@ -100,11 +100,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-ACT (ĐGNL ĐHQG-HCM)",
+        "quota": "20-40%",
+        "timeline": "V-ACT đợt 1 (5/4) hoặc đợt 2 (24/5)",
+        "note": "V-ACT: đăng ký tại thinangluc.vnuhcm.edu.vn (ĐHQG-HCM)"
       }
     ],
     "fields": [
@@ -143,11 +143,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "name": "(Không áp dụng) Phương thức ĐGNL",
         "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
         "quota": "15-30%",
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "note": "Trường không sử dụng V-ACT, HSA, TSA, V-SAT, H-SCA"
       },
       {
         "name": "Xét tuyển riêng của FPT (bài thi riêng + phỏng vấn)",
@@ -195,11 +195,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-ACT (ĐGNL ĐHQG-HCM) + V-SAT (ĐH Cần Thơ tổ chức)",
+        "quota": "20-40%",
+        "timeline": "V-ACT đợt 1 (5/4) hoặc đợt 2 (24/5) | V-SAT: 7 đợt từ tháng 1-7",
+        "note": "V-ACT: đăng ký tại thinangluc.vnuhcm.edu.vn (ĐHQG-HCM); V-SAT: đăng ký tại vsat.ctu.edu.vn"
       }
     ],
     "fields": [
@@ -238,11 +238,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-ACT (ĐGNL ĐHQG-HCM) + HSA (ĐGNL ĐHQG-HN)",
+        "quota": "20-40%",
+        "timeline": "V-ACT đợt 1 (5/4) hoặc đợt 2 (24/5) | HSA tháng 3-5",
+        "note": "V-ACT: đăng ký tại thinangluc.vnuhcm.edu.vn (ĐHQG-HCM); HSA: đăng ký tại ĐHQG Hà Nội"
       }
     ],
     "fields": [
@@ -281,11 +281,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-ACT (ĐGNL ĐHQG-HCM) + HSA (ĐGNL ĐHQG-HN) + TSA (ĐGNL tư duy ĐHBK-HN) + V-SAT (ĐH Cần Thơ tổ chức)",
+        "quota": "20-40%",
+        "timeline": "V-ACT đợt 1 (5/4) hoặc đợt 2 (24/5) | HSA tháng 3-5 | TSA tháng 3-5 | V-SAT: 7 đợt từ tháng 1-7",
+        "note": "V-ACT: đăng ký tại thinangluc.vnuhcm.edu.vn (ĐHQG-HCM); HSA: đăng ký tại ĐHQG Hà Nội; TSA: kỳ thi đánh giá tư duy của ĐH Bách khoa Hà Nội; V-SAT: đăng ký tại vsat.ctu.edu.vn"
       },
       {
         "name": "Xét tuyển riêng (thi năng khiếu / phỏng vấn / portfolio)",
@@ -331,11 +331,11 @@
         "note": "Một số ngành Y chỉ xét học bạ 6 học kỳ (cả lớp 10, 11, 12)"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA (ĐHQG TP.HCM) hoặc V-SAT (ĐHQG Hà Nội)",
-        "quota": "10-20%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-ACT (ĐGNL ĐHQG-HCM)",
+        "quota": "20-40%",
+        "timeline": "V-ACT đợt 1 (5/4) hoặc đợt 2 (24/5)",
+        "note": "V-ACT: đăng ký tại thinangluc.vnuhcm.edu.vn (ĐHQG-HCM)"
       }
     ],
     "fields": [
@@ -374,11 +374,11 @@
         "note": "Một số ngành Y chỉ xét học bạ 6 học kỳ (cả lớp 10, 11, 12)"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "name": "(Không áp dụng) Phương thức ĐGNL",
         "subjects": "ĐGNL HSA (ĐHQG TP.HCM) hoặc V-SAT (ĐHQG Hà Nội)",
         "quota": "10-20%",
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "note": "Trường không sử dụng V-ACT, HSA, TSA, V-SAT, H-SCA"
       }
     ],
     "fields": [
@@ -417,11 +417,11 @@
         "note": "Một số ngành Y chỉ xét học bạ 6 học kỳ (cả lớp 10, 11, 12)"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "name": "(Không áp dụng) Phương thức ĐGNL",
         "subjects": "ĐGNL HSA (ĐHQG TP.HCM) hoặc V-SAT (ĐHQG Hà Nội)",
         "quota": "10-20%",
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "note": "Trường không sử dụng V-ACT, HSA, TSA, V-SAT, H-SCA"
       }
     ],
     "fields": [
@@ -460,11 +460,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "HSA (ĐGNL ĐHQG-HN)",
+        "quota": "20-40%",
+        "timeline": "HSA tháng 3-5",
+        "note": "HSA: đăng ký tại ĐHQG Hà Nội"
       }
     ],
     "fields": [
@@ -496,11 +496,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Đánh giá năng lực riêng RMIT (portfolio + phỏng vấn)",
+        "name": "(Không áp dụng) Phương thức ĐGNL",
         "subjects": "Tiếng Anh (IELTS ≥ 6.5) + bài luận cá nhân + phỏng vấn",
         "quota": "100% (xét riêng)",
         "timeline": "Tháng 9 - tháng 12 hàng năm cho năm nhập học tiếp theo",
-        "note": "Không xét điểm thi; chỉ dựa trên hồ sơ học thuật + tiếng Anh"
+        "note": "Trường không sử dụng V-ACT, HSA, TSA, V-SAT, H-SCA"
       }
     ],
     "fields": [
@@ -539,11 +539,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-SAT (ĐH Cần Thơ tổ chức)",
+        "quota": "5-15%",
+        "timeline": "V-SAT: 7 đợt từ tháng 1-7",
+        "note": "V-SAT: đăng ký tại vsat.ctu.edu.vn"
       }
     ],
     "fields": [
@@ -582,11 +582,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "H-SCA (ĐH Sư phạm TP.HCM) + ĐGNL chuyên biệt (ĐHSP HN/HCM)",
+        "quota": "5-15%",
+        "timeline": "H-SCA: 3 đợt (3, 5, 6) | SPT: 2 đợt (5-6)",
+        "note": "H-SCA: thi trên máy tính tại HCMUE; ĐGNL chuyên biệt: ĐHSP HN hoặc HCM tổ chức"
       },
       {
         "name": "Chính sách ưu tiên ngành Sư phạm (Bộ GD&ĐT)",
@@ -632,11 +632,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-SAT (ĐH Cần Thơ tổ chức)",
+        "quota": "5-15%",
+        "timeline": "V-SAT: 7 đợt từ tháng 1-7",
+        "note": "V-SAT: đăng ký tại vsat.ctu.edu.vn"
       }
     ],
     "fields": [
@@ -677,11 +677,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "name": "(Không áp dụng) Phương thức ĐGNL",
         "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
         "quota": "15-30%",
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "note": "Trường không sử dụng V-ACT, HSA, TSA, V-SAT, H-SCA"
       },
       {
         "name": "Chính sách ưu tiên ngành Sư phạm (Bộ GD&ĐT)",
@@ -727,11 +727,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-ACT (ĐGNL ĐHQG-HCM)",
+        "quota": "20-40%",
+        "timeline": "V-ACT đợt 1 (5/4) hoặc đợt 2 (24/5)",
+        "note": "V-ACT: đăng ký tại thinangluc.vnuhcm.edu.vn (ĐHQG-HCM)"
       }
     ],
     "fields": [
@@ -771,11 +771,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-ACT (ĐGNL ĐHQG-HCM)",
+        "quota": "20-40%",
+        "timeline": "V-ACT đợt 1 (5/4) hoặc đợt 2 (24/5)",
+        "note": "V-ACT: đăng ký tại thinangluc.vnuhcm.edu.vn (ĐHQG-HCM)"
       }
     ],
     "fields": [
@@ -817,11 +817,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-ACT (ĐGNL ĐHQG-HCM) + HSA (ĐGNL ĐHQG-HN) + V-SAT (ĐH Cần Thơ tổ chức) + H-SCA (ĐH Sư phạm TP.HCM)",
+        "quota": "20-40%",
+        "timeline": "V-ACT đợt 1 (5/4) hoặc đợt 2 (24/5) | HSA tháng 3-5 | V-SAT: 7 đợt từ tháng 1-7 | H-SCA: 3 đợt (3, 5, 6)",
+        "note": "V-ACT: đăng ký tại thinangluc.vnuhcm.edu.vn (ĐHQG-HCM); HSA: đăng ký tại ĐHQG Hà Nội; V-SAT: đăng ký tại vsat.ctu.edu.vn; H-SCA: thi trên máy tính tại HCMUE"
       },
       {
         "name": "Xét tuyển riêng (thi năng khiếu / phỏng vấn / portfolio)",
@@ -867,11 +867,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "name": "(Không áp dụng) Phương thức ĐGNL",
         "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
         "quota": "15-30%",
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "note": "Trường không sử dụng V-ACT, HSA, TSA, V-SAT, H-SCA"
       },
       {
         "name": "Xét tuyển riêng của FPT (bài thi riêng + phỏng vấn)",
@@ -918,11 +918,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-ACT (ĐGNL ĐHQG-HCM)",
+        "quota": "20-40%",
+        "timeline": "V-ACT đợt 1 (5/4) hoặc đợt 2 (24/5)",
+        "note": "V-ACT: đăng ký tại thinangluc.vnuhcm.edu.vn (ĐHQG-HCM)"
       },
       {
         "name": "Xét tuyển riêng (thi năng khiếu / phỏng vấn / portfolio)",
@@ -970,11 +970,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-ACT (ĐGNL ĐHQG-HCM)",
+        "quota": "20-40%",
+        "timeline": "V-ACT đợt 1 (5/4) hoặc đợt 2 (24/5)",
+        "note": "V-ACT: đăng ký tại thinangluc.vnuhcm.edu.vn (ĐHQG-HCM)"
       }
     ],
     "fields": [
@@ -1013,11 +1013,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-ACT (ĐGNL ĐHQG-HCM) + H-SCA (ĐH Sư phạm TP.HCM)",
+        "quota": "20-40%",
+        "timeline": "V-ACT đợt 1 (5/4) hoặc đợt 2 (24/5) | H-SCA: 3 đợt (3, 5, 6)",
+        "note": "V-ACT: đăng ký tại thinangluc.vnuhcm.edu.vn (ĐHQG-HCM); H-SCA: thi trên máy tính tại HCMUE"
       }
     ],
     "fields": [
@@ -1056,11 +1056,11 @@
         "note": "Một số ngành Y chỉ xét học bạ 6 học kỳ (cả lớp 10, 11, 12)"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA (ĐHQG TP.HCM) hoặc V-SAT (ĐHQG Hà Nội)",
-        "quota": "10-20%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-ACT (ĐGNL ĐHQG-HCM) + HSA (ĐGNL ĐHQG-HN)",
+        "quota": "20-40%",
+        "timeline": "V-ACT đợt 1 (5/4) hoặc đợt 2 (24/5) | HSA tháng 3-5",
+        "note": "V-ACT: đăng ký tại thinangluc.vnuhcm.edu.vn (ĐHQG-HCM); HSA: đăng ký tại ĐHQG Hà Nội"
       }
     ],
     "fields": [
@@ -1099,11 +1099,11 @@
         "note": "Một số ngành Y chỉ xét học bạ 6 học kỳ (cả lớp 10, 11, 12)"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA (ĐHQG TP.HCM) hoặc V-SAT (ĐHQG Hà Nội)",
-        "quota": "10-20%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-ACT (ĐGNL ĐHQG-HCM) + HSA (ĐGNL ĐHQG-HN)",
+        "quota": "20-40%",
+        "timeline": "V-ACT đợt 1 (5/4) hoặc đợt 2 (24/5) | HSA tháng 3-5",
+        "note": "V-ACT: đăng ký tại thinangluc.vnuhcm.edu.vn (ĐHQG-HCM); HSA: đăng ký tại ĐHQG Hà Nội"
       }
     ],
     "fields": [
@@ -1142,11 +1142,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-ACT (ĐGNL ĐHQG-HCM) + V-SAT (ĐH Cần Thơ tổ chức)",
+        "quota": "20-40%",
+        "timeline": "V-ACT đợt 1 (5/4) hoặc đợt 2 (24/5) | V-SAT: 7 đợt từ tháng 1-7",
+        "note": "V-ACT: đăng ký tại thinangluc.vnuhcm.edu.vn (ĐHQG-HCM); V-SAT: đăng ký tại vsat.ctu.edu.vn"
       },
       {
         "name": "Xét tuyển riêng (thi năng khiếu / phỏng vấn / portfolio)",
@@ -1192,11 +1192,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-ACT (ĐGNL ĐHQG-HCM) + HSA (ĐGNL ĐHQG-HN)",
+        "quota": "20-40%",
+        "timeline": "V-ACT đợt 1 (5/4) hoặc đợt 2 (24/5) | HSA tháng 3-5",
+        "note": "V-ACT: đăng ký tại thinangluc.vnuhcm.edu.vn (ĐHQG-HCM); HSA: đăng ký tại ĐHQG Hà Nội"
       }
     ],
     "fields": [
@@ -1236,11 +1236,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-ACT (ĐGNL ĐHQG-HCM) + HSA (ĐGNL ĐHQG-HN)",
+        "quota": "20-40%",
+        "timeline": "V-ACT đợt 1 (5/4) hoặc đợt 2 (24/5) | HSA tháng 3-5",
+        "note": "V-ACT: đăng ký tại thinangluc.vnuhcm.edu.vn (ĐHQG-HCM); HSA: đăng ký tại ĐHQG Hà Nội"
       }
     ],
     "fields": [
@@ -1279,11 +1279,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "name": "(Không áp dụng) Phương thức ĐGNL",
         "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
         "quota": "15-30%",
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "note": "Trường không sử dụng V-ACT, HSA, TSA, V-SAT, H-SCA"
       },
       {
         "name": "Xét tuyển riêng (thi năng khiếu / phỏng vấn / portfolio)",
@@ -1329,11 +1329,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "TSA (ĐGNL tư duy ĐHBK-HN)",
+        "quota": "5-15%",
+        "timeline": "TSA tháng 3-5",
+        "note": "TSA: kỳ thi đánh giá tư duy của ĐH Bách khoa Hà Nội"
       }
     ],
     "fields": [
@@ -1372,11 +1372,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-ACT (ĐGNL ĐHQG-HCM) + ĐGNL chuyên biệt (ĐHSP HN/HCM)",
+        "quota": "20-40%",
+        "timeline": "V-ACT đợt 1 (5/4) hoặc đợt 2 (24/5) | SPT: 2 đợt (5-6)",
+        "note": "V-ACT: đăng ký tại thinangluc.vnuhcm.edu.vn (ĐHQG-HCM); ĐGNL chuyên biệt: ĐHSP HN hoặc HCM tổ chức"
       },
       {
         "name": "Chính sách ưu tiên ngành Sư phạm (Bộ GD&ĐT)",
@@ -1422,11 +1422,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-ACT (ĐGNL ĐHQG-HCM) + HSA (ĐGNL ĐHQG-HN) + ĐGNL chuyên biệt (ĐHSP HN/HCM)",
+        "quota": "20-40%",
+        "timeline": "V-ACT đợt 1 (5/4) hoặc đợt 2 (24/5) | HSA tháng 3-5 | SPT: 2 đợt (5-6)",
+        "note": "V-ACT: đăng ký tại thinangluc.vnuhcm.edu.vn (ĐHQG-HCM); HSA: đăng ký tại ĐHQG Hà Nội; ĐGNL chuyên biệt: ĐHSP HN hoặc HCM tổ chức"
       }
     ],
     "fields": [
@@ -1466,11 +1466,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-ACT (ĐGNL ĐHQG-HCM) + HSA (ĐGNL ĐHQG-HN) + ĐGNL chuyên biệt (ĐHSP HN/HCM)",
+        "quota": "20-40%",
+        "timeline": "V-ACT đợt 1 (5/4) hoặc đợt 2 (24/5) | HSA tháng 3-5 | SPT: 2 đợt (5-6)",
+        "note": "V-ACT: đăng ký tại thinangluc.vnuhcm.edu.vn (ĐHQG-HCM); HSA: đăng ký tại ĐHQG Hà Nội; ĐGNL chuyên biệt: ĐHSP HN hoặc HCM tổ chức"
       }
     ],
     "fields": [
@@ -1511,11 +1511,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-ACT (ĐGNL ĐHQG-HCM) + HSA (ĐGNL ĐHQG-HN) + ĐGNL chuyên biệt (ĐHSP HN/HCM)",
+        "quota": "20-40%",
+        "timeline": "V-ACT đợt 1 (5/4) hoặc đợt 2 (24/5) | HSA tháng 3-5 | SPT: 2 đợt (5-6)",
+        "note": "V-ACT: đăng ký tại thinangluc.vnuhcm.edu.vn (ĐHQG-HCM); HSA: đăng ký tại ĐHQG Hà Nội; ĐGNL chuyên biệt: ĐHSP HN hoặc HCM tổ chức"
       },
       {
         "name": "Chính sách ưu tiên ngành Sư phạm (Bộ GD&ĐT)",
@@ -1562,11 +1562,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
+        "name": "(Không áp dụng) Phương thức ĐGNL",
         "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
         "quota": "15-30%",
         "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "note": "Trường không sử dụng V-ACT, HSA, TSA, V-SAT, H-SCA"
       },
       {
         "name": "Xét tuyển riêng (thi năng khiếu / phỏng vấn / portfolio)",
@@ -1612,11 +1612,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-ACT (ĐGNL ĐHQG-HCM) + HSA (ĐGNL ĐHQG-HN)",
+        "quota": "20-40%",
+        "timeline": "V-ACT đợt 1 (5/4) hoặc đợt 2 (24/5) | HSA tháng 3-5",
+        "note": "V-ACT: đăng ký tại thinangluc.vnuhcm.edu.vn (ĐHQG-HCM); HSA: đăng ký tại ĐHQG Hà Nội"
       }
     ],
     "fields": [
@@ -1655,11 +1655,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-ACT (ĐGNL ĐHQG-HCM) + HSA (ĐGNL ĐHQG-HN)",
+        "quota": "20-40%",
+        "timeline": "V-ACT đợt 1 (5/4) hoặc đợt 2 (24/5) | HSA tháng 3-5",
+        "note": "V-ACT: đăng ký tại thinangluc.vnuhcm.edu.vn (ĐHQG-HCM); HSA: đăng ký tại ĐHQG Hà Nội"
       }
     ],
     "fields": [
@@ -1698,11 +1698,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-ACT (ĐGNL ĐHQG-HCM)",
+        "quota": "20-40%",
+        "timeline": "V-ACT đợt 1 (5/4) hoặc đợt 2 (24/5)",
+        "note": "V-ACT: đăng ký tại thinangluc.vnuhcm.edu.vn (ĐHQG-HCM)"
       }
     ],
     "fields": [
@@ -1742,11 +1742,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-ACT (ĐGNL ĐHQG-HCM) + HSA (ĐGNL ĐHQG-HN) + ĐGNL chuyên biệt (ĐHSP HN/HCM)",
+        "quota": "20-40%",
+        "timeline": "V-ACT đợt 1 (5/4) hoặc đợt 2 (24/5) | HSA tháng 3-5 | SPT: 2 đợt (5-6)",
+        "note": "V-ACT: đăng ký tại thinangluc.vnuhcm.edu.vn (ĐHQG-HCM); HSA: đăng ký tại ĐHQG Hà Nội; ĐGNL chuyên biệt: ĐHSP HN hoặc HCM tổ chức"
       }
     ],
     "fields": [
@@ -1785,11 +1785,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-ACT (ĐGNL ĐHQG-HCM) + V-SAT (ĐH Cần Thơ tổ chức)",
+        "quota": "20-40%",
+        "timeline": "V-ACT đợt 1 (5/4) hoặc đợt 2 (24/5) | V-SAT: 7 đợt từ tháng 1-7",
+        "note": "V-ACT: đăng ký tại thinangluc.vnuhcm.edu.vn (ĐHQG-HCM); V-SAT: đăng ký tại vsat.ctu.edu.vn"
       }
     ],
     "fields": [
@@ -1829,11 +1829,11 @@
         "note": "Tổng điểm trung bình 5 hoặc 6 học kỳ theo tổ hợp"
       },
       {
-        "name": "Xét điểm Đánh giá năng lực (ĐGNL)",
-        "subjects": "ĐGNL HSA hoặc V-SAT hoặc bài thi riêng của trường",
-        "quota": "15-30%",
-        "timeline": "Tháng 3 - tháng 5 (HSA) | tháng 6 (V-SAT)",
-        "note": "Đăng ký thi riêng; điểm do ĐHQG TP.HCM hoặc Hà Nội cấp"
+        "name": "Xét điểm Đánh giá năng lực (ĐGNL/TSA/V-SAT/H-SCA)",
+        "subjects": "V-ACT (ĐGNL ĐHQG-HCM)",
+        "quota": "20-40%",
+        "timeline": "V-ACT đợt 1 (5/4) hoặc đợt 2 (24/5)",
+        "note": "V-ACT: đăng ký tại thinangluc.vnuhcm.edu.vn (ĐHQG-HCM)"
       }
     ],
     "fields": [
