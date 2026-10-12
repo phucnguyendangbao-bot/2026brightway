@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8" />
@@ -141,6 +141,102 @@
 }
 
 /* ════════════════════════════════════════════════════════════════
+   SCHOOL GALLERY (NEW) - 12 ảnh trường ĐH
+   ════════════════════════════════════════════════════════════════ */
+
+.bw-school-gallery{
+  padding:64px 24px;
+  max-width:1200px;
+  margin:0 auto;
+}
+.bw-school-gallery .container{ max-width:1200px; margin:0 auto; }
+
+.bw-gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  grid-auto-rows:160px;
+  gap:14px;
+  margin:32px 0;
+}
+.bw-gallery-item{
+  position:relative;
+  border-radius:18px;
+  overflow:hidden;
+  background:#f1f5f9;
+  cursor:pointer;
+  transition:all 0.4s cubic-bezier(0.4,0,0.2,1);
+  box-shadow:0 4px 12px rgba(0,0,0,0.06);
+  display:block;
+  text-decoration:none;
+}
+.bw-gallery-item:hover{
+  transform:translateY(-4px) scale(1.02);
+  box-shadow:0 16px 40px rgba(0,0,0,0.15);
+  z-index:2;
+}
+.bw-gallery-item img{
+  width:100%; height:100%;
+  object-fit:cover;
+  transition:transform 0.6s ease;
+}
+.bw-gallery-item:hover img{ transform:scale(1.08); }
+.bw-gallery-overlay{
+  position:absolute; inset:0;
+  background:linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+  display:flex; flex-direction:column; justify-content:flex-end;
+  padding:16px;
+  color:#fff;
+  pointer-events:none;
+  transition:background 0.3s;
+}
+.bw-gallery-item:hover .bw-gallery-overlay{
+  background:linear-gradient(0deg, var(--c, #6366f1) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.2) 100%);
+}
+.bw-gallery-overlay small{
+  font-size:0.7rem;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+  opacity:0.85;
+  margin-bottom:4px;
+}
+.bw-gallery-overlay strong{
+  font-size:0.95rem;
+  font-weight:700;
+  line-height:1.25;
+  font-family:var(--font-display);
+}
+/* Ảnh lớn: 2 cột × 2 hàng */
+.bw-gallery-large{
+  grid-column:span 2;
+  grid-row:span 2;
+}
+.bw-gallery-large .bw-gallery-overlay strong{ font-size:1.25rem; }
+/* Ảnh ngang: 2 cột × 1 hàng */
+.bw-gallery-wide{
+  grid-column:span 2;
+}
+.bw-gallery-cta{
+  text-align:center;
+  margin-top:32px;
+}
+
+@media (max-width:1024px){
+  .bw-gallery-grid{ grid-template-columns:repeat(3, 1fr); }
+}
+@media (max-width:768px){
+  .bw-school-gallery{ padding:48px 16px; }
+  .bw-gallery-grid{ grid-template-columns:repeat(2, 1fr); grid-auto-rows:140px; }
+  .bw-gallery-large{ grid-column:span 2; grid-row:span 1; }
+  .bw-gallery-wide{ grid-column:span 2; }
+}
+@media (max-width:480px){
+  .bw-gallery-grid{ grid-auto-rows:120px; gap:10px; }
+  .bw-gallery-overlay{ padding:10px; }
+  .bw-gallery-overlay strong{ font-size:0.82rem; }
+}
+
+/* ════════════════════════════════════════════════════════════════
    HERO REDESIGN (v2) — clean, 1 ảnh lớn, heading to
    ════════════════════════════════════════════════════════════════ */
 
@@ -199,28 +295,15 @@
 .bw-hero-carousel .dots{ display:none !important; }
 .bw-hero-carousel .progress{ display:none !important; }
 
-/* SVG trong carousel phải cover đầy đủ */
-.bw-hero-carousel .slide img{
-  width:100%; height:100%;
-  object-fit:cover;
-  display:block;
-}
-
-/* Dots - giới hạn scroll ngang trên mobile */
+/* Dots bên dưới carousel (giống mẫu) */
 .bw-hero-dots{
   display:flex;
   justify-content:center;
-  gap:6px;
-  margin-top:16px;
-  overflow-x:auto;
-  scrollbar-width:none;
-  padding:4px 0;
-  flex-wrap:wrap;
+  gap:8px;
+  margin-top:20px;
 }
-.bw-hero-dots::-webkit-scrollbar{ display:none; }
 .bw-hero-dots button{
-  flex-shrink:0;
-  width:8px; height:8px;
+  width:10px; height:10px;
   border-radius:50%;
   border:none;
   background:rgba(99,102,241,0.25);
@@ -229,8 +312,8 @@
   padding:0;
 }
 .bw-hero-dots button.is-active{
-  width:24px;
-  border-radius:4px;
+  width:32px;
+  border-radius:5px;
   background:var(--grad);
 }
 .bw-hero-dots button:hover{
@@ -4459,90 +4542,63 @@ body.spa-active #spa-topbar { display: flex; }
     </div>
     <div class="bw-hero-visual">
       <div class="bw-hero-carousel" id="bwHeroCarousel" aria-roledescription="carousel" aria-label="Ảnh 15 trường đại học hàng đầu Việt Nam">
-                <div class="slide is-active" data-school="ĐH FPT">
-          <img src="assets/images/hero-svg/01-fpt.svg" alt="ĐH FPT" loading="eager">
+        <div class="slide is-active" data-school="FPT - Cần Thơ">
+          <img src="assets/images/hero/01-fpt-can-tho.jpg" alt="Đại học FPT - cơ sở Cần Thơ" loading="eager"
+               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1562774053-701939374585?w=800&h=1000&fit=crop&q=80';">
+          <div class="school-tag"><small>Campus miền Tây</small>ĐH FPT — Cần Thơ</div>
         </div>
-        <div class="slide " data-school="ĐH Cần Thơ (CTU)">
-          <img src="assets/images/hero-svg/02-ctu.svg" alt="ĐH Cần Thơ (CTU)" loading="lazy">
+        <div class="slide" data-school="ĐH Cần Thơ">
+          <img src="assets/images/hero/02-ctu.jpg" alt="Đại học Cần Thơ" loading="lazy"
+               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=800&h=1000&fit=crop&q=80';">
+          <div class="school-tag"><small>ĐH vùng ĐBSCL</small>ĐH Cần Thơ (CTU)</div>
         </div>
-        <div class="slide " data-school="ĐH Kinh tế TPHCM (UEH)">
-          <img src="assets/images/hero-svg/03-ueh.svg" alt="ĐH Kinh tế TPHCM (UEH)" loading="lazy">
+        <div class="slide" data-school="UEH - TP.HCM">
+          <img src="assets/images/hero/03-ueh.jpg" alt="ĐH Kinh tế TP.HCM" loading="lazy"
+               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=800&h=1000&fit=crop&q=80';">
+          <div class="school-tag"><small>Kinh tế hàng đầu</small>ĐH Kinh tế TP.HCM (UEH)</div>
         </div>
-        <div class="slide " data-school="ĐH Bách khoa TPHCM">
-          <img src="assets/images/hero-svg/04-hcmut.svg" alt="ĐH Bách khoa TPHCM" loading="lazy">
+        <div class="slide" data-school="HCMUT">
+          <img src="assets/images/hero/07-hcmut.jpg" alt="ĐH Bách khoa - ĐHQG TP.HCM" loading="lazy"
+               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=800&h=1000&fit=crop&q=80';">
         </div>
-        <div class="slide " data-school="RMIT Vietnam">
-          <img src="assets/images/hero-svg/05-rmit.svg" alt="RMIT Vietnam" loading="lazy">
+        <div class="slide" data-school="RMIT Vietnam">
+          <img src="assets/images/hero/14-rmit.jpg" alt="RMIT Vietnam - Nam Sài Gòn" loading="lazy"
+               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&h=1000&fit=crop&q=80';">
         </div>
-        <div class="slide " data-school="ĐH Bách khoa Hà Nội">
-          <img src="assets/images/hero-svg/06-hust.svg" alt="ĐH Bách khoa Hà Nội" loading="lazy">
+        <div class="slide" data-school="ĐH Sài Gòn (cổ điển)">
+          <img src="assets/images/hero/16-sgu-historic.jpg" alt="ĐH Sài Gòn - tòa cổ điển" loading="lazy"
+               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1562774053-701939374585?w=800&h=1000&fit=crop&q=80';">
         </div>
-        <div class="slide " data-school="ĐH Ngoại thương">
-          <img src="assets/images/hero-svg/07-ftu.svg" alt="ĐH Ngoại thương" loading="lazy">
+        <div class="slide" data-school="ĐH Quy Nhơn">
+          <img src="assets/images/hero/17-qnu-modern.jpg" alt="ĐH Quy Nhơn - cơ sở hiện đại" loading="lazy"
+               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=800&h=1000&fit=crop&q=80';">
         </div>
-        <div class="slide " data-school="ĐH Y Dược TPHCM">
-          <img src="assets/images/hero-svg/08-ump.svg" alt="ĐH Y Dược TPHCM" loading="lazy">
+        <div class="slide" data-school="ĐH Hà Nội">
+          <img src="assets/images/hero/19-hanu-unique.jpg" alt="ĐH Hà Nội - kiến trúc độc đáo" loading="lazy"
+               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=800&h=1000&fit=crop&q=80';">
         </div>
-        <div class="slide " data-school="ĐH Y khoa PNT">
-          <img src="assets/images/hero-svg/09-pntu.svg" alt="ĐH Y khoa PNT" loading="lazy">
+        <div class="slide" data-school="Bách khoa Hà Nội">
+          <img src="assets/images/hero/20-hust-modernist.jpg" alt="ĐH Bách khoa Hà Nội - hiện đại" loading="lazy"
+               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&h=1000&fit=crop&q=80';">
         </div>
-        <div class="slide " data-school="ĐH Văn Lang">
-          <img src="assets/images/hero-svg/10-vlu.svg" alt="ĐH Văn Lang" loading="lazy">
-        </div>
-        <div class="slide " data-school="ĐH KHXH&NV">
-          <img src="assets/images/hero-svg/11-ussh.svg" alt="ĐH KHXH&NV" loading="lazy">
-        </div>
-        <div class="slide " data-school="ĐH Sư phạm TPHCM">
-          <img src="assets/images/hero-svg/12-hcmue.svg" alt="ĐH Sư phạm TPHCM" loading="lazy">
-        </div>
-        <div class="slide " data-school="ĐH Khoa học Tự nhiên">
-          <img src="assets/images/hero-svg/13-hcmus.svg" alt="ĐH Khoa học Tự nhiên" loading="lazy">
-        </div>
-        <div class="slide " data-school="ĐH CNTT (UIT)">
-          <img src="assets/images/hero-svg/14-uit.svg" alt="ĐH CNTT (UIT)" loading="lazy">
-        </div>
-        <div class="slide " data-school="ĐH Sài Gòn">
-          <img src="assets/images/hero-svg/15-sgu.svg" alt="ĐH Sài Gòn" loading="lazy">
-        </div>
-        <div class="slide " data-school="ĐH Kinh tế - Luật">
-          <img src="assets/images/hero-svg/16-uel.svg" alt="ĐH Kinh tế - Luật" loading="lazy">
-        </div>
-        <div class="slide " data-school="ĐH Y Dược Cần Thơ">
-          <img src="assets/images/hero-svg/17-ctump.svg" alt="ĐH Y Dược Cần Thơ" loading="lazy">
-        </div>
-        <div class="slide " data-school="ĐH KTQD Hà Nội">
-          <img src="assets/images/hero-svg/18-neu.svg" alt="ĐH KTQD Hà Nội" loading="lazy">
-        </div>
-        <div class="slide " data-school="ĐH Quốc gia Hà Nội">
-          <img src="assets/images/hero-svg/19-vnu.svg" alt="ĐH Quốc gia Hà Nội" loading="lazy">
-        </div>
-        <div class="slide " data-school="VinUniversity">
-          <img src="assets/images/hero-svg/20-vinu.svg" alt="VinUniversity" loading="lazy">
+        <div class="slide" data-school="Thư viện KH Tự nhiên">
+          <img src="assets/images/hero/23-gsl-hcm.jpg" alt="Thư viện Khoa học Tự nhiên - TP.HCM" loading="lazy"
+               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=800&h=1000&fit=crop&q=80';">
         </div>
         <button type="button" class="nav prev" id="bwHeroPrev" aria-label="Ảnh trước">‹</button>
         <button type="button" class="nav next" id="bwHeroNext" aria-label="Ảnh tiếp theo">›</button>
       </div>
       <div class="bw-hero-dots" id="bwHeroDots" role="tablist" aria-label="Chọn ảnh trường">
-        <button type="button" class="is-active" data-i="0" aria-label="ĐH FPT"></button>
-        <button type="button" class="" data-i="1" aria-label="ĐH Cần Thơ (CTU)"></button>
-        <button type="button" class="" data-i="2" aria-label="ĐH Kinh tế TPHCM (UEH)"></button>
-        <button type="button" class="" data-i="3" aria-label="ĐH Bách khoa TPHCM"></button>
-        <button type="button" class="" data-i="4" aria-label="RMIT Vietnam"></button>
-        <button type="button" class="" data-i="5" aria-label="ĐH Bách khoa Hà Nội"></button>
-        <button type="button" class="" data-i="6" aria-label="ĐH Ngoại thương"></button>
-        <button type="button" class="" data-i="7" aria-label="ĐH Y Dược TPHCM"></button>
-        <button type="button" class="" data-i="8" aria-label="ĐH Y khoa PNT"></button>
-        <button type="button" class="" data-i="9" aria-label="ĐH Văn Lang"></button>
-        <button type="button" class="" data-i="10" aria-label="ĐH KHXH&NV"></button>
-        <button type="button" class="" data-i="11" aria-label="ĐH Sư phạm TPHCM"></button>
-        <button type="button" class="" data-i="12" aria-label="ĐH Khoa học Tự nhiên"></button>
-        <button type="button" class="" data-i="13" aria-label="ĐH CNTT (UIT)"></button>
-        <button type="button" class="" data-i="14" aria-label="ĐH Sài Gòn"></button>
-        <button type="button" class="" data-i="15" aria-label="ĐH Kinh tế - Luật"></button>
-        <button type="button" class="" data-i="16" aria-label="ĐH Y Dược Cần Thơ"></button>
-        <button type="button" class="" data-i="17" aria-label="ĐH KTQD Hà Nội"></button>
-        <button type="button" class="" data-i="18" aria-label="ĐH Quốc gia Hà Nội"></button>
-        <button type="button" class="" data-i="19" aria-label="VinUniversity"></button>
+        <button type="button" class="is-active" data-i="0" aria-label="FPT Cần Thơ"></button>
+        <button type="button" data-i="1" aria-label="ĐH Cần Thơ"></button>
+        <button type="button" data-i="2" aria-label="UEH"></button>
+        <button type="button" data-i="3" aria-label="HCMUT"></button>
+        <button type="button" data-i="4" aria-label="RMIT"></button>
+        <button type="button" data-i="5" aria-label="ĐH Sài Gòn (cổ điển)"></button>
+        <button type="button" data-i="6" aria-label="ĐH Quy Nhơn"></button>
+        <button type="button" data-i="7" aria-label="ĐH Hà Nội"></button>
+        <button type="button" data-i="8" aria-label="Bách khoa Hà Nội"></button>
+        <button type="button" data-i="9" aria-label="Thư viện KH Tự nhiên"></button>
       </div>
       <div class="bw-hero-float f1">
         <div class="ico">🎯</div>
@@ -4728,6 +4784,109 @@ body.spa-active #spa-topbar { display: flex; }
     <div class="bw-stat-card">
       <div class="bw-stat-number" data-target="98">0<span class="bw-stat-suffix">%</span></div>
       <div class="bw-stat-label">Học sinh hài lòng</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SCHOOL GALLERY (NEW) - Ảnh các trường ĐH VN ===== -->
+<section class="bw-school-gallery bw-reveal" id="school-gallery" aria-label="Thư viện ảnh các trường đại học">
+  <div class="container">
+    <div class="section-eyebrow">Thư viện ảnh</div>
+    <h2 class="section-title">Hình ảnh các trường đại học hàng đầu</h2>
+    <p class="section-sub">Khám phá cơ sở vật chất và kiến trúc của 30+ trường ĐH hàng đầu Việt Nam — cập nhật 2026</p>
+
+    <div class="bw-gallery-grid">
+      <a href="page2.html" class="bw-gallery-item bw-gallery-large" style="--c:#6366f1">
+        <img src="assets/images/hero/01-fpt-can-tho.jpg" alt="ĐH FPT Cần Thơ" loading="lazy" />
+        <div class="bw-gallery-overlay">
+          <small>Campus miền Tây</small>
+          <strong>ĐH FPT — Cần Thơ</strong>
+        </div>
+      </a>
+      <a href="page2.html" class="bw-gallery-item" style="--c:#8b5cf6">
+        <img src="assets/images/hero/07-hcmut.jpg" alt="ĐH Bách khoa TP.HCM" loading="lazy" />
+        <div class="bw-gallery-overlay">
+          <small>Kỹ thuật hàng đầu</small>
+          <strong>ĐH Bách khoa TP.HCM</strong>
+        </div>
+      </a>
+      <a href="page2.html" class="bw-gallery-item" style="--c:#ec4899">
+        <img src="assets/images/hero/03-ueh.jpg" alt="ĐH Kinh tế TP.HCM" loading="lazy" />
+        <div class="bw-gallery-overlay">
+          <small>Kinh tế hàng đầu</small>
+          <strong>ĐH Kinh tế TP.HCM</strong>
+        </div>
+      </a>
+      <a href="page2.html" class="bw-gallery-item" style="--c:#10b981">
+        <img src="assets/images/hero/02-ctu.jpg" alt="ĐH Cần Thơ" loading="lazy" />
+        <div class="bw-gallery-overlay">
+          <small>ĐH vùng ĐBSCL</small>
+          <strong>ĐH Cần Thơ (CTU)</strong>
+        </div>
+      </a>
+      <a href="page2.html" class="bw-gallery-item bw-gallery-wide" style="--c:#f59e0b">
+        <img src="assets/images/hero/19-hanu-unique.jpg" alt="ĐH Hà Nội" loading="lazy" />
+        <div class="bw-gallery-overlay">
+          <small>Kiến trúc độc đáo</small>
+          <strong>ĐH Hà Nội (HANU)</strong>
+        </div>
+      </a>
+      <a href="page2.html" class="bw-gallery-item" style="--c:#06b6d4">
+        <img src="assets/images/hero/17-qnu-modern.jpg" alt="ĐH Quy Nhơn" loading="lazy" />
+        <div class="bw-gallery-overlay">
+          <small>Hiện đại</small>
+          <strong>ĐH Quy Nhơn (QNU)</strong>
+        </div>
+      </a>
+      <a href="page2.html" class="bw-gallery-item" style="--c:#ef4444">
+        <img src="assets/images/hero/16-sgu-historic.jpg" alt="ĐH Sài Gòn" loading="lazy" />
+        <div class="bw-gallery-overlay">
+          <small>Kiến trúc cổ điển</small>
+          <strong>ĐH Sài Gòn (SGU)</strong>
+        </div>
+      </a>
+      <a href="page2.html" class="bw-gallery-item" style="--c:#3b82f6">
+        <img src="assets/images/hero/14-rmit.jpg" alt="RMIT Vietnam" loading="lazy" />
+        <div class="bw-gallery-overlay">
+          <small>Campus quốc tế</small>
+          <strong>RMIT Vietnam</strong>
+        </div>
+      </a>
+      <a href="page2.html" class="bw-gallery-item" style="--c:#8b5cf6">
+        <img src="assets/images/hero/20-hust-modernist.jpg" alt="ĐH Bách khoa Hà Nội" loading="lazy" />
+        <div class="bw-gallery-overlay">
+          <small>Hiện đại Hà Nội</small>
+          <strong>ĐH Bách khoa Hà Nội</strong>
+        </div>
+      </a>
+      <a href="page2.html" class="bw-gallery-item" style="--c:#14b8a6">
+        <img src="assets/images/hero/22-hue-staircase.jpg" alt="ĐH Huế" loading="lazy" />
+        <div class="bw-gallery-overlay">
+          <small>Cầu thang cổ điển</small>
+          <strong>ĐH Huế</strong>
+        </div>
+      </a>
+      <a href="page2.html" class="bw-gallery-item" style="--c:#f43f5e">
+        <img src="assets/images/hero/23-gsl-hcm.jpg" alt="Thư viện KH Tự nhiên" loading="lazy" />
+        <div class="bw-gallery-overlay">
+          <small>Thư viện hiện đại</small>
+          <strong>Thư viện KH Tự nhiên</strong>
+        </div>
+      </a>
+      <a href="page2.html" class="bw-gallery-item" style="--c:#a855f7">
+        <img src="assets/images/hero/29-hanoi-grad.jpg" alt="Tốt nghiệp Hà Nội" loading="lazy" />
+        <div class="bw-gallery-overlay">
+          <small>Ngày tốt nghiệp</small>
+          <strong>ĐH Hà Nội</strong>
+        </div>
+      </a>
+    </div>
+
+    <div class="bw-gallery-cta">
+      <a href="page2.html" class="bw-btn bw-btn-primary">
+        <span class="ico">🏫</span> Xem tất cả 34 trường
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
     </div>
   </div>
 </section>
