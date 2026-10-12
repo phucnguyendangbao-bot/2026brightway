@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Waybi – Trợ lý AI của BrightWay Scholars</title>
+<meta name="description" content="Waybi – linh vật và trợ lý AI giúp học sinh lộ trình apply học bổng 12 tháng, tra cứu trường, viết CV, luyện essay." />
+<link rel="icon" type="image/png" href="assets/images/waybi/waybi-mascot.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg: linear-gradient(145deg, #e8eeff 0%, #dde8ff 20%, #e5deff 50%, #d6e9ff 80%, #e0f0ff 100%);
+  --grad: linear-gradient(135deg,#5b7cfa 0%,#7c5bf5 50%,#9f5bea 100%);
+  --grad-btn: linear-gradient(135deg,#6b8eff 0%,#8b6bff 100%);
+  --grad-warm: linear-gradient(135deg,#ff8fab 0%,#f59e0b 100%);
+  --text-dark: #1a1a3e;
+  --text-mid: #3a3a6e;
+  --text-soft: #6b7aaa;
+  --accent: #6366f1;
+  --shadow: 0 8px 32px rgba(99,102,241,0.15);
+  --shadow-lg: 0 20px 60px rgba(99,102,241,0.25);
+  --font: 'Be Vietnam Pro', system-ui, sans-serif;
+  --font-display: 'Nunito', 'Be Vietnam Pro', sans-serif;
+  --font-script: 'Pacifico', cursive;
+}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--font);
+  background:var(--bg);
+  background-attachment:fixed;
+  color:var(--text-dark);
+  min-height:100vh;
+  overflow-x:hidden;line-height:1.6;
+}
+body::before{
+  content:'';position:fixed;top:-15%;left:-10%;width:55vw;height:55vw;
+  background:radial-gradient(circle,rgba(130,100,255,0.18),transparent 65%);
+  border-radius:50%;pointer-events:none;z-index:0;
+  animation:blobFloat 14s ease-in-out infinite;
+}
+body::after{
+  content:'';position:fixed;bottom:-15%;right:-10%;width:50vw;height:50vw;
+  background:radial-gradient(circle,rgba(255,143,171,0.16),transparent 65%);
+  border-radius:50%;pointer-events:none;z-index:0;
+  animation:blobFloat 18s ease-in-out infinite reverse;
+}
+@keyframes blobFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(3%,-3%) scale(1.04)}}
+
+/* ── NAV ── */
+.lp-nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,0.78);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,0.9);
+  box-shadow:0 2px 20px rgba(99,102,241,0.08);
+}
+.lp-nav-inner{
+  max-width:1200px;margin:0 auto;padding:0 24px;
+  height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.lp-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.lp-logo-emoji{
+  width:40px;height:40px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  background:transparent;overflow:hidden;
+  box-shadow:0 4px 14px rgba(99,102,241,0.3);
+}
+.lp-logo-emoji img{width:100%;height:100%;object-fit:cover;display:block;}
+.lp-logo-text{font-family:var(--font-display);font-weight:900;font-size:1rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap;}
+.lp-nav-links{display:flex;align-items:center;gap:22px;}
+.lp-nav-links a{font-size:.85rem;font-weight:600;color:var(--text-mid);text-decoration:none;transition:color .2s;}
+.lp-nav-links a:hover{color:var(--accent);}
+.lp-nav-cta{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--grad-btn);color:#fff;font-weight:700;font-size:.85rem;
+  padding:8px 18px;border-radius:999px;border:none;cursor:pointer;
+  box-shadow:0 6px 18px rgba(99,102,241,0.35);
+  transition:transform .2s;white-space:nowrap;text-decoration:none;
+}
+.lp-nav-cta:hover{transform:translateY(-2px);}
+@media(max-width:768px){.lp-nav-links{display:none;}}
+
+/* ═══ HERO với Waybi lớn ═══ */
+.w-hero{
+  position:relative;z-index:1;
+  max-width:1200px;margin:30px auto 0;padding:0 24px;
+  display:grid;grid-template-columns:1.1fr 1fr;gap:40px;
+  align-items:center;
+}
+@media(max-width:900px){.w-hero{grid-template-columns:1fr;gap:24px;text-align:center;}}
+
+.w-hero-text .w-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,0.7);backdrop-filter:blur(10px);
+  border:1.5px solid rgba(99,102,241,0.2);
+  color:var(--accent);font-weight:800;font-size:.75rem;
+  padding:5px 14px;border-radius:999px;
+  text-transform:uppercase;letter-spacing:.06em;
+  margin-bottom:14px;
+}
+.w-hero-text h1{
+  font-family:var(--font-display);font-weight:900;
+  font-size:clamp(2rem,4.5vw,3.4rem);
+  line-height:1.1;color:var(--text-dark);
+  margin-bottom:14px;
+}
+.w-hero-text h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.w-hero-text p{
+  font-size:1.05rem;color:var(--text-mid);
+  line-height:1.7;margin-bottom:24px;max-width:520px;
+}
+@media(max-width:900px){.w-hero-text p{margin-left:auto;margin-right:auto;}}
+.w-hero-cta{
+  display:flex;gap:10px;flex-wrap:wrap;
+}
+@media(max-width:900px){.w-hero-cta{justify-content:center;}}
+.w-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--grad-btn);color:#fff;font-weight:700;font-size:.92rem;
+  padding:11px 22px;border-radius:999px;border:none;cursor:pointer;
+  text-decoration:none;
+  box-shadow:0 8px 24px rgba(99,102,241,0.35);
+  transition:transform .2s;
+  font-family:inherit;
+}
+.w-btn:hover{transform:translateY(-2px);}
+.w-btn.ghost{
+  background:rgba(255,255,255,0.7);color:var(--text-dark);
+  border:1.5px solid rgba(99,102,241,0.2);box-shadow:none;
+}
+.w-btn.ghost:hover{background:#fff;}
+
+.w-hero-img{
+  position:relative;display:flex;justify-content:center;align-items:center;
+  min-height:380px;
+}
+.w-hero-img::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle,rgba(99,102,241,0.18),transparent 60%);
+  border-radius:50%;filter:blur(20px);
+}
+.w-hero-img img{
+  position:relative;width:min(420px,90%);
+  height:auto;filter:drop-shadow(0 20px 40px rgba(99,102,241,0.3));
+  animation:w-float 4s ease-in-out infinite;
+}
+@keyframes w-float{
+  0%,100%{transform:translateY(0) rotate(-2deg);}
+  50%{transform:translateY(-14px) rotate(2deg);}
+}
+.w-hero-bubble{
+  position:absolute;
+  background:#fff;
+  padding:8px 14px;border-radius:14px 14px 14px 4px;
+  font-size:.85rem;font-weight:700;color:var(--text-dark);
+  box-shadow:0 8px 20px rgba(0,0,0,0.1);
+  animation:w-bob 3s ease-in-out infinite;
+  z-index:2;
+}
+.w-hero-bubble.b1{top:10%;left:5%;}
+.w-hero-bubble.b2{bottom:15%;right:5%;animation-delay:.8s;border-radius:14px 14px 4px 14px;}
+.w-hero-bubble.b3{top:55%;left:0%;animation-delay:1.6s;background:var(--grad);color:#fff;border-radius:14px 14px 14px 4px;}
+@keyframes w-bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+
+/* ═══ FEATURES 3 ô ═══ */
+.w-features{
+  max-width:1200px;margin:60px auto 0;padding:0 24px;
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+}
+@media(max-width:880px){.w-features{grid-template-columns:1fr;}}
+.w-feat{
+  background:rgba(255,255,255,0.75);backdrop-filter:blur(10px);
+  border:1.5px solid rgba(255,255,255,0.9);
+  border-radius:18px;padding:22px 20px;
+  box-shadow:0 6px 20px rgba(99,102,241,0.08);
+  transition:transform .2s;
+}
+.w-feat:hover{transform:translateY(-4px);}
+.w-feat-icon{
+  width:48px;height:48px;border-radius:14px;
+  background:var(--grad-btn);
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;margin-bottom:12px;
+  box-shadow:0 6px 16px rgba(99,102,241,0.25);
+}
+.w-feat h3{font-family:var(--font-display);font-weight:900;font-size:1.05rem;margin-bottom:6px;}
+.w-feat p{font-size:.88rem;color:var(--text-soft);line-height:1.6;}
+
+/* ═══ CALENDAR 12 THÁNG — copy style từ calendar.html ═══ */
+.w-cal-section{
+  max-width:1200px;margin:70px auto 0;padding:0 24px;
+  position:relative;z-index:1;
+}
+.w-section-head{
+  text-align:center;margin-bottom:30px;
+}
+.w-section-head .eyebrow{
+  display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:8px;
+}
+.w-section-head h2{
+  font-family:var(--font-display);font-weight:900;
+  font-size:clamp(1.6rem,3.5vw,2.2rem);color:var(--text-dark);
+  margin-bottom:8px;
+}
+.w-section-head p{color:var(--text-soft);font-size:.95rem;max-width:600px;margin:0 auto;}
+
+.cal-container{
+  max-width:1100px;margin:0 auto;padding:0 0 48px;position:relative;z-index:1;
+}
+.cal-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:12px;
+}
+@media(max-width:900px){.cal-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:680px){.cal-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:440px){.cal-grid{grid-template-columns:1fr;}}
+
+.cal-m{
+  background:#fff;border-radius:8px;padding:0;
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);
+  border:1px solid rgba(0,0,0,0.04);
+  display:flex;flex-direction:column;overflow:hidden;
+  transition:transform .2s,box-shadow .2s;
+}
+.cal-m:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(99,102,241,0.15);}
+.cal-m-head{
+  background:linear-gradient(135deg,#4a7bf7 0%,#7c5bf5 100%);
+  color:#fff;padding:6px 8px;text-align:center;position:relative;
+}
+.cal-m-name{font-family:var(--font-display);font-weight:900;font-size:.82rem;letter-spacing:.02em;}
+.cal-m-current{
+  position:absolute;top:3px;right:4px;
+  background:linear-gradient(135deg,#ef4444,#f59e0b);
+  color:#fff;font-size:.5rem;font-weight:800;
+  padding:1px 5px;border-radius:999px;letter-spacing:.04em;
+}
+.cal-m-week{display:grid;grid-template-columns:repeat(7,1fr);background:#f3f4f8;border-bottom:1px solid rgba(0,0,0,0.06);}
+.cal-m-week div{text-align:center;font-size:.55rem;font-weight:800;color:#6b7aaa;padding:4px 0;text-transform:uppercase;letter-spacing:.02em;}
+.cal-m-week div.sun{color:#ef4444;}
+.cal-m-week div.sat{color:#2563eb;}
+.cal-m-body{display:grid;grid-template-columns:repeat(7,1fr);padding:4px;gap:1px;flex:1;}
+.cal-m-day{
+  aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+  position:relative;font-size:.7rem;font-weight:600;color:var(--text-dark);
+  border-radius:4px;cursor:default;transition:background .15s;
+}
+.cal-m-day.empty{visibility:hidden;}
+.cal-m-day.sun{color:#ef4444;}
+.cal-m-day.sat{color:#2563eb;}
+.cal-m-day:hover{background:rgba(99,102,241,0.08);}
+.cal-m-day.has-event{
+  font-weight:800;color:#fff;
+  background:var(--ev-color, var(--accent));
+  box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+.cal-m-day.has-event.sun,.cal-m-day.has-event.sat{color:#fff;}
+.cal-m-day.today{outline:2px solid #f59e0b;outline-offset:-2px;}
+.cal-m-day.today.has-event{outline-color:#fff;}
+.cal-m-day.has-event::after{
+  content:'';position:absolute;bottom:1px;left:50%;transform:translateX(-50%);
+  width:4px;height:4px;border-radius:50%;background:#fff;
+  box-shadow:0 0 0 1px rgba(0,0,0,0.1);
+}
+.cal-m-tip{
+  position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);
+  background:var(--text-dark);color:#fff;
+  padding:8px 10px;border-radius:8px;
+  font-size:.7rem;font-weight:500;
+  white-space:nowrap;max-width:240px;z-index:20;pointer-events:none;
+  opacity:0;visibility:hidden;transition:opacity .15s,visibility .15s;
+  box-shadow:0 6px 18px rgba(0,0,0,0.25);line-height:1.4;text-align:left;
+}
+.cal-m-tip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--text-dark);}
+.cal-m-tip strong{color:#fcd34d;}
+.cal-m-day:hover .cal-m-tip{opacity:1;visibility:visible;}
+
+.cal-legend{
+  display:flex;gap:14px;flex-wrap:wrap;justify-content:center;
+  margin-top:24px;padding:14px 18px;
+  background:rgba(255,255,255,0.6);backdrop-filter:blur(8px);
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.9);
+}
+.cal-legend-item{display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text-mid);font-weight:600;}
+.cal-legend-dot{width:12px;height:12px;border-radius:4px;}
+
+.cal-cta{
+  text-align:center;margin-top:20px;
+}
+.cal-cta a{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--grad-btn);color:#fff;font-weight:800;font-size:.88rem;
+  padding:11px 24px;border-radius:999px;text-decoration:none;
+  box-shadow:0 8px 22px rgba(99,102,241,0.3);
+  transition:transform .2s;
+}
+.cal-cta a:hover{transform:translateY(-2px);}
+
+/* ═══ FOOTER ═══ */
+.lp-footer{
+  position:relative;z-index:1;
+  background:rgba(255,255,255,0.55);
+  backdrop-filter:blur(12px);
+  border-top:1px solid rgba(255,255,255,0.85);
+  margin-top:12px;
+}
+.lp-footer-inner{
+  max-width:1200px;margin:0 auto;padding:20px 24px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+}
+.lp-footer-logo{display:flex;align-items:center;gap:8px;}
+.lp-footer-logo .emoji{
+  width:32px;height:32px;border-radius:8px;
+  background:var(--grad);display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.lp-footer-logo .emoji img{width:100%;height:100%;object-fit:cover;}
+.lp-footer-logo span{font-family:var(--font-display);font-weight:900;font-size:.85rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.lp-footer-links{display:flex;gap:18px;flex-wrap:wrap;}
+.lp-footer-links a{font-size:.8rem;color:var(--text-soft);text-decoration:none;font-weight:600;transition:color .2s;}
+.lp-footer-links a:hover{color:var(--accent);}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="lp-nav">
+  <div class="lp-nav-inner">
+    <a href="index.html" class="lp-logo">
+      <div class="lp-logo-emoji">
+        <img src="assets/images/waybi/waybi-mascot.png" alt="Waybi"/>
+      </div>
+      <span class="lp-logo-text">BrightWay</span>
+    </a>
+    <div class="lp-nav-links">
+      <a href="index.html">Trang chủ</a>
+      <a href="page2.html">Trường</a>
+      <a href="score-calculator.html">Tính điểm</a>
+      <a href="calendar.html">📅 Lịch</a>
+    </div>
+    <a href="#calendar" class="lp-nav-cta">Lộ trình 12 tháng →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="w-hero">
+  <div class="w-hero-text">
+    <span class="w-tag">✨ Trợ lý AI của BrightWay</span>
+    <h1>Xin chào, mình là <span>Waybi</span> 👋</h1>
+    <p>Mình là linh vật và trợ lý AI của BrightWay Scholars. Mình sẽ đồng hành cùng bạn trong hành trình apply học bổng — từ lộ trình 12 tháng, tra cứu trường, viết CV đến luyện essay.</p>
+    <div class="w-hero-cta">
+      <a href="#calendar" class="w-btn">🗓️ Xem lộ trình 12 tháng</a>
+      <a href="cv-review.html" class="w-btn ghost">✍️ Sửa CV với AI</a>
+    </div>
+  </div>
+  <div class="w-hero-img">
+    <span class="w-hero-bubble b1">Hello! ✨</span>
+    <span class="w-hero-bubble b2">Mình giúp nhé!</span>
+    <span class="w-hero-bubble b3">📅 Lịch 2026</span>
+    <img src="assets/images/waybi/waybi-mascot.png" alt="Waybi mascot"/>
+  </div>
+</section>
+
+<!-- 3 FEATURES -->
+<section class="w-features">
+  <div class="w-feat">
+    <div class="w-feat-icon">🗺️</div>
+    <h3>Lộ trình 12 tháng</h3>
+    <p>Cùng bạn đi từng tháng, từ lúc xác định mục tiêu đến khi nộp hồ sơ và nhận kết quả.</p>
+  </div>
+  <div class="w-feat">
+    <div class="w-feat-icon">✍️</div>
+    <h3>CV & Essay AI</h3>
+    <p>Đánh giá CV, gợi ý chỉnh sửa essay, giúp hồ sơ nổi bật trong mắt hội đồng tuyển sinh.</p>
+  </div>
+  <div class="w-feat">
+    <div class="w-feat-icon">🎓</div>
+    <h3>Tra cứu trường</h3>
+    <p>Hơn 30 trường ĐH Việt Nam với thông tin học bổng, ngành nổi bật, điểm chuẩn các năm.</p>
+  </div>
+</section>
+
+<!-- CALENDAR 12 THÁNG — style giống calendar.html -->
+<section class="w-cal-section" id="calendar">
+  <div class="w-section-head">
+    <div class="eyebrow">📅 Lộ trình 12 tháng</div>
+    <h2>Mỗi tháng một bước — đi cùng Waybi</h2>
+    <p>Click vào ngày có sự kiện để xem chi tiết. Màu sắc mỗi loại sự kiện như dưới.</p>
+  </div>
+
+  <div class="cal-container">
+    <div class="cal-grid" id="calGrid"></div>
+
+    <div class="cal-legend">
+      <div class="cal-legend-item"><span class="cal-legend-dot" style="background:#ef4444"></span>📝 Thi</div>
+      <div class="cal-legend-item"><span class="cal-legend-dot" style="background:#f59e0b"></span>📤 Nộp hồ sơ</div>
+      <div class="cal-legend-item"><span class="cal-legend-dot" style="background:#3b82f6"></span>📊 Công bố</div>
+      <div class="cal-legend-item"><span class="cal-legend-dot" style="background:#8b5cf6"></span>🎤 Phỏng vấn</div>
+      <div class="cal-legend-item"><span class="cal-legend-dot" style="background:#10b981"></span>📚 Học bạ</div>
+      <div class="cal-legend-item"><span class="cal-legend-dot" style="background:#06b6d4"></span>💡 Tư vấn</div>
+    </div>
+
+    <div class="cal-cta">
+      <a href="calendar.html">📅 Mở lịch đầy đủ với mô tả chi tiết →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="lp-footer">
+  <div class="lp-footer-inner">
+    <div class="lp-footer-logo">
+      <div class="emoji"><img src="assets/images/waybi/waybi-mascot.png" alt="Waybi"/></div>
+      <span>BrightWay</span>
+    </div>
+    <div class="lp-footer-links">
+      <a href="index.html">Trang chủ</a>
+      <a href="page2.html">Trường</a>
+      <a href="score-calculator.html">Tính điểm</a>
+      <a href="scholarship-roadmap.html">Lộ trình</a>
+      <a href="calendar.html">📅 Lịch</a>
+    </div>
+    <div style="font-size:.74rem;color:var(--text-soft);">© 2026 BrightWay</div>
+  </div>
+</footer>
+
+<script>
+/* ── WAYBI CALENDAR 12 THÁNG (data giống calendar.html) ── */
+(function(){
+  const CAT = {
+    thi:   { color: '#ef4444', icon: '📝' },
+    nop:   { color: '#f59e0b', icon: '📤' },
+    cbt:   { color: '#3b82f6', icon: '📊' },
+    phong: { color: '#8b5cf6', icon: '🎤' },
+    hocba: { color: '#10b981', icon: '📚' },
+    tuvan: { color: '#06b6d4', icon: '💡' },
+  };
+  const EVENTS = [
+    { d: '2026-01-15', cat: 'tuvan', title: 'Mở ĐK xét tuyển sớm', sub: 'Các trường ĐH mở cổng ĐK NV đợt đầu.' },
+    { d: '2026-01-20', cat: 'hocba', title: 'Nhận hồ sơ học bạ đợt 1', sub: 'Nhận hồ sơ xét học bạ 5 HK.' },
+    { d: '2026-02-10', cat: 'tuvan', title: 'Tư vấn xét tuyển tại THPT', sub: 'Đoàn tư vấn các ĐH đến tư vấn trực tiếp.' },
+    { d: '2026-02-15', cat: 'nop', title: 'Deadline nộp hồ sơ xét sớm', sub: 'Hết hạn ĐK NV xét sớm đợt 1.' },
+    { d: '2026-02-25', cat: 'thi', title: 'Thi HSA đợt 1 (ĐHQG HN)', sub: 'Kỳ thi ĐGNL HSA.' },
+    { d: '2026-03-05', cat: 'cbt', title: 'Công bố trúng tuyển sớm đợt 1', sub: 'Các trường công bố DS trúng tuyển.' },
+    { d: '2026-03-10', cat: 'hocba', title: 'Deadline hồ sơ học bạ đợt 1', sub: 'Hết hạn nộp học bạ đợt 1.' },
+    { d: '2026-03-15', cat: 'thi', title: 'Thi V-ACT đợt 1', sub: 'Kỳ thi V-ACT tại ĐHQG HCM.' },
+    { d: '2026-03-20', cat: 'tuvan', title: 'Open Day các trường ĐH', sub: 'HCMUT, UIT, UEH, FTU… mở cửa tham quan.' },
+    { d: '2026-03-25', cat: 'cbt', title: 'Công bố trúng tuyển học bạ đợt 1', sub: 'DS trúng tuyển theo học bạ.' },
+    { d: '2026-04-05', cat: 'thi', title: 'Thi V-ACT đợt 2', sub: 'Đợt thi V-ACT thứ hai.' },
+    { d: '2026-04-10', cat: 'hocba', title: 'Nhận hồ sơ học bạ đợt 2', sub: 'Đợt xét học bạ tiếp theo.' },
+    { d: '2026-04-15', cat: 'tuvan', title: 'Ngày hội tư vấn toàn quốc', sub: 'Bộ GD&ĐT và Sở GD&ĐT tổ chức.' },
+    { d: '2026-04-25', cat: 'thi', title: 'Thi TSA (ĐHBK HN)', sub: 'Kỳ thi TSA do ĐHBK HN tổ chức.' },
+    { d: '2026-05-05', cat: 'nop', title: 'ĐK dự thi tốt nghiệp THPT', sub: 'ĐK trên cổng Bộ GD&ĐT.' },
+    { d: '2026-05-15', cat: 'hocba', title: 'Deadline học bạ đợt 2', sub: 'Hết hạn đợt 2 xét học bạ.' },
+    { d: '2026-05-20', cat: 'cbt', title: 'Công bố trúng tuyển học bạ đợt 2', sub: 'Đợt công bố cuối cho xét học bạ.' },
+    { d: '2026-05-24', cat: 'thi', title: 'Thi V-ACT đợt 3', sub: 'Đợt thi V-ACT cuối.' },
+    { d: '2026-05-30', cat: 'tuvan', title: 'Hạn cuối ĐK xét tuyển thẳng', sub: 'Nộp hồ sơ xét tuyển thẳng.' },
+    { d: '2026-06-10', cat: 'thi', title: 'Thi H-SCA (ĐHSP TPHCM)', sub: 'Kỳ thi ĐGNL chuyên biệt H-SCA.' },
+    { d: '2026-06-25', cat: 'cbt', title: 'Công bố lịch thi THPT QG', sub: 'Bộ GD&ĐT công bố lịch thi.' },
+    { d: '2026-07-01', cat: 'thi', title: 'Khai mạc kỳ thi tốt nghiệp THPT', sub: 'Các ngày thi diễn ra trong tuần đầu tháng 7.' },
+    { d: '2026-07-03', cat: 'thi', title: 'Thi tổ hợp KHXH, KHTN', sub: 'Thi các môn tổ hợp.' },
+    { d: '2026-07-15', cat: 'nop', title: 'Mở ĐK nguyện vọng xét tuyển', sub: 'Cổng ĐK NV của Bộ GD&ĐT mở.' },
+    { d: '2026-07-20', cat: 'cbt', title: 'Công bố điểm thi tốt nghiệp', sub: 'Bộ GD&ĐT công bố điểm thi.' },
+    { d: '2026-07-30', cat: 'nop', title: 'Deadline ĐK nguyện vọng', sub: 'Hết hạn ĐK NV trên cổng Bộ.' },
+    { d: '2026-08-05', cat: 'cbt', title: 'Lọc ảo, xét tuyển đợt 1', sub: 'Các trường nhận kết quả và lọc ảo.' },
+    { d: '2026-08-15', cat: 'cbt', title: 'Công bố điểm chuẩn đợt 1', sub: 'Các trường công bố điểm chuẩn.' },
+    { d: '2026-08-18', cat: 'nop', title: 'Xác nhận nhập học đợt 1', sub: 'Thí sinh xác nhận nhập học.' },
+    { d: '2026-08-25', cat: 'cbt', title: 'Xét tuyển bổ sung đợt 1', sub: 'Cho các ngành còn chỉ tiêu.' },
+    { d: '2026-08-30', cat: 'phong', title: 'Phỏng vấn học bổng', sub: 'Một số CT học bổng tổ chức PV.' },
+    { d: '2026-09-10', cat: 'cbt', title: 'Công bố điểm chuẩn BS đợt 1', sub: 'Điểm chuẩn bổ sung đợt 1.' },
+    { d: '2026-09-15', cat: 'cbt', title: 'Nhập học đợt đầu', sub: 'Sinh viên năm nhất nhập học.' },
+    { d: '2026-09-25', cat: 'nop', title: 'Xét tuyển bổ sung đợt 2', sub: 'Nếu còn chỉ tiêu.' },
+    { d: '2026-10-01', cat: 'cbt', title: 'Công bố điểm chuẩn BS đợt 2', sub: 'Đợt cuối công bố điểm chuẩn.' },
+    { d: '2026-10-15', cat: 'phong', title: 'PV học bổng tư thục', sub: 'FPT, Duy Tân, RMIT… tổ chức PV.' },
+    { d: '2026-11-05', cat: 'nop', title: 'Deadline HB quốc tế', sub: 'Hết hạn nộp nhiều học bổng quốc tế.' },
+    { d: '2026-11-15', cat: 'phong', title: 'PV học bổng chính phủ', sub: 'Chevening, Fulbright, MEXT…' },
+    { d: '2026-12-01', cat: 'cbt', title: 'Kết quả HB quốc tế đợt 1', sub: 'Nhiều CT học bổng công bố kết quả.' },
+    { d: '2026-12-15', cat: 'tuvan', title: 'Tổng kết mùa tuyển sinh 2026', sub: 'Rút kinh nghiệm cho mùa sau.' },
+  ];
+  const MONTHS = ['Tháng 1','Tháng 2','Tháng 3','Tháng 4','Tháng 5','Tháng 6',
+                  'Tháng 7','Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12'];
+  const now = new Date();
+  const cm = now.getFullYear() === 2026 ? now.getMonth() : -1;
+  const cd = now.getFullYear() === 2026 ? now.getDate() : -1;
+  const map = {};
+  EVENTS.forEach(e => { (map[e.d] = map[e.d] || []).push(e); });
+  const grid = document.getElementById('calGrid');
+  if (!grid) return;
+  for (let m = 0; m < 12; m++) {
+    const fd = new Date(2026, m, 1).getDay();
+    const dn = new Date(2026, m + 1, 0).getDate();
+    const isCur = m === cm;
+    const card = document.createElement('div');
+    card.className = 'cal-m';
+    const week = ['CN','T2','T3','T4','T5','T6','T7']
+      .map((w, i) => `<div class="${i===0?'sun':i===6?'sat':''}">${w}</div>`).join('');
+    let body = '';
+    for (let i = 0; i < fd; i++) body += '<div class="cal-m-day empty"></div>';
+    for (let d = 1; d <= dn; d++) {
+      const ds = `2026-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+      const evs = map[ds];
+      const dow = new Date(2026, m, d).getDay();
+      let cls = 'cal-m-day';
+      if (dow === 0) cls += ' sun';
+      else if (dow === 6) cls += ' sat';
+      if (isCur && d === cd) cls += ' today';
+      if (evs && evs.length) {
+        const cat = CAT[evs[0].cat];
+        cls += ' has-event';
+        const tip = evs.length === 1
+          ? `<div class="cal-m-tip"><strong>${cat.icon} ${evs[0].title}</strong><br>${evs[0].sub}</div>`
+          : `<div class="cal-m-tip"><strong>${evs.length} sự kiện</strong><br>${evs.map(x => '• '+x.title).join('<br>')}</div>`;
+        body += `<div class="${cls}" style="--ev-color:${cat.color}">${d}${tip}</div>`;
+      } else {
+        body += `<div class="${cls}">${d}</div>`;
+      }
+    }
+    card.innerHTML = `
+      <div class="cal-m-head">
+        ${isCur ? '<span class="cal-m-current">HIỆN TẠI</span>' : ''}
+        <div class="cal-m-name">${MONTHS[m]} 2026</div>
+      </div>
+      <div class="cal-m-week">${week}</div>
+      <div class="cal-m-body">${body}</div>
+    `;
+    grid.appendChild(card);
+  }
+})();
+</script>
+<script src="assets/js/waybi.js"></script>
+<script src="assets/js/waybi-presence.js"></script>
+</body>
+</html>
