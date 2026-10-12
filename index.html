@@ -7083,6 +7083,7 @@ Bạn cần hỏi gì nào?</div>
       : 'Xem tất cả 12 tháng';
     try { localStorage.setItem('bw_timeline_expanded', expanded ? '1' : '0'); } catch (e) {}
   });
+  // v5 redeploy trigger
   try {
     if (localStorage.getItem('bw_timeline_expanded') === '1') {
       expanded = true;
