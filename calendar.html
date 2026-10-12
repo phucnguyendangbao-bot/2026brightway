@@ -191,6 +191,102 @@ body::after{
 }
 
 /* ════════════════════════════════════════
+   WAYBI SECTION — Lộ trình Lớp 12
+   (Hero Waybi + calendar mini 12 tháng)
+   ════════════════════════════════════════ */
+.wb-section{
+  max-width:1100px;margin:24px auto 16px;
+  position:relative;z-index:1;
+  background:linear-gradient(135deg,rgba(99,102,241,0.06),rgba(167,139,250,0.08));
+  border:1.5px solid rgba(99,102,241,0.18);
+  border-radius:18px;padding:20px 22px;
+}
+.wb-head{
+  display:flex;align-items:center;gap:18px;margin-bottom:16px;
+  flex-wrap:wrap;
+}
+.wb-mascot{
+  width:80px;height:80px;border-radius:50%;
+  background:#fff;padding:5px;flex-shrink:0;
+  box-shadow:0 6px 18px rgba(99,102,241,0.25);
+  animation:wb-bob 2.8s ease-in-out infinite;
+}
+.wb-mascot img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+@keyframes wb-bob{0%,100%{transform:translateY(0) rotate(-2deg);}50%{transform:translateY(-5px) rotate(2deg);}}
+.wb-head-text{flex:1;min-width:200px;}
+.wb-head-text .eyebrow{
+  display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:3px;
+}
+.wb-head-text h2{
+  font-family:var(--font-display);font-weight:900;font-size:1.25rem;
+  color:var(--text-dark);margin-bottom:4px;line-height:1.2;
+}
+.wb-head-text p{font-size:.82rem;color:var(--text-soft);line-height:1.5;margin:0;}
+.wb-mini-grid{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:8px;
+}
+@media(max-width:900px){.wb-mini-grid{grid-template-columns:repeat(4,1fr);}}
+@media(max-width:600px){.wb-mini-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:420px){.wb-mini-grid{grid-template-columns:repeat(2,1fr);}}
+.wb-m{
+  background:#fff;border-radius:8px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.06);
+  border:1px solid rgba(0,0,0,0.05);
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .2s,box-shadow .2s;
+}
+.wb-m:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(99,102,241,0.18);}
+.wb-m-head{
+  background:linear-gradient(135deg,#4a7bf7 0%,#7c5bf5 100%);
+  color:#fff;text-align:center;padding:4px 4px;position:relative;
+  font-family:var(--font-display);font-weight:900;font-size:.7rem;letter-spacing:.02em;
+}
+.wb-m-cur{
+  position:absolute;top:2px;right:2px;
+  background:linear-gradient(135deg,#ef4444,#f59e0b);
+  color:#fff;font-size:.45rem;font-weight:800;
+  padding:1px 4px;border-radius:999px;letter-spacing:.04em;
+}
+.wb-m-body{
+  display:grid;grid-template-columns:repeat(7,1fr);padding:3px;gap:1px;flex:1;
+}
+.wb-d{
+  aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+  font-size:.55rem;font-weight:600;color:var(--text-dark);
+  border-radius:3px;position:relative;cursor:default;
+}
+.wb-d.empty{visibility:hidden;}
+.wb-d.sun{color:#ef4444;}.wb-d.sat{color:#2563eb;}
+.wb-d.has{
+  font-weight:800;color:#fff;
+  background:var(--ev-color,var(--accent));
+}
+.wb-d.has.sun,.wb-d.has.sat{color:#fff;}
+.wb-d.today{outline:1.5px solid #f59e0b;outline-offset:-1.5px;}
+.wb-d.today.has{outline-color:#fff;}
+.wb-d-tip{
+  position:absolute;bottom:calc(100% + 4px);left:50%;transform:translateX(-50%);
+  background:var(--text-dark);color:#fff;
+  padding:6px 8px;border-radius:6px;
+  font-size:.6rem;font-weight:500;line-height:1.4;
+  white-space:nowrap;max-width:200px;z-index:30;pointer-events:none;
+  opacity:0;visibility:hidden;transition:opacity .15s;
+  box-shadow:0 4px 12px rgba(0,0,0,0.2);text-align:left;
+}
+.wb-d-tip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:4px solid transparent;border-top-color:var(--text-dark);}
+.wb-d-tip strong{color:#fcd34d;}
+.wb-d:hover .wb-d-tip{opacity:1;visibility:visible;}
+.wb-legend{
+  display:flex;gap:10px;flex-wrap:wrap;justify-content:center;
+  margin-top:12px;padding:8px 12px;
+  background:rgba(255,255,255,0.5);border-radius:10px;
+  font-size:.7rem;color:var(--text-mid);
+}
+.wb-leg-item{display:flex;align-items:center;gap:4px;font-weight:600;}
+.wb-leg-dot{width:10px;height:10px;border-radius:3px;}
+
+/* ════════════════════════════════════════
    12-CALENDAR GRID — 4 cột × 3 hàng
    ════════════════════════════════════════ */
 .cal-container{
@@ -342,7 +438,7 @@ body::after{
 <nav class="lp-nav">
   <div class="lp-nav-inner">
     <a href="index.html" class="lp-logo">
-      <div class="lp-logo-emoji"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="navLg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fff"/><stop offset="100%" stop-color="#e0e7ff"/></linearGradient></defs><path d="M32 6 C 18 6, 8 18, 8 32 C 8 46, 18 56, 32 56 C 46 56, 56 46, 56 32 C 56 18, 46 6, 32 6 Z" fill="url(#navLg)"/><circle cx="24" cy="30" r="3" fill="#6366f1"/><circle cx="40" cy="30" r="3" fill="#6366f1"/><path d="M27 40 Q 32 44 37 40" stroke="#6366f1" stroke-width="2.5" fill="none" stroke-linecap="round"/><circle cx="18" cy="38" r="2.5" fill="#fda4af" opacity="0.8"/><circle cx="46" cy="38" r="2.5" fill="#fda4af" opacity="0.8"/><rect x="20" y="14" width="24" height="3" fill="#1a1a3e"/><rect x="22" y="12" width="20" height="3" fill="#1a1a3e" rx="1"/><line x1="42" y1="13" x2="44" y2="20" stroke="#fcd34d" stroke-width="1.5"/><circle cx="44" cy="21" r="1.8" fill="#fcd34d"/></svg></div>
+      <div class="lp-logo-emoji"><img src="assets/images/waybi/waybi-mascot.png" alt="Waybi" style="width:100%;height:100%;object-fit:cover;border-radius:10px;"/></div>
       <span class="lp-logo-text">BrightWay</span>
     </a>
     <div class="lp-nav-links">
@@ -378,7 +474,32 @@ body::after{
   </div>
 </div>
 
-<!-- BANNER -->
+<!-- WAYBI SECTION — Lộ trình Lớp 12 -->
+<section class="wb-section">
+  <div class="wb-head">
+    <div class="wb-mascot">
+      <img src="assets/images/waybi/waybi-mascot.png" alt="Waybi"/>
+    </div>
+    <div class="wb-head-text">
+      <div class="eyebrow">🤖 Lộ trình Lớp 12</div>
+      <h2>Mỗi tháng một bước — đi cùng Waybi</h2>
+      <p>Click vào ngày có sự kiện để xem chi tiết. 12 tháng, đầy đủ mốc thi, nộp, công bố điểm chuẩn 2026.</p>
+    </div>
+  </div>
+
+  <div class="wb-mini-grid" id="wbMiniGrid"></div>
+
+  <div class="wb-legend">
+    <div class="wb-leg-item"><span class="wb-leg-dot" style="background:#ef4444"></span>📝 Thi</div>
+    <div class="wb-leg-item"><span class="wb-leg-dot" style="background:#f59e0b"></span>📤 Nộp hồ sơ</div>
+    <div class="wb-leg-item"><span class="wb-leg-dot" style="background:#3b82f6"></span>📊 Công bố</div>
+    <div class="wb-leg-item"><span class="wb-leg-dot" style="background:#8b5cf6"></span>🎤 Phỏng vấn</div>
+    <div class="wb-leg-item"><span class="wb-leg-dot" style="background:#10b981"></span>📚 Học bạ</div>
+    <div class="wb-leg-item"><span class="wb-leg-dot" style="background:#06b6d4"></span>💡 Tư vấn</div>
+  </div>
+</section>
+
+<!-- BANNER CŨ ĐÃ THAY BẰNG WAYBI SECTION
 <div class="cal-banner">
   <div class="cal-banner-year">
     <h2>2026</h2>
@@ -388,6 +509,7 @@ body::after{
     <div class="cal-banner-sub">Tuyển sinh Đại học</div>
   </div>
 </div>
+-->
 
 <!-- GRID 12 THÁNG -->
 <div class="cal-container">
@@ -398,7 +520,7 @@ body::after{
 <footer class="lp-footer">
   <div class="lp-footer-inner">
     <div class="lp-footer-logo">
-      <div class="emoji"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%"><defs><linearGradient id="ftLg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#6b8eff"/><stop offset="100%" stop-color="#a78bfa"/></linearGradient></defs><path d="M32 6 C 18 6, 8 18, 8 32 C 8 46, 18 56, 32 56 C 46 56, 56 46, 56 32 C 56 18, 46 6, 32 6 Z" fill="url(#ftLg)"/><circle cx="24" cy="30" r="3" fill="#fff"/><circle cx="40" cy="30" r="3" fill="#fff"/><path d="M27 40 Q 32 44 37 40" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/><rect x="20" y="14" width="24" height="3" fill="#1a1a3e"/><rect x="22" y="12" width="20" height="3" fill="#1a1a3e" rx="1"/></svg></div>
+      <div class="emoji"><img src="assets/images/waybi/waybi-mascot.png" alt="Waybi" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"/></div>
       <span>BrightWay</span>
     </div>
     <div class="lp-footer-links">
@@ -411,6 +533,105 @@ body::after{
   </div>
 </footer>
 
+<script>
+/* ═══ WAYBI MINI CALENDAR (12 tháng dạng grid) ═══ */
+(function(){
+  const CAT = {
+    thi:   { color: '#ef4444', icon: '📝' },
+    nop:   { color: '#f59e0b', icon: '📤' },
+    cbt:   { color: '#3b82f6', icon: '📊' },
+    phong: { color: '#8b5cf6', icon: '🎤' },
+    hocba: { color: '#10b981', icon: '📚' },
+    tuvan: { color: '#06b6d4', icon: '💡' },
+  };
+  const EVENTS = [
+    { d: '2026-01-15', cat: 'tuvan', title: 'Mở ĐK xét tuyển sớm', sub: 'Các trường ĐH mở cổng ĐK NV đợt đầu.' },
+    { d: '2026-01-20', cat: 'hocba', title: 'Nhận hồ sơ học bạ đợt 1', sub: 'Nhận hồ sơ xét học bạ 5 HK.' },
+    { d: '2026-02-10', cat: 'tuvan', title: 'Tư vấn xét tuyển tại THPT', sub: 'Đoàn tư vấn các ĐH đến tư vấn trực tiếp.' },
+    { d: '2026-02-15', cat: 'nop', title: 'Deadline nộp hồ sơ xét sớm', sub: 'Hết hạn ĐK NV xét sớm đợt 1.' },
+    { d: '2026-02-25', cat: 'thi', title: 'Thi HSA đợt 1 (ĐHQG HN)', sub: 'Kỳ thi ĐGNL HSA.' },
+    { d: '2026-03-05', cat: 'cbt', title: 'Công bố trúng tuyển sớm đợt 1', sub: 'Các trường công bố DS trúng tuyển.' },
+    { d: '2026-03-10', cat: 'hocba', title: 'Deadline hồ sơ học bạ đợt 1', sub: 'Hết hạn nộp học bạ đợt 1.' },
+    { d: '2026-03-15', cat: 'thi', title: 'Thi V-ACT đợt 1', sub: 'Kỳ thi V-ACT tại ĐHQG HCM.' },
+    { d: '2026-03-20', cat: 'tuvan', title: 'Open Day các trường ĐH', sub: 'HCMUT, UIT, UEH, FTU… mở cửa tham quan.' },
+    { d: '2026-03-25', cat: 'cbt', title: 'Công bố trúng tuyển học bạ đợt 1', sub: 'DS trúng tuyển theo học bạ.' },
+    { d: '2026-04-05', cat: 'thi', title: 'Thi V-ACT đợt 2', sub: 'Đợt thi V-ACT thứ hai.' },
+    { d: '2026-04-10', cat: 'hocba', title: 'Nhận hồ sơ học bạ đợt 2', sub: 'Đợt xét học bạ tiếp theo.' },
+    { d: '2026-04-15', cat: 'tuvan', title: 'Ngày hội tư vấn toàn quốc', sub: 'Bộ GD&ĐT và Sở GD&ĐT tổ chức.' },
+    { d: '2026-04-25', cat: 'thi', title: 'Thi TSA (ĐHBK HN)', sub: 'Kỳ thi TSA do ĐHBK HN tổ chức.' },
+    { d: '2026-05-05', cat: 'nop', title: 'ĐK dự thi tốt nghiệp THPT', sub: 'ĐK trên cổng Bộ GD&ĐT.' },
+    { d: '2026-05-15', cat: 'hocba', title: 'Deadline học bạ đợt 2', sub: 'Hết hạn đợt 2 xét học bạ.' },
+    { d: '2026-05-20', cat: 'cbt', title: 'Công bố trúng tuyển học bạ đợt 2', sub: 'Đợt công bố cuối cho xét học bạ.' },
+    { d: '2026-05-24', cat: 'thi', title: 'Thi V-ACT đợt 3', sub: 'Đợt thi V-ACT cuối.' },
+    { d: '2026-05-30', cat: 'tuvan', title: 'Hạn cuối ĐK xét tuyển thẳng', sub: 'Nộp hồ sơ xét tuyển thẳng.' },
+    { d: '2026-06-10', cat: 'thi', title: 'Thi H-SCA (ĐHSP TPHCM)', sub: 'Kỳ thi ĐGNL chuyên biệt H-SCA.' },
+    { d: '2026-06-25', cat: 'cbt', title: 'Công bố lịch thi THPT QG', sub: 'Bộ GD&ĐT công bố lịch thi.' },
+    { d: '2026-07-01', cat: 'thi', title: 'Khai mạc kỳ thi tốt nghiệp THPT', sub: 'Các ngày thi diễn ra trong tuần đầu tháng 7.' },
+    { d: '2026-07-03', cat: 'thi', title: 'Thi tổ hợp KHXH, KHTN', sub: 'Thi các môn tổ hợp.' },
+    { d: '2026-07-15', cat: 'nop', title: 'Mở ĐK nguyện vọng xét tuyển', sub: 'Cổng ĐK NV của Bộ GD&ĐT mở.' },
+    { d: '2026-07-20', cat: 'cbt', title: 'Công bố điểm thi tốt nghiệp', sub: 'Bộ GD&ĐT công bố điểm thi.' },
+    { d: '2026-07-30', cat: 'nop', title: 'Deadline ĐK nguyện vọng', sub: 'Hết hạn ĐK NV trên cổng Bộ.' },
+    { d: '2026-08-05', cat: 'cbt', title: 'Lọc ảo, xét tuyển đợt 1', sub: 'Các trường nhận kết quả và lọc ảo.' },
+    { d: '2026-08-15', cat: 'cbt', title: 'Công bố điểm chuẩn đợt 1', sub: 'Các trường công bố điểm chuẩn.' },
+    { d: '2026-08-18', cat: 'nop', title: 'Xác nhận nhập học đợt 1', sub: 'Thí sinh xác nhận nhập học.' },
+    { d: '2026-08-25', cat: 'cbt', title: 'Xét tuyển bổ sung đợt 1', sub: 'Cho các ngành còn chỉ tiêu.' },
+    { d: '2026-08-30', cat: 'phong', title: 'Phỏng vấn học bổng', sub: 'Một số CT học bổng tổ chức PV.' },
+    { d: '2026-09-10', cat: 'cbt', title: 'Công bố điểm chuẩn BS đợt 1', sub: 'Điểm chuẩn bổ sung đợt 1.' },
+    { d: '2026-09-15', cat: 'cbt', title: 'Nhập học đợt đầu', sub: 'Sinh viên năm nhất nhập học.' },
+    { d: '2026-09-25', cat: 'nop', title: 'Xét tuyển bổ sung đợt 2', sub: 'Nếu còn chỉ tiêu.' },
+    { d: '2026-10-01', cat: 'cbt', title: 'Công bố điểm chuẩn BS đợt 2', sub: 'Đợt cuối công bố điểm chuẩn.' },
+    { d: '2026-10-15', cat: 'phong', title: 'PV học bổng tư thục', sub: 'FPT, Duy Tân, RMIT… tổ chức PV.' },
+    { d: '2026-11-05', cat: 'nop', title: 'Deadline HB quốc tế', sub: 'Hết hạn nộp nhiều học bổng quốc tế.' },
+    { d: '2026-11-15', cat: 'phong', title: 'PV học bổng chính phủ', sub: 'Chevening, Fulbright, MEXT…' },
+    { d: '2026-12-01', cat: 'cbt', title: 'Kết quả HB quốc tế đợt 1', sub: 'Nhiều CT học bổng công bố kết quả.' },
+    { d: '2026-12-15', cat: 'tuvan', title: 'Tổng kết mùa tuyển sinh 2026', sub: 'Rút kinh nghiệm cho mùa sau.' },
+  ];
+  const MONTHS = ['T1','T2','T3','T4','T5','T6','T7','T8','T9','T10','T11','T12'];
+  const now = new Date();
+  const cm = now.getFullYear() === 2026 ? now.getMonth() : -1;
+  const cd = now.getFullYear() === 2026 ? now.getDate() : -1;
+  const map = {};
+  EVENTS.forEach(e => { (map[e.d] = map[e.d] || []).push(e); });
+  const grid = document.getElementById('wbMiniGrid');
+  if (!grid) return;
+  for (let m = 0; m < 12; m++) {
+    const fd = new Date(2026, m, 1).getDay();
+    const dn = new Date(2026, m + 1, 0).getDate();
+    const isCur = m === cm;
+    const card = document.createElement('div');
+    card.className = 'wb-m';
+    let body = '';
+    for (let i = 0; i < fd; i++) body += '<div class="wb-d empty"></div>';
+    for (let d = 1; d <= dn; d++) {
+      const ds = `2026-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+      const evs = map[ds];
+      const dow = new Date(2026, m, d).getDay();
+      let cls = 'wb-d';
+      if (dow === 0) cls += ' sun';
+      else if (dow === 6) cls += ' sat';
+      if (isCur && d === cd) cls += ' today';
+      if (evs && evs.length) {
+        const cat = CAT[evs[0].cat];
+        cls += ' has';
+        const tip = evs.length === 1
+          ? `<div class="wb-d-tip"><strong>${cat.icon} ${evs[0].title}</strong></div>`
+          : `<div class="wb-d-tip"><strong>${evs.length} sự kiện</strong><br>${evs.map(x => '• '+x.title).join('<br>')}</div>`;
+        body += `<div class="${cls}" style="--ev-color:${cat.color}">${d}${tip}</div>`;
+      } else {
+        body += `<div class="${cls}">${d}</div>`;
+      }
+    }
+    card.innerHTML = `
+      <div class="wb-m-head">
+        ${isCur ? '<span class="wb-m-cur">NOW</span>' : ''}
+        ${MONTHS[m]}/2026
+      </div>
+      <div class="wb-m-body">${body}</div>
+    `;
+    grid.appendChild(card);
+  }
+})();
+</script>
 <script>
 // ════════════════════════════════════════════
 // DATA — 41 sự kiện tuyển sinh 2026
