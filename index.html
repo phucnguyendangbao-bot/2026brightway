@@ -141,6 +141,116 @@
 }
 
 /* ════════════════════════════════════════════════════════════════
+   SCHOOL MARQUEE (ảnh chạy ngang ở cuối trang)
+   ════════════════════════════════════════════════════════════════ */
+.bw-school-marquee{
+  padding:40px 0 32px;
+  background:linear-gradient(180deg,#fafbff 0%,#fff 100%);
+  overflow:hidden;
+  position:relative;
+}
+.bw-marquee-eyebrow{
+  display:flex; align-items:center; justify-content:center;
+  gap:14px;
+  font-size:0.85rem;
+  font-weight:700;
+  color:#6b7aaa;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  margin-bottom:24px;
+  padding:0 24px;
+}
+.bw-marquee-eyebrow .dot{
+  width:6px; height:6px;
+  border-radius:50%;
+  background:var(--grad, linear-gradient(135deg,#6366f1,#ec4899));
+  display:inline-block;
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{
+  0%, 100%{ opacity:0.4; transform:scale(1); }
+  50%{ opacity:1; transform:scale(1.4); }
+}
+.bw-marquee-viewport{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  mask-image:linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+}
+.bw-marquee-track{
+  display:flex;
+  gap:16px;
+  width:max-content;
+  animation:bw-marquee-scroll 50s linear infinite;
+  will-change:transform;
+}
+.bw-marquee-track:hover{ animation-play-state:paused; }
+@keyframes bw-marquee-scroll{
+  from{ transform:translateX(0); }
+  to{ transform:translateX(-50%); }
+}
+.bw-marquee-item{
+  position:relative;
+  flex:0 0 220px;
+  height:140px;
+  border-radius:14px;
+  overflow:hidden;
+  background:#f1f5f9;
+  cursor:pointer;
+  transition:transform 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s;
+  display:block;
+  text-decoration:none;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+.bw-marquee-item:hover{
+  transform:translateY(-6px) scale(1.05);
+  box-shadow:0 16px 40px rgba(0,0,0,0.2);
+  z-index:2;
+}
+.bw-marquee-item img{
+  width:100%; height:100%;
+  object-fit:cover;
+  transition:transform 0.6s ease;
+}
+.bw-marquee-item:hover img{ transform:scale(1.1); }
+.bw-marquee-overlay{
+  position:absolute; inset:0;
+  background:linear-gradient(0deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+  display:flex; align-items:flex-end; justify-content:center;
+  padding:12px;
+  pointer-events:none;
+  transition:background 0.3s;
+}
+.bw-marquee-item:hover .bw-marquee-overlay{
+  background:linear-gradient(0deg, var(--c, #6366f1) 0%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.2) 100%);
+}
+.bw-marquee-overlay span{
+  color:#fff;
+  font-size:0.78rem;
+  font-weight:700;
+  text-align:center;
+  line-height:1.3;
+  font-family:var(--font-display);
+}
+
+/* School Gallery — ở cuối trang */
+.bw-school-gallery{
+  background:linear-gradient(180deg,#fff 0%,#f8faff 100%);
+  border-top:1px solid rgba(99,102,241,0.08);
+}
+
+@media (max-width:768px){
+  .bw-marquee-item{ flex:0 0 160px; height:110px; }
+  .bw-marquee-overlay span{ font-size:0.7rem; }
+  .bw-marquee-eyebrow{ font-size:0.75rem; gap:10px; }
+  .bw-school-marquee{ padding:28px 0 24px; }
+}
+@media (prefers-reduced-motion: reduce){
+  .bw-marquee-track{ animation: none; }
+}
+
+/* ════════════════════════════════════════════════════════════════
    SCHOOL GALLERY (NEW) - 12 ảnh trường ĐH
    ════════════════════════════════════════════════════════════════ */
 
@@ -504,67 +614,6 @@
 /* ════════════════════════════════════════════════════════════════
    UI UPGRADE - PHASE 5: POLISH (dark mode + toast + theme)
    ════════════════════════════════════════════════════════════════ */
-
-/* --- Theme toggle button --- */
-.bw-theme-toggle{
-  position:fixed; bottom:90px; right:20px;
-  width:48px; height:48px; border-radius:50%;
-  background:rgba(255,255,255,0.95);
-  border:1px solid rgba(99,102,241,0.2);
-  box-shadow:0 8px 20px rgba(0,0,0,0.1);
-  display:flex; align-items:center; justify-content:center;
-  cursor:pointer; z-index:997;
-  font-size:1.2rem; transition:var(--transition);
-}
-.bw-theme-toggle:hover{ transform:scale(1.1) rotate(15deg); }
-@media (max-width:768px){
-  .bw-theme-toggle{ bottom:140px; right:14px; }
-}
-
-/* --- Dark mode --- */
-@media (prefers-color-scheme: dark) {
-  :root{
-    --bg: linear-gradient(145deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
-    --glass: rgba(30, 41, 59, 0.62);
-    --glass-border: rgba(99, 102, 241, 0.2);
-    --text-dark: #f1f5f9;
-    --text-mid: #cbd5e1;
-    --text-soft: #94a3b8;
-  }
-}
-body.bw-dark{
-  background:linear-gradient(145deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%) !important;
-  color:#f1f5f9;
-}
-body.bw-dark #home-view,
-body.bw-dark .bw-hero,
-body.bw-dark .bw-stage,
-body.bw-dark .bw-roadmap,
-body.bw-dark .bw-tools,
-body.bw-dark .bw-next,
-body.bw-dark .bw-faq,
-body.bw-dark .bw-timeline{
-  background:transparent !important; color:#f1f5f9;
-}
-body.bw-dark .bw-tool-card,
-body.bw-dark .bw-stage-card,
-body.bw-dark .bw-next-card,
-body.bw-dark .bw-faq-item,
-body.bw-dark .step,
-body.bw-dark .bw-stat-card,
-body.bw-dark .bw-tl-content{
-  background:rgba(30,41,59,0.7) !important;
-  border-color:rgba(99,102,241,0.3) !important;
-  color:#f1f5f9;
-}
-body.bw-dark h1, body.bw-dark h2, body.bw-dark h3,
-body.bw-dark h4, body.bw-dark p, body.bw-dark .lede{
-  color:#f1f5f9 !important;
-}
-body.bw-dark .bw-trust-bar{ background:rgba(30,41,59,0.7); color:#cbd5e1; }
-body.bw-dark .bw-tl-months-strip{ background:rgba(30,41,59,0.7); }
-body.bw-dark .bw-tl-month-btn{ color:#cbd5e1; }
-body.bw-dark .bw-tl-month-btn:hover{ background:rgba(99,102,241,0.2); }
 
 /* --- Toast notification --- */
 .bw-toast{
@@ -4788,110 +4837,6 @@ body.spa-active #spa-topbar { display: flex; }
   </div>
 </section>
 
-<!-- ===== SCHOOL GALLERY - Ảnh 12 trường ĐH VN có sẵn ===== -->
-<!-- v4: chỉ dùng 15 ảnh gốc có sẵn trong web -->
-<section class="bw-school-gallery bw-reveal" id="school-gallery" aria-label="Thư viện ảnh các trường đại học">
-  <div class="container">
-    <div class="section-eyebrow">Thư viện ảnh</div>
-    <h2 class="section-title">Hình ảnh các trường đại học hàng đầu</h2>
-    <p class="section-sub">Khám phá cơ sở vật chất và kiến trúc của các trường ĐH hàng đầu Việt Nam — cập nhật 2026</p>
-
-    <div class="bw-gallery-grid">
-      <a href="page2.html" class="bw-gallery-item bw-gallery-large" style="--c:#6366f1">
-        <img src="assets/images/hero/01-fpt-can-tho.jpg" alt="ĐH FPT Cần Thơ" loading="lazy" />
-        <div class="bw-gallery-overlay">
-          <small>Campus miền Tây</small>
-          <strong>ĐH FPT — Cần Thơ</strong>
-        </div>
-      </a>
-      <a href="page2.html" class="bw-gallery-item" style="--c:#8b5cf6">
-        <img src="assets/images/hero/07-hcmut.jpg" alt="ĐH Bách khoa TP.HCM" loading="lazy" />
-        <div class="bw-gallery-overlay">
-          <small>Kỹ thuật hàng đầu</small>
-          <strong>ĐH Bách khoa TP.HCM (HCMUT)</strong>
-        </div>
-      </a>
-      <a href="page2.html" class="bw-gallery-item" style="--c:#ec4899">
-        <img src="assets/images/hero/03-ueh.jpg" alt="ĐH Kinh tế TP.HCM" loading="lazy" />
-        <div class="bw-gallery-overlay">
-          <small>Kinh tế hàng đầu</small>
-          <strong>ĐH Kinh tế TP.HCM (UEH)</strong>
-        </div>
-      </a>
-      <a href="page2.html" class="bw-gallery-item" style="--c:#10b981">
-        <img src="assets/images/hero/02-ctu.jpg" alt="ĐH Cần Thơ" loading="lazy" />
-        <div class="bw-gallery-overlay">
-          <small>ĐH vùng ĐBSCL</small>
-          <strong>ĐH Cần Thơ (CTU)</strong>
-        </div>
-      </a>
-      <a href="page2.html" class="bw-gallery-item bw-gallery-wide" style="--c:#f59e0b">
-        <img src="assets/images/hero/14-rmit.jpg" alt="RMIT Vietnam" loading="lazy" />
-        <div class="bw-gallery-overlay">
-          <small>Campus quốc tế</small>
-          <strong>RMIT Vietnam — Nam Sài Gòn</strong>
-        </div>
-      </a>
-      <a href="page2.html" class="bw-gallery-item" style="--c:#06b6d4">
-        <img src="assets/images/hero/10-ftu.jpg" alt="ĐH Ngoại thương" loading="lazy" />
-        <div class="bw-gallery-overlay">
-          <small>Kinh tế - Thương mại</small>
-          <strong>ĐH Ngoại thương (FTU)</strong>
-        </div>
-      </a>
-      <a href="page2.html" class="bw-gallery-item" style="--c:#ef4444">
-        <img src="assets/images/hero/15-uel.jpg" alt="ĐH Kinh tế - Luật" loading="lazy" />
-        <div class="bw-gallery-overlay">
-          <small>Kinh tế & Luật</small>
-          <strong>ĐH Kinh tế — Luật (UEL)</strong>
-        </div>
-      </a>
-      <a href="page2.html" class="bw-gallery-item" style="--c:#3b82f6">
-        <img src="assets/images/hero/04a-ump.jpg" alt="ĐH Y Dược TP.HCM" loading="lazy" />
-        <div class="bw-gallery-overlay">
-          <small>Y khoa tầm quốc gia</small>
-          <strong>ĐH Y Dược TP.HCM (UMP)</strong>
-        </div>
-      </a>
-      <a href="page2.html" class="bw-gallery-item" style="--c:#a855f7">
-        <img src="assets/images/hero/11-hcmus.jpg" alt="ĐH Khoa học Tự nhiên" loading="lazy" />
-        <div class="bw-gallery-overlay">
-          <small>Khoa học tự nhiên</small>
-          <strong>ĐH Khoa học Tự nhiên (HCMUS)</strong>
-        </div>
-      </a>
-      <a href="page2.html" class="bw-gallery-item" style="--c:#14b8a6">
-        <img src="assets/images/hero/05-ussh.jpg" alt="ĐH KHXH&NV" loading="lazy" />
-        <div class="bw-gallery-overlay">
-          <small>Khoa học xã hội</small>
-          <strong>ĐH KHXH&NV (USSH)</strong>
-        </div>
-      </a>
-      <a href="page2.html" class="bw-gallery-item" style="--c:#f43f5e">
-        <img src="assets/images/hero/13-sgu.jpg" alt="ĐH Sài Gòn" loading="lazy" />
-        <div class="bw-gallery-overlay">
-          <small>ĐH công lập TP.HCM</small>
-          <strong>ĐH Sài Gòn (SGU)</strong>
-        </div>
-      </a>
-      <a href="page2.html" class="bw-gallery-item" style="--c:#0ea5e9">
-        <img src="assets/images/hero/09-hcmue.jpg" alt="ĐH Sư phạm TP.HCM" loading="lazy" />
-        <div class="bw-gallery-overlay">
-          <small>Sư phạm hàng đầu</small>
-          <strong>ĐH Sư phạm TP.HCM (HCMUE)</strong>
-        </div>
-      </a>
-    </div>
-
-    <div class="bw-gallery-cta">
-      <a href="page2.html" class="bw-btn bw-btn-primary">
-        <span class="ico">🏫</span> Xem tất cả các trường
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
 <!-- ===== LỚP 12 — TIMELINE 12 THÁNG (compact, mặc định chỉ hiện T12) ===== -->
 <section class="bw-timeline bw-reveal" id="timeline">
   <div class="container">
@@ -5240,12 +5185,258 @@ body.spa-active #spa-topbar { display: flex; }
   </div>
 </div>
 
+<!-- ===== SCHOOL MARQUEE (ảnh chạy ngang ở cuối trang) ===== -->
+<section class="bw-school-marquee" aria-label="Ảnh các trường đại học đang chạy">
+  <div class="bw-marquee-eyebrow">
+    <span class="dot"></span>
+    <span>30+ trường đại học hàng đầu</span>
+    <span class="dot"></span>
+  </div>
+  <div class="bw-marquee-viewport">
+    <div class="bw-marquee-track">
+      <!-- Set 1 -->
+      <a href="page2.html" class="bw-marquee-item" style="--c:#6366f1">
+        <img src="assets/images/hero/01-fpt-can-tho.jpg" alt="ĐH FPT Cần Thơ" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>ĐH FPT — Cần Thơ</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#8b5cf6">
+        <img src="assets/images/hero/07-hcmut.jpg" alt="ĐH Bách khoa TP.HCM" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>ĐH Bách khoa TP.HCM</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#ec4899">
+        <img src="assets/images/hero/03-ueh.jpg" alt="ĐH Kinh tế TP.HCM" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>ĐH Kinh tế TP.HCM</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#10b981">
+        <img src="assets/images/hero/02-ctu.jpg" alt="ĐH Cần Thơ" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>ĐH Cần Thơ (CTU)</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#f59e0b">
+        <img src="assets/images/hero/14-rmit.jpg" alt="RMIT Vietnam" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>RMIT Vietnam</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#06b6d4">
+        <img src="assets/images/hero/10-ftu.jpg" alt="ĐH Ngoại thương" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>ĐH Ngoại thương (FTU)</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#ef4444">
+        <img src="assets/images/hero/15-uel.jpg" alt="ĐH Kinh tế - Luật" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>ĐH Kinh tế — Luật (UEL)</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#3b82f6">
+        <img src="assets/images/hero/04a-ump.jpg" alt="ĐH Y Dược TP.HCM" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>ĐH Y Dược TP.HCM (UMP)</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#a855f7">
+        <img src="assets/images/hero/11-hcmus.jpg" alt="ĐH KH Tự nhiên" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>ĐH Khoa học Tự nhiên</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#14b8a6">
+        <img src="assets/images/hero/05-ussh.jpg" alt="ĐH KHXH&NV" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>ĐH KHXH&NV (USSH)</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#f43f5e">
+        <img src="assets/images/hero/13-sgu.jpg" alt="ĐH Sài Gòn" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>ĐH Sài Gòn (SGU)</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#0ea5e9">
+        <img src="assets/images/hero/09-hcmue.jpg" alt="ĐH Sư phạm TP.HCM" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>ĐH Sư phạm TP.HCM</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#dc2626">
+        <img src="assets/images/hero/04b-pntu.jpg" alt="Y khoa Phạm Ngọc Thạch" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>Y khoa Phạm Ngọc Thạch</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#0891b2">
+        <img src="assets/images/hero/06-vlu.jpg" alt="ĐH Văn Lang" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>ĐH Văn Lang (VLU)</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#7c3aed">
+        <img src="assets/images/hero/08-ctump.jpg" alt="Y Dược Cần Thơ" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>Y Dược Cần Thơ (CTUMP)</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#0284c7">
+        <img src="assets/images/hero/12-uit.jpg" alt="ĐH CNTT" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>ĐH CNTT (UIT)</span></div>
+      </a>
+      <!-- Set 2 (duplicate để chạy liên tục) -->
+      <a href="page2.html" class="bw-marquee-item" style="--c:#6366f1" aria-hidden="true">
+        <img src="assets/images/hero/01-fpt-can-tho.jpg" alt="" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>ĐH FPT — Cần Thơ</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#8b5cf6" aria-hidden="true">
+        <img src="assets/images/hero/07-hcmut.jpg" alt="" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>ĐH Bách khoa TP.HCM</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#ec4899" aria-hidden="true">
+        <img src="assets/images/hero/03-ueh.jpg" alt="" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>ĐH Kinh tế TP.HCM</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#10b981" aria-hidden="true">
+        <img src="assets/images/hero/02-ctu.jpg" alt="" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>ĐH Cần Thơ (CTU)</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#f59e0b" aria-hidden="true">
+        <img src="assets/images/hero/14-rmit.jpg" alt="" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>RMIT Vietnam</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#06b6d4" aria-hidden="true">
+        <img src="assets/images/hero/10-ftu.jpg" alt="" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>ĐH Ngoại thương (FTU)</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#ef4444" aria-hidden="true">
+        <img src="assets/images/hero/15-uel.jpg" alt="" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>ĐH Kinh tế — Luật (UEL)</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#3b82f6" aria-hidden="true">
+        <img src="assets/images/hero/04a-ump.jpg" alt="" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>ĐH Y Dược TP.HCM (UMP)</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#a855f7" aria-hidden="true">
+        <img src="assets/images/hero/11-hcmus.jpg" alt="" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>ĐH Khoa học Tự nhiên</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#14b8a6" aria-hidden="true">
+        <img src="assets/images/hero/05-ussh.jpg" alt="" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>ĐH KHXH&NV (USSH)</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#f43f5e" aria-hidden="true">
+        <img src="assets/images/hero/13-sgu.jpg" alt="" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>ĐH Sài Gòn (SGU)</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#0ea5e9" aria-hidden="true">
+        <img src="assets/images/hero/09-hcmue.jpg" alt="" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>ĐH Sư phạm TP.HCM</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#dc2626" aria-hidden="true">
+        <img src="assets/images/hero/04b-pntu.jpg" alt="" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>Y khoa Phạm Ngọc Thạch</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#0891b2" aria-hidden="true">
+        <img src="assets/images/hero/06-vlu.jpg" alt="" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>ĐH Văn Lang (VLU)</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#7c3aed" aria-hidden="true">
+        <img src="assets/images/hero/08-ctump.jpg" alt="" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>Y Dược Cần Thơ (CTUMP)</span></div>
+      </a>
+      <a href="page2.html" class="bw-marquee-item" style="--c:#0284c7" aria-hidden="true">
+        <img src="assets/images/hero/12-uit.jpg" alt="" loading="lazy" />
+        <div class="bw-marquee-overlay"><span>ĐH CNTT (UIT)</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ===== FOOTER ===== -->
 <footer class="bw-footer">
   <div class="logo">BrightWay Career</div>
   <p>Đồng hành cùng học sinh Lớp 12 trên hành trình hướng nghiệp</p>
   <p class="small">© 2026 BrightWay Career · Thông tin chỉ mang tính tham khảo, không thay thế tư vấn chuyên gia.</p>
 </footer>
+
+<!-- ===== SCHOOL GALLERY (cuối trang) ===== -->
+<section class="bw-school-gallery bw-reveal" id="school-gallery" aria-label="Thư viện ảnh các trường đại học">
+  <div class="container">
+    <div class="section-eyebrow">Thư viện ảnh</div>
+    <h2 class="section-title">Hình ảnh các trường đại học hàng đầu</h2>
+    <p class="section-sub">Khám phá cơ sở vật chất và kiến trúc của các trường ĐH hàng đầu Việt Nam — cập nhật 2026</p>
+
+    <div class="bw-gallery-grid">
+      <a href="page2.html" class="bw-gallery-item bw-gallery-large" style="--c:#6366f1">
+        <img src="assets/images/hero/01-fpt-can-tho.jpg" alt="ĐH FPT Cần Thơ" loading="lazy" />
+        <div class="bw-gallery-overlay">
+          <small>Campus miền Tây</small>
+          <strong>ĐH FPT — Cần Thơ</strong>
+        </div>
+      </a>
+      <a href="page2.html" class="bw-gallery-item" style="--c:#8b5cf6">
+        <img src="assets/images/hero/07-hcmut.jpg" alt="ĐH Bách khoa TP.HCM" loading="lazy" />
+        <div class="bw-gallery-overlay">
+          <small>Kỹ thuật hàng đầu</small>
+          <strong>ĐH Bách khoa TP.HCM (HCMUT)</strong>
+        </div>
+      </a>
+      <a href="page2.html" class="bw-gallery-item" style="--c:#ec4899">
+        <img src="assets/images/hero/03-ueh.jpg" alt="ĐH Kinh tế TP.HCM" loading="lazy" />
+        <div class="bw-gallery-overlay">
+          <small>Kinh tế hàng đầu</small>
+          <strong>ĐH Kinh tế TP.HCM (UEH)</strong>
+        </div>
+      </a>
+      <a href="page2.html" class="bw-gallery-item" style="--c:#10b981">
+        <img src="assets/images/hero/02-ctu.jpg" alt="ĐH Cần Thơ" loading="lazy" />
+        <div class="bw-gallery-overlay">
+          <small>ĐH vùng ĐBSCL</small>
+          <strong>ĐH Cần Thơ (CTU)</strong>
+        </div>
+      </a>
+      <a href="page2.html" class="bw-gallery-item bw-gallery-wide" style="--c:#f59e0b">
+        <img src="assets/images/hero/14-rmit.jpg" alt="RMIT Vietnam" loading="lazy" />
+        <div class="bw-gallery-overlay">
+          <small>Campus quốc tế</small>
+          <strong>RMIT Vietnam — Nam Sài Gòn</strong>
+        </div>
+      </a>
+      <a href="page2.html" class="bw-gallery-item" style="--c:#06b6d4">
+        <img src="assets/images/hero/10-ftu.jpg" alt="ĐH Ngoại thương" loading="lazy" />
+        <div class="bw-gallery-overlay">
+          <small>Kinh tế - Thương mại</small>
+          <strong>ĐH Ngoại thương (FTU)</strong>
+        </div>
+      </a>
+      <a href="page2.html" class="bw-gallery-item" style="--c:#ef4444">
+        <img src="assets/images/hero/15-uel.jpg" alt="ĐH Kinh tế - Luật" loading="lazy" />
+        <div class="bw-gallery-overlay">
+          <small>Kinh tế & Luật</small>
+          <strong>ĐH Kinh tế — Luật (UEL)</strong>
+        </div>
+      </a>
+      <a href="page2.html" class="bw-gallery-item" style="--c:#3b82f6">
+        <img src="assets/images/hero/04a-ump.jpg" alt="ĐH Y Dược TP.HCM" loading="lazy" />
+        <div class="bw-gallery-overlay">
+          <small>Y khoa tầm quốc gia</small>
+          <strong>ĐH Y Dược TP.HCM (UMP)</strong>
+        </div>
+      </a>
+      <a href="page2.html" class="bw-gallery-item" style="--c:#a855f7">
+        <img src="assets/images/hero/11-hcmus.jpg" alt="ĐH Khoa học Tự nhiên" loading="lazy" />
+        <div class="bw-gallery-overlay">
+          <small>Khoa học tự nhiên</small>
+          <strong>ĐH Khoa học Tự nhiên (HCMUS)</strong>
+        </div>
+      </a>
+      <a href="page2.html" class="bw-gallery-item" style="--c:#14b8a6">
+        <img src="assets/images/hero/05-ussh.jpg" alt="ĐH KHXH&NV" loading="lazy" />
+        <div class="bw-gallery-overlay">
+          <small>Khoa học xã hội</small>
+          <strong>ĐH KHXH&NV (USSH)</strong>
+        </div>
+      </a>
+      <a href="page2.html" class="bw-gallery-item" style="--c:#f43f5e">
+        <img src="assets/images/hero/13-sgu.jpg" alt="ĐH Sài Gòn" loading="lazy" />
+        <div class="bw-gallery-overlay">
+          <small>ĐH công lập TP.HCM</small>
+          <strong>ĐH Sài Gòn (SGU)</strong>
+        </div>
+      </a>
+      <a href="page2.html" class="bw-gallery-item" style="--c:#0ea5e9">
+        <img src="assets/images/hero/09-hcmue.jpg" alt="ĐH Sư phạm TP.HCM" loading="lazy" />
+        <div class="bw-gallery-overlay">
+          <small>Sư phạm hàng đầu</small>
+          <strong>ĐH Sư phạm TP.HCM (HCMUE)</strong>
+        </div>
+      </a>
+    </div>
+
+    <div class="bw-gallery-cta">
+      <a href="page2.html" class="bw-btn bw-btn-primary">
+        <span class="ico">🏫</span> Xem tất cả các trường
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
 
 <script>
   // ==== Stage picker → update next-step card ====
@@ -6981,11 +7172,6 @@ Bạn cần hỏi gì nào?</div>
   </a>
 </nav>
 
-<!-- Theme toggle -->
-<button class="bw-theme-toggle" id="bwThemeToggle" type="button" aria-label="Chuyển chế độ sáng/tối" title="Chuyển chế độ sáng/tối">
-  <span id="bwThemeIcon">🌙</span>
-</button>
-
 <!-- Toast container -->
 <div class="bw-toast" id="bwToast" role="status" aria-live="polite"></div>
 
@@ -7038,25 +7224,6 @@ Bạn cần hỏi gì nào?</div>
       });
     }, { threshold: 0.4 });
     document.querySelectorAll('.bw-stat-number[data-target]').forEach(el => counterObs.observe(el));
-  }
-
-  // ── 3. Theme toggle (light/dark) ────────────────────────────
-  const themeBtn = document.getElementById('bwThemeToggle');
-  const themeIcon = document.getElementById('bwThemeIcon');
-  const savedTheme = localStorage.getItem('bw-theme');
-  if (savedTheme === 'dark') {
-    document.body.classList.add('bw-dark');
-    if (themeIcon) themeIcon.textContent = '☀️';
-  }
-  if (themeBtn) {
-    themeBtn.addEventListener('click', function() {
-      const isDark = document.body.classList.toggle('bw-dark');
-      themeIcon.textContent = isDark ? '☀️' : '🌙';
-      try { localStorage.setItem('bw-theme', isDark ? 'dark' : 'light'); } catch (e) {}
-      if (typeof showToast === 'function') {
-        showToast(isDark ? 'Đã chuyển sang chế độ tối' : 'Đã chuyển sang chế độ sáng', 'info');
-      }
-    });
   }
 
   // ── 4. Toast helper (global) ────────────────────────────────
