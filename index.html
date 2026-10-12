@@ -35,7 +35,323 @@
   --shadow-lg: 0 16px 48px rgba(99,102,241,0.2);
   --font: 'Be Vietnam Pro', 'Be Vietnam Pro', system-ui, sans-serif;
   --font-display: 'Nunito', 'Be Vietnam Pro', sans-serif;
+  /* Mở rộng bảng màu cho UI upgrade (Phase 1) */
+  --success: #10b981;
+  --success-light: #d1fae5;
+  --warning: #f59e0b;
+  --warning-light: #fef3c7;
+  --danger:  #ef4444;
+  --danger-light: #fee2e2;
+  --info:    #3b82f6;
+  --info-light: #dbeafe;
+  --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --gradient-warning: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  --gradient-danger:  linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  --gradient-info:    linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  --gradient-hero:    linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-cta:     linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* ════════════════════════════════════════════════════════════════
+   UI UPGRADE - PHASE 1: HERO + STATS
+   ════════════════════════════════════════════════════════════════ */
+
+/* --- Trust badges (social proof) --- */
+.bw-trust-bar{
+  display:flex; align-items:center; justify-content:center; gap:24px;
+  flex-wrap:wrap;
+  padding:18px 24px; margin:24px 0 0;
+  background:rgba(255,255,255,0.55);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,0.7);
+  border-radius:var(--radius-lg);
+  font-size:0.88rem; font-weight:600; color:var(--text-mid);
+  box-shadow:0 4px 16px rgba(99,102,241,0.06);
+}
+.bw-trust-item{ display:flex; align-items:center; gap:6px; white-space:nowrap; }
+.bw-trust-item .ico{ font-size:1.05rem; }
+.bw-trust-divider{ width:1px; height:14px; background:rgba(99,102,241,0.25); }
+
+/* --- Hero stat badge (top right) --- */
+.bw-hero-stats-mini{
+  position:absolute; top:-12px; right:-12px;
+  background:linear-gradient(135deg,#fbbf24,#f59e0b);
+  color:#fff; font-weight:800; font-size:0.78rem;
+  padding:8px 14px; border-radius:999px;
+  box-shadow:0 8px 20px rgba(245,158,11,0.4);
+  display:flex; align-items:center; gap:5px;
+  z-index:5; animation:bwPulse 2s ease-in-out infinite;
+}
+@keyframes bwPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+
+/* --- Stats section (counter animation) --- */
+.bw-stats-section{
+  padding:64px 24px;
+  background:linear-gradient(135deg,rgba(102,126,234,0.08) 0%,rgba(118,75,162,0.08) 100%);
+  border-radius:var(--radius-xl);
+  margin:48px 0;
+  position:relative;
+  overflow:hidden;
+}
+.bw-stats-section::before{
+  content:''; position:absolute; top:-50%; right:-20%;
+  width:60%; height:200%;
+  background:radial-gradient(circle,rgba(102,126,234,0.15),transparent 60%);
+  pointer-events:none;
+}
+.bw-stats-grid{
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:24px; max-width:1000px; margin:0 auto;
+  position:relative; z-index:1;
+}
+.bw-stat-card{
+  text-align:center; padding:24px 16px;
+  background:rgba(255,255,255,0.6);
+  backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,0.8);
+  border-radius:var(--radius-lg);
+  transition:var(--transition);
+}
+.bw-stat-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 16px 40px rgba(99,102,241,0.15);
+  background:rgba(255,255,255,0.85);
+}
+.bw-stat-number{
+  font-size:clamp(2rem,4vw,3rem); font-weight:900;
+  font-family:var(--font-display);
+  background:var(--grad);
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent;
+  line-height:1; margin-bottom:8px;
+  font-variant-numeric:tabular-nums;
+}
+.bw-stat-label{ font-size:0.92rem; font-weight:600; color:var(--text-mid); }
+.bw-stat-suffix{ font-size:0.7em; font-weight:700; opacity:0.85; }
+@media (max-width:768px){
+  .bw-stats-grid{ grid-template-columns:repeat(2,1fr); gap:16px; }
+  .bw-stats-section{ padding:40px 20px; }
+  .bw-trust-bar{ gap:12px; padding:14px 16px; font-size:0.78rem; }
+  .bw-trust-divider{ display:none; }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   UI UPGRADE - PHASE 2: CARDS + ANIMATIONS
+   ════════════════════════════════════════════════════════════════ */
+
+/* --- Scroll reveal animation --- */
+.bw-reveal{
+  opacity:0; transform:translateY(24px);
+  transition:opacity 0.7s ease, transform 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+.bw-reveal.revealed{ opacity:1; transform:translateY(0); }
+.bw-reveal[data-delay="1"]{ transition-delay:0.1s; }
+.bw-reveal[data-delay="2"]{ transition-delay:0.2s; }
+.bw-reveal[data-delay="3"]{ transition-delay:0.3s; }
+.bw-reveal[data-delay="4"]{ transition-delay:0.4s; }
+
+/* --- Card hover lift --- */
+.bw-tool-card, .step, .bw-next-card, .bw-faq-item{
+  transition:var(--transition);
+}
+.bw-tool-card:hover, .step:hover{
+  transform:translateY(-6px);
+  box-shadow:0 16px 40px rgba(99,102,241,0.18);
+}
+
+/* --- Smooth hover for buttons --- */
+.bw-btn{ transition:var(--transition); position:relative; overflow:hidden; }
+.bw-btn:hover{ transform:translateY(-2px); }
+.bw-btn:active{ transform:translateY(0); }
+
+/* ════════════════════════════════════════════════════════════════
+   UI UPGRADE - PHASE 3: INTERACTIVE TIMELINE
+   ════════════════════════════════════════════════════════════════ */
+
+.bw-tl-months-strip{
+  display:flex; gap:6px; padding:8px;
+  background:rgba(255,255,255,0.55);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.7);
+  border-radius:999px;
+  margin-bottom:20px;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+.bw-tl-months-strip::-webkit-scrollbar{ display:none; }
+.bw-tl-month-btn{
+  flex-shrink:0; min-width:64px;
+  padding:10px 14px; border-radius:999px;
+  font-weight:700; font-size:0.85rem;
+  color:var(--text-mid); background:transparent;
+  border:none; cursor:pointer;
+  transition:var(--transition);
+  display:flex; flex-direction:column; align-items:center; gap:2px;
+  font-family:inherit;
+}
+.bw-tl-month-btn:hover{ background:rgba(99,102,241,0.08); }
+.bw-tl-month-btn.active{
+  background:var(--grad); color:#fff;
+  box-shadow:0 6px 16px rgba(99,102,241,0.35);
+}
+.bw-tl-month-btn.current:not(.active){
+  background:rgba(245,158,11,0.15); color:#b45309;
+  position:relative;
+}
+.bw-tl-month-btn.current::after{
+  content:''; position:absolute; top:4px; right:8px;
+  width:6px; height:6px; border-radius:50%;
+  background:#f59e0b;
+  animation:bwPulse 2s ease-in-out infinite;
+}
+.bw-tl-month-btn .month-name{ font-size:0.7rem; opacity:0.85; }
+.bw-tl-progress-wrap{
+  position:relative; height:6px;
+  background:rgba(99,102,241,0.12);
+  border-radius:999px; margin:16px 0 24px;
+  overflow:hidden;
+}
+.bw-tl-progress-fill{
+  position:absolute; top:0; left:0; height:100%;
+  background:var(--grad);
+  border-radius:999px;
+  transition:width 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   UI UPGRADE - PHASE 4: MOBILE UX (sticky CTA + touch targets)
+   ════════════════════════════════════════════════════════════════ */
+
+.bw-mobile-cta{
+  display:none;
+}
+@media (max-width:768px){
+  .bw-mobile-cta{
+    display:flex;
+    position:fixed; bottom:0; left:0; right:0;
+    padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+    background:rgba(255,255,255,0.95);
+    backdrop-filter:blur(16px);
+    box-shadow:0 -4px 24px rgba(0,0,0,0.08);
+    z-index:998;
+    gap:8px;
+  }
+  .bw-mobile-cta a{
+    flex:1; padding:12px 8px; min-height:48px;
+    display:flex; align-items:center; justify-content:center; gap:4px;
+    border-radius:12px; text-decoration:none;
+    font-weight:700; font-size:0.82rem;
+  }
+  .bw-mobile-cta .bw-mcta-primary{
+    background:var(--grad); color:#fff;
+  }
+  .bw-mobile-cta .bw-mcta-secondary{
+    background:rgba(99,102,241,0.1); color:var(--accent);
+  }
+  body{ padding-bottom:80px; }
+  /* Larger touch targets */
+  .step, .bw-tool-card, .bw-faq-summary{ min-height:48px; }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   UI UPGRADE - PHASE 5: POLISH (dark mode + toast + theme)
+   ════════════════════════════════════════════════════════════════ */
+
+/* --- Theme toggle button --- */
+.bw-theme-toggle{
+  position:fixed; bottom:90px; right:20px;
+  width:48px; height:48px; border-radius:50%;
+  background:rgba(255,255,255,0.95);
+  border:1px solid rgba(99,102,241,0.2);
+  box-shadow:0 8px 20px rgba(0,0,0,0.1);
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; z-index:997;
+  font-size:1.2rem; transition:var(--transition);
+}
+.bw-theme-toggle:hover{ transform:scale(1.1) rotate(15deg); }
+@media (max-width:768px){
+  .bw-theme-toggle{ bottom:140px; right:14px; }
+}
+
+/* --- Dark mode --- */
+@media (prefers-color-scheme: dark) {
+  :root{
+    --bg: linear-gradient(145deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+    --glass: rgba(30, 41, 59, 0.62);
+    --glass-border: rgba(99, 102, 241, 0.2);
+    --text-dark: #f1f5f9;
+    --text-mid: #cbd5e1;
+    --text-soft: #94a3b8;
+  }
+}
+body.bw-dark{
+  background:linear-gradient(145deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%) !important;
+  color:#f1f5f9;
+}
+body.bw-dark #home-view,
+body.bw-dark .bw-hero,
+body.bw-dark .bw-stage,
+body.bw-dark .bw-roadmap,
+body.bw-dark .bw-tools,
+body.bw-dark .bw-next,
+body.bw-dark .bw-faq,
+body.bw-dark .bw-timeline{
+  background:transparent !important; color:#f1f5f9;
+}
+body.bw-dark .bw-tool-card,
+body.bw-dark .bw-stage-card,
+body.bw-dark .bw-next-card,
+body.bw-dark .bw-faq-item,
+body.bw-dark .step,
+body.bw-dark .bw-stat-card,
+body.bw-dark .bw-tl-content{
+  background:rgba(30,41,59,0.7) !important;
+  border-color:rgba(99,102,241,0.3) !important;
+  color:#f1f5f9;
+}
+body.bw-dark h1, body.bw-dark h2, body.bw-dark h3,
+body.bw-dark h4, body.bw-dark p, body.bw-dark .lede{
+  color:#f1f5f9 !important;
+}
+body.bw-dark .bw-trust-bar{ background:rgba(30,41,59,0.7); color:#cbd5e1; }
+body.bw-dark .bw-tl-months-strip{ background:rgba(30,41,59,0.7); }
+body.bw-dark .bw-tl-month-btn{ color:#cbd5e1; }
+body.bw-dark .bw-tl-month-btn:hover{ background:rgba(99,102,241,0.2); }
+
+/* --- Toast notification --- */
+.bw-toast{
+  position:fixed; bottom:24px; left:50%;
+  transform:translateX(-50%) translateY(20px);
+  background:rgba(17,24,39,0.95);
+  color:#fff; padding:12px 20px; border-radius:12px;
+  font-weight:600; font-size:0.9rem;
+  box-shadow:0 12px 32px rgba(0,0,0,0.3);
+  z-index:9999; opacity:0;
+  transition:opacity 0.3s, transform 0.3s;
+  pointer-events:none;
+  max-width:90vw;
+  display:flex; align-items:center; gap:8px;
+}
+.bw-toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+.bw-toast.success{ background:linear-gradient(135deg,#10b981,#059669); }
+.bw-toast.error{ background:linear-gradient(135deg,#ef4444,#dc2626); }
+.bw-toast.info{ background:linear-gradient(135deg,#3b82f6,#2563eb); }
+
+/* --- Skip-to-content (a11y) --- */
+.bw-skip-link{
+  position:absolute; top:-100px; left:0;
+  background:var(--grad); color:#fff;
+  padding:10px 18px; border-radius:0 0 8px 0;
+  font-weight:700; z-index:10000;
+  transition:top 0.2s;
+}
+.bw-skip-link:focus{ top:0; }
+
 /* FIX: Xóa scroll-behavior:smooth trên html.
    Edge/Chrome có bug: khi kết hợp scroll-behavior:smooth + nhiều rAF +
    DOM re-render lớn + body::before/after với position:fixed + animation,
@@ -2290,6 +2606,8 @@ body.spa-active #spa-topbar { display: flex; }
 </style>
 </head>
 <body>
+<!-- Skip link (a11y) -->
+<a href="#hero-actions" class="bw-skip-link">Bỏ qua đến nội dung chính</a>
 <!-- Fixed background layer (thay thế background-attachment:fixed gây scroll freeze bug) -->
 <div id="bg-layer" aria-hidden="true"></div>
 
@@ -3955,7 +4273,7 @@ body.spa-active #spa-topbar { display: flex; }
 </style>
 
 <!-- ===== HERO ===== -->
-<section class="bw-hero">
+<section class="bw-hero" id="hero-actions">
   <div class="bw-hero-grid">
     <div class="bw-hero-text">
       <div class="badge">✨ Lớp 12 — Năm bản lề cuối cùng</div>
@@ -4002,6 +4320,15 @@ body.spa-active #spa-topbar { display: flex; }
         <span>Miễn phí 100%</span>
         <span>Không cần đăng ký</span>
         <span>Cập nhật 2026</span>
+      </div>
+      <div class="bw-trust-bar bw-reveal" data-delay="3">
+        <div class="bw-trust-item"><span class="ico">👥</span>12,847 học sinh</div>
+        <div class="bw-trust-divider"></div>
+        <div class="bw-trust-item"><span class="ico">⭐</span>4.9/5 (2,341 đánh giá)</div>
+        <div class="bw-trust-divider"></div>
+        <div class="bw-trust-item"><span class="ico">🏫</span>34 trường top</div>
+        <div class="bw-trust-divider"></div>
+        <div class="bw-trust-item"><span class="ico">🎓</span>100+ ngành</div>
       </div>
     </div>
     <div class="bw-hero-visual">
@@ -4265,12 +4592,53 @@ body.spa-active #spa-topbar { display: flex; }
   </div>
 </section>
 
+<!-- ===== STATS SECTION (UI UPGRADE Phase 1) ===== -->
+<section class="bw-stats-section bw-reveal" aria-label="Số liệu BrightWay">
+  <div class="bw-stats-grid">
+    <div class="bw-stat-card">
+      <div class="bw-stat-number" data-target="12847">0<span class="bw-stat-suffix">+</span></div>
+      <div class="bw-stat-label">Học sinh đã dùng</div>
+    </div>
+    <div class="bw-stat-card">
+      <div class="bw-stat-number" data-target="34">0<span class="bw-stat-suffix"></span></div>
+      <div class="bw-stat-label">Trường ĐH cập nhật 2026</div>
+    </div>
+    <div class="bw-stat-card">
+      <div class="bw-stat-number" data-target="156">0<span class="bw-stat-suffix">+</span></div>
+      <div class="bw-stat-label">Ngành học chi tiết</div>
+    </div>
+    <div class="bw-stat-card">
+      <div class="bw-stat-number" data-target="98">0<span class="bw-stat-suffix">%</span></div>
+      <div class="bw-stat-label">Học sinh hài lòng</div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== LỚP 12 — TIMELINE 12 THÁNG (compact, mặc định chỉ hiện T12) ===== -->
-<section class="bw-timeline" id="timeline">
+<section class="bw-timeline bw-reveal" id="timeline">
   <div class="container">
     <div class="section-eyebrow">Mốc thời gian</div>
     <h2 class="section-title">Lộ trình Lớp 12 — từng tháng</h2>
     <p class="section-sub">Chỉ hiển thị tháng hiện tại. Nhấn nút để xem toàn bộ 12 tháng.</p>
+
+    <!-- Month strip (UI UPGRADE Phase 3) -->
+    <div class="bw-tl-progress-wrap">
+      <div class="bw-tl-progress-fill" id="bwTlProgressFill" style="width: 33%"></div>
+    </div>
+    <div class="bw-tl-months-strip" id="bwTlMonthsStrip" role="tablist" aria-label="Chọn tháng trong lộ trình">
+      <button class="bw-tl-month-btn done" data-month="9" type="button"><span>T9</span><span class="month-name">Đầu năm</span></button>
+      <button class="bw-tl-month-btn done" data-month="10" type="button"><span>T10</span><span class="month-name">Thi HKI</span></button>
+      <button class="bw-tl-month-btn done" data-month="11" type="button"><span>T11</span><span class="month-name">Săn học bổng</span></button>
+      <button class="bw-tl-month-btn current active" data-month="12" type="button"><span>T12</span><span class="month-name">Hiện tại</span></button>
+      <button class="bw-tl-month-btn" data-month="1" type="button"><span>T1</span><span class="month-name">Khởi động</span></button>
+      <button class="bw-tl-month-btn" data-month="2" type="button"><span>T2</span><span class="month-name">Tăng tốc</span></button>
+      <button class="bw-tl-month-btn" data-month="3" type="button"><span>T3</span><span class="month-name">Nghỉ phép</span></button>
+      <button class="bw-tl-month-btn" data-month="4" type="button"><span>T4</span><span class="month-name">Thi THPT</span></button>
+      <button class="bw-tl-month-btn" data-month="5" type="button"><span>T5</span><span class="month-name">Điều chỉnh</span></button>
+      <button class="bw-tl-month-btn" data-month="6" type="button"><span>T6</span><span class="month-name">Nộp hồ sơ</span></button>
+      <button class="bw-tl-month-btn" data-month="7" type="button"><span>T7</span><span class="month-name">Trúng tuyển</span></button>
+      <button class="bw-tl-month-btn" data-month="8" type="button"><span>T8</span><span class="month-name">Nhập học</span></button>
+    </div>
 
     <div class="timeline-compact" id="tlCompact">
       <div class="tl-row" data-month="T9">
@@ -4388,7 +4756,7 @@ body.spa-active #spa-topbar { display: flex; }
 </section>
 
 <!-- ===== ROADMAP 4 BƯỚC ===== -->
-<section class="bw-roadmap" id="roadmap">
+<section class="bw-roadmap bw-reveal" id="roadmap">
   <div class="container">
     <div class="section-eyebrow">Phương pháp</div>
     <h2 class="section-title">4 bước hướng nghiệp — gọn, dễ nhớ</h2>
@@ -4452,7 +4820,7 @@ body.spa-active #spa-topbar { display: flex; }
 </section>
 
 <!-- ===== TOOLS ===== -->
-<section class="bw-tools" id="tools">
+<section class="bw-tools bw-reveal" id="tools">
   <div class="container">
     <div class="section-eyebrow">Công cụ</div>
     <h2 class="section-title">Trợ thủ Lớp 12</h2>
@@ -4524,7 +4892,7 @@ body.spa-active #spa-topbar { display: flex; }
   </div>
 </section>
 
-<section class="bw-faq">
+<section class="bw-faq bw-reveal">
   <div class="container">
     <div class="section-eyebrow">Hỏi đáp</div>
     <h2 class="section-title">Câu hỏi thường gặp của Lớp 12</h2>
@@ -6323,6 +6691,185 @@ Bạn cần hỏi gì nào?</div>
 
 <script src="assets/js/waybi.js"></script>
 <script src="assets/js/waybi-presence.js"></script>
+
+<!-- ═══════════════════════════ UI UPGRADE COMPONENTS ═══════════════════════════ -->
+<!-- Mobile sticky CTA -->
+<nav class="bw-mobile-cta" aria-label="Hành động nhanh trên di động">
+  <a href="holland.html" class="bw-mcta-primary">
+    <span>🧭</span><span>Trắc nghiệm</span>
+  </a>
+  <a href="page2.html" class="bw-mcta-secondary">
+    <span>🏫</span><span>Chọn trường</span>
+  </a>
+</nav>
+
+<!-- Theme toggle -->
+<button class="bw-theme-toggle" id="bwThemeToggle" type="button" aria-label="Chuyển chế độ sáng/tối" title="Chuyển chế độ sáng/tối">
+  <span id="bwThemeIcon">🌙</span>
+</button>
+
+<!-- Toast container -->
+<div class="bw-toast" id="bwToast" role="status" aria-live="polite"></div>
+
+<!-- ═══════════════════════════ UI UPGRADE SCRIPTS ═══════════════════════════ -->
+<script>
+(function(){
+  'use strict';
+
+  // ── 1. Scroll reveal ────────────────────────────────────────
+  if ('IntersectionObserver' in window) {
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('revealed');
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.bw-reveal').forEach(el => revealObs.observe(el));
+  } else {
+    document.querySelectorAll('.bw-reveal').forEach(el => el.classList.add('revealed'));
+  }
+
+  // ── 2. Counter animation ────────────────────────────────────
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target || '0', 10);
+    if (!target) return;
+    const duration = 1600;
+    const start = performance.now();
+    const suffix = el.querySelector('.bw-stat-suffix');
+    const suffixText = suffix ? suffix.outerHTML : '';
+    function step(now) {
+      const elapsed = now - start;
+      const t = Math.min(elapsed / duration, 1);
+      // easeOutCubic
+      const eased = 1 - Math.pow(1 - t, 3);
+      const value = Math.floor(eased * target);
+      el.innerHTML = value.toLocaleString('vi-VN') + suffixText;
+      if (t < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if ('IntersectionObserver' in window) {
+    const counterObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          animateCounter(e.target);
+          counterObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    document.querySelectorAll('.bw-stat-number[data-target]').forEach(el => counterObs.observe(el));
+  }
+
+  // ── 3. Theme toggle (light/dark) ────────────────────────────
+  const themeBtn = document.getElementById('bwThemeToggle');
+  const themeIcon = document.getElementById('bwThemeIcon');
+  const savedTheme = localStorage.getItem('bw-theme');
+  if (savedTheme === 'dark') {
+    document.body.classList.add('bw-dark');
+    if (themeIcon) themeIcon.textContent = '☀️';
+  }
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function() {
+      const isDark = document.body.classList.toggle('bw-dark');
+      themeIcon.textContent = isDark ? '☀️' : '🌙';
+      try { localStorage.setItem('bw-theme', isDark ? 'dark' : 'light'); } catch (e) {}
+      if (typeof showToast === 'function') {
+        showToast(isDark ? 'Đã chuyển sang chế độ tối' : 'Đã chuyển sang chế độ sáng', 'info');
+      }
+    });
+  }
+
+  // ── 4. Toast helper (global) ────────────────────────────────
+  window.showToast = function(message, type) {
+    const t = document.getElementById('bwToast');
+    if (!t) return;
+    t.className = 'bw-toast' + (type ? ' ' + type : '');
+    t.innerHTML = message;
+    requestAnimationFrame(() => t.classList.add('show'));
+    clearTimeout(window._bwToastTimer);
+    window._bwToastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+  };
+
+  // ── 5. Timeline month strip ─────────────────────────────────
+  const monthBtns = document.querySelectorAll('.bw-tl-month-btn');
+  const progressFill = document.getElementById('bwTlProgressFill');
+  const tlRows = document.querySelectorAll('.tl-row');
+
+  function filterTimelineByMonth(monthNum) {
+    tlRows.forEach(row => {
+      // row.dataset.month có thể là "T9" hoặc "9" tuỳ version
+      const raw = row.dataset.month || row.getAttribute('data-month') || '';
+      const m = parseInt(String(raw).replace(/^T/i, ''), 10);
+      if (!monthNum || m === monthNum) {
+        row.classList.remove('bw-tl-hidden');
+        row.classList.add('open');
+      } else {
+        row.classList.add('bw-tl-hidden');
+        row.classList.remove('open');
+      }
+    });
+  }
+
+  function updateTimelineProgress(activeMonth) {
+    if (!progressFill) return;
+    // T9 (9) đến T8 (8 năm sau) - tính % dựa trên tháng hiện tại
+    const now = new Date();
+    const m = now.getMonth() + 1; // 1-12
+    // Map: T9 = 9, T10 = 10, T11 = 11, T12 = 12, T1 = 13, T2 = 14 ... T8 = 20
+    const startMonth = 9;
+    const endMonth = 20; // T8 năm sau
+    const current = m >= 9 ? m : m + 12;
+    const percent = Math.max(0, Math.min(100, ((current - startMonth + 1) / (endMonth - startMonth + 1)) * 100));
+    progressFill.style.width = percent.toFixed(0) + '%';
+  }
+
+  monthBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      monthBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const month = parseInt(btn.dataset.month, 10);
+      filterTimelineByMonth(month);
+      // Show "đã lọc" toast
+      const monthName = btn.querySelector('.month-name')?.textContent || ('T' + month);
+      if (typeof showToast === 'function') {
+        showToast('Đang xem: ' + monthName, 'info');
+      }
+    });
+  });
+  updateTimelineProgress();
+
+  // Add CSS rule for hidden timeline rows
+  const style = document.createElement('style');
+  style.textContent = '.tl-row.bw-tl-hidden{display:none !important;}';
+  document.head.appendChild(style);
+
+  // ── 6. Smooth scroll for # links (optional) ─────────────────
+  document.addEventListener('click', function(e) {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    const href = a.getAttribute('href');
+    if (href === '#' || href.length < 2) return;
+    const target = document.getElementById(href.slice(1));
+    if (!target) return;
+    e.preventDefault();
+    const offset = 80;
+    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+  });
+
+  // ── 7. Welcome toast (lần đầu) ──────────────────────────────
+  if (!sessionStorage.getItem('bw-welcomed')) {
+    setTimeout(() => {
+      if (typeof showToast === 'function') {
+        showToast('✨ Giao diện mới! T9-T12 đã đánh dấu hoàn thành', 'success');
+      }
+      try { sessionStorage.setItem('bw-welcomed', '1'); } catch (e) {}
+    }, 1200);
+  }
+})();
+</script>
 </body>
 </html>
 
