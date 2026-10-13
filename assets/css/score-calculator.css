@@ -459,3 +459,177 @@
   .school-row-name { font-size: .88rem; }
   .school-row-score .value { font-size: 1rem; }
 }
+
+/* 2026 calculator refresh: a compact, step-based form and scannable results. */
+.calc-result-panel [hidden] { display: none !important; }
+.calc-hero {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at 92% 5%, rgba(154, 139, 255, .35), transparent 30%),
+              linear-gradient(120deg, #f2f4ff, #fbfaff 72%);
+  color: #1e2454;
+  border-bottom: 1px solid #e4e8ff;
+  padding: 40px 24px 34px;
+  text-align: left;
+}
+.calc-eyebrow {
+  display: inline-block;
+  color: #6357d6;
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  margin-bottom: 10px;
+}
+.calc-hero h1 { font-size: clamp(1.65rem, 3vw, 2.35rem); line-height: 1.2; }
+.calc-hero p {
+  margin: 0;
+  max-width: 700px;
+  color: #555c7c;
+  font-size: .9rem;
+  opacity: 1;
+}
+.calc-hero-steps { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 19px; }
+.calc-hero-steps span { display: inline-flex; align-items: center; gap: 7px; font-size: .77rem; font-weight: 700; color: #535b83; }
+.calc-hero-steps b { display: grid; place-items: center; width: 21px; height: 21px; border-radius: 50%; background: #e5e5ff; color: #6357d6; font-size: .7rem; }
+
+.calc-layout { max-width: 1240px; grid-template-columns: minmax(350px, 400px) minmax(0, 1fr); gap: 22px; margin-top: 22px; }
+.calc-input-panel { position: static; max-height: none; overflow: visible; padding-right: 0; gap: 12px; }
+.calc-card {
+  padding: 18px 20px;
+  background: #fff;
+  border: 1px solid #e5e8f5;
+  border-radius: 16px;
+  backdrop-filter: none;
+  box-shadow: 0 6px 24px rgba(35, 46, 105, .045);
+}
+.calc-section-title { color: #242955; font-size: .93rem; margin-bottom: 12px; gap: 10px; }
+.section-number { display: grid; place-items: center; width: 29px; height: 29px; border-radius: 9px; background: #eeecff; color: #6554d9; font-size: .72rem; }
+.combo-select-label { display: block; margin-bottom: 7px; font-size: .72rem; font-weight: 700; color: #5c6381; }
+#comboSelect {
+  width: 100%;
+  min-height: 44px;
+  border: 1.5px solid #d7daf2;
+  border-radius: 11px;
+  padding: 9px 12px;
+  background: #fafaff;
+  color: #292f60;
+  font: 700 .85rem 'Be Vietnam Pro', sans-serif;
+  outline: none;
+}
+#comboSelect:focus-visible { border-color: #7469f2; box-shadow: 0 0 0 4px rgba(116, 105, 242, .13); }
+.combo-hint { margin: -4px 0 12px; color: #675be0; font-size: .76rem; font-weight: 700; }
+.score-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.score-input { gap: 5px; opacity: .68; transition: opacity .15s; }
+.score-input-active { opacity: 1; }
+.score-input span { font-size: .66rem; letter-spacing: 0; text-transform: none; }
+.score-input input { width: 100%; min-width: 0; padding: 9px 6px; border-radius: 9px; }
+.score-input-active input { border-color: #a69fff; background: #faf9ff; }
+.calc-field-note { margin-top: 10px; color: #757b97; font-size: .73rem; }
+.calc-optional { padding: 0; }
+.calc-optional summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 17px 20px;
+  color: #282d5a;
+  font-size: .88rem;
+  font-weight: 800;
+}
+.calc-optional summary::-webkit-details-marker { display: none; }
+.calc-optional summary::before { content: '＋'; margin-right: 10px; color: #6659df; }
+.calc-optional[open] summary::before { content: '－'; }
+.calc-optional summary span { margin-left: auto; color: #777e9d; font-size: .7rem; font-weight: 600; }
+.calc-optional .dgnl-grid { padding: 0 20px; }
+.calc-optional .calc-field-note { padding: 0 20px 17px; }
+.calc-actions { display: flex; gap: 9px; }
+.calc-btn-primary, .calc-btn-secondary { margin: 0; min-height: 46px; }
+.calc-btn-primary { flex: 1; width: auto; display: flex; justify-content: center; align-items: center; gap: 14px; font-size: .85rem; }
+.calc-btn-secondary { width: auto; min-width: 90px; background: #fff; }
+.calc-btn-primary span { font-size: 1.05rem; }
+
+.calc-result-panel { gap: 16px; min-width: 0; }
+.result-summary, .result-empty {
+  background: #fff;
+  border: 1px solid #e5e8f5;
+  border-radius: 17px;
+  box-shadow: 0 6px 24px rgba(35, 46, 105, .045);
+}
+.result-summary { padding: 20px; }
+.result-summary h2 { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; font-size: 1rem; }
+.result-context { font-family: 'Be Vietnam Pro', sans-serif; font-size: .7rem; color: #858aa4; font-weight: 600; }
+.summary-grid { grid-template-columns: 1.4fr repeat(3, minmax(0, 1fr)); gap: 8px; }
+.summary-item { border: 1px solid #eceefa; background: #f8f9ff; padding: 11px 9px; }
+.summary-item:first-child { background: linear-gradient(135deg, #655ff1, #8059e9); border-color: transparent; text-align: left; padding-left: 17px; }
+.summary-item:first-child .summary-label, .summary-item:first-child .summary-value { color: #fff; background: none; -webkit-text-fill-color: #fff; }
+.summary-item:first-child .summary-value { font-size: 1.7rem; }
+.summary-label { font-size: .62rem; letter-spacing: 0; text-transform: none; line-height: 1.4; }
+.summary-value { font-size: 1.2rem; }
+.result-schools h2 { font-size: 1.08rem; margin: 4px 0 7px; }
+.result-tip { line-height: 1.55; color: #727995; font-size: .76rem; }
+.school-list { gap: 8px; }
+.school-list .school-row {
+  display: block;
+  padding: 0;
+  background: #fff;
+  border: 1px solid #e5e8f5;
+  border-radius: 13px;
+  box-shadow: 0 4px 16px rgba(35, 46, 105, .04);
+}
+.school-row:hover { transform: none; box-shadow: 0 6px 18px rgba(35, 46, 105, .08); }
+.school-list .school-row-calculated { border-color: #cec9fb; }
+.school-row-summary {
+  cursor: pointer;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) auto 16px;
+  align-items: center;
+  gap: 11px;
+  padding: 11px 14px;
+}
+.school-row-summary::-webkit-details-marker { display: none; }
+.school-row-summary:focus-visible { outline: 3px solid rgba(116, 105, 242, .3); outline-offset: -3px; border-radius: 12px; }
+.school-list .school-row-logo { width: 48px; height: 40px; border-radius: 9px; font-size: .64rem; background: #f3f2ff; border-color: #e6e2ff; }
+.school-row-name { margin: 0; min-width: 0; line-height: 1.35; font-size: .81rem; overflow-wrap: anywhere; }
+.school-row-status { color: #6f7390; background: #f3f4fa; padding: 6px 9px; border-radius: 8px; font-size: .7rem; font-weight: 700; white-space: nowrap; }
+.school-row-calculated .school-row-status { color: #5b4ccf; background: #eeecff; }
+.school-row-chevron { color: #868ba7; font-size: 1.1rem; transition: transform .15s; }
+.school-row[open] .school-row-chevron { transform: rotate(180deg); }
+.school-row-detail { border-top: 1px solid #edf0fa; margin: 0 14px; padding: 0 0 14px 59px; }
+.school-outcome { margin-top: 12px; font-size: .8rem; }
+.school-method-note { margin-top: 7px; font-size: .75rem; }
+.school-source-links { margin-top: 9px; }
+.school-source-links a { font-size: .74rem; }
+.result-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 400px; padding: 35px; }
+.result-empty-icon { display: grid; place-items: center; width: 64px; height: 64px; margin-bottom: 16px; border-radius: 18px; background: #eeecff; color: #6559e5; font-size: 2rem; font-weight: 800; }
+.result-empty p { max-width: 420px; }
+.result-empty-trust { display: inline-block; margin-top: 20px; padding: 7px 10px; border-radius: 999px; background: #f5f5ff; color: #686e95; font-size: .69rem; font-weight: 700; }
+
+@media (max-width: 960px) {
+  .calc-layout { grid-template-columns: 1fr; }
+  .score-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  body #waybi-left { display: none; }
+  .calc-hero { padding: 28px 18px; }
+  .calc-hero h1 { font-size: 1.6rem; }
+  .calc-hero-steps { gap: 8px 13px; }
+  .calc-hero-steps span { font-size: .68rem; }
+  .calc-layout { padding: 0 14px; margin-top: 14px; gap: 18px; }
+  .calc-card { padding: 16px; }
+  .score-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .summary-item:first-child { grid-column: 1 / -1; }
+  .result-summary h2 { display: block; }
+  .result-context { display: block; margin-top: 3px; }
+  .school-row-summary { grid-template-columns: 42px minmax(0, 1fr) 16px; gap: 8px; }
+  .school-list .school-row-logo { width: 40px; font-size: .58rem; }
+  .school-row-status { grid-column: 2; grid-row: 2; justify-self: start; }
+  .school-row-chevron { grid-column: 3; grid-row: 1 / 3; }
+  .school-row-detail { padding-left: 0; }
+  .result-empty { min-height: 280px; }
+}
+@media (max-width: 370px) {
+  .score-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

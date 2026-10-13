@@ -29,8 +29,12 @@
 <!-- HEADER -->
 <section class="calc-hero">
   <div class="calc-hero-inner">
-    <h1>🧮 Tính điểm tổng hợp xét tuyển Đại học 2026</h1>
-    <p>Tính đúng phần điểm có thể tự tính từ đề án 2026. Kết quả không thay thế điểm xét tuyển chính thức theo ngành, tổ hợp và diện ưu tiên.</p>
+    <span class="calc-eyebrow">CÔNG CỤ TUYỂN SINH 2026</span>
+    <h1>Tính điểm xét tuyển, rõ từng bước</h1>
+    <p>Chọn tổ hợp, nhập điểm và xem cách áp dụng tại từng trường. Công cụ chỉ tính phần có đủ dữ liệu từ đề án chính thức.</p>
+    <div class="calc-hero-steps" aria-label="Ba bước sử dụng">
+      <span><b>1</b> Chọn tổ hợp</span><span><b>2</b> Nhập điểm</span><span><b>3</b> Xem kết quả</span>
+    </div>
   </div>
 </section>
 
@@ -39,7 +43,31 @@
   <!-- LEFT: INPUT FORM -->
   <aside class="calc-input-panel">
     <div class="calc-card">
-      <h2 class="calc-section-title">📚 Điểm thi tốt nghiệp THPT 2026 (thang 10)</h2>
+      <h2 class="calc-section-title"><span class="section-number">01</span> Chọn tổ hợp xét tuyển</h2>
+      <label class="combo-select-label" for="comboSelect">Tổ hợp môn thi</label>
+      <select id="comboSelect">
+        <option value="A00">A00 · Toán, Lý, Hóa</option>
+        <option value="A01">A01 · Toán, Lý, Anh</option>
+        <option value="A02">A02 · Toán, Lý, Sinh</option>
+        <option value="B00">B00 · Toán, Hóa, Sinh</option>
+        <option value="C00">C00 · Văn, Sử, Địa</option>
+        <option value="C01">C01 · Văn, Toán, Lý</option>
+        <option value="C02">C02 · Văn, Toán, Hóa</option>
+        <option value="C03">C03 · Văn, Toán, Sử</option>
+        <option value="C04">C04 · Văn, Toán, Địa</option>
+        <option value="D01">D01 · Văn, Toán, Anh</option>
+        <option value="D07">D07 · Toán, Hóa, Anh</option>
+        <option value="D08">D08 · Toán, Sinh, Anh</option>
+        <option value="D09">D09 · Toán, Sử, Anh</option>
+        <option value="D10">D10 · Toán, Địa, Anh</option>
+        <option value="D11">D11 · Văn, Lý, Anh</option>
+      </select>
+      <p class="calc-field-note">Tổ hợp được chấp nhận còn tùy ngành và trường.</p>
+    </div>
+
+    <div class="calc-card">
+      <h2 class="calc-section-title"><span class="section-number">02</span> Nhập điểm thi THPT</h2>
+      <p id="comboHint" class="combo-hint">A00 · Cần nhập Toán, Lý, Hóa</p>
       <div class="score-grid">
         <label class="score-input">
           <span>Toán</span>
@@ -77,73 +105,7 @@
     </div>
 
     <div class="calc-card">
-      <h2 class="calc-section-title">🎯 Tổ hợp môn xét tuyển</h2>
-      <div class="combo-grid">
-        <label class="combo-chip">
-          <input type="radio" name="combo" value="A00" checked />
-          <span><strong>A00</strong> Toán, Lý, Hóa</span>
-        </label>
-        <label class="combo-chip">
-          <input type="radio" name="combo" value="A01" />
-          <span><strong>A01</strong> Toán, Lý, Anh</span>
-        </label>
-        <label class="combo-chip">
-          <input type="radio" name="combo" value="A02" />
-          <span><strong>A02</strong> Toán, Lý, Sinh</span>
-        </label>
-        <label class="combo-chip">
-          <input type="radio" name="combo" value="B00" />
-          <span><strong>B00</strong> Toán, Hóa, Sinh</span>
-        </label>
-        <label class="combo-chip">
-          <input type="radio" name="combo" value="C00" />
-          <span><strong>C00</strong> Văn, Sử, Địa</span>
-        </label>
-        <label class="combo-chip">
-          <input type="radio" name="combo" value="C01" />
-          <span><strong>C01</strong> Văn, Toán, Lý</span>
-        </label>
-        <label class="combo-chip">
-          <input type="radio" name="combo" value="C02" />
-          <span><strong>C02</strong> Văn, Toán, Hóa</span>
-        </label>
-        <label class="combo-chip">
-          <input type="radio" name="combo" value="C03" />
-          <span><strong>C03</strong> Văn, Toán, Sử</span>
-        </label>
-        <label class="combo-chip">
-          <input type="radio" name="combo" value="C04" />
-          <span><strong>C04</strong> Văn, Toán, Địa</span>
-        </label>
-        <label class="combo-chip">
-          <input type="radio" name="combo" value="D01" />
-          <span><strong>D01</strong> Văn, Toán, Anh</span>
-        </label>
-        <label class="combo-chip">
-          <input type="radio" name="combo" value="D07" />
-          <span><strong>D07</strong> Toán, Hóa, Anh</span>
-        </label>
-        <label class="combo-chip">
-          <input type="radio" name="combo" value="D08" />
-          <span><strong>D08</strong> Toán, Sinh, Anh</span>
-        </label>
-        <label class="combo-chip">
-          <input type="radio" name="combo" value="D09" />
-          <span><strong>D09</strong> Toán, Sử, Anh</span>
-        </label>
-        <label class="combo-chip">
-          <input type="radio" name="combo" value="D10" />
-          <span><strong>D10</strong> Toán, Địa, Anh</span>
-        </label>
-        <label class="combo-chip">
-          <input type="radio" name="combo" value="D11" />
-          <span><strong>D11</strong> Văn, Lý, Anh</span>
-        </label>
-      </div>
-    </div>
-
-    <div class="calc-card">
-      <h2 class="calc-section-title">🏫 Dữ liệu riêng theo trường</h2>
+      <h2 class="calc-section-title"><span class="section-number">03</span> Bổ sung cho FPT</h2>
       <label class="dgnl-input">
         <span>Điểm trung bình cả năm lớp 12, tất cả môn tính điểm (FPT, thang 10)</span>
         <input type="number" id="sGrade12" min="0" max="10" step="0.01" placeholder="Ví dụ: 8.40" />
@@ -151,8 +113,8 @@
       <p class="calc-field-note">Không nhập điểm học bạ của 3 môn vào ô điểm thi. ĐH Cần Thơ cần điểm cả năm lớp 10–12 và bảng quy đổi riêng từng môn; các trường khác có thể dùng công thức tích hợp.</p>
     </div>
 
-    <div class="calc-card">
-      <h2 class="calc-section-title">📊 Điểm bài thi riêng (chỉ hiển thị điểm gốc)</h2>
+    <details class="calc-card calc-optional">
+      <summary>Điểm bài thi khác <span>Tùy chọn</span></summary>
       <div class="dgnl-grid">
         <label class="dgnl-input">
           <span>V-ACT (ĐHQG-HCM, tối đa 1200)</span>
@@ -168,10 +130,12 @@
         </label>
       </div>
       <p class="calc-field-note">Không nhân tỷ lệ để quy về thang 30. V-SAT tính theo từng môn (/150) và bảng quy đổi 2026 của trường, không phải một điểm tổng /100.</p>
-    </div>
+    </details>
 
-    <button id="calcBtn" class="calc-btn-primary">🧮 Tính điểm theo đề án 2026</button>
-    <button id="resetBtn" class="calc-btn-secondary">🔄 Xóa hết</button>
+    <div class="calc-actions">
+      <button id="calcBtn" class="calc-btn-primary">Xem kết quả <span aria-hidden="true">→</span></button>
+      <button id="resetBtn" class="calc-btn-secondary">Làm lại</button>
+    </div>
   </aside>
 
   <!-- RIGHT: RESULTS -->
@@ -179,7 +143,7 @@
     <p id="calcError" class="calc-error" role="alert" hidden></p>
     <!-- SUMMARY -->
     <div class="result-summary" id="resultSummary" hidden>
-      <h2>📈 Điểm gốc bạn đã nhập</h2>
+      <h2>Điểm của bạn <span class="result-context">Điểm gốc, chưa cộng ưu tiên</span></h2>
       <div class="summary-grid">
         <div class="summary-item">
           <div class="summary-label">Tổng 3 môn thi THPT (/30)</div>
@@ -202,16 +166,17 @@
 
     <!-- ELIGIBLE SCHOOLS -->
     <div class="result-schools" id="resultSchools" hidden>
-      <h2>🏫 Cách áp dụng tại 9 trường bạn chọn</h2>
+      <h2>Cách tính tại 9 trường</h2>
       <p class="result-tip">Chỉ hiện phép tính có đủ dữ liệu và công thức công khai. Chưa cộng điểm ưu tiên/khuyến khích, chưa xét ngành, tổ hợp được phép, điều kiện riêng hay điểm chuẩn; <strong>không dự đoán đỗ/trượt</strong>. Mở nguồn từng trường để đối chiếu.</p>
       <div id="schoolList" class="school-list"></div>
     </div>
 
     <!-- EMPTY -->
     <div class="result-empty" id="resultEmpty">
-      <div style="font-size:64px;margin-bottom:12px;">📊</div>
-      <h3>Nhập điểm để bắt đầu</h3>
-      <p>Nhập điểm thi theo tổ hợp; có thể thêm điểm trung bình lớp 12 để tính phần điểm FPT. Sau đó bấm <strong>“Tính điểm theo đề án 2026”</strong>.</p>
+      <div class="result-empty-icon" aria-hidden="true">↗</div>
+      <h3>Kết quả sẽ hiện ở đây</h3>
+      <p>Chọn tổ hợp và nhập điểm 3 môn thi. Nếu muốn tính điểm kết hợp FPT, thêm điểm trung bình lớp 12.</p>
+      <span class="result-empty-trust">9 nguồn tuyển sinh chính thức · Không dự đoán đỗ/trượt</span>
     </div>
   </main>
 </div>

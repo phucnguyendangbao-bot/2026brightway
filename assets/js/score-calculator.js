@@ -86,7 +86,7 @@ function readBounded(id, max) {
 }
 
 function calculate() {
-  const combo = document.querySelector('input[name="combo"]:checked').value;
+  const combo = document.getElementById('comboSelect').value;
   const selected = COMBO_SUBJECTS[combo];
   const values = {};
   const errors = [];
@@ -143,23 +143,38 @@ function schoolOutcome(school, result) {
   return 'Chưa đủ dữ liệu để tính điểm xét tuyển theo đề án này.';
 }
 
+function schoolHeadline(school, result) {
+  if (school.type === 'fpt') {
+    if (!/^[AC]/.test(result.combo)) return 'Tổ hợp không áp dụng';
+    return result.grade12 === null
+      ? 'Cần điểm lớp 12'
+      : `${((result.raw + result.grade12 * 3) / 2).toFixed(2)} / 30`;
+  }
+  if (school.type === 'ctu') return `${result.raw.toFixed(2)} / 30`;
+  return 'Cần thêm dữ liệu';
+}
+
 function renderSchools(result) {
   const filter = document.getElementById('schoolFilter').value.trim().toLocaleLowerCase('vi');
   const schools = ADMISSIONS_2026.filter(school => school.name.toLocaleLowerCase('vi').includes(filter) || school.short.toLowerCase().includes(filter));
   document.getElementById('schoolList').innerHTML = schools.length
     ? schools.map(school => `
-      <article class="school-row grade-unknown">
-        <div class="school-row-logo">${school.short}</div>
-        <div class="school-row-body">
-          <div class="school-row-name">${school.name}</div>
+      <details class="school-row ${school.type === 'fpt' || school.type === 'ctu' ? 'school-row-calculated' : ''}" ${school.type === 'fpt' && /^[AC]/.test(result.combo) ? 'open' : ''}>
+        <summary class="school-row-summary">
+          <span class="school-row-logo">${school.short}</span>
+          <span class="school-row-name">${school.name}</span>
+          <span class="school-row-status">${schoolHeadline(school, result)}</span>
+          <span class="school-row-chevron" aria-hidden="true">⌄</span>
+        </summary>
+        <div class="school-row-detail">
           <p class="school-outcome">${schoolOutcome(school, result)}</p>
           <p class="school-method-note">${school.note}</p>
           <div class="school-source-links">
-            <a href="${school.url}" target="_blank" rel="noopener noreferrer">Đề án/nguồn 2026 ↗</a>
+            <a href="${school.url}" target="_blank" rel="noopener noreferrer">Xem đề án 2026 ↗</a>
             ${school.extraUrl ? `<a href="${school.extraUrl}" target="_blank" rel="noopener noreferrer">${school.extraLabel} ↗</a>` : ''}
           </div>
         </div>
-      </article>
+      </details>
     `).join('')
     : '<p class="calc-field-note">Không có trường nào trong 9 trường theo từ khóa này.</p>';
 }
@@ -182,7 +197,8 @@ function resetAll() {
     input.value = '';
     input.classList.remove('has-value');
   });
-  document.querySelector('input[name="combo"][value="A00"]').checked = true;
+  document.getElementById('comboSelect').value = 'A00';
+  updateComboUI();
   document.getElementById('schoolFilter').value = '';
   document.getElementById('resultSummary').hidden = true;
   document.getElementById('resultSchools').hidden = true;
@@ -190,11 +206,23 @@ function resetAll() {
   clearError();
 }
 
+function updateComboUI() {
+  const combo = document.getElementById('comboSelect').value;
+  const active = COMBO_SUBJECTS[combo];
+  document.getElementById('comboHint').textContent =
+    `${combo} · Cần nhập ${active.map(key => SUBJECTS[key][1]).join(', ')}`;
+  document.querySelectorAll('.score-input').forEach(label => {
+    label.classList.toggle('score-input-active', active.some(key => SUBJECTS[key][0] === label.querySelector('input').id));
+  });
+}
+
 document.getElementById('calcBtn').addEventListener('click', calculate);
 document.getElementById('resetBtn').addEventListener('click', resetAll);
+document.getElementById('comboSelect').addEventListener('change', updateComboUI);
 document.getElementById('schoolFilter').addEventListener('input', () => {
   if (!document.getElementById('resultSchools').hidden) calculate();
 });
 document.querySelectorAll('.score-input input, .dgnl-input input').forEach(input => {
   input.addEventListener('input', () => input.classList.toggle('has-value', input.value.trim() !== ''));
 });
+updateComboUI();
