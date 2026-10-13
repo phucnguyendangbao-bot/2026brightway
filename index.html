@@ -4674,6 +4674,34 @@ body.spa-active #spa-topbar { display: flex; }
     .bw-waybi-actions { display: grid; gap: 8px; }
     .bw-waybi-actions .bw-btn { min-height: 42px; padding: 10px 14px; justify-content: center; font-size: 13px; }
   }
+
+  /* Hero campus photo: larger landscape frame with a wide crop */
+  @media (min-width: 901px) {
+    #home-view .bw-hero-grid {
+      grid-template-columns: minmax(0, .82fr) minmax(560px, 1.18fr);
+      max-width: 1240px;
+      gap: 56px;
+    }
+    #home-view .bw-hero-visual {
+      width: 100%;
+      max-width: 680px;
+      aspect-ratio: 16 / 10;
+      margin: 0 auto;
+    }
+    #home-view .bw-hero-carousel {
+      aspect-ratio: 16 / 10;
+    }
+    #home-view .bw-hero-carousel .slide img {
+      object-fit: cover;
+      object-position: center 46%;
+    }
+  }
+  #home-view .bw-hero-caption {
+    margin-top: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #64748b;
+  }
 </style>
 
 <!-- ===== HERO ===== -->
@@ -5574,11 +5602,11 @@ body.spa-active #spa-topbar { display: flex; }
           <strong>ĐH Bách khoa TP.HCM (HCMUT)</strong>
         </div>
       </a>
-      <a href="page2.html" class="bw-gallery-item bw-gallery-large" style="--c:#ec4899">
-        <img src="assets/images/hero/03-ueh.jpg?v=2" alt="Đại học Kinh tế Thành phố Hồ Chí Minh (UEH)" loading="lazy" />
+      <a href="page2.html" class="bw-gallery-item" style="--c:#ec4899">
+        <img src="assets/images/hero/03-ueh.jpg?v=2" alt="ĐH Kinh tế TP.HCM" loading="lazy" />
         <div class="bw-gallery-overlay">
-          <small>Đây là trường nào?</small>
-          <strong>Đại học Kinh tế Thành phố Hồ Chí Minh (UEH)</strong>
+          <small>Kinh tế hàng đầu</small>
+          <strong>ĐH Kinh tế TP.HCM (UEH)</strong>
         </div>
       </a>
       <a href="page2.html" class="bw-gallery-item" style="--c:#10b981">
