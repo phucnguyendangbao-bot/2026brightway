@@ -135,7 +135,13 @@
   transition: all .15s;
 }
 .combo-chip:hover { background: rgba(99,102,241,0.08); }
-.combo-chip input { display: none; }
+.combo-chip input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.combo-chip:focus-within { outline: 3px solid rgba(99,102,241,.35); outline-offset: 2px; }
 .combo-chip span { color: #374151; line-height: 1.2; }
 .combo-chip strong { color: #6366f1; font-weight: 800; margin-right: 4px; }
 .combo-chip:has(input:checked) {
@@ -286,6 +292,49 @@
   font-size: .82rem;
   color: #6b7280;
   margin: 0 0 14px;
+}
+.calc-field-note, .school-method-note {
+  color: #5b6179;
+  font-size: .78rem;
+  line-height: 1.6;
+  margin: 10px 0 0;
+}
+.calc-error {
+  color: #9f1239;
+  background: #fff1f2;
+  border: 1px solid #fda4af;
+  border-radius: 12px;
+  padding: 12px 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+.school-outcome {
+  color: #28285d;
+  line-height: 1.55;
+  font-size: .86rem;
+  margin: 5px 0 0;
+}
+.school-source-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+.school-source-links a {
+  color: #4f46e5;
+  font-size: .78rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.school-list .school-row {
+  grid-template-columns: 70px minmax(0, 1fr);
+  align-items: start;
+}
+.school-list .school-row-logo {
+  width: 64px;
+  height: 48px;
+  font-size: .75rem;
 }
 .school-list {
   display: flex;

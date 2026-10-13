@@ -30,7 +30,7 @@
 <section class="calc-hero">
   <div class="calc-hero-inner">
     <h1>🧮 Tính điểm tổng hợp xét tuyển Đại học 2026</h1>
-    <p>Nhập điểm của bạn, chọn tổ hợp môn và phương thức xét tuyển — hệ thống sẽ tính điểm và so sánh với điểm chuẩn các trường.</p>
+    <p>Tính đúng phần điểm có thể tự tính từ đề án 2026. Kết quả không thay thế điểm xét tuyển chính thức theo ngành, tổ hợp và diện ưu tiên.</p>
   </div>
 </section>
 
@@ -39,7 +39,7 @@
   <!-- LEFT: INPUT FORM -->
   <aside class="calc-input-panel">
     <div class="calc-card">
-      <h2 class="calc-section-title">📚 Điểm 9 môn (thang 10)</h2>
+      <h2 class="calc-section-title">📚 Điểm thi tốt nghiệp THPT 2026 (thang 10)</h2>
       <div class="score-grid">
         <label class="score-input">
           <span>Toán</span>
@@ -73,10 +73,6 @@
           <span>Địa lý</span>
           <input type="number" id="sGeo" min="0" max="10" step="0.01" placeholder="0.00" />
         </label>
-        <label class="score-input">
-          <span>GDCD</span>
-          <input type="number" id="sCiv" min="0" max="10" step="0.01" placeholder="0.00" />
-        </label>
       </div>
     </div>
 
@@ -105,15 +101,19 @@
         </label>
         <label class="combo-chip">
           <input type="radio" name="combo" value="C01" />
-          <span><strong>C01</strong> Văn, Toán, Sử</span>
+          <span><strong>C01</strong> Văn, Toán, Lý</span>
         </label>
         <label class="combo-chip">
           <input type="radio" name="combo" value="C02" />
-          <span><strong>C02</strong> Văn, Toán, Địa</span>
+          <span><strong>C02</strong> Văn, Toán, Hóa</span>
         </label>
         <label class="combo-chip">
           <input type="radio" name="combo" value="C03" />
-          <span><strong>C03</strong> Văn, Toán, GDCD</span>
+          <span><strong>C03</strong> Văn, Toán, Sử</span>
+        </label>
+        <label class="combo-chip">
+          <input type="radio" name="combo" value="C04" />
+          <span><strong>C04</strong> Văn, Toán, Địa</span>
         </label>
         <label class="combo-chip">
           <input type="radio" name="combo" value="D01" />
@@ -143,72 +143,67 @@
     </div>
 
     <div class="calc-card">
-      <h2 class="calc-section-title">📊 Điểm ĐGNL (thang 1500 hoặc 100)</h2>
-      <div class="dgnl-grid">
-        <label class="dgnl-input">
-          <span>🎯 V-ACT (ĐHQG-HCM, max 1500)</span>
-          <input type="number" id="sVact" min="0" max="1500" step="1" placeholder="0" />
-        </label>
-        <label class="dgnl-input">
-          <span>🎯 HSA (ĐHQG-HN, max 1500)</span>
-          <input type="number" id="sHsa" min="0" max="1500" step="1" placeholder="0" />
-        </label>
-        <label class="dgnl-input">
-          <span>🎯 TSA (ĐHBK-HN, max 100)</span>
-          <input type="number" id="sTsa" min="0" max="100" step="0.1" placeholder="0" />
-        </label>
-        <label class="dgnl-input">
-          <span>🎯 V-SAT (ĐH Cần Thơ, max 100)</span>
-          <input type="number" id="sVsat" min="0" max="100" step="0.1" placeholder="0" />
-        </label>
-        <label class="dgnl-input">
-          <span>🎯 H-SCA (ĐHSP TPHCM, max 100)</span>
-          <input type="number" id="sHsca" min="0" max="100" step="0.1" placeholder="0" />
-        </label>
-      </div>
+      <h2 class="calc-section-title">🏫 Dữ liệu riêng theo trường</h2>
+      <label class="dgnl-input">
+        <span>Điểm trung bình cả năm lớp 12, tất cả môn tính điểm (FPT, thang 10)</span>
+        <input type="number" id="sGrade12" min="0" max="10" step="0.01" placeholder="Ví dụ: 8.40" />
+      </label>
+      <p class="calc-field-note">Không nhập điểm học bạ của 3 môn vào ô điểm thi. ĐH Cần Thơ cần điểm cả năm lớp 10–12 và bảng quy đổi riêng từng môn; các trường khác có thể dùng công thức tích hợp.</p>
     </div>
 
-    <button id="calcBtn" class="calc-btn-primary">🧮 Tính điểm & gợi ý trường</button>
+    <div class="calc-card">
+      <h2 class="calc-section-title">📊 Điểm bài thi riêng (chỉ hiển thị điểm gốc)</h2>
+      <div class="dgnl-grid">
+        <label class="dgnl-input">
+          <span>V-ACT (ĐHQG-HCM, tối đa 1200)</span>
+          <input type="number" id="sVact" min="0" max="1200" step="1" placeholder="0" />
+        </label>
+        <label class="dgnl-input">
+          <span>HSA (ĐHQG-HN, tối đa 150)</span>
+          <input type="number" id="sHsa" min="0" max="150" step="1" placeholder="0" />
+        </label>
+        <label class="dgnl-input">
+          <span>TSA (ĐHBK-HN, tối đa 100)</span>
+          <input type="number" id="sTsa" min="0" max="100" step="0.1" placeholder="0" />
+        </label>
+      </div>
+      <p class="calc-field-note">Không nhân tỷ lệ để quy về thang 30. V-SAT tính theo từng môn (/150) và bảng quy đổi 2026 của trường, không phải một điểm tổng /100.</p>
+    </div>
+
+    <button id="calcBtn" class="calc-btn-primary">🧮 Tính điểm theo đề án 2026</button>
     <button id="resetBtn" class="calc-btn-secondary">🔄 Xóa hết</button>
   </aside>
 
   <!-- RIGHT: RESULTS -->
   <main class="calc-result-panel">
+    <p id="calcError" class="calc-error" role="alert" hidden></p>
     <!-- SUMMARY -->
     <div class="result-summary" id="resultSummary" hidden>
-      <h2>📈 Kết quả điểm của bạn</h2>
+      <h2>📈 Điểm gốc bạn đã nhập</h2>
       <div class="summary-grid">
         <div class="summary-item">
-          <div class="summary-label">Điểm tổ hợp (thang 30)</div>
+          <div class="summary-label">Tổng 3 môn thi THPT (/30)</div>
           <div class="summary-value" id="sumCombo">—</div>
         </div>
         <div class="summary-item">
-          <div class="summary-label">Điểm V-ACT quy đổi (/30)</div>
+          <div class="summary-label">V-ACT gốc (/1200)</div>
           <div class="summary-value" id="sumVact">—</div>
         </div>
         <div class="summary-item">
-          <div class="summary-label">Điểm HSA quy đổi (/30)</div>
+          <div class="summary-label">HSA gốc (/150)</div>
           <div class="summary-value" id="sumHsa">—</div>
         </div>
         <div class="summary-item">
-          <div class="summary-label">Điểm TSA quy đổi (/30)</div>
+          <div class="summary-label">TSA gốc (/100)</div>
           <div class="summary-value" id="sumTsa">—</div>
-        </div>
-        <div class="summary-item">
-          <div class="summary-label">Điểm V-SAT quy đổi (/30)</div>
-          <div class="summary-value" id="sumVsat">—</div>
-        </div>
-        <div class="summary-item">
-          <div class="summary-label">Điểm H-SCA quy đổi (/30)</div>
-          <div class="summary-value" id="sumHsca">—</div>
         </div>
       </div>
     </div>
 
     <!-- ELIGIBLE SCHOOLS -->
     <div class="result-schools" id="resultSchools" hidden>
-      <h2>🏫 Trường phù hợp theo từng phương thức</h2>
-      <p class="result-tip">Hệ thống tra cứu điểm chuẩn <strong>theo đề án tuyển sinh thực tế</strong> của từng trường, đối chiếu với điểm bạn nhập. Mỗi dòng là <strong>một phương thức xét tuyển</strong> của trường. Màu xanh = rất khả thi, vàng = cạnh tranh, đỏ = khó.</p>
+      <h2>🏫 Cách áp dụng tại 9 trường bạn chọn</h2>
+      <p class="result-tip">Chỉ hiện phép tính có đủ dữ liệu và công thức công khai. Chưa cộng điểm ưu tiên/khuyến khích, chưa xét ngành, tổ hợp được phép, điều kiện riêng hay điểm chuẩn; <strong>không dự đoán đỗ/trượt</strong>. Mở nguồn từng trường để đối chiếu.</p>
       <div id="schoolList" class="school-list"></div>
     </div>
 
@@ -216,14 +211,14 @@
     <div class="result-empty" id="resultEmpty">
       <div style="font-size:64px;margin-bottom:12px;">📊</div>
       <h3>Nhập điểm để bắt đầu</h3>
-      <p>Vui lòng nhập điểm 3 môn trong tổ hợp và (tùy chọn) điểm ĐGNL, sau đó bấm <strong>“Tính điểm & gợi ý trường”</strong>.</p>
+      <p>Nhập điểm thi theo tổ hợp; có thể thêm điểm trung bình lớp 12 để tính phần điểm FPT. Sau đó bấm <strong>“Tính điểm theo đề án 2026”</strong>.</p>
     </div>
   </main>
 </div>
 
 <!-- FOOTER -->
 <footer class="p2-footer">
-  BrightWay Admissions © 2026 — Điểm chuẩn tham khảo từ các năm trước. Hãy kiểm tra website chính thức của từng trường.
+  BrightWay Admissions © 2026 — Công cụ tham khảo, không phải kết quả xét tuyển chính thức. Luôn kiểm tra đề án và thông báo mới nhất của trường.
 </footer>
 
 <script src="/assets/js/uni-logos.js"></script>
