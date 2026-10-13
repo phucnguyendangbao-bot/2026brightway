@@ -4702,6 +4702,222 @@ body.spa-active #spa-topbar { display: flex; }
     font-weight: 700;
     color: #64748b;
   }
+
+  /* Compact homepage direction: clear hierarchy, fewer oversized blocks */
+  #home-view {
+    background: #fff;
+  }
+  #home-view::before,
+  #home-view::after {
+    display: none;
+  }
+  #home-view .bw-waybi-home {
+    padding: 12px 24px;
+    background: #f4f7ff;
+    border-top: 0;
+    border-bottom: 1px solid #e5eaf5;
+  }
+  #home-view .bw-waybi-home-inner {
+    max-width: 1120px;
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 16px;
+  }
+  #home-view .bw-waybi-home-visual {
+    min-height: 64px;
+  }
+  #home-view .bw-waybi-home-visual img {
+    width: 64px;
+  }
+  #home-view .bw-waybi-home-copy {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "title actions"
+      "description actions";
+    align-items: center;
+    column-gap: 20px;
+  }
+  #home-view .bw-waybi-home-copy .eyebrow,
+  #home-view .bw-waybi-skills,
+  #home-view .bw-waybi-actions .bw-btn-outline {
+    display: none;
+  }
+  #home-view .bw-waybi-home-copy h2 {
+    grid-area: title;
+    margin: 0 0 2px;
+    font-size: 18px;
+    line-height: 1.3;
+  }
+  #home-view .bw-waybi-home-copy > p {
+    grid-area: description;
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+  #home-view .bw-waybi-actions {
+    grid-area: actions;
+  }
+  #home-view .bw-waybi-actions .bw-btn {
+    min-height: 42px;
+    padding: 10px 18px;
+    white-space: nowrap;
+  }
+  #home-view .bw-hero {
+    padding: 48px 24px 28px !important;
+    background: #fff !important;
+  }
+  #home-view .bw-hero-grid {
+    max-width: 1120px;
+    gap: 44px;
+  }
+  #home-view .bw-hero-h1 {
+    font-size: clamp(2.35rem, 4.2vw, 3.5rem) !important;
+    margin-bottom: 16px !important;
+  }
+  #home-view .bw-hero-text .lede {
+    max-width: 570px;
+    margin-bottom: 20px;
+  }
+  #home-view .bw-hero-visual {
+    max-width: 560px;
+    border-radius: 22px;
+    box-shadow: 0 16px 42px rgba(30, 41, 59, 0.14);
+  }
+  #home-view .bw-hero-carousel {
+    border-radius: 22px;
+  }
+  #home-view .bw-trust-bar {
+    max-width: 1120px;
+    margin-top: 24px;
+    padding: 12px 20px;
+    background: #f8fafc;
+    border: 1px solid #e8edf5;
+    box-shadow: none;
+  }
+  #home-view .bw-tabbar {
+    display: none;
+  }
+  #home-view .bw-audience {
+    padding: 54px 24px;
+    background: #f8fafc;
+  }
+  #home-view .bw-compact-intro {
+    max-width: 680px;
+    margin: 0 auto 26px;
+    text-align: center;
+  }
+  #home-view .bw-compact-intro .eyebrow {
+    color: #4f46e5;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  #home-view .bw-compact-intro h2 {
+    margin: 7px 0 8px;
+    color: #172554;
+    font-size: clamp(1.7rem, 3vw, 2.25rem);
+  }
+  #home-view .bw-compact-intro p {
+    margin: 0;
+    color: #64748b;
+    line-height: 1.6;
+  }
+  #home-view .bw-audience-grid {
+    max-width: 980px;
+    margin: 0 auto;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  #home-view .bw-audience-card {
+    position: relative;
+    min-height: 184px;
+    padding: 24px;
+    text-align: left;
+    text-decoration: none;
+    color: inherit;
+    background: #fff;
+    border: 1px solid #e5eaf3;
+    border-radius: 16px;
+    box-shadow: 0 6px 22px rgba(30, 41, 59, .06);
+    cursor: pointer;
+  }
+  #home-view .bw-audience-card:hover {
+    transform: translateY(-3px);
+    border-color: #c7d2fe;
+    box-shadow: 0 12px 28px rgba(79, 70, 229, .10);
+  }
+  #home-view .bw-step-number {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    color: #fff;
+    background: #4f46e5;
+    font-weight: 800;
+  }
+  #home-view .bw-audience-card h3 {
+    margin: 0 0 8px;
+    font-size: 17px;
+  }
+  #home-view .bw-audience-card p {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  #home-view button.bw-audience-card {
+    width: 100%;
+    font: inherit;
+  }
+  @media (max-width: 900px) {
+    #home-view .bw-waybi-home-copy {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+    #home-view .bw-audience-grid {
+      grid-template-columns: 1fr;
+    }
+    #home-view .bw-audience-card {
+      min-height: 0;
+    }
+  }
+  @media (max-width: 620px) {
+    #home-view .bw-waybi-home {
+      padding: 10px 14px;
+    }
+    #home-view .bw-waybi-home-inner {
+      grid-template-columns: 48px minmax(0, 1fr);
+      gap: 10px;
+    }
+    #home-view .bw-waybi-home-visual {
+      min-height: 48px;
+    }
+    #home-view .bw-waybi-home-visual img {
+      width: 48px;
+    }
+    #home-view .bw-waybi-home-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      align-items: flex-start;
+    }
+    #home-view .bw-waybi-home-copy h2 {
+      font-size: 15px;
+    }
+    #home-view .bw-waybi-home-copy > p {
+      font-size: 12px;
+    }
+    #home-view .bw-waybi-actions .bw-btn {
+      min-height: 36px;
+      padding: 8px 12px;
+      font-size: 12px;
+    }
+    #home-view .bw-hero {
+      padding-top: 34px !important;
+    }
+  }
 </style>
 
 <!-- ===== WAYBI — HIỂN THỊ NGAY ĐẦU TRANG ===== -->
@@ -4852,33 +5068,27 @@ body.spa-active #spa-topbar { display: flex; }
 <!-- ===== ĐỐI TƯỢNG PHÙ HỢP ===== -->
 <section class="bw-audience" id="bw-audience-section">
   <div class="container">
-    <button class="bw-audience-toggle" type="button" aria-expanded="true" aria-controls="audienceContent">
-      <span><strong>BrightWay phù hợp với bạn nếu…</strong> — <em>4 đối tượng</em></span>
-      <span class="bw-audience-chev">▾</span>
-    </button>
-    <div class="bw-audience-content" id="audienceContent">
-      <div class="bw-audience-grid">
-        <div class="bw-audience-card compact">
-          <span class="emoji">🎓</span>
-          <h3>Học sinh Lớp 12</h3>
-          <p>Chưa biết mình thích ngành nào? Bắt đầu từ trắc nghiệm Holland 5 phút.</p>
-        </div>
-        <div class="bw-audience-card compact">
-          <span class="emoji">🧑‍🎓</span>
-          <h3>Học sinh Lớp 11</h3>
-          <p>Sớm định hướng — chọn tổ hợp môn phù hợp khối ngành mục tiêu.</p>
-        </div>
-        <div class="bw-audience-card compact">
-          <span class="emoji">👨‍👩‍👧</span>
-          <h3>Phụ huynh</h3>
-          <p>Đồng hành cùng con qua lộ trình 12 tháng — không áp lực.</p>
-        </div>
-        <div class="bw-audience-card compact">
-          <span class="emoji">👩‍🏫</span>
-          <h3>Giáo viên</h3>
-          <p>Dùng lộ trình 12 tháng để đồng hành cùng học sinh.</p>
-        </div>
-      </div>
+    <div class="bw-compact-intro">
+      <span class="eyebrow">Bắt đầu thật đơn giản</span>
+      <h2>3 bước để chọn hướng đi phù hợp</h2>
+      <p>Hiểu bản thân, tra cứu thông tin và nhận gợi ý khi bạn cần.</p>
+    </div>
+    <div class="bw-audience-grid">
+      <a class="bw-audience-card" href="holland.html">
+        <span class="bw-step-number">1</span>
+        <h3>Khám phá bản thân</h3>
+        <p>Làm trắc nghiệm Holland để nhận diện nhóm sở thích nghề nghiệp nổi bật.</p>
+      </a>
+      <a class="bw-audience-card" href="page2.html">
+        <span class="bw-step-number">2</span>
+        <h3>Tra cứu ngành và trường</h3>
+        <p>So sánh ngành học, trường đại học và các thông tin tuyển sinh cần thiết.</p>
+      </a>
+      <button class="bw-audience-card" type="button" data-open-waybi>
+        <span class="bw-step-number">3</span>
+        <h3>Hỏi Waybi</h3>
+        <p>Nhận gợi ý nhanh khi bạn còn phân vân về nghề, trường hoặc học bổng.</p>
+      </button>
     </div>
   </div>
 </section>
