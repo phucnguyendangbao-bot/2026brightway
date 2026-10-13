@@ -51,15 +51,16 @@
 
   // ─── Tabs ───
   function switchTab(tab) {
+    if (!['info', 'favorites', 'history'].includes(tab)) tab = 'info';
     document.querySelectorAll('.profile-tab').forEach(el => {
       el.classList.toggle('active', el.dataset.tab === tab);
     });
     document.querySelectorAll('.profile-panel').forEach(el => {
       el.classList.toggle('active', el.dataset.panel === tab);
     });
+    if (!window.BWAuth?.isSignedIn()) return;
     if (tab === 'favorites') loadFavorites();
     else if (tab === 'history') loadHistory();
-    else if (tab === 'essays') loadEssays();
   }
 
   document.querySelectorAll('.profile-tab').forEach(el => {
@@ -169,45 +170,12 @@
     }
   }
 
-  // ─── Load essays ───
-  async function loadEssays() {
-    const box = $('essaysList');
-    box.innerHTML = '<p class="empty-msg">Đang tải...</p>';
-    try {
-      const items = await window.BWSync.listEssays();
-      if (!items.length) {
-        box.innerHTML = '<div class="empty-msg"><div style="font-size:48px;">✍️</div><h3>Chưa có bài luận nào</h3><p>Bạn có thể lưu bài viết tại <a href="essay-review.html">Nhận xét bài luận</a>.</p></div>';
-        return;
-      }
-      box.innerHTML = '<h3 style="margin-bottom:14px;">✍️ ' + items.length + ' bài luận</h3>' +
-        '<div class="list-stack">' + items.map(e => `
-          <div class="list-row essay-row">
-            <span class="list-row-icon">📝</span>
-            <div class="list-row-body">
-              <div class="list-row-name">${e.title || '(không tiêu đề)'}</div>
-              <div class="list-row-meta">${e.word_count || 0} từ · ${e.is_draft ? '📝 Bản nháp' : '✅ Đã lưu'}</div>
-            </div>
-            <span class="list-row-date">${fmtDate(e.updated_at || e.created_at)}</span>
-            <button class="btn-link btn-delete" data-id="${e.id}">🗑️</button>
-          </div>
-        `).join('') + '</div>';
-      box.querySelectorAll('.btn-delete').forEach(b => {
-        b.addEventListener('click', async () => {
-          if (!confirm('Xóa bài luận này?')) return;
-          await window.BWSync.deleteEssay(b.dataset.id);
-          loadEssays();
-        });
-      });
-    } catch (e) {
-      box.innerHTML = '<p class="empty-msg">❌ Lỗi: ' + e.message + '</p>';
-    }
-  }
-
   // ─── Init ───
   window.BWAuth.on((event, { user, profile }) => {
     if (event === 'SIGNED_IN' || event === 'INIT') {
       renderAuthState();
       if (user) {
+        switchTab(new URLSearchParams(window.location.search).get('tab'));
         // sync local data on first sign-in
         if (event === 'SIGNED_IN') {
           window.BWSync.syncLocalToCloud().catch(() => {});
@@ -221,5 +189,6 @@
   // Initial load
   if (window.BWAuth.isSignedIn()) {
     renderAuthState();
+    switchTab(new URLSearchParams(window.location.search).get('tab'));
   }
 })();

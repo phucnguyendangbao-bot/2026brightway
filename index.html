@@ -3303,6 +3303,10 @@ body.spa-active #spa-topbar { display: flex; }
     display: block;
     color: inherit;
     box-shadow: 0 4px 16px rgba(99,102,241,0.06);
+    width: 100%;
+    min-height: 100%;
+    font: inherit;
+    cursor: pointer;
   }
   .bw-tool-card:hover {
     transform: translateY(-4px);
@@ -3660,13 +3664,7 @@ body.spa-active #spa-topbar { display: flex; }
     -webkit-line-clamp: 3;
   }
 
-  /* Timeline compact: chỉ hiện T12 mặc định */
-  .bw-timeline .tl-row[data-month]:not([data-month="T12"]) {
-    display: none;
-  }
-  .bw-timeline.expanded .tl-row[data-month] {
-    display: flex;
-  }
+  .bw-timeline .tl-row.bw-tl-hidden { display: none; }
   .tl-expand-btn {
     width: 100%;
     background: linear-gradient(135deg, #6366f1, #8b5cf6);
@@ -4303,6 +4301,7 @@ body.spa-active #spa-topbar { display: flex; }
   /* === ACCORDION LỘ TRÌNH 12 THÁNG === */
   .bw-timeline {
     padding: 32px 24px !important;
+    scroll-margin-top: 86px;
   }
   .timeline-compact {
     max-width: 920px;
@@ -4323,8 +4322,8 @@ body.spa-active #spa-topbar { display: flex; }
     padding: 14px 18px;
     cursor: pointer;
     display: grid;
-    grid-template-columns: 56px minmax(110px, 160px) 1fr 30px;
-    align-items: center;
+    grid-template-columns: 70px minmax(170px, .8fr) minmax(0, 1.5fr) 24px;
+    align-items: start;
     gap: 12px;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
@@ -4348,18 +4347,18 @@ body.spa-active #spa-topbar { display: flex; }
     font-size: 13px;
     font-weight: 700;
     color: var(--text-mid);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.45;
   }
   .tl-title {
     font-family: 'Quicksand', sans-serif;
     font-size: 15px;
     font-weight: 700;
     color: var(--text);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.45;
   }
   .tl-toggle {
     font-size: 18px;
@@ -4374,7 +4373,7 @@ body.spa-active #spa-topbar { display: flex; }
     overflow: hidden;
     transition: max-height .35s cubic-bezier(.22,1,.36,1);
   }
-  .tl-row.open .tl-detail { max-height: 280px; }
+  .tl-row.open .tl-detail { max-height: 600px; }
   .tl-detail-inner {
     padding: 0 18px 18px 86px;
     font-size: 14px;
@@ -4571,9 +4570,14 @@ body.spa-active #spa-topbar { display: flex; }
     .schools-mini-grid { grid-template-columns: repeat(2, 1fr); }
     .holland-preview { grid-template-columns: repeat(3, 1fr); }
     .tl-summary {
-      grid-template-columns: 48px 1fr 24px;
+      grid-template-columns: 56px minmax(0, 1fr) 24px;
+      grid-template-areas: "month when toggle" "month title toggle";
+      gap: 4px 12px;
     }
-    .tl-when { display: none; }
+    .tl-month { grid-area: month; }
+    .tl-when { grid-area: when; }
+    .tl-title { grid-area: title; }
+    .tl-toggle { grid-area: toggle; }
     .tl-detail-inner { padding: 0 18px 16px 18px; }
     .bw-fab { right: 12px; bottom: 12px; }
     .bw-fab-btn { width: 48px; height: 48px; font-size: 18px; }
@@ -5275,51 +5279,51 @@ body.spa-active #spa-topbar { display: flex; }
 </section>
 
 
-<!-- ===== STATS SECTION (UI UPGRADE Phase 1) ===== -->
-<section class="bw-stats-section bw-reveal" aria-label="Số liệu BrightWay">
+<!-- ===== AVAILABLE CONTENT ===== -->
+<section class="bw-stats-section bw-reveal" aria-label="Nội dung hiện có trên BrightWay">
   <div class="bw-stats-grid">
     <div class="bw-stat-card">
-      <div class="bw-stat-number" data-target="12847">0<span class="bw-stat-suffix">+</span></div>
-      <div class="bw-stat-label">Học sinh đã dùng</div>
+      <div class="bw-stat-number" data-target="42">0</div>
+      <div class="bw-stat-label">Câu hỏi Holland</div>
     </div>
     <div class="bw-stat-card">
-      <div class="bw-stat-number" data-target="34">0<span class="bw-stat-suffix"></span></div>
-      <div class="bw-stat-label">Trường ĐH cập nhật 2026</div>
+      <div class="bw-stat-number" data-target="102">0</div>
+      <div class="bw-stat-label">Nghề để tra cứu</div>
     </div>
     <div class="bw-stat-card">
-      <div class="bw-stat-number" data-target="156">0<span class="bw-stat-suffix">+</span></div>
-      <div class="bw-stat-label">Ngành học chi tiết</div>
+      <div class="bw-stat-number" data-target="40">0</div>
+      <div class="bw-stat-label">Trường trong dữ liệu</div>
     </div>
     <div class="bw-stat-card">
-      <div class="bw-stat-number" data-target="98">0<span class="bw-stat-suffix">%</span></div>
-      <div class="bw-stat-label">Học sinh hài lòng</div>
+      <div class="bw-stat-number" data-target="12">0</div>
+      <div class="bw-stat-label">Tháng trong lộ trình</div>
     </div>
   </div>
 </section>
 
-<!-- ===== LỚP 12 — TIMELINE 12 THÁNG (compact, mặc định chỉ hiện T12) ===== -->
+<!-- ===== LỚP 12 — TIMELINE 12 THÁNG ===== -->
 <section class="bw-timeline bw-reveal" id="timeline">
   <div class="container">
     <div class="section-eyebrow">Mốc thời gian</div>
     <h2 class="section-title">Lộ trình Lớp 12 — từng tháng</h2>
-    <p class="section-sub">Chỉ hiển thị tháng hiện tại. Nhấn nút để xem toàn bộ 12 tháng.</p>
+    <p class="section-sub">Gợi ý việc cần làm theo tháng. Lịch thi và xét tuyển chính thức cần kiểm tra từ Bộ GD&amp;ĐT và từng trường.</p>
 
     <!-- Month strip (UI UPGRADE Phase 3) -->
     <div class="bw-tl-progress-wrap">
       <div class="bw-tl-progress-fill" id="bwTlProgressFill" style="width: 33%"></div>
     </div>
-    <div class="bw-tl-months-strip" id="bwTlMonthsStrip" role="tablist" aria-label="Chọn tháng trong lộ trình">
-      <button class="bw-tl-month-btn done" data-month="9" type="button"><span>T9</span><span class="month-name">Đầu năm</span></button>
-      <button class="bw-tl-month-btn done" data-month="10" type="button"><span>T10</span><span class="month-name">Thi HKI</span></button>
-      <button class="bw-tl-month-btn done" data-month="11" type="button"><span>T11</span><span class="month-name">Săn học bổng</span></button>
-      <button class="bw-tl-month-btn current active" data-month="12" type="button"><span>T12</span><span class="month-name">Hiện tại</span></button>
+    <div class="bw-tl-months-strip" id="bwTlMonthsStrip" role="group" aria-label="Chọn tháng trong lộ trình">
+      <button class="bw-tl-month-btn" data-month="9" type="button"><span>T9</span><span class="month-name">Đầu năm</span></button>
+      <button class="bw-tl-month-btn" data-month="10" type="button"><span>T10</span><span class="month-name">Giữ nhịp</span></button>
+      <button class="bw-tl-month-btn" data-month="11" type="button"><span>T11</span><span class="month-name">Tìm hiểu</span></button>
+      <button class="bw-tl-month-btn" data-month="12" type="button"><span>T12</span><span class="month-name">Sơ kết</span></button>
       <button class="bw-tl-month-btn" data-month="1" type="button"><span>T1</span><span class="month-name">Khởi động</span></button>
       <button class="bw-tl-month-btn" data-month="2" type="button"><span>T2</span><span class="month-name">Tăng tốc</span></button>
-      <button class="bw-tl-month-btn" data-month="3" type="button"><span>T3</span><span class="month-name">Nghỉ phép</span></button>
-      <button class="bw-tl-month-btn" data-month="4" type="button"><span>T4</span><span class="month-name">Thi THPT</span></button>
-      <button class="bw-tl-month-btn" data-month="5" type="button"><span>T5</span><span class="month-name">Điều chỉnh</span></button>
-      <button class="bw-tl-month-btn" data-month="6" type="button"><span>T6</span><span class="month-name">Nộp hồ sơ</span></button>
-      <button class="bw-tl-month-btn" data-month="7" type="button"><span>T7</span><span class="month-name">Trúng tuyển</span></button>
+      <button class="bw-tl-month-btn" data-month="3" type="button"><span>T3</span><span class="month-name">Luyện đề</span></button>
+      <button class="bw-tl-month-btn" data-month="4" type="button"><span>T4</span><span class="month-name">Rà soát</span></button>
+      <button class="bw-tl-month-btn" data-month="5" type="button"><span>T5</span><span class="month-name">Hoàn thiện</span></button>
+      <button class="bw-tl-month-btn" data-month="6" type="button"><span>T6</span><span class="month-name">Theo dõi lịch thi</span></button>
+      <button class="bw-tl-month-btn" data-month="7" type="button"><span>T7</span><span class="month-name">Xét tuyển</span></button>
       <button class="bw-tl-month-btn" data-month="8" type="button"><span>T8</span><span class="month-name">Nhập học</span></button>
     </div>
 
@@ -5331,25 +5335,34 @@ body.spa-active #spa-topbar { display: flex; }
           <div class="tl-title">Xác định nguyện vọng &amp; xếp hạng</div>
           <div class="tl-toggle">▾</div>
         </div>
-        <div class="tl-detail"><div class="tl-detail-inner">Chốt 3-5 trường nguyện vọng. Tìm hiểu tổ hợp môn xét tuyển từng trường. Lập file Excel theo dõi.</div></div>
+        <div class="tl-detail"><div class="tl-detail-inner">Lập danh sách ngành và trường muốn tìm hiểu. Ghi lại tổ hợp môn và phương thức xét tuyển để so sánh dần.</div></div>
       </div>
       <div class="tl-row" data-month="T10">
         <div class="tl-summary">
           <div class="tl-month">T10</div>
-          <div class="tl-when">Thi học kỳ &amp; săn học bổng</div>
-          <div class="tl-title">Giữ GPA + săn học bổng sớm</div>
+          <div class="tl-when">Duy trì kết quả học tập</div>
+          <div class="tl-title">Ôn tập đều và tìm hiểu cơ hội học bổng</div>
           <div class="tl-toggle">▾</div>
         </div>
-        <div class="tl-detail"><div class="tl-detail-inner">Ôn thi giữa kỳ để giữ GPA. Nộp hồ sơ học bổng doanh nghiệp (nộp sớm thường dễ đậu hơn).</div></div>
+        <div class="tl-detail"><div class="tl-detail-inner">Theo dõi kết quả học tập, rà soát môn cần cải thiện và tìm học bổng phù hợp từ nguồn chính thức.</div></div>
       </div>
-      <div class="tl-row open" data-month="T12">
+      <div class="tl-row" data-month="T11">
         <div class="tl-summary">
-          <div class="tl-month now">T12</div>
-          <div class="tl-when">Học kỳ 1 kết thúc</div>
-          <div class="tl-title">⭐ Chốt chiến lược ôn thi (hiện tại)</div>
+          <div class="tl-month">T11</div>
+          <div class="tl-when">Tìm hiểu phương thức xét tuyển</div>
+          <div class="tl-title">So sánh ngành, trường và điều kiện xét tuyển</div>
           <div class="tl-toggle">▾</div>
         </div>
-        <div class="tl-detail"><div class="tl-detail-inner">Đánh giá năng lực thật qua điểm thi thử. Lên kế hoạch ôn tập 6 tháng (T1-T6). Hạn chế hoạt động ngoại khóa.</div></div>
+        <div class="tl-detail"><div class="tl-detail-inner">Ghi lại các phương thức xét tuyển và điều kiện của trường bạn quan tâm. Kiểm tra thông tin trên website tuyển sinh của trường.</div></div>
+      </div>
+      <div class="tl-row" data-month="T12">
+        <div class="tl-summary">
+          <div class="tl-month">T12</div>
+          <div class="tl-when">Học kỳ 1 kết thúc</div>
+          <div class="tl-title">Sơ kết học kỳ và điều chỉnh kế hoạch ôn tập</div>
+          <div class="tl-toggle">▾</div>
+        </div>
+        <div class="tl-detail"><div class="tl-detail-inner">Đánh giá tiến độ qua bài kiểm tra và đề thử. Điều chỉnh kế hoạch ôn tập cho học kỳ tiếp theo.</div></div>
       </div>
       <div class="tl-row" data-month="T1">
         <div class="tl-summary">
@@ -5367,43 +5380,52 @@ body.spa-active #spa-topbar { display: flex; }
           <div class="tl-title">Tăng thời gian ôn, giảm giải trí</div>
           <div class="tl-toggle">▾</div>
         </div>
-        <div class="tl-detail"><div class="tl-detail-inner">Ôn 4-6 tiếng/ngày ngoài giờ học. Luyện đề theo tổ hợp. Tham gia kỳ thi thử tại trường hoặc trung tâm.</div></div>
+        <div class="tl-detail"><div class="tl-detail-inner">Sắp xếp thời gian ôn tập phù hợp, luyện đề theo tổ hợp và tự đánh giá những phần còn yếu.</div></div>
       </div>
       <div class="tl-row" data-month="T3">
         <div class="tl-summary">
           <div class="tl-month">T3</div>
-          <div class="tl-when">Nghỉ phép ôn thi</div>
+          <div class="tl-when">Luyện đề theo mục tiêu</div>
           <div class="tl-title">Ôn chuyên sâu — giả lập như thi thật</div>
           <div class="tl-toggle">▾</div>
         </div>
-        <div class="tl-detail"><div class="tl-detail-inner">Ôn 8-10 tiếng/ngày. Thi thử mỗi tuần. Rà soát kiến thức lỗ hổng. Giữ sức khỏe + ngủ đủ giấc.</div></div>
+        <div class="tl-detail"><div class="tl-detail-inner">Luyện đề theo thời gian thực, rà soát phần kiến thức còn yếu và giữ lịch nghỉ ngơi hợp lý.</div></div>
       </div>
       <div class="tl-row" data-month="T4">
         <div class="tl-summary">
           <div class="tl-month">T4</div>
-          <div class="tl-when">Thi tốt nghiệp THPT</div>
-          <div class="tl-title">Thi THPT Quốc gia + nộp hồ sơ</div>
+          <div class="tl-when">Rà soát kiến thức</div>
+          <div class="tl-title">Kiểm tra tiến độ ôn tập và thông tin tuyển sinh</div>
           <div class="tl-toggle">▾</div>
         </div>
-        <div class="tl-detail"><div class="tl-detail-inner">Thi tốt nghiệp (~3 ngày). Ngay sau đó nộp hồ sơ xét tuyển vào các trường. Không bỏ lỡ deadline.</div></div>
+        <div class="tl-detail"><div class="tl-detail-inner">Đối chiếu kế hoạch ôn tập với tiến độ thực tế. Theo dõi lịch thi và đề án tuyển sinh từ nguồn chính thức.</div></div>
       </div>
       <div class="tl-row" data-month="T5">
         <div class="tl-summary">
           <div class="tl-month">T5</div>
-          <div class="tl-when">Điều chỉnh nguyện vọng</div>
-          <div class="tl-title">Có điểm thi thật, tính toán lại</div>
+          <div class="tl-when">Hoàn thiện hồ sơ</div>
+          <div class="tl-title">Kiểm tra giấy tờ và phương thức xét tuyển</div>
           <div class="tl-toggle">▾</div>
         </div>
-        <div class="tl-detail"><div class="tl-detail-inner">Dùng công cụ "Tính điểm xét tuyển" để so sánh điểm mình với điểm chuẩn năm ngoái. Điều chỉnh nguyện vọng nếu cần.</div></div>
+        <div class="tl-detail"><div class="tl-detail-inner">Kiểm tra hồ sơ, thông tin cá nhân và các mốc đăng ký dự thi, xét tuyển khi cơ quan chức năng công bố.</div></div>
+      </div>
+      <div class="tl-row" data-month="T6">
+        <div class="tl-summary">
+          <div class="tl-month">T6</div>
+          <div class="tl-when">Theo dõi lịch thi chính thức</div>
+          <div class="tl-title">Chuẩn bị kỳ thi và các bước xét tuyển</div>
+          <div class="tl-toggle">▾</div>
+        </div>
+        <div class="tl-detail"><div class="tl-detail-inner">Kiểm tra giấy báo dự thi, địa điểm, thời gian và các hướng dẫn chính thức. Mốc cụ thể có thể thay đổi theo năm.</div></div>
       </div>
       <div class="tl-row" data-month="T7">
         <div class="tl-summary">
           <div class="tl-month">T7</div>
-          <div class="tl-when">Công bố trúng tuyển</div>
-          <div class="tl-title">Xác nhận nhập học + chuẩn bị</div>
+          <div class="tl-when">Theo dõi xét tuyển</div>
+          <div class="tl-title">Đối chiếu kết quả và cập nhật nguyện vọng</div>
           <div class="tl-toggle">▾</div>
         </div>
-        <div class="tl-detail"><div class="tl-detail-inner">Xem kết quả trúng tuyển. Xác nhận nhập học online đúng hạn. Chuẩn bị hồ sơ nhập học, tìm phòng trọ nếu xa nhà.</div></div>
+        <div class="tl-detail"><div class="tl-detail-inner">Xem kết quả và các mốc xét tuyển theo lịch chính thức. Thực hiện các bước đăng ký, điều chỉnh hoặc xác nhận đúng hạn được công bố.</div></div>
       </div>
       <div class="tl-row" data-month="T8">
         <div class="tl-summary">
@@ -5510,34 +5532,34 @@ body.spa-active #spa-topbar { display: flex; }
     <p class="section-sub">Những công cụ nhỏ — hữu ích lớn</p>
     <div class="bw-tools-grid">
 
-      <a href="careers.html" class="bw-tool-card">
+      <a href="holland.html" class="bw-tool-card">
         <div class="icon">🎯</div>
         <h3>Trắc nghiệm Holland</h3>
-        <p>Biết nhóm tính cách nghề nghiệp trong 5 phút — từ đó lọc ngành phù hợp.</p>
+        <p>Trả lời 42 câu RIASEC để khám phá nhóm sở thích nghề nghiệp của bạn.</p>
       </a>
 
       <a href="#timeline" class="bw-tool-card">
         <div class="icon">📅</div>
         <h3>Lịch Lớp 12</h3>
-        <p>Mốc thời gian chi tiết từng tháng — bạn không cần tự nhớ mình phải làm gì.</p>
+        <p>Xem các gợi ý theo từng tháng của năm học và tự chọn mốc cần xem.</p>
       </a>
 
-      <a href="#" class="bw-tool-card" id="consultLink">
+      <button type="button" class="bw-tool-card" data-open-waybi>
         <div class="icon">💬</div>
-        <h3>Tư vấn cá nhân</h3>
-        <p>Đặt lịch 1-1 với cố vấn hướng nghiệp. Miễn phí 30 phút cho học sinh Lớp 12.</p>
-      </a>
+        <h3>Hỏi Waybi</h3>
+        <p>Trò chuyện với trợ lý AI về chọn nghề, chọn trường và học bổng.</p>
+      </button>
 
       <a href="scholarship-roadmap.html" class="bw-tool-card">
         <div class="icon">🎓</div>
-        <h3>Học bổng</h3>
-        <p>Danh sách học bổng doanh nghiệp, chính phủ, trường — cập nhật 2026.</p>
+        <h3>Lộ trình học bổng</h3>
+        <p>Xem các bước chuẩn bị hồ sơ và checklist trước khi nộp.</p>
       </a>
 
-      <a href="#" class="bw-tool-card" id="checklistLink">
-        <div class="icon">✅</div>
-        <h3>Checklist nộp hồ sơ</h3>
-        <p>Danh sách đầy đủ giấy tờ cần chuẩn bị — không bỏ sót giấy nào.</p>
+      <a href="score-calculator.html" class="bw-tool-card">
+        <div class="icon">🧮</div>
+        <h3>Tính điểm xét tuyển</h3>
+        <p>Nhập điểm để tính điểm tổ hợp và tham khảo mức phù hợp với các trường.</p>
       </a>
 
     </div>
@@ -7528,33 +7550,6 @@ Bạn cần hỏi gì nào?</div>
   }
 })();
 
-// ===== Timeline expand: mặc định chỉ hiện T12 =====
-(function () {
-  const timeline = document.querySelector('.bw-timeline');
-  const expandBtn = document.getElementById('tlExpandBtn');
-  if (!timeline || !expandBtn) return;
-  expandBtn.style.display = 'inline-flex';
-  let expanded = false;
-  expandBtn.addEventListener('click', function () {
-    expanded = !expanded;
-    timeline.classList.toggle('expanded', expanded);
-    expandBtn.setAttribute('aria-expanded', String(expanded));
-    expandBtn.querySelector('.tl-expand-label').textContent = expanded
-      ? 'Thu gọn — chỉ hiện tháng hiện tại'
-      : 'Xem tất cả 12 tháng';
-    try { localStorage.setItem('bw_timeline_expanded', expanded ? '1' : '0'); } catch (e) {}
-  });
-  // v5 redeploy trigger
-  try {
-    if (localStorage.getItem('bw_timeline_expanded') === '1') {
-      expanded = true;
-      timeline.classList.add('expanded');
-      expandBtn.setAttribute('aria-expanded', 'true');
-      expandBtn.querySelector('.tl-expand-label').textContent = 'Thu gọn — chỉ hiện tháng hiện tại';
-    }
-  } catch (e) {}
-})();
-
 // ===== Mobile navigation =====
 (function () {
   const button = document.getElementById('bwNavMenuBtn');
@@ -7733,54 +7728,59 @@ Bạn cần hỏi gì nào?</div>
   const monthBtns = document.querySelectorAll('.bw-tl-month-btn');
   const progressFill = document.getElementById('bwTlProgressFill');
   const tlRows = document.querySelectorAll('.tl-row');
+  const timeline = document.querySelector('.bw-timeline');
+  const expandBtn = document.getElementById('tlExpandBtn');
+  const monthNow = Number(new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Asia/Ho_Chi_Minh', month: 'numeric'
+  }).format(new Date()));
+  const schoolYearIndex = month => month >= 9 ? month - 9 : month + 3;
+  let selectedMonth = monthNow;
+  let expanded = false;
+  try { expanded = localStorage.getItem('bw_timeline_expanded') === '1'; } catch (e) {}
 
-  function filterTimelineByMonth(monthNum) {
+  function renderTimeline() {
+    timeline?.classList.toggle('expanded', expanded);
     tlRows.forEach(row => {
-      // row.dataset.month có thể là "T9" hoặc "9" tuỳ version
-      const raw = row.dataset.month || row.getAttribute('data-month') || '';
-      const m = parseInt(String(raw).replace(/^T/i, ''), 10);
-      if (!monthNum || m === monthNum) {
-        row.classList.remove('bw-tl-hidden');
-        row.classList.add('open');
-      } else {
-        row.classList.add('bw-tl-hidden');
-        row.classList.remove('open');
-      }
+      const month = Number(row.dataset.month.replace(/^T/i, ''));
+      row.classList.toggle('bw-tl-hidden', !expanded && month !== selectedMonth);
+      row.querySelector('.tl-month')?.classList.toggle('now', month === monthNow);
+      row.classList.toggle('open', month === selectedMonth);
     });
+    monthBtns.forEach(btn => {
+      const month = Number(btn.dataset.month);
+      btn.classList.toggle('current', month === monthNow);
+      btn.classList.toggle('active', month === selectedMonth);
+      btn.classList.toggle('done', schoolYearIndex(month) < schoolYearIndex(monthNow));
+      btn.setAttribute('aria-pressed', String(month === selectedMonth));
+    });
+    if (expandBtn) {
+      expandBtn.style.display = 'inline-flex';
+      expandBtn.setAttribute('aria-expanded', String(expanded));
+      expandBtn.querySelector('.tl-expand-label').textContent = expanded
+        ? 'Thu gọn — tháng đang chọn' : 'Xem tất cả 12 tháng';
+    }
   }
 
-  function updateTimelineProgress(activeMonth) {
+  function updateTimelineProgress() {
     if (!progressFill) return;
-    // T9 (9) đến T8 (8 năm sau) - tính % dựa trên tháng hiện tại
-    const now = new Date();
-    const m = now.getMonth() + 1; // 1-12
-    // Map: T9 = 9, T10 = 10, T11 = 11, T12 = 12, T1 = 13, T2 = 14 ... T8 = 20
-    const startMonth = 9;
-    const endMonth = 20; // T8 năm sau
-    const current = m >= 9 ? m : m + 12;
-    const percent = Math.max(0, Math.min(100, ((current - startMonth + 1) / (endMonth - startMonth + 1)) * 100));
-    progressFill.style.width = percent.toFixed(0) + '%';
+    progressFill.style.width = (((schoolYearIndex(monthNow) + 1) / 12) * 100).toFixed(0) + '%';
   }
 
   monthBtns.forEach(btn => {
     btn.addEventListener('click', function() {
-      monthBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const month = parseInt(btn.dataset.month, 10);
-      filterTimelineByMonth(month);
-      // Show "đã lọc" toast
-      const monthName = btn.querySelector('.month-name')?.textContent || ('T' + month);
-      if (typeof showToast === 'function') {
-        showToast('Đang xem: ' + monthName, 'info');
-      }
+      selectedMonth = Number(btn.dataset.month);
+      expanded = false;
+      renderTimeline();
+      try { localStorage.setItem('bw_timeline_expanded', '0'); } catch (e) {}
     });
   });
+  expandBtn?.addEventListener('click', () => {
+    expanded = !expanded;
+    renderTimeline();
+    try { localStorage.setItem('bw_timeline_expanded', expanded ? '1' : '0'); } catch (e) {}
+  });
+  renderTimeline();
   updateTimelineProgress();
-
-  // Add CSS rule for hidden timeline rows
-  const style = document.createElement('style');
-  style.textContent = '.tl-row.bw-tl-hidden{display:none !important;}';
-  document.head.appendChild(style);
 
   // ── 6. Smooth scroll for # links (optional) ─────────────────
   document.addEventListener('click', function(e) {
@@ -7796,15 +7796,6 @@ Bạn cần hỏi gì nào?</div>
     window.scrollTo({ top: top, behavior: 'smooth' });
   });
 
-  // ── 7. Welcome toast (lần đầu) ──────────────────────────────
-  if (!sessionStorage.getItem('bw-welcomed')) {
-    setTimeout(() => {
-      if (typeof showToast === 'function') {
-        showToast('✨ Giao diện mới! T9-T12 đã đánh dấu hoàn thành', 'success');
-      }
-      try { sessionStorage.setItem('bw-welcomed', '1'); } catch (e) {}
-    }, 1200);
-  }
 })();
 </script>
 </body>

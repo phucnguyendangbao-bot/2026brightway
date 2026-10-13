@@ -90,10 +90,10 @@
       .nav-user-name {
         font-size: 13px; font-weight: 700;
         color: var(--text-mid);
-        max-width: 110px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        max-width: 180px;
+        white-space: normal;
+        overflow-wrap: anywhere;
+        line-height: 1.25;
       }
       .nav-dropdown {
         position: absolute;
@@ -172,7 +172,6 @@
           <a href="profile.html">👤 Tài khoản của tôi</a>
           <a href="profile.html?tab=favorites">❤️ Nghề yêu thích</a>
           <a href="profile.html?tab=history">🔍 Lịch sử tra cứu</a>
-          <a href="profile.html?tab=essays">✍️ Bài luận</a>
           <div class="divider"></div>
           ${isStaff ? `
             <a href="admin/index.html" style="background:rgba(99,102,241,0.08);color:var(--accent);font-weight:800;">
