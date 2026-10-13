@@ -176,7 +176,7 @@
     try {
       const items = await window.BWSync.listEssays();
       if (!items.length) {
-        box.innerHTML = '<div class="empty-msg"><div style="font-size:48px;">✍️</div><h3>Chưa có bài luận nào</h3><p>Tạo bài luận mới tại <a href="essay-review.html">Bài luận mẫu</a>.</p></div>';
+        box.innerHTML = '<div class="empty-msg"><div style="font-size:48px;">✍️</div><h3>Chưa có bài luận nào</h3><p>Bạn có thể lưu bài viết tại <a href="essay-review.html">Nhận xét bài luận</a>.</p></div>';
         return;
       }
       box.innerHTML = '<h3 style="margin-bottom:14px;">✍️ ' + items.length + ' bài luận</h3>' +

@@ -29,6 +29,11 @@
   };
 
   const $ = id => document.getElementById(id);
+  const escapeHtml = value => String(value ?? '').replace(/[&<>'"]/g, ch => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+  }[ch]));
+
+  let suggestionIndex = -1;
 
   function norm(s) {
     return (s || '').toLowerCase()
@@ -63,6 +68,7 @@
     wrap.innerHTML = Object.entries(HOLLAND_META).map(([k, m]) => `
       <button class="holland-chip ${k === state.activeHolland ? 'active' : ''}"
               data-code="${k}"
+              aria-pressed="${k === state.activeHolland ? 'true' : 'false'}"
               style="--c:${m.color}">
         <span class="emoji">${m.emoji}</span>
         <span class="label">${m.label}</span>
@@ -107,28 +113,36 @@
   function renderSuggestions(list) {
     const box = $('careerSuggestions');
     if (!box) return;
-    if (!list.length) { box.classList.remove('show'); return; }
-    box.innerHTML = list.slice(0, 8).map(j => {
+    if (!list.length) {
+      box.classList.remove('show');
+      $('careerSearch').setAttribute('aria-expanded', 'false');
+      return;
+    }
+    const suggestions = list.slice(0, 8);
+    box.innerHTML = suggestions.map((j, index) => {
       const hollandBadge = (j.holland || []).map(c => {
         const m = HOLLAND_META[c];
-        return `<span class="badge-h" style="background:${m.color}22;border-color:${m.color};color:${m.color}">${m.emoji}</span>`;
+        return `<span class="badge-h" aria-hidden="true" style="background:${m.color}22;border-color:${m.color};color:${m.color}">${m.emoji}</span>`;
       }).join('');
       return `
-        <div class="career-sugg-item" data-name="${j.name}">
-          <div class="career-sugg-name">${j.name}</div>
+        <button class="career-sugg-item" type="button" role="option" aria-selected="false" id="careerSuggestion${index}" data-name="${escapeHtml(j.name)}">
+          <div class="career-sugg-name">${escapeHtml(j.name)}</div>
           <div class="career-sugg-meta">
-            ${j.en} · ${j.group} · Mã ${j.code}
+            ${escapeHtml(j.en)} · ${escapeHtml(j.group)} · Mã ${escapeHtml(j.code)}
             ${hollandBadge ? `<span class="career-sugg-holland">${hollandBadge}</span>` : ''}
           </div>
-        </div>
+        </button>
       `;
     }).join('');
     box.classList.add('show');
+    $('careerSearch').setAttribute('aria-expanded', 'true');
+    suggestionIndex = -1;
     box.querySelectorAll('.career-sugg-item').forEach(el => {
       el.addEventListener('click', () => {
         $('careerSearch').value = el.dataset.name;
         handle(el.dataset.name);
         box.classList.remove('show');
+        $('careerSearch').setAttribute('aria-expanded', 'false');
       });
     });
   }
@@ -144,7 +158,7 @@
       <div class="career-result">
         <div class="career-result-hd">
           <div class="career-result-top">
-            <div class="career-code">ISCO ${j.code} · ${j.group}</div>
+          <div class="career-code">ISCO ${escapeHtml(j.code)} · ${escapeHtml(j.group)}</div>
             <button class="btn-fav" id="favBtn" data-name="${j.name}" title="Lưu nghề yêu thích">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
@@ -152,32 +166,32 @@
               <span class="fav-label">Lưu</span>
             </button>
           </div>
-          <div class="career-title">${j.name}</div>
-          <div class="career-en">${j.en}</div>
+          <div class="career-title">${escapeHtml(j.name)}</div>
+          <div class="career-en">${escapeHtml(j.en)}</div>
           ${hollandTags ? `<div class="career-holland-row">${hollandTags}</div>` : ''}
         </div>
         <div class="career-section">
           <div class="career-label">📝 Mô tả nghề</div>
-          <div class="career-body">${j.desc}</div>
+          <div class="career-body">${escapeHtml(j.desc)}</div>
         </div>
         <div class="career-section">
           <div class="career-label">🎯 Kỹ năng yêu cầu</div>
           <div class="career-body">
-            <ul>${(j.skills || []).map(s => `<li>${s}</li>`).join('')}</ul>
+            <ul>${(j.skills || []).map(s => `<li>${escapeHtml(s)}</li>`).join('')}</ul>
           </div>
         </div>
         <div class="career-section">
           <div class="career-label">🎓 Học vấn & Con đường học tập</div>
-          <div class="career-body">${j.edu}</div>
+          <div class="career-body">${escapeHtml(j.edu)}</div>
         </div>
         <div class="career-info-grid">
           <div class="career-info-item">
             <div class="lbl">💰 Mức lương tham khảo</div>
-            <div class="val career-salary">${j.salary}</div>
+            <div class="val career-salary">${escapeHtml(j.salary)}</div>
           </div>
           <div class="career-info-item">
             <div class="lbl">📈 Triển vọng nghề nghiệp</div>
-            <div class="val">${j.outlook}</div>
+            <div class="val">${escapeHtml(j.outlook)}</div>
           </div>
         </div>
       </div>
@@ -204,11 +218,11 @@
             return `<span class="job-holland-tag sm" style="background:${m.color}1a;border:1px solid ${m.color};color:${m.color}">${m.emoji}</span>`;
           }).join('');
           return `
-            <div class="career-list-item" data-name="${j.name}">
-              <div class="career-list-name">${j.name}</div>
-              <div class="career-list-meta">${j.en} · ${j.group}</div>
+            <button class="career-list-item" type="button" data-name="${escapeHtml(j.name)}">
+              <div class="career-list-name">${escapeHtml(j.name)}</div>
+              <div class="career-list-meta">${escapeHtml(j.en)} · ${escapeHtml(j.group)}</div>
               <div class="career-list-holland">${hollandTags}</div>
-            </div>
+            </button>
           `;
         }).join('')}
         ${list.length > 20 ? `<div class="career-list-more">+ ${list.length - 20} nghề khác. Hãy nhập tên cụ thể để xem chi tiết.</div>` : ''}
@@ -307,6 +321,7 @@
     });
     document.querySelectorAll('.career-panel').forEach(el => {
       el.classList.toggle('active', el.dataset.panel === tab);
+      el.hidden = el.dataset.panel !== tab;
     });
   }
 
@@ -320,6 +335,7 @@
       if (!v) {
         state.query = '';
         $('careerSuggestions').classList.remove('show');
+        input.setAttribute('aria-expanded', 'false');
         renderListResult(getFiltered());
         return;
       }
@@ -327,20 +343,38 @@
     });
 
     input.addEventListener('keydown', e => {
-      if (e.key === 'Enter') {
+      if (e.key === 'Enter' && suggestionIndex >= 0) {
+        e.preventDefault();
+        const item = document.querySelectorAll('.career-sugg-item')[suggestionIndex];
+        if (item) item.click();
+      } else if (e.key === 'Enter') {
         e.preventDefault();
         if (input.value.trim()) {
           handle(input.value.trim());
           $('careerSuggestions').classList.remove('show');
+          input.setAttribute('aria-expanded', 'false');
         }
+      } else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        const items = [...document.querySelectorAll('.career-sugg-item')];
+        if (!items.length) return;
+        e.preventDefault();
+        suggestionIndex = (suggestionIndex + (e.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length;
+        items.forEach((item, index) => {
+          const active = index === suggestionIndex;
+          item.classList.toggle('active', active);
+          item.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+        input.setAttribute('aria-activedescendant', items[suggestionIndex].id);
       } else if (e.key === 'Escape') {
         $('careerSuggestions').classList.remove('show');
+        input.setAttribute('aria-expanded', 'false');
       }
     });
 
     document.addEventListener('click', e => {
       if (!e.target.closest('.career-search-box')) {
         $('careerSuggestions').classList.remove('show');
+        input.setAttribute('aria-expanded', 'false');
       }
     });
   }
@@ -377,6 +411,14 @@
     load();
     document.querySelectorAll('.career-tab').forEach(el => {
       el.addEventListener('click', () => switchTab(el.dataset.tab));
+    });
+    switchTab('search');
+    const navToggle = $('navToggle');
+    const navLinks = $('navLinks');
+    navToggle?.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      navToggle.setAttribute('aria-label', open ? 'Đóng menu điều hướng' : 'Mở menu điều hướng');
     });
     window.CareersApp = { switchTab, handle };
   }

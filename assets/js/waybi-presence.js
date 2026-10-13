@@ -8,58 +8,10 @@
 (function () {
   'use strict';
 
-  const SVG = `
-    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="wb-body-${Date.now()}" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#6b8eff"/>
-          <stop offset="100%" stop-color="#a78bfa"/>
-        </linearGradient>
-      </defs>
-      <path d="M32 6 C 18 6, 8 18, 8 32 C 8 46, 18 56, 32 56 C 46 56, 56 46, 56 32 C 56 18, 46 6, 32 6 Z" fill="url(#wb-body-${Date.now()})"/>
-      <ellipse cx="22" cy="20" rx="6" ry="9" fill="white" opacity="0.25"/>
-      <circle cx="24" cy="30" r="3" fill="#fff"/>
-      <circle cx="40" cy="30" r="3" fill="#fff"/>
-      <circle cx="24" cy="31" r="1.5" fill="#1a1a3e"/>
-      <circle cx="40" cy="31" r="1.5" fill="#1a1a3e"/>
-      <circle cx="25" cy="30" r="0.6" fill="#fff"/>
-      <circle cx="41" cy="30" r="0.6" fill="#fff"/>
-      <path d="M27 40 Q 32 44 37 40" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/>
-      <circle cx="18" cy="38" r="2.5" fill="#fda4af" opacity="0.6"/>
-      <circle cx="46" cy="38" r="2.5" fill="#fda4af" opacity="0.6"/>
-      <rect x="20" y="14" width="24" height="3" fill="#1a1a3e"/>
-      <rect x="22" y="12" width="20" height="3" fill="#1a1a3e" rx="1"/>
-      <line x1="42" y1="13" x2="44" y2="20" stroke="#fcd34d" stroke-width="1.5"/>
-      <circle cx="44" cy="21" r="1.8" fill="#fcd34d"/>
-    </svg>
-  `;
+  const WAYBI_MASCOT_URL = 'assets/images/waybi/waybi-mascot-v2.png';
 
-  // SVG cache - một id duy nhất cho mỗi lần render để tránh conflict
-  function makeSVG(gradId) {
-    return `
-    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="${gradId}" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#6b8eff"/>
-          <stop offset="100%" stop-color="#a78bfa"/>
-        </linearGradient>
-      </defs>
-      <path d="M32 6 C 18 6, 8 18, 8 32 C 8 46, 18 56, 32 56 C 46 56, 56 46, 56 32 C 56 18, 46 6, 32 6 Z" fill="url(#${gradId})"/>
-      <ellipse cx="22" cy="20" rx="6" ry="9" fill="white" opacity="0.25"/>
-      <circle cx="24" cy="30" r="3" fill="#fff"/>
-      <circle cx="40" cy="30" r="3" fill="#fff"/>
-      <circle cx="24" cy="31" r="1.5" fill="#1a1a3e"/>
-      <circle cx="40" cy="31" r="1.5" fill="#1a1a3e"/>
-      <circle cx="25" cy="30" r="0.6" fill="#fff"/>
-      <circle cx="41" cy="30" r="0.6" fill="#fff"/>
-      <path d="M27 40 Q 32 44 37 40" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/>
-      <circle cx="18" cy="38" r="2.5" fill="#fda4af" opacity="0.6"/>
-      <circle cx="46" cy="38" r="2.5" fill="#fda4af" opacity="0.6"/>
-      <rect x="20" y="14" width="24" height="3" fill="#1a1a3e"/>
-      <rect x="22" y="12" width="20" height="3" fill="#1a1a3e" rx="1"/>
-      <line x1="42" y1="13" x2="44" y2="20" stroke="#fcd34d" stroke-width="1.5"/>
-      <circle cx="44" cy="21" r="1.8" fill="#fcd34d"/>
-    </svg>`;
+  function makeMascot(alt) {
+    return `<img src="${WAYBI_MASCOT_URL}" alt="${alt || ''}"${alt ? '' : ' aria-hidden="true"'}>`;
   }
 
   const styles = `
@@ -77,7 +29,7 @@
         transition: transform .25s;
       }
       #waybi-left:hover { transform: scale(1.1) rotate(8deg); }
-      #waybi-left svg { width: 100%; height: 100%; }
+      #waybi-left img { width: 100%; height: 100%; object-fit: contain; display: block; }
       @keyframes waybi-float {
         0%, 100% { transform: translateY(0); }
         50% { transform: translateY(-6px); }
@@ -122,7 +74,7 @@
         z-index: 1;
         box-shadow: 0 4px 14px rgba(0,0,0,0.15);
       }
-      .waybi-banner-mascot svg { width: 100%; height: 100%; }
+      .waybi-banner-mascot img { width: 100%; height: 100%; object-fit: contain; display: block; }
       @keyframes waybi-bob {
         0%, 100% { transform: translateY(0) rotate(-3deg); }
         50% { transform: translateY(-4px) rotate(3deg); }
@@ -181,7 +133,7 @@
       .waybi-tag-avatar {
         width: 20px; height: 20px; flex-shrink: 0;
       }
-      .waybi-tag-avatar svg { width: 100%; height: 100%; }
+      .waybi-tag-avatar img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
       /* ═══ 4. EMPTY STATE — Waybi bảo chưa có data ═══ */
       .waybi-empty {
@@ -194,6 +146,9 @@
       .waybi-empty-mascot {
         width: 100px; height: 100px; margin: 0 auto 12px;
         animation: waybi-bob 2.5s ease-in-out infinite;
+      }
+      .waybi-empty-mascot img {
+        width: 100%; height: 100%; object-fit: contain; display: block;
       }
       .waybi-empty h4 {
         font-family: 'Nunito', sans-serif; font-weight: 800;
@@ -236,7 +191,7 @@
 
   // Tag inline Waybi
   function makeWaybiTag(text) {
-    return `<span class="waybi-tag"><span class="waybi-tag-avatar">${makeSVG('wb-tag-' + Math.random().toString(36).slice(2, 7))}</span>${text || 'Waybi'}</span>`;
+    return `<span class="waybi-tag"><span class="waybi-tag-avatar">${makeMascot()}</span>${text || 'Waybi'}</span>`;
   }
   // expose cho các trang dùng
   window.waybiTag = makeWaybiTag;
@@ -244,7 +199,7 @@
   // Empty state template
   window.waybiEmpty = function(title, msg) {
     return `<div class="waybi-empty">
-      <div class="waybi-empty-mascot">${makeSVG('wb-empty-' + Math.random().toString(36).slice(2, 7))}</div>
+      <div class="waybi-empty-mascot">${makeMascot('Waybi')}</div>
       <h4>${title || 'Chưa có dữ liệu'}</h4>
       <p>${msg || 'Mình chưa tìm thấy gì để hiển thị. Bạn thử lại sau nhé!'}</p>
     </div>`;
@@ -259,22 +214,29 @@
     const isCalendar = path.includes('calendar');
     const isRoadmap = path.includes('scholarship-roadmap');
 
+    function openWaybiChat() {
+      const launcher = document.getElementById('bwChatLauncher') || document.getElementById('waybi-fab');
+      if (launcher) launcher.click();
+    }
+
+    document.querySelectorAll('[data-open-waybi]').forEach(button => {
+      button.addEventListener('click', openWaybiChat);
+    });
+
     // Bỏ qua banner + left mascot ở trang login/admin (giữ chat nổi)
     if (!isLogin) {
-      // 1. Left floating Waybi
-      const leftMascot = document.createElement('div');
-      leftMascot.id = 'waybi-left';
-      leftMascot.title = 'Chào bạn! 👋';
-      leftMascot.innerHTML = makeSVG('wb-left-' + Date.now());
-      // Click mở chat
-      leftMascot.addEventListener('click', () => {
-        const fab = document.getElementById('waybi-fab');
-        if (fab) fab.click();
-      });
-      document.body.appendChild(leftMascot);
+      // Trang chủ đã có khu Waybi riêng nên không cần lặp thêm mascot nổi bên trái.
+      if (!document.getElementById('waybi-home')) {
+        const leftMascot = document.createElement('div');
+        leftMascot.id = 'waybi-left';
+        leftMascot.title = 'Chào bạn! 👋';
+        leftMascot.innerHTML = makeMascot('Waybi');
+        leftMascot.addEventListener('click', openWaybiChat);
+        document.body.appendChild(leftMascot);
+      }
 
       // 2. Welcome banner dưới nav (chỉ ở trang index)
-      if (path.endsWith('/') || path.endsWith('index.html') || path === '/' || path === '') {
+      if ((path.endsWith('/') || path.endsWith('index.html') || path === '/' || path === '') && !document.getElementById('waybi-home')) {
         // chèn sau nav
         const nav = document.querySelector('.lp-nav') || document.querySelector('nav');
         if (nav) {
@@ -284,7 +246,7 @@
           banner.innerHTML = `
             <div class="waybi-banner-card">
               <button class="waybi-banner-close" aria-label="Đóng">✕</button>
-              <div class="waybi-banner-mascot">${makeSVG('wb-banner-' + Date.now())}</div>
+              <div class="waybi-banner-mascot">${makeMascot('Waybi')}</div>
               <div class="waybi-banner-text">
                 <h3>${greet.h}</h3>
                 <p>${greet.p}</p>
@@ -303,10 +265,7 @@
             setTimeout(() => banner.remove(), 300);
             sessionStorage.setItem('waybi-banner-closed', '1');
           });
-          banner.querySelector('#waybi-banner-cta').addEventListener('click', () => {
-            const fab = document.getElementById('waybi-fab');
-            if (fab) fab.click();
-          });
+          banner.querySelector('#waybi-banner-cta').addEventListener('click', openWaybiChat);
           // Auto-hide nếu user đã đóng trong session này
           if (sessionStorage.getItem('waybi-banner-closed') === '1') {
             banner.remove();

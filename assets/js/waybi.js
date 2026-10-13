@@ -1,6 +1,6 @@
 /* ════════════════════════════════════════════════════════════════
    WAYBI — Linh vật + Chatbot của BrightWay Scholars
-   - SVG mascot (chú chim/máy tính nhỏ hình giọt nước, màu chủ đạo)
+   - Mascot Waybi PNG dùng thống nhất trên toàn website
    - Nút chat nổi ở góc phải
    - Chat panel hỗ trợ theo ngữ cảnh trang
    - Lưu tên user vào localStorage
@@ -25,7 +25,7 @@
     },
     {
       keys: ['essay', 'bài luận', 'personal statement', 'motivation letter'],
-      reply: 'Một số tip viết essay: <br>• Bắt đầu bằng <b>câu chuyện cụ thể</b>, không viết chung chung<br>• Tránh liệt kê thành tích khô khan<br>• Thể hiện <b>đam mê + mục tiêu rõ ràng</b><br>• Đọc to nhiều lần để kiểm tra flow<br><br>Công cụ <b>Sửa Essay AI</b> cũng có ở essay-review.html nhé!'
+      reply: 'Một số tip viết essay: <br>• Bắt đầu bằng <b>câu chuyện cụ thể</b>, không viết chung chung<br>• Tránh liệt kê thành tích khô khan<br>• Thể hiện <b>đam mê + mục tiêu rõ ràng</b><br>• Đọc to nhiều lần để kiểm tra flow<br><br>Bạn có thể dùng công cụ <b>Nhận xét bài luận</b> tại essay-review.html nhé!'
     },
     {
       keys: ['ielts', 'toefl', 'tiếng anh', 'ngoại ngữ', 'chứng chỉ'],
@@ -36,7 +36,7 @@
       reply: 'Mỗi học bổng có deadline khác nhau. Xem trang <b>📅 Lịch</b> để thấy tất cả mốc thời gian trong năm 2026 nhé!'
     },
     {
-      keys: ['holland', ['trắc nghiệm', 'tính cách', 'nghề nghiệp', 'nghề phù hợp', 'holland code'],
+      keys: ['holland', 'trắc nghiệm', 'tính cách', 'nghề nghiệp', 'nghề phù hợp', 'holland code'],
       reply: 'Trắc nghiệm Holland giúp bạn tìm nhóm ngành nghề phù hợp với tính cách (RIA, IAS, ESA…). Vào <b>holland.html</b> để làm bài test miễn phí nha!'
     },
     {
@@ -119,37 +119,7 @@
   function setUser(u) { localStorage.setItem(STORAGE_KEY, JSON.stringify(u)); }
 
   // ─── Render ───
-  const WAIBI_SVG = `
-    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="wb-body" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#6b8eff"/>
-          <stop offset="100%" stop-color="#a78bfa"/>
-        </linearGradient>
-      </defs>
-      <!-- body -->
-      <path d="M32 6 C 18 6, 8 18, 8 32 C 8 46, 18 56, 32 56 C 46 56, 56 46, 56 32 C 56 18, 46 6, 32 6 Z" fill="url(#wb-body)"/>
-      <!-- shine -->
-      <ellipse cx="22" cy="20" rx="6" ry="9" fill="white" opacity="0.25"/>
-      <!-- face: eyes -->
-      <circle cx="24" cy="30" r="3" fill="#fff"/>
-      <circle cx="40" cy="30" r="3" fill="#fff"/>
-      <circle cx="24" cy="31" r="1.5" fill="#1a1a3e"/>
-      <circle cx="40" cy="31" r="1.5" fill="#1a1a3e"/>
-      <circle cx="25" cy="30" r="0.6" fill="#fff"/>
-      <circle cx="41" cy="30" r="0.6" fill="#fff"/>
-      <!-- mouth -->
-      <path d="M27 40 Q 32 44 37 40" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/>
-      <!-- cheeks -->
-      <circle cx="18" cy="38" r="2.5" fill="#fda4af" opacity="0.6"/>
-      <circle cx="46" cy="38" r="2.5" fill="#fda4af" opacity="0.6"/>
-      <!-- graduation cap -->
-      <rect x="20" y="14" width="24" height="3" fill="#1a1a3e"/>
-      <rect x="22" y="12" width="20" height="3" fill="#1a1a3e" rx="1"/>
-      <line x1="42" y1="13" x2="44" y2="20" stroke="#fcd34d" stroke-width="1.5"/>
-      <circle cx="44" cy="21" r="1.8" fill="#fcd34d"/>
-    </svg>
-  `;
+  const WAYBI_MASCOT = '<img src="assets/images/waybi/waybi-mascot-v2.png" alt="" aria-hidden="true">';
 
   const styles = `
     <style id="waybi-styles">
@@ -163,7 +133,7 @@
         padding: 0; overflow: visible;
       }
       #waybi-fab:hover { transform: scale(1.08) rotate(-5deg); box-shadow: 0 10px 32px rgba(99,102,241,0.45); }
-      #waybi-fab svg { width: 100%; height: 100%; }
+      #waybi-fab img { width: 100%; height: 100%; object-fit: contain; display: block; }
       #waybi-badge {
         position: absolute; top: -4px; right: -4px;
         background: #ef4444; color: #fff;
@@ -216,7 +186,7 @@
         background: rgba(255,255,255,0.95);
         padding: 4px; flex-shrink: 0;
       }
-      #waybi-avatar svg { width: 100%; height: 100%; }
+      #waybi-avatar img { width: 100%; height: 100%; object-fit: contain; display: block; }
       #waybi-info { flex: 1; min-width: 0; }
       #waybi-name { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1rem; }
       #waybi-status {
@@ -346,14 +316,14 @@
   function buildHTML() {
     return `
     <button id="waybi-fab" aria-label="Mở chat với Waybi">
-      ${WAIBI_SVG}
+      ${WAYBI_MASCOT}
       <span id="waybi-badge" style="display:none">1</span>
       <span id="waybi-hint">Chào mình là Waybi! 👋</span>
     </button>
 
     <div id="waybi-panel" role="dialog" aria-label="Chat với Waybi">
       <div id="waybi-header">
-        <div id="waybi-avatar">${WAIBI_SVG}</div>
+        <div id="waybi-avatar">${WAYBI_MASCOT}</div>
         <div id="waybi-info">
           <div id="waybi-name">Waybi ✨</div>
           <div id="waybi-status">Đang hoạt động</div>
@@ -471,6 +441,8 @@
   function toggle() { isOpen ? close() : open(); }
 
   function init() {
+    // Trang chủ có chatbot Waybi kết nối backend riêng; không tạo thêm nút trùng lặp.
+    if (document.getElementById('bwChatLauncher')) return;
     // inject styles
     document.head.insertAdjacentHTML('beforeend', styles);
     // inject HTML
