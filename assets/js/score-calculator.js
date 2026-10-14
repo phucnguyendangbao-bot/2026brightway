@@ -9,16 +9,19 @@ const COMBO_SUBJECTS = {
   D07: ['math', 'che', 'eng'], D08: ['math', 'bio', 'eng'],
   D09: ['math', 'his', 'eng'], D10: ['math', 'geo', 'eng'],
   D11: ['lit', 'phy', 'eng'],
+  X25: ['math', 'civic', 'eng'], X26: ['math', 'informatics', 'eng'],
 };
 const SUBJECTS = {
   math: ['sMath', 'Toán'], lit: ['sLit', 'Văn'], eng: ['sEng', 'Anh'],
   phy: ['sPhy', 'Lý'], che: ['sChe', 'Hóa'], bio: ['sBio', 'Sinh'],
   his: ['sHis', 'Sử'], geo: ['sGeo', 'Địa'],
+  civic: ['sCivic', 'Giáo dục KT&PL'], informatics: ['sInformatics', 'Tin học'],
 };
 const TRANSCRIPT_SUBJECTS = {
   math: ['hMath', 'Toán'], lit: ['hLit', 'Văn'], eng: ['hEng', 'Anh'],
   phy: ['hPhy', 'Lý'], che: ['hChe', 'Hóa'], bio: ['hBio', 'Sinh'],
   his: ['hHis', 'Sử'], geo: ['hGeo', 'Địa'],
+  civic: ['hCivic', 'Giáo dục KT&PL'], informatics: ['hInformatics', 'Tin học'],
 };
 const EXAMS = [
   { input: 'sVact', output: 'sumVact', max: 1200 },

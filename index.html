@@ -5711,8 +5711,8 @@ body.spa-active #spa-topbar { display: flex; }
   <div class="container">
     <div class="bw-next-card" id="bwNextCard">
       <div class="label">Bước tiếp theo</div>
-      <h3 id="bwNextTitle">Bạn đang ở giai đoạn "Tăng tốc ôn thi"</h3>
-      <p id="bwNextDesc">Tập trung 8-10 tiếng/ngày, luyện đề mỗi tuần, giữ sức khỏe. Đừng quên xem điểm chuẩn các trường để điều chỉnh kế hoạch.</p>
+      <h3 id="bwNextTitle">Chọn giai đoạn để xem bước tiếp theo</h3>
+      <p id="bwNextDesc">Mỗi học sinh có tiến độ khác nhau. Chọn mốc phù hợp để nhận gợi ý học tập và tuyển sinh vừa sức.</p>
       <a href="#timeline" class="bw-btn">Xem lịch chi tiết →</a>
     </div>
   </div>
@@ -5754,7 +5754,7 @@ body.spa-active #spa-topbar { display: flex; }
 
       <details class="bw-faq-item">
         <summary>Có nên nộp hồ sơ vào nhiều trường không?</summary>
-        <div class="faq-body">Nên. Hiện tại Bộ GD&ĐT cho phép đăng ký nhiều nguyện vọng (không giới hạn số trường). Chọn 3-5 trường theo chiến lược: 2 "chắc" + 2 "phù hợp" + 1 "mơ".</div>
+        <div class="faq-body">Có thể đăng ký nhiều nguyện vọng, nhưng số lượng và cách đăng ký phải theo quy chế và hướng dẫn tuyển sinh của từng năm. Hãy xếp nguyện vọng theo đúng mức độ yêu thích, đồng thời chọn 3-5 phương án có tính khả thi để theo dõi kỹ điều kiện và thời hạn.</div>
       </details>
 
       <details class="bw-faq-item">
@@ -5764,7 +5764,7 @@ body.spa-active #spa-topbar { display: flex; }
 
       <details class="bw-faq-item">
         <summary>Làm sao vừa ôn thi vừa giữ sức khỏe?</summary>
-        <div class="faq-body">Ngủ 7-8 tiếng/đêm là quan trọng nhất. Ôn 8-10 tiếng/ngày nhưng chia 3 ca (sáng-chiều-tối), không ôn 1-2 ca kéo dài. Ăn đủ, tập thể dục nhẹ 30 phút/ngày. Đừng hy sinh sức khỏe vì 2-3 tiếng ôn thêm.</div>
+        <div class="faq-body">Học sinh 13-18 tuổi nên ngủ khoảng 8-10 giờ mỗi đêm theo khuyến nghị sức khỏe; đây là khoảng tham khảo, không phải chỉ tiêu bắt buộc. Hãy chia thời gian học thành các phiên vừa sức, nghỉ đều, ăn đủ và vận động nhẹ. Website không đặt ra định mức số giờ học chung cho mọi học sinh.</div>
       </details>
 
     </div>
@@ -6076,7 +6076,7 @@ body.spa-active #spa-topbar { display: flex; }
       },
       'rush': {
         title: 'Đang ở giai đoạn "Tăng tốc ôn thi"',
-        desc: 'Tập trung 8-10 tiếng/ngày, luyện đề mỗi tuần, giữ sức khỏe. Đừng quên xem điểm chuẩn các trường để điều chỉnh kế hoạch.',
+        desc: 'Luyện đề đều theo mục tiêu, chia phiên học vừa sức và giữ thời gian nghỉ ngơi. Đừng quên xem điểm chuẩn các trường để điều chỉnh kế hoạch.',
         cta: 'Xem lịch chi tiết'
       },
       'submit': {
@@ -6111,7 +6111,7 @@ body.spa-active #spa-topbar { display: flex; }
       });
     });
 
-    // Default active = "rush" (đã set trong HTML), stage hiển thị đúng theo active
+    // Giai đoạn mặc định được xác định ở khối tự động theo tháng bên dưới.
   })();
 
   // ====================================================
