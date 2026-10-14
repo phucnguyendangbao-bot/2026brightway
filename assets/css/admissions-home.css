@@ -1,0 +1,41 @@
+/* Admissions first; keep the restored BrightWay gradient and rounded cards. */
+html body #home-view .admissions-home { padding:42px 24px 34px; background:linear-gradient(180deg,#f8f7ff,#fff); scroll-margin-top:85px; }
+.admissions-home-inner { max-width:1400px; margin:auto; min-width:0; }
+.admissions-home-heading { display:flex; align-items:center; justify-content:space-between; gap:24px; margin-bottom:24px; }
+.admissions-eyebrow { display:block; color:#6b60ff; font-size:12px; font-weight:800; letter-spacing:.1em; margin-bottom:7px; }
+html body #home-view .admissions-home h2 { font-size:clamp(25px,2.3vw,36px); line-height:1.3; color:#1a1a3e; margin:0 0 9px; font-weight:700; }
+.admissions-home-heading p { color:#505078; font-size:15px; line-height:1.65; margin:0; }
+.admissions-all { display:inline-flex; align-items:center; gap:10px; flex-shrink:0; background:var(--grad-btn); color:#fff; border-radius:999px; padding:13px 22px; font-weight:700; font-size:14px; text-decoration:none; box-shadow:0 8px 22px rgba(99,102,241,.17); }
+.admissions-highlights { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px; min-width:0; }
+.admissions-news-card { display:flex; flex-direction:column; min-width:0; background:#fff; border:1px solid #e9e5ff; border-radius:24px; box-shadow:0 8px 26px rgba(99,102,241,.09); overflow:hidden; }
+.admissions-news-photo { position:relative; display:block; height:185px; overflow:hidden; flex-shrink:0; }
+.admissions-news-photo img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
+.admissions-news-placeholder { background:linear-gradient(135deg,#e8edff,#f5eaff); }
+.admissions-news-placeholder img { object-fit:contain; padding:20px; }
+.admissions-news-badge { position:absolute; left:14px; top:14px; border-radius:999px; background:linear-gradient(135deg,#fff2df,#ffe8f1); color:#93470e; border:1px solid #fff; padding:6px 11px; font-size:11px; font-weight:800; }
+.admissions-news-body { display:flex; flex-direction:column; flex:1; padding:20px 22px; }
+.admissions-news-school { color:#6b60ff; font-size:12px; font-weight:700; margin-bottom:8px; }
+html body #home-view .admissions-news-card h3 { font-size:20px; line-height:1.4; font-weight:700; margin:0 0 9px; }
+.admissions-news-card h3 a { color:#1a1a3e; text-decoration:none; }
+.admissions-news-card h3 a:hover { color:#6b60ff; }
+.admissions-news-body p { color:#575777; font-size:13px; line-height:1.7; margin:0 0 18px; }
+.admissions-news-links { display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-top:auto; }
+.admissions-news-links a { color:#6656e8; font-weight:700; font-size:12px; text-decoration:none; }
+.admissions-news-links a:hover { text-decoration:underline; }
+.admissions-school-shortcuts { display:flex; flex-wrap:wrap; align-items:center; gap:9px; margin-top:22px; }
+.admissions-school-shortcuts span { color:#575777; font-size:12px; font-weight:700; margin-right:3px; }
+.admissions-school-shortcuts a { padding:7px 13px; border:1px solid #dfdcff; background:#f6f5ff; color:#6454dc; border-radius:999px; font-weight:600; font-size:12px; text-decoration:none; }
+.admissions-school-shortcuts a:hover { background:#eeebff; }
+@media(max-width:1000px) { .admissions-highlights { gap:14px; } .admissions-news-body { padding:17px; } html body #home-view .admissions-news-card h3 { font-size:17px; } }
+@media(max-width:700px) {
+  html body #home-view .admissions-home { padding:28px 18px; }
+  .admissions-home-heading { flex-direction:column; align-items:flex-start; gap:14px; margin-bottom:20px; }
+  .admissions-home-heading p { font-size:13px; }
+  .admissions-all { padding:10px 18px; font-size:13px; }
+  .admissions-highlights { grid-template-columns:none; grid-auto-flow:column; grid-auto-columns:86%; overflow-x:auto; scroll-snap-type:x proximity; padding:2px 2px 16px; }
+  .admissions-news-card { scroll-snap-align:start; }
+  .admissions-news-photo { height:165px; }
+  .admissions-news-body { padding:18px; }
+  html body #home-view .admissions-news-card h3 { font-size:19px; }
+  .admissions-school-shortcuts { margin-top:14px; gap:8px; }
+}

@@ -2950,11 +2950,12 @@ body.spa-active #spa-topbar { display: flex; }
 </style>
 <link rel="stylesheet" href="/assets/css/brightway-theme.css?v=2">
 <link rel="stylesheet" href="/assets/css/flow.css?v=2">
+<link rel="stylesheet" href="/assets/css/admissions-home.css?v=1">
 <script src="/assets/js/flow.js?v=1" defer></script>
 </head>
 <body>
 <!-- Skip link (a11y) -->
-<a href="#hero-actions" class="bw-skip-link">Bỏ qua đến nội dung chính</a>
+<a href="#admissions-news" class="bw-skip-link">Bỏ qua đến nội dung chính</a>
 <!-- Fixed background layer (thay thế background-attachment:fixed gây scroll freeze bug) -->
 <div id="bg-layer" aria-hidden="true"></div>
 
@@ -4999,7 +5000,64 @@ body.spa-active #spa-topbar { display: flex; }
   }
 </style>
 
-<!-- ===== WAYBI — HIỂN THỊ NGAY ĐẦU TRANG ===== -->
+<!-- ===== TUYỂN SINH — ƯU TIÊN TRÊN TRANG CHỦ ===== -->
+<section class="admissions-home" id="admissions-news" aria-labelledby="admissions-title">
+  <div class="admissions-home-inner">
+    <div class="admissions-home-heading">
+      <div>
+        <span class="admissions-eyebrow">TUYỂN SINH ĐẠI HỌC</span>
+        <h2 id="admissions-title">Thông tin tuyển sinh các trường</h2>
+        <p>Tin nổi bật, phương thức xét tuyển và những thông báo cần đọc trước khi chọn trường.</p>
+      </div>
+      <a href="page2.html" class="admissions-all">Xem tất cả trường <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="admissions-highlights" id="admissionsHighlights" aria-label="Tin tuyển sinh nổi bật" tabindex="0">
+      <article class="admissions-news-card">
+        <a class="admissions-news-photo" href="https://daihoc.fpt.edu.vn/thong-bao-tuyen-sinh/thong-tin-tuyen-sinh-nam-2026/" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
+          <img src="assets/images/hero/01-fpt-can-tho.jpg?v=3" alt="" width="700" height="438" loading="eager">
+          <span class="admissions-news-badge">Nổi bật · 2026</span>
+        </a>
+        <div class="admissions-news-body">
+          <span class="admissions-news-school">Đại học FPT</span>
+          <h3><a href="https://daihoc.fpt.edu.vn/thong-bao-tuyen-sinh/thong-tin-tuyen-sinh-nam-2026/" target="_blank" rel="noopener noreferrer">FPT xét tuyển kết hợp điểm thi THPT và học bạ lớp 12</a></h3>
+          <p>Xem công thức tính điểm, tổ hợp được chấp nhận và điều kiện dự tuyển trong thông báo chính thức.</p>
+          <div class="admissions-news-links"><a href="page2.html#fpt">Thông tin trường →</a><a href="https://daihoc.fpt.edu.vn/thong-bao-tuyen-sinh/thong-tin-tuyen-sinh-nam-2026/" target="_blank" rel="noopener noreferrer">Đọc thông báo ↗</a></div>
+        </div>
+      </article>
+      <article class="admissions-news-card">
+        <a class="admissions-news-photo" href="https://tuyensinh.ctu.edu.vn/dai-hoc-chinh-quy/thong-tin-tuyen-sinh" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
+          <img src="assets/images/hero/02-ctu.jpg?v=3" alt="" width="700" height="438" loading="eager">
+          <span class="admissions-news-badge">Cần đọc · 2026</span>
+        </a>
+        <div class="admissions-news-body">
+          <span class="admissions-news-school">Đại học Cần Thơ</span>
+          <h3><a href="https://tuyensinh.ctu.edu.vn/chuong-trinh-dai-tra/177-thong-tin/1142-quy-ta-c-quy-doi-diem-trong-tuyen-sinh-dai-hoc-chinh-quy-nam-2026.html" target="_blank" rel="noopener noreferrer">Cần Thơ: quy tắc quy đổi điểm học bạ và V-SAT năm 2026</a></h3>
+          <p>Điểm học bạ và V-SAT được quy đổi theo từng môn. Đọc quy tắc trước khi đối chiếu điểm xét tuyển.</p>
+          <div class="admissions-news-links"><a href="page2.html#ctu">Thông tin trường →</a><a href="https://tuyensinh.ctu.edu.vn/chuong-trinh-dai-tra/177-thong-tin/1142-quy-ta-c-quy-doi-diem-trong-tuyen-sinh-dai-hoc-chinh-quy-nam-2026.html" target="_blank" rel="noopener noreferrer">Đọc thông báo ↗</a></div>
+        </div>
+      </article>
+      <article class="admissions-news-card">
+        <a class="admissions-news-photo" href="https://tuyensinh.ueh.edu.vn/bai-viet/thong-tin-tuyen-sinh-dai-hoc-chinh-quy-khoa-52-nam-2026/" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
+          <img src="assets/images/hero/03-ueh.jpg?v=3" alt="" width="700" height="438" loading="eager">
+          <span class="admissions-news-badge">Nổi bật · 2026</span>
+        </a>
+        <div class="admissions-news-body">
+          <span class="admissions-news-school">Đại học Kinh tế TP.HCM · UEH</span>
+          <h3><a href="https://tuyensinh.ueh.edu.vn/bai-viet/thong-tin-tuyen-sinh-dai-hoc-chinh-quy-khoa-52-nam-2026/" target="_blank" rel="noopener noreferrer">UEH công bố 2 phương thức tuyển sinh và 8 chương trình mới</a></h3>
+          <p>Tìm hiểu thông tin tuyển sinh Khóa 52, các chương trình đào tạo và cách xét tuyển theo từng phương thức.</p>
+          <div class="admissions-news-links"><a href="page2.html#ueh">Thông tin trường →</a><a href="https://tuyensinh.ueh.edu.vn/bai-viet/thong-tin-tuyen-sinh-dai-hoc-chinh-quy-khoa-52-nam-2026/" target="_blank" rel="noopener noreferrer">Đọc thông báo ↗</a></div>
+        </div>
+      </article>
+    </div>
+    <div class="admissions-school-shortcuts" aria-label="Tra cứu nhanh trường">
+      <span>Tra cứu nhanh</span>
+      <a href="page2.html#fpt">FPT</a><a href="page2.html#ctu">Cần Thơ</a><a href="page2.html#ueh">UEH</a><a href="page2.html#ump">Y Dược TP.HCM</a><a href="page2.html#uit">UIT</a><a href="page2.html#hcmus">Khoa học Tự nhiên</a>
+      <a href="page2.html">Các trường khác →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WAYBI ===== -->
 <section class="bw-waybi-home" id="waybi-home" aria-labelledby="waybi-home-title">
   <div class="bw-waybi-home-inner">
     <div class="bw-waybi-home-visual">
@@ -7707,6 +7765,7 @@ Bạn cần hỏi gì nào?</div>
 </script>
 <script src="assets/js/nav-auth.js"></script>
 <script src="assets/js/cms-service.js"></script>
+<script src="assets/js/admissions-home.js?v=1"></script>
 <script src="assets/js/admin-quick.js"></script>
 <link rel="stylesheet" href="assets/css/admin-quick.css">
 
