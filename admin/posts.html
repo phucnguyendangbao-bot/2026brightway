@@ -14,6 +14,7 @@
   .kind-badge{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}.table td{vertical-align:middle}
   @media(max-width:760px){.content-toolbar>*{width:100%}.content-toolbar input{min-width:0}.page-actions{flex-wrap:wrap}}
 </style>
+<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=1">
 </head>
 <body>
 <button class="mobile-toggle" onclick="Admin.toggleSidebar()">☰</button>
@@ -21,22 +22,22 @@
 <main class="main">
   <div class="page-header">
     <div>
-      <h1 class="page-title">🗂️ Quản lý nội dung</h1>
+      <h1 class="page-title">Quản lý nội dung</h1>
       <p class="page-subtitle">Bài viết và tài liệu trong cùng một nơi</p>
     </div>
     <div class="page-actions">
-      <a href="post-edit.html" class="btn btn-primary">✍️ Viết bài</a>
-      <a href="resource-edit.html" class="btn btn-secondary">📚 Thêm tài liệu</a>
+      <a href="post-edit.html" class="btn btn-primary">Viết bài</a>
+      <a href="resource-edit.html" class="btn btn-secondary">Thêm tài liệu</a>
     </div>
   </div>
   <div class="card">
     <div class="content-toolbar">
       <div class="type-tabs" aria-label="Lọc loại nội dung">
         <button class="btn btn-ghost type-btn" data-type="all">Tất cả</button>
-        <button class="btn btn-ghost type-btn" data-type="post">📝 Bài viết</button>
-        <button class="btn btn-ghost type-btn" data-type="resource">📚 Tài liệu</button>
+        <button class="btn btn-ghost type-btn" data-type="post">Bài viết</button>
+        <button class="btn btn-ghost type-btn" data-type="resource">Tài liệu</button>
       </div>
-      <input id="content-search" type="search" placeholder="🔍 Tìm tiêu đề, mô tả, nhà cung cấp...">
+      <input id="content-search" type="search" placeholder="Tìm tiêu đề, mô tả, nhà cung cấp..." aria-label="Tìm nội dung">
       <select id="status-filter">
         <option value="all">Tất cả trạng thái</option><option value="published">Đã đăng</option>
         <option value="draft">Bản nháp</option><option value="archived">Đã ẩn</option>

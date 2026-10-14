@@ -2948,6 +2948,7 @@ body.spa-active #spa-topbar { display: flex; }
 }
 
 </style>
+<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=1">
 </head>
 <body>
 <!-- Skip link (a11y) -->
@@ -2958,16 +2959,16 @@ body.spa-active #spa-topbar { display: flex; }
 <!-- Top Nav (shared với các trang khác, có nút Đăng nhập) -->
 <nav class="bw-nav">
   <div class="bw-nav-inner">
-    <a href="index.html" class="bw-logo">🌟 BrightWay Career</a>
+    <a href="index.html" class="bw-logo">BrightWay Career</a>
     <button class="bw-nav-menu-btn" id="bwNavMenuBtn" type="button" aria-label="Mở menu điều hướng" aria-expanded="false" aria-controls="navLinks">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
     <div class="bw-nav-links" id="navLinks" aria-label="Điều hướng chính">
       <a href="index.html" class="active" aria-current="page">Trang chủ</a>
-      <a href="#waybi-home" style="font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;">🤖 Waybi</a>
+      <a href="#waybi-home">Waybi</a>
       <a href="careers-holland.html">Tra cứu & Test</a>
-      <a href="resources.html">📚 Tài liệu</a>
-      <button type="button" class="senior-toggle" aria-pressed="false" title="Phông chữ lớn hơn, dễ đọc hơn">👁️ Senior Mode</button>
+      <a href="resources.html">Tài liệu</a>
+      <button type="button" class="senior-toggle" aria-pressed="false" title="Phông chữ lớn hơn, dễ đọc hơn">Chữ lớn</button>
     </div>
   </div>
 </nav>
@@ -5603,8 +5604,8 @@ body.spa-active #spa-topbar { display: flex; }
 <section class="bw-tools bw-reveal" id="tools">
   <div class="container">
     <div class="section-eyebrow">Công cụ</div>
-    <h2 class="section-title">Trợ thủ Lớp 12</h2>
-    <p class="section-sub">Những công cụ nhỏ — hữu ích lớn</p>
+    <h2 class="section-title">Công cụ cho Lớp 12</h2>
+    <p class="section-sub">Trắc nghiệm, tính điểm và lên kế hoạch tuyển sinh.</p>
     <div class="bw-tools-grid">
 
       <a href="holland.html" class="bw-tool-card">
@@ -6033,9 +6034,11 @@ body.spa-active #spa-topbar { display: flex; }
     }
 
     cards.forEach(function(card){
-      card.addEventListener('click', function(){
+      card.addEventListener('click', function(event){
         activate(card);
-        document.getElementById('bw-next-section').scrollIntoView({behavior:'smooth', block:'center'});
+        if (event.isTrusted) {
+          document.getElementById('bw-next-section').scrollIntoView({behavior:'smooth', block:'center'});
+        }
       });
     });
 
@@ -6063,7 +6066,7 @@ body.spa-active #spa-topbar { display: flex; }
 
     // 1) Update hero badge với ngày thực
     var badge = document.querySelector('.bw-hero .badge');
-    if (badge) badge.innerHTML = '✨ Hôm nay — ' + monthNames[month] + ', ' + year;
+    if (badge) badge.textContent = 'Hôm nay — ' + monthNames[month] + ', ' + year;
 
     // 2) Auto-active stage card theo tháng hiện tại
     var cards = document.querySelectorAll('#bwStageGrid .bw-stage-card');
@@ -7663,7 +7666,7 @@ Bạn cần hỏi gì nào?</div>
     try { localStorage.setItem(STORAGE_KEY, on ? '1' : '0'); } catch (e) {}
     document.querySelectorAll('.senior-toggle').forEach(function (b) {
       b.setAttribute('aria-pressed', String(on));
-      b.textContent = on ? '👁️ Chế độ thường' : '👁️ Senior Mode';
+      b.textContent = on ? 'Chữ thường' : 'Chữ lớn';
     });
   }
   function init() {
@@ -7727,10 +7730,10 @@ Bạn cần hỏi gì nào?</div>
 <!-- Mobile sticky CTA -->
 <nav class="bw-mobile-cta" aria-label="Hành động nhanh trên di động">
   <a href="holland.html" class="bw-mcta-primary">
-    <span>🧭</span><span>Trắc nghiệm</span>
+    <span>Trắc nghiệm</span>
   </a>
   <a href="page2.html" class="bw-mcta-secondary">
-    <span>🏫</span><span>Chọn trường</span>
+    <span>Chọn trường</span>
   </a>
 </nav>
 
