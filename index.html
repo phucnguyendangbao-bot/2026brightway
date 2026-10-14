@@ -3438,6 +3438,12 @@ body.spa-active #spa-topbar { display: flex; }
   }
   .bw-footer p { margin: 4px 0; font-size: 14px; }
   .bw-footer .small { font-size: 13px; color: #9ca3c8; margin-top: 16px; }
+  .bw-footer-contact { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:8px 18px; max-width:760px; margin:18px auto 0; font-size:14px; }
+  .bw-footer-contact a { color:#ddd8ff; font-weight:700; text-decoration:none; }
+  .bw-footer-contact a:hover { color:#fff; text-decoration:underline; }
+  .bw-footer-contact span { color:#c7c9e0; }
+  .bw-footer-contact .contact-label { color:#a78bfa; font-weight:700; }
+  @media (max-width:640px) { .bw-footer-contact { flex-direction:column; gap:8px; font-size:13px; } }
 
   /* MOBILE */
   @media (max-width: 640px) {
@@ -5944,6 +5950,11 @@ body.spa-active #spa-topbar { display: flex; }
 <footer class="bw-footer">
   <div class="logo">BrightWay Career</div>
   <p>Đồng hành cùng học sinh Lớp 12 trên hành trình hướng nghiệp</p>
+  <div class="bw-footer-contact" aria-label="Thông tin liên hệ BrightWay Career">
+    <a href="mailto:pdpbrightwaycarrers@gmail.com">✉ pdpbrightwaycarrers@gmail.com</a>
+    <a href="tel:+84939249060">☎ 0939 249 060</a>
+    <span><span class="contact-label">Founder:</span> Nguyễn Đặng Bảo Phúc &amp; Lê Thiên An</span>
+  </div>
   <p class="small">© 2026 BrightWay Career · Thông tin chỉ mang tính tham khảo, không thay thế tư vấn chuyên gia.</p>
 </footer>
 
