@@ -142,6 +142,9 @@ html body #home-view .bw-tool-card .icon { display:grid; place-items:center; wid
 html body #home-view .bw-tool-card .icon img { width:76px; height:76px; object-fit:contain; display:block; filter:none; }
 html body #home-view .bw-trust-item .ico { width:28px; height:28px; font-size:15px; }
 html body #home-view .bw-stage-card .emoji { padding:5px; }
+html body #home-view .bw-inline-icon { width:24px; height:24px; object-fit:contain; vertical-align:middle; margin-right:5px; filter:none; }
+html body #home-view .bw-trust-icon { width:26px; height:26px; object-fit:contain; flex:0 0 26px; }
+html body #home-view .bw-tab-icon { width:20px; height:20px; object-fit:contain; vertical-align:middle; margin-right:4px; filter:none; }
 
 @media(max-width:1100px) and (min-width:901px) {
   html body #home-view .bw-hero-grid { gap:36px; }
