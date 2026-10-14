@@ -164,10 +164,9 @@
 
   // Lời chào theo trang
   const GREETINGS = {
-    'index.html': { h: 'Xin chào! Mình là Waybi 👋', p: 'Mình sẽ giúp bạn tìm học bổng, viết CV, lên lộ trình du học. Cứ hỏi mình nhé!' },
+    'index.html': { h: 'Xin chào! Mình là Waybi 👋', p: 'Mình sẽ giúp bạn chọn ngành, tìm trường, học bổng và lên kế hoạch học tập. Cứ hỏi mình nhé!' },
     'calendar.html': { h: 'Đây là Lịch tuyển sinh 2026 📅', p: 'Tất cả mốc thi, nộp hồ sơ, công bố điểm chuẩn theo tháng. Click ngày để xem chi tiết!' },
     'scholarship-roadmap.html': { h: 'Lộ trình apply 12 tháng 🗺️', p: 'Mỗi tháng có những việc cần làm. Click vào lịch ở dưới để xem chi tiết từng mốc nhé!' },
-    'cv-review.html': { h: 'Mình giúp bạn sửa CV ✍️', p: 'Upload CV lên, AI sẽ gợi ý chỉnh sửa theo chuẩn quốc tế.' },
     'essay-review.html': { h: 'Cùng nhau viết Essay nhé! ✨', p: 'Đưa mình đọc bản nháp, mình sẽ gợi ý chỉnh sửa.' },
     'holland.html': { h: 'Tìm nghề hợp với bạn 🎯', p: 'Làm trắc nghiệm Holland để biết mình hợp với nhóm ngành nào nha!' },
     'score-calculator.html': { h: 'Tính điểm xét tuyển 🧮', p: 'Nhập điểm 3 môn + chọn tổ hợp, mình tính ngay cho!' },

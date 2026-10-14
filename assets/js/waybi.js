@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════════════
-   WAYBI — Linh vật + Chatbot của BrightWay Scholars
+   WAYBI — Linh vật + Chatbot của BrightWay Career
    - Mascot Waybi PNG dùng thống nhất trên toàn website
    - Nút chat nổi ở góc phải
    - Chat panel hỗ trợ theo ngữ cảnh trang
@@ -18,10 +18,6 @@
     {
       keys: ['lộ trình', 'lo trinh', 'roadmap', 'chuẩn bị', 'bắt đầu', 'bắt đầu từ đâu'],
       reply: 'Bạn nên xem trang <b>📅 Lộ trình apply học bổng</b> nhé! Tóm tắt: <br>• <b>12-18 tháng trước</b>: xây GPA + hoạt động<br>• <b>6-12 tháng</b>: thi IELTS/SAT + chốt trường<br>• <b>3-6 tháng</b>: viết essay + xin thư giới thiệu<br>• <b>1-2 tháng</b>: nộp hồ sơ'
-    },
-    {
-      keys: ['cv', 'resume', 'sơ yếu', 'sơ yếu lý lịch'],
-      reply: 'BrightWay có công cụ <b>"Sửa CV với AI"</b> miễn phí — bạn upload CV, AI sẽ gợi ý chỉnh sửa theo chuẩn quốc tế. Truy cập: cv-review.html'
     },
     {
       keys: ['essay', 'bài luận', 'personal statement', 'motivation letter'],
@@ -45,7 +41,7 @@
     },
     {
       keys: ['đăng nhập', 'dang nhap', 'tài khoản', 'login', 'đăng ký'],
-      reply: 'Bạn đăng nhập bằng <b>Google</b> 1 cú click, hoặc email + mật khẩu. Tài khoản giúp lưu CV, lưu trường yêu thích và xem lịch sử.'
+      reply: 'Bạn đăng nhập bằng <b>Google</b> 1 cú click, hoặc email + mật khẩu. Tài khoản giúp lưu kết quả Holland, lưu nghề yêu thích và xem lịch sử.'
     },
     {
       keys: ['chào', 'hi', 'hello', 'hey', 'xin chào', 'chao'],
@@ -66,7 +62,7 @@
     },
     {
       keys: ['tên', 'ten', 'bạn là ai', 'bạn tên gì', 'who are you'],
-      reply: 'Mình là <b>Waybi</b> — linh vật và trợ lý ảo của <b>BrightWay Scholars</b> ✨. Mình giúp bạn tra cứu học bổng, viết CV, lên lộ trình apply và trả lời mọi thắc mắc về du học.'
+      reply: 'Mình là <b>Waybi</b> — linh vật và trợ lý ảo của <b>BrightWay Career</b> ✨. Mình giúp bạn tra cứu học bổng, chọn ngành, lên lộ trình học tập và trả lời mọi thắc mắc về du học.'
     },
     {
       keys: ['tạm biệt', 'bye', 'goodbye', 'bai'],
@@ -78,7 +74,6 @@
   function getContextGreeting() {
     const path = location.pathname.toLowerCase();
     if (path.includes('calendar')) return 'Bạn đang xem lịch 2026 nè 📅 — cần mình giúp tìm mốc nào không?';
-    if (path.includes('cv-review')) return 'Bạn muốn sửa CV à? Upload lên đi, mình sẽ gợi ý!';
     if (path.includes('essay-review')) return 'Essay đâu, đưa mình xem giúp nào ✍️';
     if (path.includes('score-calculator')) return 'Cần tính điểm xét tuyển hả? Mình hướng dẫn nè!';
     if (path.includes('holland')) return 'Holland test giúp bạn tìm nghề hợp tính cách đó! 🎯';
@@ -110,8 +105,8 @@
     }
     // fallback
     const fallbacks = [
-      'Câu này mình chưa rõ lắm 😅 Bạn có thể hỏi về: học bổng, lộ trình, CV, essay, IELTS, deadline, Holland test, hoặc công cụ tính điểm nha!',
-      'Mình chưa hiểu ý bạn 🤔 Bạn thử hỏi "học bổng nào phù hợp?" hoặc "viết CV thế nào?" xem sao.',
+      'Câu này mình chưa rõ lắm 😅 Bạn có thể hỏi về: học bổng, lộ trình, ngành học, IELTS, deadline, Holland test, hoặc công cụ tính điểm nha!',
+      'Mình chưa hiểu ý bạn 🤔 Bạn thử hỏi "học bổng nào phù hợp?" hoặc "chọn ngành thế nào?" xem sao.',
       'Hmm, mình chưa có thông tin này. Bạn có thể liên hệ admin qua email support@brightway.vn để được hỗ trợ chi tiết hơn nhé!',
     ];
     return fallbacks[Math.floor(Math.random() * fallbacks.length)];

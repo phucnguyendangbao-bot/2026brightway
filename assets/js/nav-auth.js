@@ -11,10 +11,10 @@
       const links = document.getElementById('navLinks');
       return { container: links, mode: 'append' };
     }
-    // BrightWay Scholars pages
+    // BrightWay Career pages
     const lpNavLinks = document.querySelector('.lp-nav-links');
     if (lpNavLinks) return { container: lpNavLinks, mode: 'append' };
-    // page2 / cv-review — nav có nhiều thành phần, append 1 div riêng
+    // Trang tra cứu — nav có nhiều thành phần, append 1 div riêng
     const navInner = document.querySelector('.nav-inner, .p2-nav-inner');
     if (navInner) return { container: navInner, mode: 'append-sibling' };
     return null;

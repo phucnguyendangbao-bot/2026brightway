@@ -13,7 +13,6 @@
  */
 
 export const MAX_TOKENS_BY_TYPE = {
-  portfolio: 2048,
   essay: 3072,
   outline: 3000,
 };
@@ -21,7 +20,6 @@ export const MAX_TOKENS_BY_TYPE = {
 export const ALLOWED_TYPES = Object.keys(MAX_TOKENS_BY_TYPE);
 
 export const CONTENT_LIMITS = {
-  portfolio: 1500,
   essay: 4500,
   outline: 4000,
 };
@@ -30,14 +28,12 @@ export const CONTENT_LIMITS = {
    SYSTEM PROMPTS — copy nguyên văn từ frontend cũ
    ════════════════════════════════════════════════════════════ */
 
-const SYSTEM_PORTFOLIO = `Bạn là chuyên gia đánh giá portfolio học bổng quốc tế. Trả lời CHỈ bằng JSON thuần, KHÔNG markdown, KHÔNG giải thích thêm.`;
 
 const SYSTEM_ESSAY = `Bạn là chuyên gia hội đồng học bổng quốc tế (Fulbright / Chevening / DAAD). Phân tích bài luận học bổng theo framework 6 phần & rubric 7 trục. Trả lời CHỈ bằng JSON thuần, KHÔNG markdown, KHÔNG giải thích thêm.`;
 
 const SYSTEM_OUTLINE = `Bạn là chuyên gia tư vấn học bổng tại Việt Nam. Dựa trên hồ sơ học sinh và tiêu chí của trường, hãy tạo DÀN Ý BÀI LUẬN HỌC BỔNG cá nhân hóa và phân tích điểm mạnh/yếu của hồ sơ. Trả lời CHỈ bằng JSON thuần, KHÔNG markdown, KHÔNG giải thích thêm.`;
 
 export const SYSTEM_PROMPTS = {
-  portfolio: SYSTEM_PORTFOLIO,
   essay: SYSTEM_ESSAY,
   outline: SYSTEM_OUTLINE,
 };
@@ -59,27 +55,6 @@ function joinList(arr, max = 12) {
     .slice(0, max)
     .map(s => s.trim())
     .join(', ');
-}
-
-function buildPortfolioPrompt({ content, options }) {
-  const opts = joinList(options?.criteria, 12) || 'Đánh giá tổng quan';
-  const truncated = safeStr(content).slice(0, CONTENT_LIMITS.portfolio);
-  return `Chuyên gia học bổng. Phân tích portfolio theo tiêu chí: ${opts}.
-
-Portfolio:
-"""
-${truncated}
-"""
-
-Trả về JSON thuần (KHÔNG markdown, KHÔNG giải thích thêm):
-{"score":75,"level":"Khá","verdict":"Nhận xét ngắn 1 câu.","rubric":{"leadership":70,"impact":75,"clarity":80,"storytelling":65,"scholarshipFit":78},"blocks":[{"icon":"📊","title":"Tên tiêu chí","status":"warn","badge":"Khá","goods":["điểm tốt ngắn"],"bads":["điểm yếu ngắn"],"tips":["gợi ý ngắn"],"rewrite":""}]}
-
-Quy tắc NGHIÊM NGẶT:
-- rubric: chấm 5 trục từ 0-100, đánh giá khắt khe theo chuẩn hội đồng học bổng quốc tế
-- Mỗi block: tối đa 1 good, 1 bad, 1 tip. Mỗi cái tối đa 10 từ.
-- verdict tối đa 15 từ
-- rewrite để trống "" trừ khi tiêu chí "Gợi ý cải thiện cụ thể" được chọn (tối đa 20 từ)
-- JSON phải hoàn chỉnh từ { đến }`;
 }
 
 function buildEssayPrompt({ content, options }) {
@@ -148,7 +123,6 @@ Trả về JSON thuần (KHÔNG markdown, KHÔNG giải thích thêm) theo schem
    ════════════════════════════════════════════════════════════ */
 
 const BUILDERS = {
-  portfolio: buildPortfolioPrompt,
   essay: buildEssayPrompt,
   outline: buildOutlinePrompt,
 };
