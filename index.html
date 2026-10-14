@@ -4457,6 +4457,13 @@ body.spa-active #spa-topbar { display: flex; }
     font-size: 14px;
     margin: 0 0 18px;
   }
+  .bw-holland-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
   .holland-preview {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -5174,10 +5181,13 @@ body.spa-active #spa-topbar { display: flex; }
     <div class="holland-letter"><div class="let">E</div>Lãnh đạo</div>
     <div class="holland-letter"><div class="let">C</div>Quy củ</div>
   </div>
-  <a href="holland.html" class="bw-btn bw-btn-primary">
-    Làm trắc nghiệm ngay
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-  </a>
+  <div class="bw-holland-actions">
+    <a href="holland.html" class="bw-btn bw-btn-primary">
+      Làm trắc nghiệm ngay
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+    <a href="holland.html#import-result" class="bw-btn bw-btn-outline">Tôi đã làm test Holland rồi</a>
+  </div>
 </section>
 
 <!-- ===== INLINE SCHOOLS MINI ===== -->

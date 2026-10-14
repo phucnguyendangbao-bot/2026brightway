@@ -651,6 +651,13 @@ body {
   transition: transform .2s;
 }
 .bw-cta-row a:hover { transform: translateY(-2px); }
+.bw-cta-row .bw-cta-secondary {
+  margin: 8px;
+  border: 1.5px solid var(--primary);
+  background: var(--surface);
+  color: var(--primary);
+  box-shadow: none;
+}
 
 /* === FOOTER === */
 .bw-footer {

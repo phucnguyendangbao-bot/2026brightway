@@ -44,6 +44,24 @@
   </div>
 </section>
 
+<section class="import-section" id="import-result" aria-label="Nhập kết quả Holland đã có">
+  <div class="container">
+    <details class="import-card" id="importResult">
+      <summary>✅ Tôi đã làm test Holland rồi <span>Nhập mã kết quả để xem gợi ý nghề</span></summary>
+      <form id="importForm" class="import-form" novalidate>
+        <label for="importCode">Mã Holland của bạn</label>
+        <div class="import-form-row">
+          <input id="importCode" name="code" type="text" inputmode="text" maxlength="5" autocomplete="off"
+                 placeholder="Ví dụ: ISA" aria-describedby="importHint importError">
+          <button type="submit" class="quiz-btn quiz-btn-primary">Dùng kết quả này</button>
+        </div>
+        <p id="importHint" class="import-hint">Nhập 1–3 chữ cái khác nhau trong R, I, A, S, E, C; chữ đứng đầu là nhóm nổi bật nhất. Kết quả được lưu trên thiết bị này.</p>
+        <p id="importError" class="import-error" role="alert" hidden></p>
+      </form>
+    </details>
+  </div>
+</section>
+
 <!-- 6 NHÓM HOLLAND INTRO -->
 <section class="types-intro">
   <div class="container">
@@ -106,7 +124,7 @@
     <div class="majors" id="rMajors"></div>
     <div class="result-actions">
       <button class="quiz-btn quiz-btn-secondary" onclick="HollandApp.hollandReset()">🔄 Làm lại</button>
-      <a href="careers.html" class="quiz-btn quiz-btn-primary" style="text-decoration:none;">🔍 Tra cứu ngành phù hợp</a>
+      <a href="careers-holland.html" id="resultCareersLink" class="quiz-btn quiz-btn-primary">🔍 Xem nghề phù hợp</a>
     </div>
   </div>
 </div>

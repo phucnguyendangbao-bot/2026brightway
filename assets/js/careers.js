@@ -25,6 +25,7 @@
     jobs: [],
     query: '',
     activeHolland: 'all',
+    importedCode: '',
     activeTab: 'search'
   };
 
@@ -77,6 +78,8 @@
     wrap.querySelectorAll('.holland-chip').forEach(btn => {
       btn.addEventListener('click', () => {
         state.activeHolland = btn.dataset.code;
+        state.importedCode = '';
+        $('hollandFilterLabel').textContent = '🧭 Lọc theo nhóm Holland:';
         // re-render
         renderHollandFilter();
         // re-render result based on current state
@@ -384,12 +387,22 @@
       const res = await fetch(DATA_URL);
       if (!res.ok) throw new Error('Failed to load');
       state.jobs = await res.json();
+      const params = new URLSearchParams(window.location.search);
+      let hollandCode = params.get('holland');
+      if (!hollandCode) {
+        try { hollandCode = JSON.parse(localStorage.getItem('studentHollandImportedV1') || 'null')?.code; } catch (e) { /* ignore */ }
+      }
+      hollandCode = String(hollandCode || '').toUpperCase();
+      if (/^[RIASEC]{1,3}$/.test(hollandCode) && new Set(hollandCode).size === hollandCode.length) {
+        state.activeHolland = hollandCode[0];
+        state.importedCode = hollandCode;
+        $('hollandFilterLabel').textContent = `🧭 Mã của bạn: ${hollandCode} · Đang lọc theo nhóm ${HOLLAND_META[hollandCode[0]].label}`;
+      }
       const count = $('careerCount');
       if (count) count.textContent = `📚 Cơ sở dữ liệu: ${state.jobs.length} nghề nghiệp phổ biến tại Việt Nam`;
       renderHollandFilter();
       renderListResult(getFiltered());
       // Auto-fill search if query string present
-      const params = new URLSearchParams(window.location.search);
       const q = params.get('q');
       if (q) {
         const input = $('careerSearch');

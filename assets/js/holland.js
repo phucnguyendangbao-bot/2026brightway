@@ -75,6 +75,7 @@
 
   // ─── Constants ───
   const STORAGE_KEY = 'studentHollandV1';
+  const IMPORTED_KEY = 'studentHollandImportedV1';
   const TIMER_KEY = 'studentHollandTimer';
   const PER_PAGE = 5;          // 5 câu/trang → gọn, vẫn thấy tiến độ
   const TIMER_SECONDS = 7 * 60; // 7 phút
@@ -91,6 +92,49 @@
 
   // ─── Helpers ───
   const $ = id => document.getElementById(id);
+
+  function normalizeCode(value) {
+    const code = String(value || '').toUpperCase().replace(/[\s-]/g, '');
+    return /^[RIASEC]{1,3}$/.test(code) && new Set(code).size === code.length ? code : '';
+  }
+
+  function showImportedResult(code) {
+    const info = TYPES[code[0]];
+    if (state.timerInterval) { clearInterval(state.timerInterval); state.timerInterval = null; }
+    clearTimeout(state.saveTimer);
+    $('rEmoji').textContent = info.emoji;
+    $('rType').textContent = info.name;
+    $('rCode').textContent = code.split('').join(' – ');
+    $('rDesc').textContent = info.desc;
+    $('rBars').innerHTML = '<p class="import-hint">Kết quả được nhập từ bài test đã làm; không có điểm chi tiết cho từng nhóm.</p>';
+    const majors = [...new Set(code.slice(0, 2).split('').flatMap(letter => TYPES[letter].majors))];
+    $('rMajors').innerHTML = `<h3>📚 Ngành học tham khảo</h3><div class="majors-tags">${majors.map(major => `<span class="majors-tag">${major}</span>`).join('')}</div>`;
+    $('resultCareersLink').href = `careers-holland.html?holland=${code}`;
+    $('quizCard').style.display = 'none';
+    $('jumpBarWrap').style.display = 'none';
+    $('resultCard').classList.add('show');
+    $('importCode').value = code;
+  }
+
+  function importResult(event) {
+    event.preventDefault();
+    const input = $('importCode');
+    const code = normalizeCode(input.value);
+    const error = $('importError');
+    if (!code) {
+      input.setAttribute('aria-invalid', 'true');
+      error.textContent = 'Mã cần có 1–3 chữ khác nhau trong R, I, A, S, E, C. Ví dụ: ISA.';
+      error.hidden = false;
+      input.focus();
+      return;
+    }
+    input.removeAttribute('aria-invalid');
+    error.hidden = true;
+    try { localStorage.setItem(IMPORTED_KEY, JSON.stringify({ code, savedAt: Date.now() })); } catch (e) { /* still show result */ }
+    showImportedResult(code);
+    $('importResult').open = false;
+    $('resultCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 
   function getAnsweredCount() {
     return Object.keys(state.answers).length;
@@ -318,6 +362,7 @@
       if (!confirm(`Bạn còn ${unanswered.length} câu chưa trả lời. Vẫn xem kết quả?`)) return;
     }
     if (state.timerInterval) { clearInterval(state.timerInterval); state.timerInterval = null; }
+    try { localStorage.removeItem(IMPORTED_KEY); } catch (e) {}
 
     const scores = { R: 0, I: 0, A: 0, S: 0, E: 0, C: 0 };
     QUESTIONS.forEach((q, i) => { scores[q.t] += (state.answers[i] || 0); });
@@ -334,6 +379,7 @@
     $('rType').textContent = info.name;
     $('rCode').textContent = top3.join(' – ');
     $('rDesc').textContent = info.desc;
+    $('resultCareersLink').href = `careers-holland.html?holland=${top3.join('')}`;
 
     const barColors = { R: '#f59e0b', I: '#6366f1', A: '#ec4899', S: '#10b981', E: '#f97316', C: '#3b82f6' };
     $('rBars').innerHTML = sorted.map(([k, v]) => {
@@ -384,7 +430,7 @@
     Object.keys(state.answers).forEach(k => delete state.answers[k]);
     state.page = 0;
     state.timerSec = TIMER_SECONDS;
-    try { localStorage.removeItem(STORAGE_KEY); localStorage.removeItem(TIMER_KEY); } catch (e) {}
+    try { localStorage.removeItem(STORAGE_KEY); localStorage.removeItem(TIMER_KEY); localStorage.removeItem(IMPORTED_KEY); } catch (e) {}
     if (!state.timerInterval) startTimer();
     $('quizCard').style.display = '';
     $('jumpBarWrap').style.display = '';
@@ -403,8 +449,16 @@
 
   // ─── Init ───
   function init() {
+    $('importForm')?.addEventListener('submit', importResult);
     loadFromStorage();
     renderTypesIntro();
+    if (window.location.hash === '#import-result') $('importResult').open = true;
+    try {
+      const imported = JSON.parse(localStorage.getItem(IMPORTED_KEY) || 'null');
+      const code = normalizeCode(imported?.code);
+      if (code) { showImportedResult(code); return; }
+    } catch (e) { /* ignore invalid storage */ }
+    if (getAnsweredCount() === QUESTIONS.length) { hollandSubmit(); return; }
     renderPage();
     startTimer();
   }
@@ -412,6 +466,7 @@
   // ─── Keyboard shortcuts ───
   document.addEventListener('keydown', (e) => {
     if ($('resultCard').classList.contains('show')) return;
+    if (e.target.closest('input, textarea, select, [contenteditable="true"]')) return;
     if (e.key >= '1' && e.key <= '5') {
       const idx = getPageStart() + 0; // apply cho câu đầu trang hiện tại
       // Tìm câu chưa trả lời đầu tiên trong trang
