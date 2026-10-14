@@ -40,7 +40,7 @@
     ];
     nav.className = 'flow-nav';
     nav.setAttribute('aria-label', 'Điều hướng chính');
-    nav.innerHTML = `<div class="flow-nav-inner"><a class="flow-logo" href="index.html">BrightWay Career</a><button type="button" class="flow-menu" aria-controls="navLinks" aria-expanded="false" aria-label="Mở menu">Menu <span aria-hidden="true">☰</span></button><div id="navLinks" class="flow-links">${items.map(([label, href, pages]) => `<a href="${href}" ${pages.includes(page) ? 'class="active" aria-current="page"' : ''}>${label}</a>`).join('')}<a href="profile.html" ${page === 'profile.html' ? 'class="active" aria-current="page"' : ''}>Hồ sơ</a></div></div>`;
+    nav.innerHTML = `<div class="flow-nav-inner"><a class="flow-logo" href="index.html"><img src="assets/images/brand/brightway-mark.png" alt="" aria-hidden="true"><span>BrightWay Career</span></a><button type="button" class="flow-menu" aria-controls="navLinks" aria-expanded="false" aria-label="Mở menu">Menu <span aria-hidden="true">☰</span></button><div id="navLinks" class="flow-links">${items.map(([label, href, pages]) => `<a href="${href}" ${pages.includes(page) ? 'class="active" aria-current="page"' : ''}>${label}</a>`).join('')}<a href="profile.html" ${page === 'profile.html' ? 'class="active" aria-current="page"' : ''}>Hồ sơ</a></div></div>`;
     const links = nav.querySelector('#navLinks');
     if (senior) links.appendChild(senior);
     if (theme) { theme.classList.add('flow-theme'); links.appendChild(theme); }
