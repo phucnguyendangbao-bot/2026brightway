@@ -49,7 +49,7 @@ Thang điểm giữ đúng V-ACT 1200, HSA 150, TSA 100; V-SAT là tối đa 150
 - Bộ điểm đối chiếu thủ công FPT: tổng 26, TB 8,4 → 25,6; tổng 15, TB 7 → 18; tổng 30, TB 10 → 30. Tổng <15, thiếu TB, vượt thang, tổ hợp D, hoặc năm 2027 → không có thành phần áp dụng.
 - 30 kịch bản browser local: 8 trang ở desktop 1440, tablet 768, mobile 390 (24 lượt) và 6 trạng thái dữ liệu tải/chậm/trống/sai/lỗi. Menu, deep link, reset/lưu/khôi phục điểm, Holland mã thủ công, bài 42 câu đồng điểm, lưu/khôi phục nghề, tìm kiếm không kết quả đều kiểm tra. Không lỗi JavaScript hoặc tràn ngang trên các lượt trang chính.
 - Trang học bổng chỉ kiểm tra hồi quy đọc, không ghi dữ liệu, không gọi AI hay thao tác tài khoản thật. Chưa kiểm thử giao dịch cloud với tài khoản đăng nhập thật.
-- Kết quả kiểm tra production sẽ được ghi sau khi Vercel triển khai bản mới.
+- Production tại https://pdp-brightway-careers.vercel.app/ sau khi triển khai commit `abae95b`: cùng 30 kịch bản browser đạt (24 lượt trang ở ba kích thước và 6 trạng thái dữ liệu). Không phát sinh lỗi JavaScript/tràn ngang ở các lượt trang chính. Không gọi AI, không dùng tài khoản thật hoặc ghi dữ liệu cloud.
 
 ## Dữ liệu vẫn chưa xác minh đầy đủ
 
