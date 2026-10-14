@@ -125,6 +125,22 @@ html body :is(#waybi-header,.bw-chat-header,.bw-chat-send,#waybi-send) { backgro
 html body :is(#waybi-fab,#bwChatLauncher) { box-shadow:0 10px 28px rgba(99,102,241,.24); border:2px solid #e4dfff; }
 html body .sidebar-link-icon { display:inline-flex; align-items:center; }
 
+/* One BrightWay icon language: soft violet-blue surfaces and restrained emoji colour. */
+html body :is(.page1-guide-icon, #home-view .bw-tool-card .icon, #home-view .bw-audience-card .emoji, #home-view .bw-stage-card .emoji, #home-view .bw-trust-item .ico, .lp-cat-icon, .lp-strip-icon) {
+  color:var(--bw-brand) !important;
+  background:linear-gradient(135deg,#eaf0ff,#f1eaff) !important;
+  border:1px solid #dcd9ff;
+  box-shadow:0 7px 16px rgba(99,102,241,.12);
+  filter:grayscale(.52) saturate(.62) hue-rotate(205deg);
+}
+html body :is(#home-view .bw-tool-card .icon, #home-view .bw-audience-card .emoji, #home-view .bw-stage-card .emoji, #home-view .bw-trust-item .ico, .lp-cat-icon, .lp-strip-icon) {
+  border-radius:14px;
+  display:inline-grid;
+  place-items:center;
+}
+html body #home-view .bw-trust-item .ico { width:28px; height:28px; font-size:15px; }
+html body #home-view .bw-stage-card .emoji { padding:5px; }
+
 @media(max-width:1100px) and (min-width:901px) {
   html body #home-view .bw-hero-grid { gap:36px; }
   html body #home-view .bw-hero-h1 { font-size:3rem !important; }
