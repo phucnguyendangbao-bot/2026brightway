@@ -85,11 +85,11 @@ html body #home-view .bw-compact-intro { margin-bottom:20px; }
   html body #home-view .bw-hero-text .lede { font-size:15px; }
 }
 
-/* Journey order: Waybi → khám phá nghề → thông tin tuyển sinh. */
+/* Journey order: khám phá nghề → Waybi → thông tin tuyển sinh. */
 html body #home-view { display:flex; flex-direction:column; }
 html body #home-view > * { order:10; }
-html body #home-view > .bw-waybi-home { order:1; }
-html body #home-view > .bw-hero { order:2; }
+html body #home-view > .bw-hero { order:1; }
+html body #home-view > .bw-waybi-home { order:2; }
 html body #home-view > .flow-resume { order:3; }
 html body #home-view > .admissions-home { order:4; }
 html body #home-view > .bw-tabbar { order:5; }
