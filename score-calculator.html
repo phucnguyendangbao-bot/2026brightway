@@ -136,7 +136,7 @@
       <summary>Điểm bài thi khác <span>Tùy chọn</span></summary>
       <div class="dgnl-grid">
         <label class="dgnl-input">
-          <span>V-ACT (ĐHQG-HCM, tối đa 1200)</span>
+          <span>V-ACT (ĐHQG-HCM, tối đa 1.200)</span>
           <input type="number" id="sVact" min="0" max="1200" step="1" placeholder="0" />
         </label>
         <label class="dgnl-input">
@@ -148,7 +148,11 @@
           <input type="number" id="sTsa" min="0" max="100" step="0.1" placeholder="0" />
         </label>
       </div>
-      <p class="calc-field-note">Không nhân tỷ lệ để quy về thang 30. V-SAT tính theo từng môn (/150) và bảng quy đổi 2026 của trường, không phải một điểm tổng /100.</p>
+      <div class="vsat-info" role="note">
+        <strong>V-SAT không nhập thành một điểm tổng.</strong>
+        Mỗi môn có thang tối đa 150 điểm; trường sẽ quy đổi từng môn theo bảng 2026 riêng.
+        <a href="https://tuyensinh.ctu.edu.vn/chuong-trinh-dai-tra/177-thong-tin/1159-thong-bao-bang-quy-doi-diem-v-sat-nam-2026.html" target="_blank" rel="noopener noreferrer">Xem bảng quy đổi V-SAT 2026 ↗</a>
+      </div>
     </details>
 
     <div class="calc-actions">
@@ -173,7 +177,7 @@
           <div class="summary-value" id="sumTranscript">—</div>
         </div>
         <div class="summary-item">
-          <div class="summary-label">V-ACT gốc (/1200)</div>
+          <div class="summary-label">V-ACT gốc (/1.200)</div>
           <div class="summary-value" id="sumVact">—</div>
         </div>
         <div class="summary-item">

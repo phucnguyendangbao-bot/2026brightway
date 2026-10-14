@@ -188,6 +188,10 @@
   box-shadow: 0 0 0 3px rgba(139,92,246,0.18);
 }
 .dgnl-input input:placeholder { color: #c4b5fd; font-weight: 500; }
+.vsat-info { margin-top:12px; padding:12px 14px; border:1px solid #ddd8ff; border-radius:12px; background:linear-gradient(135deg,#f5f3ff,#eef4ff); color:#5c6381; font-size:.74rem; line-height:1.55; }
+.vsat-info strong { color:#5045b8; }
+.vsat-info a { display:inline-block; margin-top:5px; color:#6254df; font-weight:700; text-decoration:none; }
+.vsat-info a:hover { text-decoration:underline; }
 
 /* BUTTONS */
 .calc-btn-primary {
