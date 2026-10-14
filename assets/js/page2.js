@@ -2,6 +2,12 @@
 // Loaded với <script type="module"> nên file chạy đúng 1 lần.
 // Các hàm dùng bởi inline onclick/oninput tạm thời vẫn được gán lên window
 // để không vỡ UI; sẽ migrate sang addEventListener ở commit riêng.
+import sourceRegistry from '../data/school-admissions-sources.js';
+const sourceAliases = { 'fpt-ai': 'fpt', 'khtn-hcm': 'hcmus' };
+function sourceForSchool(id) {
+  return sourceRegistry.universities.find(row => row.school_id === (sourceAliases[id] || id));
+}
+const sourceEscape = value => String(value || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 /* ═══════════════════════════════════════
    SCHOLARSHIP DATA
@@ -115,6 +121,7 @@ function renderSchools(schools) {
     return;
   }
   mainContent.innerHTML = schools.map(s => {
+    const source = sourceForSchool(s.id);
     const verified = s.status === 'verified_school_scheme' && s.policy_year === 2026 && Boolean(s.verified_at);
     const methods = verified ? s.admissionMethods || [] : [];
     const cardsHtml = methods.map(m => `
@@ -191,6 +198,14 @@ function renderSchools(schools) {
         </div>
 
         <!-- THÔNG TIN BỔ SUNG: Cơ sở, Chương trình, Tỉnh điểm -->
+        ${source ? `<div class="ad-note school-source-note">
+          <strong>Tuyển sinh ${source.admission_year} · ${source.source_status === 'confirmed_2026_source' ? 'Đã xác nhận nguồn' : 'Cần kiểm tra tài liệu đầy đủ'}</strong>
+          <p>${sourceEscape(source.source_summary)}</p>
+          <p>${sourceEscape(source.review_note)}</p>
+          <a href="${sourceEscape(source.source_url)}" target="_blank" rel="noopener noreferrer">Nguồn tuyển sinh ↗</a>
+          · <a href="${sourceEscape(source.supplementary_url)}" target="_blank" rel="noopener noreferrer">Nguồn bổ sung ↗</a>
+          <p>Kiểm tra nguồn: ${source.checked_at}. Công thức theo ngành: ${source.formula_status === 'verified_partial_formula' ? 'đã xác nhận thành phần; cần điều kiện ngành' : 'chưa đủ dữ liệu để tính chính xác'}.</p>
+        </div>` : ''}
         ${!verified ? `<div class="ad-note">Dữ liệu chi tiết trường đang chờ đối chiếu đề án theo năm. Tổ hợp, chỉ tiêu, cơ sở và thời hạn cần kiểm tra tại thông báo chính thức của trường. <a href="resources.html#policy-sources">Quy định chung Bộ GD&amp;ĐT →</a></div>` : ''}
         <div class="school-info-grid">
           ${verified && s.campuses && s.campuses.length ? `

@@ -11,6 +11,26 @@ const policy = {
   },
   "documents": [
     {
+      "id": "CV_2304_2026",
+      "number": "2304/BGDĐT-GDĐH",
+      "name": "Hướng dẫn tuyển sinh đại học, cao đẳng năm 2026",
+      "issued": "2026-05-04",
+      "effective": null,
+      "status": "huong_dan_nam_2026",
+      "policy_years": [
+        "2026"
+      ],
+      "source_url": "https://xaydungchinhsach.chinhphu.vn/toan-van-cong-van-2304-bgddt-gddh-huong-dan-tuyen-sinh-dai-hoc-cao-dang-2026-119260505052505936.htm",
+      "priority": 1,
+      "modules": [
+        "dang_ky_nguyen_vong",
+        "xac_nhan_nhap_hoc"
+      ],
+      "notes": "Tất cả phương thức, kể cả xét tuyển thẳng, cần đăng ký trên hệ thống chung và xác nhận nhập học đúng lịch 2026. Không suy ra lịch 2027.",
+      "verified_at": "2026-10-14",
+      "policy_year": "2026"
+    },
+    {
       "id": "TT_06_2026",
       "number": "06/2026/TT-BGDĐT",
       "name": "Quy chế tuyển sinh các ngành đào tạo trình độ đại học và ngành Giáo dục Mầm non trình độ cao đẳng",

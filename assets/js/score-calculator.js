@@ -1,6 +1,7 @@
 // Công cụ 2026: chỉ tính những thành phần có công thức và đủ dữ liệu đầu vào.
 // Không dùng cutoffScores của schools.json: dữ liệu đó không có ngành/năm/nguồn.
 import { rawThresholdText } from './admissions-rules.js';
+import sourceRegistry from '../data/school-admissions-sources.js';
 const COMBO_SUBJECTS = {
   A00: ['math', 'phy', 'che'], A01: ['math', 'phy', 'eng'],
   A02: ['math', 'phy', 'bio'], B00: ['math', 'che', 'bio'],
@@ -33,9 +34,9 @@ const EXAMS = [
 const ADMISSIONS_2026 = [
   {
     id: 'fpt', name: 'Đại học FPT', short: 'FPTU',
-    url: 'https://daihoc.fpt.edu.vn/thong-bao-tuyen-sinh/thong-tin-tuyen-sinh-nam-2026/',
+    url: 'https://daihoc.fpt.edu.vn/thong-bao-tuyen-sinh/thong-bao-tuyen-sinh-truong-dai-hoc-fpt-he-dai-hoc-chinh-quy-nam-2026/',
     type: 'fpt',
-    note: 'ĐXT = (tổng điểm thi 3 môn + 3 × điểm TB cả năm lớp 12)/2 + điểm khuyến khích + điểm ưu tiên. Chỉ tổ hợp Axx/Cxx; Cxx không dùng cho CNTT và Khoa học máy tính. Ngưỡng nguồn tuyển kiểm tra theo Điều 6 khoản 3, gồm cách dùng Toán + Văn + một môn thi khác và ngoại lệ. Điểm hiển thị chưa cộng ưu tiên/khuyến khích và chưa xét ngành Luật.',
+    note: 'ĐXT = (tổng điểm thi 3 môn + 3 × điểm TB cả năm lớp 12)/2 + điểm khuyến khích + điểm ưu tiên. Chỉ tổ hợp Axx/Cxx; Cxx không dùng cho CNTT và Khoa học máy tính. Thông báo FPT 10/04/2026 yêu cầu thí sinh thi tốt nghiệp 2026 có tổng Axx/Cxx từ 15 điểm. Điểm hiển thị chưa cộng ưu tiên/khuyến khích và chưa xét ngành Luật.',
   },
   {
     id: 'ctu', name: 'Đại học Cần Thơ', short: 'CTU',
@@ -168,7 +169,10 @@ function schoolOutcome(school, result) {
     if (result.raw === null) return 'FPT cần điểm thi THPT của 3 môn trong tổ hợp để áp dụng công thức kết hợp này.';
     if (result.grade12 === null) return 'Nhập thêm điểm trung bình cả năm lớp 12 để tính điểm kết hợp.';
     const combined = (result.raw + result.grade12 * 3) / 2;
-    return `Thành phần điểm kết hợp: <strong>${combined.toFixed(2)}/30</strong> (chưa cộng ưu tiên/khuyến khích). ${rawThresholdText(result)}`;
+    const fptCondition = result.raw < 15
+      ? 'Tổng tổ hợp Axx/Cxx đã chọn dưới 15; chưa đạt điều kiện riêng trong thông báo FPT dành cho thí sinh thi tốt nghiệp 2026. Đối chiếu diện và ngoại lệ với trường.'
+      : 'Tổng Axx/Cxx đã chọn đạt mức 15; vẫn cần kiểm tra ngành, cơ sở, đối tượng và điều kiện riêng.';
+    return `Thành phần điểm kết hợp: <strong>${combined.toFixed(2)}/30</strong> (chưa cộng ưu tiên/khuyến khích). ${fptCondition}`;
   }
   if (school.type === 'ctu') {
     const parts = [];
@@ -213,6 +217,7 @@ function renderSchools(result) {
         <div class="school-row-detail">
           <p class="school-outcome">${schoolOutcome(school, result)}</p>
           <p class="school-method-note">${school.note}</p>
+          ${renderSourceVersion(school.id)}
           <div class="school-source-links">
             <a href="${school.url}" target="_blank" rel="noopener noreferrer">Xem đề án 2026 ↗</a>
             ${school.extraUrl ? `<a href="${school.extraUrl}" target="_blank" rel="noopener noreferrer">${school.extraLabel} ↗</a>` : ''}
@@ -221,6 +226,12 @@ function renderSchools(result) {
       </details>
     `).join('')
     : '<p class="calc-field-note">Không có trường nào trong 9 trường theo từ khóa này.</p>';
+}
+
+function renderSourceVersion(id) {
+  const source = sourceRegistry.universities.find(row => row.school_id === id);
+  if (!source) return '';
+  return `<p class="calc-field-note">Nguồn ${source.admission_year} · ${source.source_status === 'confirmed_2026_source' ? 'đã mở xác nhận' : 'cần kiểm tra tài liệu đầy đủ'} · ngày kiểm tra ${source.checked_at}. ${source.formula_version ? 'Phiên bản thành phần: ' + source.formula_version + '.' : 'Công thức theo ngành đang chờ xác minh.'}</p><a href="${source.source_url}" target="_blank" rel="noopener noreferrer">Bản nguồn đang đối chiếu ↗</a>`;
 }
 
 function showError(message) {

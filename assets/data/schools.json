@@ -1,7 +1,8 @@
 [
   {
     "id": "hcmut",
-    "source_url": "https://hcmut.edu.vn/tuyen-sinh-dh/dai-hoc-chinh-quy",
+    "source_url": "https://hcmut.edu.vn/tuyen-sinh/dai-hoc-chinh-quy/phuong-thuc-tuyen-sinh",
+    "source_registry_id": "hcmut",
     "policy_year": null,
     "status": "needs_school_verification",
     "verified_at": null,
@@ -13,7 +14,7 @@
     "logoUrl": "assets/images/logos/hcmutoisp.png",
     "logoFallback": "🏛️",
     "website": "https://hcmut.edu.vn/hoc-bong",
-    "admissionUrl": "https://hcmut.edu.vn/tuyen-sinh-dh/dai-hoc-chinh-quy",
+    "admissionUrl": "https://hcmut.edu.vn/tuyen-sinh/dai-hoc-chinh-quy/phuong-thuc-tuyen-sinh",
     "variants": [
       {
         "id": "hcmut-oisp",
@@ -108,7 +109,7 @@
     "logoUrl": "assets/images/logos/uit.png",
     "logoFallback": "💻",
     "website": "https://www.uit.edu.vn/hoc-bong",
-    "admissionUrl": "https://tuyensinh.uit.edu.vn/",
+    "admissionUrl": "https://tuyensinh.uit.edu.vn/sites/default/files/uploads/files/202607/dean_moi.pdf",
     "variants": [
       {
         "id": "uit-ai",
@@ -194,7 +195,7 @@
     "logoUrl": "assets/images/logos/fptu.png",
     "logoFallback": "🎯",
     "website": "https://fpt.edu.vn/scholarship",
-    "admissionUrl": "https://fpt.edu.vn/tuyen-sinh",
+    "admissionUrl": "https://daihoc.fpt.edu.vn/thong-bao-tuyen-sinh/thong-bao-tuyen-sinh-truong-dai-hoc-fpt-he-dai-hoc-chinh-quy-nam-2026/",
     "admissionMethods": [
       {
         "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
@@ -267,7 +268,8 @@
   },
   {
     "id": "ueh",
-    "source_url": "https://tuyensinh.ueh.edu.vn/",
+    "source_url": "https://tuyensinhdaihoc.ueh.edu.vn/",
+    "source_registry_id": "ueh",
     "policy_year": null,
     "status": "needs_school_verification",
     "verified_at": null,
@@ -279,7 +281,7 @@
     "logoUrl": "assets/images/logos/ueh.png",
     "logoFallback": "📊",
     "website": "https://www.ueh.edu.vn/hoc-bong",
-    "admissionUrl": "https://tuyensinh.ueh.edu.vn/",
+    "admissionUrl": "https://tuyensinhdaihoc.ueh.edu.vn/",
     "admissionMethods": [
       {
         "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
@@ -345,7 +347,8 @@
   },
   {
     "id": "ftu",
-    "source_url": "https://tuyensinh.ftu.edu.vn/",
+    "source_url": "https://thongtintuyensinh.ftu.edu.vn/",
+    "source_registry_id": "ftu",
     "policy_year": null,
     "status": "needs_school_verification",
     "verified_at": null,
@@ -357,7 +360,7 @@
     "logoUrl": "assets/images/logos/ftu2.png",
     "logoFallback": "🌍",
     "website": "https://ftu.edu.vn/hoc-bong",
-    "admissionUrl": "https://tuyensinh.ftu.edu.vn/",
+    "admissionUrl": "https://thongtintuyensinh.ftu.edu.vn/",
     "admissionMethods": [
       {
         "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
@@ -422,7 +425,8 @@
   },
   {
     "id": "vlu",
-    "source_url": "https://tuyensinh.vanlanguni.edu.vn/",
+    "source_url": "https://tuyensinh.vlu.edu.vn/",
+    "source_registry_id": "vlu",
     "policy_year": null,
     "status": "needs_school_verification",
     "verified_at": null,
@@ -434,7 +438,7 @@
     "logoUrl": "assets/images/logos/vlu.png",
     "logoFallback": "🎨",
     "website": "https://www.vanlanguni.edu.vn/hoc-bong",
-    "admissionUrl": "https://tuyensinh.vanlanguni.edu.vn/",
+    "admissionUrl": "https://tuyensinh.vlu.edu.vn/",
     "admissionMethods": [
       {
         "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
@@ -507,7 +511,8 @@
   },
   {
     "id": "pnt",
-    "source_url": "https://pts.pnt.edu.vn/",
+    "source_url": "https://pnt.edu.vn/Resources/Docs/SubDomain/pqldt/Tuyen%20sinh%20Dai%20hoc/TS2026/2231-4-ThongTin_TuyenSinh_DHCQ_TS2026-TTTS%28NoiDung%29_DieuChinh-PDFs.pdf",
+    "source_registry_id": "pnt",
     "policy_year": null,
     "status": "needs_school_verification",
     "verified_at": null,
@@ -519,7 +524,7 @@
     "logoUrl": "assets/images/logos/pntu.png",
     "logoFallback": "🩺",
     "website": "https://pnt.edu.vn/hoc-bong",
-    "admissionUrl": "https://pts.pnt.edu.vn/",
+    "admissionUrl": "https://pnt.edu.vn/Resources/Docs/SubDomain/pqldt/Tuyen%20sinh%20Dai%20hoc/TS2026/2231-4-ThongTin_TuyenSinh_DHCQ_TS2026-TTTS%28NoiDung%29_DieuChinh-PDFs.pdf",
     "admissionMethods": [
       {
         "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
@@ -577,7 +582,8 @@
   },
   {
     "id": "ctump",
-    "source_url": "https://tuyensinh.ctump.edu.vn/",
+    "source_url": "https://tuyensinh.ctump.edu.vn/thong-bao-tuyen-sinh-dai-hoc-nam-2026.html",
+    "source_registry_id": "ctump",
     "policy_year": null,
     "status": "needs_school_verification",
     "verified_at": null,
@@ -589,7 +595,7 @@
     "logoUrl": "assets/images/logos/ctump.png",
     "logoFallback": "💊",
     "website": "https://ctump.edu.vn/hoc-bong",
-    "admissionUrl": "https://tuyensinh.ctump.edu.vn/",
+    "admissionUrl": "https://tuyensinh.ctump.edu.vn/thong-bao-tuyen-sinh-dai-hoc-nam-2026.html",
     "admissionMethods": [
       {
         "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
@@ -646,7 +652,8 @@
   },
   {
     "id": "ump",
-    "source_url": "https://ump.edu.vn/tuyen-sinh-dao-tao/dai-hoc/tuyen-sinh",
+    "source_url": "https://ump.edu.vn/tuyen-sinh-dao-tao/dai-hoc/thong-bao/10534/thong-bao-xet-tuyen-dai-hoc-he-chinh-quy-nam-2026",
+    "source_registry_id": "ump",
     "policy_year": null,
     "status": "needs_school_verification",
     "verified_at": null,
@@ -658,7 +665,7 @@
     "logoUrl": "assets/images/logos/ump.png",
     "logoFallback": "⚕️",
     "website": "https://ump.edu.vn/hoc-bong",
-    "admissionUrl": "https://ump.edu.vn/tuyen-sinh-dao-tao/dai-hoc/tuyen-sinh",
+    "admissionUrl": "https://ump.edu.vn/tuyen-sinh-dao-tao/dai-hoc/thong-bao/10534/thong-bao-xet-tuyen-dai-hoc-he-chinh-quy-nam-2026",
     "admissionMethods": [
       {
         "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
@@ -718,7 +725,8 @@
   },
   {
     "id": "ussh",
-    "source_url": "https://hcmussh.edu.vn/tuyensinh",
+    "source_url": "https://hcmussh.edu.vn/bai-viet/cong-bo-thong-tin-tuyen-sinh-nam-2026-cua-truong-dh-khxh-nv-dhqg-hcm",
+    "source_registry_id": "ussh",
     "policy_year": null,
     "status": "needs_school_verification",
     "verified_at": null,
@@ -730,7 +738,7 @@
     "logoUrl": "assets/images/logos/ussh.png",
     "logoFallback": "📣",
     "website": "",
-    "admissionUrl": "https://hcmussh.edu.vn/tuyensinh",
+    "admissionUrl": "https://hcmussh.edu.vn/bai-viet/cong-bo-thong-tin-tuyen-sinh-nam-2026-cua-truong-dh-khxh-nv-dhqg-hcm",
     "admissionMethods": [
       {
         "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
@@ -793,7 +801,8 @@
   },
   {
     "id": "rmit",
-    "source_url": "https://www.rmit.edu.vn/vi/hoc-tap-tai-rmit/chuong-trinh-cu-nhan",
+    "source_url": "https://www.rmit.edu.vn/vi/hoc-tap-tai-rmit/chuong-trinh-cu-nhan/quy-trinh-nhap-hoc-chuong-trinh-cu-nhan-va-chuyen-tiep-dai-hoc",
+    "source_registry_id": "rmit",
     "policy_year": null,
     "status": "needs_school_verification",
     "verified_at": null,
@@ -805,7 +814,7 @@
     "logoUrl": "assets/images/logos/rmit.png",
     "logoFallback": "🌐",
     "website": "https://www.rmit.edu.vn/study-at-rmit/scholarships",
-    "admissionUrl": "https://www.rmit.edu.vn/vi/hoc-tap-tai-rmit/chuong-trinh-cu-nhan",
+    "admissionUrl": "https://www.rmit.edu.vn/vi/hoc-tap-tai-rmit/chuong-trinh-cu-nhan/quy-trinh-nhap-hoc-chuong-trinh-cu-nhan-va-chuyen-tiep-dai-hoc",
     "admissionMethods": [
       {
         "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
@@ -933,7 +942,8 @@
   },
   {
     "id": "hcmue",
-    "source_url": "https://tuyensinh.hcmue.edu.vn/",
+    "source_url": "https://tuyensinh.hcmue.edu.vn/index.php?Itemid=9678&id=27803&lang=vi&option=com_content&site=183&view=article",
+    "source_registry_id": "hcmue",
     "policy_year": null,
     "status": "needs_school_verification",
     "verified_at": null,
@@ -945,7 +955,7 @@
     "logoUrl": "assets/images/logos/hcmue.png",
     "logoFallback": "📘",
     "website": "https://hcmue.edu.vn/vi/hoc-bong",
-    "admissionUrl": "https://tuyensinh.hcmue.edu.vn/",
+    "admissionUrl": "https://tuyensinh.hcmue.edu.vn/index.php?Itemid=9678&id=27803&lang=vi&option=com_content&site=183&view=article",
     "admissionMethods": [
       {
         "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
@@ -1014,7 +1024,8 @@
   },
   {
     "id": "ctu",
-    "source_url": "https://tuyensinh.ctu.edu.vn/dai-hoc-chinh-quy/thong-tin-tuyen-sinh.html",
+    "source_url": "https://tuyensinh.ctu.edu.vn/dai-hoc-chinh-quy/thong-tin-tuyen-sinh",
+    "source_registry_id": "ctu",
     "policy_year": null,
     "status": "needs_school_verification",
     "verified_at": null,
@@ -1026,7 +1037,7 @@
     "logoUrl": "assets/images/logos/ctu.png",
     "logoFallback": "🌾",
     "website": "https://www.ctu.edu.vn/hoc-bong",
-    "admissionUrl": "https://tuyensinh.ctu.edu.vn/dai-hoc-chinh-quy/thong-tin-tuyen-sinh.html",
+    "admissionUrl": "https://tuyensinh.ctu.edu.vn/dai-hoc-chinh-quy/thong-tin-tuyen-sinh",
     "admissionMethods": [
       {
         "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
@@ -1171,7 +1182,8 @@
   },
   {
     "id": "hcmus",
-    "source_url": "https://tuyensinh.hcmus.edu.vn/",
+    "source_url": "https://tuyensinh.hcmus.edu.vn/2026-thong-tin-tuyen-sinh/",
+    "source_registry_id": "hcmus",
     "policy_year": null,
     "status": "needs_school_verification",
     "verified_at": null,
@@ -1183,7 +1195,7 @@
     "logoUrl": "assets/images/logos/hcmus.png",
     "logoFallback": "🌿",
     "website": "https://hcmus.edu.vn/hoc-bong",
-    "admissionUrl": "https://tuyensinh.hcmus.edu.vn/",
+    "admissionUrl": "https://tuyensinh.hcmus.edu.vn/2026-thong-tin-tuyen-sinh/",
     "admissionMethods": [
       {
         "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
@@ -1410,7 +1422,8 @@
   },
   {
     "id": "fpt-ai",
-    "source_url": "https://fpt.edu.vn/tuyen-sinh",
+    "source_url": "https://daihoc.fpt.edu.vn/thong-bao-tuyen-sinh/thong-bao-tuyen-sinh-truong-dai-hoc-fpt-he-dai-hoc-chinh-quy-nam-2026/",
+    "source_registry_id": "fpt",
     "policy_year": null,
     "status": "needs_school_verification",
     "verified_at": null,
@@ -1422,7 +1435,7 @@
     "logoUrl": "assets/images/logos/fptu.png",
     "logoFallback": "🤖",
     "website": "https://fpt.edu.vn/scholarship",
-    "admissionUrl": "https://fpt.edu.vn/tuyen-sinh",
+    "admissionUrl": "https://daihoc.fpt.edu.vn/thong-bao-tuyen-sinh/thong-bao-tuyen-sinh-truong-dai-hoc-fpt-he-dai-hoc-chinh-quy-nam-2026/",
     "admissionMethods": [
       {
         "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
@@ -2027,7 +2040,8 @@
   },
   {
     "id": "ntu",
-    "source_url": "https://tuyensinh.ntu.edu.vn/",
+    "source_url": "https://tuyensinh.ntu.edu.vn/thong-bao/quy-doi-diem-tuong-duong",
+    "source_registry_id": "ntu",
     "policy_year": null,
     "status": "needs_school_verification",
     "verified_at": null,
@@ -2039,7 +2053,7 @@
     "logoUrl": "assets/images/logos/ntu.png",
     "logoFallback": "🌊",
     "website": "https://ntu.edu.vn/hoc-bong",
-    "admissionUrl": "https://tuyensinh.ntu.edu.vn/",
+    "admissionUrl": "https://tuyensinh.ntu.edu.vn/thong-bao/quy-doi-diem-tuong-duong",
     "admissionMethods": [
       {
         "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
@@ -2179,7 +2193,8 @@
   },
   {
     "id": "dut",
-    "source_url": "https://dut.udn.vn/tuyen-sinh",
+    "source_url": "https://tuyensinh.dut.udn.vn/",
+    "source_registry_id": "dut",
     "policy_year": null,
     "status": "needs_school_verification",
     "verified_at": null,
@@ -2191,7 +2206,7 @@
     "logoUrl": "assets/images/logos/dut.png",
     "logoFallback": "⚙️",
     "website": "https://dut.udn.vn/hoc-bong",
-    "admissionUrl": "https://dut.udn.vn/tuyen-sinh",
+    "admissionUrl": "https://tuyensinh.dut.udn.vn/",
     "admissionMethods": [
       {
         "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
@@ -2811,7 +2826,8 @@
   },
   {
     "id": "khtn-hcm",
-    "source_url": "https://tuyensinh.hcmus.edu.vn/",
+    "source_url": "https://tuyensinh.hcmus.edu.vn/2026-thong-tin-tuyen-sinh/",
+    "source_registry_id": "hcmus",
     "policy_year": null,
     "status": "needs_school_verification",
     "verified_at": null,
@@ -2823,7 +2839,7 @@
     "logoUrl": "assets/images/logos/khtn.png",
     "logoFallback": "🧪",
     "website": "https://hcmus.edu.vn/hoc-bong",
-    "admissionUrl": "https://tuyensinh.hcmus.edu.vn/",
+    "admissionUrl": "https://tuyensinh.hcmus.edu.vn/2026-thong-tin-tuyen-sinh/",
     "admissionMethods": [
       {
         "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
@@ -2966,7 +2982,8 @@
   },
   {
     "id": "sgu",
-    "source_url": "https://tuyensinh.sgu.edu.vn/",
+    "source_url": "https://tuyensinh.sgu.edu.vn/index.php/tuyen-sinh/thong-tin-de-an-tuyen-sinh/nam-2026/thong-tin-tuyen-sinh-nam-2026-chinh-thuc",
+    "source_registry_id": "sgu",
     "policy_year": null,
     "status": "needs_school_verification",
     "verified_at": null,
@@ -2978,7 +2995,7 @@
     "logoUrl": "assets/images/logos/sgu.png",
     "logoFallback": "🎓",
     "website": "https://sgu.edu.vn/",
-    "admissionUrl": "https://tuyensinh.sgu.edu.vn/",
+    "admissionUrl": "https://tuyensinh.sgu.edu.vn/index.php/tuyen-sinh/thong-tin-de-an-tuyen-sinh/nam-2026/thong-tin-tuyen-sinh-nam-2026-chinh-thuc",
     "admissionMethods": [
       {
         "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
@@ -3046,7 +3063,8 @@
   },
   {
     "id": "uel",
-    "source_url": "https://tuyensinh.uel.edu.vn/",
+    "source_url": "https://tuyensinh.uel.edu.vn/thong-tin-tuyen-sinh-dai-hoc-chinh-quy-2026/",
+    "source_registry_id": "uel",
     "policy_year": null,
     "status": "needs_school_verification",
     "verified_at": null,
@@ -3058,7 +3076,7 @@
     "logoUrl": "assets/images/logos/uel.png",
     "logoFallback": "⚖️",
     "website": "https://www.uel.edu.vn/",
-    "admissionUrl": "https://tuyensinh.uel.edu.vn/",
+    "admissionUrl": "https://tuyensinh.uel.edu.vn/thong-tin-tuyen-sinh-dai-hoc-chinh-quy-2026/",
     "admissionMethods": [
       {
         "name": "Xét tuyển thẳng & Ưu tiên xét tuyển",
