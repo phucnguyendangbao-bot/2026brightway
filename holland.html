@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Trắc nghiệm Holland RIASEC – Khám phá tính cách nghề nghiệp | BrightWay Career</title>
-<meta name="description" content="Trắc nghiệm Holland RIASEC 42 câu – chỉ 7 phút – giúp bạn biết mình thuộc nhóm tính cách nghề nghiệp nào: Thực tế, Nghiên cứu, Nghệ thuật, Xã hội, Lãnh đạo hay Quy củ." />
+<title>Trắc nghiệm Holland RIASEC – Khám phá sở thích nghề nghiệp | BrightWay Career</title>
+<meta name="description" content="Trắc nghiệm Holland RIASEC 42 câu để khám phá nhóm sở thích nghề nghiệp. Kết quả định hướng, không đo đầy đủ năng lực hay bảo đảm một nghề phù hợp." />
 <meta name="keywords" content="Holland, RIASEC, trắc nghiệm tính cách, hướng nghiệp, ngành nghề phù hợp" />
 <link rel="icon" type="image/png" href="images/img-a84652d05567.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,9 +35,9 @@
 <section class="bw-hero">
   <div class="container">
     <div class="badge">🧭 Trắc nghiệm miễn phí · Cập nhật 2026</div>
-    <h1>Khám phá <span class="grad">tính cách nghề nghiệp</span><br/>của bạn trong 7 phút</h1>
+    <h1>Khám phá <span class="grad">sở thích nghề nghiệp</span><br/>của bạn qua 42 câu hỏi</h1>
     <p class="lede">
-      Trắc nghiệm Holland RIASEC — mô hình được hơn <strong>60 triệu học sinh</strong> trên thế giới sử dụng để tìm ra nhóm ngành nghề phù hợp nhất với bản thân.
+      Bài 42 câu tham khảo của BrightWay dựa trên khung RIASEC, không phải bộ câu hỏi chuẩn đã được xác nhận tương đương O*NET. Kết quả giúp khám phá sở thích; không đo đầy đủ năng lực, không bảo đảm thành công và không quyết định một nghề chắc chắn phù hợp hay không phù hợp.
     </p>
     <div class="meta">
       <span>42 câu hỏi</span>
@@ -68,8 +68,8 @@
 <!-- 6 NHÓM HOLLAND INTRO -->
 <section class="types-intro">
   <div class="container">
-    <h2>6 nhóm tính cách nghề nghiệp</h2>
-    <p class="sub">Mỗi người thuộc một hoặc vài nhóm trong số này — biết trước nhóm sẽ giúp bạn lọc ngành và nghề phù hợp.</p>
+    <h2>6 nhóm sở thích nghề nghiệp</h2>
+    <p class="sub">Bạn có thể có sở thích ở nhiều nhóm. Dùng kết quả để khám phá thêm, rồi đối chiếu với năng lực và trải nghiệm thực tế.</p>
     <div class="types-grid" id="typesGrid"></div>
   </div>
 </section>
@@ -119,11 +119,13 @@
   <div class="result-card" id="resultCard">
     <div class="result-top">
       <span class="result-emoji" id="rEmoji">🔬</span>
-      <div class="result-type" id="rType">Nhóm tính cách</div>
+      <div class="result-type" id="rType">Nhóm sở thích</div>
       <div class="result-code" id="rCode">CODE</div>
       <p class="result-desc" id="rDesc"></p>
     </div>
     <div class="result-bars" id="rBars"></div>
+    <p class="import-hint" id="resultTieNote" role="status"></p>
+    <p class="import-hint" id="resultInterpretation">Mã RIASEC gồm 1–3 nhóm sở thích theo thứ tự điểm. Nếu các nhóm gần bằng nhau hoặc bằng điểm, thứ tự không phải ranh giới chắc chắn; hãy xem cả những nhóm đó. Ngành học và nghề gợi ý chỉ để tìm hiểu, không thay thế đánh giá năng lực và điều kiện đào tạo. <a href="https://www.onetcenter.org/IP.html" target="_blank" rel="noopener noreferrer">O*NET Interest Profiler ↗</a></p>
     <div class="majors" id="rMajors"></div>
     <div class="result-actions">
       <button class="quiz-btn quiz-btn-secondary" onclick="HollandApp.hollandReset()">🔄 Làm lại</button>
@@ -138,7 +140,7 @@
   <p class="small">© 2026 BrightWay Career · Thông tin chỉ mang tính tham khảo, không thay thế tư vấn chuyên gia.</p>
 </footer>
 
-<script src="assets/js/holland.js"></script>
+<script src="assets/js/holland.js?v=20261015"></script>
 <!-- Auth + Sync (Supabase) — shared login cho mọi trang -->
 <script src="assets/js/supabase-client.js"></script>
 <script src="assets/js/auth.js"></script>

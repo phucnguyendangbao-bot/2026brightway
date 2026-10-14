@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════
-   HOLLAND RIASEC — Test tính cách nghề nghiệp
+   HOLLAND RIASEC — Nhóm sở thích nghề nghiệp
    Tối ưu: 5 câu/trang, timer 7 phút, jump nhanh, debounce save
    ════════════════════════════════════════════════════════ */
 (function () {
@@ -8,22 +8,22 @@
   // ─── 6 nhóm Holland ───
   const TYPES = {
     R: { name: 'Thực tế (Realistic)', emoji: '🔧', color: '#f59e0b',
-      desc: 'Bạn thích làm việc với tay, máy móc, dụng cụ và vật thể cụ thể. Bạn thực tế, kiên trì và có tư duy kỹ thuật.',
+      desc: 'Bạn quan tâm các hoạt động thực hành với máy móc, dụng cụ hoặc vật thể cụ thể. Sở thích không tự xác nhận năng lực kỹ thuật.',
       majors: ['Kỹ thuật cơ khí', 'Điện – Điện tử', 'Xây dựng', 'Nông nghiệp', 'Kiến trúc', 'Lâm nghiệp', 'Hàng không'] },
     I: { name: 'Nghiên cứu (Investigative)', emoji: '🔬', color: '#6366f1',
-      desc: 'Bạn thích phân tích, khám phá và giải quyết vấn đề phức tạp. Bạn tò mò, logic và độc lập trong tư duy.',
+      desc: 'Bạn quan tâm việc phân tích, khám phá và giải quyết vấn đề. Hãy trải nghiệm thêm để tìm hiểu năng lực ở lĩnh vực này.',
       majors: ['Khoa học máy tính', 'Toán học', 'Vật lý', 'Hóa học', 'Y khoa', 'Sinh học', 'Dược học', 'Công nghệ AI'] },
     A: { name: 'Nghệ thuật (Artistic)', emoji: '🎨', color: '#ec4899',
-      desc: 'Bạn sáng tạo, biểu đạt phong phú và thích tự do. Bạn giỏi nghệ thuật, âm nhạc, viết lách hoặc thiết kế.',
+      desc: 'Bạn thích hoạt động sáng tạo, biểu đạt, nghệ thuật, âm nhạc, viết hoặc thiết kế. Điểm sở thích không phải đánh giá năng khiếu.',
       majors: ['Thiết kế đồ họa', 'Kiến trúc nội thất', 'Âm nhạc', 'Điện ảnh', 'Truyền thông sáng tạo', 'Mỹ thuật', 'Viết sáng tác'] },
     S: { name: 'Xã hội (Social)', emoji: '🤝', color: '#10b981',
-      desc: 'Bạn yêu thích giao tiếp, giúp đỡ và làm việc với mọi người. Bạn đồng cảm, kiên nhẫn và có khả năng lãnh đạo nhóm.',
+      desc: 'Bạn thích giao tiếp, hỗ trợ, hướng dẫn và làm việc với mọi người. Có thể tìm hiểu thêm các môi trường học tập và nghề liên quan.',
       majors: ['Sư phạm', 'Tâm lý học', 'Công tác xã hội', 'Y tế cộng đồng', 'Nhân sự (HR)', 'Ngoại giao', 'Xã hội học'] },
     E: { name: 'Lãnh đạo (Enterprising)', emoji: '🚀', color: '#f97316',
-      desc: 'Bạn có tư duy kinh doanh, thuyết phục và muốn dẫn dắt. Bạn tự tin, năng động và thích cạnh tranh.',
+      desc: 'Bạn quan tâm việc thuyết phục, tổ chức, kinh doanh hoặc dẫn dắt hoạt động. Nên đối chiếu với trải nghiệm và kỹ năng thực tế.',
       majors: ['Quản trị kinh doanh', 'Marketing', 'Luật', 'Tài chính – Ngân hàng', 'Kinh tế', 'Khởi nghiệp', 'Quan hệ công chúng'] },
     C: { name: 'Quy củ (Conventional)', emoji: '📊', color: '#3b82f6',
-      desc: 'Bạn thích trật tự, chi tiết và làm việc với dữ liệu, con số. Bạn đáng tin cậy, cẩn thận và làm theo quy trình.',
+      desc: 'Bạn thích công việc có trật tự, quy trình, dữ liệu hoặc con số. Đây là gợi ý sở thích, không khẳng định phẩm chất hay năng lực.',
       majors: ['Kế toán – Kiểm toán', 'Hệ thống thông tin', 'Thống kê', 'Tài chính', 'Hành chính văn phòng', 'Logistics', 'Ngân hàng'] }
   };
 
@@ -94,7 +94,7 @@
   const $ = id => document.getElementById(id);
 
   function normalizeCode(value) {
-    const code = String(value || '').toUpperCase().replace(/[\s-]/g, '');
+    const code = String(value || '').trim().toUpperCase();
     return /^[RIASEC]{1,3}$/.test(code) && new Set(code).size === code.length ? code : '';
   }
 
@@ -107,6 +107,7 @@
     $('rCode').textContent = code.split('').join(' – ');
     $('rDesc').textContent = info.desc;
     $('rBars').innerHTML = '<p class="import-hint">Kết quả được nhập từ bài test đã làm; không có điểm chi tiết cho từng nhóm.</p>';
+    $('resultTieNote').textContent = '';
     const majors = [...new Set(code.slice(0, 2).split('').flatMap(letter => TYPES[letter].majors))];
     $('rMajors').innerHTML = `<h3>📚 Ngành học tham khảo</h3><div class="majors-tags">${majors.map(major => `<span class="majors-tag">${major}</span>`).join('')}</div>`;
     $('resultCareersLink').href = `careers-holland.html?holland=${code}`;
@@ -197,7 +198,7 @@
       if (raw) {
         const data = JSON.parse(raw);
         if (data && Array.isArray(data.answers) && data.answers.length === QUESTIONS.length) {
-          data.answers.forEach((v, i) => { if (v !== null) state.answers[i] = v; });
+          data.answers.forEach((v, i) => { if (Number.isInteger(v) && v >= 1 && v <= 5) state.answers[i] = v; });
         }
       }
       // Load timer (resume nếu còn thời gian)
@@ -363,7 +364,7 @@
       if (!confirm(`Bạn còn ${unanswered.length} câu chưa trả lời. Vẫn xem kết quả?`)) return;
     }
     if (state.timerInterval) { clearInterval(state.timerInterval); state.timerInterval = null; }
-    state.completed = true;
+    state.completed = unanswered.length === 0;
     try { localStorage.removeItem(IMPORTED_KEY); } catch (e) {}
 
     const scores = { R: 0, I: 0, A: 0, S: 0, E: 0, C: 0 };
@@ -381,8 +382,10 @@
     $('rEmoji').textContent = info.emoji;
     $('rType').textContent = info.name;
     $('rCode').textContent = top3.join(' – ');
-    $('rDesc').textContent = info.desc;
-    $('resultCareersLink').href = `careers-holland.html?holland=${top3.join('')}`;
+    const ties = sorted.filter(([, score]) => score === sorted[0][1]).map(([type]) => type);
+    $('rDesc').textContent = (!state.completed ? `Kết quả tạm tính: đã trả lời ${QUESTIONS.length - unanswered.length}/42 câu. ` : '') + info.desc;
+    $('resultTieNote').textContent = ties.length > 1 ? `Các nhóm đồng điểm cao nhất: ${ties.join(', ')}. Thứ tự mã không thể hiện chênh lệch giữa các nhóm này.` : '';
+    $('resultCareersLink').href = state.completed ? `careers-holland.html?holland=${top3.join('')}` : 'careers-holland.html?holland=all';
 
     const barColors = { R: '#f59e0b', I: '#6366f1', A: '#ec4899', S: '#10b981', E: '#f97316', C: '#3b82f6' };
     $('rBars').innerHTML = sorted.map(([k, v]) => {
@@ -405,7 +408,7 @@
     const top2 = sorted.slice(0, 2).map(([k]) => k);
     const allMajors = [...new Set([...TYPES[top2[0]].majors, ...TYPES[top2[1]].majors])];
     $('rMajors').innerHTML = `
-      <h3>📚 Ngành học phù hợp với bạn</h3>
+      <h3>📚 Ngành học để tìm hiểu thêm</h3>
       <div class="majors-tags">${allMajors.map(m => `<span class="majors-tag">${m}</span>`).join('')}</div>
     `;
 

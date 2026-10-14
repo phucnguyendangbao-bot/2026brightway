@@ -1,4 +1,5 @@
 import policy from '../data/admissions-policy.js';
+import { officialEvents, nextOfficialEvent } from './calendar-rules.js';
 
 const categories = {
   thi: { color: '#ef4444', icon: '📝' },
@@ -13,7 +14,7 @@ const format = date => new Date(date).toLocaleString('vi-VN', {
 });
 
 function selectedEvents() {
-  return policy.calendar_events.filter(event => event.policy_year === Number(selector.value));
+  return officialEvents(policy, selector.value);
 }
 function render() {
   const year = Number(selector.value);
@@ -62,13 +63,13 @@ function render() {
       '<article class="policy-event" data-event-date="' + event.d + '"><div><strong>' + escape(event.title) +
       '</strong><p><time datetime="' + event.at + '">' + format(event.at) + ' (giờ Việt Nam)</time> · ' +
       (new Date(event.at) < now ? 'Đã qua' : 'Sắp tới') + '</p><p>' + escape(event.sub) +
-      '</p></div><a href="' + event.source_url + '" target="_blank" rel="noopener noreferrer">Nguồn chính thức ↗</a></article>').join('')
+      '</p><p>Đã đối chiếu nguồn: ' + escape(event.verified_at) + ' · Chính thức ' + year + '</p></div><a href="' + event.source_url + '" target="_blank" rel="noopener noreferrer">Nguồn chính thức ↗</a></article>').join('')
     : '<h2>Chuẩn bị 2027</h2><p>Các mốc sẽ được bổ sung khi có văn bản chính thức.</p><a href="resources.html#policy-sources">Xem văn bản 2027 và trạng thái áp dụng →</a>';
   updateCountdown();
 }
 function updateCountdown() {
   const now = Date.now();
-  const next = selectedEvents().find(event => Date.parse(event.at) > now);
+  const next = nextOfficialEvent(policy, selector.value, now);
   const timer = document.querySelector('.cal-countdown-timer');
   document.querySelector('.cal-countdown-label').textContent = next ? 'Sắp tới' : 'Trạng thái';
   timer.hidden = !next;
@@ -85,6 +86,13 @@ function updateCountdown() {
     ['cdMins', Math.floor(delta % 3600000 / 60000)],
   ]) document.getElementById(id).textContent = String(value).padStart(2, '0');
 }
-selector.addEventListener('change', render);
+const requestedYear = new URLSearchParams(location.search).get('year');
+selector.value = requestedYear === '2026' ? '2026' : '2027';
+selector.addEventListener('change', () => {
+  const url = new URL(location.href);
+  url.searchParams.set('year', selector.value);
+  history.replaceState(null, '', url);
+  render();
+});
 render();
 setInterval(updateCountdown, 60000);

@@ -42,7 +42,7 @@
           🎯 Thử nhanh 4 câu (xem trước)
         </h3>
         <p style="font-size: 13px; color: var(--text-soft); margin-bottom: 18px;">
-          Trả lời 4 câu sau để có cảm nhận ban đầu. Làm đầy đủ 42 câu để có kết quả chính xác.
+          Trả lời 4 câu sau để xem cách làm bài. Bài 42 câu gợi ý nhóm sở thích, không kết luận nghề chắc chắn phù hợp.
         </p>
         <div id="miniQList" style="display: flex; flex-direction: column; gap: 18px;"></div>
       </div>

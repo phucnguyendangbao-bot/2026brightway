@@ -3,6 +3,7 @@
 // Các hàm dùng bởi inline onclick/oninput tạm thời vẫn được gán lên window
 // để không vỡ UI; sẽ migrate sang addEventListener ở commit riêng.
 import sourceRegistry from '../data/school-admissions-sources.js';
+import { buildUniversityCatalog, canonicalSchoolId, REVIEWED_AT } from '../data/university-identities.js';
 const sourceAliases = { 'fpt-ai': 'fpt', 'khtn-hcm': 'hcmus' };
 function sourceForSchool(id) {
   return sourceRegistry.universities.find(row => row.school_id === (sourceAliases[id] || id));
@@ -21,11 +22,14 @@ async function loadSchoolsData() {
     const res = await fetch('/assets/data/schools.json', { cache: 'no-store', signal: AbortSignal.timeout(8000) });
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const data = await res.json();
-    SCHOOLS = Array.isArray(data) ? data : [];
+    const catalog = buildUniversityCatalog(data, sourceRegistry.universities);
+    SCHOOLS = catalog.schools;
+    document.getElementById('schoolCatalogStatus').textContent = `${catalog.stats.universities} hồ sơ trường đại học · ${catalog.stats.systems} đại học vùng (không đếm cơ sở/chương trình là trường riêng). ${catalog.stats.unresolved} bản ghi cần xác minh danh tính, chưa tính vào số trường. Rà soát ${REVIEWED_AT}; tuyển sinh 2027 chưa được kế thừa dữ liệu 2026.`;
     return SCHOOLS;
   } catch (err) {
     console.error('[loadSchoolsData] failed:', err);
     SCHOOLS_LOAD_ERROR = err.message;
+    document.getElementById('schoolCatalogStatus').textContent = 'Chưa tải được danh sách trường. Không dùng số 0 để thay cho lỗi dữ liệu.';
     SCHOOLS = [];
     return [];
   }
@@ -88,7 +92,7 @@ function renderSidebar(schools) {
             <span class="p2-sidebar-school-city">${s.city || ''}</span>
           </span>
         </a>`;
-        const variantLinks = (s.variants && s.variants.length)
+        const variantLinks = (s.status === 'verified_school_scheme' && s.variants && s.variants.length)
           ? s.variants.map(v => {
               const vLogo = (window.UNILogoImg && s.short)
                 ? window.UNILogoImg(s.short, { size: 22, class: 'p2-sidebar-logo p2-sidebar-logo-sm' })
@@ -191,7 +195,8 @@ function renderSchools(schools) {
             <div class="school-badges">
               <span class="school-badge-short">${s.short}</span>
               <span class="school-badge-city">📍 ${s.city}</span>
-              ${s.variants && s.variants.length ? `<span class="school-badge-variants">+ ${s.variants.length} chương trình</span>` : ''}
+              <span class="school-badge-variants">${s.identity.entity_kind === 'university_system' ? 'Đại học vùng · gồm các trường thành viên' : 'Hồ sơ trường đại học'}</span>
+              ${s.identity.represented_unit ? `<span>${sourceEscape(s.identity.represented_unit)}</span>` : ''}
             </div>
           </div>
           ${s.admissionUrl ? `<a href="${s.admissionUrl}" target="_blank" rel="noopener" class="school-admission-cta school-admission-cta-main" title="Xem chi tiết phương thức xét tuyển trên trang chính thức của trường">Xem chi tiết tuyển sinh →</a>` : ''}
@@ -207,6 +212,7 @@ function renderSchools(schools) {
           <p>Kiểm tra nguồn: ${source.checked_at}. Công thức theo ngành: ${source.formula_status === 'verified_partial_formula' ? 'đã xác nhận thành phần; cần điều kiện ngành' : 'chưa đủ dữ liệu để tính chính xác'}.</p>
         </div>` : ''}
         ${!verified ? `<div class="ad-note">Dữ liệu chi tiết trường đang chờ đối chiếu đề án theo năm. Tổ hợp, chỉ tiêu, cơ sở và thời hạn cần kiểm tra tại thông báo chính thức của trường. <a href="resources.html#policy-sources">Quy định chung Bộ GD&amp;ĐT →</a></div>` : ''}
+        <div class="ad-note"><p>Năm dữ liệu tuyển sinh: ${s.admission_year || 'Chưa có dữ liệu xác minh'} · Rà soát hồ sơ: ${s.updated_at} · Chưa xác minh đầy đủ đề án.</p><p>Học phí, điểm chuẩn theo ngành/năm: Chưa có dữ liệu xác minh. Không dùng thông tin này để dự đoán đỗ/trượt.</p><p>Danh tính: ${s.identity.status === 'identity_source_opened' ? 'Đã mở nguồn nhận diện trường; không phải xác minh công thức' : 'Nguồn cần kiểm tra lại'}.</p><a href="${sourceEscape(s.identity.source_url)}" target="_blank" rel="noopener noreferrer">Nguồn nhận diện trường ↗</a></div>
         <div class="school-info-grid">
           ${verified && s.campuses && s.campuses.length ? `
           <div class="info-grid-item">
@@ -318,7 +324,7 @@ function filterSchools(val) {
   try {
     searchTerm = normalizeText(val);
     const filtered = !searchTerm ? SCHOOLS : SCHOOLS.filter(s => {
-      const haystack = normalizeText(s.name + ' ' + s.short + ' ' + s.city);
+      const haystack = normalizeText(s.name + ' ' + s.short + ' ' + s.city + ' ' + (s.aliases || []).join(' '));
       return haystack.includes(searchTerm);
     });
     renderSidebar(filtered);
@@ -334,6 +340,7 @@ function filterSchools(val) {
 }
 
 function highlightSection(id) {
+  id = canonicalSchoolId(id);
   // Xóa highlight cũ
   document.querySelectorAll('.school-section.highlight, .school-variant.highlight').forEach(el => el.classList.remove('highlight'));
   document.querySelectorAll('.p2-sidebar a').forEach(a => a.classList.remove('active'));
@@ -395,15 +402,27 @@ function scrollToTargetFromUrl() {
   const params = new URLSearchParams(window.location.search);
   const fromQuery = params.get('school');
   const fromHash = window.location.hash ? window.location.hash.slice(1) : '';
-  const targetId = fromHash || fromQuery;
+  const targetId = canonicalSchoolId(fromHash || fromQuery);
 
   if (!targetId) return;
+
+  // A valid deep link must remain reachable even when the current search hid it.
+  if (SCHOOLS.some(s => s.id === targetId) && !document.getElementById(targetId)) {
+    searchTerm = '';
+    document.getElementById('searchInput').value = '';
+    renderSidebar(SCHOOLS);
+    renderSchools(SCHOOLS);
+    if (typeof IntersectionObserver !== 'undefined') setupObserver(SCHOOLS.map(s=>s.id));
+  }
 
   if (!fromHash && fromQuery) {
     window.location.hash = `#${fromQuery}`;
     return; // hashchange will handle the scroll
   }
 
+  if (targetId === 'hucfl' && !document.getElementById(targetId)) {
+    mainContent.insertAdjacentHTML('afterbegin', '<section id="hucfl" class="ad-note"><h2>Bản ghi trường đang chờ xác minh</h2><p>Tên KHXH &amp; NV – Đại học Huế không khớp nguồn hiện có; chưa đếm là một trường độc lập. Dữ liệu gốc được giữ, không tự chuyển sang trường khác.</p><a href="https://sinhvien.hueuni.edu.vn/" target="_blank" rel="noopener noreferrer">Đối chiếu các đơn vị Đại học Huế ↗</a></section>');
+  }
   const el = document.getElementById(targetId);
   if (el) {
     el.scrollIntoView({ behavior: 'smooth', block: 'start' });

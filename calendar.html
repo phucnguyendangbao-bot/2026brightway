@@ -459,12 +459,12 @@ body::after{
 
 <!-- HERO -->
 <header class="cal-hero">
-  <span class="cal-tag">📅 Lịch tuyển sinh ĐH 2026</span>
+  <span class="cal-tag">📅 Chuẩn bị tuyển sinh 2027</span>
   <h1>Tất cả mốc thời gian <span>trong một lịch</span></h1>
-  <p class="cal-hero-sub">Tra cứu lịch chung đã công bố và mở văn bản nguồn của từng mốc.</p>
+  <p class="cal-hero-sub">Dành cho lớp 12 năm học 2026–2027. Lịch 2026 được giữ để tham khảo, không chuyển mốc sang 2027.</p>
 </header>
 <section class="policy-panel" aria-label="Năm tuyển sinh">
-  <div class="policy-controls"><label for="calendarYear">Năm tuyển sinh</label><select id="calendarYear"><option value="2026">2026 · Lịch đã công bố</option><option value="2027">2027 · Đang chuẩn bị</option></select></div>
+  <div class="policy-controls"><label for="calendarYear">Năm tuyển sinh</label><select id="calendarYear"><option value="2026">2026 · Lịch đã công bố</option><option value="2027" selected>2027 · Đang chuẩn bị</option></select></div>
   <p id="calendarYearNote" role="status"></p>
 </section>
 
@@ -472,11 +472,11 @@ body::after{
 <div class="cal-countdown" id="countdown">
   <div class="cal-countdown-icon">⏰</div>
   <div class="cal-countdown-body">
-    <div class="cal-countdown-label">Sắp tới</div>
-    <div class="cal-countdown-title" id="cdTitle">—</div>
-    <div class="cal-countdown-date" id="cdDate">—</div>
+    <div class="cal-countdown-label">Trạng thái</div>
+    <div class="cal-countdown-title" id="cdTitle">Đang chờ lịch tuyển sinh 2027</div>
+    <div class="cal-countdown-date" id="cdDate">Không chạy bộ đếm khi chưa có ngày giờ chính thức.</div>
   </div>
-  <div class="cal-countdown-timer">
+  <div class="cal-countdown-timer" hidden style="display:none">
     <div class="cd-unit"><span class="cd-unit-num" id="cdDays">--</span><span class="cd-unit-label">ngày</span></div>
     <div class="cd-unit"><span class="cd-unit-num" id="cdHours">--</span><span class="cd-unit-label">giờ</span></div>
     <div class="cd-unit"><span class="cd-unit-num" id="cdMins">--</span><span class="cd-unit-label">phút</span></div>
@@ -534,7 +534,7 @@ body::after{
   <div class="study-plan-months">
     <details class="study-plan-month">
       <summary><span class="study-plan-number">T9</span><span>Đầu năm học</span></summary>
-      <div><h3>Xác định nguyện vọng &amp; xếp hạng</h3><p>Lập danh sách ngành và trường muốn tìm hiểu. Ghi lại tổ hợp môn và phương thức xét tuyển để so sánh dần.</p></div>
+      <div><h3>Lập danh sách ngành, trường để tìm hiểu</h3><p>Duy trì việc học và ghi lại những ngành, trường bạn muốn tìm hiểu. Tổ hợp và phương thức xét tuyển có thể cập nhật; chưa cần chốt hay xếp nguyện vọng chính thức đầu năm.</p></div>
     </details>
     <details class="study-plan-month">
       <summary><span class="study-plan-number">T10</span><span>Duy trì kết quả học tập</span></summary>
@@ -545,12 +545,12 @@ body::after{
       <div><h3>So sánh ngành, trường và điều kiện xét tuyển</h3><p>Ghi lại các phương thức xét tuyển và điều kiện của trường bạn quan tâm. Kiểm tra thông tin trên website tuyển sinh của trường.</p></div>
     </details>
     <details class="study-plan-month">
-      <summary><span class="study-plan-number">T12</span><span>Học kỳ 1 kết thúc</span></summary>
-      <div><h3>Sơ kết học kỳ và điều chỉnh kế hoạch ôn tập</h3><p>Đánh giá tiến độ qua bài kiểm tra và đề thử. Điều chỉnh kế hoạch ôn tập cho học kỳ tiếp theo.</p></div>
+      <summary><span class="study-plan-number">T12</span><span>Ôn tập, kiểm tra và chuẩn bị kết thúc học kỳ I</span></summary>
+      <div><h3>Rà soát kiến thức và chuẩn bị kiểm tra</h3><p>Ôn tập theo kế hoạch của trường, theo dõi môn cần cải thiện và chuẩn bị kiểm tra học kỳ. Thời điểm kết thúc học kỳ phụ thuộc lịch năm học của từng địa phương và trường.</p></div>
     </details>
     <details class="study-plan-month">
-      <summary><span class="study-plan-number">T1</span><span>Khởi động ôn thi</span></summary>
-      <div><h3>Ôn tổng quát + làm đề thi năm trước</h3><p>Bắt đầu luyện đề, xác định môn cần cải thiện và cân nhắc học nhóm hoặc hỗ trợ từ giáo viên. Lên lịch học phù hợp mỗi tuần.</p></div>
+      <summary><span class="study-plan-number">T1</span><span>Hoàn thành học kỳ I và điều chỉnh kế hoạch</span></summary>
+      <div><h3>Đánh giá kết quả học tập</h3><p>Hoàn thành học kỳ I theo lịch của trường, nhìn lại kết quả từng môn và điều chỉnh kế hoạch học tập. Duy trì ôn tập phù hợp sức khỏe, tiếp tục tìm hiểu ngành và trường; không áp đặt số giờ học cố định.</p></div>
     </details>
     <details class="study-plan-month">
       <summary><span class="study-plan-number">T2</span><span>Tăng tốc</span></summary>
@@ -601,7 +601,7 @@ body::after{
   </div>
 </footer>
 
-<script type="module" src="assets/js/admissions-calendar.js?v=20261014"></script>
+<script type="module" src="assets/js/admissions-calendar.js?v=20261015"></script>
 
 <script src="assets/js/waybi.js"></script>
 <script src="assets/js/waybi-presence.js"></script>

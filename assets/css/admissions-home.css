@@ -90,6 +90,6 @@ html body #home-view { display:flex; flex-direction:column; }
 html body #home-view > * { order:10; }
 html body #home-view > .bw-hero { order:1; }
 html body #home-view > .flow-resume { order:2; }
-html body #home-view > .bw-roadmap { order:3; }
-html body #home-view > .bw-waybi-home { order:4; }
-html body #home-view > .admissions-home { order:5; }
+html body #home-view > .admissions-home { order:3; }
+html body #home-view > .bw-roadmap { order:4; }
+html body #home-view > .bw-waybi-home { order:5; }

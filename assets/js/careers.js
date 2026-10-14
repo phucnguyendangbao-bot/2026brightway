@@ -161,7 +161,7 @@
       <div class="career-result">
         <div class="career-result-hd">
           <div class="career-result-top">
-          <div class="career-code">ISCO ${escapeHtml(j.code)} · ${escapeHtml(j.group)}</div>
+          <div class="career-code">Mã trong dữ liệu: ${escapeHtml(j.code)} · ${escapeHtml(j.group)} (chưa đối chiếu chuẩn mã nghề)</div>
             <button class="btn-fav" id="favBtn" data-name="${j.name}" title="Lưu nghề yêu thích">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
@@ -190,11 +190,13 @@
         <div class="career-info-grid">
           <div class="career-info-item">
             <div class="lbl">💰 Mức lương tham khảo</div>
-            <div class="val career-salary">${escapeHtml(j.salary)}</div>
+            <div class="val career-salary">Chưa có dữ liệu xác minh</div>
+            <p>Nguồn, năm, khoảng lương (VNĐ/tháng) và mức kinh nghiệm chưa được xác minh. Không coi đây là thu nhập bảo đảm.</p>
           </div>
           <div class="career-info-item">
             <div class="lbl">📈 Triển vọng nghề nghiệp</div>
             <div class="val">${escapeHtml(j.outlook)}</div>
+            <p>Mô tả định hướng chưa có nguồn thị trường lao động và năm dữ liệu xác minh.</p>
           </div>
         </div>
       </div>
@@ -387,7 +389,16 @@
     try {
       const res = await fetch('/assets/data/jobs.json', { signal: AbortSignal.timeout(8000) });
       if (!res.ok) throw new Error('Failed to load');
-      state.jobs = await res.json();
+      const rows = await res.json();
+      if (!Array.isArray(rows)) throw new Error('Danh sách nghề không hợp lệ');
+      const seen = new Set();
+      state.jobs = rows.filter(job => {
+        if (!job?.name?.trim() || !job?.desc?.trim()) return false;
+        const identity = norm(job.name.trim());
+        if (seen.has(identity)) return false;
+        seen.add(identity);
+        return true;
+      });
       const params = new URLSearchParams(window.location.search);
       let hollandCode = params.get('holland');
       if (!hollandCode) {
@@ -401,6 +412,10 @@
       }
       const count = $('careerCount');
       if (count) count.textContent = `📚 Cơ sở dữ liệu: ${state.jobs.length} nghề nghiệp phổ biến tại Việt Nam`;
+      if (!state.jobs.length) {
+        $('careerResult').innerHTML = '<p class="career-empty">Chưa có dữ liệu nghề nghiệp hợp lệ. Thử tải lại sau.</p>';
+        return;
+      }
       renderHollandFilter();
       renderListResult(getFiltered());
       // Auto-fill search if query string present
