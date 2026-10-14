@@ -4,6 +4,7 @@
 // để không vỡ UI; sẽ migrate sang addEventListener ở commit riêng.
 import sourceRegistry from '../data/school-admissions-sources.js';
 import { buildUniversityCatalog, canonicalSchoolId, REVIEWED_AT } from '../data/university-identities.js';
+import { renderSchoolHistory } from './school-history.js';
 const sourceAliases = { 'fpt-ai': 'fpt', 'khtn-hcm': 'hcmus' };
 function sourceForSchool(id) {
   return sourceRegistry.universities.find(row => row.school_id === (sourceAliases[id] || id));
@@ -39,6 +40,9 @@ async function loadSchoolsData() {
 const sidebar = document.getElementById('sidebar');
 const mainContent = document.getElementById('mainContent');
 let searchTerm = '';
+// Keep per-school selection while searching; an explicit deep link may open 2025.
+const initialAdmissionYear = new URLSearchParams(location.search).get('admission_year') === '2025' ? 2025 : 2026;
+const schoolYears = new Map();
 
 function renderSidebar(schools) {
   if (!sidebar) return;
@@ -125,6 +129,7 @@ function renderSchools(schools) {
     return;
   }
   mainContent.innerHTML = schools.map(s => {
+    const selectedYear = schoolYears.get(s.id) || initialAdmissionYear;
     const source = sourceForSchool(s.id);
     const verified = s.status === 'verified_school_scheme' && s.policy_year === 2026 && Boolean(s.verified_at);
     const methods = verified ? s.admissionMethods || [] : [];
@@ -199,9 +204,19 @@ function renderSchools(schools) {
               ${s.identity.represented_unit ? `<span>${sourceEscape(s.identity.represented_unit)}</span>` : ''}
             </div>
           </div>
-          ${s.admissionUrl ? `<a href="${s.admissionUrl}" target="_blank" rel="noopener" class="school-admission-cta school-admission-cta-main" title="Xem chi tiết phương thức xét tuyển trên trang chính thức của trường">Xem chi tiết tuyển sinh →</a>` : ''}
+          ${s.admissionUrl ? `<a href="${s.admissionUrl}" target="_blank" rel="noopener" class="school-admission-cta school-admission-cta-main" title="Mở nguồn tuyển sinh chính thức; nguồn năm trước nằm trong mục 2025 bên dưới">${source ? `Nguồn tuyển sinh ${source.admission_year}` : 'Cổng tuyển sinh trường'} →</a>` : ''}
         </div>
 
+        <div class="school-years">
+          <span id="year-label-${s.id}" class="school-years-label">Thông tin tuyển sinh theo năm</span>
+          <div class="school-year-controls" role="group" aria-labelledby="year-label-${s.id}">
+            ${[2026, 2025].map(year => `<button type="button" id="year-${s.id}-${year}" data-action="school-year" data-school-id="${s.id}" data-year="${year}" aria-pressed="${selectedYear === year}" aria-controls="admissions-${s.id}-${year}">${year}${year === 2025 ? ' · Năm trước' : ''}</button>`).join('')}
+          </div>
+        </div>
+        <div id="admissions-${s.id}-2025" class="school-year-panel" role="region" aria-labelledby="year-${s.id}-2025" ${selectedYear === 2025 ? '' : 'hidden'}>
+          ${renderSchoolHistory(s.id)}
+        </div>
+        <div id="admissions-${s.id}-2026" class="school-year-panel" role="region" aria-labelledby="year-${s.id}-2026" ${selectedYear === 2026 ? '' : 'hidden'}>
         <!-- THÔNG TIN BỔ SUNG: Cơ sở, Chương trình, Tỉnh điểm -->
         ${source ? `<div class="ad-note school-source-note">
           <strong>Tuyển sinh ${source.admission_year} · ${source.source_status === 'confirmed_2026_source' ? 'Đã xác nhận nguồn' : 'Cần kiểm tra tài liệu đầy đủ'}</strong>
@@ -235,8 +250,9 @@ function renderSchools(schools) {
           ${cardsHtml}
         </div>
         ${variantsHtml ? `<div class="school-variants">${variantsHtml}</div>` : ''}
+        </div>
         <div class="flow-actions" style="margin-top:20px">
-          <a href="score-calculator.html?school=${encodeURIComponent(s.id)}" data-action="choose-school" data-school-id="${s.id}">Chọn trường & tính điểm →</a>
+          <a href="score-calculator.html?school=${encodeURIComponent(s.id)}" data-action="choose-school" data-school-id="${s.id}">Tính điểm tham khảo 2026 →</a>
           <a href="calendar.html">Xem lộ trình tuyển sinh →</a>
         </div>
       </section>
@@ -499,6 +515,16 @@ function attachPage2Listeners() {
     const target = e.target.closest('[data-action]');
     if (!target) return;
     const action = target.getAttribute('data-action');
+    if (action === 'school-year') {
+      const id = canonicalSchoolId(target.dataset.schoolId);
+      const year = Number(target.dataset.year);
+      if (![2025, 2026].includes(year) || !SCHOOLS.some(s => s.id === id)) return;
+      schoolYears.set(id, year);
+      const section = document.getElementById(id);
+      section.querySelectorAll('[data-action="school-year"]').forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.year) === year)));
+      [2025, 2026].forEach(y => { document.getElementById(`admissions-${id}-${y}`).hidden = y !== year; });
+      return;
+    }
     if (action === 'retry-schools') { location.reload(); return; }
     if (action === 'choose-school') {
       const school = SCHOOLS.find(s => s.id === target.dataset.schoolId);

@@ -98,8 +98,26 @@ server.listen(0,async()=>{
           await page.locator('.school-section').first().waitFor();
           assert.equal(await page.locator('.school-section').count(),37);
           assert.match(await page.locator('#schoolCatalogStatus').innerText(),/35 hồ sơ trường/);
+          const archive=page.locator('#admissions-hcmut-2025');
+          assert.equal(await archive.isVisible(),false);
+          await page.locator('#year-hcmut-2025').click();
+          assert.equal(await archive.isVisible(),true);
+          assert.equal(await page.locator('#admissions-hcmut-2026').isVisible(),false);
+          assert.equal(await page.locator('#year-hcmut-2025').getAttribute('aria-pressed'),'true');
+          assert.match(await archive.innerText(),/Thông báo điểm chuẩn 2025/);
+          assert.match(await archive.innerText(),/không tự áp dụng/);
+          assert.match(await archive.locator('a').first().getAttribute('href'),/hcmut\.edu\.vn.*2025/);
+          assert.match(await page.locator('#hcmut .flow-actions').innerText(),/Tính điểm tham khảo 2026/);
+          assert.equal(await page.locator('#admissions-uit-2026').isVisible(),true);
+          if(fs.existsSync(path.join(root,'.cache'))) await page.locator('#hcmut').screenshot({path:path.join(root,'.cache/school-history-'+width+'.png')});
           await page.locator('#searchInput').fill('fpt');
           assert.equal(await page.locator('.school-section').count(),1);
+          await page.locator('#searchInput').fill('');
+          assert.equal(await page.locator('#admissions-hcmut-2025').isVisible(),true);
+          await page.locator('#year-hcmut-2026').focus();
+          await page.keyboard.press('Space');
+          assert.equal(await page.locator('#admissions-hcmut-2026').isVisible(),true);
+          assert.equal(await page.locator('#admissions-hcmut-2025').isVisible(),false);
           await page.locator('#searchInput').fill('zz-no-matching-school');
           assert.equal(await page.locator('.school-section').count(),0);
           await page.goto(base+'/page2.html#fpt-ai',{waitUntil:'domcontentloaded'});
@@ -108,6 +126,14 @@ server.listen(0,async()=>{
           await page.goto(base+'/page2.html#hucfl',{waitUntil:'domcontentloaded'});
           await page.locator('#hucfl').waitFor();
           assert.match(await page.locator('#hucfl').innerText(),/chờ xác minh/);
+          await page.goto(base+'/page2.html?admission_year=2025#fpt-ai',{waitUntil:'domcontentloaded'});
+          await page.locator('#admissions-fpt-2025').waitFor();
+          assert.equal(await page.locator('#admissions-fpt-2026').isVisible(),false);
+          assert.match(await page.locator('#admissions-fpt-2025').innerText(),/có cả hai năm/);
+          assert.match(await page.locator('#admissions-ump-2025').innerText(),/Chưa bổ sung nguồn/);
+          assert.equal(await page.locator('#admissions-ump-2025 a').count(),0);
+          await page.reload({waitUntil:'domcontentloaded'});
+          await page.locator('#admissions-fpt-2025').waitFor();
         }
         if(file==='score-calculator.html') {
           await page.locator('#scoreNextStep').waitFor({state:'attached'});

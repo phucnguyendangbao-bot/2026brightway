@@ -1,0 +1,28 @@
+/* School archive only: reuse the existing purple palette and card layout. */
+.school-years { padding: 20px 20px 0; }
+.school-years-label { display: block; margin-bottom: 8px; color: var(--text-dark); font-size: .85rem; font-weight: 700; }
+.school-year-controls { display: flex; flex-wrap: wrap; gap: 8px; }
+.school-year-controls button {
+  border: 1px solid #ded7ff; border-radius: 999px; background: #fff;
+  color: #59409a; padding: 9px 16px; font: 700 .85rem var(--font);
+  cursor: pointer; min-height: 42px;
+}
+.school-year-controls button[aria-pressed="true"] { background: var(--grad); border-color: transparent; color: #fff; }
+.school-year-controls button:focus-visible { outline: 3px solid #b7a5f8; outline-offset: 3px; }
+.school-year-panel[hidden] { display: none !important; }
+.school-history-content {
+  margin: 16px 20px 0; padding: 20px; border: 1px solid #ded7ff;
+  background: #f7f5ff; border-radius: 16px; color: var(--text-mid); line-height: 1.7;
+}
+.school-history-heading { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.school-history-content h3 { color: var(--text-dark); font-size: 1rem; }
+.school-history-content p { margin-top: 12px; }
+.school-history-status { flex-shrink: 0; border-radius: 999px; padding: 3px 10px; background: #e9e3ff; color: #59409a; font-size: .75rem; font-weight: 700; }
+.school-history-note, .school-history-meta { font-size: .82rem; }
+.school-history-links { display: flex; flex-wrap: wrap; gap: 10px 18px; margin-top: 16px; }
+.school-history-links a { color: #653bbe; font-size: .85rem; font-weight: 700; text-underline-offset: 3px; overflow-wrap: anywhere; }
+.school-history-disclaimer { padding-top: 12px; border-top: 1px solid #ded7ff; font-size: .8rem; }
+@media (max-width:640px) {
+  .school-years { padding: 16px 12px 0; }
+  .school-history-content { margin: 14px 12px 0; padding: 16px; }
+}
