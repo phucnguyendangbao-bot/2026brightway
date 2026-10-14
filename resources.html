@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Tài liệu tham khảo – BrightWay Career</title>
+<title>Tài liệu & bài viết – BrightWay Career</title>
 <link rel="icon" type="image/png" href="images/img-a84652d05567.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="assets/css/careers.css">
 <link rel="stylesheet" href="assets/css/resources.css">
 <link rel="stylesheet" href="/assets/css/brightway-theme.css?v=1">
+<link rel="stylesheet" href="/assets/css/flow.css?v=1">
+<script src="/assets/js/flow.js?v=1" defer></script>
 </head>
 <body>
 
@@ -32,22 +34,24 @@
 
 <section class="res-page">
   <div class="res-hero">
-    <h1 class="res-hero-title">Tài liệu & khóa học</h1>
-    <p class="res-hero-sub">Tìm tài liệu, khóa học và công cụ theo nhu cầu. Mỗi mục có đường dẫn đến nguồn để bạn xem chi tiết.</p>
+    <h1 class="res-hero-title">Tài liệu & bài viết</h1>
+    <p class="res-hero-sub">Đọc bài viết hướng nghiệp, tìm khóa học và tài liệu trong cùng một nơi.</p>
   </div>
 
   <!-- BỘ LỌC -->
   <div class="res-filter">
     <button class="res-filter-btn active" data-filter="all">Tất cả</button>
+    <button class="res-filter-btn" data-filter="Bài viết">Bài viết</button>
     <button class="res-filter-btn" data-filter="Khóa học">Khóa học</button>
     <button class="res-filter-btn" data-filter="Tài liệu">Tài liệu</button>
     <button class="res-filter-btn" data-filter="Video">Video</button>
     <button class="res-filter-btn" data-filter="Công cụ">Công cụ</button>
     <button class="res-filter-btn" data-filter="Tổ chức">Tổ chức</button>
-    <input id="resSearch" class="res-search" type="search" placeholder="Tìm tài liệu..." aria-label="Tìm kiếm" />
+    <input id="resSearch" class="res-search" type="search" placeholder="Tìm tài liệu hoặc bài viết..." aria-label="Tìm kiếm tài liệu hoặc bài viết" />
   </div>
 
   <!-- GRID TÀI LIỆU -->
+  <p id="libraryStatus" class="flow-status" role="status">Đang tải tài liệu và bài viết…</p>
   <div id="resGrid" class="res-grid"></div>
 
   <p id="resEmpty" class="res-empty" hidden>Không tìm thấy tài liệu phù hợp. Thử từ khóa khác nhé!</p>
@@ -55,10 +59,10 @@
   <div class="res-info">
     <h3>💡 Mẹo sử dụng</h3>
     <ul>
-      <li>Click vào <strong>ảnh</strong> hoặc nút <strong>"TÌM HIỂU THÊM"</strong> để mở link ngoài trong tab mới.</li>
+      <li>Chọn <strong>Đọc bài viết</strong> để đọc trong BrightWay; <strong>Xem nguồn</strong> mở học liệu bên ngoài trong tab mới.</li>
       <li>Tài liệu <strong>miễn phí</strong> được đánh dấu xanh. Tài liệu <strong>trả phí</strong> đánh dấu vàng.</li>
       <li>Dùng bộ lọc để xem theo nhóm (Khóa học, Tài liệu, Video, Công cụ, Tổ chức).</li>
-      <li>Nguồn từ <strong>WHO, Bộ Y tế, Bộ GD&amp;ĐT, Coursera, FPT, FUNiX, Khan Academy</strong> — đã được admin kiểm duyệt.</li>
+      <li>Kiểm tra điều kiện học và chi phí tại nguồn trước khi đăng ký.</li>
     </ul>
   </div>
 </section>
@@ -82,21 +86,55 @@
   let ALL = [];
   let activeFilter = 'all';
   let activeKeyword = '';
-
-  ALL = await loadResources();
-  paint();
+  let loading = true;
+  const status = document.getElementById('libraryStatus');
+  let resourceRows = [];
+  let postRows = [];
+  let generation = 0;
+  async function refresh() {
+    const run = ++generation;
+    loading = true;
+    status.textContent = 'Đang tải tài liệu và bài viết…';
+    let failures = 0;
+    const requests = [[loadResources, rows => { resourceRows = rows; }], [loadLibraryPosts, rows => { postRows = rows; }]];
+    await Promise.allSettled(requests.map(async ([load, set]) => {
+      try {
+        const rows = await load();
+        if (run !== generation) return;
+        set(rows);
+        ALL = [...postRows, ...resourceRows];
+        paint();
+      } catch (e) { if (run === generation) failures++; }
+    }));
+    if (run !== generation) return;
+    loading = false;
+    ALL = [...postRows, ...resourceRows];
+    if (failures && !ALL.length) ALL = FALLBACK_RESOURCES;
+    status.textContent = failures ? 'Một phần nội dung chưa tải được. ' : `${postRows.length} bài viết · ${resourceRows.length} học liệu`;
+    if (failures) {
+      if (!postRows.length && !resourceRows.length) status.append('Đang hiển thị học liệu tham khảo mặc định. ');
+      const retry = document.createElement('button');
+      retry.textContent = 'Thử lại';
+      retry.type = 'button';
+      retry.addEventListener('click', refresh);
+      status.appendChild(retry);
+    }
+    paint();
+  }
 
   function paint() {
-    const kw = activeKeyword.trim().toLowerCase();
+    const normalize = value => String(value).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd');
+    const kw = normalize(activeKeyword.trim());
     const list = ALL.filter(r => {
       const okCat = (activeFilter === 'all') || (r.category === activeFilter);
       if (!okCat) return false;
       if (!kw) return true;
       const hay = [r.title, r.provider, r.description, (r.tags || []).join(' ')].join(' ').toLowerCase();
-      return hay.includes(kw);
+      return normalize(hay).includes(kw);
     });
     grid.innerHTML = list.map(renderResourceCard).join('');
-    empty.hidden = list.length !== 0;
+    empty.hidden = loading || list.length !== 0;
+    empty.textContent = ALL.length ? 'Không tìm thấy nội dung phù hợp. Thử đổi bộ lọc hoặc từ khóa.' : 'Chưa có nội dung được đăng trong kho này.';
   }
 
   filterBtns.forEach(btn => {
@@ -112,6 +150,7 @@
     activeKeyword = e.target.value;
     paint();
   });
+  refresh();
 })();
 </script>
 <script src="assets/js/waybi.js"></script>

@@ -143,6 +143,9 @@ function calculate() {
   document.getElementById('resultSchools').hidden = false;
   document.getElementById('resultEmpty').hidden = true;
   renderSchools({ combo, raw, transcriptRaw, values, transcriptValues, grade12: grade12.value });
+  const host = document.getElementById('scoreNextStep');
+  host.hidden = false;
+  window.BWFlow?.nextStep(host, 'Lập kế hoạch cho hồ sơ của bạn', 'Đối chiếu đề án trường, ghi lại các mốc tuyển sinh và chuẩn bị tài liệu cần thiết.', [['Lịch tuyển sinh', 'calendar.html'], ['Tài liệu & bài viết', 'resources.html'], ['Hồ sơ của tôi', 'profile.html']]);
 }
 
 function schoolOutcome(school, result) {
@@ -222,6 +225,8 @@ function clearError() {
 }
 
 function resetAll() {
+  window.BWFlow?.save({ scores: null });
+  document.getElementById('scoreNextStep').hidden = true;
   document.querySelectorAll('.score-input input, .dgnl-input input').forEach(input => {
     input.value = '';
     input.classList.remove('has-value');
@@ -258,3 +263,41 @@ document.querySelectorAll('.score-input input, .dgnl-input input').forEach(input
   input.addEventListener('input', () => input.classList.toggle('has-value', input.value.trim() !== ''));
 });
 updateComboUI();
+
+// Keep a draft when the visitor checks a school or returns from another page.
+const scoreNext = document.createElement('div');
+scoreNext.id = 'scoreNextStep';
+scoreNext.hidden = true;
+document.querySelector('.calc-result-panel').appendChild(scoreNext);
+const scoreInputs = [...document.querySelectorAll('.score-input input, .dgnl-input input')];
+const draft = window.BWFlow?.read().scores;
+if (draft) {
+  if (COMBO_SUBJECTS[draft.combo]) document.getElementById('comboSelect').value = draft.combo;
+  scoreInputs.forEach(input => {
+    input.value = typeof draft.values?.[input.id] === 'string' ? draft.values[input.id] : '';
+    input.classList.toggle('has-value', input.value !== '');
+  });
+  updateComboUI();
+}
+function saveScoreDraft() {
+  window.BWFlow?.save({ scores: { combo: document.getElementById('comboSelect').value, values: Object.fromEntries(scoreInputs.map(input => [input.id, input.value])) } });
+  document.getElementById('resultSummary').hidden = true;
+  document.getElementById('resultSchools').hidden = true;
+  document.getElementById('resultEmpty').hidden = false;
+  scoreNext.hidden = true;
+  clearError();
+}
+scoreInputs.forEach(input => input.addEventListener('input', saveScoreDraft));
+document.getElementById('comboSelect').addEventListener('change', saveScoreDraft);
+const schoolId = new URLSearchParams(location.search).get('school');
+const chosenSchool = ADMISSIONS_2026.find(school => school.id === schoolId);
+if (chosenSchool) document.getElementById('schoolFilter').value = chosenSchool.short;
+if (schoolId || draft) {
+  const note = document.createElement('p');
+  note.className = 'flow-status';
+  note.textContent = chosenSchool
+    ? 'Đang xem cách tính tại ' + chosenSchool.name + '. Xóa bộ lọc để xem các trường khác.'
+    : schoolId ? 'Công cụ hiện đối chiếu 9 trường. Trường bạn chọn có thể chưa được hỗ trợ; hãy xem đề án chính thức của trường.'
+    : 'Đã khôi phục điểm bạn nhập trên thiết bị này. Nhấn Xem kết quả để tính lại.';
+  document.querySelector('.calc-hero-inner').appendChild(note);
+}

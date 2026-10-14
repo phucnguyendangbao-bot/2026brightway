@@ -31,8 +31,9 @@ window.SUPABASE_CONFIG = window.SUPABASE_CONFIG || {
       if (window.supabase) return resolve(window.supabase);
       const s = document.createElement('script');
       s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
-      s.onload = () => resolve(window.supabase);
-      s.onerror = () => reject(new Error('Failed to load Supabase SDK'));
+      const timer = setTimeout(() => reject(new Error('Kết nối tài khoản quá thời gian chờ')), 8000);
+      s.onload = () => { clearTimeout(timer); resolve(window.supabase); };
+      s.onerror = () => { clearTimeout(timer); reject(new Error('Failed to load Supabase SDK')); };
       document.head.appendChild(s);
     });
   }
@@ -58,14 +59,15 @@ window.SUPABASE_CONFIG = window.SUPABASE_CONFIG || {
       window.dispatchEvent(new CustomEvent('supabase-ready'));
       return _client;
     })();
-    return _promise;
+    try { return await _promise; }
+    catch (e) { _promise = null; throw e; }
   }
 
   // Auto-init khi DOM ready
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded', () => init().catch(e => console.warn('[Supabase]', e.message)));
   } else {
-    init();
+    init().catch(e => console.warn('[Supabase]', e.message));
   }
 
   window.getSupabase = init;

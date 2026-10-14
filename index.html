@@ -2949,6 +2949,8 @@ body.spa-active #spa-topbar { display: flex; }
 
 </style>
 <link rel="stylesheet" href="/assets/css/brightway-theme.css?v=1">
+<link rel="stylesheet" href="/assets/css/flow.css?v=1">
+<script src="/assets/js/flow.js?v=1" defer></script>
 </head>
 <body>
 <!-- Skip link (a11y) -->
@@ -5554,7 +5556,7 @@ body.spa-active #spa-topbar { display: flex; }
           <li>Liệt kê 5 môn học thích + 5 môn học giỏi</li>
           <li>Hỏi giáo viên chủ nhiệm nhận xét</li>
         </ul>
-        <a href="careers.html" class="step-cta">Làm trắc nghiệm →</a>
+        <a href="holland.html" class="step-cta">Làm trắc nghiệm →</a>
       </div>
 
       <div class="bw-step">
@@ -5566,7 +5568,7 @@ body.spa-active #spa-topbar { display: flex; }
           <li>So sánh điểm chuẩn 3 năm gần nhất</li>
           <li>Chọn 2-3 ngành, đọc review từ sinh viên</li>
         </ul>
-        <a href="#tool" class="step-cta">Xem ngành →</a>
+        <a href="careers-holland.html" class="step-cta">Khám phá nghề →</a>
       </div>
 
       <div class="bw-step" id="bw-step-3">
@@ -6679,7 +6681,8 @@ body.spa-active #spa-topbar { display: flex; }
 
   // Khi mở qua file:/// (không có HTTP server) thì tắt SPA để browser load trang bình thường.
   // SPA cần fetch() qua HTTP, file:// bị trình duyệt block (CORS).
-  if (location.protocol === 'file:') {
+  // Use ordinary navigation so page scripts and browser history work consistently.
+  if (!document.documentElement.hasAttribute('data-spa-enabled')) {
     document.body && document.body.classList.remove('spa-active');
     var spaViewEl = document.getElementById('spa-view');
     if (spaViewEl) spaViewEl.style.display = 'none';

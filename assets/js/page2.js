@@ -12,7 +12,7 @@ let SCHOOLS_LOAD_ERROR = null;
 
 async function loadSchoolsData() {
   try {
-    const res = await fetch('assets/data/schools.json', { cache: 'no-store' });
+    const res = await fetch('/assets/data/schools.json', { cache: 'no-store', signal: AbortSignal.timeout(8000) });
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const data = await res.json();
     SCHOOLS = Array.isArray(data) ? data : [];
@@ -212,6 +212,10 @@ function renderSchools(schools) {
           ${cardsHtml}
         </div>
         ${variantsHtml ? `<div class="school-variants">${variantsHtml}</div>` : ''}
+        <div class="flow-actions" style="margin-top:20px">
+          <a href="score-calculator.html?school=${encodeURIComponent(s.id)}" data-action="choose-school" data-school-id="${s.id}">Chọn trường & tính điểm →</a>
+          <a href="calendar.html">Xem lộ trình tuyển sinh →</a>
+        </div>
       </section>
     `;
   }).join('');
@@ -411,6 +415,14 @@ function toggleAccordion(card) {
 async function initPage2() {
   // Load dữ liệu trường từ JSON trước
   await loadSchoolsData();
+  const career = new URLSearchParams(location.search).get('career') || window.BWFlow?.read().career?.name;
+  if (career && !document.getElementById('schoolJourney')) {
+    const host = document.createElement('div');
+    host.id = 'schoolJourney';
+    host.className = 'flow-resume';
+    document.querySelector('.p2-layout')?.before(host);
+    window.BWFlow?.nextStep(host, 'Nghề bạn đang quan tâm: ' + career, 'Tìm trường rồi đối chiếu ngành đào tạo trên trang tuyển sinh chính thức trước khi tính điểm.', [['Đổi nghề', 'careers-holland.html'], ['Tính điểm', 'score-calculator.html']]);
+  }
   try {
     renderSidebar(SCHOOLS);
     renderSchools(SCHOOLS);
@@ -429,7 +441,7 @@ async function initPage2() {
   }, 150);
   // Show error banner nếu load fail
   if (SCHOOLS_LOAD_ERROR && mainContent) {
-    mainContent.insertAdjacentHTML('afterbegin', '<div style="padding:14px;background:#fef3c7;border:1px solid #fbbf24;border-radius:8px;margin-bottom:12px;font-size:.9rem;">⚠ Không tải được dữ liệu trường. Vui lòng thử lại sau.</div>');
+    mainContent.insertAdjacentHTML('afterbegin', '<div class="flow-status" role="status">Chưa tải được danh sách trường. <button type="button" data-action="retry-schools">Thử lại</button></div>');
   }
 }
 
@@ -451,6 +463,12 @@ function attachPage2Listeners() {
     const target = e.target.closest('[data-action]');
     if (!target) return;
     const action = target.getAttribute('data-action');
+    if (action === 'retry-schools') { location.reload(); return; }
+    if (action === 'choose-school') {
+      const school = SCHOOLS.find(s => s.id === target.dataset.schoolId);
+      if (school) window.BWFlow?.save({ school: { id: school.id, name: school.name } });
+      return;
+    }
     if (action === 'highlight-section') {
       const id = target.getAttribute('data-school-id');
       if (id) highlightSection(id);

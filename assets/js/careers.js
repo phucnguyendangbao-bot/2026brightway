@@ -19,8 +19,6 @@
     C: { label: 'Quy củ', emoji: '📊', color: '#3b82f6', desc: 'Trật tự, chi tiết, dữ liệu.' }
   };
 
-  const DATA_URL = 'assets/data/jobs.json';
-
   const state = {
     jobs: [],
     query: '',
@@ -52,7 +50,9 @@
         norm(j.en).includes(q) ||
         norm(j.group).includes(q) ||
         (j.code || '').includes(q);
-      const matchH = h === 'all' || (j.holland || []).includes(h);
+      const matchH = state.importedCode
+        ? [...state.importedCode].some(code => (j.holland || []).includes(code))
+        : h === 'all' || (j.holland || []).includes(h);
       return matchQ && matchH;
     });
   }
@@ -199,6 +199,11 @@
         </div>
       </div>
     `;
+    window.BWFlow?.save({ career: { name: j.name, group: j.group } });
+    history.replaceState(null, '', '?q=' + encodeURIComponent(j.name) + (state.importedCode ? '&holland=' + state.importedCode : ''));
+    const next = document.createElement('div');
+    r.appendChild(next);
+    window.BWFlow?.nextStep(next, 'Tìm nơi học cho nghề bạn quan tâm', 'Đọc phần học vấn ở trên, rồi đối chiếu ngành đào tạo và phương thức tuyển sinh tại các trường.', [['Tra cứu trường', 'page2.html?career=' + encodeURIComponent(j.name)], ['Tài liệu & bài viết', 'resources.html']]);
   }
 
   function renderListResult(list) {
@@ -255,7 +260,6 @@
       window.BWSync?.logSearch(q, state.activeHolland, list.length);
     } else {
       renderListResult(list);
-      bindListItemClicks();
       window.BWSync?.logSearch(q, state.activeHolland, list.length);
     }
   }
@@ -269,10 +273,6 @@
       if (isFav) btn.classList.add('saved');
     } catch {}
     btn.addEventListener('click', async () => {
-      if (!window.BWAuth?.isSignedIn?.() && !confirm('Cần đăng nhập để đồng bộ nghề yêu thích giữa các thiết bị. Tiếp tục lưu local?')) {
-        window.location.href = 'login.html?return=' + encodeURIComponent(window.location.pathname + window.location.search);
-        return;
-      }
       btn.disabled = true;
       btn.classList.toggle('pulsing');
       try {
@@ -304,7 +304,7 @@
     const toast = document.createElement('div');
     toast.className = 'fav-toast ' + (saved ? 'add' : 'remove');
     toast.textContent = saved
-      ? (source === 'cloud' ? '❤️ Đã lưu vào cloud' : '❤️ Đã lưu (local)')
+      ? (source === 'cloud' ? 'Đã lưu vào tài khoản' : 'Đã lưu trên thiết bị này. Đăng nhập để đồng bộ.')
       : '💔 Đã bỏ lưu';
     document.body.appendChild(toast);
     setTimeout(() => toast.classList.add('show'), 10);
@@ -342,6 +342,7 @@
         renderListResult(getFiltered());
         return;
       }
+      state.query = v;
       renderSuggestions(getFiltered());
     });
 
@@ -384,26 +385,26 @@
 
   async function load() {
     try {
-      const res = await fetch(DATA_URL);
+      const res = await fetch('/assets/data/jobs.json', { signal: AbortSignal.timeout(8000) });
       if (!res.ok) throw new Error('Failed to load');
       state.jobs = await res.json();
       const params = new URLSearchParams(window.location.search);
       let hollandCode = params.get('holland');
       if (!hollandCode) {
-        try { hollandCode = JSON.parse(localStorage.getItem('studentHollandImportedV1') || 'null')?.code; } catch (e) { /* ignore */ }
+        hollandCode = window.BWFlow?.holland();
       }
       hollandCode = String(hollandCode || '').toUpperCase();
       if (/^[RIASEC]{1,3}$/.test(hollandCode) && new Set(hollandCode).size === hollandCode.length) {
         state.activeHolland = hollandCode[0];
         state.importedCode = hollandCode;
-        $('hollandFilterLabel').textContent = `🧭 Mã của bạn: ${hollandCode} · Đang lọc theo nhóm ${HOLLAND_META[hollandCode[0]].label}`;
+        $('hollandFilterLabel').textContent = `Mã của bạn: ${hollandCode} · Nghề thuộc ít nhất một nhóm trong mã của bạn`;
       }
       const count = $('careerCount');
       if (count) count.textContent = `📚 Cơ sở dữ liệu: ${state.jobs.length} nghề nghiệp phổ biến tại Việt Nam`;
       renderHollandFilter();
       renderListResult(getFiltered());
       // Auto-fill search if query string present
-      const q = params.get('q');
+      const q = params.get('q') || (!hollandCode ? window.BWFlow?.read().career?.name : '');
       if (q) {
         const input = $('careerSearch');
         if (input) {
@@ -413,7 +414,14 @@
       }
     } catch (e) {
       const count = $('careerCount');
-      if (count) count.textContent = '⚠️ Không tải được dữ liệu nghề. Vui lòng tải lại trang.';
+      if (count) {
+        count.textContent = 'Chưa tải được danh sách nghề. ';
+        const retry = document.createElement('button');
+        retry.type = 'button';
+        retry.textContent = 'Thử lại';
+        retry.addEventListener('click', () => { count.textContent = 'Đang tải danh sách nghề…'; load(); });
+        count.appendChild(retry);
+      }
       console.error(e);
     }
   }

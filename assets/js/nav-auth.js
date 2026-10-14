@@ -30,7 +30,7 @@
     const slot = document.createElement('div');
     slot.id = 'navAuthSlot';
     slot.style.cssText = 'display:flex;align-items:center;gap:8px;margin-left:8px;';
-    slot.innerHTML = '<a href="login.html" id="navAuthBtn" class="btn-nav-login">Đăng nhập</a>';
+    slot.innerHTML = '<a href="login.html?return=' + encodeURIComponent(location.pathname + location.search + location.hash) + '" id="navAuthBtn" class="btn-nav-login">Đăng nhập</a>';
     if (mode === 'append') {
       container.appendChild(slot);
     } else {
@@ -148,7 +148,7 @@
     const profile = window.BWAuth?.getProfile();
 
     if (!user) {
-      slot.innerHTML = '<a href="login.html" id="navAuthBtn" class="btn-nav-login">Đăng nhập</a>';
+      slot.innerHTML = '<a href="login.html?return=' + encodeURIComponent(location.pathname + location.search + location.hash) + '" id="navAuthBtn" class="btn-nav-login">Đăng nhập</a>';
       return;
     }
 

@@ -172,6 +172,12 @@
 
   // ─── Init ───
   window.BWAuth.on((event, { user, profile }) => {
+    if (event === 'UNAVAILABLE') {
+      $('notSignedIn').hidden = false;
+      $('profileContent').hidden = true;
+      $('notSignedIn').querySelector('h2').textContent = 'Chưa kết nối được tài khoản';
+      $('notSignedIn').querySelector('p').textContent = 'Bạn vẫn có thể xem hành trình trên thiết bị này và thử đăng nhập lại.';
+    }
     if (event === 'SIGNED_IN' || event === 'INIT') {
       renderAuthState();
       if (user) {
@@ -187,6 +193,7 @@
   });
 
   // Initial load
+  renderAuthState();
   if (window.BWAuth.isSignedIn()) {
     renderAuthState();
     switchTab(new URLSearchParams(window.location.search).get('tab'));

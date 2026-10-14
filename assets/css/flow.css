@@ -1,0 +1,38 @@
+body .flow-nav { position:sticky; top:0; z-index:150; padding:0 20px; background:var(--bw-paper); border-bottom:1px solid var(--bw-line); font-family:system-ui,-apple-system,'Segoe UI',sans-serif; }
+body .flow-nav-inner { max-width:1400px; margin:auto; min-height:70px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+body .flow-logo { color:var(--bw-brand); font-weight:750; font-size:20px; text-decoration:none; white-space:nowrap; }
+body .flow-links { display:flex; align-items:center; justify-content:flex-end; flex-wrap:wrap; gap:4px; padding:8px 0; }
+body .flow-links > a { font-size:14px; font-weight:600; padding:9px 10px; text-decoration:none; color:var(--bw-muted); border-radius:7px; white-space:nowrap; }
+body .flow-links > a:hover, body .flow-links > a.active { color:var(--bw-brand); background:var(--bw-tint); }
+body .flow-menu { display:none; padding:9px 12px; border:1px solid var(--bw-line); border-radius:7px; color:var(--bw-ink); background:var(--bw-paper); font:inherit; cursor:pointer; }
+body .flow-theme { position:static !important; width:34px; height:34px; margin:0 6px; }
+body .flow-toolbar { max-width:1200px; padding:12px 20px; margin:auto; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+body .flow-toolbar .p2-search-bar { width:min(100%,480px); flex:1; }
+body .flow-toolbar a, body .flow-chat-links a { color:var(--bw-brand); text-decoration:none; font-weight:600; }
+body .flow-next { padding:22px; margin:20px 0; background:var(--bw-subtle); border:1px solid var(--bw-line); border-radius:12px; display:flex; align-items:center; justify-content:space-between; gap:20px; text-align:left; }
+body .flow-next h2 { font-size:20px; line-height:1.35; margin:6px 0; color:var(--bw-ink); }
+body .flow-next p { color:var(--bw-muted); font-size:14px; line-height:1.6; margin:0; }
+body .flow-kicker { font-size:12px; font-weight:700; color:var(--bw-brand); }
+body .flow-actions { display:flex; gap:8px; flex-wrap:wrap; }
+body .flow-actions a { display:inline-block; border:1px solid var(--bw-line); border-radius:7px; padding:10px 14px; background:var(--bw-paper); color:var(--bw-brand); text-decoration:none; font-size:14px; font-weight:650; }
+body .flow-actions a:first-child { background:var(--bw-brand); color:var(--bw-on-brand); border-color:var(--bw-brand); }
+body .flow-resume { max-width:1200px; margin:auto; padding:0 20px; }
+body .flow-chat-links { display:flex; flex-wrap:wrap; gap:6px; padding:10px 14px; border-top:1px solid var(--bw-line); }
+body .flow-chat-links a { border:1px solid var(--bw-line); padding:6px 8px; border-radius:6px; font-size:12px; background:var(--bw-paper); }
+body .flow-status { padding:12px 0; font-size:14px; line-height:1.5; color:var(--bw-muted); }
+body .flow-status button { background:var(--bw-paper); border:1px solid var(--bw-line); color:var(--bw-brand); padding:7px 12px; border-radius:6px; margin-left:8px; cursor:pointer; }
+body .flow-nav a:focus-visible, body .flow-nav button:focus-visible, body .flow-actions a:focus-visible { outline:2px solid var(--bw-brand); outline-offset:3px; }
+@media(max-width:1150px) {
+  body .flow-menu { display:block; }
+  body .flow-nav-inner { position:relative; }
+  body .flow-links { display:none; position:absolute; left:-20px; right:-20px; top:100%; padding:12px 20px; background:var(--bw-paper); border-bottom:1px solid var(--bw-line); max-height:75vh; overflow:auto; justify-content:flex-start; box-shadow:0 8px 14px rgb(35 29 49 / 7%); }
+  body .flow-links.open { display:flex; }
+  body .flow-links > a { width:100%; }
+}
+@media(max-width:600px) {
+  body .flow-next { flex-direction:column; align-items:flex-start; padding:18px; }
+  body .flow-logo { font-size:18px; }
+  body .flow-toolbar { flex-direction:column; align-items:stretch; }
+  body .flow-toolbar .p2-search-bar { width:100%; }
+  body .flow-toolbar a { font-size:14px; }
+}

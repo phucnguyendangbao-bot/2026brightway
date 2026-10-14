@@ -52,7 +52,7 @@
       try {
         googleBtn.disabled = true;
         showStatus('🔄 Đang chuyển sang Google...', 'info');
-        const { error } = await window.BWAuth.signInWithGoogle();
+        const { error } = await window.BWAuth.signInWithGoogle(returnUrl());
         if (error) throw error;
       } catch (e) {
         showStatus('❌ Lỗi: ' + e.message, 'error');
@@ -91,9 +91,15 @@
   }
 
   function redirectAfterLogin() {
-    const params = new URLSearchParams(window.location.search);
-    const ret = params.get('return') || 'index.html';
-    window.location.href = ret;
+    window.location.href = returnUrl();
+  }
+
+  function returnUrl() {
+    const requested = new URLSearchParams(location.search).get('return') || 'index.html';
+    try {
+      const target = new URL(requested, location.href);
+      return target.origin === location.origin ? target.href : location.origin + '/index.html';
+    } catch { return location.origin + '/index.html'; }
   }
 
   // ─── Auto-redirect if already signed in ───

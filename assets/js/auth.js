@@ -184,8 +184,8 @@
 
   // Auto-init
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded', () => init().catch(e => { console.warn('[Auth]', e.message); notify('UNAVAILABLE'); }));
   } else {
-    init();
+    init().catch(e => { console.warn('[Auth]', e.message); notify('UNAVAILABLE'); });
   }
 })();

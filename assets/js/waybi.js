@@ -83,7 +83,7 @@
     if (path.includes('score-calculator')) return 'Cần tính điểm xét tuyển hả? Mình hướng dẫn nè!';
     if (path.includes('holland')) return 'Holland test giúp bạn tìm nghề hợp tính cách đó! 🎯';
     if (path.includes('scholarship-roadmap')) return 'Bạn đang xem lộ trình apply nè — mốc nào cần mình giải thích thêm không?';
-    if (path.includes('page2')) return 'Đang tra cứu trường hả? Có thể lọc theo học bổng, ngành, khu vực…';
+    if (path.includes('page2')) return 'Bạn có thể tìm trường theo tên và đọc phương thức tuyển sinh. Chọn trường rồi mở công cụ tính điểm để tiếp tục.';
     if (path.includes('majors')) return 'Đang tìm ngành học phù hợp à?';
     if (path.includes('careers')) return 'Bạn muốn khám phá nghề nghiệp hả? Mình gợi ý nè!';
     if (path.includes('interview-prep')) return 'Chuẩn bị phỏng vấn học bổng à? Mình có tips nè!';
@@ -95,6 +95,12 @@
   // ─── Auto-reply ───
   function getReply(text) {
     const t = text.toLowerCase().trim();
+    if (/holland|trắc nghiệm|tính cách/.test(t)) return 'Bạn có thể <a href="holland.html">làm test Holland</a> hoặc <a href="holland.html#import-result">nhập kết quả đã có</a>, rồi <a href="careers-holland.html">xem nghề phù hợp</a>.';
+    if (/tính điểm|học bạ|điểm xét tuyển/.test(t)) return '<a href="score-calculator.html">Mở công cụ tính điểm</a>, chọn tổ hợp rồi nhập điểm thi THPT hoặc học bạ. Công cụ ghi rõ phần tính được và dữ liệu còn thiếu.';
+    if (/trường|đại học/.test(t)) return '<a href="page2.html">Tra cứu trường</a>, đọc phương thức tuyển sinh rồi chọn “Chọn trường & tính điểm”. Điều kiện ngành cần đối chiếu trên nguồn chính thức.';
+    if (/tài liệu|khóa học|bài viết/.test(t)) return '<a href="resources.html">Mở Tài liệu & bài viết</a> để tìm học liệu hoặc đọc hướng dẫn.';
+    if (/lộ trình|lịch|deadline/.test(t)) return '<a href="calendar.html">Xem lịch tuyển sinh</a> hoặc <a href="scholarship-roadmap.html">lộ trình chuẩn bị học bổng</a>.';
+    if (/cv|essay|bài luận/.test(t)) return 'Bạn có thể tìm hướng dẫn chuẩn bị hồ sơ trong <a href="resources.html">Tài liệu & bài viết</a>.';
     for (const item of KB) {
       for (const k of item.keys) {
         if (t.includes(k.toLowerCase())) {
@@ -336,7 +342,7 @@
       <div id="waybi-suggest">
         <button class="waybi-chip" data-q="Học bổng nào phù hợp?">🎓 Học bổng</button>
         <button class="waybi-chip" data-q="Lộ trình apply">🗺️ Lộ trình</button>
-        <button class="waybi-chip" data-q="Sửa CV">✍️ Sửa CV</button>
+        <button class="waybi-chip" data-q="Tính điểm học bạ">Tính điểm</button>
         <button class="waybi-chip" data-q="Holland test">🎯 Holland</button>
         <button class="waybi-chip" data-q="Bạn là ai?">❓ Bạn là ai?</button>
       </div>
@@ -424,10 +430,6 @@
       greeted = true;
       setTimeout(() => {
         addMessage(getGreeting(), 'bot');
-        const u = getUser();
-        if (!u || !u.name) {
-          setTimeout(askName, 800);
-        }
       }, 200);
     }
     setTimeout(() => document.getElementById('waybi-input').focus(), 300);

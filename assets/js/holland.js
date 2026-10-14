@@ -155,7 +155,7 @@
   }
 
   // ─── localStorage (debounced) ───
-  function saveToStorage() {
+  function saveToStorage(immediate = false) {
     clearTimeout(state.saveTimer);
     state.saveTimer = setTimeout(() => {
       try {
@@ -176,17 +176,18 @@
         localStorage.setItem(STORAGE_KEY, JSON.stringify({
           answers: arr,
           scores: norm,
-          code,
+          code: state.completed ? state.resultCode : code,
           answered,
           savedAt: Date.now(),
-          source: 'holland'
+          source: 'holland',
+          completed: state.completed === true
         }));
         localStorage.setItem(TIMER_KEY, JSON.stringify({
           remaining: state.timerSec,
           updatedAt: Date.now()
         }));
       } catch (e) { /* ignore */ }
-    }, 200);
+    }, immediate ? 0 : 200);
   }
 
   function loadFromStorage() {
@@ -362,6 +363,7 @@
       if (!confirm(`Bạn còn ${unanswered.length} câu chưa trả lời. Vẫn xem kết quả?`)) return;
     }
     if (state.timerInterval) { clearInterval(state.timerInterval); state.timerInterval = null; }
+    state.completed = true;
     try { localStorage.removeItem(IMPORTED_KEY); } catch (e) {}
 
     const scores = { R: 0, I: 0, A: 0, S: 0, E: 0, C: 0 };
@@ -374,6 +376,7 @@
     const [topType] = sorted[0];
     const info = TYPES[topType];
     const top3 = sorted.slice(0, 3).map(([k]) => k);
+    state.resultCode = top3.join('');
 
     $('rEmoji').textContent = info.emoji;
     $('rType').textContent = info.name;
@@ -414,7 +417,7 @@
       $('resultCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 200);
 
-    saveToStorage();
+    saveToStorage(true);
     if (autoFromTimer) {
       // Tạo toast thông báo
       const t = document.createElement('div');
@@ -427,6 +430,7 @@
   }
 
   function hollandReset() {
+    state.completed = false;
     Object.keys(state.answers).forEach(k => delete state.answers[k]);
     state.page = 0;
     state.timerSec = TIMER_SECONDS;
