@@ -115,7 +115,8 @@ function renderSchools(schools) {
     return;
   }
   mainContent.innerHTML = schools.map(s => {
-    const methods = s.admissionMethods || [];
+    const verified = s.status === 'verified_school_scheme' && s.policy_year === 2026 && Boolean(s.verified_at);
+    const methods = verified ? s.admissionMethods || [] : [];
     const cardsHtml = methods.map(m => `
       <div class="ad-card">
         <div class="ad-card-title">📋 ${m.name}</div>
@@ -138,7 +139,7 @@ function renderSchools(schools) {
     // Render variants (chương trình con) nếu có
     const variantsHtml = (s.variants && s.variants.length)
       ? s.variants.map(v => {
-          const vMethods = v.admissionMethods || [];
+          const vMethods = verified && v.status === 'verified_school_scheme' ? v.admissionMethods || [] : [];
           const vCards = vMethods.map(m => `
             <div class="ad-card ad-card-variant">
               <div class="ad-card-title">📋 ${m.name}</div>
@@ -190,18 +191,19 @@ function renderSchools(schools) {
         </div>
 
         <!-- THÔNG TIN BỔ SUNG: Cơ sở, Chương trình, Tỉnh điểm -->
+        ${!verified ? `<div class="ad-note">Dữ liệu chi tiết trường đang chờ đối chiếu đề án theo năm. Tổ hợp, chỉ tiêu, cơ sở và thời hạn cần kiểm tra tại thông báo chính thức của trường. <a href="resources.html#policy-sources">Quy định chung Bộ GD&amp;ĐT →</a></div>` : ''}
         <div class="school-info-grid">
-          ${s.campuses && s.campuses.length ? `
+          ${verified && s.campuses && s.campuses.length ? `
           <div class="info-grid-item">
             <div class="info-grid-label">🏫 Cơ sở đào tạo</div>
             <div class="info-grid-value">${s.campuses.map(c => `<span class="info-tag">${c}</span>`).join('')}</div>
           </div>` : ''}
-          ${s.programs && s.programs.length ? `
+          ${verified && s.programs && s.programs.length ? `
           <div class="info-grid-item">
             <div class="info-grid-label">📖 Chương trình đào tạo</div>
             <div class="info-grid-value">${s.programs.map(p => `<span class="info-tag info-tag-purple">${p}</span>`).join('')}</div>
           </div>` : ''}
-          ${s.provinces ? `
+          ${verified && s.provinces ? `
           <div class="info-grid-item info-grid-item-full">
             <div class="info-grid-label">🗺️ Tỉnh điểm tuyển sinh</div>
             <div class="info-grid-value">${s.provinces}</div>

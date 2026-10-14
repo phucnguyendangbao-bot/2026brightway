@@ -1,5 +1,6 @@
 // Công cụ 2026: chỉ tính những thành phần có công thức và đủ dữ liệu đầu vào.
 // Không dùng cutoffScores của schools.json: dữ liệu đó không có ngành/năm/nguồn.
+import { rawThresholdText } from './admissions-rules.js';
 const COMBO_SUBJECTS = {
   A00: ['math', 'phy', 'che'], A01: ['math', 'phy', 'eng'],
   A02: ['math', 'phy', 'bio'], B00: ['math', 'che', 'bio'],
@@ -34,7 +35,7 @@ const ADMISSIONS_2026 = [
     id: 'fpt', name: 'Đại học FPT', short: 'FPTU',
     url: 'https://daihoc.fpt.edu.vn/thong-bao-tuyen-sinh/thong-tin-tuyen-sinh-nam-2026/',
     type: 'fpt',
-    note: 'ĐXT = (tổng điểm thi 3 môn + 3 × điểm TB cả năm lớp 12)/2 + điểm khuyến khích + điểm ưu tiên. Chỉ tổ hợp Axx/Cxx; Cxx không dùng cho CNTT và Khoa học máy tính. Người thi tốt nghiệp 2026 cần tổng 3 môn ≥15. Điểm hiển thị chưa cộng ưu tiên/khuyến khích và chưa xét ngành Luật.',
+    note: 'ĐXT = (tổng điểm thi 3 môn + 3 × điểm TB cả năm lớp 12)/2 + điểm khuyến khích + điểm ưu tiên. Chỉ tổ hợp Axx/Cxx; Cxx không dùng cho CNTT và Khoa học máy tính. Ngưỡng nguồn tuyển kiểm tra theo Điều 6 khoản 3, gồm cách dùng Toán + Văn + một môn thi khác và ngoại lệ. Điểm hiển thị chưa cộng ưu tiên/khuyến khích và chưa xét ngành Luật.',
   },
   {
     id: 'ctu', name: 'Đại học Cần Thơ', short: 'CTU',
@@ -123,6 +124,16 @@ function calculate() {
   const hasTranscript = transcriptMissing.length === 0;
   const startedExam = missing.length < selected.length;
   const startedTranscript = transcriptMissing.length < selected.length;
+  if (startedTranscript && !document.getElementById('transcriptConfirmed').checked) {
+    errors.push('Hãy xác nhận điểm học bạ đã tổng hợp từ lớp 10–12 theo yêu cầu của trường.');
+  }
+  // Additional exam scores may establish the alternate Math + Literature + another exam route.
+  for (const [key, [id]] of Object.entries(SUBJECTS)) {
+    if (selected.includes(key)) continue;
+    const extra = readBounded(id, 10);
+    if (extra.error) errors.push(extra.error);
+    else if (extra.value !== null) values[key] = extra.value;
+  }
   if (startedExam && !hasExam) errors.push(`Điểm thi còn thiếu: ${missing.join(', ')}.`);
   if (startedTranscript && !hasTranscript) errors.push(`Điểm học bạ còn thiếu: ${transcriptMissing.join(', ')}.`);
   if (!startedExam && !startedTranscript) errors.push('Hãy nhập đủ 3 môn điểm thi THPT hoặc điểm học bạ.');
@@ -145,7 +156,7 @@ function calculate() {
   document.getElementById('resultSummary').hidden = false;
   document.getElementById('resultSchools').hidden = false;
   document.getElementById('resultEmpty').hidden = true;
-  renderSchools({ combo, raw, transcriptRaw, values, transcriptValues, grade12: grade12.value });
+  renderSchools({ combo, keys: selected, raw, transcriptRaw, values, transcriptValues, grade12: grade12.value });
   const host = document.getElementById('scoreNextStep');
   host.hidden = false;
   window.BWFlow?.nextStep(host, 'Lập kế hoạch cho hồ sơ của bạn', 'Đối chiếu đề án trường, ghi lại các mốc tuyển sinh và chuẩn bị tài liệu cần thiết.', [['Lịch tuyển sinh', 'calendar.html'], ['Tài liệu & bài viết', 'resources.html'], ['Hồ sơ của tôi', 'profile.html']]);
@@ -157,19 +168,17 @@ function schoolOutcome(school, result) {
     if (result.raw === null) return 'FPT cần điểm thi THPT của 3 môn trong tổ hợp để áp dụng công thức kết hợp này.';
     if (result.grade12 === null) return 'Nhập thêm điểm trung bình cả năm lớp 12 để tính điểm kết hợp.';
     const combined = (result.raw + result.grade12 * 3) / 2;
-    return `Điểm kết hợp: <strong>${combined.toFixed(2)}/30</strong> (chưa cộng ưu tiên/khuyến khích). ${result.raw < 15 ? 'Tổng 3 môn thi chưa đạt điều kiện 15 điểm dành cho thí sinh thi tốt nghiệp 2026.' : 'Tổng 3 môn thi đạt mức 15 điểm tối thiểu; chưa phải kết luận trúng tuyển.'}`;
+    return `Thành phần điểm kết hợp: <strong>${combined.toFixed(2)}/30</strong> (chưa cộng ưu tiên/khuyến khích). ${rawThresholdText(result)}`;
   }
   if (school.type === 'ctu') {
     const parts = [];
     if (result.raw !== null) parts.push(`Điểm thi: <strong>${result.raw.toFixed(2)}/30</strong>`);
-    if (result.transcriptRaw !== null) parts.push(`Học bạ tổ hợp: <strong>${result.transcriptRaw.toFixed(2)}/30</strong>`);
-    return `${parts.join(' · ')}. Điểm học bạ còn phải đối chiếu số học kỳ và quy tắc quy đổi theo ngành; chỉ áp dụng nếu ngành chấp nhận tổ hợp ${result.combo}.`;
+    if (result.transcriptRaw !== null) parts.push(`Tổng học bạ gốc: <strong>${result.transcriptRaw.toFixed(2)}/30</strong>`);
+    return `${parts.join(' · ')}. Học bạ còn phải quy đổi theo từng môn và ngành; chỉ áp dụng nếu ngành chấp nhận tổ hợp ${result.combo}. ${rawThresholdText(result)}`;
   }
   if (school.type === 'hcmus') {
     if (result.raw === null) return `Điểm học bạ tổ hợp hiện có: <strong>${result.transcriptRaw.toFixed(2)}/30</strong>. Cần đủ dữ liệu lớp 10–12 và điều kiện ngành để tính phương thức tích hợp.`;
-    return result.raw >= 15
-      ? 'Tổng điểm tổ hợp đã chọn ≥15; vẫn cần xác nhận tổ hợp được ngành chấp nhận, điểm học bạ 3 năm và các điều kiện khác.'
-      : 'Tổng tổ hợp <15; có thể vẫn đạt điều kiện 15 điểm qua Toán + Văn + một môn khác. Cần kiểm tra đầy đủ dữ liệu.';
+    return rawThresholdText(result);
   }
   return 'Chưa đủ dữ liệu để tính điểm xét tuyển theo đề án này.';
 }
@@ -184,7 +193,7 @@ function schoolHeadline(school, result) {
   }
   if (school.type === 'ctu') {
     if (result.raw !== null) return `${result.raw.toFixed(2)} / 30 điểm thi`;
-    if (result.transcriptRaw !== null) return `${result.transcriptRaw.toFixed(2)} / 30 học bạ`;
+    if (result.transcriptRaw !== null) return `${result.transcriptRaw.toFixed(2)} / 30 học bạ gốc`;
   }
   return 'Cần thêm dữ liệu';
 }
@@ -235,6 +244,7 @@ function resetAll() {
     input.classList.remove('has-value');
   });
   document.getElementById('comboSelect').value = 'A00';
+  document.getElementById('transcriptConfirmed').checked = false;
   updateComboUI();
   document.getElementById('schoolFilter').value = '';
   document.getElementById('resultSummary').hidden = true;
@@ -292,6 +302,7 @@ function saveScoreDraft() {
 }
 scoreInputs.forEach(input => input.addEventListener('input', saveScoreDraft));
 document.getElementById('comboSelect').addEventListener('change', saveScoreDraft);
+document.getElementById('transcriptConfirmed').addEventListener('change', saveScoreDraft);
 const schoolId = new URLSearchParams(location.search).get('school');
 const chosenSchool = ADMISSIONS_2026.find(school => school.id === schoolId);
 if (chosenSchool) document.getElementById('schoolFilter').value = chosenSchool.short;

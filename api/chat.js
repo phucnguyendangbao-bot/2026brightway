@@ -6,6 +6,7 @@
 
 import Anthropic from '@anthropic-ai/sdk';
 import { checkRateLimit, getClientIp } from './_ratelimit.js';
+import admissionsPolicy from '../assets/data/admissions-policy.js';
 
 // ══ Ép dùng Node runtime để req.body được parse tự động ══
 export const config = {
@@ -176,7 +177,15 @@ export default async function handler(req, res){
     }
 
     // System prompt + context
-    const fullSystem = SYSTEM_PROMPT +
+    const officialContext = [
+      'NGUỒN QUY ĐỊNH CHUNG ĐÃ ĐỐI CHIẾU 14/10/2026. Dùng đúng năm; đề án trường phải có nguồn riêng.',
+      ...admissionsPolicy.admissions_rules.map(rule => rule.status + ': ' + rule.rule + ' (' + rule.article + ')'),
+      'Lịch chính thức 2026: ' + admissionsPolicy.calendar_events.map(event => event.title + ': ' + event.at + ' — ' + event.source_url).join('\n'),
+      'Lịch 2027 chưa có trong bộ nguồn này. Dự thảo 2027 chưa được áp dụng trong tính điểm. Danh mục ngành TT74 áp dụng khóa từ 01/01/2027; giữ dữ liệu lịch sử 2026.',
+      'Nguồn quy chế: ' + admissionsPolicy.documents.find(doc => doc.id === 'TT_06_2026').source_url,
+      'Ưu tiên các quy định chung đã kiểm chứng này nếu CONTEXT người dùng cung cấp khác; không suy đoán quy đổi, chỉ tiêu, học phí, học bổng của từng trường.',
+    ].join('\n');
+    const fullSystem = SYSTEM_PROMPT + '\n\n' + officialContext +
       (context ? '\n\n=== CONTEXT ===\n' + String(context).slice(0, 30000) : '') +
       (currentTab ? '\n\nTab người dùng đang xem: ' + currentTab : '');
 

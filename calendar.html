@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Lịch tuyển sinh 2026 – BrightWay</title>
+<title>Lịch tuyển sinh 2026 và chuẩn bị 2027 – BrightWay</title>
 <meta name="description" content="Lịch thi, nộp hồ sơ, công bố điểm chuẩn 2026 dạng cuốn lịch 12 tháng." />
+<link rel="stylesheet" href="/assets/css/admissions-policy.css?v=20261014">
 <link rel="icon" type="image/png" href="/favicon.png?v=20261014">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -459,8 +460,12 @@ body::after{
 <header class="cal-hero">
   <span class="cal-tag">📅 Lịch tuyển sinh ĐH 2026</span>
   <h1>Tất cả mốc thời gian <span>trong một lịch</span></h1>
-  <p class="cal-hero-sub">Thi, nộp hồ sơ, công bố điểm chuẩn — đầy đủ theo tháng, dễ theo dõi.</p>
+  <p class="cal-hero-sub">Tra cứu lịch chung đã công bố và mở văn bản nguồn của từng mốc.</p>
 </header>
+<section class="policy-panel" aria-label="Năm tuyển sinh">
+  <div class="policy-controls"><label for="calendarYear">Năm tuyển sinh</label><select id="calendarYear"><option value="2026">2026 · Lịch đã công bố</option><option value="2027">2027 · Đang chuẩn bị</option></select></div>
+  <p id="calendarYearNote" role="status"></p>
+</section>
 
 <!-- COUNTDOWN -->
 <div class="cal-countdown" id="countdown">
@@ -486,7 +491,7 @@ body::after{
     <div class="wb-head-text">
       <div class="eyebrow">🤖 Lộ trình Lớp 12</div>
       <h2>Mỗi tháng một bước — đi cùng Waybi</h2>
-      <p>Click vào ngày có sự kiện để xem chi tiết. 12 tháng, đầy đủ mốc thi, nộp, công bố điểm chuẩn 2026.</p>
+      <p>Ngày có dấu màu tương ứng mốc trong danh sách có nguồn bên dưới. Lịch riêng của trường cần xem thông báo tuyển sinh của trường.</p>
     </div>
   </div>
 
@@ -518,6 +523,7 @@ body::after{
 <div class="cal-container">
   <div class="cal-grid" id="grid"></div>
 </div>
+<section id="calendarEventList" class="policy-panel" aria-live="polite"></section>
 
 <!-- FOOTER -->
 <footer class="lp-footer">
@@ -536,287 +542,7 @@ body::after{
   </div>
 </footer>
 
-<script>
-/* ═══ WAYBI MINI CALENDAR (12 tháng dạng grid) ═══ */
-(function(){
-  const CAT = {
-    thi:   { color: '#ef4444', icon: '📝' },
-    nop:   { color: '#f59e0b', icon: '📤' },
-    cbt:   { color: '#3b82f6', icon: '📊' },
-    phong: { color: '#8b5cf6', icon: '🎤' },
-    hocba: { color: '#10b981', icon: '📚' },
-    tuvan: { color: '#06b6d4', icon: '💡' },
-  };
-  const EVENTS = [
-    { d: '2026-01-15', cat: 'tuvan', title: 'Mở ĐK xét tuyển sớm', sub: 'Các trường ĐH mở cổng ĐK NV đợt đầu.' },
-    { d: '2026-01-20', cat: 'hocba', title: 'Nhận hồ sơ học bạ đợt 1', sub: 'Nhận hồ sơ xét học bạ 5 HK.' },
-    { d: '2026-02-10', cat: 'tuvan', title: 'Tư vấn xét tuyển tại THPT', sub: 'Đoàn tư vấn các ĐH đến tư vấn trực tiếp.' },
-    { d: '2026-02-15', cat: 'nop', title: 'Deadline nộp hồ sơ xét sớm', sub: 'Hết hạn ĐK NV xét sớm đợt 1.' },
-    { d: '2026-02-25', cat: 'thi', title: 'Thi HSA đợt 1 (ĐHQG HN)', sub: 'Kỳ thi ĐGNL HSA.' },
-    { d: '2026-03-05', cat: 'cbt', title: 'Công bố trúng tuyển sớm đợt 1', sub: 'Các trường công bố DS trúng tuyển.' },
-    { d: '2026-03-10', cat: 'hocba', title: 'Deadline hồ sơ học bạ đợt 1', sub: 'Hết hạn nộp học bạ đợt 1.' },
-    { d: '2026-03-15', cat: 'thi', title: 'Thi V-ACT đợt 1', sub: 'Kỳ thi V-ACT tại ĐHQG HCM.' },
-    { d: '2026-03-20', cat: 'tuvan', title: 'Open Day các trường ĐH', sub: 'HCMUT, UIT, UEH, FTU… mở cửa tham quan.' },
-    { d: '2026-03-25', cat: 'cbt', title: 'Công bố trúng tuyển học bạ đợt 1', sub: 'DS trúng tuyển theo học bạ.' },
-    { d: '2026-04-05', cat: 'thi', title: 'Thi V-ACT đợt 2', sub: 'Đợt thi V-ACT thứ hai.' },
-    { d: '2026-04-10', cat: 'hocba', title: 'Nhận hồ sơ học bạ đợt 2', sub: 'Đợt xét học bạ tiếp theo.' },
-    { d: '2026-04-15', cat: 'tuvan', title: 'Ngày hội tư vấn toàn quốc', sub: 'Bộ GD&ĐT và Sở GD&ĐT tổ chức.' },
-    { d: '2026-04-25', cat: 'thi', title: 'Thi TSA (ĐHBK HN)', sub: 'Kỳ thi TSA do ĐHBK HN tổ chức.' },
-    { d: '2026-05-05', cat: 'nop', title: 'ĐK dự thi tốt nghiệp THPT', sub: 'ĐK trên cổng Bộ GD&ĐT.' },
-    { d: '2026-05-15', cat: 'hocba', title: 'Deadline học bạ đợt 2', sub: 'Hết hạn đợt 2 xét học bạ.' },
-    { d: '2026-05-20', cat: 'cbt', title: 'Công bố trúng tuyển học bạ đợt 2', sub: 'Đợt công bố cuối cho xét học bạ.' },
-    { d: '2026-05-24', cat: 'thi', title: 'Thi V-ACT đợt 3', sub: 'Đợt thi V-ACT cuối.' },
-    { d: '2026-05-30', cat: 'tuvan', title: 'Hạn cuối ĐK xét tuyển thẳng', sub: 'Nộp hồ sơ xét tuyển thẳng.' },
-    { d: '2026-06-10', cat: 'thi', title: 'Thi H-SCA (ĐHSP TPHCM)', sub: 'Kỳ thi ĐGNL chuyên biệt H-SCA.' },
-    { d: '2026-06-25', cat: 'cbt', title: 'Công bố lịch thi THPT QG', sub: 'Bộ GD&ĐT công bố lịch thi.' },
-    { d: '2026-07-01', cat: 'thi', title: 'Khai mạc kỳ thi tốt nghiệp THPT', sub: 'Các ngày thi diễn ra trong tuần đầu tháng 7.' },
-    { d: '2026-07-03', cat: 'thi', title: 'Thi tổ hợp KHXH, KHTN', sub: 'Thi các môn tổ hợp.' },
-    { d: '2026-07-15', cat: 'nop', title: 'Mở ĐK nguyện vọng xét tuyển', sub: 'Cổng ĐK NV của Bộ GD&ĐT mở.' },
-    { d: '2026-07-20', cat: 'cbt', title: 'Công bố điểm thi tốt nghiệp', sub: 'Bộ GD&ĐT công bố điểm thi.' },
-    { d: '2026-07-30', cat: 'nop', title: 'Deadline ĐK nguyện vọng', sub: 'Hết hạn ĐK NV trên cổng Bộ.' },
-    { d: '2026-08-05', cat: 'cbt', title: 'Lọc ảo, xét tuyển đợt 1', sub: 'Các trường nhận kết quả và lọc ảo.' },
-    { d: '2026-08-15', cat: 'cbt', title: 'Công bố điểm chuẩn đợt 1', sub: 'Các trường công bố điểm chuẩn.' },
-    { d: '2026-08-18', cat: 'nop', title: 'Xác nhận nhập học đợt 1', sub: 'Thí sinh xác nhận nhập học.' },
-    { d: '2026-08-25', cat: 'cbt', title: 'Xét tuyển bổ sung đợt 1', sub: 'Cho các ngành còn chỉ tiêu.' },
-    { d: '2026-08-30', cat: 'phong', title: 'Phỏng vấn học bổng', sub: 'Một số CT học bổng tổ chức PV.' },
-    { d: '2026-09-10', cat: 'cbt', title: 'Công bố điểm chuẩn BS đợt 1', sub: 'Điểm chuẩn bổ sung đợt 1.' },
-    { d: '2026-09-15', cat: 'cbt', title: 'Nhập học đợt đầu', sub: 'Sinh viên năm nhất nhập học.' },
-    { d: '2026-09-25', cat: 'nop', title: 'Xét tuyển bổ sung đợt 2', sub: 'Nếu còn chỉ tiêu.' },
-    { d: '2026-10-01', cat: 'cbt', title: 'Công bố điểm chuẩn BS đợt 2', sub: 'Đợt cuối công bố điểm chuẩn.' },
-    { d: '2026-10-15', cat: 'phong', title: 'PV học bổng tư thục', sub: 'FPT, Duy Tân, RMIT… tổ chức PV.' },
-    { d: '2026-11-05', cat: 'nop', title: 'Deadline HB quốc tế', sub: 'Hết hạn nộp nhiều học bổng quốc tế.' },
-    { d: '2026-11-15', cat: 'phong', title: 'PV học bổng chính phủ', sub: 'Chevening, Fulbright, MEXT…' },
-    { d: '2026-12-01', cat: 'cbt', title: 'Kết quả HB quốc tế đợt 1', sub: 'Nhiều CT học bổng công bố kết quả.' },
-    { d: '2026-12-15', cat: 'tuvan', title: 'Tổng kết mùa tuyển sinh 2026', sub: 'Rút kinh nghiệm cho mùa sau.' },
-  ];
-  const MONTHS = ['T1','T2','T3','T4','T5','T6','T7','T8','T9','T10','T11','T12'];
-  const now = new Date();
-  const cm = now.getFullYear() === 2026 ? now.getMonth() : -1;
-  const cd = now.getFullYear() === 2026 ? now.getDate() : -1;
-  const map = {};
-  EVENTS.forEach(e => { (map[e.d] = map[e.d] || []).push(e); });
-  const grid = document.getElementById('wbMiniGrid');
-  if (!grid) return;
-  for (let m = 0; m < 12; m++) {
-    const fd = new Date(2026, m, 1).getDay();
-    const dn = new Date(2026, m + 1, 0).getDate();
-    const isCur = m === cm;
-    const card = document.createElement('div');
-    card.className = 'wb-m';
-    let body = '';
-    for (let i = 0; i < fd; i++) body += '<div class="wb-d empty"></div>';
-    for (let d = 1; d <= dn; d++) {
-      const ds = `2026-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-      const evs = map[ds];
-      const dow = new Date(2026, m, d).getDay();
-      let cls = 'wb-d';
-      if (dow === 0) cls += ' sun';
-      else if (dow === 6) cls += ' sat';
-      if (isCur && d === cd) cls += ' today';
-      if (evs && evs.length) {
-        const cat = CAT[evs[0].cat];
-        cls += ' has';
-        const tip = evs.length === 1
-          ? `<div class="wb-d-tip"><strong>${cat.icon} ${evs[0].title}</strong></div>`
-          : `<div class="wb-d-tip"><strong>${evs.length} sự kiện</strong><br>${evs.map(x => '• '+x.title).join('<br>')}</div>`;
-        body += `<div class="${cls}" style="--ev-color:${cat.color}">${d}${tip}</div>`;
-      } else {
-        body += `<div class="${cls}">${d}</div>`;
-      }
-    }
-    card.innerHTML = `
-      <div class="wb-m-head">
-        ${isCur ? '<span class="wb-m-cur">NOW</span>' : ''}
-        ${MONTHS[m]}/2026
-      </div>
-      <div class="wb-m-body">${body}</div>
-    `;
-    grid.appendChild(card);
-  }
-})();
-</script>
-<script>
-// ════════════════════════════════════════════
-// DATA — 41 sự kiện tuyển sinh 2026
-// cat: thi (đỏ) | nop (cam) | cbt (xanh dương) | phong (tím) | hocba (xanh lá) | tuvan (cyan)
-// ════════════════════════════════════════════
-const CAT = {
-  thi:   { color: '#ef4444', icon: '📝' },
-  nop:   { color: '#f59e0b', icon: '📤' },
-  cbt:   { color: '#3b82f6', icon: '📊' },
-  phong: { color: '#8b5cf6', icon: '🎤' },
-  hocba: { color: '#10b981', icon: '📚' },
-  tuvan: { color: '#06b6d4', icon: '💡' },
-};
-
-const EVENTS = [
-  { d: '2026-01-15', cat: 'tuvan', title: 'Mở ĐK nguyện vọng xét tuyển sớm', sub: 'Một số trường ĐH mở cổng ĐK NV đợt đầu.' },
-  { d: '2026-01-20', cat: 'hocba', title: 'Nhận hồ sơ xét học bạ đợt 1', sub: 'Nhiều trường bắt đầu nhận hồ sơ xét học bạ 5 HK.' },
-
-  { d: '2026-02-10', cat: 'tuvan', title: 'Tư vấn xét tuyển tại trường THPT', sub: 'Đoàn tư vấn các ĐH đến tư vấn trực tiếp.' },
-  { d: '2026-02-15', cat: 'nop', title: 'Deadline nộp hồ sơ xét tuyển sớm', sub: 'Hết hạn ĐK NV xét sớm đợt 1.' },
-  { d: '2026-02-25', cat: 'thi', title: 'Thi HSA đợt 1 (ĐHQG HN)', sub: 'Kỳ thi ĐGNL HSA. ĐK trước ~1 tháng.' },
-
-  { d: '2026-03-05', cat: 'cbt', title: 'Công bố trúng tuyển sớm đợt 1', sub: 'Các trường công bố DS trúng tuyển đợt sớm.' },
-  { d: '2026-03-10', cat: 'hocba', title: 'Deadline nộp hồ sơ học bạ đợt 1', sub: 'Hết hạn nộp hồ sơ xét học bạ đợt 1.' },
-  { d: '2026-03-15', cat: 'thi', title: 'Thi V-ACT đợt 1 (ĐHQG HCM)', sub: 'Kỳ thi V-ACT. ĐK tại thinangluc.vnuhcm.edu.vn.' },
-  { d: '2026-03-20', cat: 'tuvan', title: 'Open Day các trường ĐH lớn', sub: 'HCMUT, UIT, UEH, FTU… mở cửa tham quan.' },
-  { d: '2026-03-25', cat: 'cbt', title: 'Công bố trúng tuyển học bạ đợt 1', sub: 'DS trúng tuyển theo học bạ được công bố.' },
-
-  { d: '2026-04-05', cat: 'thi', title: 'Thi V-ACT đợt 2', sub: 'Đợt thi V-ACT thứ hai.' },
-  { d: '2026-04-10', cat: 'hocba', title: 'Nhận hồ sơ học bạ đợt 2', sub: 'Đợt xét học bạ tiếp theo.' },
-  { d: '2026-04-15', cat: 'tuvan', title: 'Ngày hội tư vấn tuyển sinh toàn quốc', sub: 'Bộ GD&ĐT và Sở GD&ĐT tổ chức.' },
-  { d: '2026-04-25', cat: 'thi', title: 'Thi TSA (ĐHBK HN)', sub: 'Kỳ thi TSA do ĐHBK Hà Nội tổ chức.' },
-
-  { d: '2026-05-05', cat: 'nop', title: 'ĐK dự thi tốt nghiệp THPT 2026', sub: 'ĐK trên cổng Bộ GD&ĐT.' },
-  { d: '2026-05-15', cat: 'hocba', title: 'Deadline nộp học bạ đợt 2', sub: 'Hết hạn đợt 2 xét học bạ.' },
-  { d: '2026-05-20', cat: 'cbt', title: 'Công bố trúng tuyển học bạ đợt 2', sub: 'Đợt công bố cuối cho xét học bạ.' },
-  { d: '2026-05-24', cat: 'thi', title: 'Thi V-ACT đợt 3', sub: 'Đợt thi V-ACT cuối trước kỳ thi THPT.' },
-  { d: '2026-05-30', cat: 'tuvan', title: 'Hạn cuối ĐK xét tuyển thẳng', sub: 'Nộp hồ sơ xét tuyển thẳng tại trường.' },
-
-  { d: '2026-06-10', cat: 'thi', title: 'Thi H-SCA (ĐHSP TPHCM)', sub: 'Kỳ thi ĐGNL chuyên biệt H-SCA.' },
-  { d: '2026-06-15', cat: 'tuvan', title: 'Họp phụ huynh cuối cấp', sub: 'Trường THPT phổ biến quy chế thi.' },
-  { d: '2026-06-25', cat: 'cbt', title: 'Công bố lịch thi THPT Quốc gia', sub: 'Bộ GD&ĐT công bố lịch thi chính thức.' },
-
-  { d: '2026-07-01', cat: 'thi', title: 'Khai mạc kỳ thi tốt nghiệp THPT', sub: 'Các ngày thi diễn ra trong tuần đầu tháng 7.' },
-  { d: '2026-07-03', cat: 'thi', title: 'Thi tổ hợp KHXH, KHTN', sub: 'Thi các môn tổ hợp KHXH và KHTN.' },
-  { d: '2026-07-15', cat: 'nop', title: 'Mở đăng ký nguyện vọng xét tuyển', sub: 'Theo dõi thông báo chính thức của Bộ GD&ĐT để biết thời gian, số lượng và cách đăng ký nguyện vọng.' },
-  { d: '2026-07-20', cat: 'cbt', title: 'Công bố điểm thi tốt nghiệp THPT', sub: 'Bộ GD&ĐT công bố điểm thi.' },
-  { d: '2026-07-30', cat: 'nop', title: 'Deadline ĐK nguyện vọng', sub: 'Hết hạn ĐK NV trên cổng Bộ GD&ĐT.' },
-
-  { d: '2026-08-05', cat: 'cbt', title: 'Lọc ảo, xét tuyển đợt 1', sub: 'Các trường nhận kết quả và tiến hành lọc ảo.' },
-  { d: '2026-08-15', cat: 'cbt', title: 'Công bố điểm chuẩn đợt 1', sub: 'Các trường công bố điểm chuẩn trúng tuyển.' },
-  { d: '2026-08-18', cat: 'nop', title: 'Xác nhận nhập học đợt 1', sub: 'Thí sinh xác nhận nhập học trên hệ thống.' },
-  { d: '2026-08-25', cat: 'cbt', title: 'Xét tuyển bổ sung đợt 1', sub: 'Cho các ngành còn chỉ tiêu.' },
-  { d: '2026-08-30', cat: 'phong', title: 'Phỏng vấn học bổng', sub: 'Một số CT học bổng tổ chức PV đầu vào.' },
-
-  { d: '2026-09-05', cat: 'nop', title: 'Deadline nộp hồ sơ xét bổ sung', sub: 'Hết hạn nộp hồ sơ xét tuyển bổ sung đợt 1.' },
-  { d: '2026-09-10', cat: 'cbt', title: 'Công bố điểm chuẩn bổ sung đợt 1', sub: 'Điểm chuẩn bổ sung đợt 1.' },
-  { d: '2026-09-15', cat: 'cbt', title: 'Nhập học đợt đầu tiên', sub: 'Sinh viên năm nhất bắt đầu nhập học.' },
-  { d: '2026-09-25', cat: 'nop', title: 'Xét tuyển bổ sung đợt 2', sub: 'Nếu còn chỉ tiêu.' },
-
-  { d: '2026-10-01', cat: 'cbt', title: 'Công bố điểm chuẩn bổ sung đợt 2', sub: 'Đợt cuối cùng công bố điểm chuẩn.' },
-  { d: '2026-10-10', cat: 'tuvan', title: 'Mở ĐK xét tuyển sớm 2027', sub: 'Một số trường mở ĐK xét sớm cho năm sau.' },
-  { d: '2026-10-15', cat: 'phong', title: 'PV học bổng tại các trường tư thục', sub: 'FPT, Duy Tân, RMIT… tổ chức PV.' },
-
-  { d: '2026-11-05', cat: 'nop', title: 'Deadline nộp hồ sơ HB quốc tế', sub: 'Hết hạn nộp nhiều học bổng quốc tế.' },
-  { d: '2026-11-15', cat: 'phong', title: 'Vòng PV học bổng chính phủ', sub: 'Chevening, Fulbright, MEXT… tổ chức PV.' },
-
-  { d: '2026-12-01', cat: 'cbt', title: 'Công bố kết quả HB quốc tế đợt 1', sub: 'Nhiều CT học bổng công bố kết quả.' },
-  { d: '2026-12-15', cat: 'tuvan', title: 'Tổng kết mùa tuyển sinh 2026', sub: 'Rút kinh nghiệm cho mùa sau.' },
-];
-
-const MONTHS = ['Tháng 1','Tháng 2','Tháng 3','Tháng 4','Tháng 5','Tháng 6',
-                'Tháng 7','Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12'];
-const now = new Date();
-const isYear2026 = now.getFullYear() === 2026;
-const currentMonth = isYear2026 ? now.getMonth() : -1;
-const todayDate = isYear2026 ? now.getDate() : -1;
-
-// Map ngày → events để tra nhanh
-const EVENTS_BY_DATE = {};
-EVENTS.forEach(e => {
-  if (!EVENTS_BY_DATE[e.d]) EVENTS_BY_DATE[e.d] = [];
-  EVENTS_BY_DATE[e.d].push(e);
-});
-
-// Tính số ngày trong tháng + thứ ngày đầu tiên
-function getMonthLayout(year, month) {
-  const firstDay = new Date(year, month, 1).getDay(); // 0=CN
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-  return { firstDay, daysInMonth };
-}
-
-function renderGrid() {
-  const grid = document.getElementById('grid');
-  grid.innerHTML = '';
-  for (let m = 0; m < 12; m++) {
-    const { firstDay, daysInMonth } = getMonthLayout(2026, m);
-    const isCurrent = m === currentMonth;
-    const card = document.createElement('div');
-    card.className = 'cal-m';
-    card.id = 'm' + (m+1);
-
-    // Header thứ
-    const week = ['CN','T2','T3','T4','T5','T6','T7']
-      .map((w, i) => `<div class="${i===0?'sun':i===6?'sat':''}">${w}</div>`)
-      .join('');
-
-    // Body ngày
-    let body = '';
-    // ô trống trước ngày 1
-    for (let i = 0; i < firstDay; i++) {
-      body += '<div class="cal-m-day empty"></div>';
-    }
-    // các ngày
-    for (let d = 1; d <= daysInMonth; d++) {
-      const dateStr = `2026-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-      const evs = EVENTS_BY_DATE[dateStr];
-      const dow = new Date(2026, m, d).getDay();
-      const isSun = dow === 0;
-      const isSat = dow === 6;
-      const isToday = isCurrent && d === todayDate;
-      let cls = 'cal-m-day';
-      if (isSun) cls += ' sun';
-      else if (isSat) cls += ' sat';
-      if (isToday) cls += ' today';
-      if (evs && evs.length) {
-        const ev = evs[0];
-        const cat = CAT[ev.cat];
-        cls += ' has-event';
-        const tipHtml = evs.length === 1
-          ? `<div class="cal-m-tip"><strong>${cat.icon} ${ev.title}</strong><br>${ev.sub}</div>`
-          : `<div class="cal-m-tip"><strong>${evs.length} sự kiện</strong><br>${evs.map(x => '• '+x.title).join('<br>')}</div>`;
-        body += `<div class="${cls}" style="--ev-color:${cat.color}">${d}${tipHtml}</div>`;
-      } else {
-        body += `<div class="${cls}">${d}</div>`;
-      }
-    }
-
-    card.innerHTML = `
-      <div class="cal-m-head">
-        ${isCurrent ? '<span class="cal-m-current">HIỆN TẠI</span>' : ''}
-        <div class="cal-m-name">${MONTHS[m]} 2026</div>
-      </div>
-      <div class="cal-m-week">${week}</div>
-      <div class="cal-m-body">${body}</div>
-    `;
-    grid.appendChild(card);
-  }
-}
-
-// ── Countdown ──
-function updateCountdown() {
-  const upcoming = EVENTS
-    .map(e => ({...e, dt: new Date(e.d)}))
-    .filter(e => e.dt >= now)
-    .sort((a,b) => a.dt - b.dt);
-  if (!upcoming.length) {
-    document.getElementById('cdTitle').textContent = 'Hết sự kiện năm 2026';
-    document.getElementById('cdDate').textContent = 'Hẹn gặp ở mùa 2027!';
-    return;
-  }
-  const next = upcoming[0];
-  const c = CAT[next.cat];
-  document.getElementById('cdTitle').textContent = `${c.icon} ${next.title}`;
-  const d = next.dt.getDate();
-  const ms = ['T1','T2','T3','T4','T5','T6','T7','T8','T9','T10','T11','T12'][next.dt.getMonth()];
-  document.getElementById('cdDate').textContent = `📅 ${d} ${ms} 2026`;
-
-  const diff = next.dt - now;
-  const days = Math.floor(diff / 86400000);
-  const hours = Math.floor((diff % 86400000) / 3600000);
-  const mins = Math.floor((diff % 3600000) / 60000);
-  document.getElementById('cdDays').textContent  = String(days).padStart(2,'0');
-  document.getElementById('cdHours').textContent = String(hours).padStart(2,'0');
-  document.getElementById('cdMins').textContent  = String(mins).padStart(2,'0');
-}
-
-// Init
-renderGrid();
-updateCountdown();
-setInterval(updateCountdown, 60000);
-</script>
+<script type="module" src="assets/js/admissions-calendar.js?v=20261014"></script>
 
 <script src="assets/js/waybi.js"></script>
 <script src="assets/js/waybi-presence.js"></script>
