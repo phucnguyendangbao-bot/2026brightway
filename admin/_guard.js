@@ -71,17 +71,13 @@
 
       <div class="sidebar-section">
         <div class="sidebar-label">Nội dung</div>
-        <a class="sidebar-link ${activePage==='posts'?'active':''}" href="posts.html">
-          <span class="sidebar-link-icon">📝</span>
-          <span>Bài viết</span>
+        <a class="sidebar-link ${['posts','resources'].includes(activePage)?'active':''}" href="posts.html">
+          <span class="sidebar-link-icon">🗂️</span>
+          <span>Nội dung</span>
         </a>
         <a class="sidebar-link ${activePage==='majors'?'active':''}" href="majors.html">
           <span class="sidebar-link-icon">🎯</span>
           <span>Ngành nghề</span>
-        </a>
-        <a class="sidebar-link ${activePage==='resources'?'active':''}" href="resources.html">
-          <span class="sidebar-link-icon">📚</span>
-          <span>Tài liệu</span>
         </a>
       </div>
 

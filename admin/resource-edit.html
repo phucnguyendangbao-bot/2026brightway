@@ -59,7 +59,7 @@
       <p class="page-subtitle">Điền thông tin tài liệu/khóa học cho học sinh tham khảo</p>
     </div>
     <div class="page-actions">
-      <a href="resources.html" class="btn btn-secondary">← Quay lại</a>
+      <a href="posts.html?type=resource" class="btn btn-secondary">← Quay lại</a>
     </div>
   </div>
 
@@ -148,7 +148,7 @@
 
         <div class="res-form-group" style="margin-top:20px;">
           <button type="submit" class="btn btn-primary" style="margin-right:8px;">💾 Lưu tài liệu</button>
-          <a href="resources.html" class="btn btn-ghost">Huỷ</a>
+          <a href="posts.html?type=resource" class="btn btn-ghost">Huỷ</a>
         </div>
       </div>
 
@@ -263,7 +263,7 @@
         await CMS.createResource(payload);
         Admin.showToast('Đã thêm tài liệu mới', 'success');
       }
-      setTimeout(() => location.href = 'resources.html', 800);
+      setTimeout(() => location.href = 'posts.html?type=resource', 800);
     } catch (err) {
       Admin.showToast('Lỗi: ' + err.message, 'error');
     }

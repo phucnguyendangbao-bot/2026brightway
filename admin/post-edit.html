@@ -23,7 +23,7 @@
       <p class="page-subtitle">Soạn bài viết hướng nghiệp với Markdown</p>
     </div>
     <div class="page-actions">
-      <a href="posts.html" class="btn btn-secondary">← Quay lại</a>
+      <a href="posts.html?type=post" class="btn btn-secondary">← Quay lại</a>
       <button class="btn btn-secondary" onclick="savePost('draft')">💾 Lưu nháp</button>
       <button class="btn btn-primary" onclick="savePost('published')">🚀 Đăng bài</button>
     </div>
@@ -90,7 +90,7 @@ Viết nội dung bằng **Markdown**...
   </div>
 
   <div style="display:flex;gap:10px;margin-top:24px;justify-content:flex-end;">
-    <a href="posts.html" class="btn btn-secondary">Hủy</a>
+    <a href="posts.html?type=post" class="btn btn-secondary">Hủy</a>
     <button class="btn btn-secondary" onclick="savePost('draft')">💾 Lưu nháp</button>
     <button class="btn btn-primary" onclick="savePost('published')">🚀 Đăng bài</button>
   </div>
@@ -137,7 +137,7 @@ async function loadPost(id) {
     updatePreview();
   } catch (err) {
     Admin.showToast('Lỗi: ' + err.message, 'error');
-    setTimeout(() => location.href = 'posts.html', 1500);
+    setTimeout(() => location.href = 'posts.html?type=post', 1500);
   }
 }
 
@@ -220,7 +220,7 @@ async function savePost(status) {
       currentPostId = created.id;
       Admin.showToast('Đã tạo bài viết', 'success');
     }
-    setTimeout(() => location.href = 'posts.html', 800);
+    setTimeout(() => location.href = 'posts.html?type=post', 800);
   } catch (err) {
     Admin.showToast('Lỗi: ' + err.message, 'error');
   }

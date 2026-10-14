@@ -15,6 +15,11 @@ const SUBJECTS = {
   phy: ['sPhy', 'Lý'], che: ['sChe', 'Hóa'], bio: ['sBio', 'Sinh'],
   his: ['sHis', 'Sử'], geo: ['sGeo', 'Địa'],
 };
+const TRANSCRIPT_SUBJECTS = {
+  math: ['hMath', 'Toán'], lit: ['hLit', 'Văn'], eng: ['hEng', 'Anh'],
+  phy: ['hPhy', 'Lý'], che: ['hChe', 'Hóa'], bio: ['hBio', 'Sinh'],
+  his: ['hHis', 'Sử'], geo: ['hGeo', 'Địa'],
+};
 const EXAMS = [
   { input: 'sVact', output: 'sumVact', max: 1200 },
   { input: 'sHsa', output: 'sumHsa', max: 150 },
@@ -91,11 +96,17 @@ function calculate() {
   const values = {};
   const errors = [];
   const missing = [];
+  const transcriptValues = {};
+  const transcriptMissing = [];
   for (const key of selected) {
     const result = readBounded(SUBJECTS[key][0], 10);
     if (result.error) errors.push(result.error);
     else if (result.value === null) missing.push(SUBJECTS[key][1]);
     else values[key] = result.value;
+    const transcriptResult = readBounded(TRANSCRIPT_SUBJECTS[key][0], 10);
+    if (transcriptResult.error) errors.push(transcriptResult.error);
+    else if (transcriptResult.value === null) transcriptMissing.push(TRANSCRIPT_SUBJECTS[key][1]);
+    else transcriptValues[key] = transcriptResult.value;
   }
   const grade12 = readBounded('sGrade12', 10);
   if (grade12.error) errors.push(grade12.error);
@@ -105,15 +116,24 @@ function calculate() {
     if (result.error) errors.push(result.error);
     exams[exam.input] = result.value;
   }
-  if (errors.length || missing.length) {
-    showError(errors.concat(missing.length ? `Thiếu điểm thi: ${missing.join(', ')}.` : []).join(' '));
+  const hasExam = missing.length === 0;
+  const hasTranscript = transcriptMissing.length === 0;
+  const startedExam = missing.length < selected.length;
+  const startedTranscript = transcriptMissing.length < selected.length;
+  if (startedExam && !hasExam) errors.push(`Điểm thi còn thiếu: ${missing.join(', ')}.`);
+  if (startedTranscript && !hasTranscript) errors.push(`Điểm học bạ còn thiếu: ${transcriptMissing.join(', ')}.`);
+  if (!startedExam && !startedTranscript) errors.push('Hãy nhập đủ 3 môn điểm thi THPT hoặc điểm học bạ.');
+  if (errors.length) {
+    showError(errors.join(' '));
     document.getElementById('resultSchools').hidden = true;
     document.getElementById('resultSummary').hidden = true;
     return;
   }
   clearError();
-  const raw = selected.reduce((sum, key) => sum + values[key], 0);
-  document.getElementById('sumCombo').textContent = raw.toFixed(2);
+  const raw = hasExam ? selected.reduce((sum, key) => sum + values[key], 0) : null;
+  const transcriptRaw = hasTranscript ? selected.reduce((sum, key) => sum + transcriptValues[key], 0) : null;
+  document.getElementById('sumCombo').textContent = raw === null ? '—' : raw.toFixed(2);
+  document.getElementById('sumTranscript').textContent = transcriptRaw === null ? '—' : transcriptRaw.toFixed(2);
   for (const exam of EXAMS) {
     const element = document.getElementById(exam.output);
     element.textContent = exams[exam.input] === null ? '—' : String(exams[exam.input]);
@@ -122,20 +142,25 @@ function calculate() {
   document.getElementById('resultSummary').hidden = false;
   document.getElementById('resultSchools').hidden = false;
   document.getElementById('resultEmpty').hidden = true;
-  renderSchools({ combo, raw, values, grade12: grade12.value });
+  renderSchools({ combo, raw, transcriptRaw, values, transcriptValues, grade12: grade12.value });
 }
 
 function schoolOutcome(school, result) {
   if (school.type === 'fpt') {
     if (!/^[AC]/.test(result.combo)) return 'Tổ hợp đã chọn không thuộc Axx/Cxx trong đề án FPT 2026.';
+    if (result.raw === null) return 'FPT cần điểm thi THPT của 3 môn trong tổ hợp để áp dụng công thức kết hợp này.';
     if (result.grade12 === null) return 'Nhập thêm điểm trung bình cả năm lớp 12 để tính điểm kết hợp.';
     const combined = (result.raw + result.grade12 * 3) / 2;
     return `Điểm kết hợp: <strong>${combined.toFixed(2)}/30</strong> (chưa cộng ưu tiên/khuyến khích). ${result.raw < 15 ? 'Tổng 3 môn thi chưa đạt điều kiện 15 điểm dành cho thí sinh thi tốt nghiệp 2026.' : 'Tổng 3 môn thi đạt mức 15 điểm tối thiểu; chưa phải kết luận trúng tuyển.'}`;
   }
   if (school.type === 'ctu') {
-    return `Phương thức điểm thi: <strong>${result.raw.toFixed(2)}/30</strong> trước điểm ưu tiên. Chỉ áp dụng nếu ngành chấp nhận tổ hợp ${result.combo}.`;
+    const parts = [];
+    if (result.raw !== null) parts.push(`Điểm thi: <strong>${result.raw.toFixed(2)}/30</strong>`);
+    if (result.transcriptRaw !== null) parts.push(`Học bạ tổ hợp: <strong>${result.transcriptRaw.toFixed(2)}/30</strong>`);
+    return `${parts.join(' · ')}. Điểm học bạ còn phải đối chiếu số học kỳ và quy tắc quy đổi theo ngành; chỉ áp dụng nếu ngành chấp nhận tổ hợp ${result.combo}.`;
   }
   if (school.type === 'hcmus') {
+    if (result.raw === null) return `Điểm học bạ tổ hợp hiện có: <strong>${result.transcriptRaw.toFixed(2)}/30</strong>. Cần đủ dữ liệu lớp 10–12 và điều kiện ngành để tính phương thức tích hợp.`;
     return result.raw >= 15
       ? 'Tổng điểm tổ hợp đã chọn ≥15; vẫn cần xác nhận tổ hợp được ngành chấp nhận, điểm học bạ 3 năm và các điều kiện khác.'
       : 'Tổng tổ hợp <15; có thể vẫn đạt điều kiện 15 điểm qua Toán + Văn + một môn khác. Cần kiểm tra đầy đủ dữ liệu.';
@@ -146,11 +171,15 @@ function schoolOutcome(school, result) {
 function schoolHeadline(school, result) {
   if (school.type === 'fpt') {
     if (!/^[AC]/.test(result.combo)) return 'Tổ hợp không áp dụng';
+    if (result.raw === null) return 'Cần điểm thi THPT';
     return result.grade12 === null
       ? 'Cần điểm lớp 12'
       : `${((result.raw + result.grade12 * 3) / 2).toFixed(2)} / 30`;
   }
-  if (school.type === 'ctu') return `${result.raw.toFixed(2)} / 30`;
+  if (school.type === 'ctu') {
+    if (result.raw !== null) return `${result.raw.toFixed(2)} / 30 điểm thi`;
+    if (result.transcriptRaw !== null) return `${result.transcriptRaw.toFixed(2)} / 30 học bạ`;
+  }
   return 'Cần thêm dữ liệu';
 }
 
@@ -211,8 +240,11 @@ function updateComboUI() {
   const active = COMBO_SUBJECTS[combo];
   document.getElementById('comboHint').textContent =
     `${combo} · Cần nhập ${active.map(key => SUBJECTS[key][1]).join(', ')}`;
+  document.getElementById('transcriptHint').textContent =
+    `${combo} · Điểm trung bình học bạ ${active.map(key => TRANSCRIPT_SUBJECTS[key][1]).join(', ')}`;
   document.querySelectorAll('.score-input').forEach(label => {
-    label.classList.toggle('score-input-active', active.some(key => SUBJECTS[key][0] === label.querySelector('input').id));
+    const inputId = label.querySelector('input').id;
+    label.classList.toggle('score-input-active', active.some(key => SUBJECTS[key][0] === inputId || TRANSCRIPT_SUBJECTS[key][0] === inputId));
   });
 }
 

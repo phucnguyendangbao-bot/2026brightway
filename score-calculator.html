@@ -105,12 +105,28 @@
     </div>
 
     <div class="calc-card">
-      <h2 class="calc-section-title"><span class="section-number">03</span> Bổ sung cho FPT</h2>
+      <h2 class="calc-section-title"><span class="section-number">03</span> Nhập điểm học bạ</h2>
+      <p id="transcriptHint" class="combo-hint">A00 · Điểm trung bình học bạ Toán, Lý, Hóa</p>
+      <div class="score-grid transcript-grid">
+        <label class="score-input"><span>Toán</span><input type="number" id="hMath" min="0" max="10" step="0.01" placeholder="0.00" /></label>
+        <label class="score-input"><span>Ngữ văn</span><input type="number" id="hLit" min="0" max="10" step="0.01" placeholder="0.00" /></label>
+        <label class="score-input"><span>Tiếng Anh</span><input type="number" id="hEng" min="0" max="10" step="0.01" placeholder="0.00" /></label>
+        <label class="score-input"><span>Vật lý</span><input type="number" id="hPhy" min="0" max="10" step="0.01" placeholder="0.00" /></label>
+        <label class="score-input"><span>Hóa học</span><input type="number" id="hChe" min="0" max="10" step="0.01" placeholder="0.00" /></label>
+        <label class="score-input"><span>Sinh học</span><input type="number" id="hBio" min="0" max="10" step="0.01" placeholder="0.00" /></label>
+        <label class="score-input"><span>Lịch sử</span><input type="number" id="hHis" min="0" max="10" step="0.01" placeholder="0.00" /></label>
+        <label class="score-input"><span>Địa lý</span><input type="number" id="hGeo" min="0" max="10" step="0.01" placeholder="0.00" /></label>
+      </div>
+      <p class="calc-field-note">Nhập điểm trung bình của từng môn theo cách tính học bạ mà trường yêu cầu. Có thể để trống nếu chỉ xét điểm thi THPT.</p>
+    </div>
+
+    <div class="calc-card">
+      <h2 class="calc-section-title"><span class="section-number">04</span> Bổ sung cho FPT</h2>
       <label class="dgnl-input">
         <span>Điểm trung bình cả năm lớp 12, tất cả môn tính điểm (FPT, thang 10)</span>
         <input type="number" id="sGrade12" min="0" max="10" step="0.01" placeholder="Ví dụ: 8.40" />
       </label>
-      <p class="calc-field-note">Không nhập điểm học bạ của 3 môn vào ô điểm thi. ĐH Cần Thơ cần điểm cả năm lớp 10–12 và bảng quy đổi riêng từng môn; các trường khác có thể dùng công thức tích hợp.</p>
+      <p class="calc-field-note">Đây là điểm trung bình tất cả môn lớp 12 dùng riêng cho công thức FPT, khác với tổng điểm học bạ tổ hợp ở trên.</p>
     </div>
 
     <details class="calc-card calc-optional">
@@ -150,6 +166,10 @@
           <div class="summary-value" id="sumCombo">—</div>
         </div>
         <div class="summary-item">
+          <div class="summary-label">Tổng 3 môn học bạ (/30)</div>
+          <div class="summary-value" id="sumTranscript">—</div>
+        </div>
+        <div class="summary-item">
           <div class="summary-label">V-ACT gốc (/1200)</div>
           <div class="summary-value" id="sumVact">—</div>
         </div>
@@ -175,7 +195,7 @@
     <div class="result-empty" id="resultEmpty">
       <div class="result-empty-icon" aria-hidden="true">↗</div>
       <h3>Kết quả sẽ hiện ở đây</h3>
-      <p>Chọn tổ hợp và nhập điểm 3 môn thi. Nếu muốn tính điểm kết hợp FPT, thêm điểm trung bình lớp 12.</p>
+      <p>Chọn tổ hợp, nhập điểm thi THPT và/hoặc điểm học bạ. Nếu muốn tính điểm kết hợp FPT, thêm điểm trung bình lớp 12.</p>
       <span class="result-empty-trust">9 nguồn tuyển sinh chính thức · Không dự đoán đỗ/trượt</span>
     </div>
   </main>
