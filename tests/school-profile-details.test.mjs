@@ -44,10 +44,10 @@ test('2024–2026 records remain year-specific and preserve each scoring scale',
 });
 
 test('spreadsheet program import adds only the supplied school-year rows', () => {
-  assert.equal(PROGRAM_IMPORT_METADATA.totalRows, 473);
-  assert.equal(PROGRAM_IMPORT_METADATA.schoolCount, 15);
+  assert.equal(PROGRAM_IMPORT_METADATA.totalRows, 561);
+  assert.equal(PROGRAM_IMPORT_METADATA.schoolCount, 19);
   assert.deepEqual(PROGRAM_IMPORT_METADATA.years, [2026]);
-  assert.equal(PROGRAM_IMPORT_METADATA.missingCodeRows, 141);
+  assert.equal(PROGRAM_IMPORT_METADATA.missingCodeRows, 151);
   assert.equal(schoolProgramDetails.ctu[2026].programs.length, 127);
   assert.equal(schoolProgramDetails.hcmus[2026].programs.length, 39);
   assert.equal(schoolProgramDetails.hcmue[2026].programs.length, 28);
@@ -63,6 +63,10 @@ test('spreadsheet program import adds only the supplied school-year rows', () =>
   assert.equal(schoolProgramDetails.vku[2026].programs.length, 6);
   assert.equal(schoolProgramDetails.dut[2026].programs.length, 49);
   assert.equal(schoolProgramDetails.hcmut[2026].programs.length, 12);
+  assert.equal(schoolProgramDetails.vlu[2026].programs.length, 64);
+  assert.equal(schoolProgramDetails.pnt[2026].programs.length, 14);
+  assert.equal(schoolProgramDetails.ueh[2026].programs.length, 8);
+  assert.equal(schoolProgramDetails.ftu[2026].programs.length, 2);
   assert.equal(detailsForSchool('hcmus', 2026).scoreSource, schoolProfileDetails.hcmus.scoreSource);
   assert.equal(detailsForSchool('hcmus', 2026).programs.length, 39);
   assert.equal(detailsForSchool('uit', 2026).programs.length, 15);
@@ -75,6 +79,11 @@ test('spreadsheet program import adds only the supplied school-year rows', () =>
   assert.equal(detailsForSchool('dut', 2026).programs.find(program => program.code === '7480201TN').quota, 30);
   assert.equal(detailsForSchool('dut', 2026).programs.filter(program => Number.isFinite(program.score)).length, 2);
   assert.match(detailsForSchool('hcmut', 2026).programNote, /12 trong 44/);
+  assert.equal(detailsForSchool('vlu', 2026).programs.find(program => program.code === '7720101').name, 'Y Khoa');
+  assert.equal(detailsForSchool('pnt', 2026).programs.find(program => program.code === '7720609').name, 'Khúc xạ nhãn khoa');
+  assert.ok(detailsForSchool('ueh', 2026).programs.every(program => !program.code));
+  assert.match(detailsForSchool('ueh', 2026).programNote, /chưa phải danh mục đầy đủ/);
+  assert.ok(detailsForSchool('ftu', 2026).programs.every(program => !program.code));
   assert.equal(detailsForSchool('ctu', 2024).programs, undefined);
   assert.equal(detailsForSchool('ctu', 2025), null);
   assert.equal(detailsForSchool('hcmue', 2025), null);

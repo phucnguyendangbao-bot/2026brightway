@@ -267,6 +267,43 @@ const hcmutPrograms = toPrograms([
   ['', 'Kỹ thuật nhiệt'], ['', 'Vật lý kỹ thuật'], ['', 'Cơ kỹ thuật'], ['', 'Quản lý công nghiệp'],
 ], 'Ngành / nhóm ngành (chưa phải mã xét tuyển)');
 
+const vluPrograms = toPrograms([
+  ['7210205','Thanh nhạc'], ['7210208','Piano'], ['7210234','Diễn viên Kịch, Điện ảnh - Truyền hình'], ['7210235','Đạo diễn Điện ảnh, Truyền hình'],
+  ['7210402','Thiết kế Công nghiệp'], ['7210403','Thiết kế Đồ họa'], ['7210404','Thiết kế Thời Trang'], ['7210409','Thiết kế Mỹ thuật số'],
+  ['7580108','Thiết kế Nội thất'], ['7220201','Ngôn ngữ Anh'], ['7220204','Ngôn ngữ Trung Quốc'], ['7220210','Ngôn ngữ Hàn Quốc'],
+  ['7229030','Văn học Ứng dụng'], ['7310608','Đông phương học'], ['7310401','Tâm lý học'], ['7320104','Truyền thông Đa phương tiện'],
+  ['7320108','Quan hệ Công chúng'], ['7320106','Công nghệ Truyền thông'], ['7210302','Công nghệ Điện ảnh - Truyền hình'], ['7210303','Thiết kế âm thanh, ánh sáng'],
+  ['7320105','Truyền thông Đại chúng'], ['7310106','Kinh tế Quốc tế'], ['7340101','Quản trị Kinh doanh'], ['7340115','Marketing'],
+  ['7340116','Bất động sản'], ['7340120','Kinh doanh Quốc tế'], ['7340121','Kinh doanh Thương mại'], ['7340122','Thương mại Điện tử'],
+  ['7340201','Tài chính - Ngân hàng'], ['7340205','Công nghệ Tài chính'], ['7340301','Kế toán'], ['7380101','Luật'],
+  ['7380107','Luật Kinh tế'], ['7420201','Công nghệ Sinh học'], ['7420207','Công nghệ Thẩm mỹ'], ['7540101','Công nghệ Thực phẩm'],
+  ['7460108','Khoa học Dữ liệu'], ['7480104','Hệ thống Thông tin'], ['7480103','Kỹ thuật Phần mềm'], ['7480201','Công nghệ Thông tin'],
+  ['7480102','Mạng máy tính và Truyền thông dữ liệu'], ['7480107','Trí tuệ Nhân tạo'], ['7510605','Logistics và Quản lý chuỗi cung ứng'], ['7520118','Kỹ thuật Hệ thống Công nghiệp'],
+  ['7510205','Công nghệ Kỹ thuật Ô tô'], ['7510301','Công nghệ Kỹ thuật điện, Điện tử'], ['7520114','Kỹ thuật Cơ điện tử'], ['7520115','Kỹ thuật Nhiệt'],
+  ['7520120','Kỹ thuật Hàng không'], ['7580201','Kỹ thuật Xây dựng'], ['7580302','Quản lý Xây dựng'], ['7580205','Kỹ thuật xây dựng công trình giao thông'],
+  ['7510406','Công nghệ Kỹ thuật Môi trường'], ['7850101','Quản lý Tài nguyên & Môi trường'], ['7580101','Kiến trúc'], ['7720201','Dược học'],
+  ['7720301','Điều dưỡng'], ['7720501','Răng - Hàm - Mặt'], ['7720101','Y Khoa'], ['7720601','Kỹ thuật Xét nghiệm Y học'],
+  ['7810101','Du lịch'], ['7810103','Quản trị Dịch vụ Du lịch & Lữ hành'], ['7810201','Quản trị Khách sạn'], ['7810202','Quản trị Nhà hàng và Dịch vụ Ăn uống'],
+], 'Ngành tuyển sinh');
+
+const pntPrograms = toPrograms([
+  ['7720101','Y khoa'], ['7720115','Y học cổ truyền'], ['7720201','Dược học'], ['7720301','Điều dưỡng'],
+  ['7720302','Hộ sinh'], ['7720401','Dinh dưỡng'], ['7720501','Răng Hàm Mặt'], ['7720601','Kỹ thuật xét nghiệm y học'],
+  ['7720602','Kỹ thuật hình ảnh y học'], ['7720603','Kỹ thuật phục hồi chức năng'], ['7720609','Khúc xạ nhãn khoa'], ['7720610','Kỹ thuật gây mê hồi sức'],
+  ['7720701','Y tế công cộng'], ['7310401','Tâm lý học'],
+], 'Ngành tuyển sinh');
+
+const uehPrograms = toPrograms([
+  ['', 'Kinh tế chính trị quốc tế'], ['', 'Công nghệ Logistics tích hợp chứng chỉ FIATA (hệ kỹ sư)'],
+  ['', 'Kiến trúc và Thiết kế đô thị thông minh'], ['', 'Luật'], ['', 'Luật Thương mại quốc tế'],
+  ['', 'Sản xuất thông minh (hệ kỹ sư)'], ['', 'Quản trị vận hành và di chuyển thông minh'],
+  ['', 'Cử nhân tài năng – Công nghệ (AI for Business)'],
+], 'Chương trình được UEH công bố mở mới');
+
+const ftuPrograms = toPrograms([
+  ['', 'Quản trị nhân lực'], ['', 'Thương mại số thông minh và Đổi mới kinh doanh'],
+], 'Ngành/chương trình được trường giới thiệu');
+
 export const schoolProgramDetails = {
   ctu: { 2026: {
     year: 2026,
@@ -377,10 +414,34 @@ export const schoolProgramDetails = {
     programSource: 'https://hcmut.edu.vn/tuyen-sinh/dai-hoc-chinh-quy/phuong-thuc-tuyen-sinh/xet-tuyen-thang-2026',
     programNote: 'Danh sách tham khảo mới xác minh 12 trong 44 ngành/nhóm ngành trường công bố; chưa phải danh mục đầy đủ và chưa phải mã xét tuyển.',
   } },
+  vlu: { 2026: {
+    year: 2026,
+    programs: vluPrograms,
+    programSource: 'https://www.vlu.edu.vn/dynamic/nganh-dao-tao',
+    programNote: '64 mã ngành từ danh mục tuyển sinh 2026. Thông tin điểm sàn của trường không được dùng thay cho điểm chuẩn trúng tuyển.',
+  } },
+  pnt: { 2026: {
+    year: 2026,
+    programs: pntPrograms,
+    programSource: 'https://pnt.edu.vn/vi/tuyen-sinh-dai-hoc/danh-sach-trung-tuyen-dai-hoc-chinh-quy-nam-2026',
+    programNote: '14 mã ngành được xác minh từ danh sách trúng tuyển đại học chính quy 2026; chưa nhập điểm chuẩn khi chưa có bảng số theo đúng mã và phương thức.',
+  } },
+  ueh: { 2026: {
+    year: 2026,
+    programs: uehPrograms,
+    programSource: 'https://tuyensinh.ueh.edu.vn/bai-viet/thong-tin-tuyen-sinh-dai-hoc-chinh-quy-khoa-52-nam-2026/',
+    programNote: 'Mới ghi nhận 8 chương trình đào tạo mở mới. UEH công bố 82 chương trình tại TP.HCM và 15 tại Vĩnh Long; đây chưa phải danh mục đầy đủ và chưa đối chiếu mã xét tuyển.',
+  } },
+  ftu: { 2026: {
+    year: 2026,
+    programs: ftuPrograms,
+    programSource: 'https://ftu.edu.vn/ftu/99-news/dao-tao/%C4%91%C3%A0o-t%E1%BA%A1o-%C4%91%E1%BA%A1i-h%E1%BB%8Dc-h%E1%BB%87-ch%C3%ADnh-quy/6853-tru-ng-d-i-h-c-ngo-i-thuong-m-them-cac-nganh-dao-t-o-va-ap-d-ng-toan-di-n-mo-hinh-dao-t-o-g-n-v-i-phat-tri-n-ngh-nghi-p-cdim',
+    programNote: 'Mới ghi nhận 2 ngành/chương trình được trường giới thiệu; chưa có bảng đầy đủ theo trụ sở/cơ sở TP.HCM và chưa xác minh mã xét tuyển.',
+  } },
 };
 
 export const PROGRAM_IMPORT_METADATA = {
-  source: 'BrightWay_BachKhoa_HCM_DaNang_2026_CapNhat.xlsx',
+  source: 'BrightWay_UEH_FTU_VLU_PNT_BoSung_2026.xlsx',
   importedAt: '2026-10-15',
   years: [2026],
   schoolCount: Object.keys(schoolProgramDetails).length,
