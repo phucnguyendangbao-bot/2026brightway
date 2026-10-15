@@ -4739,49 +4739,19 @@ body.spa-active #spa-topbar { display: flex; }
     font-size: 12px;
   }
 
-  /* Portrait photos keep soft side gutters; official landscape photos fill
-     the frame so the campus remains crisp and immediately recognizable. */
+  /* Every campus photo fills the same carousel frame. */
   #home-view .bw-hero-carousel .slide {
-    isolation: isolate;
     background: #dde4f1;
   }
-  #home-view .bw-hero-carousel .slide::before {
-    content: "";
-    position: absolute;
-    inset: -24px;
-    z-index: -2;
-    background-image: var(--hero-photo);
-    background-size: cover;
-    background-position: center;
-    filter: blur(22px) saturate(.82);
-    transform: scale(1.08);
-    opacity: .72;
-  }
-  #home-view .bw-hero-carousel .slide::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: linear-gradient(90deg, rgba(10,18,43,.18), transparent 25%, transparent 75%, rgba(10,18,43,.18));
-  }
   #home-view .bw-hero-carousel .slide img {
-    left: 50%;
-    right: auto;
-    width: 82%;
+    left: 0;
+    right: 0;
+    width: 100%;
     max-width: none;
     object-fit: cover;
-    object-position: center;
-    transform: translateX(-50%);
-    box-shadow: 0 0 28px rgba(15, 23, 42, .26);
-  }
-  #home-view .bw-hero-carousel .slide[data-photo-layout="wide"] img {
-    left: 0;
-    width: 100%;
+    object-position: var(--hero-position, center);
     transform: none;
     box-shadow: none;
-  }
-  #home-view .bw-hero-carousel .slide[data-photo-layout="wide"]::after {
-    background: linear-gradient(180deg, transparent 56%, rgba(8, 15, 38, .22));
   }
 
   /* Compact homepage direction: clear hierarchy, fewer oversized blocks */
@@ -5041,46 +5011,46 @@ body.spa-active #spa-topbar { display: flex; }
     </div>
     <div class="bw-hero-visual">
       <div class="bw-hero-carousel" id="bwHeroCarousel" aria-roledescription="carousel" aria-label="Ảnh 10 trường đại học Việt Nam">
-        <div class="slide is-active" data-school="FPT - Cần Thơ" data-photo-layout="wide" style="--hero-photo:url('assets/images/hero/01-fpt-can-tho.jpg?v=3')">
+        <div class="slide is-active" data-school="FPT - Cần Thơ">
           <img src="assets/images/hero/01-fpt-can-tho.jpg?v=3" alt="Đại học FPT - cơ sở Cần Thơ" loading="eager" decoding="async"
                onerror="this.onerror=null;this.src='assets/images/hero/01-fpt-can-tho.jpg?v=3';">
           <div class="school-tag"><small>Campus miền Tây</small>ĐH FPT — Cần Thơ</div>
         </div>
-        <div class="slide" data-school="ĐH Cần Thơ" data-photo-layout="wide" style="--hero-photo:url('assets/images/hero/02-ctu.jpg?v=3')">
+        <div class="slide" data-school="ĐH Cần Thơ">
           <img src="assets/images/hero/02-ctu.jpg?v=3" alt="Đại học Cần Thơ" loading="lazy" decoding="async"
                onerror="this.onerror=null;this.src='assets/images/hero/01-fpt-can-tho.jpg?v=3';">
           <div class="school-tag"><small>ĐH vùng ĐBSCL</small>ĐH Cần Thơ (CTU)</div>
         </div>
-        <div class="slide" data-school="UEH - TP.HCM" data-photo-layout="wide" style="--hero-photo:url('assets/images/hero/03-ueh.jpg?v=3')">
+        <div class="slide" data-school="UEH - TP.HCM">
           <img src="assets/images/hero/03-ueh.jpg?v=3" alt="ĐH Kinh tế TP.HCM" loading="lazy" decoding="async"
                onerror="this.onerror=null;this.src='assets/images/hero/01-fpt-can-tho.jpg?v=3';">
           <div class="school-tag"><small>Kinh tế hàng đầu</small>ĐH Kinh tế TP.HCM (UEH)</div>
         </div>
-        <div class="slide" data-school="HCMUT" style="--hero-photo:url('assets/images/hero/07-hcmut.jpg?v=2')">
+        <div class="slide" data-school="HCMUT" style="--hero-position:center 22%">
           <img src="assets/images/hero/07-hcmut.jpg?v=2" alt="ĐH Bách khoa - ĐHQG TP.HCM" loading="lazy" decoding="async"
                onerror="this.onerror=null;this.src='assets/images/hero/01-fpt-can-tho.jpg?v=2';">
         </div>
-        <div class="slide" data-school="RMIT Vietnam" data-photo-layout="wide" style="--hero-photo:url('assets/images/hero/14-rmit.jpg?v=3')">
+        <div class="slide" data-school="RMIT Vietnam">
           <img src="assets/images/hero/14-rmit.jpg?v=3" alt="RMIT Vietnam - Nam Sài Gòn" loading="lazy" decoding="async"
                onerror="this.onerror=null;this.src='assets/images/hero/01-fpt-can-tho.jpg?v=3';">
         </div>
-        <div class="slide" data-school="ĐH Y Dược TP.HCM" style="--hero-photo:url('assets/images/hero/04a-ump.jpg?v=2')">
+        <div class="slide" data-school="ĐH Y Dược TP.HCM" style="--hero-position:center 75%">
           <img src="assets/images/hero/04a-ump.jpg?v=2" alt="ĐH Y Dược TP.HCM" loading="lazy" decoding="async"
                onerror="this.onerror=null;this.src='assets/images/hero/01-fpt-can-tho.jpg?v=2';">
         </div>
-        <div class="slide" data-school="ĐH Y khoa Phạm Ngọc Thạch" style="--hero-photo:url('assets/images/hero/04b-pntu.jpg?v=2')">
+        <div class="slide" data-school="ĐH Y khoa Phạm Ngọc Thạch" style="--hero-position:center 18%">
           <img src="assets/images/hero/04b-pntu.jpg?v=2" alt="ĐH Y khoa Phạm Ngọc Thạch" loading="lazy" decoding="async"
                onerror="this.onerror=null;this.src='assets/images/hero/01-fpt-can-tho.jpg?v=2';">
         </div>
-        <div class="slide" data-school="ĐH Văn Lang" data-photo-layout="wide" style="--hero-photo:url('assets/images/hero/06-vlu.jpg?v=3')">
+        <div class="slide" data-school="ĐH Văn Lang">
           <img src="assets/images/hero/06-vlu.jpg?v=3" alt="ĐH Văn Lang" loading="lazy" decoding="async"
                onerror="this.onerror=null;this.src='assets/images/hero/01-fpt-can-tho.jpg?v=3';">
         </div>
-        <div class="slide" data-school="ĐH Y Dược Cần Thơ" style="--hero-photo:url('assets/images/hero/08-ctump.jpg?v=2')">
+        <div class="slide" data-school="ĐH Y Dược Cần Thơ">
           <img src="assets/images/hero/08-ctump.jpg?v=2" alt="ĐH Y Dược Cần Thơ" loading="lazy" decoding="async"
                onerror="this.onerror=null;this.src='assets/images/hero/01-fpt-can-tho.jpg?v=2';">
         </div>
-        <div class="slide" data-school="ĐH KH Tự nhiên" data-photo-layout="wide" style="--hero-photo:url('assets/images/hero/11-hcmus.jpg?v=3')">
+        <div class="slide" data-school="ĐH KH Tự nhiên">
           <img src="assets/images/hero/11-hcmus.jpg?v=3" alt="ĐH Khoa học Tự nhiên" loading="lazy" decoding="async"
                onerror="this.onerror=null;this.src='assets/images/hero/01-fpt-can-tho.jpg?v=3';">
         </div>
