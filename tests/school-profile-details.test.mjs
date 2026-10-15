@@ -44,10 +44,10 @@ test('2024–2026 records remain year-specific and preserve each scoring scale',
 });
 
 test('spreadsheet program import adds only the supplied school-year rows', () => {
-  assert.equal(PROGRAM_IMPORT_METADATA.totalRows, 561);
-  assert.equal(PROGRAM_IMPORT_METADATA.schoolCount, 19);
+  assert.equal(PROGRAM_IMPORT_METADATA.totalRows, 614);
+  assert.equal(PROGRAM_IMPORT_METADATA.schoolCount, 22);
   assert.deepEqual(PROGRAM_IMPORT_METADATA.years, [2026]);
-  assert.equal(PROGRAM_IMPORT_METADATA.missingCodeRows, 151);
+  assert.equal(PROGRAM_IMPORT_METADATA.missingCodeRows, 176);
   assert.equal(schoolProgramDetails.ctu[2026].programs.length, 127);
   assert.equal(schoolProgramDetails.hcmus[2026].programs.length, 39);
   assert.equal(schoolProgramDetails.hcmue[2026].programs.length, 28);
@@ -67,6 +67,10 @@ test('spreadsheet program import adds only the supplied school-year rows', () =>
   assert.equal(schoolProgramDetails.pnt[2026].programs.length, 14);
   assert.equal(schoolProgramDetails.ueh[2026].programs.length, 8);
   assert.equal(schoolProgramDetails.ftu[2026].programs.length, 2);
+  assert.equal(schoolProgramDetails.ctump[2026].programs.length, 15);
+  assert.equal(schoolProgramDetails.ump[2026].programs.length, 13);
+  assert.equal(schoolProgramDetails.rmit[2026].programs.length, 25);
+  assert.equal(schoolProgramDetails.ussh, undefined);
   assert.equal(detailsForSchool('hcmus', 2026).scoreSource, schoolProfileDetails.hcmus.scoreSource);
   assert.equal(detailsForSchool('hcmus', 2026).programs.length, 39);
   assert.equal(detailsForSchool('uit', 2026).programs.length, 15);
@@ -84,6 +88,10 @@ test('spreadsheet program import adds only the supplied school-year rows', () =>
   assert.ok(detailsForSchool('ueh', 2026).programs.every(program => !program.code));
   assert.match(detailsForSchool('ueh', 2026).programNote, /chưa phải danh mục đầy đủ/);
   assert.ok(detailsForSchool('ftu', 2026).programs.every(program => !program.code));
+  assert.equal(detailsForSchool('ctump', 2026).programs.find(program => program.code === '7720101E').name, 'Y khoa (tiếng Anh)');
+  assert.equal(detailsForSchool('ump', 2026).programs.find(program => program.code === '772030103').name, 'Điều dưỡng chuyên ngành Gây mê hồi sức');
+  assert.ok(detailsForSchool('rmit', 2026).programs.every(program => !program.code));
+  assert.match(detailsForSchool('rmit', 2026).programNote, /không dùng mã xét tuyển ngành Việt Nam/);
   assert.equal(detailsForSchool('ctu', 2024).programs, undefined);
   assert.equal(detailsForSchool('ctu', 2025), null);
   assert.equal(detailsForSchool('hcmue', 2025), null);

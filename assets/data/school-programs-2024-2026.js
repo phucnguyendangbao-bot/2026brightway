@@ -304,6 +304,30 @@ const ftuPrograms = toPrograms([
   ['', 'Quản trị nhân lực'], ['', 'Thương mại số thông minh và Đổi mới kinh doanh'],
 ], 'Ngành/chương trình được trường giới thiệu');
 
+const ctumpPrograms = toPrograms([
+  ['7720101','Y khoa'], ['7720101E','Y khoa (tiếng Anh)'], ['7720110','Y học dự phòng'], ['7720115','Y học cổ truyền'],
+  ['7720201','Dược học'], ['7720301','Điều dưỡng'], ['7720302','Hộ sinh'], ['7720401','Dinh dưỡng'],
+  ['7720501','Răng hàm mặt'], ['7720601','Kỹ thuật Xét nghiệm y học'], ['7720602','Kỹ thuật Hình ảnh y học'], ['7720603','Kỹ thuật Phục hồi chức năng'],
+  ['7720701','Y tế công cộng'], ['7520212','Kỹ thuật Y sinh'], ['7310401','Tâm lý học'],
+], 'Ngành / chương trình');
+
+const umpPrograms = toPrograms([
+  ['7310401','Tâm lý học'], ['7720101','Y khoa'], ['7720110','Y học dự phòng'], ['7720115','Y học cổ truyền'],
+  ['7720201','Dược học'], ['7720202','Công nghệ dược phẩm'], ['7720203','Hóa dược'], ['7720301','Điều dưỡng'],
+  ['772030103','Điều dưỡng chuyên ngành Gây mê hồi sức'], ['7720302','Hộ sinh'], ['7720401','Dinh dưỡng'], ['7720501','Răng - Hàm - Mặt'],
+  ['7720502','Kỹ thuật phục hình răng'],
+], 'Ngành / chương trình');
+
+const rmitPrograms = toPrograms([
+  ['', 'Kinh doanh'], ['', 'Kế toán'], ['', 'Kinh tế và Tài chính'], ['', 'Quản trị Nguồn nhân lực'],
+  ['', 'Kinh doanh toàn cầu'], ['', 'Quản trị'], ['', 'Quản lý Chuỗi cung ứng và Logistics'], ['', 'Kinh doanh Kỹ thuật số'],
+  ['', 'Quản trị du lịch và khách sạn'], ['', 'Digital Marketing'], ['', 'Thiết kế (Truyền thông số)'], ['', 'Thiết kế ứng dụng sáng tạo'],
+  ['', 'Sản xuất phim kỹ thuật số'], ['', 'Thiết kế game'], ['', 'Truyền thông chuyên nghiệp'], ['', 'Quản trị doanh nghiệp thời trang'],
+  ['', 'Tâm lý học'], ['', 'Hàng không'], ['', 'Công nghệ thông tin'], ['', 'Kỹ thuật phần mềm'],
+  ['', 'Kỹ thuật điện tử và hệ thống máy tính'], ['', 'Kỹ thuật robot và cơ điện tử'], ['', 'Công nghệ Thực phẩm và Dinh dưỡng'],
+  ['', 'Quốc tế học'], ['', 'Khoa học máy tính'],
+], 'Chương trình / lĩnh vực học');
+
 export const schoolProgramDetails = {
   ctu: { 2026: {
     year: 2026,
@@ -438,10 +462,28 @@ export const schoolProgramDetails = {
     programSource: 'https://ftu.edu.vn/ftu/99-news/dao-tao/%C4%91%C3%A0o-t%E1%BA%A1o-%C4%91%E1%BA%A1i-h%E1%BB%8Dc-h%E1%BB%87-ch%C3%ADnh-quy/6853-tru-ng-d-i-h-c-ngo-i-thuong-m-them-cac-nganh-dao-t-o-va-ap-d-ng-toan-di-n-mo-hinh-dao-t-o-g-n-v-i-phat-tri-n-ngh-nghi-p-cdim',
     programNote: 'Mới ghi nhận 2 ngành/chương trình được trường giới thiệu; chưa có bảng đầy đủ theo trụ sở/cơ sở TP.HCM và chưa xác minh mã xét tuyển.',
   } },
+  ctump: { 2026: {
+    year: 2026,
+    programs: ctumpPrograms,
+    programSource: 'https://tuyensinh.ctump.edu.vn/thong-bao-tuyen-sinh-dai-hoc-nam-2026-030350.html',
+    programNote: '15 ngành/chương trình tuyển sinh chính quy năm 2026, gồm chương trình Y khoa tiếng Anh riêng; không bao gồm hệ liên thông và chưa nhập điểm chuẩn.',
+  } },
+  ump: { 2026: {
+    year: 2026,
+    programs: umpPrograms,
+    programSource: 'https://ump.edu.vn/uploads/ckeditor/files/Truong/DaoTaoDaiHoc/TuyenSinh/2026/2373_27052026_Capnhat_Thongtintuyensinh.pdf',
+    programNote: '13 mục được trích từ PDF thông tin tuyển sinh cập nhật 2026; đây chưa phải danh mục đầy đủ của trường và chưa nhập điểm chuẩn.',
+  } },
+  rmit: { 2026: {
+    year: 2026,
+    programs: rmitPrograms,
+    programSource: 'https://www.rmit.edu.vn/vi/hoc-tap-tai-rmit/chuong-trinh-cu-nhan',
+    programNote: '25 chương trình/lĩnh vực trên trang cử nhân hiện hành; cần xác nhận chương trình mở tại từng cơ sở và kỳ nhập học 2026. RMIT không dùng mã xét tuyển ngành Việt Nam hoặc điểm chuẩn THPT chung.',
+  } },
 };
 
 export const PROGRAM_IMPORT_METADATA = {
-  source: 'BrightWay_UEH_FTU_VLU_PNT_BoSung_2026.xlsx',
+  source: 'BrightWay_CTUMP_UMP_USSH_RMIT_2026_CapNhat.xlsx',
   importedAt: '2026-10-15',
   years: [2026],
   schoolCount: Object.keys(schoolProgramDetails).length,
