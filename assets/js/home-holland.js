@@ -1,42 +1,51 @@
-/* A quick route, not another quiz. Does not mark an imported result as tested. */
+/* Three ordered choices form a Holland code. This is not another quiz. */
 (function () {
   'use strict';
-  const toggle = document.getElementById('homeImportToggle');
-  const panel = document.getElementById('homeImportPanel');
-  const input = document.getElementById('homeHollandCode');
-  const form = document.getElementById('homeImportForm');
-  if (!toggle || !panel || !form || !input) return;
-  const code = window.BWFlow?.holland();
-  if (code) {
-    input.value = code;
-    const saved = document.getElementById('homeHollandSaved');
-    saved.hidden = false;
-    saved.textContent = `Mã đã lưu trên thiết bị: ${code} · `;
-    const link = document.createElement('a');
-    link.href = 'careers-holland.html?holland=' + encodeURIComponent(code);
-    link.textContent = 'Xem nghề theo mã này →';
-    saved.appendChild(link);
+  const buttons = [...document.querySelectorAll('[data-holland-code]')];
+  const status = document.getElementById('homeHollandSelection');
+  const submit = document.getElementById('homeHollandSubmit');
+  const clear = document.getElementById('homeHollandClear');
+  if (buttons.length !== 6 || !status || !submit || !clear) return;
+
+  const savedCode = window.BWFlow?.holland() || '';
+  const selected = /^[RIASEC]{3}$/.test(savedCode) && new Set(savedCode).size === 3 ? savedCode.split('') : [];
+
+  function render() {
+    buttons.forEach(button => {
+      const rank = selected.indexOf(button.dataset.hollandCode);
+      const active = rank !== -1;
+      button.setAttribute('aria-pressed', String(active));
+      button.querySelector('small').textContent = active ? String(rank + 1) : '';
+    });
+    const complete = selected.length === 3;
+    const code = selected.join('');
+    status.textContent = selected.length
+      ? `Đã chọn: ${selected.join(' → ')} (${selected.length}/3)${complete ? ` · Mã ${code}` : ''}`
+      : 'Chưa chọn nhóm nào · cần chọn 3 nhóm';
+    submit.disabled = !complete;
+    clear.hidden = selected.length === 0;
   }
-  toggle.addEventListener('click', event => {
-    event.preventDefault();
-    panel.hidden = !panel.hidden;
-    toggle.setAttribute('aria-expanded', String(!panel.hidden));
-    if (!panel.hidden) input.focus();
+
+  buttons.forEach(button => button.addEventListener('click', () => {
+    const code = button.dataset.hollandCode;
+    const index = selected.indexOf(code);
+    if (index !== -1) selected.splice(index, 1);
+    else if (selected.length < 3) selected.push(code);
+    render();
+  }));
+
+  clear.addEventListener('click', () => {
+    selected.length = 0;
+    render();
+    buttons[0].focus();
   });
-  form.addEventListener('submit', event => {
-    event.preventDefault();
-    const value = input.value.trim().toUpperCase();
-    const error = document.getElementById('homeHollandError');
-    if (!/^[RIASEC]{3}$/.test(value) || new Set(value).size !== 3) {
-      error.textContent = 'Mã cần có đúng 3 chữ khác nhau trong R, I, A, S, E, C. Ví dụ: ISA.';
-      error.hidden = false;
-      input.setAttribute('aria-invalid', 'true');
-      input.focus();
-      return;
-    }
-    input.removeAttribute('aria-invalid');
-    error.hidden = true;
-    try { localStorage.setItem('studentHollandImportedV1', JSON.stringify({ code: value, savedAt: Date.now() })); } catch { /* Navigation works even without storage. */ }
-    location.assign('careers-holland.html?holland=' + encodeURIComponent(value));
+
+  submit.addEventListener('click', () => {
+    if (selected.length !== 3) return;
+    const code = selected.join('');
+    try { localStorage.setItem('studentHollandImportedV1', JSON.stringify({ code, savedAt: Date.now() })); } catch { /* Navigation still works without storage. */ }
+    location.assign('careers-holland.html?holland=' + encodeURIComponent(code));
   });
+
+  render();
 })();

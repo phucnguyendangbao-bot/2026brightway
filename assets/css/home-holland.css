@@ -15,10 +15,17 @@
 .home-holland-card h2 img { width: 36px; height: 36px; object-fit: contain; }
 .home-holland-card > p { margin: 12px 0 20px; font-size: 14px; line-height: 1.7; }
 .home-holland-groups { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 10px; margin-bottom: 20px; }
-.home-holland-groups a { display: flex; flex-direction: column; gap: 4px; padding: 12px 5px; border-radius: 12px; border: 1px solid #e1daff; background: #fff; color: #3a3a6e; text-decoration: none; font-size: 12px; }
+.home-holland-groups button { position:relative; display:flex; flex-direction:column; align-items:center; gap:4px; padding:12px 5px; border-radius:12px; border:1px solid #e1daff; background:#fff; color:#3a3a6e; font:inherit; font-size:12px; cursor:pointer; transition:.18s ease; }
 .home-holland-groups strong { color: #7453d6; font-size: 21px; }
-.home-holland-groups a:hover { background: #f8f5ff; border-color: #9c83ec; }
+.home-holland-groups button:hover { background:#f8f5ff; border-color:#9c83ec; transform:translateY(-2px); }
+.home-holland-groups button[aria-pressed="true"] { color:#fff; border-color:transparent; background:var(--bw-brand-gradient); box-shadow:0 8px 20px rgba(107,96,255,.24); }
+.home-holland-groups button[aria-pressed="true"] strong { color:#fff; }
+.home-holland-groups small { position:absolute; top:7px; right:8px; display:none; width:20px; height:20px; place-items:center; border-radius:50%; background:#fff; color:var(--bw-brand); font-size:11px; font-weight:800; }
+.home-holland-groups button[aria-pressed="true"] small { display:grid; }
+.home-holland-selection { margin:-7px 0 18px !important; color:#59409a; font-size:13px !important; font-weight:700; }
 .home-holland-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
+.home-holland-actions button:disabled { cursor:not-allowed; opacity:.48; box-shadow:none; }
+.home-holland-clear { margin-top:12px; border:0; background:transparent; color:#653bbe; font:inherit; font-size:13px; font-weight:700; text-decoration:underline; cursor:pointer; }
 .home-holland-import { text-align: left; margin-top: 22px; border-top: 1px solid #dfd7ff; padding-top: 18px; }
 .home-holland-import label { display: block; margin-bottom: 10px; font-size: 13px; font-weight: 600; }
 .home-holland-input-row { display: flex; gap: 10px; }
