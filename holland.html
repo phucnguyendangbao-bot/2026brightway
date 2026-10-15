@@ -49,6 +49,22 @@
 
 <section class="import-section" id="import-result" aria-label="Nhập kết quả Holland đã có">
   <div class="container">
+    <div class="holland-start-card">
+      <h2><img src="assets/images/icons/tool-holland.png" alt="" aria-hidden="true">Bạn thuộc nhóm Holland nào?</h2>
+      <p>Chọn nhóm để khám phá nghề, hoặc làm trắc nghiệm RIASEC 42 câu, khoảng 7 phút. Holland gợi ý sở thích nghề nghiệp, không quyết định năng lực hay một nghề duy nhất.</p>
+      <div class="holland-start-groups" aria-label="Tra cứu nghề theo nhóm Holland">
+        <a href="careers-holland.html?holland=R"><strong>R</strong><span>Thực tế</span></a>
+        <a href="careers-holland.html?holland=I"><strong>I</strong><span>Nghiên cứu</span></a>
+        <a href="careers-holland.html?holland=A"><strong>A</strong><span>Nghệ thuật</span></a>
+        <a href="careers-holland.html?holland=S"><strong>S</strong><span>Xã hội</span></a>
+        <a href="careers-holland.html?holland=E"><strong>E</strong><span>Lãnh đạo</span></a>
+        <a href="careers-holland.html?holland=C"><strong>C</strong><span>Quy củ</span></a>
+      </div>
+      <div class="holland-start-actions">
+        <a href="#quizSection" class="quiz-btn quiz-btn-primary">Làm trắc nghiệm Holland →</a>
+        <button type="button" class="quiz-btn quiz-btn-secondary" onclick="document.getElementById('importResult').open=true; document.getElementById('importCode').focus();">Tôi đã làm test Holland rồi</button>
+      </div>
+    </div>
     <details class="import-card" id="importResult">
       <summary>✅ Tôi đã làm test Holland rồi <span>Nhập mã kết quả để xem gợi ý nghề</span></summary>
       <form id="importForm" class="import-form" novalidate>

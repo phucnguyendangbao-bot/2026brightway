@@ -23,7 +23,9 @@
     <a href="index.html" class="p2-nav-logo">BrightWay Career</a>
     <div class="p2-search-bar">
       <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input type="text" id="searchInput" placeholder="Tìm trường..." data-action="filter-schools" />
+      <label class="sr-only" for="searchInput">Tìm trường hoặc thành phố</label>
+      <input type="search" id="searchInput" placeholder="Tìm trường hoặc thành phố..." autocomplete="off" data-action="filter-schools" />
+      <button type="button" class="p2-search-clear" id="searchClear" aria-label="Xóa tìm kiếm" title="Xóa tìm kiếm" hidden>×</button>
     </div>
     <a href="score-calculator.html" class="p2-back">Tính điểm</a>
     <a href="index.html" class="p2-back">← Trang chủ</a>

@@ -344,6 +344,14 @@ function filterSchools(val) {
       const haystack = normalizeText(s.name + ' ' + s.short + ' ' + s.city + ' ' + (s.aliases || []).join(' '));
       return haystack.includes(searchTerm);
     });
+    const clearButton = document.getElementById('searchClear');
+    if (clearButton) clearButton.hidden = !searchTerm;
+    const status = document.getElementById('schoolCatalogStatus');
+    if (status && SCHOOLS.length) {
+      status.textContent = searchTerm
+        ? `Đang hiển thị ${filtered.length}/${SCHOOLS.length} trường phù hợp với “${val.trim()}”.`
+        : `${SCHOOLS.length} hồ sơ trường đại học · Nhập tên trường hoặc thành phố để lọc nhanh.`;
+    }
     renderSidebar(filtered);
     renderSchools(filtered);
     try {
@@ -542,6 +550,14 @@ function attachPage2Listeners() {
       toggleAccordion(target);
       return;
     }
+  });
+
+  document.getElementById('searchClear')?.addEventListener('click', () => {
+    const input = document.getElementById('searchInput');
+    if (!input) return;
+    input.value = '';
+    input.focus();
+    filterSchools('');
   });
 }
 
