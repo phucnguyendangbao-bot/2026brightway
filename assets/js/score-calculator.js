@@ -117,9 +117,7 @@ function calculate() {
   const hasTranscript = transcriptMissing.length === 0;
   const startedExam = missing.length < selected.length;
   const startedTranscript = transcriptMissing.length < selected.length;
-  if (startedTranscript && !document.getElementById('transcriptConfirmed').checked) {
-    errors.push('Hãy xác nhận điểm học bạ đã tổng hợp từ lớp 10–12 theo yêu cầu của trường.');
-  }
+  const transcriptConfirmed = document.getElementById('transcriptConfirmed').checked;
   // Additional exam scores may establish the alternate Math + Literature + another exam route.
   for (const [key, [id]] of Object.entries(SUBJECTS)) {
     if (selected.includes(key)) continue;
@@ -143,10 +141,14 @@ function calculate() {
     return;
   }
   clearError();
+  const warning = document.getElementById('calcWarning');
+  warning.hidden = !(startedTranscript && !transcriptConfirmed);
+  warning.textContent = warning.hidden ? '' : 'Kết quả học bạ bên dưới chỉ là tổng điểm gốc. Bạn chưa xác nhận cách tổng hợp điểm lớp 10–12, nên không dùng tổng này để kết luận đủ điều kiện xét tuyển.';
   const raw = hasExam ? selected.reduce((sum, key) => sum + values[key], 0) : null;
   const transcriptRaw = hasTranscript ? selected.reduce((sum, key) => sum + transcriptValues[key], 0) : null;
   document.getElementById('sumCombo').textContent = raw === null ? '—' : raw.toFixed(2);
   document.getElementById('sumTranscript').textContent = transcriptRaw === null ? '—' : transcriptRaw.toFixed(2);
+  document.getElementById('transcriptSummary').classList.toggle('summary-item-warning', transcriptRaw !== null && !transcriptConfirmed);
   for (const exam of EXAMS) {
     const element = document.getElementById(exam.output);
     element.textContent = exams[exam.input] === null ? '—' : String(exams[exam.input]);
@@ -155,7 +157,7 @@ function calculate() {
   document.getElementById('resultSummary').hidden = false;
   document.getElementById('resultSchools').hidden = false;
   document.getElementById('resultEmpty').hidden = true;
-  renderSchools({ combo, keys: selected, raw, transcriptRaw, values, transcriptValues, grade12: grade12.value });
+  renderSchools({ combo, keys: selected, raw, transcriptRaw, transcriptConfirmed, values, transcriptValues, grade12: grade12.value });
   const host = document.getElementById('scoreNextStep');
   host.hidden = false;
   window.BWFlow?.nextStep(host, 'Lập kế hoạch cho hồ sơ của bạn', 'Đối chiếu đề án trường, ghi lại các mốc tuyển sinh và chuẩn bị tài liệu cần thiết.', [['Lịch tuyển sinh', 'calendar.html'], ['Tài liệu & bài viết', 'resources.html'], ['Hồ sơ của tôi', 'profile.html']]);
@@ -239,6 +241,7 @@ function showError(message) {
   document.getElementById('resultSchools').hidden = true;
   document.getElementById('scoreNextStep').hidden = true;
   const error = document.getElementById('calcError');
+  document.getElementById('calcWarning').hidden = true;
   error.textContent = message;
   error.hidden = false;
   document.getElementById('resultEmpty').hidden = false;
@@ -248,6 +251,13 @@ function clearError() {
   const error = document.getElementById('calcError');
   error.textContent = '';
   error.hidden = true;
+}
+
+function clearWarning() {
+  const warning = document.getElementById('calcWarning');
+  warning.textContent = '';
+  warning.hidden = true;
+  document.getElementById('transcriptSummary').classList.remove('summary-item-warning');
 }
 
 function resetAll() {
@@ -265,6 +275,7 @@ function resetAll() {
   document.getElementById('resultSchools').hidden = true;
   document.getElementById('resultEmpty').hidden = false;
   clearError();
+  clearWarning();
 }
 
 function updateComboUI() {
@@ -300,6 +311,7 @@ const scoreInputs = [...document.querySelectorAll('.score-input input, .dgnl-inp
 const draft = window.BWFlow?.read().scores;
 if (draft) {
   if (COMBO_SUBJECTS[draft.combo]) document.getElementById('comboSelect').value = draft.combo;
+  document.getElementById('transcriptConfirmed').checked = draft.transcriptConfirmed === true;
   scoreInputs.forEach(input => {
     input.value = typeof draft.values?.[input.id] === 'string' ? draft.values[input.id] : '';
     input.classList.toggle('has-value', input.value !== '');
@@ -307,12 +319,13 @@ if (draft) {
   updateComboUI();
 }
 function saveScoreDraft() {
-  window.BWFlow?.save({ scores: { combo: document.getElementById('comboSelect').value, values: Object.fromEntries(scoreInputs.map(input => [input.id, input.value])) } });
+  window.BWFlow?.save({ scores: { combo: document.getElementById('comboSelect').value, transcriptConfirmed: document.getElementById('transcriptConfirmed').checked, values: Object.fromEntries(scoreInputs.map(input => [input.id, input.value])) } });
   document.getElementById('resultSummary').hidden = true;
   document.getElementById('resultSchools').hidden = true;
   document.getElementById('resultEmpty').hidden = false;
   scoreNext.hidden = true;
   clearError();
+  clearWarning();
 }
 scoreInputs.forEach(input => input.addEventListener('input', saveScoreDraft));
 document.getElementById('comboSelect').addEventListener('change', saveScoreDraft);

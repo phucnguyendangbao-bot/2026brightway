@@ -443,6 +443,8 @@ body {
 
 .career-section { margin-bottom: 18px; }
 .career-section:last-child { margin-bottom: 0; }
+.career-market-grid { grid-template-columns: 1fr; }
+.career-market-empty { max-width: none; }
 .career-label {
   font-weight: 800;
   font-size: 14px;

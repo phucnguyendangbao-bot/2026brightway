@@ -191,16 +191,11 @@
           <div class="career-label">🎓 Học vấn & Con đường học tập</div>
           <div class="career-body">${escapeHtml(j.edu)}</div>
         </div>
-        <div class="career-info-grid">
-          <div class="career-info-item">
-            <div class="lbl">💰 Mức lương tham khảo</div>
-            <div class="val career-salary">Chưa có dữ liệu xác minh</div>
-            <p>Nguồn, năm, khoảng lương (VNĐ/tháng) và mức kinh nghiệm chưa được xác minh. Không coi đây là thu nhập bảo đảm.</p>
-          </div>
-          <div class="career-info-item">
-            <div class="lbl">📈 Triển vọng nghề nghiệp</div>
-            <div class="val">${escapeHtml(j.outlook)}</div>
-            <p>Mô tả định hướng chưa có nguồn thị trường lao động và năm dữ liệu xác minh.</p>
+        <div class="career-info-grid career-market-grid">
+          <div class="career-info-item career-market-empty" role="note">
+            <div class="lbl">📊 Dữ liệu thị trường lao động</div>
+            <div class="val career-salary">Chưa có dữ liệu đã đối chiếu</div>
+            <p>BrightWay chưa hiển thị mức lương hoặc nhận định triển vọng cho nghề này vì dữ liệu chưa có đủ nguồn, năm khảo sát, đơn vị tiền và mức kinh nghiệm. Hãy đối chiếu thêm báo cáo tuyển dụng hiện hành trước khi quyết định.</p>
           </div>
         </div>
       </div>

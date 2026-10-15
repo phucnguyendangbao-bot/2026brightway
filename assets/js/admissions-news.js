@@ -60,8 +60,11 @@ async function init() {
     const matchingSchools = filters.school === 'all' ? schools : schools.filter(school => school.id === filters.school);
     const withNews = new Set(selectNews(rows, { ...filters, school:'all', query:'' }).map(item => item.schoolId));
     const missing = matchingSchools.filter(school => !withNews.has(school.id));
+    const unverified = $('newsUnverified');
+    unverified.hidden = missing.length === 0;
+    if (!missing.length) unverified.open = false;
     $('unverifiedCount').textContent = `(${missing.length})`;
-    $('unverifiedSchools').innerHTML = missing.length ? missing.map(school => `<a href="page2.html#${encodeURIComponent(school.id)}"><span>${escape(school.name)}</span><small>Chưa có thông báo được xác minh</small></a>`).join('') : '<p>Tất cả trường trong bộ lọc đều có thông báo đã đối chiếu.</p>';
+    $('unverifiedSchools').innerHTML = missing.map(school => `<a href="page2.html#${encodeURIComponent(school.id)}"><span>${escape(school.name)}</span><small>Chưa có thông báo được xác minh</small></a>`).join('');
   }
 
   for (const id of ['newsSchool','newsYear','newsType']) $(id).addEventListener('change', render);

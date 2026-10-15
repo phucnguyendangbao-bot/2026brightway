@@ -312,6 +312,31 @@
   line-height: 1.5;
   margin: 0;
 }
+.calc-warning {
+  color: #854d0e;
+  background: #fffbeb;
+  border: 1px solid #facc15;
+  border-radius: 12px;
+  padding: 12px 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+.transcript-confirm {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border: 1px solid #ddd9ff;
+  border-radius: 10px;
+  background: #f8f7ff;
+  color: #4b4f72;
+  font-size: .73rem;
+  font-weight: 650;
+  line-height: 1.45;
+}
+.transcript-confirm input { flex: none; margin-top: 2px; accent-color: #6554d9; }
+.summary-item-warning { border-color: #facc15; background: #fffbeb; }
 .school-outcome {
   color: #28285d;
   line-height: 1.55;
