@@ -209,6 +209,22 @@ const dongaPrograms = toPrograms([
   ['113', 'Quản trị nhân lực'],
 ], 'Ngành / chương trình theo trang tuyển sinh');
 
+const huafPrograms = toPrograms([
+  ['7340116', 'Bất động sản'], ['7510201', 'Công nghệ kỹ thuật cơ khí'], ['7520114', 'Kỹ thuật cơ – điện tử'],
+  ['7540101', 'Công nghệ thực phẩm'], ['7540106', 'Đảm bảo chất lượng và an toàn thực phẩm'],
+  ['7580210', 'Kỹ thuật cơ sở hạ tầng'], ['7620102', 'Khuyến nông'], ['7620105', 'Chăn nuôi'],
+  ['7620110', 'Khoa học cây trồng'], ['7620112', 'Bảo vệ thực vật'], ['7620116', 'Phát triển nông thôn'],
+  ['7620118', 'Nông nghiệp công nghệ cao'], ['7620210', 'Lâm nghiệp'], ['7620211', 'Quản lý tài nguyên rừng'],
+  ['7620301', 'Nuôi trồng thủy sản'], ['7620302', 'Bệnh học thủy sản'], ['7620305', 'Quản lý thủy sản'],
+  ['7640101', 'Thú y'], ['7850103', 'Quản lý đất đai'],
+], 'Ngành');
+
+const vkuPrograms = toPrograms([
+  ['', 'Công nghệ Game'], ['', 'Công nghệ Thông tin (Cử nhân)'], ['', 'Công nghệ Thông tin (Kỹ sư)'],
+  ['', 'Giải trí và truyền thông số'], ['', 'Quản trị dịch vụ du lịch & lữ hành số'],
+  ['', 'Quản trị dự án Công nghệ thông tin'],
+], 'Chương trình/chuyên ngành');
+
 export const schoolProgramDetails = {
   ctu: { 2026: {
     year: 2026,
@@ -293,10 +309,22 @@ export const schoolProgramDetails = {
     programSource: 'https://tuyensinhdonga.edu.vn/',
     programNote: '40 ngành từ trang tuyển sinh 2026 của trường.',
   } },
+  huaf: { 2026: {
+    year: 2026,
+    programs: huafPrograms,
+    programSource: 'https://tuyensinh.huaf.edu.vn/thong-bao-dang-ky-xet-tuyen-dai-hoc-he-chinh-quy-nam-2026/',
+    programNote: '19 ngành trong thông báo tuyển sinh chính thức năm 2026.',
+  } },
+  vku: { 2026: {
+    year: 2026,
+    programs: vkuPrograms,
+    programSource: 'https://tuyensinh.vku.udn.vn/nganh',
+    programNote: 'Đã xác minh 6 tên trong danh sách 22 ngành/chuyên ngành trên cổng tuyển sinh; nguồn nhập chưa có mã xét tuyển và chưa phải danh mục đầy đủ.',
+  } },
 };
 
 export const PROGRAM_IMPORT_METADATA = {
-  source: 'BrightWay_Bo_sung_theo_UIT_NhaTrang_2026.xlsx',
+  source: 'BrightWay_Tiep_tuc_Nganh_2026_HUAF_VKU.xlsx',
   importedAt: '2026-10-15',
   years: [2026],
   schoolCount: Object.keys(schoolProgramDetails).length,
