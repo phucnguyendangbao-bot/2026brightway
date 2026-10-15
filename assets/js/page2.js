@@ -4,6 +4,9 @@ import { detailsForSchool } from '../data/school-profile-details.js';
 import { historyForSchool } from '../data/school-admissions-history.js';
 
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[char]);
+const formatScore = value => Number.isFinite(value)
+  ? new Intl.NumberFormat('vi-VN', { maximumFractionDigits: 2 }).format(value)
+  : '';
 const officialLink = (url, label, className = '') => {
   if (!url || !/^https:\/\//i.test(url)) return '';
   return `<a class="${className}" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)} ↗</a>`;
@@ -106,10 +109,11 @@ function renderPrograms(school, details) {
   </div>`;
   const hasScores = details.programs.some(program => Number.isFinite(program.score));
   const hasTracks = details.programs.some(program => program.track);
+  const hasCombinations = details.programs.some(program => program.combination);
   return `<p class="school-dialog-lead"><strong>${details.programs.length} ngành/chương trình</strong> trong dữ liệu tuyển sinh ${details.year}.${hasScores ? ' Điểm chuẩn cùng năm nằm ở cột cuối.' : ''}</p>
     ${details.programNote ? `<p class="school-program-note">${escapeHtml(details.programNote)}</p>` : ''}
-    <div class="school-program-table-wrap"><table class="school-program-table"><thead><tr><th>Mã xét tuyển</th><th>Ngành / chương trình</th>${hasTracks ? '<th>Phân loại</th>' : ''}${hasScores ? `<th>Điểm chuẩn ${details.year}</th>` : ''}</tr></thead><tbody>
-    ${details.programs.map(program => `<tr><td>${program.code ? escapeHtml(program.code) : '<span class="school-program-code-missing">Chưa công bố</span>'}</td><td>${escapeHtml(program.name)}</td>${hasTracks ? `<td>${escapeHtml(program.track || '')}</td>` : ''}${hasScores ? `<td>${Number.isFinite(program.score) ? `<strong>${escapeHtml(program.score)}</strong>` : ''}</td>` : ''}</tr>`).join('')}
+    <div class="school-program-table-wrap"><table class="school-program-table"><thead><tr><th>Mã xét tuyển</th><th>Ngành / chương trình</th>${hasTracks ? '<th>Phân loại</th>' : ''}${hasCombinations ? '<th>Tổ hợp trích</th>' : ''}${hasScores ? `<th>Điểm chuẩn ${details.year}</th>` : ''}</tr></thead><tbody>
+    ${details.programs.map(program => `<tr><td>${program.code ? escapeHtml(program.code) : '<span class="school-program-code-missing">Chưa công bố</span>'}</td><td>${escapeHtml(program.name)}</td>${hasTracks ? `<td>${escapeHtml(program.track || '')}</td>` : ''}${hasCombinations ? `<td>${escapeHtml(program.combination || '')}</td>` : ''}${hasScores ? `<td>${Number.isFinite(program.score) ? `<strong>${escapeHtml(formatScore(program.score))}</strong>` : ''}</td>` : ''}</tr>`).join('')}
     </tbody></table></div>
     ${details.scoreMethod ? `<p class="school-dialog-footnote">${escapeHtml(details.scoreMethod)}. Chọn đúng cơ sở và chương trình khi đăng ký.</p>` : ''}
     ${officialLink(details.programSource, details.programSourceLabel || 'Danh sách ngành trên trang trường', 'school-dialog-link')}
@@ -117,9 +121,15 @@ function renderPrograms(school, details) {
 }
 
 function renderScores(school, details) {
-  if (details?.programs?.some(program => Number.isFinite(program.score))) return `<div class="school-score-summary"><span>Điểm chuẩn ${details.year}</span><strong>18 – 21</strong><small>${escapeHtml(details.scoreMethod)}</small></div>
-    ${renderPrograms(school, details)}
-    ${officialLink(details.scoreSource, 'Thông báo điểm chuẩn gốc', 'school-dialog-link')}`;
+  const programScores = details?.programs?.filter(program => Number.isFinite(program.score)).map(program => program.score) || [];
+  if (programScores.length) {
+    const minimum = Math.min(...programScores);
+    const maximum = Math.max(...programScores);
+    const scoreRange = minimum === maximum ? formatScore(minimum) : `${formatScore(minimum)} – ${formatScore(maximum)}`;
+    return `<div class="school-score-summary"><span>Điểm chuẩn ${details.year}</span><strong>${escapeHtml(scoreRange)}</strong><small>${escapeHtml(details.scoreMethod)}</small></div>
+      ${renderPrograms(school, details)}
+      ${details.scoreSource === details.programSource ? '' : officialLink(details.scoreSource, 'Thông báo điểm chuẩn gốc', 'school-dialog-link')}`;
+  }
   if (details?.score) return `<div class="school-score-summary"><span>Điểm chuẩn ${activeYear}</span><strong>${escapeHtml(details.score)}</strong><small>${escapeHtml(details.scoreMethod)}</small></div>
     ${details.scoreNote ? `<p class="school-dialog-footnote">${escapeHtml(details.scoreNote)}</p>` : ''}
     ${officialLink(details.scoreSource, 'Thông báo điểm chuẩn gốc', 'school-dialog-link')}`;
