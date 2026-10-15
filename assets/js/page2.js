@@ -110,10 +110,11 @@ function renderPrograms(school, details) {
   const hasScores = details.programs.some(program => Number.isFinite(program.score));
   const hasTracks = details.programs.some(program => program.track);
   const hasCombinations = details.programs.some(program => program.combination);
+  const hasQuotas = details.programs.some(program => Number.isFinite(program.quota));
   return `<p class="school-dialog-lead"><strong>${details.programs.length} ngành/chương trình</strong> trong dữ liệu tuyển sinh ${details.year}.${hasScores ? ' Điểm chuẩn cùng năm nằm ở cột cuối.' : ''}</p>
     ${details.programNote ? `<p class="school-program-note">${escapeHtml(details.programNote)}</p>` : ''}
-    <div class="school-program-table-wrap"><table class="school-program-table"><thead><tr><th>Mã xét tuyển</th><th>Ngành / chương trình</th>${hasTracks ? '<th>Phân loại</th>' : ''}${hasCombinations ? '<th>Tổ hợp trích</th>' : ''}${hasScores ? `<th>Điểm chuẩn ${details.year}</th>` : ''}</tr></thead><tbody>
-    ${details.programs.map(program => `<tr><td>${program.code ? escapeHtml(program.code) : '<span class="school-program-code-missing">Chưa công bố</span>'}</td><td>${escapeHtml(program.name)}</td>${hasTracks ? `<td>${escapeHtml(program.track || '')}</td>` : ''}${hasCombinations ? `<td>${escapeHtml(program.combination || '')}</td>` : ''}${hasScores ? `<td>${Number.isFinite(program.score) ? `<strong>${escapeHtml(formatScore(program.score))}</strong>` : ''}</td>` : ''}</tr>`).join('')}
+    <div class="school-program-table-wrap"><table class="school-program-table"><thead><tr><th>Mã xét tuyển</th><th>Ngành / chương trình</th>${hasTracks ? '<th>Phân loại</th>' : ''}${hasQuotas ? '<th>Chỉ tiêu dự kiến</th>' : ''}${hasCombinations ? '<th>Tổ hợp trích</th>' : ''}${hasScores ? `<th>Điểm chuẩn ${details.year}</th>` : ''}</tr></thead><tbody>
+    ${details.programs.map(program => `<tr><td>${program.code ? escapeHtml(program.code) : '<span class="school-program-code-missing">Chưa công bố</span>'}</td><td>${escapeHtml(program.name)}</td>${hasTracks ? `<td>${escapeHtml(program.track || '')}</td>` : ''}${hasQuotas ? `<td>${Number.isFinite(program.quota) ? escapeHtml(program.quota) : ''}</td>` : ''}${hasCombinations ? `<td>${escapeHtml(program.combination || '')}</td>` : ''}${hasScores ? `<td>${Number.isFinite(program.score) ? `<strong>${escapeHtml(formatScore(program.score))}</strong>` : ''}</td>` : ''}</tr>`).join('')}
     </tbody></table></div>
     ${details.scoreMethod ? `<p class="school-dialog-footnote">${escapeHtml(details.scoreMethod)}. Chọn đúng cơ sở và chương trình khi đăng ký.</p>` : ''}
     ${officialLink(details.programSource, details.programSourceLabel || 'Danh sách ngành trên trang trường', 'school-dialog-link')}

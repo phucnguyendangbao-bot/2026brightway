@@ -225,6 +225,48 @@ const vkuPrograms = toPrograms([
   ['', 'Quản trị dự án Công nghệ thông tin'],
 ], 'Chương trình/chuyên ngành');
 
+const dutPrograms = [
+  ['', 'Công nghệ thông tin', 170], ['', 'Công nghệ thông tin (ngoại ngữ Nhật)', 80],
+  ['', 'Công nghệ thông tin, chuyên ngành Khoa học dữ liệu và Trí tuệ nhân tạo', 60],
+  ['7480201TN', 'Chương trình đào tạo kỹ sư tài năng Công nghệ thông tin (định hướng Khoa học dữ liệu và Trí tuệ nhân tạo)', 30, 27],
+  ['', 'Kỹ thuật máy tính', 100], ['', 'Công nghệ thông tin, chuyên ngành An toàn thông tin trên không gian số', 40],
+  ['', 'Công nghệ sinh học', 65], ['', 'Công nghệ sinh học chuyên ngành Công nghệ sinh học Y Dược', 45],
+  ['', 'Công nghệ kỹ thuật vật liệu xây dựng', 45], ['', 'Công nghệ chế tạo máy', 180],
+  ['', 'Quản lý công nghiệp', 120], ['', 'Công nghệ dầu khí và khai thác dầu', 60],
+  ['', 'Kỹ thuật cơ khí - chuyên ngành Cơ khí động lực', 110], ['', 'Chương trình Kỹ sư chất lượng cao Việt - Pháp (PFIEV)', 120],
+  ['', 'Kỹ thuật Cơ khí, chuyên ngành Kỹ thuật phương tiện đường sắt tốc độ cao', 40], ['', 'Kỹ thuật cơ điện tử', 140],
+  ['7520114TN', 'Chương trình đào tạo kỹ sư tài năng Kỹ thuật cơ điện tử', 30], ['', 'Kỹ thuật nhiệt', 120],
+  ['', 'Kỹ thuật nhiệt - Chuyên ngành Quản lý năng lượng', 60], ['', 'Kỹ thuật tàu thủy', 60],
+  ['', 'Kỹ thuật điện', 250], ['7520201TN', 'Chương trình đào tạo kỹ sư tài năng Kỹ thuật điện', 30],
+  ['', 'Kỹ thuật điện tử - viễn thông', 170], ['7520207TN', 'Chương trình đào tạo kỹ sư tài năng Kỹ thuật điện tử - viễn thông', 30],
+  ['', 'Kỹ thuật điện tử - viễn thông, chuyên ngành vi điện tử - thiết kế vi mạch', 60],
+  ['', 'Kỹ thuật điều khiển và tự động hóa', 120],
+  ['7520216TN', 'Chương trình đào tạo kỹ sư tài năng Kỹ thuật điều khiển và tự động hóa', 30, 27.1],
+  ['', 'Kỹ thuật hóa học', 90], ['', 'Kỹ thuật môi trường', 60], ['', 'Kỹ thuật hệ thống công nghiệp', 60],
+  ['', 'Kỹ thuật cơ khí - chuyên ngành cơ khí hàng không', 50], ['', 'Kỹ thuật ô tô', 80],
+  ['7520130TN', 'Chương trình đào tạo kỹ sư tài năng Kỹ thuật ô tô', 30],
+  ['', 'Chương trình tiên tiến Việt - Mỹ ngành Điện tử viễn thông', 45],
+  ['', 'Chương trình tiên tiến Việt - Mỹ chuyên ngành Hệ thống nhúng và IoT thuộc ngành Kỹ thuật điện, điện tử', 45],
+  ['', 'Kỹ thuật Cơ khí, chuyên ngành Cơ khí hàng không (Hợp tác doanh nghiệp, dạy và học bằng tiếng Anh)', 45],
+  ['', 'Công nghệ thực phẩm', 140], ['', 'Kiến trúc', 130],
+  ['', 'Kỹ thuật xây dựng, chuyên ngành Xây dựng dân dụng & Công nghiệp', 220],
+  ['', 'Kỹ thuật xây dựng, chuyên ngành Tin học xây dựng', 85],
+  ['', 'Kỹ thuật xây dựng, chuyên ngành Kỹ thuật và quản lý xây dựng đô thị thông minh', 40],
+  ['', 'Kỹ thuật xây dựng, chuyên ngành Mô hình thông tin và trí tuệ nhân tạo trong xây dựng', 50],
+  ['7580201TN', 'Chương trình đào tạo kỹ sư tài năng Kỹ thuật xây dựng', 30],
+  ['', 'Kỹ thuật xây dựng công trình thủy', 45], ['', 'Kỹ thuật xây dựng công trình giao thông', 105],
+  ['', 'Kỹ thuật xây dựng công trình giao thông - chuyên ngành xây dựng đường sắt tốc độ cao và đường sắt đô thị', 60],
+  ['', 'Kinh tế xây dựng', 120], ['', 'Kỹ thuật cơ sở hạ tầng', 45], ['', 'Quản lý tài nguyên & môi trường', 60],
+].map(([code, name, quota, score]) => ({ code, name, track: 'Ngành / chương trình', quota, score }));
+
+const hcmutPrograms = toPrograms([
+  ['', 'Nhóm ngành Máy tính và Công nghệ thông tin'], ['', 'Kỹ thuật vật liệu'],
+  ['', 'Nhóm ngành Hóa - Thực phẩm - Sinh học'], ['', 'Nhóm ngành Môi trường'],
+  ['', 'Nhóm ngành Kỹ thuật Dệt – Công nghệ May'], ['', 'Kỹ thuật cơ khí'], ['', 'Kỹ thuật cơ điện tử'],
+  ['', 'Nhóm ngành Kỹ thuật Hệ thống Công nghiệp, Logistics và Quản lý chuỗi Cung ứng'],
+  ['', 'Kỹ thuật nhiệt'], ['', 'Vật lý kỹ thuật'], ['', 'Cơ kỹ thuật'], ['', 'Quản lý công nghiệp'],
+], 'Ngành / nhóm ngành (chưa phải mã xét tuyển)');
+
 export const schoolProgramDetails = {
   ctu: { 2026: {
     year: 2026,
@@ -321,10 +363,24 @@ export const schoolProgramDetails = {
     programSource: 'https://tuyensinh.vku.udn.vn/nganh',
     programNote: 'Đã xác minh 6 tên trong danh sách 22 ngành/chuyên ngành trên cổng tuyển sinh; nguồn nhập chưa có mã xét tuyển và chưa phải danh mục đầy đủ.',
   } },
+  dut: { 2026: {
+    year: 2026,
+    programs: dutPrograms,
+    programSource: 'https://tuyensinh.dut.udn.vn/nganh-va-chi-tieu-tuyen-sinh',
+    scoreSource: 'https://dut.udn.vn/TrangNCKH/Thongbao/id/12208',
+    scoreMethod: 'Điểm theo bài công bố kết quả tuyển sinh 2026 của trường; cần đối chiếu bảng gốc để xác định đúng phương thức',
+    programNote: '49 ngành/chương trình cùng chỉ tiêu dự kiến năm 2026. Mã xét tuyển chỉ hiển thị ở 7 dòng đã xác minh; hiện có điểm chuẩn đã xác minh cho 2 chương trình kỹ sư tài năng.',
+  } },
+  hcmut: { 2026: {
+    year: 2026,
+    programs: hcmutPrograms,
+    programSource: 'https://hcmut.edu.vn/tuyen-sinh/dai-hoc-chinh-quy/phuong-thuc-tuyen-sinh/xet-tuyen-thang-2026',
+    programNote: 'Danh sách tham khảo mới xác minh 12 trong 44 ngành/nhóm ngành trường công bố; chưa phải danh mục đầy đủ và chưa phải mã xét tuyển.',
+  } },
 };
 
 export const PROGRAM_IMPORT_METADATA = {
-  source: 'BrightWay_Tiep_tuc_Nganh_2026_HUAF_VKU.xlsx',
+  source: 'BrightWay_BachKhoa_HCM_DaNang_2026_CapNhat.xlsx',
   importedAt: '2026-10-15',
   years: [2026],
   schoolCount: Object.keys(schoolProgramDetails).length,
