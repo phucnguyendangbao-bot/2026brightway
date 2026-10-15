@@ -69,7 +69,7 @@ html body #home-view .bw-hero-visual {
 html body #home-view .bw-hero-visual::before { content:none; }
 html body #home-view .bw-hero-carousel { border-radius:16px; box-shadow:none; background:#f3f5f9; }
 html body #home-view .bw-hero-carousel .slide img {
-  object-fit:contain; object-position:center; background:#f3f5f9;
+  object-fit:cover; object-position:var(--hero-position, center); background:#f3f5f9;
 }
 html body #home-view .bw-hero-caption {
   display:block; font-size:14px; line-height:1.5; font-weight:700;
