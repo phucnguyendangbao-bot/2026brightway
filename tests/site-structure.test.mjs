@@ -32,6 +32,25 @@ test('every standalone page uses the transparent BrightWay tab logo', () => {
   }
 });
 
+test('every user-facing page loads the shared BrightWay colour theme', () => {
+  const rootPages = [
+    'admin.html', 'calendar.html', 'careers-holland.html', 'careers.html',
+    'essay-review.html', 'holland.html', 'index.html', 'interview-prep.html',
+    'login.html', 'major-detail.html', 'majors.html', 'news-detail.html',
+    'news.html', 'page2.html', 'profile.html', 'resources.html',
+    'scholarship-roadmap.html', 'score-calculator.html', 'waybi.html'
+  ];
+  const adminPages = ['index.html', 'major-edit.html', 'majors.html', 'post-edit.html', 'posts.html', 'resource-edit.html', 'users.html']
+    .map(name => `admin/${name}`);
+  for (const file of [...rootPages, ...adminPages]) {
+    assert.match(read(file), /\/assets\/css\/brightway-theme\.css\?v=4/, file);
+  }
+  const theme = read('assets/css/brightway-theme.css');
+  assert.match(theme, /--bw-brand:\s*#6b60ff/);
+  assert.match(theme, /--bw-brand-gradient:\s*linear-gradient\(135deg, #6b60ff 0%, #8b6bff 100%\)/);
+  assert.match(read('assets/css/admissions-home.css'), /\.bw-metric-band[^]*background:var\(--bw-brand-gradient\)/);
+});
+
 test('homepage starts with the hero and has one main career process', () => {
   const home = read('index.html');
   assert.ok(home.indexOf('<section class="bw-hero"') < home.indexOf('<section class="admissions-home"'));

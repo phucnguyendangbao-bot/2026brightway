@@ -88,8 +88,8 @@ html body #home-view .bw-metric-band {
   width:min(100%,1400px); margin:24px auto 0; display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr)); overflow:hidden;
   border:1px solid rgba(255,255,255,.45); border-radius:22px;
-  background:linear-gradient(120deg,#447fe9 0%,#558fe9 58%,#6ca2ee 100%);
-  box-shadow:0 18px 40px rgba(46,104,190,.22); color:#fff;
+  background:var(--bw-brand-gradient);
+  box-shadow:0 18px 40px rgba(107,96,255,.22); color:#fff;
 }
 html body #home-view .bw-metric-item {
   min-width:0; min-height:150px; display:flex; flex-direction:column;

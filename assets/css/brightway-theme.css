@@ -3,15 +3,43 @@
 
 :root {
   --bw-canvas: #f8f9ff;
+  --bw-canvas-blue: #eef3ff;
+  --bw-canvas-violet: #f3efff;
   --bw-paper: #ffffff;
   --bw-subtle: #f5f6ff;
   --bw-ink: #1a1a3e;
   --bw-muted: #3a3a6e;
+  --bw-soft: #6b7194;
   --bw-line: #e2e3ff;
   --bw-brand: #6b60ff;
+  --bw-brand-2: #8b6bff;
+  --bw-brand-light: #a99cff;
   --bw-brand-hover: #6154ed;
   --bw-tint: #eeedff;
   --bw-on-brand: #ffffff;
+  --bw-brand-gradient: linear-gradient(135deg, #6b60ff 0%, #8b6bff 100%);
+  --bw-page-gradient: linear-gradient(145deg, #eef3ff 0%, #f3efff 52%, #eef7ff 100%);
+  --bg: var(--bw-page-gradient) !important;
+  --bg-grad: var(--bw-page-gradient) !important;
+  --bg-1: #eef3ff;
+  --bg-2: #e9efff;
+  --bg-3: #f0ebff;
+  --bg-4: #e8f2ff;
+  --bg-5: #eef7ff;
+  --surface: rgba(255,255,255,.95);
+  --surface-2: rgba(255,255,255,.86);
+  --surface-3: rgba(255,255,255,.72);
+  --text: var(--bw-ink);
+  --text-dark: var(--bw-ink);
+  --text-mid: var(--bw-muted);
+  --text-soft: var(--bw-soft);
+  --border: rgba(107,96,255,.18);
+  --border-soft: rgba(107,96,255,.1);
+  --accent: var(--bw-brand);
+  --accent2: var(--bw-brand-2);
+  --primary: var(--bw-brand);
+  --primary-light: var(--bw-brand-light);
+  --pink: var(--bw-brand-2);
   --grad: linear-gradient(135deg, #6b8eff 0%, #8b6bff 100%) !important;
   --grad-btn: linear-gradient(135deg, #6b8eff 0%, #8b6bff 100%) !important;
   --font: 'Be Vietnam Pro', system-ui, sans-serif !important;
@@ -31,9 +59,30 @@
   --bw-muted: #d1d5fa;
   --bw-line: #494371;
   --bw-brand: #b4a4ff;
+  --bw-brand-2: #8f85ff;
+  --bw-brand-light: #c9bcff;
   --bw-brand-hover: #c9bcff;
   --bw-tint: #38315b;
   --bw-on-brand: #ffffff;
+  --bg-1: #16142b;
+  --bg-2: #1b1834;
+  --bg-3: #211d40;
+  --bg-4: #19172f;
+  --bg-5: #1d1938;
+  --surface: rgba(34,32,68,.95);
+  --surface-2: rgba(34,32,68,.86);
+  --surface-3: rgba(34,32,68,.7);
+  --text: var(--bw-ink);
+  --text-dark: var(--bw-ink);
+  --text-mid: var(--bw-muted);
+  --text-soft: #a9add3;
+  --border: rgba(180,164,255,.24);
+  --border-soft: rgba(180,164,255,.14);
+  --accent: var(--bw-brand);
+  --accent2: var(--bw-brand-2);
+  --primary: var(--bw-brand);
+  --primary-light: var(--bw-brand-light);
+  --pink: var(--bw-brand-2);
 }
 html body {
   font-family: var(--font) !important;
@@ -69,7 +118,7 @@ html body #home-view .bw-hero-h1 {
   color: #1a1a3e !important;
 }
 html body #home-view .accent-yellow {
-  background: linear-gradient(135deg,#ff9b0c,#ec4899) !important;
+  background: var(--bw-brand-gradient) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
@@ -79,9 +128,9 @@ html body #home-view .accent-yellow {
 html body #home-view .bw-hero-text .badge {
   padding: 12px 22px;
   border-radius: 999px;
-  border: 1px solid #ceccff;
-  background: #f0efff;
-  color: #6b60ff;
+  border: 1px solid var(--bw-line);
+  background: var(--bw-tint);
+  color: var(--bw-brand);
   font-size: 16px;
   font-weight: 800;
   margin-bottom: 28px;
