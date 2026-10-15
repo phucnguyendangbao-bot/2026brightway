@@ -27,3 +27,17 @@ test('a source-only score notice does not become an unsourced numeric cutoff', (
   }
   assert.equal(detailsForSchool('hcmut'), null);
 });
+
+test('2024–2026 records remain year-specific and preserve each scoring scale', () => {
+  assert.equal(detailsForSchool('fpt', 2024).score, '21');
+  assert.match(detailsForSchool('fpt', 2024).scoreMethod, /THPT 2024/);
+  assert.equal(detailsForSchool('fpt', 2025).score, '18,5');
+  assert.match(detailsForSchool('fpt', 2025).scoreNote, /thế hệ 1/);
+  assert.equal(detailsForSchool('fpt', 2026).programs.find(program => program.code === '7480101').score, 21);
+  assert.equal(detailsForSchool('hcmut', 2024).score, '55,38–84,16/90');
+  assert.equal(detailsForSchool('hcmut', 2025), null);
+  assert.equal(detailsForSchool('fpt', 2023), null);
+  assert.equal(detailsForSchool('fpt', 2027), null);
+  assert.equal(detailsForSchool('uit', 2024).score, undefined);
+  assert.equal(detailsForSchool('hcmus', 2024).score, undefined);
+});
