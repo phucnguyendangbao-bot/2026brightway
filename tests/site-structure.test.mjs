@@ -21,6 +21,17 @@ test('public pages have no CV feature links or alternate brand names', () => {
   }
 });
 
+test('every standalone page uses the transparent BrightWay tab logo', () => {
+  const rootPages = readdirSync(new URL('../', import.meta.url)).filter(name => name.endsWith('.html'));
+  const adminPages = readdirSync(new URL('../admin/', import.meta.url)).filter(name => name.endsWith('.html')).map(name => 'admin/' + name);
+  for (const file of [...rootPages, ...adminPages]) {
+    const html = read(file);
+    if (!/<head[\s>]/i.test(html)) continue;
+    assert.match(html, /<link\s+rel="icon"\s+type="image\/png"\s+href="\/favicon\.png\?v=20261015"\s*\/?>/i, file);
+    assert.equal((html.match(/rel="icon"/gi) || []).length, 1, file);
+  }
+});
+
 test('homepage starts with the hero and has one main career process', () => {
   const home = read('index.html');
   assert.ok(home.indexOf('<section class="bw-hero"') < home.indexOf('<section class="admissions-home"'));
