@@ -63,7 +63,7 @@ function renderSchools(items) {
           <h2 class="school-name">${escapeHtml(school.name)}</h2>
         </div>
       </div>
-      <span class="school-card-status ${details?.programs?.length ? 'school-card-status-ready' : ''}">${details?.programs?.length ? 'Có điểm chuẩn 2026' : details?.scoreSource ? 'Có nguồn điểm chuẩn' : source ? 'Có nguồn tuyển sinh' : 'Đang bổ sung nguồn'}</span>
+      <span class="school-card-status ${details?.programs?.length ? 'school-card-status-ready' : ''}">${details?.programs?.some(program => Number.isFinite(program.score)) ? 'Có ngành và điểm chuẩn 2026' : details?.programs?.length ? `Có ${details.programs.length} ngành 2026` : details?.scoreSource ? 'Có nguồn điểm chuẩn' : source ? 'Có nguồn tuyển sinh' : 'Đang bổ sung nguồn'}</span>
       <p class="school-card-description">${escapeHtml(subtitle)}</p>
       <div class="school-card-bottom">
         <span>${school.identity.entity_kind === 'university_system' ? 'Đại học vùng' : source ? `Nguồn tuyển sinh ${source.admission_year}` : 'Hồ sơ trường'}</span>
@@ -104,16 +104,20 @@ function renderPrograms(school, details) {
     <p>Chưa xác minh được bảng ngành theo đúng năm, cơ sở và chương trình. Không dùng danh sách của năm khác để thay thế.</p>
     ${officialLink(details?.admissionSource || (activeYear === 2026 ? sourceForSchool(school.id)?.source_url : historyForSchool(school.id, activeYear)?.links[0]?.url), `Xem nguồn năm ${activeYear}`, 'school-dialog-link')}
   </div>`;
-  return `<p class="school-dialog-lead">Danh sách ngành tuyển sinh ${details.year} theo thông tin chính thức của trường. Điểm chuẩn cùng năm nằm ở cột cuối.</p>
-    <div class="school-program-table-wrap"><table class="school-program-table"><thead><tr><th>Mã ngành</th><th>Ngành tuyển sinh</th><th>Điểm chuẩn ${details.year}</th></tr></thead><tbody>
-    ${details.programs.map(program => `<tr><td>${escapeHtml(program.code)}</td><td>${escapeHtml(program.name)}</td><td><strong>${escapeHtml(program.score)}</strong></td></tr>`).join('')}
+  const hasScores = details.programs.some(program => Number.isFinite(program.score));
+  const hasTracks = details.programs.some(program => program.track);
+  return `<p class="school-dialog-lead"><strong>${details.programs.length} ngành/chương trình</strong> trong dữ liệu tuyển sinh ${details.year}.${hasScores ? ' Điểm chuẩn cùng năm nằm ở cột cuối.' : ''}</p>
+    ${details.programNote ? `<p class="school-program-note">${escapeHtml(details.programNote)}</p>` : ''}
+    <div class="school-program-table-wrap"><table class="school-program-table"><thead><tr><th>Mã xét tuyển</th><th>Ngành / chương trình</th>${hasTracks ? '<th>Phân loại</th>' : ''}${hasScores ? `<th>Điểm chuẩn ${details.year}</th>` : ''}</tr></thead><tbody>
+    ${details.programs.map(program => `<tr><td>${escapeHtml(program.code)}</td><td>${escapeHtml(program.name)}</td>${hasTracks ? `<td>${escapeHtml(program.track || '')}</td>` : ''}${hasScores ? `<td>${Number.isFinite(program.score) ? `<strong>${escapeHtml(program.score)}</strong>` : ''}</td>` : ''}</tr>`).join('')}
     </tbody></table></div>
-    <p class="school-dialog-footnote">${escapeHtml(details.scoreMethod)}. Chọn đúng cơ sở và chương trình khi đăng ký.</p>
-    ${officialLink(details.programSource, 'Danh sách ngành trên trang trường', 'school-dialog-link')}`;
+    ${details.scoreMethod ? `<p class="school-dialog-footnote">${escapeHtml(details.scoreMethod)}. Chọn đúng cơ sở và chương trình khi đăng ký.</p>` : ''}
+    ${officialLink(details.programSource, 'Danh sách ngành trên trang trường', 'school-dialog-link')}
+    ${(details.supplementarySources || []).map(source => officialLink(source.url, source.label, 'school-dialog-link')).join('')}`;
 }
 
 function renderScores(school, details) {
-  if (details?.programs?.length) return `<div class="school-score-summary"><span>Điểm chuẩn ${details.year}</span><strong>18 – 21</strong><small>${escapeHtml(details.scoreMethod)}</small></div>
+  if (details?.programs?.some(program => Number.isFinite(program.score))) return `<div class="school-score-summary"><span>Điểm chuẩn ${details.year}</span><strong>18 – 21</strong><small>${escapeHtml(details.scoreMethod)}</small></div>
     ${renderPrograms(school, details)}
     ${officialLink(details.scoreSource, 'Thông báo điểm chuẩn gốc', 'school-dialog-link')}`;
   if (details?.score) return `<div class="school-score-summary"><span>Điểm chuẩn ${activeYear}</span><strong>${escapeHtml(details.score)}</strong><small>${escapeHtml(details.scoreMethod)}</small></div>

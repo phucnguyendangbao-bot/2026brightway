@@ -1,4 +1,5 @@
 import { canonicalSchoolId } from './university-identities.js';
+import { schoolProgramDetails } from './school-programs-2024-2026.js';
 
 const fptProgramsUrl = 'https://daihoc.fpt.edu.vn/thong-bao-tuyen-sinh/thong-tin-tuyen-sinh-nam-2026/';
 const fptScoresUrl = 'https://daihoc.fpt.edu.vn/thong-bao-tuyen-sinh/truong-dai-hoc-fpt-cong-bo-diem-chuan-nam-2026-tiep-tuc-nhan-ho-so-xet-tuyen-mot-so-nganh/';
@@ -84,6 +85,11 @@ export const historicalSchoolDetails = {
 
 export const detailsForSchool = (id, year = 2026) => {
   const schoolId = canonicalSchoolId(id);
-  return Number(year) === 2026 ? schoolProfileDetails[schoolId] || null
-    : historicalSchoolDetails[schoolId]?.[Number(year)] || null;
+  const selectedYear = Number(year);
+  const verifiedDetails = selectedYear === 2026 ? schoolProfileDetails[schoolId] || null
+    : historicalSchoolDetails[schoolId]?.[selectedYear] || null;
+  const programDetails = schoolProgramDetails[schoolId]?.[selectedYear] || null;
+  if (!programDetails) return verifiedDetails;
+  if (!verifiedDetails) return programDetails;
+  return { ...programDetails, ...verifiedDetails, programs: verifiedDetails.programs || programDetails.programs };
 };

@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { detailsForSchool, schoolProfileDetails } from '../assets/data/school-profile-details.js';
+import { PROGRAM_IMPORT_METADATA, schoolProgramDetails } from '../assets/data/school-programs-2024-2026.js';
 
 test('2026 FPT program scores are explicit, sourced and separate from legacy estimates', () => {
   const details = detailsForSchool('fpt');
@@ -23,7 +24,7 @@ test('a source-only score notice does not become an unsourced numeric cutoff', (
   for (const id of ['uit', 'hcmus']) {
     assert.equal(detailsForSchool(id).year, 2026);
     assert.ok(detailsForSchool(id).scoreSource.startsWith('https://'));
-    assert.equal(detailsForSchool(id).programs, undefined);
+    assert.ok(!detailsForSchool(id).programs?.some(program => Number.isFinite(program.score)));
   }
   assert.equal(detailsForSchool('hcmut'), null);
 });
@@ -40,4 +41,17 @@ test('2024–2026 records remain year-specific and preserve each scoring scale',
   assert.equal(detailsForSchool('fpt', 2027), null);
   assert.equal(detailsForSchool('uit', 2024).score, undefined);
   assert.equal(detailsForSchool('hcmus', 2024).score, undefined);
+});
+
+test('spreadsheet program import adds only the supplied school-year rows', () => {
+  assert.equal(PROGRAM_IMPORT_METADATA.totalRows, 194);
+  assert.equal(schoolProgramDetails.ctu[2026].programs.length, 127);
+  assert.equal(schoolProgramDetails.hcmus[2026].programs.length, 39);
+  assert.equal(schoolProgramDetails.hcmue[2026].programs.length, 28);
+  assert.equal(detailsForSchool('hcmus', 2026).scoreSource, schoolProfileDetails.hcmus.scoreSource);
+  assert.equal(detailsForSchool('hcmus', 2026).programs.length, 39);
+  assert.equal(detailsForSchool('ctu', 2024).programs, undefined);
+  assert.equal(detailsForSchool('ctu', 2025), null);
+  assert.equal(detailsForSchool('hcmue', 2025), null);
+  assert.ok(schoolProgramDetails.ctu[2026].programs.every(program => program.code && program.name && program.track));
 });
