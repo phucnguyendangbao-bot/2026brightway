@@ -75,10 +75,15 @@
         </div>
 
         <div class="res-form-group">
-          <label>Link ngoài <span class="req">*</span></label>
-          <input type="url" name="url" class="res-form-control" required
-                 placeholder="https://..." />
-          <div class="res-form-help">Học sinh click "TÌM HIỂU THÊM" sẽ mở link này trong tab mới</div>
+          <label>Liên kết tài liệu <span class="req">*</span></label>
+          <div class="upload-row">
+            <input type="url" name="url" id="resourceUrl" class="res-form-control" required placeholder="Dán URL hoặc tải tệp lên" />
+            <label class="btn btn-secondary upload-button" id="file-upload-button">📎 Tải tệp
+              <input type="file" id="fileUpload" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx" aria-label="Tải tài liệu lên">
+            </label>
+          </div>
+          <span class="upload-status" id="fileUploadStatus">PDF, Word, Excel hoặc PowerPoint · tối đa 25 MB</span>
+          <div class="res-form-help">Học sinh click "TÌM HIỂU THÊM" sẽ mở đường dẫn này</div>
         </div>
 
         <div class="res-form-group">
@@ -123,10 +128,14 @@
         </div>
 
         <div class="res-form-group">
-          <label>Link ảnh đại diện</label>
-          <input type="url" name="image" id="imageInput" class="res-form-control"
-                 placeholder="https://... (để trống sẽ dùng ảnh mặc định)" />
-          <div class="res-form-help">Tip: dùng ảnh tỉ lệ 16:9, ví dụ https://images.unsplash.com/photo-.../?w=400&h=240&fit=crop</div>
+          <label>Ảnh đại diện</label>
+          <div class="upload-row">
+            <input type="url" name="image" id="imageInput" class="res-form-control" placeholder="Dán URL hoặc tải ảnh lên" />
+            <label class="btn btn-secondary upload-button" id="image-upload-button">🖼️ Tải ảnh
+              <input type="file" id="imageUpload" accept="image/jpeg,image/png,image/webp,image/gif" aria-label="Tải ảnh đại diện lên">
+            </label>
+          </div>
+          <span class="upload-status" id="imageUploadStatus">Nên dùng ảnh 16:9 · tối đa 8 MB</span>
         </div>
 
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
@@ -181,6 +190,7 @@
 <script src="../assets/js/supabase-client.js"></script>
 <script src="../assets/js/cms-service.js"></script>
 <script src="_guard.js"></script>
+<script src="../assets/js/admin-upload.js"></script>
 <script>
 (async function () {
   const profile = await Admin.requireAdmin();
@@ -222,9 +232,13 @@
     const img = f.image.value.trim();
     const prev = document.getElementById('imagePreview');
     if (img) {
-      prev.innerHTML = `<img src="${img}" alt="" onerror="this.outerHTML='<span>Ảnh lỗi</span>'"/>`;
+      const image = document.createElement('img');
+      image.src = img;
+      image.alt = '';
+      image.addEventListener('error', () => { prev.textContent = 'Ảnh lỗi'; }, { once: true });
+      prev.replaceChildren(image);
     } else {
-      prev.innerHTML = '<span>Chưa có ảnh</span>';
+      prev.textContent = 'Chưa có ảnh';
     }
     document.getElementById('prevTitle').textContent = f.title.value.trim() || '—';
     document.getElementById('prevDesc').textContent = f.description.value.trim() || '—';
@@ -232,6 +246,14 @@
   }
 
   document.getElementById('resForm').addEventListener('input', updatePreview);
+  AdminUpload.bind({
+    input: '#fileUpload', target: '#resourceUrl', status: '#fileUploadStatus',
+    button: '#file-upload-button', kind: 'document'
+  });
+  AdminUpload.bind({
+    input: '#imageUpload', target: '#imageInput', status: '#imageUploadStatus',
+    button: '#image-upload-button', kind: 'image'
+  });
 
   // Submit
   document.getElementById('resForm').addEventListener('submit', async (e) => {

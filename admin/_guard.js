@@ -79,6 +79,10 @@
           <span class="sidebar-link-icon">${icon('M3 7h18v13H3zM8 7V4h8v3M3 12h18M10 12v3h4v-3')}</span>
           <span>Ngành nghề</span>
         </a>
+        <a class="sidebar-link ${activePage==='uploads'?'active':''}" href="resource-edit.html">
+          <span class="sidebar-link-icon">${icon('M12 16V4M7 9l5-5 5 5M5 20h14')}</span>
+          <span>Tải ảnh & tệp</span>
+        </a>
       </div>
 
       <div class="sidebar-section">

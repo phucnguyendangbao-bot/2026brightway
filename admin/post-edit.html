@@ -55,8 +55,15 @@
         </select>
       </div>
       <div class="form-group">
-        <label class="form-label">URL ảnh bìa</label>
-        <input type="url" id="cover_image" class="form-input" placeholder="https://...">
+        <label class="form-label">Ảnh bìa</label>
+        <div class="upload-row">
+          <input type="url" id="cover_image" class="form-input" placeholder="Dán URL hoặc tải ảnh lên">
+          <label class="btn btn-secondary upload-button" id="cover-upload-button">🖼️ Tải ảnh
+            <input type="file" id="cover_upload" accept="image/jpeg,image/png,image/webp,image/gif" aria-label="Tải ảnh bìa lên">
+          </label>
+        </div>
+        <span class="upload-status" id="cover_upload_status">JPG, PNG, WEBP hoặc GIF · tối đa 8 MB</span>
+        <img class="cover-preview" id="cover_preview" alt="Xem trước ảnh bìa">
       </div>
     </div>
 
@@ -68,7 +75,18 @@
 
   <div class="editor-grid">
     <div class="editor-pane">
-      <div class="editor-pane-header">✏️ Nội dung Markdown</div>
+      <div class="editor-pane-header" style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
+        <span>✏️ Nội dung Markdown</span>
+        <span style="display:flex;gap:6px;">
+          <label class="btn btn-ghost upload-button" id="inline-image-button" style="padding:5px 8px;text-transform:none;letter-spacing:0;">+ Ảnh
+            <input type="file" id="inline_image_upload" accept="image/jpeg,image/png,image/webp,image/gif" aria-label="Tải ảnh và chèn vào bài viết">
+          </label>
+          <label class="btn btn-ghost upload-button" id="inline-file-button" style="padding:5px 8px;text-transform:none;letter-spacing:0;">+ Tệp
+            <input type="file" id="inline_file_upload" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx" aria-label="Tải tệp và chèn vào bài viết">
+          </label>
+        </span>
+      </div>
+      <span class="upload-status" id="inline_upload_status" style="padding:0 16px;"></span>
       <textarea id="content" class="editor-textarea" placeholder="# Tiêu đề chính
 
 Viết nội dung bằng **Markdown**...
@@ -100,6 +118,7 @@ Viết nội dung bằng **Markdown**...
 <script src="../assets/js/supabase-client.js"></script>
 <script src="../assets/js/cms-service.js"></script>
 <script src="_guard.js"></script>
+<script src="../assets/js/admin-upload.js"></script>
 <script>
 let currentPostId = null;
 
@@ -157,6 +176,64 @@ function setupListeners() {
 
   document.getElementById('content').addEventListener('input', updatePreview);
   document.getElementById('summary').addEventListener('input', updatePreview);
+  const coverInput = document.getElementById('cover_image');
+  coverInput.addEventListener('input', updateCoverPreview);
+  updateCoverPreview();
+
+  AdminUpload.bind({
+    input: '#cover_upload', target: '#cover_image', status: '#cover_upload_status',
+    button: '#cover-upload-button', kind: 'image'
+  });
+  bindInlineUpload('#inline_image_upload', 'image', '#inline-image-button');
+  bindInlineUpload('#inline_file_upload', 'document', '#inline-file-button');
+}
+
+function updateCoverPreview() {
+  const preview = document.getElementById('cover_preview');
+  const url = document.getElementById('cover_image').value.trim();
+  preview.onerror = () => preview.removeAttribute('src');
+  if (url) preview.src = url;
+  else preview.removeAttribute('src');
+}
+
+function bindInlineUpload(selector, kind, button) {
+  const input = document.querySelector(selector);
+  const status = document.getElementById('inline_upload_status');
+  input.addEventListener('change', async () => {
+    const file = input.files?.[0];
+    if (!file) return;
+    input.disabled = true;
+    document.querySelector(button).style.opacity = '.55';
+    status.dataset.state = 'loading';
+    status.textContent = 'Đang tải lên…';
+    try {
+      const result = await AdminUpload.upload(file, kind);
+      const label = result.name.replace(/[\[\]]/g, '');
+      const markdown = kind === 'image' ? `![${label}](${result.url})` : `[📎 ${label}](${result.url})`;
+      const editor = document.getElementById('content');
+      const start = editor.selectionStart;
+      const before = editor.value.slice(0, start);
+      const after = editor.value.slice(editor.selectionEnd);
+      const prefix = before && !before.endsWith('\n') ? '\n\n' : '';
+      const suffix = after && !after.startsWith('\n') ? '\n\n' : '';
+      editor.value = before + prefix + markdown + suffix + after;
+      const caret = (before + prefix + markdown).length;
+      editor.setSelectionRange(caret, caret);
+      editor.focus();
+      updatePreview();
+      status.dataset.state = 'success';
+      status.textContent = `✓ Đã chèn ${result.name}`;
+      Admin.showToast('Đã tải và chèn vào bài viết', 'success');
+    } catch (error) {
+      status.dataset.state = 'error';
+      status.textContent = error.message;
+      Admin.showToast('Không thể tải lên: ' + error.message, 'error');
+    } finally {
+      input.disabled = false;
+      document.querySelector(button).style.opacity = '';
+      input.value = '';
+    }
+  });
 }
 
 function updatePreview() {
