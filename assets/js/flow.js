@@ -35,7 +35,7 @@
       ['Khám phá nghề', 'careers-holland.html', ['careers-holland.html','majors.html','major-detail.html']],
       ['Test Holland', 'holland.html', ['holland.html']],
       ['Trường & điểm', 'page2.html', ['page2.html','score-calculator.html']],
-      ['Tài liệu', 'resources.html', ['resources.html','news.html','news-detail.html']],
+      ['Tin tuyển sinh', 'resources.html', ['resources.html','news.html','news-detail.html']],
       ['Waybi', 'waybi.html', ['waybi.html']],
     ];
     nav.className = 'flow-nav';
@@ -102,7 +102,7 @@
       const host = document.createElement('div');
       host.className = 'flow-resume';
       document.querySelector('footer')?.before(host);
-      nextStep(host, 'Chuẩn bị cho bước tiếp theo', 'Tìm học liệu theo nhu cầu hoặc mở hồ sơ để xem lại hành trình của bạn.', [['Tài liệu & bài viết','resources.html'], ['Hồ sơ của tôi','profile.html']]);
+      nextStep(host, 'Chuẩn bị cho bước tiếp theo', 'Xem tin tuyển sinh chính thức hoặc mở hồ sơ để xem lại hành trình của bạn.', [['Tin tuyển sinh','resources.html'], ['Hồ sơ của tôi','profile.html']]);
     }
     // Quick routes are available on both chatbot implementations, without an AI request.
     for (const id of ['waybi-suggest', 'bwChatSuggestions']) {
@@ -111,7 +111,7 @@
       const shortcuts = document.createElement('div');
       shortcuts.className = 'flow-chat-links';
       shortcuts.setAttribute('aria-label', 'Mở nhanh công cụ');
-      shortcuts.innerHTML = '<a href="holland.html">Test Holland</a><a href="page2.html">Tra cứu trường</a><a href="score-calculator.html">Tính điểm</a><a href="resources.html">Tài liệu</a>';
+      shortcuts.innerHTML = '<a href="holland.html">Test Holland</a><a href="page2.html">Tra cứu trường</a><a href="score-calculator.html">Tính điểm</a><a href="resources.html">Tin tuyển sinh</a>';
       target.before(shortcuts);
     }
     if (page === 'waybi.html') {

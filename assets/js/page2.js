@@ -226,7 +226,7 @@ function renderSchools(schools) {
           · <a href="${sourceEscape(source.supplementary_url)}" target="_blank" rel="noopener noreferrer">Nguồn bổ sung ↗</a>
           <p>Kiểm tra nguồn: ${source.checked_at}. Công thức theo ngành: ${source.formula_status === 'verified_partial_formula' ? 'đã xác nhận thành phần; cần điều kiện ngành' : 'chưa đủ dữ liệu để tính chính xác'}.</p>
         </div>` : ''}
-        ${!verified ? `<div class="ad-note">Dữ liệu chi tiết trường đang chờ đối chiếu đề án theo năm. Tổ hợp, chỉ tiêu, cơ sở và thời hạn cần kiểm tra tại thông báo chính thức của trường. <a href="resources.html#policy-sources">Quy định chung Bộ GD&amp;ĐT →</a></div>` : ''}
+        ${!verified ? `<div class="ad-note">Dữ liệu chi tiết trường đang chờ đối chiếu đề án theo năm. Tổ hợp, chỉ tiêu, cơ sở và thời hạn cần kiểm tra tại thông báo chính thức của trường. <a href="resources.html?school=${encodeURIComponent(s.id)}">Xem tin tuyển sinh của trường →</a></div>` : ''}
         <div class="ad-note"><p>Năm dữ liệu tuyển sinh: ${s.admission_year || 'Chưa có dữ liệu xác minh'} · Rà soát hồ sơ: ${s.updated_at} · Chưa xác minh đầy đủ đề án.</p><p>Học phí, điểm chuẩn theo ngành/năm: Chưa có dữ liệu xác minh. Không dùng thông tin này để dự đoán đỗ/trượt.</p><p>Danh tính: ${s.identity.status === 'identity_source_opened' ? 'Đã mở nguồn nhận diện trường; không phải xác minh công thức' : 'Nguồn cần kiểm tra lại'}.</p><a href="${sourceEscape(s.identity.source_url)}" target="_blank" rel="noopener noreferrer">Nguồn nhận diện trường ↗</a></div>
         <div class="school-info-grid">
           ${verified && s.campuses && s.campuses.length ? `
@@ -252,6 +252,7 @@ function renderSchools(schools) {
         ${variantsHtml ? `<div class="school-variants">${variantsHtml}</div>` : ''}
         </div>
         <div class="flow-actions" style="margin-top:20px">
+          <a href="resources.html?school=${encodeURIComponent(s.id)}">Tin tuyển sinh đã đối chiếu →</a>
           <a href="score-calculator.html?school=${encodeURIComponent(s.id)}" data-action="choose-school" data-school-id="${s.id}">Tính điểm tham khảo 2026 →</a>
           <a href="calendar.html">Xem lộ trình tuyển sinh →</a>
         </div>

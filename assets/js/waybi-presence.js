@@ -174,7 +174,7 @@
     'majors.html': { h: 'Tìm ngành học phù hợp 📚', p: 'Browse qua hàng trăm ngành học phổ biến ở Việt Nam.' },
     'page2.html': { h: 'Tra cứu trường ĐH 🏫', p: 'Có thể lọc theo khu vực, học bổng, ngành nổi bật.' },
     'interview-prep.html': { h: 'Chuẩn bị phỏng vấn học bổng 🎤', p: 'Mình có tips và câu hỏi thường gặp.' },
-    'resources.html': { h: 'Tài liệu tham khảo 📖', p: 'Sách, khóa học, video hữu ích cho hành trình apply.' },
+    'resources.html': { h: 'Tin tuyển sinh đại học 📖', p: 'Thông báo đã đối chiếu từ website chính thức của các trường.' },
     'profile.html': { h: 'Hồ sơ cá nhân 👤', p: 'Cập nhật thông tin để Waybi gợi ý phù hợp hơn.' },
     'news.html': { h: 'Tin tức học bổng mới nhất 📰', p: 'Cập nhật học bổng mới mỗi ngày.' },
   };

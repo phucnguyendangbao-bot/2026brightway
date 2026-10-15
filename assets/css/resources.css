@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════
-   RESOURCES PAGE — Tài liệu tham khảo & Khoá học
+   UNIVERSITY ADMISSIONS NEWS
    ════════════════════════════════════════════════════════ */
 
 .res-page {
@@ -286,3 +286,38 @@
   .res-grid { grid-template-columns: 1fr; gap: 16px; }
   .res-info { padding: 18px 20px; }
 }
+
+.res-kicker { margin: 0 0 8px; color: var(--primary); font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.news-filter { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; margin-bottom: 12px; }
+.news-filter label { display: flex; flex-direction: column; gap: 6px; color: var(--text-mid); font-size: 12px; font-weight: 800; }
+.news-filter select, .news-filter input { width: 100%; min-width: 0; padding: 11px 13px; border: 1.5px solid var(--border); border-radius: 12px; color: var(--text); background: var(--surface); font-size: 13px; font-weight: 500; font-family: inherit; }
+.news-filter select:focus, .news-filter input:focus { outline: 3px solid rgba(99,102,241,.16); border-color: var(--primary); }
+.news-status { margin: 14px 0 22px; color: var(--text-mid); font-size: 13px; }
+.news-card .res-body { padding: 20px; gap: 10px; }
+.news-card .res-title { font-size: 18px; }
+.news-card .res-desc { margin: 0 0 12px; }
+.news-thumb { display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #eef3ff, #e6dfff); }
+.news-thumb img { width: 38%; height: 58%; object-fit: contain; filter: drop-shadow(0 8px 16px rgba(34, 30, 96, .12)); }
+.news-card:hover .news-thumb img { transform: scale(1.04); }
+.news-logo-fallback { width: 90px; height: 90px; border-radius: 20px; background: #fff; display: grid; place-items: center; color: #6358d8; font-weight: 900; font-size: 26px; }
+.news-year { background: var(--grad-btn); }
+.news-profile { color: var(--primary); font-size: 12px; font-weight: 800; text-decoration: none; }
+.news-profile:hover { text-decoration: underline; }
+.news-empty { margin: 18px 0; padding: 46px 22px; text-align: center; background: var(--surface); border: 1.5px dashed var(--border); border-radius: 18px; color: var(--text-mid); }
+.news-empty h2 { margin: 0 0 8px; color: var(--text); font: 800 20px 'Quicksand', sans-serif; }
+.news-empty p { margin: 0 0 12px; }
+.news-empty a { color: var(--primary); font-weight: 800; }
+.news-unverified { margin-top: 30px; background: var(--surface); border: 1px solid var(--border-soft); border-radius: 16px; padding: 17px 20px; }
+.news-unverified summary { cursor: pointer; font-size: 14px; font-weight: 800; color: var(--text); }
+.news-unverified summary span { color: var(--primary); }
+.news-school-list { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px; margin-top: 17px; }
+.news-school-list a { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; padding: 11px 13px; color: var(--text); text-decoration: none; background: var(--surface-2); border-radius: 10px; font-size: 12px; font-weight: 700; }
+.news-school-list a:hover { color: var(--primary); }
+.news-school-list small { color: var(--text-soft); font-weight: 500; }
+.news-disclaimer { color: var(--text-soft); font-size: 12px; line-height: 1.6; margin-top: 18px; }
+.news-sources { max-width: none; margin: 16px 0 0; }
+.news-sources summary { cursor: pointer; color: var(--text); font-size: 14px; }
+.news-sources .res-search { flex: none; width: min(100%, 330px); margin: 8px 0 16px; }
+.news-sources .policy-sources-grid { margin-top: 14px; }
+@media (max-width: 800px) { .news-filter { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 560px) { .news-filter, .news-school-list { grid-template-columns: 1fr; } .news-card .res-foot { align-items: flex-start; flex-direction: column; } }

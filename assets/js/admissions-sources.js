@@ -16,6 +16,7 @@ function render() {
   }).join('');
 }
 filter.addEventListener('change', render);
+if (location.hash === '#policy-sources') document.getElementById('policy-sources').open = true;
 render();
 const schoolHost = document.getElementById('schoolSourcesList');
 const schoolSearch = document.getElementById('schoolSourceSearch');

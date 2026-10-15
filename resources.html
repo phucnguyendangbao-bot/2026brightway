@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Tài liệu & bài viết – BrightWay Career</title>
+<title>Tin tuyển sinh đại học – BrightWay Career</title>
+<meta name="description" content="Thông báo tuyển sinh đại học từ website chính thức của các trường trong BrightWay Career, phân loại theo trường, năm và nội dung." />
 <link rel="icon" type="image/png" href="/favicon.png?v=20261014">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,165 +13,50 @@
 <link rel="stylesheet" href="assets/css/resources.css">
 <link rel="stylesheet" href="/assets/css/brightway-theme.css?v=2">
 <link rel="stylesheet" href="/assets/css/flow.css?v=2">
-<script src="/assets/js/flow.js?v=1" defer></script>
 <link rel="stylesheet" href="/assets/css/admissions-policy.css?v=20261014">
+<script src="/assets/js/flow.js?v=20261015" defer></script>
 </head>
 <body>
-
 <button id="themeToggle" class="theme-toggle" aria-label="Chuyển sáng/tối" title="Chuyển sáng/tối">
-  <svg class="ico-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.2" y1="4.2" x2="6.3" y2="6.3"/><line x1="17.7" y1="17.7" x2="19.8" y2="19.8"/><line x1="4.2" y1="19.8" x2="6.3" y2="17.7"/><line x1="17.7" y1="6.3" x2="19.8" y2="4.2"/></g></svg>
+  <svg class="ico-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="12" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.2" y1="4.2" x2="6.3" y2="6.3"/><line x1="17.7" y1="17.7" x2="19.8" y2="19.8"/><line x1="4.2" y1="19.8" x2="6.3" y2="17.7"/><line x1="17.7" y1="6.3" x2="19.8" y2="4.2"/></g></svg>
   <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
 </button>
-
 <nav class="bw-nav">
-  <div class="bw-nav-inner">
-    <a href="index.html" class="bw-logo">BrightWay Career</a>
-    <div class="bw-nav-links">
-      <a href="index.html">Trang chủ</a>
-      <a href="careers-holland.html">Tra cứu & Test</a>
-      <a href="resources.html" class="active">Tài liệu</a>
-    </div>
-  </div>
+  <div class="bw-nav-inner"><a href="index.html" class="bw-logo">BrightWay Career</a><div class="bw-nav-links"><a href="index.html">Trang chủ</a><a href="careers-holland.html">Khám phá nghề</a><a href="resources.html" class="active">Tin tuyển sinh</a></div></div>
 </nav>
-
-<section class="res-page">
-  <section id="policy-sources" class="policy-panel" aria-label="Nguồn tuyển sinh Bộ Giáo dục và Đào tạo">
-    <h2>Nguồn tuyển sinh chính thức · 2026 và chuẩn bị 2027</h2>
+<main class="res-page">
+  <header class="res-hero">
+    <p class="res-kicker">Nguồn chính thức · Đối chiếu ngày 15/10/2026</p>
+    <h1 class="res-hero-title">Tin tuyển sinh đại học</h1>
+    <p class="res-hero-sub">Theo dõi thông báo từ website chính thức của trường. Nội dung năm 2026 và 2027 được tách riêng; thông tin cũ không tự áp dụng cho kỳ tuyển sinh mới.</p>
+  </header>
+  <section aria-label="Lọc tin tuyển sinh" class="news-filter">
+    <label for="newsSchool">Trường đại học<select id="newsSchool"><option value="all">Tất cả trường</option></select></label>
+    <label for="newsYear">Năm tuyển sinh<select id="newsYear"><option value="2026">2026</option><option value="2027">2027</option><option value="all">Tất cả năm</option></select></label>
+    <label for="newsType">Loại thông báo<select id="newsType"><option value="all">Tất cả loại</option><option value="Đề án tuyển sinh">Đề án tuyển sinh</option><option value="Phương thức xét tuyển">Phương thức xét tuyển</option><option value="Điểm chuẩn">Điểm chuẩn</option><option value="Học phí">Học phí</option><option value="Học bổng">Học bổng</option></select></label>
+    <label for="newsSearch">Tìm trong tin<input id="newsSearch" type="search" placeholder="Tên bài viết, nội dung…"></label>
+  </section>
+  <p id="newsStatus" class="news-status" role="status">Đang tải danh sách trường và thông báo…</p>
+  <div id="resGrid" class="res-grid" aria-live="polite"></div>
+  <section id="newsEmpty" class="news-empty" hidden><h2>Chưa có thông báo được xác minh</h2><p>Hãy thử trường, năm hoặc loại khác; bạn có thể xem hồ sơ trường để mở website chính thức.</p><a id="emptySchoolLink" href="page2.html" hidden>Xem hồ sơ trường →</a></section>
+  <details class="news-unverified"><summary>Trường chưa có thông báo được xác minh cho bộ lọc này <span id="unverifiedCount"></span></summary><div id="unverifiedSchools" class="news-school-list"></div></details>
+  <p class="news-disclaimer">Ngày hiển thị là ngày công bố trên trang nguồn. Bài viết chỉ để tham khảo; trước khi đăng ký, hãy đọc thông báo gốc và đối chiếu đúng ngành, chương trình, năm tuyển sinh.</p>
+  <details id="policy-sources" class="policy-panel news-sources"><summary><strong>Văn bản tuyển sinh chung · 2026 và chuẩn bị 2027</strong></summary>
     <p>Văn bản quy định chung và đề án của từng trường được dùng cho các mục đích khác nhau. Dự thảo được đánh dấu riêng để bạn theo dõi.</p>
     <div class="policy-controls"><label for="policyYearFilter">Xem nguồn theo năm</label><select id="policyYearFilter"><option value="all">Tất cả</option><option value="2026">Tuyển sinh 2026</option><option value="2027">Chuẩn bị 2027</option></select></div>
     <div id="policySourcesList" class="policy-sources-grid"></div>
-  </section>
-  <div class="res-hero">
-    <h1 class="res-hero-title">Tài liệu & bài viết</h1>
-    <p class="res-hero-sub">Đọc bài viết hướng nghiệp, tìm khóa học và tài liệu trong cùng một nơi.</p>
-  </div>
-
-  <!-- BỘ LỌC -->
-  <details id="school-sources" class="policy-panel">
-    <summary><strong>Đề án và nguồn tuyển sinh của 19 trường · 2026</strong></summary>
-    <p>Nguồn được đối chiếu riêng với công thức tính điểm. Dữ liệu 2026 dùng để tham khảo khi chuẩn bị 2027; điều kiện từng ngành vẫn cần thông báo đúng năm.</p>
-    <label for="schoolSourceSearch">Tìm trường</label>
-    <input type="search" id="schoolSourceSearch" class="res-search" placeholder="FPT, Cần Thơ, Sư phạm..." />
+  </details>
+  <details id="school-sources" class="policy-panel news-sources"><summary><strong>Nguồn tuyển sinh theo trường · 2026</strong></summary>
+    <p>Các nguồn này là tài liệu đối chiếu, không đồng nghĩa đã xác minh đầy đủ công thức, chỉ tiêu hay điều kiện từng ngành.</p>
+    <label for="schoolSourceSearch">Tìm trường</label><input type="search" id="schoolSourceSearch" class="res-search" placeholder="FPT, Cần Thơ, Sư phạm…" />
     <div id="schoolSourcesList" class="policy-sources-grid"></div>
   </details>
-  <!-- BỘ LỌC -->
-  <div class="res-filter">
-    <button class="res-filter-btn active" data-filter="all">Tất cả</button>
-    <button class="res-filter-btn" data-filter="Bài viết">Bài viết</button>
-    <button class="res-filter-btn" data-filter="Khóa học">Khóa học</button>
-    <button class="res-filter-btn" data-filter="Tài liệu">Tài liệu</button>
-    <button class="res-filter-btn" data-filter="Video">Video</button>
-    <button class="res-filter-btn" data-filter="Công cụ">Công cụ</button>
-    <button class="res-filter-btn" data-filter="Tổ chức">Tổ chức</button>
-    <input id="resSearch" class="res-search" type="search" placeholder="Tìm tài liệu hoặc bài viết..." aria-label="Tìm kiếm tài liệu hoặc bài viết" />
-  </div>
-
-  <!-- GRID TÀI LIỆU -->
-  <p id="libraryStatus" class="flow-status" role="status">Đang tải tài liệu và bài viết…</p>
-  <div id="resGrid" class="res-grid"></div>
-
-  <p id="resEmpty" class="res-empty" hidden>Không tìm thấy tài liệu phù hợp. Thử từ khóa khác nhé!</p>
-
-  <div class="res-info">
-    <h3>💡 Mẹo sử dụng</h3>
-    <ul>
-      <li>Chọn <strong>Đọc bài viết</strong> để đọc trong BrightWay; <strong>Xem nguồn</strong> mở học liệu bên ngoài trong tab mới.</li>
-      <li>Tài liệu <strong>miễn phí</strong> được đánh dấu xanh. Tài liệu <strong>trả phí</strong> đánh dấu vàng.</li>
-      <li>Dùng bộ lọc để xem theo nhóm (Khóa học, Tài liệu, Video, Công cụ, Tổ chức).</li>
-      <li>Kiểm tra điều kiện học và chi phí tại nguồn trước khi đăng ký.</li>
-    </ul>
-  </div>
-</section>
-
-<footer class="bw-footer">
-  <div class="logo">🌟 BrightWay Career</div>
-  <p>Đồng hành cùng học sinh Lớp 12 trên hành trình hướng nghiệp</p>
-  <p class="small">© 2026 BrightWay Career · Thông tin chỉ mang tính tham khảo, không thay thế tư vấn chuyên gia.</p>
-</footer>
-
-<script src="assets/js/supabase-client.js"></script>
-<script src="assets/js/cms-service.js"></script>
-<script src="assets/js/resources-data.js"></script>
+</main>
+<footer class="bw-footer"><div class="logo">BrightWay Career</div><p>Đồng hành cùng học sinh Lớp 12 trên hành trình hướng nghiệp</p><p class="small">© 2026 BrightWay Career · Thông tin chỉ mang tính tham khảo.</p></footer>
+<script type="module" src="assets/js/admissions-news.js?v=20261015"></script>
 <script type="module" src="assets/js/admissions-sources.js?v=20261014"></script>
 <script src="assets/js/theme.js"></script>
-<script>
-(async function() {
-  const grid = document.getElementById('resGrid');
-  const empty = document.getElementById('resEmpty');
-  const search = document.getElementById('resSearch');
-  const filterBtns = document.querySelectorAll('.res-filter-btn');
-  let ALL = [];
-  let activeFilter = 'all';
-  let activeKeyword = '';
-  let loading = true;
-  const status = document.getElementById('libraryStatus');
-  let resourceRows = [];
-  let postRows = [];
-  let generation = 0;
-  async function refresh() {
-    const run = ++generation;
-    loading = true;
-    status.textContent = 'Đang tải tài liệu và bài viết…';
-    let failures = 0;
-    const requests = [[loadResources, rows => { resourceRows = rows; }], [loadLibraryPosts, rows => { postRows = rows; }]];
-    await Promise.allSettled(requests.map(async ([load, set]) => {
-      try {
-        const rows = await load();
-        if (run !== generation) return;
-        set(rows);
-        ALL = [...postRows, ...resourceRows];
-        paint();
-      } catch (e) { if (run === generation) failures++; }
-    }));
-    if (run !== generation) return;
-    loading = false;
-    ALL = [...postRows, ...resourceRows];
-    if (failures && !ALL.length) ALL = FALLBACK_RESOURCES;
-    status.textContent = failures ? 'Một phần nội dung chưa tải được. ' : `${postRows.length} bài viết · ${resourceRows.length} học liệu`;
-    if (failures) {
-      if (!postRows.length && !resourceRows.length) status.append('Đang hiển thị học liệu tham khảo mặc định. ');
-      const retry = document.createElement('button');
-      retry.textContent = 'Thử lại';
-      retry.type = 'button';
-      retry.addEventListener('click', refresh);
-      status.appendChild(retry);
-    }
-    paint();
-  }
-
-  function paint() {
-    const normalize = value => String(value).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd');
-    const kw = normalize(activeKeyword.trim());
-    const list = ALL.filter(r => {
-      const okCat = (activeFilter === 'all') || (r.category === activeFilter);
-      if (!okCat) return false;
-      if (!kw) return true;
-      const hay = [r.title, r.provider, r.description, (r.tags || []).join(' ')].join(' ').toLowerCase();
-      return normalize(hay).includes(kw);
-    });
-    grid.innerHTML = list.map(renderResourceCard).join('');
-    empty.hidden = loading || list.length !== 0;
-    empty.textContent = ALL.length ? 'Không tìm thấy nội dung phù hợp. Thử đổi bộ lọc hoặc từ khóa.' : 'Chưa có nội dung được đăng trong kho này.';
-  }
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      activeFilter = btn.dataset.filter;
-      paint();
-    });
-  });
-
-  search.addEventListener('input', e => {
-    activeKeyword = e.target.value;
-    paint();
-  });
-  refresh();
-})();
-</script>
 <script src="assets/js/waybi.js"></script>
 <script src="assets/js/waybi-presence.js"></script>
 </body>
 </html>
-
