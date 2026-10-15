@@ -94,8 +94,11 @@ html body #home-view .bw-metric-band {
 html body #home-view .bw-metric-item {
   min-width:0; min-height:150px; display:flex; flex-direction:column;
   align-items:center; justify-content:center; gap:10px; padding:24px 18px;
-  text-align:center; border-right:1px solid rgba(255,255,255,.22);
+  color:inherit; text-align:center; text-decoration:none;
+  border-right:1px solid rgba(255,255,255,.22); transition:background .2s ease,transform .2s ease;
 }
+html body #home-view .bw-metric-item:hover { background:rgba(255,255,255,.12); }
+html body #home-view .bw-metric-item:active { transform:scale(.985); }
 html body #home-view .bw-metric-item:last-child { border-right:0; }
 html body #home-view .bw-metric-number {
   display:block; color:#fff; font-family:var(--font-display); font-size:clamp(2.35rem,4vw,3.45rem);
