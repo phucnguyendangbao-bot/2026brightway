@@ -44,14 +44,28 @@ test('2024–2026 records remain year-specific and preserve each scoring scale',
 });
 
 test('spreadsheet program import adds only the supplied school-year rows', () => {
-  assert.equal(PROGRAM_IMPORT_METADATA.totalRows, 194);
+  assert.equal(PROGRAM_IMPORT_METADATA.totalRows, 337);
+  assert.equal(PROGRAM_IMPORT_METADATA.schoolCount, 11);
+  assert.deepEqual(PROGRAM_IMPORT_METADATA.years, [2026]);
+  assert.equal(PROGRAM_IMPORT_METADATA.missingCodeRows, 81);
   assert.equal(schoolProgramDetails.ctu[2026].programs.length, 127);
   assert.equal(schoolProgramDetails.hcmus[2026].programs.length, 39);
   assert.equal(schoolProgramDetails.hcmue[2026].programs.length, 28);
+  assert.equal(schoolProgramDetails.uit[2026].programs.length, 15);
+  assert.equal(schoolProgramDetails.duytan[2026].programs.length, 53);
+  assert.equal(schoolProgramDetails.donga[2026].programs.length, 40);
+  assert.equal(schoolProgramDetails.tdtu[2026].programs.length, 16);
+  assert.equal(schoolProgramDetails.qnu[2026].programs.length, 8);
+  assert.equal(schoolProgramDetails.hufi[2026].programs.length, 4);
+  assert.equal(schoolProgramDetails.hub[2026].programs.length, 4);
+  assert.equal(schoolProgramDetails.ntu[2026].programs.length, 3);
   assert.equal(detailsForSchool('hcmus', 2026).scoreSource, schoolProfileDetails.hcmus.scoreSource);
   assert.equal(detailsForSchool('hcmus', 2026).programs.length, 39);
+  assert.equal(detailsForSchool('uit', 2026).programs.length, 15);
   assert.equal(detailsForSchool('ctu', 2024).programs, undefined);
   assert.equal(detailsForSchool('ctu', 2025), null);
   assert.equal(detailsForSchool('hcmue', 2025), null);
   assert.ok(schoolProgramDetails.ctu[2026].programs.every(program => program.code && program.name && program.track));
+  assert.ok(Object.values(schoolProgramDetails).flatMap(years => Object.values(years))
+    .flatMap(details => details.programs).every(program => program.name && program.track));
 });

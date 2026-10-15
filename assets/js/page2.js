@@ -109,10 +109,10 @@ function renderPrograms(school, details) {
   return `<p class="school-dialog-lead"><strong>${details.programs.length} ngành/chương trình</strong> trong dữ liệu tuyển sinh ${details.year}.${hasScores ? ' Điểm chuẩn cùng năm nằm ở cột cuối.' : ''}</p>
     ${details.programNote ? `<p class="school-program-note">${escapeHtml(details.programNote)}</p>` : ''}
     <div class="school-program-table-wrap"><table class="school-program-table"><thead><tr><th>Mã xét tuyển</th><th>Ngành / chương trình</th>${hasTracks ? '<th>Phân loại</th>' : ''}${hasScores ? `<th>Điểm chuẩn ${details.year}</th>` : ''}</tr></thead><tbody>
-    ${details.programs.map(program => `<tr><td>${escapeHtml(program.code)}</td><td>${escapeHtml(program.name)}</td>${hasTracks ? `<td>${escapeHtml(program.track || '')}</td>` : ''}${hasScores ? `<td>${Number.isFinite(program.score) ? `<strong>${escapeHtml(program.score)}</strong>` : ''}</td>` : ''}</tr>`).join('')}
+    ${details.programs.map(program => `<tr><td>${program.code ? escapeHtml(program.code) : '<span class="school-program-code-missing">Chưa công bố</span>'}</td><td>${escapeHtml(program.name)}</td>${hasTracks ? `<td>${escapeHtml(program.track || '')}</td>` : ''}${hasScores ? `<td>${Number.isFinite(program.score) ? `<strong>${escapeHtml(program.score)}</strong>` : ''}</td>` : ''}</tr>`).join('')}
     </tbody></table></div>
     ${details.scoreMethod ? `<p class="school-dialog-footnote">${escapeHtml(details.scoreMethod)}. Chọn đúng cơ sở và chương trình khi đăng ký.</p>` : ''}
-    ${officialLink(details.programSource, 'Danh sách ngành trên trang trường', 'school-dialog-link')}
+    ${officialLink(details.programSource, details.programSourceLabel || 'Danh sách ngành trên trang trường', 'school-dialog-link')}
     ${(details.supplementarySources || []).map(source => officialLink(source.url, source.label, 'school-dialog-link')).join('')}`;
 }
 
@@ -159,7 +159,7 @@ function renderDialog() {
   const body = activeTab === 'majors' ? renderPrograms(activeSchool, details)
     : activeTab === 'scores' ? renderScores(activeSchool, details) : renderAdmission(activeSchool, details);
   dialog.innerHTML = `<div class="school-dialog-shell">
-    <header class="school-dialog-header"><div><span class="school-card-kicker">HỒ SƠ TRƯỜNG · ${escapeHtml(activeSchool.short || '')}</span><h2 id="schoolDialogTitle">${escapeHtml(activeSchool.name)}</h2><p>${escapeHtml(activeSchool.city)} · Dữ liệu tuyển sinh theo nguồn chính thức</p></div><button type="button" class="school-dialog-close" data-action="close-school" aria-label="Đóng hồ sơ">×</button></header>
+    <header class="school-dialog-header"><div><span class="school-card-kicker">HỒ SƠ TRƯỜNG · ${escapeHtml(activeSchool.short || '')}</span><h2 id="schoolDialogTitle">${escapeHtml(activeSchool.name)}</h2><p>${escapeHtml(activeSchool.city)} · Dữ liệu tuyển sinh theo nguồn đã ghi nhận</p></div><button type="button" class="school-dialog-close" data-action="close-school" aria-label="Đóng hồ sơ">×</button></header>
     <div class="school-dialog-years" role="group" aria-label="Chọn năm tuyển sinh"><span>Năm tuyển sinh</span>${[2024, 2025, 2026].map(year => `<button type="button" data-action="school-year" data-year="${year}" aria-pressed="${activeYear === year}">${year}</button>`).join('')}</div>
     <div class="school-dialog-tabs" role="tablist" aria-label="Thông tin trường">${tabs.map(([key, label]) => `<button type="button" role="tab" id="tab-${key}" aria-controls="schoolDialogPanel" aria-selected="${activeTab === key}" tabindex="${activeTab === key ? '0' : '-1'}" data-action="school-tab" data-tab="${key}">${label}</button>`).join('')}</div>
     <div class="school-dialog-content" id="schoolDialogPanel" role="tabpanel" aria-labelledby="tab-${activeTab}">${body}</div>

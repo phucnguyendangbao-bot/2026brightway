@@ -633,6 +633,7 @@ html { scroll-behavior: smooth; }
 .school-program-table th { position: sticky; top: 0; z-index: 1; padding: 12px 14px; background: #f2f1ff; color: #554ca3; font-size: .73rem; }
 .school-program-table td { padding: 11px 14px; border-top: 1px solid #ececf7; }
 .school-program-table td:last-child strong { color: var(--bw-brand, #6b60ff); }
+.school-program-code-missing { color: var(--text-muted); font-size: .78rem; font-weight: 500; white-space: nowrap; }
 .school-dialog-footnote, .school-admission-panel small { display: block; margin-top: 14px; color: var(--bw-soft, #6b7194); font-size: .73rem; line-height: 1.6; }
 .school-dialog-link { display: inline-flex; margin: 14px 10px 0 0; color: var(--bw-brand, #6b60ff); font-size: .81rem; font-weight: 800; text-decoration: none; }
 .school-dialog-link:hover, .school-dialog-footer a:hover { text-decoration: underline; }

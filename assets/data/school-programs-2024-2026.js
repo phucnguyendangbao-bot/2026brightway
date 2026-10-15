@@ -79,6 +79,86 @@ const hcmuePrograms = toPrograms([
   ['7140103','Công nghệ giáo dục'],['7140114','Quản lý giáo dục'],['7310201','Chính trị học'],['7760103','Hỗ trợ giáo dục người khuyết tật'],
 ], 'Đại học - trụ sở chính');
 
+const hufiPrograms = toPrograms([
+  ['7220201', 'Ngôn ngữ Anh'],
+  ['7220204', 'Ngôn ngữ Trung Quốc'],
+  ['7340101', 'Quản trị kinh doanh'],
+  ['7340115', 'Marketing'],
+], 'Ngành / chương trình theo trang tuyển sinh');
+
+const uitPrograms = toPrograms([
+  ['', 'Công nghệ thông tin'],
+  ['', 'Hệ thống thông tin'],
+  ['', 'Khoa học máy tính'],
+  ['', 'Kỹ thuật phần mềm'],
+  ['', 'Kỹ thuật máy tính'],
+  ['', 'Mạng máy tính và truyền thông dữ liệu'],
+  ['', 'An toàn thông tin'],
+  ['', 'Thương mại điện tử'],
+  ['', 'Khoa học dữ liệu'],
+  ['', 'Thiết kế vi mạch'],
+  ['', 'Truyền thông đa phương tiện'],
+  ['', 'Công nghệ thông tin Việt Nhật'],
+  ['7480101LK', 'Khoa học máy tính (liên kết Birmingham City)'],
+  ['7480102LK', 'Mạng máy tính và An toàn thông tin (liên kết Birmingham City)'],
+  ['7480106LK', 'Kỹ thuật máy tính (Kỹ thuật hệ thống máy tính – liên kết Newcastle)'],
+], 'Ngành / chương trình theo trang tuyển sinh');
+
+const duytanPrograms = toPrograms([
+  ['', 'Kỹ thuật phần mềm'], ['', 'An toàn thông tin'], ['', 'Khoa học máy tính'], ['', 'Trí tuệ nhân tạo'],
+  ['', 'Khoa học dữ liệu'], ['', 'Mạng máy tính và truyền thông dữ liệu'], ['', 'Công nghệ kỹ thuật điện, điện tử'],
+  ['', 'Công nghệ kỹ thuật ô tô'], ['', 'Kỹ thuật điều khiển và tự động hóa'], ['', 'Công nghệ chế tạo máy'],
+  ['', 'Kỹ thuật điện'], ['', 'Kỹ thuật cơ điện tử'], ['', 'Kiến trúc'], ['', 'Thiết kế đồ họa'], ['', 'Thiết kế thời trang'],
+  ['', 'Kỹ thuật xây dựng'], ['', 'Công nghệ kỹ thuật công trình xây dựng'], ['', 'Kỹ thuật xây dựng công trình giao thông'],
+  ['', 'Công nghệ kỹ thuật môi trường'], ['', 'Quản lý tài nguyên và môi trường'], ['', 'Công nghệ thực phẩm'],
+  ['', 'Y khoa'], ['', 'Dược học'], ['', 'Răng - Hàm - Mặt'], ['', 'Điều dưỡng'], ['', 'Công nghệ sinh học'], ['', 'Kỹ thuật y sinh'],
+  ['', 'Quản trị kinh doanh'], ['', 'Tài chính - Ngân hàng'], ['', 'Kế toán'], ['', 'Kiểm toán'], ['', 'Thương mại điện tử'],
+  ['', 'Quản trị nhân lực'], ['', 'Marketing'], ['', 'Kinh doanh thương mại'], ['', 'Đầu tư tài chính'],
+  ['', 'Logistics và quản lý chuỗi cung ứng'], ['', 'Ngôn ngữ Anh'], ['', 'Ngôn ngữ Trung Quốc'], ['', 'Ngôn ngữ Hàn Quốc'],
+  ['', 'Ngôn ngữ Nhật'], ['', 'Văn học'], ['', 'Việt Nam học'], ['', 'Truyền thông đa phương tiện'], ['', 'Quan hệ quốc tế'],
+  ['', 'Quan hệ công chúng'], ['', 'Luật'], ['', 'Luật kinh tế'], ['', 'Quản trị dịch vụ du lịch và lữ hành'],
+  ['', 'Quản trị sự kiện'], ['', 'Quản trị nhà hàng và dịch vụ ăn uống'], ['', 'Quản trị khách sạn'], ['', 'Du lịch'],
+], 'Ngành / chương trình theo trang tuyển sinh');
+
+const hubPrograms = toPrograms([
+  ['7220201', 'Ngôn ngữ Anh'],
+  ['7220201DB', 'Ngôn ngữ Anh (chương trình đặc biệt)'],
+  ['7220204', 'Ngôn ngữ Trung Quốc'],
+  ['7310106', 'Kinh tế quốc tế'],
+], 'Ngành / chương trình theo trang tuyển sinh');
+
+const ntuPrograms = toPrograms([
+  ['7220204', 'Ngôn ngữ Trung Quốc'],
+  ['7380101', 'Luật'],
+  ['7420201', 'Công nghệ sinh học'],
+], 'Ngành / chương trình theo trang tuyển sinh');
+
+const qnuPrograms = toPrograms([
+  ['7140114', 'Quản lý giáo dục'], ['7220204', 'Ngôn ngữ Trung Quốc'], ['7229030', 'Văn học'], ['7310109', 'Kinh tế số'],
+  ['7140201', 'Giáo dục mầm non'], ['7140202', 'Giáo dục tiểu học'], ['7140205', 'Giáo dục chính trị'], ['7140206', 'Giáo dục thể chất'],
+], 'Ngành / chương trình theo trang tuyển sinh');
+
+const tdtuPrograms = toPrograms([
+  ['', 'Kế toán'], ['', 'Kiểm toán'], ['', 'Kinh doanh quốc tế'], ['', 'Quan hệ lao động'], ['', 'Marketing'],
+  ['', 'Quản trị nhân lực'], ['', 'Quản trị kinh doanh'], ['', 'Tài chính - Ngân hàng'], ['', 'Công nghệ tài chính'],
+  ['', 'Luật'], ['', 'Thống kê'], ['', 'Toán ứng dụng'], ['', 'Khoa học dữ liệu'], ['', 'Ngôn ngữ Anh'],
+  ['', 'Ngôn ngữ Trung Quốc'], ['', 'Du lịch'],
+], 'Ngành / chương trình theo trang tuyển sinh');
+
+const dongaPrograms = toPrograms([
+  ['132', 'Y khoa'], ['133', 'Dược học'], ['134', 'Điều dưỡng'], ['136', 'Hộ sinh'], ['135', 'Kỹ thuật phục hồi chức năng'],
+  ['137', 'Dinh dưỡng'], ['141', 'Tâm lý học'], ['142', 'Quản lý văn hóa'], ['143', 'Văn học (Ứng dụng)'],
+  ['117', 'Quản trị khách sạn'], ['116', 'Quản trị dịch vụ du lịch và lữ hành'], ['118', 'Quản trị nhà hàng và dịch vụ ăn uống'],
+  ['102', 'Ngôn ngữ Anh'], ['101', 'Ngôn ngữ Trung Quốc'], ['104', 'Ngôn ngữ Nhật'], ['103', 'Ngôn ngữ Hàn Quốc'],
+  ['138', 'Luật'], ['139', 'Luật kinh tế'], ['120', 'Công nghệ thông tin'], ['121', 'Kỹ thuật máy tính'],
+  ['122', 'Trí tuệ nhân tạo'], ['123', 'Đồ họa'], ['119', 'Công nghệ kỹ thuật ô tô'], ['125', 'Công nghệ kỹ thuật điện, điện tử'],
+  ['124', 'Công nghệ kỹ thuật điều khiển và tự động hóa'], ['127', 'Kỹ thuật cơ điện tử'], ['126', 'Công nghệ kỹ thuật xây dựng'],
+  ['128', 'Công nghệ sinh học'], ['129', 'Công nghệ thực phẩm'], ['130', 'Nông nghiệp'], ['131', 'Thú y'],
+  ['105', 'Quản trị kinh doanh'], ['106', 'Marketing'], ['107', 'Logistics và quản lý chuỗi cung ứng'], ['108', 'Thương mại điện tử'],
+  ['109', 'Kế toán'], ['111', 'Kinh doanh quốc tế'], ['115', 'Thiết kế thời trang'], ['112', 'Truyền thông đa phương tiện'],
+  ['113', 'Quản trị nhân lực'],
+], 'Ngành / chương trình theo trang tuyển sinh');
+
 export const schoolProgramDetails = {
   ctu: { 2026: {
     year: 2026,
@@ -102,10 +182,77 @@ export const schoolProgramDetails = {
     }],
     programNote: '28 dòng tại trụ sở chính, gồm 2 ngành mở mới. Danh sách trong file chưa khẳng định đầy đủ mọi cơ sở.',
   } },
+  hufi: { 2026: {
+    year: 2026,
+    programs: hufiPrograms,
+    programSource: 'https://diemthi.tuyensinh247.com/thong-tin-dai-hoc-cong-nghiep-thuc-pham-tphcm-DCT.html',
+    programSourceLabel: 'Nguồn tra cứu danh sách ngành',
+    programNote: '4 ngành từ nguồn tra cứu thứ cấp. Đây chưa phải danh mục ngành đầy đủ của trường.',
+  } },
+  uit: { 2026: {
+    year: 2026,
+    programs: uitPrograms,
+    programSource: 'https://tuyensinh.uit.edu.vn/',
+    supplementarySources: [
+      { label: 'Thông tin chương trình liên kết', url: 'https://tuyensinh.uit.edu.vn/node/4241' },
+      { label: 'Tuyển sinh liên kết Birmingham City', url: 'https://tuyensinh.uit.edu.vn/2026-thong-bao-tuyen-sinh-trinh-do-dai-hoc-chuong-trinh-lien-ket-voi-truong-dai-hoc-birmingham-city-vuong-quoc-anh-nam-2026-dot-2?page=2' },
+      { label: 'Thông tin chương trình Việt Nhật', url: 'https://tuyensinh.uit.edu.vn/node/4225' },
+    ],
+    programNote: '15 ngành/chương trình được ghi nhận; 12 dòng chưa có mã xét tuyển trong nguồn nhập.',
+  } },
+  duytan: { 2026: {
+    year: 2026,
+    programs: duytanPrograms,
+    programSource: 'https://tuyensinh2026.duytan.edu.vn/',
+    programNote: '53 ngành được giới thiệu trên trang tuyển sinh 2026; nguồn nhập chưa kèm mã xét tuyển.',
+  } },
+  hub: { 2026: {
+    year: 2026,
+    programs: hubPrograms,
+    programSource: 'https://diemthi.tuyensinh247.com/kqxt-dai-hoc-ngan-hang-tphcm-NHS.html',
+    programSourceLabel: 'Nguồn tra cứu danh sách ngành',
+    programNote: '4 ngành từ nguồn tra cứu thứ cấp. Đây chưa phải danh mục ngành đầy đủ của trường.',
+  } },
+  ntu: { 2026: {
+    year: 2026,
+    programs: ntuPrograms,
+    programSource: 'https://tuyensinh.ntu.edu.vn/thong-bao/thong-bao-xet-tuyen-bo-sung-nam-2026',
+    programNote: '3 ngành trong thông báo tuyển bổ sung 2026; không đại diện toàn bộ danh mục ngành của trường.',
+  } },
+  qnu: { 2026: {
+    year: 2026,
+    programs: qnuPrograms,
+    programSource: 'https://tuyensinh.qnu.edu.vn/vi/tuyen-sinh-dai-hoc-chinh-quy-2027/tb151-xet-tuyen-bo-sung-vao-dai-hoc-chinh-quy-nam-2026',
+    supplementarySources: [{
+      label: 'Nguồn tra cứu bổ sung',
+      url: 'https://thuvienphapluat.vn/hoi-dap-phap-luat/truong-dai-hoc-quy-nhon-tuyen-sinh-2026-gom-nhung-nganh-nao-138081635.html',
+    }],
+    programNote: '8 ngành tổng hợp từ thông báo tuyển bổ sung và nguồn tra cứu; chưa phải danh mục đầy đủ.',
+  } },
+  tdtu: { 2026: {
+    year: 2026,
+    programs: tdtuPrograms,
+    programSource: 'https://admission.tdtu.edu.vn/hoc-tai-tdtu/hoc-phi-hoc-bong-2026',
+    programNote: '16 ngành xuất hiện trong danh sách chương trình học phí 2026; nguồn nhập chưa kèm mã xét tuyển và chưa khẳng định đầy đủ.',
+  } },
+  donga: { 2026: {
+    year: 2026,
+    programs: dongaPrograms,
+    programSource: 'https://tuyensinhdonga.edu.vn/',
+    programNote: '40 ngành từ trang tuyển sinh 2026 của trường.',
+  } },
 };
 
 export const PROGRAM_IMPORT_METADATA = {
-  source: 'BrightWay_37_muc_35_truong_Nganh_2024_2026.xlsx',
+  source: 'BrightWay_37_don_vi_MO_RONG_NGANH_2024_2026.xlsx',
   importedAt: '2026-10-15',
-  totalRows: ctuPrograms.length + hcmusPrograms.length + hcmuePrograms.length,
+  years: [2026],
+  schoolCount: Object.keys(schoolProgramDetails).length,
+  missingCodeRows: Object.values(schoolProgramDetails)
+    .flatMap(years => Object.values(years))
+    .flatMap(details => details.programs)
+    .filter(program => !program.code).length,
+  totalRows: Object.values(schoolProgramDetails)
+    .flatMap(years => Object.values(years))
+    .reduce((total, details) => total + details.programs.length, 0),
 };
