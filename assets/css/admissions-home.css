@@ -62,8 +62,9 @@ html body #home-view .bw-hero-cta-row { flex-direction:row; flex-wrap:wrap; gap:
 html body #home-view .bw-btn-xl { min-height:48px !important; padding:12px 20px !important; font-size:16px !important; }
 html body #home-view .bw-hero-visual { max-width:460px; margin:auto; }
 html body #home-view .bw-hero-carousel { border-radius:24px; }
-html body #home-view .bw-hero-caption { font-size:12px; padding:5px 10px; margin-top:8px; }
-html body #home-view .bw-hero-dots { margin-top:10px; }
+html body #home-view .bw-hero-caption { font-size:10px; line-height:1.2; font-weight:700; padding:3px 7px; margin-top:5px; gap:4px; }
+html body #home-view .bw-hero-caption::before { font-size:10px; }
+html body #home-view .bw-hero-dots { margin-top:6px; }
 html body #home-view .bw-trust-bar { margin-top:16px; padding:10px 18px; }
 html body #home-view .flow-next { margin:10px 0; padding:16px 20px; }
 html body #home-view .flow-next h2 { font-size:18px; }
