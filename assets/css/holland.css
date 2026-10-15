@@ -673,6 +673,10 @@ body {
 }
 @media (max-width: 460px) {
   .holland-start-actions .quiz-btn { width:100%; justify-content:center; }
+  .q-scale { display:grid; grid-template-columns:1fr; gap:5px; }
+  .q-scale-lbl { min-width:0; text-align:center; }
+  .q-scale-lbl.right { text-align:center; }
+  .q-scale-btns { order:2; width:100%; }
   .import-card { padding: 18px; }
   .import-form-row { flex-direction: column; }
   .types-grid { grid-template-columns: 1fr; }
