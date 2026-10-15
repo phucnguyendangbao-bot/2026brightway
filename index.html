@@ -6612,28 +6612,6 @@ Bạn cần hỏi gì nào?</div>
     if (t) t.remove();
   }
 
-  function buildContextSummary(){
-    if (typeof scholarshipData === 'undefined') return '';
-    const sectorNames = {
-      cntt:'Công nghệ thông tin', yte:'Y tế', tt:'Truyền thông', tc:'Tài chính',
-      sp:'Sư phạm', env:'Môi trường & Bền vững', ai:'AI & Robotics', bio:'Biotech'
-    };
-    const lines = ['=== DỮ LIỆU TRƯỜNG & HỌC BỔNG (BrightWay) ==='];
-    Object.keys(scholarshipData).forEach(tab => {
-      const list = scholarshipData[tab] || [];
-      if (!list.length) return;
-      lines.push('\n### ' + (sectorNames[tab] || tab).toUpperCase() + ' (' + list.length + ' trường):');
-      list.forEach(u => {
-        const methods = (u.scholarshipMethods || []).slice(0,3).join('; ');
-        const reqs = (u.requirements || []).map(r => {
-          if (r.type === 'number') return r.label + ' ≥ ' + r.min;
-          return r.label;
-        }).slice(0,4).join(', ');
-        lines.push('- ' + u.name + ' (' + u.short + ', ' + u.city + '): HB: ' + methods + '. Yêu cầu: ' + reqs + '. Deadline: ' + (u.applyStart||'?') + ' - ' + (u.applyEnd||'?'));
-      });
-    });
-    return lines.join('\n');
-  }
 
   async function sendMessage(){
     const text = input.value.trim();
@@ -6652,7 +6630,6 @@ Bạn cần hỏi gì nào?</div>
     try {
       const payload = {
         messages: history.slice(-MAX_HISTORY),
-        context: buildContextSummary(),
         currentTab: (typeof currentTab !== 'undefined' ? currentTab : null)
       };
 
@@ -6678,8 +6655,7 @@ Bạn cần hỏi gì nào?</div>
       hideTyping();
       console.error('[BW chatbot]', err);
       addMessage('bot',
-        '⚠️ Xin lỗi, mình không kết nối được server. ' +
-        'Vui lòng thử lại sau ít phút.\n\n(Chi tiết: ' + (err.message || err) + ')',
+        'Mình chưa kết nối được. Bạn thử gửi lại sau ít phút nhé.',
         true
       );
     } finally {

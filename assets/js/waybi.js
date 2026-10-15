@@ -9,72 +9,14 @@
 (function () {
   'use strict';
 
-  // ─── Knowledge base — trả lời theo keyword ───
-  const KB = [
-    {
-      keys: ['học bổng', 'hoc bong', 'scholarship', 'học bổng nào', 'loại học bổng'],
-      reply: 'BrightWay có nhiều loại học bổng trong mục <b>"Tra cứu trường"</b> → filter theo "Có học bổng". Phổ biến: Chevening (Anh), Fulbright (Mỹ), MEXT (Nhật), DAAD (Đức), AAS (Úc). Bạn quan tâm nước nào để mình gợi ý cụ thể hơn nha!'
-    },
-    {
-      keys: ['lộ trình', 'lo trinh', 'roadmap', 'chuẩn bị', 'bắt đầu', 'bắt đầu từ đâu'],
-      reply: 'Bạn nên xem trang <b>📅 Lộ trình apply học bổng</b> nhé! Tóm tắt: <br>• <b>12-18 tháng trước</b>: xây GPA + hoạt động<br>• <b>6-12 tháng</b>: thi IELTS/SAT + chốt trường<br>• <b>3-6 tháng</b>: viết essay + xin thư giới thiệu<br>• <b>1-2 tháng</b>: nộp hồ sơ'
-    },
-    {
-      keys: ['essay', 'bài luận', 'personal statement', 'motivation letter'],
-      reply: 'Một số tip viết essay: <br>• Bắt đầu bằng <b>câu chuyện cụ thể</b>, không viết chung chung<br>• Tránh liệt kê thành tích khô khan<br>• Thể hiện <b>đam mê + mục tiêu rõ ràng</b><br>• Đọc to nhiều lần để kiểm tra flow<br><br>Bạn có thể dùng công cụ <b>Nhận xét bài luận</b> tại essay-review.html nhé!'
-    },
-    {
-      keys: ['ielts', 'toefl', 'tiếng anh', 'ngoại ngữ', 'chứng chỉ'],
-      reply: 'Hầu hết học bổng yêu cầu <b>IELTS 6.5+</b> hoặc TOEFL 80+. Một số chương trình cần SAT/GRE. Nên thi trước deadline 6-9 tháng để có điểm tốt nhất và kịp thi lại nếu cần.'
-    },
-    {
-      keys: ['deadline', 'hạn nộp', 'khi nào nộp', 'thời hạn'],
-      reply: 'Mỗi học bổng có deadline khác nhau. Xem trang <b>📅 Lịch</b> để thấy tất cả mốc thời gian trong năm 2026 nhé!'
-    },
-    {
-      keys: ['holland', 'trắc nghiệm', 'tính cách', 'nghề nghiệp', 'nghề phù hợp', 'holland code'],
-      reply: 'Trắc nghiệm Holland giúp bạn tìm nhóm ngành nghề phù hợp với tính cách (RIA, IAS, ESA…). Vào <b>holland.html</b> để làm bài test miễn phí nha!'
-    },
-    {
-      keys: ['tính điểm', 'tinh diem', 'điểm xét tuyển', 'score'],
-      reply: 'Có công cụ <b>🧮 Tính điểm xét tuyển</b> tại score-calculator.html — nhập điểm 3 môn, chọn tổ hợp, sẽ tính ngay cho bạn.'
-    },
-    {
-      keys: ['đăng nhập', 'dang nhap', 'tài khoản', 'login', 'đăng ký'],
-      reply: 'Bạn đăng nhập bằng <b>Google</b> 1 cú click, hoặc email + mật khẩu. Tài khoản giúp lưu kết quả Holland, lưu nghề yêu thích và xem lịch sử.'
-    },
-    {
-      keys: ['chào', 'hi', 'hello', 'hey', 'xin chào', 'chao'],
-      reply: 'Chào bạn! 👋 Mình là <b>Waybi</b> — trợ lý ảo của BrightWay. Mình có thể giúp gì cho bạn hôm nay?'
-    },
-    {
-      keys: ['cảm ơn', 'cam on', 'thanks', 'thank you', 'tuyệt', 'hay'],
-      reply: 'Không có gì đâu bạn! 😊 Chúc bạn apply thành công nhé. Nhớ quay lại nếu cần hỗ trợ thêm nha!'
-    },
-    {
-      keys: ['giờ', 'mấy giờ', 'thời gian'],
-      reply: () => {
-        const now = new Date();
-        const h = String(now.getHours()).padStart(2, '0');
-        const m = String(now.getMinutes()).padStart(2, '0');
-        return `Bây giờ là <b>${h}:${m}</b> 🌟. Bạn đang làm gì vậy, mình giúp được không?`;
-      }
-    },
-    {
-      keys: ['tên', 'ten', 'bạn là ai', 'bạn tên gì', 'who are you'],
-      reply: 'Mình là <b>Waybi</b> — linh vật và trợ lý ảo của <b>BrightWay Career</b> ✨. Mình giúp bạn tra cứu học bổng, chọn ngành, lên lộ trình học tập và trả lời mọi thắc mắc về du học.'
-    },
-    {
-      keys: ['tạm biệt', 'bye', 'goodbye', 'bai'],
-      reply: 'Tạm biệt bạn! 👋 Chúc bạn một ngày tốt lành. Mình luôn ở đây khi cần nha!'
-    },
-  ];
+  const CHAT_ENDPOINT = '/api/chat';
+  const MAX_HISTORY = 12;
 
   // ─── Contextual greeting theo trang ───
   function getContextGreeting() {
     const path = location.pathname.toLowerCase();
-    if (path.includes('calendar')) return 'Bạn đang xem lịch 2026 nè 📅 — cần mình giúp tìm mốc nào không?';
-    if (path.includes('essay-review')) return 'Essay đâu, đưa mình xem giúp nào ✍️';
+    if (path.includes('calendar')) return 'Bạn đang xem lịch tuyển sinh — cần mình giúp tìm mốc nào không?';
+    if (path.includes('essay-review')) return 'Bạn đang tìm hướng dẫn chuẩn bị bài luận học bổng?';
     if (path.includes('score-calculator')) return 'Cần tính điểm xét tuyển hả? Mình hướng dẫn nè!';
     if (path.includes('holland')) return 'Holland test giúp bạn tìm nghề hợp tính cách đó! 🎯';
     if (path.includes('scholarship-roadmap')) return 'Bạn đang xem lộ trình apply nè — mốc nào cần mình giải thích thêm không?';
@@ -87,30 +29,6 @@
     return null;
   }
 
-  // ─── Auto-reply ───
-  function getReply(text) {
-    const t = text.toLowerCase().trim();
-    if (/holland|trắc nghiệm|tính cách/.test(t)) return 'Bạn có thể <a href="holland.html">làm test Holland</a> hoặc <a href="holland.html#import-result">nhập kết quả đã có</a>, rồi <a href="careers-holland.html">xem nghề phù hợp</a>.';
-    if (/tính điểm|học bạ|điểm xét tuyển/.test(t)) return '<a href="score-calculator.html">Mở công cụ tính điểm</a>, chọn tổ hợp rồi nhập điểm thi THPT hoặc học bạ. Công cụ ghi rõ phần tính được và dữ liệu còn thiếu.';
-    if (/trường|đại học/.test(t)) return '<a href="page2.html">Tra cứu trường</a>, đọc phương thức tuyển sinh rồi chọn “Chọn trường & tính điểm”. Điều kiện ngành cần đối chiếu trên nguồn chính thức.';
-    if (/tài liệu|khóa học|bài viết/.test(t)) return '<a href="resources.html">Mở Tài liệu & bài viết</a> để tìm học liệu hoặc đọc hướng dẫn.';
-    if (/lộ trình|lịch|deadline/.test(t)) return '<a href="calendar.html">Xem lịch tuyển sinh</a> hoặc <a href="scholarship-roadmap.html">lộ trình chuẩn bị học bổng</a>.';
-    if (/cv|essay|bài luận/.test(t)) return 'Bạn có thể tìm hướng dẫn chuẩn bị hồ sơ trong <a href="resources.html">Tài liệu & bài viết</a>.';
-    for (const item of KB) {
-      for (const k of item.keys) {
-        if (t.includes(k.toLowerCase())) {
-          return typeof item.reply === 'function' ? item.reply() : item.reply;
-        }
-      }
-    }
-    // fallback
-    const fallbacks = [
-      'Câu này mình chưa rõ lắm 😅 Bạn có thể hỏi về: học bổng, lộ trình, ngành học, IELTS, deadline, Holland test, hoặc công cụ tính điểm nha!',
-      'Mình chưa hiểu ý bạn 🤔 Bạn thử hỏi "học bổng nào phù hợp?" hoặc "chọn ngành thế nào?" xem sao.',
-      'Hmm, mình chưa có thông tin này. Bạn có thể liên hệ admin qua email support@brightway.vn để được hỗ trợ chi tiết hơn nhé!',
-    ];
-    return fallbacks[Math.floor(Math.random() * fallbacks.length)];
-  }
 
   // ─── LocalStorage helpers ───
   const STORAGE_KEY = 'waybi_user';
@@ -238,6 +156,7 @@
         border: 1px solid rgba(99,102,241,0.12);
         border-bottom-left-radius: 4px;
         box-shadow: 0 2px 8px rgba(99,102,241,0.06);
+        white-space: pre-wrap;
       }
       .waybi-msg.bot b { color: #6366f1; }
 
@@ -353,12 +272,15 @@
   // ─── Chat logic ───
   let isOpen = false;
   let greeted = false;
+  let busy = false;
+  const history = [];
 
-  function addMessage(text, who) {
+  function addMessage(text, who, trustedHTML = false) {
     const msgs = document.getElementById('waybi-messages');
     const div = document.createElement('div');
     div.className = 'waybi-msg ' + who;
-    div.innerHTML = text;
+    if (trustedHTML) div.innerHTML = text;
+    else div.textContent = text;
     msgs.appendChild(div);
     msgs.scrollTop = msgs.scrollHeight;
   }
@@ -377,17 +299,39 @@
     if (t) t.remove();
   }
 
-  function send(text) {
-    if (!text || !text.trim()) return;
-    addMessage(escapeHtml(text), 'user');
+  async function send(text) {
+    if (!text || !text.trim() || busy) return;
+    busy = true;
+    const sendBtn = document.getElementById('waybi-send');
+    sendBtn.disabled = true;
+    addMessage(text, 'user');
+    history.push({ role: 'user', content: text });
     document.getElementById('waybi-input').value = '';
     showTyping();
-    const delay = 500 + Math.random() * 600;
-    setTimeout(() => {
+    try {
+      const response = await fetch(CHAT_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: history.slice(-MAX_HISTORY),
+          currentTab: location.pathname,
+        }),
+      });
+      if (!response.ok) throw new Error('Chat unavailable');
+      const data = await response.json();
+      if (!data.reply || typeof data.reply !== 'string') throw new Error('Empty reply');
       hideTyping();
-      const reply = getReply(text);
-      addMessage(reply, 'bot');
-    }, delay);
+      addMessage(data.reply, 'bot');
+      history.push({ role: 'assistant', content: data.reply });
+    } catch (error) {
+      hideTyping();
+      history.pop();
+      addMessage('Mình chưa kết nối được. Bạn thử gửi lại sau ít phút nhé.', 'bot');
+      console.error('[Waybi chat]', error);
+    } finally {
+      busy = false;
+      sendBtn.disabled = false;
+    }
   }
 
   function escapeHtml(s) {
@@ -424,7 +368,7 @@
     if (!greeted) {
       greeted = true;
       setTimeout(() => {
-        addMessage(getGreeting(), 'bot');
+        addMessage(getGreeting(), 'bot', true);
       }, 200);
     }
     setTimeout(() => document.getElementById('waybi-input').focus(), 300);
@@ -459,14 +403,14 @@
       if (input.dataset.mode === 'askname') {
         const name = v.split(/\s+/)[0].slice(0, 20);
         setUser({ name, ts: Date.now() });
-        addMessage(escapeHtml(v), 'user');
+        addMessage(v, 'user');
         input.value = '';
         input.placeholder = 'Nhập câu hỏi...';
         input.dataset.mode = '';
         showTyping();
         setTimeout(() => {
           hideTyping();
-          addMessage(`Rất vui được gặp bạn <b>${escapeHtml(name)}</b>! 🌟 Mình có thể giúp gì cho bạn?`, 'bot');
+          addMessage(`Rất vui được gặp bạn <b>${escapeHtml(name)}</b>! 🌟 Mình có thể giúp gì cho bạn?`, 'bot', true);
         }, 600);
         return;
       }
