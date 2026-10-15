@@ -434,3 +434,59 @@ html { scroll-behavior: smooth; }
 ::-webkit-scrollbar-track { background: rgba(99,102,241,0.05); }
 ::-webkit-scrollbar-thumb { background: rgba(99,102,241,0.25); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(99,102,241,0.45); }
+
+/* ── COMPACT RESEARCH CATALOG ──
+   Keep the catalogue information-dense and easy to scan on desktop. */
+.p2-nav-inner { max-width: 1280px; padding: 9px 20px; gap: 12px; }
+.p2-nav-logo { font-size: .95rem; }
+.p2-back { padding: 6px 12px; font-size: .78rem; }
+.p2-search-bar { max-width: 320px; }
+.p2-search-bar input { padding-top: 7px; padding-bottom: 7px; border-radius: 10px; }
+
+.p2-layout { max-width: 1280px; padding: 18px 20px 28px; grid-template-columns: 222px minmax(0, 1fr); gap: 18px; }
+.p2-sidebar { top: 68px; padding: 12px; border-radius: 14px; max-height: calc(100vh - 84px); }
+.p2-sidebar-title { font-size: .82rem; margin-bottom: 8px; line-height: 1.35; }
+.p2-sidebar-field-title { padding: 9px 7px 5px; font-size: .66rem; }
+.p2-sidebar a.p2-sidebar-school { padding: 5px 6px; gap: 7px; font-size: .78rem; }
+.p2-sidebar-logo-wrap, .p2-sidebar-logo-wrap img { width: 25px; height: 25px; }
+.p2-sidebar-school-name { font-size: .78rem; }
+.p2-sidebar-school-city { font-size: .64rem; }
+
+.p2-main { gap: 20px; }
+.school-header { padding: 14px 18px; gap: 12px; border-radius: 16px 16px 0 0; }
+.school-icon { width: 44px; height: 44px; border-radius: 11px; }
+.school-icon img { padding: 6px; }
+.school-name { font-size: 1.02rem; }
+.school-badges { margin-top: 4px; gap: 4px; }
+.school-badge-short, .school-badge-city, .school-badge-variants { padding: 2px 8px; font-size: .68rem; }
+.school-admission-cta-main { font-size: .8rem; padding: 8px 14px; }
+
+.ad-cards { padding: 14px 18px; gap: 10px; border-radius: 0 0 16px 16px; }
+.ad-card { padding: 13px 14px; border-radius: 10px; }
+.ad-card-title { font-size: .9rem; margin-bottom: 8px; }
+.ad-row { gap: 5px 12px; margin-bottom: 5px; }
+.ad-label { font-size: .72rem; min-width: 112px; }
+.ad-value { font-size: .76rem; line-height: 1.45; }
+.ad-tag { padding: 2px 8px; font-size: .68rem; }
+.ad-note { margin-top: 7px; padding: 8px 11px; border-radius: 8px; font-size: .74rem; line-height: 1.45; }
+
+.school-info-grid { padding: 11px 18px; gap: 8px 16px; }
+.info-grid-item { gap: 3px; }
+.info-grid-label { font-size: .65rem; }
+.info-grid-value { font-size: .76rem; line-height: 1.4; gap: 4px; }
+.info-tag { padding: 2px 8px; font-size: .7rem; border-radius: 6px; }
+
+.school-variants { margin-top: 10px; gap: 10px; }
+.school-variant { padding: 12px 14px; border-radius: 12px; }
+.school-variant-header { gap: 6px 10px; margin-bottom: 9px; padding-bottom: 8px; }
+.school-variant-title { font-size: .9rem; }
+.school-variant-tag { padding: 2px 8px; font-size: .66rem; }
+.ad-cards-variant { gap: 8px !important; }
+.ad-card-variant { padding: 11px 13px; }
+
+.p2-footer { margin-top: 10px; padding: 14px 20px; font-size: .74rem; }
+
+@media (max-width: 900px) {
+  .p2-layout { padding: 12px; gap: 12px; }
+  .p2-sidebar { padding: 8px; }
+}
