@@ -81,8 +81,23 @@ test('home foregrounds career search and Waybi, and restores six Holland routes 
   assert.ok(home.indexOf('<section class="bw-waybi-home"') < home.indexOf('<section class="admissions-home"'));
   assert.ok(home.indexOf('<section class="home-holland"') < home.indexOf('<section class="admissions-home"'));
   for (const group of 'RIASEC') assert.match(home, new RegExp('href="careers-holland.html\\?holland=' + group + '"'));
+  assert.match(home, /<strong>R<\/strong><span>Kỹ thuật<\/span>/);
+  assert.match(home, /<strong>C<\/strong><span>Nghiệp vụ<\/span>/);
   assert.match(home, /id="homeImportForm"/);
   assert.match(home, /Tôi đã làm test Holland rồi/);
+});
+
+test('manual Holland codes require exactly three distinct RIASEC letters', () => {
+  const homeImport = read('assets/js/home-holland.js');
+  const holland = read('assets/js/holland.js');
+  const flow = read('assets/js/flow.js');
+  for (const source of [homeImport, holland, flow]) {
+    assert.match(source, /\^\[RIASEC\]\{3\}\$/);
+    assert.doesNotMatch(source, /\^\[RIASEC\]\{1,3\}\$/);
+  }
+  assert.match(homeImport, /new Set\(value\)\.size !== 3/);
+  assert.match(holland, /new Set\(code\)\.size === 3/);
+  assert.match(flow, /new Set\(code\)\.size === 3/);
 });
 
 test('homepage presents four useful linked figures as a responsive metric band', () => {

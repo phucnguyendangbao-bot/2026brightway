@@ -6,12 +6,12 @@
   'use strict';
 
   const TYPES = {
-    R: { name: 'Thực tế', emoji: '🔧', color: '#f59e0b', desc: 'Thích làm việc với tay, máy móc, vật thể cụ thể.' },
+    R: { name: 'Kỹ thuật', emoji: '🔧', color: '#f59e0b', desc: 'Thích làm việc với tay, máy móc, vật thể cụ thể.' },
     I: { name: 'Nghiên cứu', emoji: '🔬', color: '#6366f1', desc: 'Thích phân tích, khám phá, giải quyết vấn đề phức tạp.' },
     A: { name: 'Nghệ thuật', emoji: '🎨', color: '#ec4899', desc: 'Sáng tạo, biểu đạt phong phú, thích tự do.' },
     S: { name: 'Xã hội', emoji: '🤝', color: '#10b981', desc: 'Yêu giao tiếp, giúp đỡ, làm việc với mọi người.' },
     E: { name: 'Lãnh đạo', emoji: '🚀', color: '#f97316', desc: 'Tư duy kinh doanh, thuyết phục, muốn dẫn dắt.' },
-    C: { name: 'Quy củ', emoji: '📊', color: '#3b82f6', desc: 'Thích trật tự, chi tiết, làm việc với dữ liệu.' }
+    C: { name: 'Nghiệp vụ', emoji: '📊', color: '#3b82f6', desc: 'Thích trật tự, chi tiết, làm việc với dữ liệu.' }
   };
 
   const MINI_Q = [

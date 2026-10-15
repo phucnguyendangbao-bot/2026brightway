@@ -7,7 +7,7 @@
 
   // ─── 6 nhóm Holland ───
   const TYPES = {
-    R: { name: 'Thực tế (Realistic)', emoji: '🔧', color: '#f59e0b',
+    R: { name: 'Kỹ thuật (Realistic)', emoji: '🔧', color: '#f59e0b',
       desc: 'Bạn quan tâm các hoạt động thực hành với máy móc, dụng cụ hoặc vật thể cụ thể. Sở thích không tự xác nhận năng lực kỹ thuật.',
       majors: ['Kỹ thuật cơ khí', 'Điện – Điện tử', 'Xây dựng', 'Nông nghiệp', 'Kiến trúc', 'Lâm nghiệp', 'Hàng không'] },
     I: { name: 'Nghiên cứu (Investigative)', emoji: '🔬', color: '#6366f1',
@@ -22,7 +22,7 @@
     E: { name: 'Lãnh đạo (Enterprising)', emoji: '🚀', color: '#f97316',
       desc: 'Bạn quan tâm việc thuyết phục, tổ chức, kinh doanh hoặc dẫn dắt hoạt động. Nên đối chiếu với trải nghiệm và kỹ năng thực tế.',
       majors: ['Quản trị kinh doanh', 'Marketing', 'Luật', 'Tài chính – Ngân hàng', 'Kinh tế', 'Khởi nghiệp', 'Quan hệ công chúng'] },
-    C: { name: 'Quy củ (Conventional)', emoji: '📊', color: '#3b82f6',
+    C: { name: 'Nghiệp vụ (Conventional)', emoji: '📊', color: '#3b82f6',
       desc: 'Bạn thích công việc có trật tự, quy trình, dữ liệu hoặc con số. Đây là gợi ý sở thích, không khẳng định phẩm chất hay năng lực.',
       majors: ['Kế toán – Kiểm toán', 'Hệ thống thông tin', 'Thống kê', 'Tài chính', 'Hành chính văn phòng', 'Logistics', 'Ngân hàng'] }
   };
@@ -95,7 +95,7 @@
 
   function normalizeCode(value) {
     const code = String(value || '').trim().toUpperCase();
-    return /^[RIASEC]{1,3}$/.test(code) && new Set(code).size === code.length ? code : '';
+    return /^[RIASEC]{3}$/.test(code) && new Set(code).size === 3 ? code : '';
   }
 
   function showImportedResult(code) {
@@ -124,7 +124,7 @@
     const error = $('importError');
     if (!code) {
       input.setAttribute('aria-invalid', 'true');
-      error.textContent = 'Mã cần có 1–3 chữ khác nhau trong R, I, A, S, E, C. Ví dụ: ISA.';
+      error.textContent = 'Mã cần có đúng 3 chữ khác nhau trong R, I, A, S, E, C. Ví dụ: ISA.';
       error.hidden = false;
       input.focus();
       return;

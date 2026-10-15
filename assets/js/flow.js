@@ -15,7 +15,7 @@
       const tested = JSON.parse(localStorage.getItem('studentHollandV1') || 'null');
       const chosen = imported && (!tested || imported.savedAt >= tested.savedAt) ? imported : tested;
       const code = chosen === tested && !tested?.completed && tested?.answered !== 42 ? '' : chosen?.code;
-      return /^[RIASEC]{1,3}$/.test(code || '') ? code : '';
+      return /^[RIASEC]{3}$/.test(code || '') && new Set(code).size === 3 ? code : '';
     } catch { return ''; }
   }
   function nextStep(container, title, description, links) {

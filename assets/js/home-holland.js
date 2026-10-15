@@ -27,8 +27,8 @@
     event.preventDefault();
     const value = input.value.trim().toUpperCase();
     const error = document.getElementById('homeHollandError');
-    if (!/^[RIASEC]{1,3}$/.test(value) || new Set(value).size !== value.length) {
-      error.textContent = 'Mã cần có 1–3 chữ khác nhau trong R, I, A, S, E, C. Ví dụ: ISA.';
+    if (!/^[RIASEC]{3}$/.test(value) || new Set(value).size !== 3) {
+      error.textContent = 'Mã cần có đúng 3 chữ khác nhau trong R, I, A, S, E, C. Ví dụ: ISA.';
       error.hidden = false;
       input.setAttribute('aria-invalid', 'true');
       input.focus();

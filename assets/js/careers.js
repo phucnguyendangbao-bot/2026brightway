@@ -11,12 +11,12 @@
 
   const HOLLAND_META = {
     all: { label: 'Tất cả', emoji: '🌐', color: '#6366f1', desc: 'Mọi nhóm' },
-    R: { label: 'Thực tế', emoji: '🔧', color: '#f59e0b', desc: 'Làm việc với tay, máy móc.' },
+    R: { label: 'Kỹ thuật', emoji: '🔧', color: '#f59e0b', desc: 'Làm việc với tay, máy móc.' },
     I: { label: 'Nghiên cứu', emoji: '🔬', color: '#6366f1', desc: 'Phân tích, khám phá, giải quyết vấn đề.' },
     A: { label: 'Nghệ thuật', emoji: '🎨', color: '#ec4899', desc: 'Sáng tạo, biểu đạt phong phú.' },
     S: { label: 'Xã hội', emoji: '🤝', color: '#10b981', desc: 'Giao tiếp, giúp đỡ mọi người.' },
     E: { label: 'Lãnh đạo', emoji: '🚀', color: '#f97316', desc: 'Kinh doanh, thuyết phục, dẫn dắt.' },
-    C: { label: 'Quy củ', emoji: '📊', color: '#3b82f6', desc: 'Trật tự, chi tiết, dữ liệu.' }
+    C: { label: 'Nghiệp vụ', emoji: '📊', color: '#3b82f6', desc: 'Trật tự, chi tiết, dữ liệu.' }
   };
 
   const state = {
@@ -390,7 +390,10 @@
         hollandCode = window.BWFlow?.holland();
       }
       hollandCode = String(hollandCode || '').toUpperCase();
-      if (/^[RIASEC]{1,3}$/.test(hollandCode) && new Set(hollandCode).size === hollandCode.length) {
+      if (/^[RIASEC]$/.test(hollandCode)) {
+        state.activeHolland = hollandCode[0];
+        $('hollandFilterLabel').textContent = `Đang lọc nhóm ${hollandCode} · ${HOLLAND_META[hollandCode].label}`;
+      } else if (/^[RIASEC]{3}$/.test(hollandCode) && new Set(hollandCode).size === 3) {
         state.activeHolland = hollandCode[0];
         state.importedCode = hollandCode;
         $('hollandFilterLabel').textContent = `Mã của bạn: ${hollandCode} · Nghề thuộc ít nhất một nhóm trong mã của bạn`;
