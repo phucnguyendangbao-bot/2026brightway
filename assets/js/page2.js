@@ -341,7 +341,11 @@ function filterSchools(val) {
   try {
     searchTerm = normalizeText(val);
     const filtered = !searchTerm ? SCHOOLS : SCHOOLS.filter(s => {
-      const haystack = normalizeText(s.name + ' ' + s.short + ' ' + s.city + ' ' + (s.aliases || []).join(' '));
+      const haystack = normalizeText([
+        s.id, s.name, s.short, s.city,
+        ...(Array.isArray(s.aliases) ? s.aliases : []),
+        s.identity?.name
+      ].filter(Boolean).join(' '));
       return haystack.includes(searchTerm);
     });
     const clearButton = document.getElementById('searchClear');
@@ -363,6 +367,8 @@ function filterSchools(val) {
     renderSchools(SCHOOLS);
   }
 }
+
+let searchDebounceTimer = null;
 
 function highlightSection(id) {
   id = canonicalSchoolId(id);
@@ -516,7 +522,9 @@ function attachPage2Listeners() {
     const target = e.target.closest('[data-action]');
     if (!target) return;
     if (target.getAttribute('data-action') === 'filter-schools') {
-      filterSchools(target.value);
+      window.clearTimeout(searchDebounceTimer);
+      const value = target.value;
+      searchDebounceTimer = window.setTimeout(() => filterSchools(value), 120);
     }
   });
 
@@ -555,6 +563,7 @@ function attachPage2Listeners() {
   document.getElementById('searchClear')?.addEventListener('click', () => {
     const input = document.getElementById('searchInput');
     if (!input) return;
+    window.clearTimeout(searchDebounceTimer);
     input.value = '';
     input.focus();
     filterSchools('');
