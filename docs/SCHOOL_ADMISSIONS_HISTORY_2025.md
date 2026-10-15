@@ -27,3 +27,5 @@ Kho 2025 không dùng để tính điểm hoặc kết luận đỗ/trượt. Đ
 Kiểm thử đơn vị: năm/alias/nguồn chính thức, không fallback sai năm, trạng thái thiếu dữ liệu và giới hạn nguồn. Kiểm thử trình duyệt: đổi năm, ẩn nội dung khác năm, giữ lựa chọn qua tìm kiếm, thao tác bàn phím, mở trực tiếp bằng URL và trường chưa có bản lưu trữ; ba kích thước 1440, 768, 390 px.
 
 Kết quả local: `node --test` đạt 19/19; `scripts/qa-upgrade-browser.cjs` đạt 30/30 kịch bản (bao gồm hồi quy các trang khác và trạng thái tải lỗi). Đã xem ảnh hồ sơ HCMUT ở desktop và mobile; nội dung và các nút không bị cắt.
+
+Triển khai: code đã lưu ở commit `6b4e7f5`. Push lên `main` bị cơ chế duyệt quyền từ chối vì có thể triển khai trực tiếp lên production; chưa có kiểm thử bản production cho tính năng này. Cần người dùng xác nhận push/deploy trước khi tiếp tục.

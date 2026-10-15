@@ -36,8 +36,37 @@ server.listen(0,async()=>{
           await page.waitForFunction(()=>document.querySelector('[data-catalog-count]').textContent==='35');
           assert.equal(await page.locator('.bw-roadmap').count(),1);
           assert.doesNotMatch(await page.locator('.bw-faq-list').innerText(),/Đừng ôn ngay|Chốt 3-5/);
-          const order=await page.evaluate(()=>['.bw-hero','.admissions-home','.bw-roadmap'].map(s=>document.querySelector(s).getBoundingClientRect().top));
-          assert.ok(order[0]<order[1] && order[1]<order[2]);
+          const order=await page.evaluate(()=>['.bw-hero','#waybi-home','#home-holland','.admissions-home','.bw-roadmap'].map(s=>document.querySelector(s).getBoundingClientRect().top));
+          assert.ok(order.every((y,i)=>i===0 || order[i-1]<y));
+          assert.match(await page.locator('.bw-hero h1').innerText(),/Đi để lối thành\s+đường của bạn/);
+          assert.equal(await page.locator('.bw-hero-cta-row a').first().getAttribute('href'),'careers-holland.html?holland=all');
+          assert.match(await page.locator('.bw-hero-cta-row a').first().innerText(),/Tra cứu ngành/);
+          assert.equal(await page.locator('.home-holland-groups a').count(),6);
+          await page.locator('.home-waybi-shortcut').click();
+          await page.locator('#bwChatPanel.open').waitFor();
+          await page.locator('#bwChatClose').click();
+          await page.locator('#homeImportToggle').click();
+          assert.equal(await page.locator('#homeImportToggle').getAttribute('aria-expanded'),'true');
+          for(const bad of ['RR','XYZ','RIAE','R-I','RI A']) {
+            await page.locator('#homeHollandCode').fill(bad);
+            await page.locator('#homeImportForm button').click();
+            assert.equal(await page.locator('#homeHollandError').isVisible(),true);
+          }
+          await page.locator('#homeHollandCode').fill('isa');
+          await page.locator('#homeImportForm button').click();
+          await page.waitForURL(/careers-holland\.html\?holland=ISA$/);
+          await page.waitForFunction(()=>document.getElementById('hollandFilterLabel')?.textContent.includes('ISA'));
+          assert.equal(await page.locator('#hollandTab,#hollandPanel,#hollandMini').count(),0);
+          assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('studentHollandImportedV1')).code),'ISA');
+          await page.goto(base+'/index.html',{waitUntil:'domcontentloaded'});
+          await page.locator('#homeHollandSaved a').waitFor();
+          assert.match(await page.locator('#homeHollandSaved').innerText(),/ISA/);
+          for(const group of (width===1440 ? ['R','I','A','S','E','C'] : ['R'])) {
+            await page.locator('.home-holland-groups a[href$="='+group+'"]').click();
+            await page.waitForURL(new RegExp('careers-holland\\.html\\?holland='+group+'$'));
+            await page.waitForFunction(code=>document.getElementById('hollandFilterLabel')?.textContent.includes('Mã của bạn: '+code),group);
+            await page.goto(base+'/index.html',{waitUntil:'domcontentloaded'});
+          }
           for(const target of ['#roadmap','#tools','.bw-faq']) {
             await page.locator(target).scrollIntoViewIfNeeded();
             await page.waitForFunction(s=>getComputedStyle(document.querySelector(s)).opacity==='1',target);

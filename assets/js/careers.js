@@ -23,8 +23,7 @@
     jobs: [],
     query: '',
     activeHolland: 'all',
-    importedCode: '',
-    activeTab: 'search'
+    importedCode: ''
   };
 
   const $ = id => document.getElementById(id);
@@ -316,20 +315,6 @@
     }, 2000);
   }
 
-  // ─── TABS ───
-  function switchTab(tab) {
-    state.activeTab = tab;
-    document.querySelectorAll('.career-tab').forEach(el => {
-      el.classList.toggle('active', el.dataset.tab === tab);
-      if (el.dataset.tab === tab) el.setAttribute('aria-selected', 'true');
-      else el.setAttribute('aria-selected', 'false');
-    });
-    document.querySelectorAll('.career-panel').forEach(el => {
-      el.classList.toggle('active', el.dataset.panel === tab);
-      el.hidden = el.dataset.panel !== tab;
-    });
-  }
-
   // ─── EVENTS ───
   function bindEvents() {
     const input = $('careerSearch');
@@ -445,10 +430,6 @@
     renderChips();
     bindEvents();
     load();
-    document.querySelectorAll('.career-tab').forEach(el => {
-      el.addEventListener('click', () => switchTab(el.dataset.tab));
-    });
-    switchTab('search');
     const navToggle = $('navToggle');
     const navLinks = $('navLinks');
     navToggle?.addEventListener('click', () => {
@@ -456,7 +437,7 @@
       navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       navToggle.setAttribute('aria-label', open ? 'Đóng menu điều hướng' : 'Mở menu điều hướng');
     });
-    window.CareersApp = { switchTab, handle };
+    window.CareersApp = { handle };
   }
 
   if (document.readyState === 'loading') {

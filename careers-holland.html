@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Tra cứu nghề & Trắc nghiệm Holland – BrightWay Career</title>
-<meta name="description" content="Tra cứu 100+ nghề nghiệp tại Việt Nam + Trắc nghiệm Holland RIASEC — 2 công cụ hướng nghiệp trong 1 trang." />
+<title>Tra cứu nghề nghiệp – BrightWay Career</title>
+<meta name="description" content="Tra cứu nghề nghiệp, kỹ năng và con đường học tập; lọc theo nhóm sở thích Holland. Bài trắc nghiệm Holland nằm ở trang riêng." />
 <link rel="icon" type="image/png" href="images/img-a84652d05567.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,8 @@
     </button>
     <div class="bw-nav-links" id="navLinks" aria-label="Điều hướng chính">
       <a href="index.html">Trang chủ</a>
-      <a href="careers-holland.html" class="active">Tra cứu & Test</a>
+      <a href="careers-holland.html" class="active">Tra cứu nghề</a>
+      <a href="holland.html">Test Holland</a>
       <a href="resources.html">Tài liệu</a>
     </div>
   </div>
@@ -39,21 +40,13 @@
 <section class="bw-hero">
   <div class="container">
     <h1><span class="grad">Khám phá nghề nghiệp</span><br/>của bạn</h1>
-    <p class="lede">Tra cứu thông tin <strong>100+ nghề</strong> tại Việt Nam hoặc làm trắc nghiệm Holland RIASEC — 2 công cụ trong cùng một trang.</p>
+    <p class="lede">Khám phá nghề nghiệp, kỹ năng và con đường học tập. Bạn có thể tra cứu trực tiếp hoặc lọc theo nhóm sở thích Holland, không cần làm test trước.</p>
   </div>
 </section>
 
-<!-- TABS -->
-<div class="container">
-  <div class="career-tabbar" role="tablist" aria-label="Công cụ hướng nghiệp">
-    <button class="career-tab active" id="searchTab" role="tab" aria-selected="true" aria-controls="searchPanel" data-tab="search">🔍 Tra cứu nghề</button>
-    <button class="career-tab" id="hollandTab" role="tab" aria-selected="false" aria-controls="hollandPanel" data-tab="holland">🧭 Trắc nghiệm Holland</button>
-  </div>
-</div>
-
 <!-- PANEL: TRA CỨU -->
 <div class="container">
-  <div class="career-panel active" id="searchPanel" role="tabpanel" aria-labelledby="searchTab" data-panel="search">
+  <main class="career-panel active" id="searchPanel" aria-label="Tra cứu nghề nghiệp">
     <div class="career-wrap">
       <div class="career-intro">
         <h2>🔍 Tra cứu nghề nghiệp</h2>
@@ -86,26 +79,7 @@
         </div>
       </div>
     </div>
-  </div>
-
-  <!-- PANEL: HOLLAND -->
-  <div class="career-panel" id="hollandPanel" role="tabpanel" aria-labelledby="hollandTab" data-panel="holland" hidden>
-    <div class="holland-wrap">
-      <div class="career-intro">
-        <h2>🧭 Trắc nghiệm Holland RIASEC</h2>
-        <p>Xem trước một vài câu hỏi hoặc mở bài test 42 câu. Kết quả bài đầy đủ được dùng để gợi ý nghề.</p>
-      </div>
-
-      <div class="types-grid" id="typesGrid"></div>
-
-      <div id="hollandMini" style="margin-top: 24px;"></div>
-
-      <div class="bw-cta-row">
-        <a href="holland.html">Làm trắc nghiệm đầy đủ 42 câu →</a>
-        <a href="holland.html#import-result" class="bw-cta-secondary">Đã làm test? Nhập mã Holland →</a>
-      </div>
-    </div>
-  </div>
+  </main>
 </div>
 
 <footer class="bw-footer">
@@ -115,9 +89,7 @@
 </footer>
 
 <!-- Careers app -->
-<script src="assets/js/careers.js?v=20261015"></script>
-<!-- Mini Holland preview -->
-<script src="assets/js/holland-mini.js?v=20261015"></script>
+<script src="assets/js/careers.js?v=20261015-separate"></script>
 <!-- Theme (Dark Mode) -->
 <script src="assets/js/theme.js"></script>
 <!-- Auth + Sync (Supabase) -->

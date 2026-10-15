@@ -38,3 +38,28 @@ test('12 study suggestions are separate from official admissions dates', () => {
   assert.match(calendar, /không phải lịch tuyển sinh chính thức/);
   assert.match(calendar, /không tự xác định giai đoạn/);
 });
+
+test('home foregrounds career search and Waybi, and restores six Holland routes with an import option', () => {
+  const home = read('index.html');
+  const hero = home.slice(home.indexOf('<section class="bw-hero"'), home.indexOf('<section class="bw-waybi-home"'));
+  assert.match(hero, /Đi để lối thành[\s\S]*đường của bạn/);
+  assert.match(hero, /href="careers-holland.html\?holland=all" class="bw-btn bw-btn-primary[\s\S]*Tra cứu ngành/);
+  assert.match(hero, /href="page2.html" class="bw-btn bw-btn-outline[\s\S]*Tra cứu trường/);
+  assert.doesNotMatch(hero, /Làm trắc nghiệm ngay/);
+  assert.match(hero, /data-open-waybi/);
+  assert.equal((home.match(/id="waybi-home"/g) || []).length, 1);
+  assert.ok(home.indexOf('<section class="bw-waybi-home"') < home.indexOf('<section class="admissions-home"'));
+  assert.ok(home.indexOf('<section class="home-holland"') < home.indexOf('<section class="admissions-home"'));
+  for (const group of 'RIASEC') assert.match(home, new RegExp('href="careers-holland.html\\?holland=' + group + '"'));
+  assert.match(home, /id="homeImportForm"/);
+  assert.match(home, /Tôi đã làm test Holland rồi/);
+});
+
+test('career lookup has no quiz tab or mini-test; full test remains standalone', () => {
+  const careers = read('careers-holland.html');
+  assert.doesNotMatch(careers, /hollandTab|hollandPanel|hollandMini|holland-mini.js|2 công cụ trong/);
+  assert.doesNotMatch(read('assets/js/careers.js'), /switchTab|activeTab/);
+  assert.match(careers, /id="hollandFilter"/);
+  assert.match(careers, /href="holland.html">Test Holland/);
+  assert.match(read('holland.html'), /id="importForm"/);
+});

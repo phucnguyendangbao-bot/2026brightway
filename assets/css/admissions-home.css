@@ -86,10 +86,5 @@ html body #home-view .bw-compact-intro { margin-bottom:20px; }
 }
 
 /* One main journey, followed by supporting tools and admissions news. */
-html body #home-view { display:flex; flex-direction:column; }
-html body #home-view > * { order:10; }
-html body #home-view > .bw-hero { order:1; }
-html body #home-view > .flow-resume { order:2; }
-html body #home-view > .admissions-home { order:3; }
-html body #home-view > .bw-roadmap { order:4; }
-html body #home-view > .bw-waybi-home { order:5; }
+/* Keep visual order equal to document/keyboard order. */
+html body #home-view { display:block; }
