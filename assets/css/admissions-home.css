@@ -60,11 +60,30 @@ html body #home-view .bw-hero-text .badge { padding:8px 14px; font-size:13px; ma
 html body #home-view .bw-hero-text .lede { font-size:17px; line-height:1.6; max-width:650px; margin-bottom:18px; }
 html body #home-view .bw-hero-cta-row { flex-direction:row; flex-wrap:wrap; gap:10px; }
 html body #home-view .bw-btn-xl { min-height:48px !important; padding:12px 20px !important; font-size:16px !important; }
-html body #home-view .bw-hero-visual { max-width:460px; margin:auto; }
-html body #home-view .bw-hero-carousel { border-radius:24px; }
-html body #home-view .bw-hero-caption { font-size:10px; line-height:1.2; font-weight:700; padding:3px 7px; margin-top:5px; gap:4px; }
-html body #home-view .bw-hero-caption::before { font-size:10px; }
-html body #home-view .bw-hero-dots { margin-top:6px; }
+html body #home-view .bw-hero-visual {
+  max-width:520px; margin:auto; display:grid; grid-template-columns:minmax(0,1fr);
+  gap:14px; padding:10px 10px 16px; border:1px solid #e8e8f2;
+  border-radius:24px; background:#fff; overflow:hidden;
+  box-shadow:0 12px 36px rgba(30,41,59,.08);
+}
+html body #home-view .bw-hero-visual::before { content:none; }
+html body #home-view .bw-hero-carousel { border-radius:16px; box-shadow:none; background:#f3f5f9; }
+html body #home-view .bw-hero-carousel .slide img {
+  object-fit:contain; object-position:center; background:#f3f5f9;
+}
+html body #home-view .bw-hero-caption {
+  display:block; font-size:14px; line-height:1.5; font-weight:700;
+  padding:0 12px; margin:0; border:0; border-radius:0; box-shadow:none; color:#293451;
+}
+html body #home-view .bw-hero-caption::before { content:none; }
+html body #home-view .bw-hero-dots { margin:0; gap:2px; align-items:center; flex-wrap:wrap; }
+html body #home-view .bw-hero-dots button {
+  width:24px; height:24px; border:8px solid #fff; border-radius:50%;
+  background:#d7d8e7; background-clip:padding-box;
+}
+html body #home-view .bw-hero-dots button.is-active {
+  width:40px; border-radius:12px; background:#7865f5; background-clip:padding-box;
+}
 html body #home-view .bw-trust-bar { margin-top:16px; padding:10px 18px; }
 html body #home-view .flow-next { margin:10px 0; padding:16px 20px; }
 html body #home-view .flow-next h2 { font-size:18px; }
