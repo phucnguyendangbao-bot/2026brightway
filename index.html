@@ -2952,6 +2952,7 @@ body.spa-active #spa-topbar { display: flex; }
 <link rel="stylesheet" href="/assets/css/admissions-home.css?v=7">
 <script src="/assets/js/flow.js?v=1" defer></script>
 <script type="module" src="/assets/js/catalog-stats.js?v=20261015"></script>
+<script src="/assets/js/visit-stats.js?v=20261015"></script>
 <link rel="stylesheet" href="/assets/css/home-holland.css?v=20261015">
 <script src="/assets/js/home-holland.js?v=20261015" defer></script>
 </head>
@@ -5059,25 +5060,25 @@ body.spa-active #spa-topbar { display: flex; }
       </div>
     </div>
   </div>
-  <div class="bw-metric-band bw-reveal" data-delay="3" aria-label="Số liệu nổi bật của BrightWay">
+  <div class="bw-metric-band bw-reveal" data-delay="3" aria-label="Thông số truy cập BrightWay">
     <div class="bw-metric-item">
-      <strong class="bw-metric-number">42</strong>
-      <span class="bw-metric-label">câu trắc nghiệm Holland</span>
+      <strong class="bw-metric-number" data-visit-total>0</strong>
+      <span class="bw-metric-label">tổng lượt truy cập</span>
     </div>
     <div class="bw-metric-item">
-      <strong class="bw-metric-number">102</strong>
-      <span class="bw-metric-label">nghề nghiệp tham khảo</span>
+      <strong class="bw-metric-number" data-visit-today>0</strong>
+      <span class="bw-metric-label">lượt truy cập hôm nay</span>
     </div>
     <div class="bw-metric-item">
-      <strong class="bw-metric-number" data-catalog-count>…</strong>
-      <span class="bw-metric-label">hồ sơ trường đại học</span>
+      <strong class="bw-metric-number" data-visit-month>0</strong>
+      <span class="bw-metric-label">lượt truy cập tháng này</span>
     </div>
     <div class="bw-metric-item">
-      <strong class="bw-metric-number">12</strong>
-      <span class="bw-metric-label">tháng lập lộ trình</span>
+      <strong class="bw-metric-number" data-visit-online>1</strong>
+      <span class="bw-metric-label">đang truy cập</span>
     </div>
   </div>
-  <p id="catalogCountNote" class="bw-metric-note" role="status">Đang kiểm tra số lượng hồ sơ trường…</p>
+  <p id="catalogCountNote" class="bw-metric-note" role="status">Thông số truy cập được cập nhật tự động.</p>
 </section>
 
 <section class="bw-waybi-home" id="waybi-home" aria-labelledby="waybi-home-title">

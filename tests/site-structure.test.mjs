@@ -66,15 +66,15 @@ test('home foregrounds career search and Waybi, and restores six Holland routes 
   assert.match(home, /Tôi đã làm test Holland rồi/);
 });
 
-test('homepage presents the four core figures as a responsive metric band', () => {
+test('homepage presents four access figures as a responsive metric band', () => {
   const home = read('index.html');
   const css = read('assets/css/admissions-home.css');
   const band = home.slice(home.indexOf('<div class="bw-metric-band'), home.indexOf('<section class="bw-waybi-home"'));
   assert.equal((band.match(/class="bw-metric-item"/g) || []).length, 4);
-  assert.match(band, />42<[^]*câu trắc nghiệm Holland/);
-  assert.match(band, />102<[^]*nghề nghiệp tham khảo/);
-  assert.match(band, /data-catalog-count[^]*hồ sơ trường đại học/);
-  assert.match(band, />12<[^]*tháng lập lộ trình/);
+  assert.match(band, /data-visit-total[^]*tổng lượt truy cập/);
+  assert.match(band, /data-visit-today[^]*lượt truy cập hôm nay/);
+  assert.match(band, /data-visit-month[^]*lượt truy cập tháng này/);
+  assert.match(band, /data-visit-online[^]*đang truy cập/);
   assert.doesNotMatch(band, /bw-trust-divider/);
   assert.match(css, /\.bw-metric-band[^]*grid-template-columns:repeat\(4,minmax\(0,1fr\)\)/);
   assert.match(css, /@media\(max-width:900px\)[^]*\.bw-metric-band[^]*repeat\(2,minmax\(0,1fr\)\)/);
