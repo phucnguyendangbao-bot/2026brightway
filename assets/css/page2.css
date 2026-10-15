@@ -100,8 +100,6 @@ html { scroll-behavior: smooth; }
   }
   .p2-sidebar-title { display: none; }
   .p2-sidebar a.p2-sidebar-school { margin-bottom: 0; padding: 5px 8px; font-size: .76rem; }
-  .p2-sidebar-logo-wrap { width: 22px; height: 22px; }
-  .p2-sidebar-logo-wrap img { width: 22px; height: 22px; }
   .p2-sidebar-school-name { font-size: .76rem; }
   .p2-sidebar-school-city { display: none; }
   .p2-sidebar-field-title { width: 100%; padding: 8px 6px 4px; font-size: .68rem; }
@@ -111,7 +109,7 @@ html { scroll-behavior: smooth; }
   font-size: .88rem; color: var(--text-dark); margin-bottom: 12px;
 }
 .p2-sidebar a.p2-sidebar-school {
-  display: flex; align-items: center; gap: 8px;
+  display: flex; align-items: center; gap: 0;
   padding: 6px 8px; border-radius: 10px;
   font-size: .82rem; font-weight: 600; color: var(--text-soft);
   text-decoration: none; transition: all .15s; margin-bottom: 2px;
@@ -124,11 +122,6 @@ html { scroll-behavior: smooth; }
 .p2-sidebar-school-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; flex: 1; }
 .p2-sidebar-school-name { font-weight: 700; font-size: .82rem; color: var(--text-dark); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .p2-sidebar-school-city { font-size: .68rem; color: var(--text-soft); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.p2-sidebar-logo-wrap { width: 28px; height: 28px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-.p2-sidebar-logo-wrap img { width: 28px; height: 28px; object-fit: contain; border-radius: 6px; background: #fff; padding: 1px; }
-.p2-sidebar-logo-sm { width: 22px !important; height: 22px !important; }
-.p2-sidebar-logo-sm + * .p2-sidebar-school-name { font-size: .76rem; }
-.p2-sidebar-emoji { font-size: 1.1rem; }
 .p2-sidebar-field-title {
   font-family: var(--font-display); font-weight: 800;
   font-size: .72rem; color: var(--accent);
@@ -456,8 +449,7 @@ html { scroll-behavior: smooth; }
 .p2-sidebar { top: 68px; padding: 12px; border-radius: 14px; max-height: calc(100vh - 84px); }
 .p2-sidebar-title { font-size: .82rem; margin-bottom: 8px; line-height: 1.35; }
 .p2-sidebar-field-title { padding: 9px 7px 5px; font-size: .66rem; }
-.p2-sidebar a.p2-sidebar-school { padding: 5px 6px; gap: 7px; font-size: .78rem; }
-.p2-sidebar-logo-wrap, .p2-sidebar-logo-wrap img { width: 25px; height: 25px; }
+.p2-sidebar a.p2-sidebar-school { padding: 7px 8px; gap: 0; font-size: .78rem; }
 .p2-sidebar-school-name { font-size: .78rem; }
 .p2-sidebar-school-city { font-size: .64rem; }
 

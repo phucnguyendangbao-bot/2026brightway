@@ -128,3 +128,13 @@ test('career lookup has no quiz tab or mini-test; full test remains standalone',
   assert.match(script, /state\.importedCode\.indexOf\(k\) \+ 1/);
   assert.match(script, /\[\.\.\.state\.importedCode\]\.some\(code => \(j\.holland \|\| \[\]\)\.includes\(code\)\)/);
 });
+
+test('school admission sidebar is text-only without decorative icons', () => {
+  const page = read('page2.html');
+  const script = read('assets/js/page2.js');
+  const sidebarSource = script.slice(script.indexOf('function renderSidebar'), script.indexOf('function renderSchools'));
+  assert.match(page, /<div class="p2-sidebar-title">Phương thức xét tuyển theo trường<\/div>/);
+  assert.doesNotMatch(sidebarSource, /📚|💻|⚙️|🔬|🏥|🌾|💼|🎓|🌐|🏫/);
+  assert.doesNotMatch(sidebarSource, /p2-sidebar-(logo|emoji)/);
+  assert.doesNotMatch(sidebarSource, /UNILogoImg/);
+});
