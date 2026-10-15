@@ -84,7 +84,32 @@ html body #home-view .bw-hero-dots button {
 html body #home-view .bw-hero-dots button.is-active {
   width:40px; border-radius:12px; background:#7865f5; background-clip:padding-box;
 }
-html body #home-view .bw-trust-bar { margin-top:16px; padding:10px 18px; }
+html body #home-view .bw-metric-band {
+  width:min(100%,1400px); margin:24px auto 0; display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr)); overflow:hidden;
+  border:1px solid rgba(255,255,255,.45); border-radius:22px;
+  background:linear-gradient(120deg,#447fe9 0%,#558fe9 58%,#6ca2ee 100%);
+  box-shadow:0 18px 40px rgba(46,104,190,.22); color:#fff;
+}
+html body #home-view .bw-metric-item {
+  min-width:0; min-height:150px; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:10px; padding:24px 18px;
+  text-align:center; border-right:1px solid rgba(255,255,255,.22);
+}
+html body #home-view .bw-metric-item:last-child { border-right:0; }
+html body #home-view .bw-metric-number {
+  display:block; color:#fff; font-family:var(--font-display); font-size:clamp(2.35rem,4vw,3.45rem);
+  font-weight:900; line-height:1; letter-spacing:-.04em; font-variant-numeric:tabular-nums;
+  text-shadow:0 2px 12px rgba(30,75,145,.16);
+}
+html body #home-view .bw-metric-label {
+  color:rgba(255,255,255,.94); font-size:clamp(.82rem,1.1vw,1rem);
+  font-weight:700; line-height:1.4;
+}
+html body #home-view .bw-metric-note {
+  max-width:1200px; margin:11px auto 0; padding:0 18px; color:#667085;
+  font-size:12px; line-height:1.55; text-align:center;
+}
 html body #home-view .flow-next { margin:10px 0; padding:16px 20px; }
 html body #home-view .flow-next h2 { font-size:18px; }
 html body #home-view .bw-audience { padding:32px 24px; }
@@ -92,6 +117,10 @@ html body #home-view .bw-audience-card { min-height:0; padding:20px; }
 html body #home-view .bw-compact-intro { margin-bottom:20px; }
 @media(max-width:900px) {
   html body #home-view .bw-hero-grid { grid-template-columns:minmax(0,1fr); gap:22px; }
+  html body #home-view .bw-metric-band { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  html body #home-view .bw-metric-item { min-height:132px; }
+  html body #home-view .bw-metric-item:nth-child(2) { border-right:0; }
+  html body #home-view .bw-metric-item:nth-child(-n+2) { border-bottom:1px solid rgba(255,255,255,.22); }
 }
 @media(max-width:640px) {
   html body #home-view .bw-waybi-home { padding:10px 18px; }
@@ -103,6 +132,11 @@ html body #home-view .bw-compact-intro { margin-bottom:20px; }
   html body #home-view .bw-hero { padding:24px 18px !important; }
   html body #home-view .bw-hero-h1 { font-size:2rem !important; }
   html body #home-view .bw-hero-text .lede { font-size:15px; }
+  html body #home-view .bw-metric-band { margin-top:18px; border-radius:18px; }
+  html body #home-view .bw-metric-item { min-height:116px; padding:18px 10px; gap:7px; }
+  html body #home-view .bw-metric-number { font-size:2.15rem; }
+  html body #home-view .bw-metric-label { max-width:145px; font-size:12px; }
+  html body #home-view .bw-metric-note { margin-top:9px; padding:0 4px; font-size:11px; }
 }
 
 /* One main journey, followed by supporting tools and admissions news. */

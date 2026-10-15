@@ -66,6 +66,20 @@ test('home foregrounds career search and Waybi, and restores six Holland routes 
   assert.match(home, /Tôi đã làm test Holland rồi/);
 });
 
+test('homepage presents the four core figures as a responsive metric band', () => {
+  const home = read('index.html');
+  const css = read('assets/css/admissions-home.css');
+  const band = home.slice(home.indexOf('<div class="bw-metric-band'), home.indexOf('<section class="bw-waybi-home"'));
+  assert.equal((band.match(/class="bw-metric-item"/g) || []).length, 4);
+  assert.match(band, />42<[^]*câu trắc nghiệm Holland/);
+  assert.match(band, />102<[^]*nghề nghiệp tham khảo/);
+  assert.match(band, /data-catalog-count[^]*hồ sơ trường đại học/);
+  assert.match(band, />12<[^]*tháng lập lộ trình/);
+  assert.doesNotMatch(band, /bw-trust-divider/);
+  assert.match(css, /\.bw-metric-band[^]*grid-template-columns:repeat\(4,minmax\(0,1fr\)\)/);
+  assert.match(css, /@media\(max-width:900px\)[^]*\.bw-metric-band[^]*repeat\(2,minmax\(0,1fr\)\)/);
+});
+
 test('career lookup has no quiz tab or mini-test; full test remains standalone', () => {
   const careers = read('careers-holland.html');
   assert.doesNotMatch(careers, /hollandTab|hollandPanel|hollandMini|holland-mini.js|2 công cụ trong/);

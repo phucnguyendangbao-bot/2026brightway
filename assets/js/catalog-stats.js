@@ -7,7 +7,7 @@ async function load() {
     const { stats } = buildUniversityCatalog(await response.json());
     elements.forEach(el => { el.textContent = String(stats.universities); });
     const note = document.getElementById('catalogCountNote');
-    if (note) note.textContent = `${stats.universities} hồ sơ trường đại học · ${stats.systems} đại học vùng được thống kê riêng · ${stats.unresolved} bản ghi cần xác minh danh tính. Số lượng không phải số trường đã xác minh toàn bộ đề án.`;
+    if (note) note.textContent = `Dữ liệu trường: ${stats.universities} hồ sơ đại học · ${stats.systems} đại học vùng thống kê riêng · ${stats.unresolved} bản ghi cần xác minh; không đồng nghĩa toàn bộ đề án đã được xác minh.`;
   } catch {
     elements.forEach(el => { el.textContent = '—'; });
     const note = document.getElementById('catalogCountNote');
