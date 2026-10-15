@@ -118,9 +118,13 @@ test('homepage presents four useful linked figures as a responsive metric band',
 
 test('career lookup has no quiz tab or mini-test; full test remains standalone', () => {
   const careers = read('careers-holland.html');
+  const script = read('assets/js/careers.js');
   assert.doesNotMatch(careers, /hollandTab|hollandPanel|hollandMini|holland-mini.js|2 công cụ trong/);
-  assert.doesNotMatch(read('assets/js/careers.js'), /switchTab|activeTab/);
+  assert.doesNotMatch(script, /switchTab|activeTab/);
   assert.match(careers, /id="hollandFilter"/);
   assert.match(careers, /href="holland.html">Test Holland/);
   assert.match(read('holland.html'), /id="importForm"/);
+  assert.match(script, /state\.importedCode\.includes\(k\)/);
+  assert.match(script, /state\.importedCode\.indexOf\(k\) \+ 1/);
+  assert.match(script, /\[\.\.\.state\.importedCode\]\.some\(code => \(j\.holland \|\| \[\]\)\.includes\(code\)\)/);
 });

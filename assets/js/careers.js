@@ -65,15 +65,20 @@
   function renderHollandFilter() {
     const wrap = $('hollandFilterChips');
     if (!wrap) return;
-    wrap.innerHTML = Object.entries(HOLLAND_META).map(([k, m]) => `
-      <button class="holland-chip ${k === state.activeHolland ? 'active' : ''}"
+    wrap.innerHTML = Object.entries(HOLLAND_META).map(([k, m]) => {
+      const active = state.importedCode ? k !== 'all' && state.importedCode.includes(k) : k === state.activeHolland;
+      const rank = state.importedCode && k !== 'all' ? state.importedCode.indexOf(k) + 1 : 0;
+      return `
+      <button class="holland-chip ${active ? 'active' : ''}"
               data-code="${k}"
-              aria-pressed="${k === state.activeHolland ? 'true' : 'false'}"
+              aria-pressed="${active ? 'true' : 'false'}"
               style="--c:${m.color}">
         <span class="emoji">${m.emoji}</span>
         <span class="label">${m.label}</span>
+        ${rank ? `<span class="rank" aria-label="Ưu tiên ${rank}">${rank}</span>` : ''}
       </button>
-    `).join('');
+    `;
+    }).join('');
     wrap.querySelectorAll('.holland-chip').forEach(btn => {
       btn.addEventListener('click', () => {
         state.activeHolland = btn.dataset.code;
@@ -394,9 +399,9 @@
         state.activeHolland = hollandCode[0];
         $('hollandFilterLabel').textContent = `Đang lọc nhóm ${hollandCode} · ${HOLLAND_META[hollandCode].label}`;
       } else if (/^[RIASEC]{3}$/.test(hollandCode) && new Set(hollandCode).size === 3) {
-        state.activeHolland = hollandCode[0];
+        state.activeHolland = 'all';
         state.importedCode = hollandCode;
-        $('hollandFilterLabel').textContent = `Mã của bạn: ${hollandCode} · Nghề thuộc ít nhất một nhóm trong mã của bạn`;
+        $('hollandFilterLabel').textContent = `Mã của bạn: ${hollandCode} · Đang lọc nghề thuộc ${[...hollandCode].join(', ')}`;
       }
       const count = $('careerCount');
       if (count) count.textContent = `📚 Cơ sở dữ liệu: ${state.jobs.length} nghề nghiệp phổ biến tại Việt Nam`;

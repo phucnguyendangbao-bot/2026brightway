@@ -340,6 +340,7 @@ body {
   justify-content: center;
 }
 .holland-chip {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -354,6 +355,19 @@ body {
   cursor: pointer;
   transition: all .15s;
   -webkit-tap-highlight-color: transparent;
+}
+.holland-chip .rank {
+  display: grid;
+  place-items: center;
+  min-width: 18px;
+  height: 18px;
+  margin-left: 2px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--c);
+  font-size: 10px;
+  font-weight: 900;
 }
 .holland-chip .emoji { font-size: 14px; }
 .holland-chip:hover {
