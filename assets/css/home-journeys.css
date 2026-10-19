@@ -68,7 +68,7 @@
 
 /* Clear, premium entry choices. */
 .home-journey-picker { position:relative; }
-.home-journey-card { position:relative; overflow:hidden; border-color:rgba(107,96,255,.14); background:linear-gradient(150deg,rgba(255,255,255,.98),rgba(247,247,255,.94)); box-shadow:0 2px 3px rgba(41,36,98,.04),0 16px 38px rgba(56,49,134,.09); }
+.home-journey-card { position:relative; overflow:hidden; border-color:rgba(255,255,255,.7); background:linear-gradient(150deg,rgba(255,255,255,.74),rgba(242,242,255,.58)); box-shadow:0 2px 3px rgba(41,36,98,.04),0 16px 38px rgba(56,49,134,.09); backdrop-filter:blur(20px) saturate(145%); -webkit-backdrop-filter:blur(20px) saturate(145%); }
 .home-journey-card::before { content:""; position:absolute; left:0; right:0; top:0; height:3px; background:linear-gradient(90deg,#6b60ff,#9882ff,#63b3ff); opacity:.72; }
 .home-journey-card::after { content:""; position:absolute; width:120px; height:120px; right:-70px; top:-72px; border-radius:50%; background:radial-gradient(circle,rgba(107,96,255,.13),transparent 70%); transition:transform .28s ease; }
 .home-journey-card:hover { transform:translateY(-6px); border-color:rgba(107,96,255,.34); box-shadow:0 5px 10px rgba(41,36,98,.06),0 26px 55px rgba(56,49,134,.15); }

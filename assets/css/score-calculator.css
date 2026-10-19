@@ -678,7 +678,7 @@
 }
 
 /* Polished calculator workspace. */
-.calc-hero { position:relative; overflow:hidden; background:radial-gradient(circle at 82% 12%,rgba(139,107,255,.18),transparent 31%),radial-gradient(circle at 12% 100%,rgba(87,181,255,.09),transparent 25%),linear-gradient(145deg,#fafaff,#f1f1ff); }
+.calc-hero { position:relative; overflow:hidden; background:radial-gradient(circle at 82% 12%,rgba(139,107,255,.23),transparent 31%),radial-gradient(circle at 12% 100%,rgba(87,181,255,.14),transparent 25%),linear-gradient(145deg,rgba(250,250,255,.66),rgba(235,235,255,.5)); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); }
 .calc-hero::after { content:""; position:absolute; width:260px; height:260px; right:-130px; top:-155px; border-radius:50%; border:45px solid rgba(107,96,255,.045); pointer-events:none; }
 .calc-hero-inner { position:relative; z-index:1; }
 .calc-card,.result-summary,.result-empty { transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease; }

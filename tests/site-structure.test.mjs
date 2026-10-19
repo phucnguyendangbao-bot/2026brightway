@@ -43,7 +43,7 @@ test('every user-facing page loads the shared BrightWay colour theme', () => {
   const adminPages = ['index.html', 'major-edit.html', 'majors.html', 'post-edit.html', 'posts.html', 'resource-edit.html', 'users.html']
     .map(name => `admin/${name}`);
   for (const file of [...rootPages, ...adminPages]) {
-    assert.match(read(file), /\/assets\/css\/brightway-theme\.css\?v=5/, file);
+    assert.match(read(file), /\/assets\/css\/brightway-theme\.css\?v=6/, file);
   }
   const theme = read('assets/css/brightway-theme.css');
   assert.match(theme, /--bw-brand:\s*#6b60ff/);
