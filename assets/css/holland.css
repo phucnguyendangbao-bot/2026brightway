@@ -598,12 +598,14 @@ body {
   font-size: 13px;
   font-weight: 700;
   color: var(--text);
+  text-decoration: none;
   transition: all .2s;
 }
 .majors-tag:hover {
   border-color: var(--primary);
   background: rgba(99,102,241,0.08);
 }
+.majors-tag:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
 .result-actions {
   display: flex;
   gap: 12px;

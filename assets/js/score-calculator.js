@@ -5,15 +5,15 @@ import sourceRegistry from '../data/school-admissions-sources.js';
 import { COMBO_SUBJECTS, parseScore, fptComponent } from './score-rules.js';
 import { canonicalSchoolId } from '../data/university-identities.js';
 const SUBJECTS = {
-  math: ['sMath', 'Toán'], lit: ['sLit', 'Văn'], eng: ['sEng', 'Anh'],
-  phy: ['sPhy', 'Lý'], che: ['sChe', 'Hóa'], bio: ['sBio', 'Sinh'],
-  his: ['sHis', 'Sử'], geo: ['sGeo', 'Địa'],
+  math: ['sMath', 'Toán'], lit: ['sLit', 'Ngữ văn'], eng: ['sEng', 'Tiếng Anh'],
+  phy: ['sPhy', 'Vật lý'], che: ['sChe', 'Hóa học'], bio: ['sBio', 'Sinh học'],
+  his: ['sHis', 'Lịch sử'], geo: ['sGeo', 'Địa lý'],
   civic: ['sCivic', 'Giáo dục KT&PL'], informatics: ['sInformatics', 'Tin học'],
 };
 const TRANSCRIPT_SUBJECTS = {
-  math: ['hMath', 'Toán'], lit: ['hLit', 'Văn'], eng: ['hEng', 'Anh'],
-  phy: ['hPhy', 'Lý'], che: ['hChe', 'Hóa'], bio: ['hBio', 'Sinh'],
-  his: ['hHis', 'Sử'], geo: ['hGeo', 'Địa'],
+  math: ['hMath', 'Toán'], lit: ['hLit', 'Ngữ văn'], eng: ['hEng', 'Tiếng Anh'],
+  phy: ['hPhy', 'Vật lý'], che: ['hChe', 'Hóa học'], bio: ['hBio', 'Sinh học'],
+  his: ['hHis', 'Lịch sử'], geo: ['hGeo', 'Địa lý'],
   civic: ['hCivic', 'Giáo dục KT&PL'], informatics: ['hInformatics', 'Tin học'],
 };
 const EXAMS = [
@@ -119,6 +119,10 @@ function calculate() {
   if (grade12.error) errors.push(grade12.error);
   const exams = {};
   for (const exam of EXAMS) {
+    if (method !== 'other') {
+      exams[exam.input] = null;
+      continue;
+    }
     const result = readBounded(exam.input, exam.max);
     if (result.error) errors.push(result.error);
     exams[exam.input] = result.value;
@@ -128,15 +132,6 @@ function calculate() {
   const startedExam = method === 'thpt' && missing.length < selected.length;
   const startedTranscript = method === 'transcript' && transcriptMissing.length < selected.length;
   const transcriptConfirmed = document.getElementById('transcriptConfirmed').checked;
-  // Additional exam scores may establish the alternate Math + Literature + another exam route.
-  if (method === 'thpt') {
-    for (const [key, [id]] of Object.entries(SUBJECTS)) {
-      if (selected.includes(key)) continue;
-      const extra = readBounded(id, 10);
-      if (extra.error) errors.push(extra.error);
-      else if (extra.value !== null) values[key] = extra.value;
-    }
-  }
   if (method === 'thpt' && !hasExam) errors.push(`Điểm thi còn thiếu: ${missing.join(', ')}.`);
   if (method === 'transcript' && !hasTranscript) errors.push(`Điểm học bạ còn thiếu: ${transcriptMissing.join(', ')}.`);
   if (method === 'other' && !Object.values(exams).some(value => value !== null)) errors.push('Hãy nhập ít nhất một điểm V-ACT, HSA hoặc TSA.');
@@ -164,6 +159,14 @@ function calculate() {
   document.getElementById('resultSummary').hidden = false;
   document.getElementById('resultSchools').hidden = false;
   document.getElementById('resultEmpty').hidden = true;
+  const methodLabels = { thpt: 'Điểm thi tốt nghiệp THPT', transcript: 'Học bạ', other: 'Bài thi riêng' };
+  document.getElementById('resultMethod').textContent = methodLabels[method];
+  document.getElementById('resultFormula').textContent = method === 'thpt'
+    ? `${combo}: ${selected.map(key => `${SUBJECTS[key][1]} ${values[key].toFixed(2)}`).join(' + ')} = ${raw.toFixed(2)}`
+    : method === 'transcript'
+      ? `${combo}: ${selected.map(key => `${TRANSCRIPT_SUBJECTS[key][1]} ${transcriptValues[key].toFixed(2)}`).join(' + ')} = ${transcriptRaw.toFixed(2)}`
+      : 'Giữ nguyên điểm gốc của từng kỳ thi; không tự quy đổi khi chưa có công thức theo ngành và trường.';
+  document.querySelectorAll('[data-summary-method]').forEach(item => { item.hidden = item.dataset.summaryMethod !== method; });
   renderSchools({ combo, keys: selected, raw, transcriptRaw, transcriptConfirmed, values, transcriptValues, grade12: grade12.value });
   window.BWFlow?.save({ admissions: { method, combo, completedAt: Date.now() }, scores: { combo, method, transcriptConfirmed, completedAt: Date.now(), values: Object.fromEntries(scoreInputs.map(input => [input.id, input.value])) } });
   const host = document.getElementById('scoreNextStep');
@@ -309,12 +312,20 @@ function updateComboUI() {
     `${combo} · Điểm trung bình học bạ ${active.map(key => TRANSCRIPT_SUBJECTS[key][1]).join(', ')}`;
   document.querySelectorAll('.score-input').forEach(label => {
     const inputId = label.querySelector('input').id;
-    label.classList.toggle('score-input-active', active.some(key => SUBJECTS[key][0] === inputId || TRANSCRIPT_SUBJECTS[key][0] === inputId));
+    const isActive = active.some(key => SUBJECTS[key][0] === inputId || TRANSCRIPT_SUBJECTS[key][0] === inputId);
+    label.hidden = !isActive;
+    label.classList.toggle('score-input-active', isActive);
   });
 }
 
 document.getElementById('calcBtn').addEventListener('click', calculate);
 document.getElementById('resetBtn').addEventListener('click', resetAll);
+document.getElementById('editScoreBtn').addEventListener('click', () => {
+  document.querySelector('.calc-input-panel')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const method = document.querySelector('input[name="admissionMethod"]:checked')?.value || 'thpt';
+  const target = method === 'other' ? '#otherExamCard input' : method === 'transcript' ? '#transcriptCard input:not([type="checkbox"])' : '#examCard input';
+  document.querySelector(target)?.focus();
+});
 document.getElementById('comboSelect').addEventListener('change', updateComboUI);
 document.querySelectorAll('input[name="admissionMethod"]').forEach(input => input.addEventListener('change', updateMethodUI));
 document.getElementById('schoolFilter').addEventListener('input', () => {

@@ -98,6 +98,10 @@
     return /^[RIASEC]{3}$/.test(code) && new Set(code).size === 3 ? code : '';
   }
 
+  function majorLinks(majors) {
+    return majors.map(major => `<a class="majors-tag" href="page2.html?mode=major&q=${encodeURIComponent(major)}">${major}</a>`).join('');
+  }
+
   function showImportedResult(code) {
     const info = TYPES[code[0]];
     if (state.timerInterval) { clearInterval(state.timerInterval); state.timerInterval = null; }
@@ -109,8 +113,9 @@
     $('rBars').innerHTML = '<p class="import-hint">Kết quả được nhập từ bài test đã làm; không có điểm chi tiết cho từng nhóm.</p>';
     $('resultTieNote').textContent = '';
     const majors = [...new Set(code.slice(0, 2).split('').flatMap(letter => TYPES[letter].majors))];
-    $('rMajors').innerHTML = `<h3>📚 Ngành học tham khảo</h3><div class="majors-tags">${majors.map(major => `<span class="majors-tag">${major}</span>`).join('')}</div>`;
+    $('rMajors').innerHTML = `<h3>📚 Ngành học tham khảo</h3><p class="import-hint">Chọn một ngành để xem trường có dữ liệu đào tạo tương ứng.</p><div class="majors-tags">${majorLinks(majors)}</div>`;
     $('resultCareersLink').href = `careers-holland.html?holland=${code}`;
+    window.BWFlow?.save({ holland: { code, source: 'imported', completedAt: Date.now() } });
     $('quizCard').style.display = 'none';
     $('jumpBarWrap').style.display = 'none';
     $('resultCard').classList.add('show');
@@ -409,7 +414,8 @@
     const allMajors = [...new Set([...TYPES[top2[0]].majors, ...TYPES[top2[1]].majors])];
     $('rMajors').innerHTML = `
       <h3>📚 Ngành học để tìm hiểu thêm</h3>
-      <div class="majors-tags">${allMajors.map(m => `<span class="majors-tag">${m}</span>`).join('')}</div>
+      <p class="import-hint">Chọn một ngành để xem trường có dữ liệu đào tạo tương ứng.</p>
+      <div class="majors-tags">${majorLinks(allMajors)}</div>
     `;
 
     $('quizCard').style.display = 'none';
@@ -421,6 +427,7 @@
     }, 200);
 
     saveToStorage(true);
+    window.BWFlow?.save({ holland: { code: state.resultCode, source: 'quiz', completedAt: Date.now() } });
     if (autoFromTimer) {
       // Tạo toast thông báo
       const t = document.createElement('div');

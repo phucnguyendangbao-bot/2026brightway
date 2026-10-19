@@ -191,28 +191,34 @@
     <!-- SUMMARY -->
     <div class="result-summary" id="resultSummary" hidden>
       <h2>Điểm của bạn <span class="result-context">Điểm gốc, chưa cộng ưu tiên</span></h2>
+      <div class="result-calculation-context">
+        <p><strong>Phương thức:</strong> <span id="resultMethod">—</span></p>
+        <p><strong>Công thức:</strong> <span id="resultFormula">—</span></p>
+        <p><strong>Điểm cộng:</strong> <span id="resultAdjustments">Chưa áp dụng trong phép tính cơ bản.</span></p>
+      </div>
       <div class="summary-grid">
-        <div class="summary-item">
+        <div class="summary-item" data-summary-method="thpt">
           <div class="summary-label">Tổng 3 môn thi THPT (/30)</div>
           <div class="summary-value" id="sumCombo">—</div>
         </div>
-        <div class="summary-item" id="transcriptSummary">
+        <div class="summary-item" id="transcriptSummary" data-summary-method="transcript">
           <div class="summary-label">Tổng học bạ gốc 3 môn (/30)</div>
           <div class="summary-value" id="sumTranscript">—</div>
         </div>
-        <div class="summary-item">
+        <div class="summary-item" data-summary-method="other">
           <div class="summary-label">V-ACT gốc (/1.200)</div>
           <div class="summary-value" id="sumVact">—</div>
         </div>
-        <div class="summary-item">
+        <div class="summary-item" data-summary-method="other">
           <div class="summary-label">HSA gốc (/150)</div>
           <div class="summary-value" id="sumHsa">—</div>
         </div>
-        <div class="summary-item">
+        <div class="summary-item" data-summary-method="other">
           <div class="summary-label">TSA gốc (/100)</div>
           <div class="summary-value" id="sumTsa">—</div>
         </div>
       </div>
+      <button type="button" class="calc-btn-secondary result-edit-button" id="editScoreBtn">Sửa điểm</button>
     </div>
 
     <!-- ELIGIBLE SCHOOLS -->

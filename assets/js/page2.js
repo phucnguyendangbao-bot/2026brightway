@@ -25,6 +25,8 @@ let activeTab = 'majors';
 const activeYear = 2026;
 let searchTimer;
 let activeQuery = '';
+let searchMode = 'school';
+let activeRegion = '';
 
 const sourceForSchool = id => sourceRegistry.universities.find(row => row.school_id === canonicalSchoolId(id));
 
@@ -51,7 +53,8 @@ function renderSidebar(items) {
 function renderSchools(items) {
   if (!mainContent) return;
   if (!items.length) {
-    mainContent.innerHTML = '<div class="p2-no-results">Không tìm thấy trường phù hợp. Hãy thử tên viết tắt hoặc thành phố khác.</div>';
+    const subject = searchMode === 'major' ? 'ngành đào tạo' : 'trường';
+    mainContent.innerHTML = `<div class="p2-no-results">Không tìm thấy ${subject} phù hợp trong dữ liệu 2026. Hãy thử từ khóa ngắn hơn, kiểm tra khu vực hoặc đổi chế độ tìm kiếm.</div>`;
     return;
   }
   mainContent.innerHTML = items.map(school => {
@@ -186,22 +189,75 @@ function normalizeText(value) {
   return String(value || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd');
 }
 
+function editDistance(first, second) {
+  if (first === second) return 0;
+  const row = Array.from({ length: second.length + 1 }, (_, index) => index);
+  for (let firstIndex = 1; firstIndex <= first.length; firstIndex += 1) {
+    let previous = row[0];
+    row[0] = firstIndex;
+    for (let secondIndex = 1; secondIndex <= second.length; secondIndex += 1) {
+      const current = row[secondIndex];
+      row[secondIndex] = Math.min(
+        row[secondIndex] + 1,
+        row[secondIndex - 1] + 1,
+        previous + (first[firstIndex - 1] === second[secondIndex - 1] ? 0 : 1),
+      );
+      previous = current;
+    }
+  }
+  return row[second.length];
+}
+
+function safelyMatches(candidate, query) {
+  const normalizedCandidate = normalizeText(candidate);
+  const normalizedQuery = normalizeText(query).trim();
+  if (!normalizedQuery) return true;
+  if (normalizedCandidate.includes(normalizedQuery)) return true;
+  const words = normalizedCandidate.split(/[^a-z0-9]+/).filter(Boolean);
+  return normalizedQuery.split(/\s+/).every(token => words.some(word =>
+    word.startsWith(token) || (token.length >= 4 && word.length >= 4 && editDistance(word, token) <= 1)
+  ));
+}
+
 function matchingPrograms(school, query) {
-  const normalized = normalizeText(query);
-  if (!normalized) return [];
-  return (detailsForSchool(school.id)?.programs || []).filter(program => normalizeText([program.name, program.code, program.track].join(' ')).includes(normalized));
+  if (!String(query || '').trim()) return [];
+  return (detailsForSchool(school.id)?.programs || []).filter(program => safelyMatches([program.name, program.code, program.track].join(' '), query));
 }
 
 function filterSchools(value) {
   const query = normalizeText(value.trim());
   activeQuery = value.trim();
-  filteredSchools = query ? schools.filter(school => normalizeText([school.name, school.short, school.city, school.id, ...(school.aliases || [])].join(' ')).includes(query) || matchingPrograms(school, query).length) : schools;
+  filteredSchools = schools.filter(school => {
+    if (activeRegion && normalizeText(school.city) !== normalizeText(activeRegion)) return false;
+    if (!query) return true;
+    return searchMode === 'major'
+      ? matchingPrograms(school, value).length > 0
+      : safelyMatches([school.name, school.short, school.city, school.id, ...(school.aliases || [])].join(' '), value);
+  });
   renderSidebar(filteredSchools);
   renderSchools(filteredSchools);
   document.getElementById('searchClear').hidden = !query;
+  const url = new URL(location.href);
+  url.searchParams.set('mode', searchMode);
+  if (value.trim()) url.searchParams.set('q', value.trim()); else url.searchParams.delete('q');
+  url.searchParams.delete('major');
+  if (activeRegion) url.searchParams.set('region', activeRegion); else url.searchParams.delete('region');
+  history.replaceState(null, '', url.pathname + url.search + url.hash);
   document.getElementById('schoolCatalogStatus').textContent = query
-    ? `Tìm thấy ${filteredSchools.length} trường có tên, địa điểm hoặc ngành phù hợp với “${value.trim()}”.`
+    ? `Tìm thấy ${filteredSchools.length} trường theo ${searchMode === 'major' ? 'ngành đào tạo' : 'tên trường'} “${value.trim()}”${activeRegion ? ` tại ${activeRegion}` : ''}.`
     : `${schools.filter(school => school.identity.entity_kind === 'university').length} hồ sơ trường đại học · ${schools.filter(school => school.identity.entity_kind === 'university_system').length} đại học vùng · Rà soát ${REVIEWED_AT}.`;
+}
+
+function updateSearchSuggestions() {
+  const values = new Set();
+  schools.forEach(school => {
+    if (searchMode === 'school') values.add(school.name);
+    else (detailsForSchool(school.id)?.programs || []).forEach(program => values.add(program.name));
+  });
+  document.getElementById('schoolSearchSuggestions').innerHTML = [...values].sort((first, second) => first.localeCompare(second, 'vi')).map(value => `<option value="${escapeHtml(value)}"></option>`).join('');
+  document.getElementById('searchInput').placeholder = searchMode === 'major'
+    ? 'Ví dụ: Công nghệ thông tin'
+    : 'Ví dụ: Đại học Bách khoa hoặc HCMUT';
 }
 
 function highlightSection(id) {
@@ -256,7 +312,9 @@ document.addEventListener('click', event => {
   }
   if (action === 'highlight-section') {
     event.preventDefault();
-    history.replaceState(null, '', `#${target.dataset.schoolId}`);
+    const url = new URL(location.href);
+    url.hash = target.dataset.schoolId;
+    history.replaceState(null, '', url.pathname + url.search + url.hash);
     highlightSection(target.dataset.schoolId);
   }
 });
@@ -278,6 +336,15 @@ document.getElementById('searchClear')?.addEventListener('click', () => {
   input.focus();
   filterSchools('');
 });
+document.querySelectorAll('input[name="schoolSearchMode"]').forEach(input => input.addEventListener('change', event => {
+  searchMode = event.target.value;
+  updateSearchSuggestions();
+  filterSchools(document.getElementById('searchInput').value);
+}));
+document.getElementById('regionFilter')?.addEventListener('change', event => {
+  activeRegion = event.target.value;
+  filterSchools(document.getElementById('searchInput').value);
+});
 window.addEventListener('hashchange', scrollToTargetFromUrl);
 
 async function initPage2() {
@@ -288,12 +355,13 @@ async function initPage2() {
     schools = catalog.schools;
     const params = new URLSearchParams(location.search);
     const initialQuery = params.get('major') || params.get('q') || '';
-    const suggestionValues = new Set();
-    schools.forEach(school => {
-      suggestionValues.add(school.name);
-      (detailsForSchool(school.id)?.programs || []).forEach(program => suggestionValues.add(program.name));
-    });
-    document.getElementById('schoolSearchSuggestions').innerHTML = [...suggestionValues].sort((first, second) => first.localeCompare(second, 'vi')).map(value => `<option value="${escapeHtml(value)}"></option>`).join('');
+    searchMode = params.get('mode') === 'major' || params.has('major') || params.get('focus') === 'major' ? 'major' : 'school';
+    activeRegion = params.get('region') || '';
+    document.querySelector(`input[name="schoolSearchMode"][value="${searchMode}"]`).checked = true;
+    const regions = [...new Set(schools.map(school => school.city).filter(Boolean))].sort((first, second) => first.localeCompare(second, 'vi'));
+    document.getElementById('regionFilter').innerHTML = '<option value="">Tất cả khu vực</option>' + regions.map(region => `<option value="${escapeHtml(region)}">${escapeHtml(region)}</option>`).join('');
+    if (regions.includes(activeRegion)) document.getElementById('regionFilter').value = activeRegion; else activeRegion = '';
+    updateSearchSuggestions();
     document.getElementById('searchInput').value = initialQuery;
     filterSchools(initialQuery);
     if (initialQuery) window.BWFlow?.addUnique('savedMajors', { id: normalizeText(initialQuery), name: initialQuery });

@@ -71,6 +71,10 @@
 .calc-method-options small { color:var(--text-soft); line-height:1.45; }
 .calc-input-error { display:block; margin-top:6px; color:#b91c1c; font-size:.72rem; line-height:1.35; }
 .score-input input[aria-invalid="true"], .dgnl-input input[aria-invalid="true"] { border-color:#dc2626; box-shadow:0 0 0 3px rgba(220,38,38,.08); }
+.result-calculation-context { margin:12px 0 16px; padding:14px; border:1px solid rgba(99,102,241,.16); border-radius:12px; background:rgba(99,102,241,.05); color:var(--text-mid); font-size:.82rem; line-height:1.55; }
+.result-calculation-context p { margin:0; }
+.result-calculation-context p + p { margin-top:5px; }
+.result-edit-button { margin-top:14px; }
 .calc-section-title {
   font-family: 'Nunito', sans-serif;
   font-size: .95rem;

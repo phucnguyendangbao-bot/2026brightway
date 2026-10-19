@@ -32,10 +32,18 @@
     <h1>Tìm trường. Xem ngành.<br><span>Hiểu rõ điểm chuẩn.</span></h1>
     <p>Chọn logo trường để xem ngành đào tạo, điểm chuẩn đã đối chiếu và tài liệu tuyển sinh chính thức.</p>
     <div class="p2-intro-search">
-      <label class="sr-only" for="searchInput">Tìm trường hoặc thành phố</label>
-      <input type="search" id="searchInput" list="schoolSearchSuggestions" placeholder="Tìm ngành, trường, mã trường hoặc thành phố..." autocomplete="off" />
-      <button type="button" id="searchClear" aria-label="Xóa tìm kiếm" hidden>×</button>
-      <datalist id="schoolSearchSuggestions"></datalist>
+      <fieldset class="school-search-modes">
+        <legend>Bạn muốn tìm theo</legend>
+        <label><input type="radio" name="schoolSearchMode" value="major"> <span>Ngành đào tạo</span></label>
+        <label><input type="radio" name="schoolSearchMode" value="school" checked> <span>Tên trường</span></label>
+      </fieldset>
+      <div class="school-search-field">
+        <label class="sr-only" for="searchInput">Tìm trường hoặc thành phố</label>
+        <input type="search" id="searchInput" list="schoolSearchSuggestions" placeholder="Tìm ngành, trường, mã trường hoặc thành phố..." autocomplete="off" />
+        <button type="button" id="searchClear" aria-label="Xóa tìm kiếm" hidden>×</button>
+        <datalist id="schoolSearchSuggestions"></datalist>
+      </div>
+      <label class="school-region-filter" for="regionFilter"><span>Khu vực</span><select id="regionFilter"><option value="">Tất cả khu vực</option></select></label>
     </div>
   </div>
   <div class="p2-intro-aside">
