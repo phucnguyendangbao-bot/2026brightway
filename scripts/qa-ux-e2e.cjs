@@ -131,6 +131,36 @@ async function testSchoolSearch(browser, base, report) {
   report.push({ test: '03-school-search', status: 'PASS', assertions: 8, results: majorCount });
 }
 
+async function testVerifiedSchoolLogos(browser, base, report) {
+  const { context, page, errors } = await newCheckedPage(browser, base, { width: 920, height: 620 });
+  await page.goto(`${base}/page2.html?mode=school`, { waitUntil: 'domcontentloaded' });
+  await page.locator('.school-section').first().waitFor();
+
+  const cases = [
+    { query: 'VLU', id: 'vlu', file: 'vlu-official.svg' },
+    { query: 'HuemedU', id: 'huemed', file: 'huemedu-official.png' },
+    { query: 'DUE', id: 'due', file: 'due-official.png' },
+  ];
+
+  for (const item of cases) {
+    await page.goto(`${base}/page2.html?mode=school&q=${encodeURIComponent(item.query)}`, { waitUntil: 'domcontentloaded' });
+    const image = page.locator(`#icon-${item.id} img`);
+    await image.waitFor();
+    await page.waitForFunction(selector => {
+      const node = document.querySelector(selector);
+      return Boolean(node?.complete && node.naturalWidth > 0);
+    }, `#icon-${item.id} img`);
+    assert.equal(await image.evaluate(node => node.complete && node.naturalWidth > 0), true);
+    assert.match(await image.getAttribute('src'), new RegExp(`${item.file.replace('.', '\\.')}$`));
+    assert.equal(await page.locator(`#${item.id}`).count(), 1);
+    await page.locator(`#${item.id}`).screenshot({ path: path.join(artifactDir, `school-logo-${item.id}.png`) });
+  }
+
+  assert.deepEqual(errors, []);
+  await context.close();
+  report.push({ test: '04-verified-school-logos', status: 'PASS', assertions: 10 });
+}
+
 async function testScoreCalculator(browser, base, report) {
   const { context, page, errors } = await newCheckedPage(browser, base, { width: 1440, height: 1000 });
   await page.goto(`${base}/score-calculator.html`, { waitUntil: 'domcontentloaded' });
@@ -220,6 +250,7 @@ async function testResponsiveAndRegression(browser, base, report) {
     await testNewUser(browser, base, report);
     await testHolland(browser, base, report);
     await testSchoolSearch(browser, base, report);
+    await testVerifiedSchoolLogos(browser, base, report);
     await testScoreCalculator(browser, base, report);
     await testResponsiveAndRegression(browser, base, report);
     console.log(JSON.stringify({ status: 'PASS', scenarios: report.length, report, artifacts: artifactDir }, null, 2));

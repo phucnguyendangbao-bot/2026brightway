@@ -187,7 +187,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Văn Lang',
     short: 'VLU',
     aliases: ['Văn Lang'],
-    logoLocal: 'assets/images/logos/vlu.png',
+    logoLocal: 'assets/images/logos/vlu-official.svg',
     logo: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d1/Logo_VLU_2022.png/330px-Logo_VLU_2022.png',
     logoAlt: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Logo_van_lang.webp/330px-Logo_van_lang.webp',
     fallback: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=120&h=120&fit=crop'
@@ -246,7 +246,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Kinh tế - ĐH Đà Nẵng',
     short: 'DUE',
     aliases: ['ĐH Kinh tế Đà Nẵng', 'Đại học Kinh tế Đại học Đà Nẵng', 'Kinh tế Đại học Đà Nẵng'],
-    logoLocal: 'assets/images/logos/due.png',
+    logoLocal: 'assets/images/logos/due-official.png',
     logo: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Logo_DUE.jpg/330px-Logo_DUE.jpg',
     fallback: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=120&h=120&fit=crop'
   },
@@ -310,7 +310,7 @@ window.UNI_LOGOS = {
     name: 'ĐH Y Dược - ĐH Huế',
     short: 'HuemedU',
     aliases: ['Y Dược Huế', 'Đại học Y Dược Đại học Huế', 'Y Dược Đại học Huế'],
-    logoLocal: 'assets/images/logos/huemedu.jpg',
+    logoLocal: 'assets/images/logos/huemedu-official.png',
     logo: 'https://upload.wikimedia.org/wikipedia/vi/thumb/d/d8/HUEMED_logo.png/330px-HUEMED_logo.png',
     fallback: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=120&h=120&fit=crop'
   },
