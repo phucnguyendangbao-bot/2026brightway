@@ -24,6 +24,7 @@ let activeSchool = null;
 let activeTab = 'majors';
 const activeYear = 2026;
 let searchTimer;
+let activeQuery = '';
 
 const sourceForSchool = id => sourceRegistry.universities.find(row => row.school_id === canonicalSchoolId(id));
 
@@ -56,6 +57,7 @@ function renderSchools(items) {
   mainContent.innerHTML = items.map(school => {
     const details = detailsForSchool(school.id);
     const source = sourceForSchool(school.id);
+    const matches = matchingPrograms(school, activeQuery).slice(0, 3);
     const subtitle = source?.source_summary || 'Mở hồ sơ để xem nguồn tuyển sinh của trường và tình trạng dữ liệu hiện có.';
     return `<section class="school-section" id="${escapeHtml(school.id)}">
       <div class="school-card-top">
@@ -66,6 +68,7 @@ function renderSchools(items) {
         </div>
       </div>
       <span class="school-card-status ${details?.programs?.length ? 'school-card-status-ready' : ''}">${details?.programs?.some(program => Number.isFinite(program.score)) ? 'Có ngành và điểm chuẩn 2026' : details?.programs?.length ? `Có ${details.programs.length} ngành 2026` : details?.scoreSource ? 'Có nguồn điểm chuẩn' : source ? 'Có nguồn tuyển sinh' : 'Đang bổ sung nguồn'}</span>
+      ${matches.length ? `<div class="school-card-programs" aria-label="Ngành khớp tìm kiếm">${matches.map(program => `<span>${escapeHtml(program.name)}</span>`).join('')}${matchingPrograms(school, activeQuery).length > 3 ? `<small>+${matchingPrograms(school, activeQuery).length - 3} ngành khác</small>` : ''}</div>` : ''}
       <p class="school-card-description">${escapeHtml(subtitle)}</p>
       <div class="school-card-bottom">
         <span>${school.identity.entity_kind === 'university_system' ? 'Đại học vùng' : source ? `Nguồn tuyển sinh ${source.admission_year}` : 'Hồ sơ trường'}</span>
@@ -162,8 +165,9 @@ function renderDialog() {
   ];
   const body = activeTab === 'majors' ? renderPrograms(activeSchool, details)
     : activeTab === 'scores' ? renderScores(activeSchool, details) : renderAdmission(activeSchool, details);
+  const isSaved = window.BWFlow?.read().savedSchools?.some(school => school.id === activeSchool.id);
   dialog.innerHTML = `<div class="school-dialog-shell">
-    <header class="school-dialog-header"><div><span class="school-card-kicker">HỒ SƠ TRƯỜNG · ${escapeHtml(activeSchool.short || '')}</span><h2 id="schoolDialogTitle">${escapeHtml(activeSchool.name)}</h2><p>${escapeHtml(activeSchool.city)} · Dữ liệu tuyển sinh 2026 theo nguồn đã ghi nhận</p></div><button type="button" class="school-dialog-close" data-action="close-school" aria-label="Đóng hồ sơ">×</button></header>
+    <header class="school-dialog-header"><div><span class="school-card-kicker">HỒ SƠ TRƯỜNG · ${escapeHtml(activeSchool.short || '')}</span><h2 id="schoolDialogTitle">${escapeHtml(activeSchool.name)}</h2><p>${escapeHtml(activeSchool.city)} · Dữ liệu tuyển sinh 2026 theo nguồn đã ghi nhận</p></div><div class="school-dialog-header-actions"><button type="button" class="school-save-button ${isSaved ? 'is-saved' : ''}" data-action="save-school">${isSaved ? '✓ Đã lưu' : 'Lưu trường'}</button><button type="button" class="school-dialog-close" data-action="close-school" aria-label="Đóng hồ sơ">×</button></div></header>
     <div class="school-dialog-tabs" role="tablist" aria-label="Thông tin trường">${tabs.map(([key, label]) => `<button type="button" role="tab" id="tab-${key}" aria-controls="schoolDialogPanel" aria-selected="${activeTab === key}" tabindex="${activeTab === key ? '0' : '-1'}" data-action="school-tab" data-tab="${key}">${label}</button>`).join('')}</div>
     <div class="school-dialog-content" id="schoolDialogPanel" role="tabpanel" aria-labelledby="tab-${activeTab}">${body}</div>
     <footer class="school-dialog-footer"><span>Điểm chuẩn giữa các phương thức không dùng thay thế cho nhau.</span>${officialLink(activeSchool.website, 'Trang trường', '')}</footer>
@@ -182,14 +186,21 @@ function normalizeText(value) {
   return String(value || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd');
 }
 
+function matchingPrograms(school, query) {
+  const normalized = normalizeText(query);
+  if (!normalized) return [];
+  return (detailsForSchool(school.id)?.programs || []).filter(program => normalizeText([program.name, program.code, program.track].join(' ')).includes(normalized));
+}
+
 function filterSchools(value) {
   const query = normalizeText(value.trim());
-  filteredSchools = query ? schools.filter(school => normalizeText([school.name, school.short, school.city, school.id, ...(school.aliases || [])].join(' ')).includes(query)) : schools;
+  activeQuery = value.trim();
+  filteredSchools = query ? schools.filter(school => normalizeText([school.name, school.short, school.city, school.id, ...(school.aliases || [])].join(' ')).includes(query) || matchingPrograms(school, query).length) : schools;
   renderSidebar(filteredSchools);
   renderSchools(filteredSchools);
   document.getElementById('searchClear').hidden = !query;
   document.getElementById('schoolCatalogStatus').textContent = query
-    ? `Tìm thấy ${filteredSchools.length} trường phù hợp với “${value.trim()}”.`
+    ? `Tìm thấy ${filteredSchools.length} trường có tên, địa điểm hoặc ngành phù hợp với “${value.trim()}”.`
     : `${schools.filter(school => school.identity.entity_kind === 'university').length} hồ sơ trường đại học · ${schools.filter(school => school.identity.entity_kind === 'university_system').length} đại học vùng · Rà soát ${REVIEWED_AT}.`;
 }
 
@@ -232,6 +243,12 @@ document.addEventListener('click', event => {
   const action = target.dataset.action;
   if (action === 'open-school') openSchool(target.dataset.schoolId);
   if (action === 'close-school') dialog.close();
+  if (action === 'save-school' && activeSchool) {
+    const saved = window.BWFlow?.read().savedSchools?.some(school => school.id === activeSchool.id);
+    if (saved) window.BWFlow?.removeSaved('savedSchools', activeSchool.id);
+    else window.BWFlow?.addUnique('savedSchools', { id: activeSchool.id, name: activeSchool.name, city: activeSchool.city });
+    renderDialog();
+  }
   if (action === 'school-tab' && ['majors', 'scores', 'admission'].includes(target.dataset.tab)) {
     activeTab = target.dataset.tab;
     renderDialog();
@@ -269,7 +286,17 @@ async function initPage2() {
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const catalog = buildUniversityCatalog(await response.json(), sourceRegistry.universities);
     schools = catalog.schools;
-    filterSchools('');
+    const params = new URLSearchParams(location.search);
+    const initialQuery = params.get('major') || params.get('q') || '';
+    const suggestionValues = new Set();
+    schools.forEach(school => {
+      suggestionValues.add(school.name);
+      (detailsForSchool(school.id)?.programs || []).forEach(program => suggestionValues.add(program.name));
+    });
+    document.getElementById('schoolSearchSuggestions').innerHTML = [...suggestionValues].sort((first, second) => first.localeCompare(second, 'vi')).map(value => `<option value="${escapeHtml(value)}"></option>`).join('');
+    document.getElementById('searchInput').value = initialQuery;
+    filterSchools(initialQuery);
+    if (initialQuery) window.BWFlow?.addUnique('savedMajors', { id: normalizeText(initialQuery), name: initialQuery });
     document.getElementById('schoolCatalogCount').textContent = `${catalog.stats.universities} trường`;
     const career = new URLSearchParams(location.search).get('career') || window.BWFlow?.read().career?.name;
     if (career) {
@@ -280,6 +307,7 @@ async function initPage2() {
       window.BWFlow?.nextStep(host, `Nghề bạn đang quan tâm: ${career}`, 'Đối chiếu ngành và đề án tuyển sinh trên trang trường trước khi tính điểm.', [['Đổi nghề', 'careers-holland.html'], ['Tính điểm', 'score-calculator.html']]);
     }
     requestAnimationFrame(scrollToTargetFromUrl);
+    if (params.get('focus') === 'major') requestAnimationFrame(() => document.getElementById('searchInput')?.focus());
   } catch (error) {
     console.error('[school catalog]', error);
     document.getElementById('schoolCatalogStatus').textContent = 'Chưa tải được danh sách trường. Vui lòng thử lại.';

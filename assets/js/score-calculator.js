@@ -80,13 +80,19 @@ const ADMISSIONS_2026 = [
 function readBounded(id, max) {
   const input = document.getElementById(id);
   const parsed = input.validity.badInput ? { error:'format' } : parseScore(input.value, max);
+  input.setAttribute('aria-invalid', String(Boolean(parsed.error)));
+  const existing = input.closest('label')?.querySelector('.calc-input-error');
+  if (existing) existing.remove();
   if (parsed.error) {
-    return { error: `${input.closest('label').querySelector('span').textContent}: nhập số thập phân từ 0 đến ${max}, tối đa 2 chữ số sau dấu chấm; không dùng ký tự khác hay ký pháp khoa học.` };
+    const message = `Nhập số từ 0 đến ${max}, tối đa 2 chữ số thập phân.`;
+    input.closest('label')?.insertAdjacentHTML('beforeend', `<small class="calc-input-error">${message}</small>`);
+    return { error: `${input.closest('label').querySelector('span').textContent}: ${message}` };
   }
   return parsed;
 }
 
 function calculate() {
+  const method = document.querySelector('input[name="admissionMethod"]:checked')?.value || 'thpt';
   const combo = document.getElementById('comboSelect').value;
   const selected = COMBO_SUBJECTS[combo];
   if (!selected) { showError('Tổ hợp không hợp lệ. Hãy chọn lại.'); return; }
@@ -96,16 +102,20 @@ function calculate() {
   const transcriptValues = {};
   const transcriptMissing = [];
   for (const key of selected) {
-    const result = readBounded(SUBJECTS[key][0], 10);
-    if (result.error) errors.push(result.error);
-    else if (result.value === null) missing.push(SUBJECTS[key][1]);
-    else values[key] = result.value;
-    const transcriptResult = readBounded(TRANSCRIPT_SUBJECTS[key][0], 10);
-    if (transcriptResult.error) errors.push(transcriptResult.error);
-    else if (transcriptResult.value === null) transcriptMissing.push(TRANSCRIPT_SUBJECTS[key][1]);
-    else transcriptValues[key] = transcriptResult.value;
+    if (method === 'thpt') {
+      const result = readBounded(SUBJECTS[key][0], 10);
+      if (result.error) errors.push(result.error);
+      else if (result.value === null) missing.push(SUBJECTS[key][1]);
+      else values[key] = result.value;
+    }
+    if (method === 'transcript') {
+      const transcriptResult = readBounded(TRANSCRIPT_SUBJECTS[key][0], 10);
+      if (transcriptResult.error) errors.push(transcriptResult.error);
+      else if (transcriptResult.value === null) transcriptMissing.push(TRANSCRIPT_SUBJECTS[key][1]);
+      else transcriptValues[key] = transcriptResult.value;
+    }
   }
-  const grade12 = readBounded('sGrade12', 10);
+  const grade12 = method === 'thpt' ? readBounded('sGrade12', 10) : { value: null };
   if (grade12.error) errors.push(grade12.error);
   const exams = {};
   for (const exam of EXAMS) {
@@ -113,26 +123,23 @@ function calculate() {
     if (result.error) errors.push(result.error);
     exams[exam.input] = result.value;
   }
-  const hasExam = missing.length === 0;
-  const hasTranscript = transcriptMissing.length === 0;
-  const startedExam = missing.length < selected.length;
-  const startedTranscript = transcriptMissing.length < selected.length;
+  const hasExam = method === 'thpt' && missing.length === 0;
+  const hasTranscript = method === 'transcript' && transcriptMissing.length === 0;
+  const startedExam = method === 'thpt' && missing.length < selected.length;
+  const startedTranscript = method === 'transcript' && transcriptMissing.length < selected.length;
   const transcriptConfirmed = document.getElementById('transcriptConfirmed').checked;
   // Additional exam scores may establish the alternate Math + Literature + another exam route.
-  for (const [key, [id]] of Object.entries(SUBJECTS)) {
-    if (selected.includes(key)) continue;
-    const extra = readBounded(id, 10);
-    if (extra.error) errors.push(extra.error);
-    else if (extra.value !== null) values[key] = extra.value;
+  if (method === 'thpt') {
+    for (const [key, [id]] of Object.entries(SUBJECTS)) {
+      if (selected.includes(key)) continue;
+      const extra = readBounded(id, 10);
+      if (extra.error) errors.push(extra.error);
+      else if (extra.value !== null) values[key] = extra.value;
+    }
   }
-  for (const [key, [id]] of Object.entries(TRANSCRIPT_SUBJECTS)) {
-    if (selected.includes(key)) continue;
-    const extra = readBounded(id, 10);
-    if (extra.error) errors.push(extra.error);
-  }
-  if (startedExam && !hasExam) errors.push(`Điểm thi còn thiếu: ${missing.join(', ')}.`);
-  if (startedTranscript && !hasTranscript) errors.push(`Điểm học bạ còn thiếu: ${transcriptMissing.join(', ')}.`);
-  if (!startedExam && !startedTranscript) errors.push('Hãy nhập đủ 3 môn điểm thi THPT hoặc điểm học bạ.');
+  if (method === 'thpt' && !hasExam) errors.push(`Điểm thi còn thiếu: ${missing.join(', ')}.`);
+  if (method === 'transcript' && !hasTranscript) errors.push(`Điểm học bạ còn thiếu: ${transcriptMissing.join(', ')}.`);
+  if (method === 'other' && !Object.values(exams).some(value => value !== null)) errors.push('Hãy nhập ít nhất một điểm V-ACT, HSA hoặc TSA.');
   if (errors.length) {
     showError(errors.join(' '));
     document.getElementById('resultSchools').hidden = true;
@@ -158,6 +165,7 @@ function calculate() {
   document.getElementById('resultSchools').hidden = false;
   document.getElementById('resultEmpty').hidden = true;
   renderSchools({ combo, keys: selected, raw, transcriptRaw, transcriptConfirmed, values, transcriptValues, grade12: grade12.value });
+  window.BWFlow?.save({ admissions: { method, combo, completedAt: Date.now() }, scores: { combo, method, transcriptConfirmed, completedAt: Date.now(), values: Object.fromEntries(scoreInputs.map(input => [input.id, input.value])) } });
   const host = document.getElementById('scoreNextStep');
   host.hidden = false;
   window.BWFlow?.nextStep(host, 'Lập kế hoạch cho hồ sơ của bạn', 'Đối chiếu đề án trường, ghi lại các mốc tuyển sinh và chuẩn bị tài liệu cần thiết.', [['Lịch tuyển sinh', 'calendar.html'], ['Tài liệu & bài viết', 'resources.html'], ['Hồ sơ của tôi', 'profile.html']]);
@@ -182,6 +190,7 @@ function schoolOutcome(school, result) {
     return `${parts.join(' · ')}. Học bạ còn phải quy đổi theo từng môn và ngành; chỉ áp dụng nếu ngành chấp nhận tổ hợp ${result.combo}. ${rawThresholdText(result)}`;
   }
   if (school.type === 'hcmus') {
+    if (result.raw === null && result.transcriptRaw === null) return 'Phương thức bài thi riêng cần công thức quy đổi theo ngành của trường. Công cụ chỉ hiển thị điểm gốc, không tự quy đổi khi chưa đủ dữ liệu.';
     if (result.raw === null) return `Điểm học bạ tổ hợp hiện có: <strong>${result.transcriptRaw.toFixed(2)}/30</strong>. Cần đủ dữ liệu lớp 10–12 và điều kiện ngành để tính phương thức tích hợp.`;
     return rawThresholdText(result);
   }
@@ -268,6 +277,7 @@ function resetAll() {
     input.classList.remove('has-value');
   });
   document.getElementById('comboSelect').value = 'A00';
+  document.querySelector('input[name="admissionMethod"][value="thpt"]').checked = true;
   document.getElementById('transcriptConfirmed').checked = false;
   updateComboUI();
   document.getElementById('schoolFilter').value = '';
@@ -276,6 +286,18 @@ function resetAll() {
   document.getElementById('resultEmpty').hidden = false;
   clearError();
   clearWarning();
+  updateMethodUI();
+}
+
+function updateMethodUI() {
+  const method = document.querySelector('input[name="admissionMethod"]:checked')?.value || 'thpt';
+  document.getElementById('comboCard').hidden = method === 'other';
+  document.getElementById('examCard').hidden = method !== 'thpt';
+  document.getElementById('transcriptCard').hidden = method !== 'transcript';
+  document.getElementById('fptCard').hidden = method !== 'thpt';
+  document.getElementById('otherExamCard').hidden = method !== 'other';
+  document.getElementById('calcBtn').firstChild.textContent = method === 'other' ? 'Đối chiếu điểm ' : 'Tính điểm ';
+  window.BWFlow?.save({ admissions: { ...(window.BWFlow?.read().admissions || {}), method } });
 }
 
 function updateComboUI() {
@@ -294,6 +316,7 @@ function updateComboUI() {
 document.getElementById('calcBtn').addEventListener('click', calculate);
 document.getElementById('resetBtn').addEventListener('click', resetAll);
 document.getElementById('comboSelect').addEventListener('change', updateComboUI);
+document.querySelectorAll('input[name="admissionMethod"]').forEach(input => input.addEventListener('change', updateMethodUI));
 document.getElementById('schoolFilter').addEventListener('input', () => {
   if (!document.getElementById('resultSchools').hidden) calculate();
 });
@@ -301,6 +324,7 @@ document.querySelectorAll('.score-input input, .dgnl-input input').forEach(input
   input.addEventListener('input', () => input.classList.toggle('has-value', input.value.trim() !== ''));
 });
 updateComboUI();
+updateMethodUI();
 
 // Keep a draft when the visitor checks a school or returns from another page.
 const scoreNext = document.createElement('div');
@@ -310,6 +334,7 @@ document.querySelector('.calc-result-panel').appendChild(scoreNext);
 const scoreInputs = [...document.querySelectorAll('.score-input input, .dgnl-input input')];
 const draft = window.BWFlow?.read().scores;
 if (draft) {
+  if (['thpt', 'transcript', 'other'].includes(draft.method)) document.querySelector(`input[name="admissionMethod"][value="${draft.method}"]`).checked = true;
   if (COMBO_SUBJECTS[draft.combo]) document.getElementById('comboSelect').value = draft.combo;
   document.getElementById('transcriptConfirmed').checked = draft.transcriptConfirmed === true;
   scoreInputs.forEach(input => {
@@ -317,9 +342,11 @@ if (draft) {
     input.classList.toggle('has-value', input.value !== '');
   });
   updateComboUI();
+  updateMethodUI();
 }
 function saveScoreDraft() {
-  window.BWFlow?.save({ scores: { combo: document.getElementById('comboSelect').value, transcriptConfirmed: document.getElementById('transcriptConfirmed').checked, values: Object.fromEntries(scoreInputs.map(input => [input.id, input.value])) } });
+  const method = document.querySelector('input[name="admissionMethod"]:checked')?.value || 'thpt';
+  window.BWFlow?.save({ admissions: { ...(window.BWFlow?.read().admissions || {}), method }, scores: { combo: document.getElementById('comboSelect').value, method, transcriptConfirmed: document.getElementById('transcriptConfirmed').checked, values: Object.fromEntries(scoreInputs.map(input => [input.id, input.value])) } });
   document.getElementById('resultSummary').hidden = true;
   document.getElementById('resultSchools').hidden = true;
   document.getElementById('resultEmpty').hidden = false;
@@ -330,6 +357,7 @@ function saveScoreDraft() {
 scoreInputs.forEach(input => input.addEventListener('input', saveScoreDraft));
 document.getElementById('comboSelect').addEventListener('change', saveScoreDraft);
 document.getElementById('transcriptConfirmed').addEventListener('change', saveScoreDraft);
+document.querySelectorAll('input[name="admissionMethod"]').forEach(input => input.addEventListener('change', saveScoreDraft));
 const schoolId = canonicalSchoolId(new URLSearchParams(location.search).get('school'));
 const chosenSchool = ADMISSIONS_2026.find(school => school.id === schoolId);
 if (chosenSchool) document.getElementById('schoolFilter').value = chosenSchool.short;

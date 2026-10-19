@@ -8,7 +8,7 @@
 <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>BrightWay Career – Đi để lối thành đường của bạn</title>
+<title>BrightWay Career – Tìm hướng đi phù hợp với bạn</title>
 <meta name="description" content="Công cụ hướng nghiệp cho học sinh THPT Việt Nam: trắc nghiệm Holland RIASEC, gợi ý nghề, ngành học và trường phù hợp. Tư vấn cá nhân với chuyên gia." />
 <meta name="keywords" content="hướng nghiệp, khám phá bản thân, Holland RIASEC, ngành học, nghề nghiệp, tư vấn nghề, học sinh THPT" />
 <link rel="icon" type="image/png" href="/favicon.png?v=20261015">
@@ -2948,11 +2948,12 @@ body.spa-active #spa-topbar { display: flex; }
 
 </style>
 <link rel="stylesheet" href="/assets/css/brightway-theme.css?v=4">
-<link rel="stylesheet" href="/assets/css/flow.css?v=2">
+<link rel="stylesheet" href="/assets/css/flow.css?v=20261019-ux">
 <link rel="stylesheet" href="/assets/css/admissions-home.css?v=7">
-<script src="/assets/js/flow.js?v=1" defer></script>
+<script src="/assets/js/flow.js?v=20261019-ux" defer></script>
 <script type="module" src="/assets/js/catalog-stats.js?v=20261015"></script>
 <link rel="stylesheet" href="/assets/css/home-holland.css?v=20261015">
+<link rel="stylesheet" href="/assets/css/home-journeys.css?v=20261019">
 <script src="/assets/js/home-holland.js?v=20261015" defer></script>
 </head>
 <body>
@@ -4984,24 +4985,32 @@ body.spa-active #spa-topbar { display: flex; }
   <div class="bw-hero-grid">
     <div class="bw-hero-text">
       <div class="badge">Dành cho học sinh THPT · Dữ liệu 2026</div>
-      <h1 class="bw-hero-h1">
-        Đi để lối thành
-        <span class="accent-yellow">đường của bạn</span>
-      </h1>
-      <p class="lede">
-        Hiểu bản thân, khám phá 102 nghề và tra cứu <span data-catalog-count>…</span> hồ sơ trường đại học trong một lộ trình rõ ràng.
-      </p>
-      <div class="bw-hero-cta-row">
-        <a href="careers-holland.html?holland=all" class="bw-btn bw-btn-primary bw-btn-xl">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="7" width="18" height="14" rx="3"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18M10 12v3h4v-3"/></svg>
-          Tra cứu ngành
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-        <a href="page2.html" class="bw-btn bw-btn-outline bw-btn-xl">
-          Tra cứu trường
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-      </div>
+      <h1 class="bw-hero-h1">Tìm hướng đi <span class="accent-yellow">phù hợp với bạn.</span></h1>
+      <p class="lede">Khám phá ngành nghề, tìm trường đại học và chuẩn bị xét tuyển cùng BrightWay.</p>
+      <section class="home-journey-picker" aria-labelledby="homeJourneyTitle">
+        <h2 id="homeJourneyTitle">Bạn đang ở bước nào?</h2>
+        <div class="home-journey-grid">
+          <a class="home-journey-card" href="holland.html">
+            <span class="home-journey-icon" aria-hidden="true">01</span>
+            <strong>Chưa biết chọn ngành gì</strong>
+            <span>Khám phá sở thích và tìm ngành nghề phù hợp.</span>
+            <b>Bắt đầu khám phá →</b>
+          </a>
+          <a class="home-journey-card" href="page2.html?focus=major">
+            <span class="home-journey-icon" aria-hidden="true">02</span>
+            <strong>Đã có ngành yêu thích</strong>
+            <span>Tìm trường đào tạo và khám phá cơ hội xét tuyển.</span>
+            <b>Tìm ngành &amp; trường →</b>
+          </a>
+          <a class="home-journey-card" href="score-calculator.html">
+            <span class="home-journey-icon" aria-hidden="true">03</span>
+            <strong>Muốn tính điểm xét tuyển</strong>
+            <span>Chọn phương thức, nhập điểm và xem cách tính.</span>
+            <b>Mở công cụ tính điểm →</b>
+          </a>
+        </div>
+        <a class="home-browse-link" href="careers-holland.html?holland=all">Tôi muốn tự do khám phá nghề nghiệp →</a>
+      </section>
       <button type="button" class="home-waybi-shortcut" data-open-waybi><img src="assets/images/waybi/waybi-mascot-v2.png" alt="" aria-hidden="true">Chưa biết bắt đầu từ đâu? Hỏi Waybi →</button>
       <div class="bw-hero-meta">
         <span>Miễn phí 100%</span>

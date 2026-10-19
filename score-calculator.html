@@ -9,10 +9,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/assets/css/page2.css?v=20261016-responsive-programs">
-<link rel="stylesheet" href="/assets/css/score-calculator.css?v=20261016">
+<link rel="stylesheet" href="/assets/css/score-calculator.css?v=20261019-ux">
 <link rel="stylesheet" href="/assets/css/brightway-theme.css?v=4">
-<link rel="stylesheet" href="/assets/css/flow.css?v=2">
-<script src="/assets/js/flow.js?v=1" defer></script>
+<link rel="stylesheet" href="/assets/css/flow.css?v=20261019-ux">
+<script src="/assets/js/flow.js?v=20261019-ux" defer></script>
 <link rel="stylesheet" href="/assets/css/admissions-policy.css?v=20261014">
 </head>
 <body>
@@ -52,8 +52,17 @@
 <div class="calc-layout">
   <!-- LEFT: INPUT FORM -->
   <aside class="calc-input-panel">
-    <div class="calc-card">
-      <h2 class="calc-section-title"><span class="section-number">01</span> Chọn tổ hợp xét tuyển</h2>
+    <div class="calc-card calc-method-card">
+      <h2 class="calc-section-title"><span class="section-number">01</span> Bạn muốn tính theo phương thức nào?</h2>
+      <div class="calc-method-options" role="radiogroup" aria-label="Phương thức xét tuyển">
+        <label><input type="radio" name="admissionMethod" value="thpt" checked><span><strong>Điểm thi THPT</strong><small>Chọn tổ hợp và nhập đúng 3 môn</small></span></label>
+        <label><input type="radio" name="admissionMethod" value="transcript"><span><strong>Học bạ</strong><small>Nhập điểm đã tổng hợp theo yêu cầu trường</small></span></label>
+        <label><input type="radio" name="admissionMethod" value="other"><span><strong>Bài thi riêng</strong><small>V-ACT, HSA hoặc TSA</small></span></label>
+      </div>
+    </div>
+
+    <div class="calc-card" id="comboCard">
+      <h2 class="calc-section-title"><span class="section-number">02</span> Chọn tổ hợp xét tuyển</h2>
       <label class="combo-select-label" for="comboSelect">Tổ hợp môn thi</label>
       <select id="comboSelect">
         <option value="A00">A00 · Toán, Lý, Hóa</option>
@@ -77,8 +86,8 @@
       <p class="calc-field-note">Tổ hợp được chấp nhận còn tùy ngành và trường.</p>
     </div>
 
-    <div class="calc-card">
-      <h2 class="calc-section-title"><span class="section-number">02</span> Nhập điểm thi THPT</h2>
+    <div class="calc-card" id="examCard">
+      <h2 class="calc-section-title"><span class="section-number">03</span> Nhập điểm thi THPT</h2>
       <p id="comboHint" class="combo-hint">A00 · Cần nhập Toán, Lý, Hóa</p>
       <div class="score-grid">
         <label class="score-input">
@@ -118,7 +127,7 @@
       </div>
     </div>
 
-    <div class="calc-card">
+    <div class="calc-card" id="transcriptCard" hidden>
       <h2 class="calc-section-title"><span class="section-number">03</span> Nhập điểm học bạ</h2>
       <p id="transcriptHint" class="combo-hint">A00 · Điểm trung bình học bạ Toán, Lý, Hóa</p>
       <label class="transcript-confirm"><input type="checkbox" id="transcriptConfirmed"> <span>Tôi đã tổng hợp điểm môn từ lớp 10–12 theo đúng yêu cầu của trường.</span></label>
@@ -137,17 +146,17 @@
       <p class="calc-field-note">Xét học bạ 2026 sử dụng điểm trung bình chung 6 học kỳ của tối thiểu 3 môn; Toán hoặc Văn chiếm ít nhất 1/3 trọng số, có ngoại lệ theo Điều 6 khoản 5. Không mặc định điểm cả năm tương đương trung bình 6 học kỳ. Chỉ nhập điểm đã tổng hợp đúng công thức của trường. Tổng ở đây là điểm gốc, chưa có hệ số hay quy đổi; công thức kết hợp FPT bên dưới dùng dữ liệu riêng.</p>
     </div>
 
-    <div class="calc-card">
-      <h2 class="calc-section-title"><span class="section-number">04</span> Bổ sung cho FPT</h2>
+    <details class="calc-card calc-optional" id="fptCard">
+      <summary>Bổ sung nếu muốn đối chiếu FPT <span>Tùy chọn</span></summary>
       <label class="dgnl-input">
         <span>Điểm trung bình cả năm lớp 12, tất cả môn tính điểm (FPT, thang 10)</span>
         <input type="number" id="sGrade12" min="0" max="10" step="0.01" placeholder="Ví dụ: 8.40" />
       </label>
       <p class="calc-field-note">Đây là điểm trung bình tất cả môn lớp 12 dùng riêng cho công thức FPT, khác với tổng điểm học bạ tổ hợp ở trên.</p>
-    </div>
+    </details>
 
-    <details class="calc-card calc-optional">
-      <summary>Điểm bài thi khác <span>Tùy chọn</span></summary>
+    <div class="calc-card" id="otherExamCard" hidden>
+      <h2 class="calc-section-title"><span class="section-number">02</span> Nhập điểm bài thi riêng</h2>
       <div class="dgnl-grid">
         <label class="dgnl-input">
           <span>V-ACT (ĐHQG-HCM, tối đa 1.200)</span>
@@ -167,7 +176,7 @@
         Mỗi môn có thang tối đa 150 điểm; trường sẽ quy đổi từng môn theo bảng 2026 riêng.
         <a href="https://tuyensinh.ctu.edu.vn/chuong-trinh-dai-tra/177-thong-tin/1159-thong-bao-bang-quy-doi-diem-v-sat-nam-2026.html" target="_blank" rel="noopener noreferrer">Xem bảng quy đổi V-SAT 2026 ↗</a>
       </div>
-    </details>
+    </div>
 
     <div class="calc-actions">
       <button id="calcBtn" class="calc-btn-primary">Xem kết quả <span aria-hidden="true">→</span></button>
@@ -230,7 +239,7 @@
 
 <script src="/assets/js/uni-logos.js"></script>
 <script src="/assets/js/uni-logo-svg.js"></script>
-<script type="module" src="/assets/js/score-calculator.js?v=20261016"></script>
+<script type="module" src="/assets/js/score-calculator.js?v=20261019-ux"></script>
 <script src="assets/js/waybi.js"></script>
 <script src="assets/js/waybi-presence.js"></script>
 </body>

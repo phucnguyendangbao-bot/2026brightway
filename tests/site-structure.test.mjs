@@ -69,13 +69,15 @@ test('12 study suggestions are separate from official admissions dates', () => {
   assert.match(calendar, /không tự xác định giai đoạn/);
 });
 
-test('home foregrounds career search and Waybi, and provides a three-group Holland picker', () => {
+test('home foregrounds three clear journeys, Waybi, and a three-group Holland picker', () => {
   const home = read('index.html');
   const hero = home.slice(home.indexOf('<section class="bw-hero"'), home.indexOf('<section class="bw-waybi-home"'));
-  assert.match(hero, /Đi để lối thành[\s\S]*đường của bạn/);
-  assert.match(hero, /href="careers-holland.html\?holland=all" class="bw-btn bw-btn-primary[\s\S]*Tra cứu ngành/);
-  assert.match(hero, /href="page2.html" class="bw-btn bw-btn-outline[\s\S]*Tra cứu trường/);
-  assert.doesNotMatch(hero, /Làm trắc nghiệm ngay/);
+  assert.match(hero, /Tìm hướng đi[\s\S]*phù hợp với bạn/);
+  assert.match(hero, /Bạn đang ở bước nào\?/);
+  assert.match(hero, /href="holland.html"[\s\S]*Chưa biết chọn ngành gì/);
+  assert.match(hero, /href="page2.html\?focus=major"[\s\S]*Đã có ngành yêu thích/);
+  assert.match(hero, /href="score-calculator.html"[\s\S]*Muốn tính điểm xét tuyển/);
+  assert.equal((hero.match(/class="home-journey-card"/g) || []).length, 3);
   assert.match(hero, /data-open-waybi/);
   assert.equal((home.match(/id="waybi-home"/g) || []).length, 1);
   assert.ok(home.indexOf('<section class="bw-waybi-home"') < home.indexOf('<section class="admissions-home"'));
@@ -86,6 +88,40 @@ test('home foregrounds career search and Waybi, and provides a three-group Holla
   assert.equal((home.match(/data-holland-code=/g) || []).length, 6);
   assert.match(home, /id="homeHollandSubmit" disabled/);
   assert.match(home, /Chọn đúng 3 nhóm theo thứ tự ưu tiên/);
+});
+
+test('shared journey uses a versioned local profile and simplified navigation', () => {
+  const flow = read('assets/js/flow.js');
+  assert.match(flow, /bwJourneyV2/);
+  assert.match(flow, /version:\s*2/);
+  assert.match(flow, /Hành trình của tôi/);
+  assert.match(flow, /Tìm ngành & trường/);
+  assert.match(flow, /data-flow-reset/);
+  assert.match(flow, /savedCareers/);
+  assert.match(flow, /savedMajors/);
+  assert.match(flow, /savedSchools/);
+});
+
+test('school lookup searches verified 2026 programs and lets visitors save schools', () => {
+  const page = read('page2.html');
+  const script = read('assets/js/page2.js');
+  assert.match(page, /Tìm ngành, trường, mã trường hoặc thành phố/);
+  assert.match(page, /schoolSearchSuggestions/);
+  assert.match(script, /function matchingPrograms/);
+  assert.match(script, /detailsForSchool\(school\.id\)\?\.programs/);
+  assert.match(script, /data-action="save-school"/);
+  assert.match(script, /addUnique\('savedSchools'/);
+});
+
+test('score calculator progressively reveals inputs by admission method', () => {
+  const page = read('score-calculator.html');
+  const script = read('assets/js/score-calculator.js');
+  for (const method of ['thpt', 'transcript', 'other']) assert.match(page, new RegExp(`name="admissionMethod" value="${method}"`));
+  assert.match(page, /id="transcriptCard" hidden/);
+  assert.match(page, /id="otherExamCard" hidden/);
+  assert.match(script, /function updateMethodUI/);
+  assert.match(script, /method === 'other'/);
+  assert.match(script, /calc-input-error/);
 });
 
 test('manual Holland codes require exactly three distinct RIASEC letters', () => {

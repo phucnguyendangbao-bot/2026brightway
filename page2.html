@@ -9,11 +9,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/assets/css/page2.css?v=20261019-only-2026">
+<link rel="stylesheet" href="/assets/css/page2.css?v=20261019-ux">
 <link rel="stylesheet" href="/assets/css/brightway-theme.css?v=4">
-<link rel="stylesheet" href="/assets/css/flow.css?v=2">
+<link rel="stylesheet" href="/assets/css/flow.css?v=20261019-ux">
 <link rel="stylesheet" href="/assets/css/school-history.css?v=20261015">
-<script src="/assets/js/flow.js?v=1" defer></script>
+<script src="/assets/js/flow.js?v=20261019-ux" defer></script>
 </head>
 <body>
 
@@ -33,14 +33,15 @@
     <p>Chọn logo trường để xem ngành đào tạo, điểm chuẩn đã đối chiếu và tài liệu tuyển sinh chính thức.</p>
     <div class="p2-intro-search">
       <label class="sr-only" for="searchInput">Tìm trường hoặc thành phố</label>
-      <input type="search" id="searchInput" placeholder="Tìm tên trường, mã trường hoặc thành phố..." autocomplete="off" />
+      <input type="search" id="searchInput" list="schoolSearchSuggestions" placeholder="Tìm ngành, trường, mã trường hoặc thành phố..." autocomplete="off" />
       <button type="button" id="searchClear" aria-label="Xóa tìm kiếm" hidden>×</button>
+      <datalist id="schoolSearchSuggestions"></datalist>
     </div>
   </div>
   <div class="p2-intro-aside">
     <span class="p2-intro-aside-label">THƯ VIỆN TRƯỜNG</span>
     <strong id="schoolCatalogCount">Đang tải…</strong>
-    <p>Thông tin theo từng năm. Đường dẫn nguồn dẫn về website chính thức của trường.</p>
+    <p>Dữ liệu 2026. Tìm theo ngành để thấy ngay các trường có chương trình phù hợp.</p>
     <a href="score-calculator.html">Mở công cụ tính điểm <span aria-hidden="true">↗</span></a>
   </div>
 </header>
@@ -65,7 +66,7 @@
   BrightWay Career &copy; 2026 &mdash; Thông tin mang tính tham khảo, vui lòng kiểm tra website chính thức của từng trường.
 </footer>
 
-<script type="module" src="/assets/js/page2.js?v=20261019-only-2026"></script>
+<script type="module" src="/assets/js/page2.js?v=20261019-ux"></script>
 
 <!-- Auth + Sync (Supabase) — shared login cho mọi trang -->
 <script src="assets/js/supabase-client.js"></script>
