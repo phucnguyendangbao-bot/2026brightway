@@ -65,3 +65,16 @@
   .home-journey-card { transition: none; }
   .home-journey-card:hover { transform: none; }
 }
+
+/* Clear, premium entry choices. */
+.home-journey-picker { position:relative; }
+.home-journey-card { position:relative; overflow:hidden; border-color:rgba(107,96,255,.14); background:linear-gradient(150deg,rgba(255,255,255,.98),rgba(247,247,255,.94)); box-shadow:0 2px 3px rgba(41,36,98,.04),0 16px 38px rgba(56,49,134,.09); }
+.home-journey-card::before { content:""; position:absolute; left:0; right:0; top:0; height:3px; background:linear-gradient(90deg,#6b60ff,#9882ff,#63b3ff); opacity:.72; }
+.home-journey-card::after { content:""; position:absolute; width:120px; height:120px; right:-70px; top:-72px; border-radius:50%; background:radial-gradient(circle,rgba(107,96,255,.13),transparent 70%); transition:transform .28s ease; }
+.home-journey-card:hover { transform:translateY(-6px); border-color:rgba(107,96,255,.34); box-shadow:0 5px 10px rgba(41,36,98,.06),0 26px 55px rgba(56,49,134,.15); }
+.home-journey-card:hover::after { transform:scale(1.35); }
+.home-journey-card:active { transform:translateY(-2px) scale(.99); }
+.home-journey-icon { box-shadow:0 9px 20px rgba(107,96,255,.25),inset 0 1px rgba(255,255,255,.34); }
+.home-journey-card b { display:inline-flex; align-items:center; gap:6px; }
+.home-journey-card b::after { content:"→"; transition:transform .18s ease; }
+.home-journey-card:hover b::after { transform:translateX(4px); }

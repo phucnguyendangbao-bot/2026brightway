@@ -692,3 +692,22 @@ html { scroll-behavior: smooth; }
   .school-program-table { min-width: 680px; }
   .school-program-table-wrap { overscroll-behavior-inline: contain; -webkit-overflow-scrolling: touch; }
 }
+
+/* Polished discovery workspace. */
+.p2-intro { position:relative; overflow:hidden; border-color:rgba(107,96,255,.13); background:radial-gradient(circle at 86% 0%,rgba(139,107,255,.18),transparent 30%),radial-gradient(circle at 8% 100%,rgba(89,183,255,.08),transparent 28%),linear-gradient(145deg,rgba(255,255,255,.98),rgba(249,249,255,.95)); box-shadow:0 2px 5px rgba(38,34,89,.04),0 28px 72px rgba(52,47,122,.11); }
+.p2-intro::after { content:""; position:absolute; width:250px; height:250px; right:-155px; bottom:-150px; border-radius:50%; border:42px solid rgba(107,96,255,.045); pointer-events:none; }
+.p2-intro-copy,.p2-intro-aside { position:relative; z-index:1; }
+.p2-intro-aside { background:linear-gradient(145deg,rgba(244,243,255,.88),rgba(250,251,255,.82)); box-shadow:inset 0 1px rgba(255,255,255,.7); }
+.school-search-modes label { transition:transform .18s ease,border-color .18s ease,background .18s ease,box-shadow .18s ease; }
+.school-search-modes label:hover { transform:translateY(-1px); border-color:rgba(107,96,255,.35); }
+.school-search-modes label:has(input:checked) { box-shadow:0 7px 18px rgba(107,96,255,.12),inset 0 1px rgba(255,255,255,.6); }
+.school-search-field input[type="search"],.school-region-filter select { box-shadow:inset 0 1px 2px rgba(35,31,82,.035),0 7px 18px rgba(55,48,130,.045); }
+.school-section { position:relative; overflow:hidden; background:linear-gradient(150deg,rgba(255,255,255,.99),rgba(250,250,255,.96)); box-shadow:0 2px 4px rgba(38,34,89,.04),0 16px 40px rgba(52,47,122,.075); }
+.school-section::after { content:""; position:absolute; width:95px; height:95px; right:-58px; top:-60px; border-radius:50%; background:rgba(107,96,255,.055); transition:transform .25s ease; pointer-events:none; }
+.school-section:hover { transform:translateY(-5px); box-shadow:0 5px 10px rgba(38,34,89,.05),0 28px 58px rgba(52,47,122,.14); }
+.school-section:hover::after { transform:scale(1.5); }
+.school-card-open { transition:gap .18s ease,color .18s ease; }
+.school-section:hover .school-card-open { color:#5145d9; }
+.school-dialog { border:1px solid rgba(255,255,255,.8); box-shadow:0 35px 110px rgba(20,17,59,.3); }
+.school-dialog::backdrop { background:rgba(22,20,57,.66); backdrop-filter:blur(9px) saturate(115%); }
+@media(max-width:700px) { .p2-intro::after { display:none; } .school-section:hover { transform:none; } }

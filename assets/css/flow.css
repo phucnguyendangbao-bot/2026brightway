@@ -58,3 +58,19 @@ body .flow-nav a:focus-visible, body .flow-nav button:focus-visible, body .flow-
   body .flow-journey-steps a { min-height:0; }
 }
 @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto !important; } }
+
+/* Premium navigation and journey surfaces. */
+body .flow-nav { background:rgba(250,250,255,.82); border-bottom-color:rgba(107,96,255,.12); box-shadow:0 1px 0 rgba(255,255,255,.85),0 8px 30px rgba(45,40,105,.06); backdrop-filter:blur(18px) saturate(150%); -webkit-backdrop-filter:blur(18px) saturate(150%); }
+body .flow-logo { letter-spacing:-.025em; }
+body .flow-logo img { filter:drop-shadow(0 5px 9px rgba(107,96,255,.2)); }
+body .flow-links > a { transition:color .18s ease,background .18s ease,transform .18s ease; }
+body .flow-links > a:hover { transform:translateY(-1px); }
+body .flow-links > a.active { box-shadow:inset 0 0 0 1px rgba(107,96,255,.08); }
+body .flow-waybi-link { background:rgba(255,255,255,.68); }
+body .flow-journey { border-color:rgba(107,96,255,.12); background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(247,247,255,.93)); box-shadow:0 2px 4px rgba(39,35,92,.04),0 22px 55px rgba(54,48,130,.10); }
+body .flow-journey-steps a { position:relative; overflow:hidden; border-color:rgba(107,96,255,.11); background:linear-gradient(145deg,#fafaff,#f5f5ff); transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease; }
+body .flow-journey-steps a::after { content:""; position:absolute; width:80px; height:80px; right:-35px; bottom:-42px; border-radius:50%; background:rgba(107,96,255,.055); }
+body .flow-journey-steps a:hover { transform:translateY(-3px); border-color:rgba(107,96,255,.28); box-shadow:0 15px 32px rgba(54,48,130,.10); }
+body .flow-journey-steps span { box-shadow:0 7px 16px rgba(107,96,255,.24),inset 0 1px rgba(255,255,255,.3); }
+body .flow-next { border-color:rgba(107,96,255,.13); box-shadow:0 14px 38px rgba(54,48,130,.08); }
+@media(max-width:1180px) { body .flow-links { background:rgba(255,255,255,.96); backdrop-filter:blur(18px); border-bottom-color:rgba(107,96,255,.12); } }

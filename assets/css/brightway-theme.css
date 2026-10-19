@@ -229,3 +229,66 @@ html body.senior-mode #home-view .bw-hero-h1 { font-size:clamp(2.6rem,4.6vw,4.8r
   html { scroll-behavior:auto !important; }
   body *,body *::before,body *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
 }
+
+/* 2026 premium polish: shared depth, light and interaction language. */
+:root {
+  --bw-shadow-xs: 0 1px 2px rgba(39,35,92,.04), 0 6px 18px rgba(54,48,130,.06);
+  --bw-shadow-card: 0 2px 4px rgba(39,35,92,.04), 0 18px 48px rgba(54,48,130,.09);
+  --bw-shadow-lift: 0 4px 8px rgba(39,35,92,.06), 0 28px 68px rgba(54,48,130,.15);
+}
+html { background:#f5f6ff; }
+html body {
+  background:
+    radial-gradient(circle at 8% 4%, rgba(107,96,255,.10), transparent 30rem),
+    radial-gradient(circle at 92% 13%, rgba(93,180,255,.10), transparent 28rem),
+    linear-gradient(180deg,#fafaff 0%,#f5f6ff 55%,#f8f8ff 100%);
+}
+html body::selection { background:rgba(107,96,255,.2); color:var(--bw-ink); }
+html body :is(h1,h2,h3) { text-wrap:balance; }
+html body p { text-wrap:pretty; }
+html body :is(button,a,input,select,summary) { -webkit-tap-highlight-color:transparent; }
+html body :is(.calc-card,.result-summary,.result-empty,.res-card,.profile-header,.auth-card) {
+  border-color:rgba(107,96,255,.13) !important;
+  box-shadow:var(--bw-shadow-xs) !important;
+}
+html body :is(.calc-card,.result-summary,.result-empty,.res-card,.auth-card) {
+  background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(250,250,255,.94)) !important;
+}
+html body :is(.calc-btn-primary,.flow-continue,.btn-nav-login) {
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 10px 25px rgba(93,78,231,.24), inset 0 1px rgba(255,255,255,.28) !important;
+}
+html body :is(.calc-btn-primary,.flow-continue,.btn-nav-login)::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.28) 45%,transparent 70%);
+  transform:translateX(-120%);
+  transition:transform .55s ease;
+  pointer-events:none;
+}
+html body :is(.calc-btn-primary,.flow-continue,.btn-nav-login):hover::after { transform:translateX(120%); }
+html body #home-view {
+  background:
+    radial-gradient(circle at 7% 7%,rgba(111,91,255,.09),transparent 27rem),
+    radial-gradient(circle at 88% 5%,rgba(91,178,255,.10),transparent 30rem),
+    #fbfbff !important;
+}
+html body #home-view .bw-hero { position:relative; overflow:hidden; background:transparent !important; }
+html body #home-view .bw-hero::before,
+html body #home-view .bw-hero::after { content:""; position:absolute; border-radius:50%; pointer-events:none; }
+html body #home-view .bw-hero::before { width:420px; height:420px; left:-240px; top:-210px; background:radial-gradient(circle,rgba(139,107,255,.16),transparent 68%); }
+html body #home-view .bw-hero::after { width:360px; height:360px; right:-170px; bottom:-190px; background:radial-gradient(circle,rgba(85,186,255,.14),transparent 68%); }
+html body #home-view .bw-hero-grid { position:relative; z-index:1; }
+html body #home-view .bw-hero-carousel { border:1px solid rgba(255,255,255,.9); box-shadow:0 2px 3px rgba(31,28,81,.05),0 30px 75px rgba(52,47,122,.18); }
+html body #home-view .bw-hero-carousel::after { content:""; position:absolute; inset:0; border-radius:inherit; box-shadow:inset 0 0 0 1px rgba(255,255,255,.4); pointer-events:none; }
+html body #home-view .bw-metric-band { border:1px solid rgba(255,255,255,.45); box-shadow:0 20px 50px rgba(80,64,215,.22),inset 0 1px rgba(255,255,255,.25); }
+html body #home-view :is(.step,.bw-tool-card,.bw-faq-item) { border:1px solid rgba(107,96,255,.11) !important; box-shadow:var(--bw-shadow-xs) !important; transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease; }
+html body #home-view :is(.step,.bw-tool-card):hover { transform:translateY(-5px); border-color:rgba(107,96,255,.28) !important; box-shadow:var(--bw-shadow-card) !important; }
+html body #home-view .bw-faq-item[open] { border-color:rgba(107,96,255,.25) !important; box-shadow:var(--bw-shadow-card) !important; }
+@media(max-width:640px) {
+  html body { background:linear-gradient(180deg,#fafaff,#f5f6ff); }
+  html body #home-view .bw-hero::before { width:260px; height:260px; left:-170px; top:-140px; }
+  html body #home-view .bw-hero::after { display:none; }
+}
