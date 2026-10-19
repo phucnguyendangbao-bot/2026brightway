@@ -1,7 +1,6 @@
 import sourceRegistry from '../data/school-admissions-sources.js';
 import { buildUniversityCatalog, canonicalSchoolId, REVIEWED_AT } from '../data/university-identities.js';
 import { detailsForSchool } from '../data/school-profile-details.js';
-import { historyForSchool } from '../data/school-admissions-history.js';
 
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[char]);
 const formatScore = value => Number.isFinite(value)
@@ -23,7 +22,7 @@ let schools = [];
 let filteredSchools = [];
 let activeSchool = null;
 let activeTab = 'majors';
-let activeYear = 2026;
+const activeYear = 2026;
 let searchTimer;
 
 const sourceForSchool = id => sourceRegistry.universities.find(row => row.school_id === canonicalSchoolId(id));
@@ -105,7 +104,7 @@ function renderPrograms(school, details) {
   if (!details?.programs?.length) return `<div class="school-dialog-empty">
     <h3>Chưa nhập danh sách ngành ${activeYear}</h3>
     <p>Chưa xác minh được bảng ngành theo đúng năm, cơ sở và chương trình. Không dùng danh sách của năm khác để thay thế.</p>
-    ${officialLink(details?.admissionSource || (activeYear === 2026 ? sourceForSchool(school.id)?.source_url : historyForSchool(school.id, activeYear)?.links[0]?.url), `Xem nguồn năm ${activeYear}`, 'school-dialog-link')}
+    ${officialLink(details?.admissionSource || sourceForSchool(school.id)?.source_url, 'Xem nguồn năm 2026', 'school-dialog-link')}
   </div>`;
   const hasScores = details.programs.some(program => Number.isFinite(program.score));
   const hasTracks = details.programs.some(program => program.track);
@@ -137,24 +136,18 @@ function renderScores(school, details) {
   if (details?.scoreSource) return `<div class="school-dialog-empty"><h3>Trường đã công bố điểm chuẩn ${details.year}</h3>
     <p>Bảng điểm được đăng dưới dạng hình hoặc tài liệu. Hãy xem bảng gốc để đối chiếu đúng ngành, chương trình và phương thức; chưa nhập số lẻ chưa xác minh vào hệ thống.</p>
     ${officialLink(details.scoreSource, 'Mở bảng điểm chuẩn chính thức', 'school-dialog-link')}</div>`;
-  const history = historyForSchool(school.id, activeYear);
-  const scoreLink = history?.links.find(link => /điểm|kết quả/i.test(link.label));
   return `<div class="school-dialog-empty"><h3>Chưa nhập bảng điểm chuẩn ${activeYear}</h3>
     <p>Không dùng điểm tham khảo trong dữ liệu cũ hoặc điểm của năm khác làm điểm trúng tuyển. Hãy đối chiếu đúng phương thức và chương trình trên cổng trường.</p>
-    ${officialLink(scoreLink?.url || details?.admissionSource || (activeYear === 2026 ? sourceForSchool(school.id)?.source_url : history?.links[0]?.url), `Xem nguồn năm ${activeYear}`, 'school-dialog-link')}
+    ${officialLink(details?.admissionSource || sourceForSchool(school.id)?.source_url, 'Xem nguồn năm 2026', 'school-dialog-link')}
     <a class="school-dialog-link" href="resources.html?school=${encodeURIComponent(school.id)}">Xem tin tuyển sinh đã đối chiếu →</a></div>`;
 }
 
 function renderAdmission(school, details) {
-  const source = activeYear === 2026 ? sourceForSchool(school.id) : null;
-  const history = historyForSchool(school.id, activeYear);
-  const links = activeYear === 2026
-    ? [source?.source_url && { label: 'Nguồn tuyển sinh 2026', url: source.source_url }, source?.supplementary_url && { label: 'Tài liệu bổ sung', url: source.supplementary_url }].filter(Boolean)
-    : [details?.admissionSource && { label: `Đề án/thông tin tuyển sinh ${activeYear}`, url: details.admissionSource }, ...(history?.links || []), details?.scoreSource && !history?.links.some(link => link.url === details.scoreSource) && { label: `Thông báo điểm chuẩn ${activeYear}`, url: details.scoreSource }].filter(Boolean);
+  const source = sourceForSchool(school.id);
+  const links = [source?.source_url && { label: 'Nguồn tuyển sinh 2026', url: source.source_url }, source?.supplementary_url && { label: 'Tài liệu bổ sung', url: source.supplementary_url }].filter(Boolean);
   return `<div class="school-admission-panel">
     <div class="school-admission-year"><span>Năm tuyển sinh ${activeYear}</span><span>${links.length ? 'Có nguồn trường để đối chiếu' : 'Chưa có nguồn được đối chiếu'}</span></div>
     ${source ? `<h3>Thông tin từ nguồn tuyển sinh</h3><p>${escapeHtml(source.source_summary)}</p><p class="school-dialog-note">${escapeHtml(source.review_note)}</p>` : ''}
-    ${history ? `<h3>${escapeHtml(history.title)}</h3><p>${escapeHtml(history.summary)}</p><p class="school-dialog-note">${escapeHtml(history.note)}</p>` : ''}
     ${!links.length ? '<p>Chưa có đề án hoặc thông báo tuyển sinh đúng năm được đối chiếu cho hồ sơ này.</p>' : ''}
     <div class="school-dialog-links">${links.map(link => officialLink(link.url, link.label, 'school-dialog-link')).join('')}</div>
     ${links.length ? '<small>Xem văn bản gốc để kiểm tra ngành, cơ sở, phương thức và chỉ tiêu; nguồn liên kết không xác nhận toàn bộ dữ liệu chi tiết.</small>' : officialLink(school.website, 'Trang chính thức của trường', 'school-dialog-link')}
@@ -163,27 +156,24 @@ function renderAdmission(school, details) {
 
 function renderDialog() {
   if (!activeSchool || !dialog) return;
-  const details = detailsForSchool(activeSchool.id, activeYear);
+  const details = detailsForSchool(activeSchool.id);
   const tabs = [
     ['majors', 'Ngành đào tạo'], ['scores', 'Điểm chuẩn'], ['admission', 'Đề án tuyển sinh'],
   ];
   const body = activeTab === 'majors' ? renderPrograms(activeSchool, details)
     : activeTab === 'scores' ? renderScores(activeSchool, details) : renderAdmission(activeSchool, details);
   dialog.innerHTML = `<div class="school-dialog-shell">
-    <header class="school-dialog-header"><div><span class="school-card-kicker">HỒ SƠ TRƯỜNG · ${escapeHtml(activeSchool.short || '')}</span><h2 id="schoolDialogTitle">${escapeHtml(activeSchool.name)}</h2><p>${escapeHtml(activeSchool.city)} · Dữ liệu tuyển sinh theo nguồn đã ghi nhận</p></div><button type="button" class="school-dialog-close" data-action="close-school" aria-label="Đóng hồ sơ">×</button></header>
-    <div class="school-dialog-years" role="group" aria-label="Chọn năm tuyển sinh"><span>Năm tuyển sinh</span>${[2024, 2025, 2026].map(year => `<button type="button" data-action="school-year" data-year="${year}" aria-pressed="${activeYear === year}">${year}</button>`).join('')}</div>
+    <header class="school-dialog-header"><div><span class="school-card-kicker">HỒ SƠ TRƯỜNG · ${escapeHtml(activeSchool.short || '')}</span><h2 id="schoolDialogTitle">${escapeHtml(activeSchool.name)}</h2><p>${escapeHtml(activeSchool.city)} · Dữ liệu tuyển sinh 2026 theo nguồn đã ghi nhận</p></div><button type="button" class="school-dialog-close" data-action="close-school" aria-label="Đóng hồ sơ">×</button></header>
     <div class="school-dialog-tabs" role="tablist" aria-label="Thông tin trường">${tabs.map(([key, label]) => `<button type="button" role="tab" id="tab-${key}" aria-controls="schoolDialogPanel" aria-selected="${activeTab === key}" tabindex="${activeTab === key ? '0' : '-1'}" data-action="school-tab" data-tab="${key}">${label}</button>`).join('')}</div>
     <div class="school-dialog-content" id="schoolDialogPanel" role="tabpanel" aria-labelledby="tab-${activeTab}">${body}</div>
-    <footer class="school-dialog-footer"><span>Điểm chuẩn các năm và phương thức khác nhau không dùng thay thế cho nhau.</span>${officialLink(activeSchool.website, 'Trang trường', '')}</footer>
+    <footer class="school-dialog-footer"><span>Điểm chuẩn giữa các phương thức không dùng thay thế cho nhau.</span>${officialLink(activeSchool.website, 'Trang trường', '')}</footer>
   </div>`;
 }
 
 function openSchool(id) {
   activeSchool = schools.find(school => school.id === canonicalSchoolId(id));
   if (!activeSchool) return;
-  const requestedYear = Number(new URLSearchParams(location.search).get('admission_year'));
-  activeYear = [2024, 2025, 2026].includes(requestedYear) ? requestedYear : 2026;
-  activeTab = requestedYear === 2024 || requestedYear === 2025 ? 'admission' : 'majors';
+  activeTab = 'majors';
   renderDialog();
   if (!dialog.open) dialog.showModal();
 }
@@ -227,7 +217,7 @@ function scrollToTargetFromUrl() {
     filterSchools('');
   }
   highlightSection(target);
-  if (['2024', '2025', '2026'].includes(params.get('admission_year'))) openSchool(target);
+  if (params.get('admission_year') === '2026') openSchool(target);
 }
 
 document.addEventListener('input', event => {
@@ -246,11 +236,6 @@ document.addEventListener('click', event => {
     activeTab = target.dataset.tab;
     renderDialog();
     document.getElementById(`tab-${activeTab}`)?.focus();
-  }
-  if (action === 'school-year' && ['2024', '2025', '2026'].includes(target.dataset.year)) {
-    activeYear = Number(target.dataset.year);
-    renderDialog();
-    dialog.querySelector(`[data-action="school-year"][data-year="${activeYear}"]`)?.focus();
   }
   if (action === 'highlight-section') {
     event.preventDefault();

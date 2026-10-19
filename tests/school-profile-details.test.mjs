@@ -29,18 +29,16 @@ test('a source-only score notice does not become an unsourced numeric cutoff', (
   assert.equal(detailsForSchool('hcmut').programs.length, 12);
 });
 
-test('2024–2026 records remain year-specific and preserve each scoring scale', () => {
-  assert.equal(detailsForSchool('fpt', 2024).score, '21');
-  assert.match(detailsForSchool('fpt', 2024).scoreMethod, /THPT 2024/);
-  assert.equal(detailsForSchool('fpt', 2025).score, '18,5');
-  assert.match(detailsForSchool('fpt', 2025).scoreNote, /thế hệ 1/);
+test('school profiles expose only 2026 admissions data', () => {
   assert.equal(detailsForSchool('fpt', 2026).programs.find(program => program.code === '7480101').score, 21);
-  assert.equal(detailsForSchool('hcmut', 2024).score, '55,38–84,16/90');
+  assert.equal(detailsForSchool('fpt', 2024), null);
+  assert.equal(detailsForSchool('fpt', 2025), null);
+  assert.equal(detailsForSchool('hcmut', 2024), null);
   assert.equal(detailsForSchool('hcmut', 2025), null);
   assert.equal(detailsForSchool('fpt', 2023), null);
   assert.equal(detailsForSchool('fpt', 2027), null);
-  assert.equal(detailsForSchool('uit', 2024).score, undefined);
-  assert.equal(detailsForSchool('hcmus', 2024).score, undefined);
+  assert.equal(detailsForSchool('uit', 2024), null);
+  assert.equal(detailsForSchool('hcmus', 2024), null);
 });
 
 test('spreadsheet program import adds only the supplied school-year rows', () => {
@@ -92,7 +90,7 @@ test('spreadsheet program import adds only the supplied school-year rows', () =>
   assert.equal(detailsForSchool('ump', 2026).programs.find(program => program.code === '772030103').name, 'Điều dưỡng chuyên ngành Gây mê hồi sức');
   assert.ok(detailsForSchool('rmit', 2026).programs.every(program => !program.code));
   assert.match(detailsForSchool('rmit', 2026).programNote, /không dùng mã xét tuyển ngành Việt Nam/);
-  assert.equal(detailsForSchool('ctu', 2024).programs, undefined);
+  assert.equal(detailsForSchool('ctu', 2024), null);
   assert.equal(detailsForSchool('ctu', 2025), null);
   assert.equal(detailsForSchool('hcmue', 2025), null);
   assert.ok(schoolProgramDetails.ctu[2026].programs.every(program => program.code && program.name && program.track));

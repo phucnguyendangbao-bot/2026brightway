@@ -138,3 +138,13 @@ test('school admission sidebar is text-only without decorative icons', () => {
   assert.doesNotMatch(sidebarSource, /p2-sidebar-(logo|emoji)/);
   assert.doesNotMatch(sidebarSource, /UNILogoImg/);
 });
+
+test('school lookup exposes only 2026 admissions information', () => {
+  const page = read('page2.html');
+  const script = read('assets/js/page2.js');
+  assert.match(page, /TRA CỨU TUYỂN SINH · 2026/);
+  assert.doesNotMatch(page, /2024–2026/);
+  assert.doesNotMatch(script, /school-dialog-years|data-action="school-year"/);
+  assert.doesNotMatch(script, /historyForSchool|\[2024, 2025, 2026\]/);
+  assert.match(script, /params\.get\('admission_year'\) === '2026'/);
+});
