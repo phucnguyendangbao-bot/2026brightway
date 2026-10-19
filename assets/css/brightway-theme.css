@@ -239,9 +239,11 @@ html body.senior-mode #home-view .bw-hero-h1 { font-size:clamp(2.6rem,4.6vw,4.8r
 html { background:#f5f6ff; }
 html body {
   background:
-    radial-gradient(circle at 8% 4%, rgba(107,96,255,.10), transparent 30rem),
-    radial-gradient(circle at 92% 13%, rgba(93,180,255,.10), transparent 28rem),
-    linear-gradient(180deg,#fafaff 0%,#f5f6ff 55%,#f8f8ff 100%);
+    radial-gradient(circle at -4% 2%, rgba(123,92,255,.22), transparent 34rem),
+    radial-gradient(circle at 104% 16%, rgba(80,177,255,.20), transparent 32rem),
+    radial-gradient(circle at 52% 66%, rgba(202,119,255,.09), transparent 38rem),
+    linear-gradient(165deg,#fbfbff 0%,#f0f3ff 48%,#faf7ff 100%);
+  background-attachment:fixed;
 }
 html body::selection { background:rgba(107,96,255,.2); color:var(--bw-ink); }
 html body :is(h1,h2,h3) { text-wrap:balance; }
@@ -293,4 +295,79 @@ html body #home-view .bw-faq-item[open] { border-color:rgba(107,96,255,.25) !imp
   html body { background:linear-gradient(180deg,#fafaff,#f5f6ff); }
   html body #home-view .bw-hero::before { width:260px; height:260px; left:-170px; top:-140px; }
   html body #home-view .bw-hero::after { display:none; }
+}
+
+/* 2026 aurora glass pass: richer depth without sacrificing legibility. */
+html body :is(a,button,input,select,summary):focus-visible {
+  outline:3px solid rgba(107,96,255,.27);
+  outline-offset:3px;
+}
+html body #home-view :is(.admissions-home,.bw-roadmap,.bw-tools,.bw-faq) {
+  background:transparent !important;
+}
+html body #home-view :is(.bw-trust-bar,.bw-waybi-home) {
+  background:linear-gradient(135deg,rgba(255,255,255,.58),rgba(238,241,255,.44)) !important;
+  border-color:rgba(255,255,255,.76) !important;
+  backdrop-filter:blur(22px) saturate(150%);
+  -webkit-backdrop-filter:blur(22px) saturate(150%);
+}
+html body #home-view .bw-waybi-home {
+  border-top:1px solid rgba(255,255,255,.72);
+  border-bottom:1px solid rgba(107,96,255,.11) !important;
+  box-shadow:0 15px 40px rgba(54,48,130,.06);
+}
+html body #home-view :is(.bw-step,.bw-tool-card,.bw-faq-item,.admissions-news-card) {
+  position:relative;
+  background:linear-gradient(145deg,rgba(255,255,255,.69),rgba(241,243,255,.51)) !important;
+  border:1px solid rgba(255,255,255,.78) !important;
+  box-shadow:0 2px 4px rgba(39,35,92,.035),0 18px 44px rgba(54,48,130,.08) !important;
+  backdrop-filter:blur(22px) saturate(150%);
+  -webkit-backdrop-filter:blur(22px) saturate(150%);
+}
+html body #home-view :is(.bw-step,.bw-tool-card,.admissions-news-card) {
+  overflow:hidden;
+}
+html body #home-view :is(.bw-step,.bw-tool-card,.admissions-news-card)::before {
+  content:"";
+  position:absolute;
+  z-index:2;
+  left:18px;
+  right:18px;
+  top:0;
+  height:2px;
+  border-radius:0 0 999px 999px;
+  background:linear-gradient(90deg,transparent,rgba(107,96,255,.72),rgba(91,183,255,.62),transparent);
+}
+html body #home-view :is(.bw-step,.bw-tool-card,.admissions-news-card):hover {
+  transform:translateY(-6px);
+  border-color:rgba(154,139,255,.42) !important;
+  box-shadow:0 6px 12px rgba(39,35,92,.05),0 30px 64px rgba(54,48,130,.14) !important;
+}
+html body #home-view .bw-tool-card .icon {
+  background:linear-gradient(145deg,rgba(255,255,255,.74),rgba(228,228,255,.5));
+  border:1px solid rgba(255,255,255,.84);
+  box-shadow:0 14px 30px rgba(82,67,196,.12),inset 0 1px rgba(255,255,255,.65);
+}
+html body #home-view .bw-faq-item[open] {
+  background:linear-gradient(145deg,rgba(255,255,255,.78),rgba(239,240,255,.61)) !important;
+}
+html body #home-view .admissions-school-shortcuts a {
+  background:rgba(255,255,255,.45);
+  border-color:rgba(107,96,255,.18);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+html body #home-view :is(.bw-section-kicker,.admissions-eyebrow) {
+  letter-spacing:.14em;
+  text-shadow:0 5px 16px rgba(107,96,255,.16);
+}
+html body #home-view :is(.bw-roadmap,.bw-tools,.bw-faq) h2 {
+  letter-spacing:-.028em;
+}
+html body ::-webkit-scrollbar { width:11px; height:11px; }
+html body ::-webkit-scrollbar-track { background:rgba(238,239,252,.65); }
+html body ::-webkit-scrollbar-thumb { background:linear-gradient(180deg,#a79cff,#7465ef); border:3px solid rgba(245,246,255,.9); border-radius:999px; }
+@media(max-width:700px) {
+  html body { background-attachment:scroll; }
+  html body #home-view :is(.bw-step,.bw-tool-card,.admissions-news-card):hover { transform:none; }
 }
