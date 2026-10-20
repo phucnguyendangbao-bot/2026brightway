@@ -17,7 +17,7 @@ const { chromium } = require('playwright-core');
     assert.match(await response.text(), /page2\.js\?v=20261020-audit/);
     await page.locator('#schoolDialog[open]').waitFor();
     assert.match(await page.locator('#schoolDialog').innerText(), /thang 40/);
-    await page.locator('#schoolDialog button').first().click();
+    await page.locator('#schoolDialog [data-action="close-school"]').click();
     assert.match(await page.locator('#hue-uni .school-card-kicker').innerText(), /HUEUNI/);
     assert.equal(await page.locator('#icon-hue-uni img').count(), 0);
 

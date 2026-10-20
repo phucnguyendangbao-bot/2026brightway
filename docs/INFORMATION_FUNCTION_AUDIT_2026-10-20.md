@@ -54,6 +54,7 @@ Các nguồn sau đã được đọc trong đợt rà soát; việc đọc mộ
 - Kịch bản mới: FPT C00 bị từ chối cho CNTT nhưng dùng được cho Quản trị kinh doanh; D01 có Toán dùng được cho CNTT; CTU phân biệt học bạ/bài thi riêng; HSA lưu 100/150; nguồn thứ cấp và thang NTU; mã hash lỗi; cửa sổ trường; nguồn bác sĩ; bỏ lưu cloud bằng mô phỏng.
 - Kịch bản CMS dùng dữ liệu giả lập chứa HTML và slug có dấu nháy: không thực thi HTML, không hiện số lương/việc làm không nguồn, điều hướng Enter giữ nguyên slug. Không ghi dữ liệu CMS thật.
 - Báo cáo trình duyệt: `.cache/ux-e2e/report.json`. Website tĩnh không có bước frontend build riêng.
+- Sau triển khai, `node scripts/qa-audit-production.cjs` PASS trên tên miền Vercel chính: phiên bản audit, cửa sổ NTU/thang 40, nhận diện Đại học Huế, FPT C00 bị từ chối cho CNTT, D01 tính thành phần 24 và nguồn lộ trình bác sĩ. Không có lỗi JavaScript trong các trang được kiểm tra; kiểm thử chặn yêu cầu ghi đến dịch vụ production.
 
 ## Giới hạn còn lại
 
