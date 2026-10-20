@@ -187,8 +187,8 @@ html body :is(#home-view .bw-tool-card .icon, #home-view .bw-audience-card .emoj
   display:inline-grid;
   place-items:center;
 }
-html body #home-view .bw-tool-card .icon { display:grid; place-items:center; width:76px; height:76px; margin:0 auto 10px; border-radius:18px; background:linear-gradient(135deg,#f0f2ff,#f8f2ff); }
-html body #home-view .bw-tool-card .icon img { width:76px; height:76px; object-fit:contain; display:block; filter:none; }
+html body #home-view .bw-tool-card .icon { display:grid; place-items:center; flex:0 0 96px; width:96px; height:96px; aspect-ratio:1 / 1; margin:0 auto 14px; padding:8px; border-radius:22px; background:linear-gradient(135deg,#f0f2ff,#f8f2ff); }
+html body #home-view .bw-tool-card .icon img { display:block; width:auto; height:auto; max-width:100%; max-height:100%; object-fit:contain; object-position:center; filter:none; }
 html body #home-view .bw-trust-item .ico { width:28px; height:28px; font-size:15px; }
 html body #home-view .bw-stage-card .emoji { padding:5px; }
 html body #home-view .bw-inline-icon { width:24px; height:24px; object-fit:contain; vertical-align:middle; margin-right:5px; filter:none; }

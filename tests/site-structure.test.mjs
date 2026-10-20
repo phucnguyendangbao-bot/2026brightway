@@ -162,10 +162,14 @@ test('homepage presents four useful linked figures as a responsive metric band',
 
 test('homepage tool cards keep incomplete rows visually centered', () => {
   const home = read('index.html');
+  const theme = read('assets/css/brightway-theme.css');
   assert.match(home, /\.bw-tools-grid\s*\{[^}]*grid-template-columns:\s*repeat\(6,\s*minmax\(0,\s*1fr\)\)/);
   assert.match(home, /\.bw-tool-card:nth-child\(4\)\s*\{\s*grid-column:\s*2\s*\/\s*span\s*2/);
   assert.match(home, /\.bw-tool-card:nth-child\(5\)\s*\{\s*grid-column:\s*4\s*\/\s*span\s*2/);
   assert.match(home, /@media \(max-width:\s*640px\)[^]*\.bw-tools-grid\s*\{\s*grid-template-columns:\s*1fr/);
+  assert.match(home, /\.bw-tool-card\s*\{[^}]*display:\s*flex[^}]*min-height:\s*300px/);
+  assert.match(theme, /\.bw-tool-card \.icon\s*\{[^}]*aspect-ratio:\s*1\s*\/\s*1/);
+  assert.match(theme, /\.bw-tool-card \.icon img\s*\{[^}]*width:\s*auto[^}]*height:\s*auto[^}]*max-width:\s*100%[^}]*max-height:\s*100%[^}]*object-fit:\s*contain/);
 });
 
 test('career lookup has no quiz tab or mini-test; full test remains standalone', () => {
