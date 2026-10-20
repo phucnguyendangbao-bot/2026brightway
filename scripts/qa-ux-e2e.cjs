@@ -595,6 +595,54 @@ async function testPromotionFailureAndPrivacySignals(browser, base, report) {
   report.push({test:'15-promotion-retry-and-privacy-signals',status:'PASS',checks:'503 section fallback and retry; failed promotional feed cannot block organic FPT search; Global Privacy Control disables counting, no consent preselection'});
 }
 
+async function testAccountMenu(browser, report) {
+  const context = await browser.newContext({ viewport: { width: 1100, height: 760 } });
+  const page = await context.newPage();
+  const errors = [];
+  page.on('pageerror', error => errors.push(error.message));
+  await page.setContent(`<!doctype html><html lang="vi"><head><meta charset="utf-8"><style>
+    :root{--text:#24234a;--text-mid:#4d4a78;--grad-btn:linear-gradient(135deg,#665df5,#8b5cf6)}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Arial,sans-serif;background:radial-gradient(circle at 80% 10%,#dceaff,transparent 38%),linear-gradient(135deg,#f7f5ff,#e9f2ff);color:#24234a}
+    nav{height:76px;padding:12px 28px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.46);border-bottom:1px solid rgba(99,102,241,.12)}
+    .brand{font-weight:900;color:#5b50db}.hero{margin:40px auto;width:min(90%,900px);height:380px;border-radius:32px;background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.8);box-shadow:0 24px 80px rgba(79,70,229,.08)}
+  </style></head><body><nav><div class="brand">BrightWay Career</div><div id="navLinks"></div></nav><div class="hero"></div></body></html>`);
+  await page.evaluate(() => {
+    const user = { email: 'admin@brightway.vn', user_metadata: {} };
+    const profile = { full_name: 'Admin BrightWay', role: 'admin', avatar_url: '' };
+    window.BWAuth = {
+      getUser: () => user,
+      getProfile: () => profile,
+      on: callback => { callback('INIT'); return () => {}; },
+      signOut: async () => {},
+    };
+  });
+  await page.addScriptTag({ path: path.join(root, 'assets', 'js', 'nav-auth.js') });
+  const trigger = page.locator('#navUserTrigger');
+  await trigger.click();
+  const dropdown = page.locator('#navDropdown');
+  await dropdown.waitFor({ state: 'visible' });
+  await page.waitForTimeout(250);
+  assert.equal(await trigger.getAttribute('aria-expanded'), 'true');
+  assert.equal(await dropdown.getAttribute('role'), 'menu');
+  assert.equal(await dropdown.locator('[role="menuitem"]').count(), 5);
+  assert.equal(await dropdown.locator('.staff-link').isVisible(), true);
+  let box = await dropdown.boundingBox();
+  assert.ok(box && box.x >= 0 && box.x + box.width <= 1100 && box.y + box.height <= 760);
+  await page.screenshot({ path: path.join(artifactDir, 'account-menu-1100.png') });
+  await page.keyboard.press('Escape');
+  assert.equal(await trigger.getAttribute('aria-expanded'), 'false');
+  await page.setViewportSize({ width: 390, height: 760 });
+  await trigger.click();
+  await page.waitForTimeout(250);
+  box = await dropdown.boundingBox();
+  assert.ok(box && box.x >= 0 && box.x + box.width <= 390 && box.y + box.height <= 760);
+  assert.equal(await page.locator('.nav-user-name').isVisible(), false);
+  await page.screenshot({ path: path.join(artifactDir, 'account-menu-390.png') });
+  assert.deepEqual(errors, []);
+  await context.close();
+  report.push({ test: '16-account-menu', status: 'PASS', assertions: 9 });
+}
+
 (async () => {
   const report = [];
   let browser;
@@ -628,6 +676,7 @@ async function testPromotionFailureAndPrivacySignals(browser, base, report) {
     await testSponsoredPlacementIsolation(browser, base, report);
     await testPromotionFailureAndPrivacySignals(browser, base, report);
     await testResponsiveAndRegression(browser, base, report);
+    await testAccountMenu(browser, report);
     const result = { status: 'PASS', scenarios: report.length, report, artifacts: artifactDir };
     fs.writeFileSync(path.join(artifactDir, 'report.json'), JSON.stringify(result, null, 2));
     console.log(JSON.stringify(result, null, 2));
