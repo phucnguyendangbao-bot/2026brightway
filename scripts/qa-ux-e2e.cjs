@@ -595,12 +595,12 @@ async function testPromotionFailureAndPrivacySignals(browser, base, report) {
   report.push({test:'15-promotion-retry-and-privacy-signals',status:'PASS',checks:'503 section fallback and retry; failed promotional feed cannot block organic FPT search; Global Privacy Control disables counting, no consent preselection'});
 }
 
-async function testAccountMenu(browser, report) {
+async function testAccountMenu(browser, base, report) {
   const context = await browser.newContext({ viewport: { width: 1100, height: 760 } });
   const page = await context.newPage();
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
-  await page.setContent(`<!doctype html><html lang="vi"><head><meta charset="utf-8"><style>
+  await page.setContent(`<!doctype html><html lang="vi"><head><meta charset="utf-8"><base href="${base}/"><style>
     :root{--text:#24234a;--text-mid:#4d4a78;--grad-btn:linear-gradient(135deg,#665df5,#8b5cf6)}
     *{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Arial,sans-serif;background:radial-gradient(circle at 80% 10%,#dceaff,transparent 38%),linear-gradient(135deg,#f7f5ff,#e9f2ff);color:#24234a}
     nav{height:76px;padding:12px 28px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.46);border-bottom:1px solid rgba(99,102,241,.12)}
@@ -626,6 +626,7 @@ async function testAccountMenu(browser, report) {
   assert.equal(await dropdown.getAttribute('role'), 'menu');
   assert.equal(await dropdown.locator('[role="menuitem"]').count(), 5);
   assert.equal(await dropdown.locator('.staff-link').isVisible(), true);
+  assert.match(await page.locator('#navUserAvatar img').getAttribute('src'), /assets\/images\/brand\/pdp-admin-avatar\.png/);
   let box = await dropdown.boundingBox();
   assert.ok(box && box.x >= 0 && box.x + box.width <= 1100 && box.y + box.height <= 760);
   await page.screenshot({ path: path.join(artifactDir, 'account-menu-1100.png') });
@@ -640,7 +641,7 @@ async function testAccountMenu(browser, report) {
   await page.screenshot({ path: path.join(artifactDir, 'account-menu-390.png') });
   assert.deepEqual(errors, []);
   await context.close();
-  report.push({ test: '16-account-menu', status: 'PASS', assertions: 9 });
+  report.push({ test: '16-account-menu', status: 'PASS', assertions: 10 });
 }
 
 (async () => {
@@ -676,7 +677,7 @@ async function testAccountMenu(browser, report) {
     await testSponsoredPlacementIsolation(browser, base, report);
     await testPromotionFailureAndPrivacySignals(browser, base, report);
     await testResponsiveAndRegression(browser, base, report);
-    await testAccountMenu(browser, report);
+    await testAccountMenu(browser, base, report);
     const result = { status: 'PASS', scenarios: report.length, report, artifacts: artifactDir };
     fs.writeFileSync(path.join(artifactDir, 'report.json'), JSON.stringify(result, null, 2));
     console.log(JSON.stringify(result, null, 2));

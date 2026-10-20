@@ -30,7 +30,12 @@
     const name = profile?.full_name || user.user_metadata?.full_name || user.email?.split('@')[0] || 'User';
     $('profileName').textContent = name;
     $('profileEmail').textContent = user.email || '';
-    $('profileInitials').textContent = (name[0] || 'U').toUpperCase();
+    const isAdmin = profile?.role === 'admin';
+    const avatar = $('profileAvatar');
+    avatar.classList.toggle('is-admin', isAdmin);
+    avatar.innerHTML = isAdmin
+      ? '<img src="assets/images/brand/pdp-admin-avatar.png?v=20261020" alt="Avatar PDP dành cho quản trị viên">'
+      : `<span id="profileInitials">${escape((name[0] || 'U').toUpperCase())}</span>`;
 
     const provider = profile?.provider || user.app_metadata?.provider || 'email';
     $('profileProvider').textContent = provider === 'google' ? '🔵 Google' : provider === 'phone' ? '📱 Phone' : '✉️ Email';

@@ -46,6 +46,9 @@
   function buildSidebar(activePage, profile) {
     const initials = (profile?.full_name || 'A').split(' ').map(s => s[0]).slice(0,2).join('').toUpperCase();
     const roleLabel = profile?.role === 'admin' ? 'Quản trị viên' : 'Giáo viên';
+    const avatar = profile?.role === 'admin'
+      ? '<img src="../assets/images/brand/pdp-admin-avatar.png?v=20261020" alt="Avatar PDP dành cho quản trị viên">'
+      : escapeHtml(initials);
     const icon = path => `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${path}"/></svg>`;
 
     return `
@@ -103,7 +106,7 @@
 
       <div class="sidebar-footer">
         <div class="user-info">
-          <div class="user-avatar">${initials}</div>
+          <div class="user-avatar ${profile?.role === 'admin' ? 'is-admin' : ''}">${avatar}</div>
           <div>
             <div class="user-name">${escapeHtml(profile?.full_name || 'Admin')}</div>
             <div class="user-role">${roleLabel}</div>

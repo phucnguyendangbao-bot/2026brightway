@@ -5,6 +5,7 @@
 (function () {
   'use strict';
 
+  const ADMIN_AVATAR_URL = 'assets/images/brand/pdp-admin-avatar.png?v=20261020';
   let menuEvents = null;
 
   // Tìm container nav phù hợp — ưu tiên #navLinks, fallback các pattern khác
@@ -297,7 +298,9 @@
 
     const name = profile?.full_name || user.user_metadata?.full_name || user.email?.split('@')[0] || 'User';
     const initials = (name[0] || 'U').toUpperCase();
-    const avatarUrl = profile?.avatar_url || user.user_metadata?.avatar_url || user.user_metadata?.picture;
+    const avatarUrl = role === 'admin'
+      ? ADMIN_AVATAR_URL
+      : profile?.avatar_url || user.user_metadata?.avatar_url || user.user_metadata?.picture;
     const safeName = escapeHTML(name);
     const roleLabel = role === 'admin' ? 'Quản trị viên' : role === 'teacher' ? 'Giáo viên' : 'Học sinh';
 
@@ -378,7 +381,7 @@
   function safeAvatarURL(value) {
     if (!value) return '';
     try {
-      const url = new URL(String(value), location.href);
+      const url = new URL(String(value), document.baseURI);
       return ['http:', 'https:'].includes(url.protocol) ? url.href : '';
     } catch (_) {
       return '';
