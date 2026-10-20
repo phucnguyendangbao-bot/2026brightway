@@ -60,7 +60,7 @@
   const save = patch => write({ ...read(), ...patch });
   const clear = () => {
     let cleared = true;
-    for (const key of [KEY, LEGACY_KEY, 'studentHollandV1', 'studentHollandImportedV1', 'studentHollandTimer', 'bw_favorites', 'bw_history', 'bw_schools_selected']) {
+    for (const key of [KEY, LEGACY_KEY, 'studentHollandV1', 'studentHollandImportedV1', 'studentHollandTimer', 'bw_favorites', 'bw_history', 'bw_schools_selected', 'bw-school-compare-2026']) {
       if (!storage.remove(key)) cleared = false;
     }
     window.dispatchEvent(new CustomEvent('bw:journey-change'));
@@ -130,6 +130,7 @@
       ['Tìm ngành & trường', 'page2.html?focus=major', ['page2.html']],
       ['Tính điểm', 'score-calculator.html', ['score-calculator.html']],
       ['Hành trình của tôi', 'profile.html?tab=journey', ['profile.html']],
+      ['Nguyện vọng', 'profile.html?tab=journey#my-choices', []],
     ];
     nav.className = 'flow-nav';
     nav.setAttribute('aria-label', 'Điều hướng chính');
@@ -164,13 +165,9 @@
 
   function init() {
     if (page === 'index.html') {
-      const benefits = document.createElement('section');
-      benefits.className = 'flow-benefits';
-      benefits.setAttribute('aria-label', 'BrightWay giúp bạn');
-      benefits.innerHTML = '<article><h2>Hiểu sở thích của mình</h2><p>42 câu Holland giúp mở rộng những hướng nghề bạn có thể tìm hiểu.</p></article><article><h2>Tìm ngành và trường có căn cứ</h2><p>Đọc chương trình đào tạo, nguồn tuyển sinh và những dữ liệu còn thiếu.</p></article><article><h2>Biết việc cần làm tiếp theo</h2><p>Lưu lựa chọn, kiểm tra điểm và lập kế hoạch ngay trên thiết bị.</p></article>';
       const hero = document.getElementById('hero-actions');
-      hero?.after(benefits);
-      let anchor = benefits;
+      // The three intent cards already explain these benefits on the homepage.
+      let anchor = hero;
       for (const id of ['university-discovery', 'roadmap', 'tools', 'admissions-news']) {
         const section = document.getElementById(id);
         if (section) { anchor.after(section); anchor = section; }
@@ -183,7 +180,9 @@
     if (page === 'profile.html') {
       const host = document.createElement('div');
       host.className = 'flow-local-profile';
-      document.querySelector('.profile-page .container')?.prepend(host);
+      const choices = document.getElementById('my-choices');
+      if (choices) choices.after(host);
+      else document.querySelector('.profile-page .container')?.prepend(host);
       renderJourney(host);
       renderLocalProfile(host);
       window.addEventListener('bw:journey-change', () => {
@@ -206,7 +205,7 @@
       const shortcuts = document.createElement('div');
       shortcuts.className = 'flow-chat-links';
       shortcuts.setAttribute('aria-label', 'Mở nhanh công cụ');
-      shortcuts.innerHTML = '<a href="holland.html">Khám phá bản thân</a><a href="page2.html?focus=major">Tìm ngành & trường</a><a href="score-calculator.html">Tính điểm</a>';
+      shortcuts.innerHTML = '<a href="holland.html">Khám phá bản thân</a><a href="page2.html?focus=major">Tìm ngành & trường</a><a href="profile.html?tab=journey#my-choices">Nguyện vọng của tôi</a><a href="score-calculator.html">Tính điểm</a>';
       target.before(shortcuts);
     }
     document.addEventListener('click', event => {
@@ -232,6 +231,8 @@
     const details = document.createElement('section');
     details.className = 'flow-profile-details';
     details.innerHTML = `<h1>Hồ sơ hướng nghiệp của tôi</h1><p>Không cần tài khoản. Dữ liệu dưới đây được lưu trên trình duyệt này.</p><div class="flow-profile-grid"><article><h2>Holland</h2><p>${holland() ? escape(holland()) + ' · Gợi ý sở thích, không phải kết luận năng lực.' : 'Chưa có kết quả hoàn chỉnh.'}</p><a href="holland.html">Xem hoặc làm tiếp →</a></article>${[['savedCareers','Nghề quan tâm','careers-holland.html'], ['savedMajors','Ngành quan tâm','page2.html?mode=major'], ['savedSchools','Trường đã lưu','page2.html']].map(([field,title,href]) => `<article><h2>${title}</h2>${state[field].length ? `<ul>${state[field].map(item => `<li><a href="${href}${href.includes('?') ? '&' : '?'}${field === 'savedSchools' ? 'school=' + encodeURIComponent(item.id) : 'q=' + encodeURIComponent(item.name || '')}">${escape(item.name || item.id)}</a> <button type="button" data-remove-field="${field}" data-remove-id="${escape(item.id || item.name)}" aria-label="Bỏ lưu ${escape(item.name || item.id)}">Bỏ lưu</button></li>`).join('')}</ul>` : '<p>Chưa có lựa chọn đã lưu.</p>'}<a href="${href}">Khám phá thêm →</a></article>`).join('')}<article><h2>Kết quả tính điểm</h2><p>${state.scores?.completedAt ? escape(state.scores.summary || 'Đã tính điểm; mở công cụ để xem lại công thức.') : 'Chưa có kết quả. Điểm đang nhập được lưu nháp.'}</p><a href="score-calculator.html">Mở điểm đã nhập →</a></article></div><section id="action-plan"><h2>Kế hoạch hành động</h2><p>Ghi việc cụ thể, chẳng hạn đọc đề án trường hoặc trao đổi với giáo viên.</p><form id="journeyTaskForm"><label for="journeyTask">Việc cần làm</label><div class="flow-actions"><input id="journeyTask" maxlength="180" required placeholder="Ví dụ: kiểm tra điều kiện ngành yêu thích"><button type="submit">Thêm việc</button></div></form><ul id="journeyTasks"></ul></section>`;
+    // School favorites have their searchable management section above.
+    details.querySelector('a[href="page2.html"]')?.closest('article')?.remove();
     host.prepend(details);
     const renderTasks = () => {
       const tasks = read().tasks || [];

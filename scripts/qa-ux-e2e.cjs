@@ -685,6 +685,112 @@ async function testAccountMenu(browser, base, report) {
   report.push({ test: '16-account-menu', status: 'PASS', assertions: 10 });
 }
 
+async function testSchoolChoicesAndWishes(browser, base, report) {
+  const { context, page, errors } = await newCheckedPage(browser, base, { width:1366, height:900 });
+  await page.goto(`${base}/careers-holland.html?q=${encodeURIComponent('Bác sĩ đa khoa')}&holland=all`, {waitUntil:'domcontentloaded'});
+  await page.locator('.career-pathways a').first().waitFor();
+  assert.equal(await page.locator('.career-pathways a').count(), 1, 'Equivalent names must not create duplicate degree links');
+  await page.locator('.career-pathways a').first().click();
+  await page.locator('.school-section').first().waitFor();
+  assert.equal(await page.locator('input[value="major"]').isChecked(), true);
+  assert.match(await page.locator('#searchInput').inputValue(), /y khoa/i);
+  await page.getByRole('link', {name:'Quay lại nghề đang xem'}).click();
+  await page.locator('.career-title').waitFor();
+  assert.equal(await page.locator('.career-title').innerText(), 'Bác sĩ đa khoa');
+
+  await page.goto(`${base}/page2.html?school=fpt`, {waitUntil:'domcontentloaded'});
+  await page.locator('#schoolDialog[open]').waitFor();
+  await page.locator('[data-action="save-school"]').click();
+  await page.locator('[data-action="add-wish"]').nth(0).click();
+  assert.equal(await page.locator('[data-action="add-wish"]').nth(0).isDisabled(), true);
+  await page.locator('[data-action="add-wish"]').nth(1).click();
+  await page.locator('[data-action="add-wish"]').nth(2).click();
+  assert.equal(await page.evaluate(() => BWFlow.read().wishes.length), 3);
+  await page.reload({waitUntil:'domcontentloaded'});
+  await page.locator('#schoolDialog[open]').waitFor();
+  assert.equal(await page.locator('[data-action="add-wish"]').nth(0).isDisabled(), true);
+  assert.equal(await page.evaluate(() => BWFlow.read().wishes.length), 3);
+  await page.goto(`${base}/page2.html?school=fpt-ai`, {waitUntil:'domcontentloaded'});
+  await page.locator('#schoolDialog[open]').waitFor();
+  assert.match(await page.locator('[data-action="save-school"]').innerText(), /Đã lưu/);
+  assert.equal(await page.evaluate(() => BWFlow.read().savedSchools.length), 1);
+  await page.locator('[data-action="close-school"]').click();
+  await page.goto(`${base}/page2.html?mode=school&q=HCMUT`, {waitUntil:'domcontentloaded'});
+  await page.locator('#hcmut [data-action="toggle-saved-school"]').click();
+  await page.goto(`${base}/page2.html?saved=1`, {waitUntil:'domcontentloaded'});
+  await page.waitForFunction(() => document.querySelectorAll('.school-section').length === 2);
+  await page.locator('input[data-action="compare-school"]').nth(0).check();
+  await page.locator('input[data-action="compare-school"]').nth(1).check();
+  await page.locator('#schoolCompare:not([hidden])').waitFor();
+
+  await page.goto(`${base}/profile.html?tab=journey#my-choices`, {waitUntil:'domcontentloaded'});
+  await page.locator('#myWishes [data-wish-id]').first().waitFor();
+  assert.equal(await page.locator('#mySavedSchools li').count(), 2);
+  await page.locator('#savedSchoolSearch').fill('bach khoa');
+  assert.equal(await page.locator('#mySavedSchools li a').count(), 1);
+  assert.match(await page.locator('#mySavedSchools').innerText(), /Bách khoa/);
+  await page.locator('#savedSchoolSearch').fill('');
+  const location = await page.locator('#savedSchoolCity option').nth(1).getAttribute('value') || await page.locator('#savedSchoolCity option').nth(1).innerText();
+  await page.locator('#savedSchoolCity').selectOption({label:location});
+  assert.ok(await page.locator('#mySavedSchools li a').count() > 0);
+  await page.locator('#savedSchoolCity').selectOption('');
+  assert.match(await page.locator('#myWishes').innerText(), /Năm dự kiến: 2027/);
+  assert.match(await page.locator('#myWishes').innerText(), /Dữ liệu nguồn: 2026/);
+  const firstName = await page.locator('#myWishes h3').nth(0).innerText();
+  const secondName = await page.locator('#myWishes h3').nth(1).innerText();
+  await page.locator('#myWishes [data-move-wish="-1"]').nth(1).click();
+  assert.equal(await page.locator('#myWishes h3').nth(0).innerText(), secondName);
+  assert.equal(await page.locator('#myWishes h3').nth(1).innerText(), firstName);
+  await page.locator('#myWishes [data-delete-wish]').nth(2).click();
+  assert.equal(await page.locator('#myWishes [data-wish-id]').count(), 2);
+  await page.reload({waitUntil:'domcontentloaded'});
+  await page.locator('#myWishes h3').first().waitFor();
+  assert.equal(await page.locator('#myWishes h3').nth(0).innerText(), secondName);
+  assert.equal(await page.locator('#myWishes [data-wish-id]').count(), 2);
+  const downloadPromise = page.waitForEvent('download');
+  await page.locator('#exportWishes').click();
+  const download = await downloadPromise;
+  assert.equal(download.suggestedFilename(), 'brightway-nguyen-vong.txt');
+  const output = fs.readFileSync(await download.path(), 'utf8');
+  assert.ok(output.includes(secondName) && output.includes('Nguồn tuyển sinh: 2026') && output.includes('https://daihoc.fpt.edu.vn/'));
+  await page.locator('[data-unsave-school="hcmut"]').click();
+  assert.equal(await page.locator('#mySavedSchools li a').count(), 1);
+  assert.equal(await page.locator('#myWishes [data-wish-id]').count(), 2, 'Removing a favorite must preserve wishes');
+
+  for (const width of [360,390,768,1366]) {
+    await page.setViewportSize({width,height:900});
+    for (const pathName of ['profile.html?tab=journey#my-choices','page2.html?saved=1']) {
+      await page.goto(`${base}/${pathName}`, {waitUntil:'domcontentloaded'});
+      await page.locator(pathName.startsWith('profile') ? '#myWishes h3' : '.school-section').first().waitFor();
+      assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1), `${pathName} overflow at ${width}`);
+      if (width <= 390) assert.equal(await page.locator('#waybi-fab').evaluate(node => getComputedStyle(node).position), 'static', 'Waybi must not float over selection controls');
+      await page.screenshot({path:path.join(artifactDir, `choices-${pathName.startsWith('profile') ? 'profile' : 'schools'}-${width}.png`),fullPage:true});
+      if (pathName.startsWith('profile')) await page.locator('#my-choices').screenshot({path:path.join(artifactDir, `wishes-${width}.png`)});
+    }
+  }
+  await page.route('**/assets/data/schools.json', route => route.fulfill({status:503,body:'Unavailable'}));
+  await page.goto(`${base}/page2.html?saved=1`, {waitUntil:'domcontentloaded'});
+  await page.locator('#retrySchoolCatalog').waitFor();
+  assert.equal(await page.evaluate(() => BWFlow.read().wishes.length), 2);
+  await page.unroute('**/assets/data/schools.json');
+  await page.locator('#retrySchoolCatalog').click();
+  await page.locator('#fpt').waitFor();
+  await page.route('**/assets/data/school-profile-details.js', route => route.fulfill({status:503,body:'Unavailable'}));
+  await page.reload({waitUntil:'domcontentloaded'});
+  await page.locator('#retrySchoolModule').waitFor();
+  assert.equal(await page.evaluate(() => BWFlow.read().wishes.length), 2);
+  await page.unroute('**/assets/data/school-profile-details.js');
+  await page.locator('#retrySchoolModule').click();
+  await page.locator('#fpt').waitFor();
+  await page.goto(`${base}/index.html`, {waitUntil:'domcontentloaded'});
+  await page.locator('[data-choice-summary] a').waitFor();
+  assert.match(await page.locator('[data-choice-summary]').innerText(), /1 trường và 2 nguyện vọng/);
+  assert.equal(await page.locator('.home-journey-card').count(), 3);
+  assert.deepEqual(errors.filter(error => !(/^503 .*\/assets\/data\/(schools\.json|school-profile-details\.js)$/.test(error) || /^requestfailed: .*\/assets\/data\/school-profile-details\.js net::ERR_ABORTED$/.test(error))), []);
+  await context.close();
+  report.push({test:'17-school-choices-and-wishes',status:'PASS',checks:'sourced career→major→school→back; favorites search/filter/remove; alias and wish dedup; reorder/delete/reload/export; 2027 planning vs 2026 source; 503 catalog and module retry; 360/390/768/1366 responsive; home resume'});
+}
+
 (async () => {
   const report = [];
   let browser;
@@ -705,6 +811,7 @@ async function testAccountMenu(browser, base, report) {
       await page.close();
     }
     await testNewUser(browser, base, report);
+    await testSchoolChoicesAndWishes(browser, base, report);
     await testHolland(browser, base, report);
     await testSchoolSearch(browser, base, report);
     await testVerifiedSchoolLogos(browser, base, report);

@@ -172,13 +172,13 @@
     'score-calculator.html': { h: 'Tính điểm xét tuyển 🧮', p: 'Nhập điểm 3 môn + chọn tổ hợp, mình tính ngay cho!' },
     'careers.html': { h: 'Khám phá nghề nghiệp 💼', p: 'Tìm hiểu các ngành nghề hot theo nhóm Holland.' },
     'majors.html': { h: 'Tìm ngành học phù hợp 📚', p: 'Browse qua hàng trăm ngành học phổ biến ở Việt Nam.' },
-    'page2.html': { h: 'Tra cứu trường ĐH 🏫', p: 'Có thể lọc theo khu vực, học bổng, ngành nổi bật.' },
+    'page2.html': { h: 'Tìm ngành & trường 🏫', p: 'Lọc theo ngành, tên trường, khu vực hoặc trường yêu thích. Thêm chương trình vào nguyện vọng dự kiến từ hồ sơ trường.' },
     'interview-prep.html': { h: 'Chuẩn bị phỏng vấn học bổng 🎤', p: 'Mình có tips và câu hỏi thường gặp.' },
     'resources.html': { h: 'Tin tuyển sinh đại học 📖', p: 'Thông báo đã đối chiếu từ website chính thức của các trường.' },
     'profile.html': { h: 'Hồ sơ cá nhân 👤', p: 'Cập nhật thông tin để Waybi gợi ý phù hợp hơn.' },
     'news.html': { h: 'Tin tức học bổng mới nhất 📰', p: 'Cập nhật học bổng mới mỗi ngày.' },
   };
-  const DEFAULT = { h: 'Xin chào! Mình là Waybi 👋', p: 'Mình sẽ giúp bạn trong hành trình apply học bổng. Bấm vào icon chat để nói chuyện với mình nhé!' };
+  const DEFAULT = { h: 'Waybi · Trợ lý hướng nghiệp 👋', p: 'Mình giúp bạn tìm hiểu nghề, ngành, trường và lập kế hoạch. Bấm vào icon chat để nói chuyện với mình nhé!' };
 
   function getGreeting() {
     const path = location.pathname.toLowerCase();

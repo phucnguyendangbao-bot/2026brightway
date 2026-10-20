@@ -217,6 +217,21 @@
     const next = document.createElement('div');
     r.appendChild(next);
     window.BWFlow?.nextStep(next, 'Tìm nơi học cho nghề bạn quan tâm', 'Đọc phần học vấn ở trên, rồi đối chiếu ngành đào tạo và phương thức tuyển sinh tại các trường.', [['Tra cứu trường', 'page2.html?career=' + encodeURIComponent(j.name)], ['Tài liệu & bài viết', 'resources.html']]);
+    const pathways = document.createElement('section');
+    pathways.className = 'career-pathways';
+    pathways.setAttribute('aria-label', 'Ngành đào tạo đã đối chiếu');
+    pathways.textContent = 'Đang đối chiếu ngành đào tạo từ nguồn hiện có…';
+    next.before(pathways);
+    import('./career-pathways.js').then(({ relatedMajorNames }) => {
+      if (!pathways.isConnected) return;
+      const majors = relatedMajorNames(j);
+      pathways.innerHTML = '<h2>Ngành đào tạo liên quan</h2>' + (majors.length
+        ? '<p>Tên ngành xuất hiện trong lộ trình học vấn có nguồn ở trên và trong danh mục trường năm 2026. Đây là hướng tìm hiểu, không phải kết luận nghề và ngành là một.</p><div class="flow-actions">' + majors.map(name => {
+          const params = new URLSearchParams({ mode:'major', q:name, career:j.name, careerReturn:location.pathname + location.search });
+          return `<a href="page2.html?${escapeHtml(params.toString())}">${escapeHtml(name)} · Tìm trường →</a>`;
+        }).join('') + '</div>'
+        : '<p>Chưa có đối chiếu đủ nguồn giữa nghề này và danh mục ngành. Bạn có thể mở tra cứu trường để tự tìm ngành quan tâm.</p>');
+    }).catch(() => { if (pathways.isConnected) pathways.textContent = 'Chưa tải được dữ liệu đối chiếu ngành. Bạn vẫn có thể dùng liên kết Tra cứu trường bên dưới.'; });
   }
 
   function renderListResult(list) {

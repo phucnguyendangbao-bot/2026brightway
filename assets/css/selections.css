@@ -1,0 +1,41 @@
+.my-choices, .career-pathways { padding:24px; margin:24px 0; border:1px solid #dcd7f2; border-radius:24px; background:rgba(255,255,255,.85); color:#30265b; scroll-margin-top:100px; }
+.choices-heading { display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:16px; }
+.my-choices h2 { margin:8px 0 12px; font-size:clamp(1.5rem,3vw,2rem); }
+.my-choices p, .career-pathways p, .wish-planning p { line-height:1.65; }
+.my-choices > section { border-top:1px solid #e5e0f4; margin-top:24px; padding-top:20px; }
+.choices-filters { display:flex; align-items:end; flex-wrap:wrap; gap:12px; }
+.choices-filters label { display:flex; flex-direction:column; gap:8px; flex:1 1 210px; }
+.choices-filters input, .choices-filters select, .wish-planning select { width:100%; padding:12px; border:1px solid #bab1d3; border-radius:12px; font:inherit; background:#fff; color:#30265b; min-height:44px; }
+.choices-list { padding:0; list-style:none; }
+.choices-list li { display:flex; align-items:flex-start; gap:14px; padding:18px; margin:12px 0; border:1px solid #e1dcf0; border-radius:16px; background:#fff; overflow-wrap:anywhere; }
+.choices-list li > div:first-child, .choice-detail { flex:1; min-width:0; }
+.choices-list h3 { margin:0 0 8px; font-size:1.1rem; }
+.choices-list p { margin:6px 0; font-size:.9rem; }
+.choices-list a, .my-choices a, .career-pathways a { color:#5139b2; }
+.choice-priority { flex:0 0 36px; height:36px; border-radius:12px; display:grid; place-items:center; background:#ede7ff; font-weight:800; color:#5139b2; }
+.choice-actions { display:flex; flex-wrap:wrap; gap:6px; }
+.my-choices button { min-height:44px; min-width:44px; padding:10px 14px; border:1px solid #c9bfee; border-radius:12px; background:#f2edff; color:#392275; cursor:pointer; font:inherit; }
+.my-choices button:disabled { opacity:.45; cursor:default; }
+.choice-reference { color:#765719; background:#fff9e8; padding:8px 10px; border-radius:8px; }
+.choices-summary { padding:16px 0; color:#514766; }
+.choices-summary .flow-primary { display:inline-flex; padding:12px 16px; border-radius:14px; }
+.choices-summary p { margin:10px 0; line-height:1.6; }
+.saved-school-filter { display:flex; align-items:center; gap:8px; min-height:44px; flex-basis:100%; }
+.saved-school-filter input { width:20px; height:20px; accent-color:#5840cb; }
+.school-section > .school-save-button { margin-top:12px; min-height:44px; }
+.school-card-bottom > span:last-child { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+.school-card-compare { min-height:44px; }
+.wish-planning { border:1px solid #d9d1ef; padding:16px; margin:16px 0; border-radius:16px; background:#f8f5ff; }
+.wish-planning select { width:auto; max-width:100%; margin:8px 12px; }
+@media(max-width:600px) {
+  .my-choices, .career-pathways { padding:16px; border-radius:18px; }
+  .choices-list li { padding:14px; flex-wrap:wrap; }
+  .choice-actions { width:100%; justify-content:flex-end; }
+  .choices-filters label { flex-basis:100%; }
+  .wish-planning select { display:block; margin:10px 0; }
+  body:has(#my-choices), body:has(#savedSchoolOnly) { padding-bottom:100px; }
+  /* Keep the launcher in document flow on management screens; the shared
+     navbar also provides Waybi, without floating over reorder/remove CTAs. */
+  body:has(#my-choices) #waybi-fab, body:has(#savedSchoolOnly) #waybi-fab { position:static; width:48px; height:48px; margin:16px 16px 16px auto; }
+  body:has(dialog[open]) #waybi-fab { visibility:hidden; }
+}

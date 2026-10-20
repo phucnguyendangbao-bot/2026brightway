@@ -9,12 +9,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/assets/css/page2.css?v=20261020-regression">
+<link rel="stylesheet" href="/assets/css/page2.css?v=20261020-wishes">
+<link rel="stylesheet" href="/assets/css/selections.css?v=20261020-wishes">
 <link rel="stylesheet" href="/assets/css/brightway-theme.css?v=7">
 <link rel="stylesheet" href="/assets/css/flow.css?v=20261020-journey">
 <link rel="stylesheet" href="/assets/css/school-history.css?v=20261015">
 <link rel="stylesheet" href="/assets/css/university-promotions.css?v=20261020-partners">
-<script src="/assets/js/flow.js?v=20261020-journey" defer></script>
+<script src="/assets/js/flow.js?v=20261020-wishes" defer></script>
 </head>
 <body>
 
@@ -45,6 +46,7 @@
         <datalist id="schoolSearchSuggestions"></datalist>
       </div>
       <label class="school-region-filter" for="regionFilter"><span>Khu vực</span><select id="regionFilter"><option value="">Tất cả khu vực</option></select></label>
+      <label class="saved-school-filter"><input type="checkbox" id="savedSchoolOnly"> Chỉ trường yêu thích (<span id="savedSchoolTotal">0</span>)</label>
     </div>
   </div>
   <div class="p2-intro-aside">
@@ -56,6 +58,8 @@
 </header>
 <p id="schoolCatalogStatus" class="p2-catalog-status" role="status">Đang tải danh sách trường…</p>
 <div class="flow-resume"><button type="button" class="school-save-button" id="resetSchoolFilters">Xóa tất cả bộ lọc</button></div>
+<div class="flow-resume choices-summary" data-choice-summary></div>
+<p class="flow-resume" id="compareSelectionStatus" role="status">Chọn “So sánh” trên 2–3 hồ sơ trường để xem cùng nhau.</p>
 <section class="school-compare" id="schoolCompare" aria-labelledby="schoolCompareTitle" hidden>
   <div class="school-compare-heading"><div><span class="p2-intro-eyebrow">ĐỐI CHIẾU NHANH</span><h2 id="schoolCompareTitle">So sánh trường đã chọn</h2><p>Chỉ hiển thị tiêu chí có dữ liệu trong hồ sơ 2026. Tài trợ không thay đổi kết quả này.</p></div><button type="button" class="school-save-button" id="clearSchoolCompare">Xóa so sánh</button></div>
   <div class="school-compare-table-wrap" id="schoolCompareTable"></div>
@@ -83,7 +87,8 @@
   BrightWay Career &copy; 2026 &mdash; Thông tin mang tính tham khảo, vui lòng kiểm tra website chính thức của từng trường.
 </footer>
 
-<script type="module" src="/assets/js/page2.js?v=20261020-compare"></script>
+<script type="module" src="/assets/js/page2-loader.js?v=20261020-wishes"></script>
+<script type="module" src="assets/js/selections.js?v=20261020-wishes"></script>
 
 <!-- Auth + Sync (Supabase) — shared login cho mọi trang -->
 <script src="assets/js/supabase-client.js"></script>
