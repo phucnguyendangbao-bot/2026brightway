@@ -153,11 +153,19 @@ test('homepage presents four useful linked figures as a responsive metric band',
   assert.equal((band.match(/class="bw-metric-item"/g) || []).length, 4);
   assert.match(band, /href="careers-holland\.html"[^]*>102<[^]*nghề nghiệp để khám phá/);
   assert.match(band, /href="page2\.html"[^]*data-catalog-count[^]*hồ sơ trường đại học/);
-  assert.match(band, /href="holland\.html"[^]*>42<[^]*câu trắc nghiệm Holland/);
+  assert.match(band, /href="holland\.html"[^]*>6<[^]*nhóm sở thích Holland/);
   assert.match(band, /href="calendar\.html#study-plan"[^]*>12<[^]*tháng lập lộ trình/);
   assert.doesNotMatch(band, /bw-trust-divider/);
   assert.match(css, /\.bw-metric-band[^]*grid-template-columns:repeat\(4,minmax\(0,1fr\)\)/);
   assert.match(css, /@media\(max-width:900px\)[^]*\.bw-metric-band[^]*repeat\(2,minmax\(0,1fr\)\)/);
+});
+
+test('homepage tool cards keep incomplete rows visually centered', () => {
+  const home = read('index.html');
+  assert.match(home, /\.bw-tools-grid\s*\{[^}]*grid-template-columns:\s*repeat\(6,\s*minmax\(0,\s*1fr\)\)/);
+  assert.match(home, /\.bw-tool-card:nth-child\(4\)\s*\{\s*grid-column:\s*2\s*\/\s*span\s*2/);
+  assert.match(home, /\.bw-tool-card:nth-child\(5\)\s*\{\s*grid-column:\s*4\s*\/\s*span\s*2/);
+  assert.match(home, /@media \(max-width:\s*640px\)[^]*\.bw-tools-grid\s*\{\s*grid-template-columns:\s*1fr/);
 });
 
 test('career lookup has no quiz tab or mini-test; full test remains standalone', () => {

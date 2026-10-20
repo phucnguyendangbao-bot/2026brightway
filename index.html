@@ -3296,12 +3296,13 @@ body.spa-active #spa-topbar { display: flex; }
   }
   .bw-tools-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 20px;
     max-width: 960px;
     margin: 0 auto;
   }
   .bw-tool-card {
+    grid-column: span 2;
     background: rgba(255,255,255,0.85);
     backdrop-filter: blur(12px);
     border: 1.5px solid rgba(255,255,255,0.9);
@@ -3318,6 +3319,8 @@ body.spa-active #spa-topbar { display: flex; }
     font: inherit;
     cursor: pointer;
   }
+  .bw-tool-card:nth-child(4) { grid-column: 2 / span 2; }
+  .bw-tool-card:nth-child(5) { grid-column: 4 / span 2; }
   .bw-tool-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 16px 36px rgba(99,102,241,0.18);
@@ -3464,6 +3467,21 @@ body.spa-active #spa-topbar { display: flex; }
     .bw-timeline-track::before { left: 18px; }
     .bw-tl-item { gap: 16px; }
     .bw-tl-dot { width: 40px; height: 40px; font-size: 11px; }
+    .bw-tools-grid { grid-template-columns: 1fr; }
+    .bw-tool-card,
+    .bw-tool-card:nth-child(4),
+    .bw-tool-card:nth-child(5) { grid-column: 1; width: 100%; }
+  }
+
+  @media (min-width: 641px) and (max-width: 860px) {
+    .bw-tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .bw-tool-card,
+    .bw-tool-card:nth-child(4) { grid-column: auto; }
+    .bw-tool-card:nth-child(5) {
+      grid-column: 1 / -1;
+      width: calc((100% - 20px) / 2);
+      justify-self: center;
+    }
   }
 
   /* === REDESIGN — Inspired by huongnghiepsongan.com === */
@@ -5082,9 +5100,9 @@ body.spa-active #spa-topbar { display: flex; }
       <strong class="bw-metric-number" data-catalog-count>…</strong>
       <span class="bw-metric-label">hồ sơ trường đại học</span>
     </a>
-    <a class="bw-metric-item" href="holland.html" aria-label="Làm bài trắc nghiệm Holland 42 câu">
-      <strong class="bw-metric-number">42</strong>
-      <span class="bw-metric-label">câu trắc nghiệm Holland</span>
+    <a class="bw-metric-item" href="holland.html" aria-label="Khám phá 6 nhóm sở thích Holland">
+      <strong class="bw-metric-number">6</strong>
+      <span class="bw-metric-label">nhóm sở thích Holland</span>
     </a>
     <a class="bw-metric-item" href="calendar.html#study-plan" aria-label="Xem lộ trình học tập 12 tháng">
       <strong class="bw-metric-number">12</strong>
