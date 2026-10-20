@@ -72,10 +72,17 @@ async function testNewUser(browser, base, report) {
   }
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.waitForTimeout(250);
+  await page.locator('#bwHeroDots [data-i="1"]').click();
+  await page.waitForTimeout(1300);
+  const ctuImage = page.locator('#bwHeroCarousel .slide[data-school="ĐH Cần Thơ"] img');
+  assert.equal(await page.locator('#bwHeroCarousel .slide[data-school="ĐH Cần Thơ"]').getAttribute('class'), 'slide is-active');
+  assert.equal(await ctuImage.getAttribute('alt'), 'Nhà Điều hành Đại học Cần Thơ tại Khu II');
+  assert.equal(await ctuImage.evaluate(image => image.complete && image.naturalWidth === 3115), true);
+  await page.locator('#bwHeroCarousel').screenshot({ path: path.join(artifactDir, 'ctu-campus-1440.png') });
   await page.screenshot({ path: path.join(artifactDir, 'after-home-1440.png'), fullPage: true });
   assert.deepEqual(errors, []);
   await context.close();
-  report.push({ test: '01-new-user', status: 'PASS', assertions: 5 });
+  report.push({ test: '01-new-user', status: 'PASS', assertions: 8 });
 }
 
 async function testHolland(browser, base, report) {
