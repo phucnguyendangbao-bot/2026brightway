@@ -1,5 +1,7 @@
 # Xét tuyển tổng hợp ĐHQG-HCM 2026 — phạm vi triển khai và nghiệm thu
 
+Đây là checkpoint trước đợt mở rộng. Phạm vi và kết quả mới nhất: [Báo cáo mở rộng cả 8 trường](integrated-expansion-20261020.md).
+
 Rà soát: 20/10/2026. Bản nâng cấp cục bộ, không thay thế toàn bộ công cụ và không chứng nhận chất lượng 8.5/10. Không có thay đổi API, secret, cấu hình production, bảng điểm chuẩn hoặc danh mục trường gốc.
 
 ## Kết quả triển khai

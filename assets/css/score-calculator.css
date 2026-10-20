@@ -738,4 +738,5 @@
 .integrated-result table { width:100%; min-width:480px; border-collapse:collapse; font-size:.8rem; }
 .integrated-result th,.integrated-result td { padding:10px; text-align:left; border-bottom:1px solid #e5e0f2; }
 .integrated-result strong { color:#5040b4; }
+.integrated-result,.integrated-card { scroll-margin-top:90px; }
 @media(max-width:480px) { .integrated-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }

@@ -5,7 +5,7 @@ import sourceRegistry from '../data/school-admissions-sources.js';
 import { COMBO_SUBJECTS, parseScore, fptComponent, fptCombinationAllowed } from './score-rules.js';
 import { canonicalSchoolId, buildUniversityCatalog } from '../data/university-identities.js';
 import { detailsForSchool } from '../data/school-profile-details.js';
-import { createIntegratedCalculator } from './integrated-calculator.js';
+import { createIntegratedCalculator } from './integrated-calculator.js?v=20261020-expanded';
 const integratedCalculator = createIntegratedCalculator();
 const escapeTarget = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let targetSchools = [];

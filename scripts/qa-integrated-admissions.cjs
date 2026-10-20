@@ -21,22 +21,22 @@ async function check(name,fn,width=390) {
   finally {await context.close();console.log(name+': '+report.at(-1).status);}
 }
 async function iu(page) {await page.locator('#integratedSchool').selectOption('hcmiu');await page.locator('#integratedProgram').selectOption('7480201');}
-async function scores(page) {for(const node of await page.locator('#integratedFields input[inputmode=decimal]:visible').all()) await node.fill((await node.getAttribute('id'))==='i_vact'?'900':'8');if(await page.locator('#i_confirmed').count())await page.locator('#i_confirmed').check();}
+async function scores(page) {for(const node of await page.locator('#integratedFields input[inputmode=decimal]:visible').all()) {const id=await node.getAttribute('id');await node.fill(id==='i_vact'?'900':id==='i_vactMath'?'240':'8');}if(await page.locator('#i_confirmed').count())await page.locator('#i_confirmed').check();}
 async function run() {
-  await check('eight-schools-sources-and-pending',async page=>{
+  await check('eight-schools-selectable-scopes-and-honest-results',async page=>{
     const schools=await page.locator('#integratedSchool option').evaluateAll(nodes=>nodes.map(n=>n.value).filter(Boolean));
     assert.deepEqual(schools,['hcmut','uhs','hcmus','ussh','uit','uel','hcmiu','agu']);
     for(const id of schools) {
       await page.locator('#integratedSchool').selectOption(id);
       assert.match(await page.locator('#integratedPolicy a').first().getAttribute('href'),/^https:/);
-      if(!['hcmiu','hcmus'].includes(id)) {
-        assert.equal(await page.locator('#integratedFields input:visible').count(),0);
-        await page.locator('#calcBtn').click();
-        assert.match(await page.locator('#integratedResult').innerText(),/Chưa hỗ trợ tính/);
-        assert.equal(await page.locator('#integratedTotal').count(),0);
-      }
+      assert.ok(await page.locator('#integratedProgram option').count()>1);
+      const value=await page.locator('#integratedProgram option').nth(1).getAttribute('value');
+      await page.locator('#integratedProgram').selectOption(value);await scores(page);await page.locator('#calcBtn').click();
+      if(['uhs','ussh','uit'].includes(id)) {assert.equal(await page.locator('#integratedAcademic').count(),0);assert.equal(await page.locator('#integratedTotal').count(),0);assert.match(await page.locator('#integratedResult').innerText(),/Chỉ quy đổi điểm thành phần/);}
+      else if(['agu','uel'].includes(id)) {assert.equal(await page.locator('#integratedTotal').count(),0);assert.match(await page.locator('#integratedResult').innerText(),/Tham khảo/);}
+      else assert.equal(await page.locator('#integratedTotal').count(),1);
     }
-    return {schools:8,pendingSchools:6};
+    return {schools:8,componentOnlySchools:3,provisionalBranches:2};
   });
   await check('iu-five-branches-and-visible-inputs',async page=>{
     await iu(page);
@@ -45,7 +45,7 @@ async function run() {
       assert.equal(await page.locator('#integratedFields input[inputmode=decimal]:visible').count(),count,cohort+'/'+exams);
       await scores(page);await page.locator('#calcBtn').click();
       assert.equal(await page.locator('#integratedTotal').innerText(),total);
-      assert.match(await page.locator('#integratedResult').innerText(),/Chính thức.*trong phạm vi/s);
+      assert.match(await page.locator('#integratedResult').innerText(),/Đã xác minh, có thể tính.*kết quả theo dữ liệu bạn khai/s);
       assert.equal(await page.locator('#resultSummary').isVisible(),false);
     }
     await page.locator('#i_cohort').selectOption('current');await page.locator('#i_exams').selectOption('vact');await page.locator('#calcBtn').click();
@@ -79,14 +79,65 @@ async function run() {
     assert.equal(await page.locator('#integratedProgram option[value*="LK"]').count(),0);
     await page.locator('#i_confirmed').uncheck();await page.locator('#calcBtn').click();assert.equal(await page.locator('#integratedTotal').count(),0);
   });
-  await check('hcmus-reference-no-fake-vact-conversion',async page=>{
+  await check('branch-verification-transcript-certificates-and-149-gates',async page=>{
+    await iu(page);await scores(page);
+    assert.match(await page.locator('#integratedBranchPolicy').innerText(),/Đã xác minh, có thể tính/);
+    for(const bonus of ['achievement','certificate','school149']) {
+      await page.locator('#i_bonus').selectOption(bonus);
+      assert.match(await page.locator('#integratedBranchPolicy').innerText(),/Có thông tin nhưng chưa đủ để tính/);
+      await page.locator('#calcBtn').click();assert.equal(await page.locator('#integratedTotal').count(),0);
+    }
+    await page.locator('#i_bonus').selectOption('none');
+    for(const exams of ['transcript','certificate']) {
+      await page.locator('#i_exams').selectOption(exams);
+      assert.equal(await page.locator('#integratedFields input[inputmode=decimal]').count(),0);
+      await page.locator('#calcBtn').click();assert.equal(await page.locator('#integratedTotal').count(),0);
+      assert.match(await page.locator('#integratedResult').innerText(),/Có thông tin nhưng chưa đủ để tính/);
+    }
+    await page.locator('#i_exams').selectOption('thpt');await scores(page);await page.locator('#calcBtn').click();
+    assert.equal(await page.locator('#integratedTotal').innerText(),'73.20/100');
+    assert.match(await page.locator('#integratedThresholds').innerText(),/Đạt ngưỡng số học/);
+    for(const method of ['thpt','transcript','other','integrated']) {
+      await page.locator(`[name=admissionMethod][value=${method}]`).check();
+      assert.equal(await page.locator('#integratedCard').isVisible(),method==='integrated');
+    }
+    await page.locator('#calcBtn').click();assert.equal(await page.locator('#integratedTotal').innerText(),'73.20/100');
+  });
+  await check('hcmus-official-percentiles-and-separate-transcript-combination',async page=>{
     await page.locator('#integratedSchool').selectOption('hcmus');await page.locator('#integratedProgram').selectOption('7420101');
     for(const combo of ['B08','B00','X15','X16','B03','A02']) {
       await page.locator('#i_combo').selectOption(combo);await scores(page);await page.locator('#calcBtn').click();
-      assert.equal(await page.locator('#integratedAcademic').innerText(),'80.00/100');assert.equal(await page.locator('#integratedTotal').count(),0);
+      assert.equal(await page.locator('#integratedAcademic').innerText(),'80.00/100');assert.equal(await page.locator('#integratedTotal').innerText(),'80.00/100');
     }
-    await page.locator('#i_exams').selectOption('both');await page.locator('#calcBtn').click();
-    assert.match(await page.locator('#integratedResult').innerText(),/bách phân vị/);assert.equal(await page.locator('#integratedAcademic').count(),0);
+    await page.locator('#i_exams').selectOption('both');await scores(page);await page.locator('#calcBtn').click();
+    assert.match(await page.locator('#integratedResult').innerText(),/bách phân vị/);assert.equal(await page.locator('#integratedTotal').innerText(),'83.70/100');
+    await page.locator('#i_hbCombo').selectOption('A02');assert.equal(await page.locator('#i_annual_phy_10').isVisible(),true);
+    await scores(page);await page.locator('#i_vact').fill('1200');await page.locator('#calcBtn').click();assert.equal(await page.locator('#integratedTotal').count(),0);
+  });
+  await check('hcmut-weighted-math-and-exam-substitution',async page=>{
+    await page.locator('#integratedSchool').selectOption('hcmut');await page.locator('#integratedProgram').selectOption('106');
+    await page.locator('#i_exams').selectOption('both');await scores(page);await page.locator('#calcBtn').click();assert.equal(await page.locator('#integratedTotal').innerText(),'77.20/100');
+    await page.locator('#i_vactMath').fill('301');await page.locator('#calcBtn').click();assert.match(await page.locator('#integratedResult').innerText(),/Kiểm tra dữ liệu/);
+    await page.locator('#i_exams').selectOption('thpt');assert.equal(await page.locator('#i_vactMath').count(),0);await scores(page);await page.locator('#calcBtn').click();assert.equal(await page.locator('#integratedTotal').innerText(),'66.00/100');
+    await page.locator('#i_exams').selectOption('vact');await page.locator('#calcBtn').click();assert.equal(await page.locator('#integratedTotal').count(),0);
+    await page.locator('#i_exams').selectOption('both');await scores(page);await page.locator('#calcBtn').click();await page.locator('#integratedResult').scrollIntoViewIfNeeded();await page.screenshot({path:path.join(artifacts,'hcmut-result-390.png')});
+  });
+  await check('uel-six-semester-inputs-and-provisional-branches',async page=>{
+    await page.locator('#integratedSchool').selectOption('uel');await page.locator('#integratedProgram').selectOption('401');await page.locator('#i_exams').selectOption('both');
+    assert.equal(await page.locator('[data-field^=semester_]').count(),18);assert.equal(await page.locator('[data-field^=annual_]').count(),0);
+    await scores(page);await page.locator('#i_vact').fill('1100');await page.locator('#calcBtn').click();assert.equal(await page.locator('#integratedTotal').innerText(),'86.42/100');
+    await page.locator('#i_semester_math_10_1').fill('');await page.locator('#calcBtn').click();assert.match(await page.locator('#integratedResult').innerText(),/Kiểm tra dữ liệu/);
+    await scores(page);await page.locator('#i_exams').selectOption('thpt');await page.locator('#calcBtn').click();assert.equal(await page.locator('#integratedTotal').count(),0);assert.match(await page.locator('#integratedResult').innerText(),/dự kiến/);
+  });
+  await check('agu-law-teaching-and-aptitude-gates',async page=>{
+    await page.locator('#integratedSchool').selectOption('agu');await page.locator('#integratedProgram').selectOption('7480201');await scores(page);await page.locator('#calcBtn').click();assert.equal(await page.locator('#integratedAcademic').innerText(),'80.00/100');assert.equal(await page.locator('#integratedTotal').count(),0);
+    for(const program of ['7380101','7140209']) {await page.locator('#integratedProgram').selectOption(program);await page.locator('#i_exams').selectOption('vact');await page.locator('#calcBtn').click();assert.match(await page.locator('#integratedResult').innerText(),/bắt buộc.*THPT/);}
+    await page.locator('#integratedProgram').selectOption('7140201');assert.equal(await page.locator('#integratedFields input').count(),0);assert.match(await page.locator('#integratedFields').innerText(),/năng khiếu/);
+  });
+  await check('drafts-are-isolated-per-school-and-semester-basis',async page=>{
+    await page.locator('#integratedSchool').selectOption('uel');await page.locator('#integratedProgram').selectOption('401');await scores(page);await page.locator('#i_semester_math_10_1').fill('7.25');
+    await page.locator('#integratedSchool').selectOption('hcmut');await page.locator('#integratedProgram').selectOption('106');await scores(page);await page.locator('#i_annual_math_10').fill('9.5');
+    await page.locator('#integratedSchool').selectOption('uel');assert.equal(await page.locator('#i_semester_math_10_1').inputValue(),'7.25');await page.reload({waitUntil:'domcontentloaded'});await page.locator('#i_semester_math_10_1').waitFor();assert.equal(await page.locator('#i_semester_math_10_1').inputValue(),'7.25');
   });
   await check('draft-reload-method-switch-reset-and-deep-link',async(page,context)=>{
     await iu(page);await scores(page);await page.locator('#i_thpt_math').fill('8.25');
@@ -122,6 +173,11 @@ async function run() {
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=document.documentElement.clientWidth+1),true);
     await page.locator('#integratedResult').scrollIntoViewIfNeeded();await page.screenshot({path:path.join(artifacts,'result-'+width+'.png'),fullPage:false});
     await page.locator('#integratedCard').scrollIntoViewIfNeeded();await page.screenshot({path:path.join(artifacts,'inputs-'+width+'.png'),fullPage:true});
+    for(const id of ['hcmut','uhs','hcmus','ussh','uit','uel','agu']) {
+      await page.locator('#integratedSchool').selectOption(id);const value=await page.locator('#integratedProgram option').nth(1).getAttribute('value');await page.locator('#integratedProgram').selectOption(value);
+      assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=document.documentElement.clientWidth+1),true,id+' overflows at '+width);
+      if(id==='uhs') {await page.locator('#integratedCard').scrollIntoViewIfNeeded();await page.screenshot({path:path.join(artifacts,'uhs-form-'+width+'.png')});}
+    }
     return {width};
   },width);
 }

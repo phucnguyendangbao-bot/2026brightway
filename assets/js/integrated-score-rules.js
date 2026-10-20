@@ -1,12 +1,15 @@
-import { integratedSchool, integratedCombos } from '../data/integrated-admissions-2026.js';
+import { integratedSchool, integratedCombos } from '../data/integrated-admissions-2026.js?v=20261020-expanded';
 import { parseScore } from './score-rules.js';
+import { calculateReviewed, reviewedRequirements } from './reviewed-integrated-score-rules.js';
 const pending = message => ({ status:'unsupported', message, rows:[], final:null });
 export function integratedRequirements(config, data) {
   if (!config?.engine) return [];
+  if (!['both','thpt','vact'].includes(data.exams)) return [];
+  if (config.engine !== 'iu-domestic') return reviewedRequirements(config,data);
   const previous = data.cohort === 'previous';
   const thpt = data.exams !== 'vact';
   const vact = data.exams !== 'thpt';
-  const transcript = config.engine === 'hcmus-thpt-component' || !previous;
+  const transcript = !previous;
   return [ ...(thpt ? ['thpt'] : []), ...(vact ? ['vact'] : []), ...(transcript ? ['transcript'] : []) ];
 }
 export function calculateIntegrated(data) {
@@ -15,8 +18,8 @@ export function calculateIntegrated(data) {
   if (!config.engine) return pending(config.missing);
   const program = config.programs.find(item => item.programId === data.programId);
   if (!program || !program.combos.includes(data.combo)) return pending('Ngành/tổ hợp chưa nằm trong phạm vi đã xác minh. Không tính cho ngành đặc thù hoặc liên kết.');
+  if (config.engine !== 'iu-domestic') return calculateReviewed(config,data,program);
   if (!['current','previous'].includes(data.cohort) || !['both','thpt','vact'].includes(data.exams)) return pending('Hãy chọn năm tốt nghiệp và các kỳ thi thực tế đã tham dự.');
-  if (config.engine === 'hcmus-thpt-component' && data.exams !== 'thpt') return pending('Chưa kiểm định bảng bách phân vị V-ACT. Không chia điểm 1200 theo tỷ lệ hoặc kết luận nhánh tối ưu.');
   if (config.engine === 'iu-domestic' && data.cohort === 'current' && data.exams === 'vact') return pending('Diện tốt nghiệp 2026 cần điểm THPT 2026. Không thay bằng công thức dành cho người tốt nghiệp trước 2026.');
   if (config.engine === 'iu-domestic' && data.bonus !== 'none') return pending('Chưa xác minh hồ sơ điểm cộng. Không mặc định cộng 5 điểm cho 149 trường; IU quy định mức riêng và điều kiện riêng.');
   const required = integratedRequirements(config, data);
@@ -45,10 +48,6 @@ export function calculateIntegrated(data) {
     rows.push({ label:'Học bạ cả năm lớp 10–12 (cùng tổ hợp)', raw, scale:30, converted:transcript, weight:config.weights.transcript });
   }
   if (errors.length) return { status:'invalid', message:errors.join(' '), errors, rows:[], final:null };
-  if (config.engine === 'hcmus-thpt-component') {
-    const academic = config.weights.thpt * thpt + config.weights.transcript * transcript;
-    return { status:'reference', message:'Thành phần học lực nhánh THPT, chưa cộng thưởng/ưu tiên, chưa đối chiếu ngưỡng ngành hoặc tìm tổ hợp tốt nhất. Không phải điểm xét tuyển cuối cùng.', academic, final:null, rows, scale:100, formula:'80% THPT + 20% học bạ (quy về 100)' };
-  }
   const rules = config.substitutionRules;
   if (data.exams === 'thpt') { vact = rules.currentNoVact * thpt; rows.push({label:'V-ACT thay thế = 0,83 × THPT quy đổi', raw:null, scale:100, converted:vact, weight:config.weights.vact}); }
   if (data.cohort === 'previous') {

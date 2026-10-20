@@ -15,12 +15,13 @@ test('eight unique canonical identities, schema and sources, no manufactured dat
     assert.equal(school.admissionYear,2026); assert.match(school.sourceUrl,/^https:/);
   }
   assert.deepEqual(integratedSchools.find(s=>s.schoolId==='uhs').weights,{thpt:[.3,.35],vact:[.45,.5],transcript:.2});
-  assert.deepEqual(integratedSchools.find(s=>s.schoolId==='agu').weights.thpt,[.3,.6]);
+  assert.deepEqual(integratedSchools.find(s=>s.schoolId==='agu').weights,{thpt:.4,vact:.4,transcript:.2});
 });
-test('pending schools never output guessed totals or default 149-school bonuses',()=>{
-  for (const school of integratedSchools.filter(s=>!s.engine)) {
-    const result=calculateIntegrated(input({schoolId:school.schoolId}));
-    assert.equal(result.status,'unsupported'); assert.equal(result.final,null); assert.equal(result.rows.length,0);
+test('component-only schools never output guessed totals or default 149-school bonuses',()=>{
+  for (const school of integratedSchools.filter(s=>s.verificationStatus==='components-only')) {
+    const program=school.programs[0],combo=program.combos[0],keys=integratedCombos[combo];
+    const result=calculateIntegrated(input({schoolId:school.schoolId,programId:program.programId,combo,thpt:Object.fromEntries(keys.map(k=>[k,8])),annual:Object.fromEntries(keys.flatMap(k=>[10,11,12].map(g=>[`${k}_${g}`,8])))}));
+    assert.equal(result.status,'reference'); assert.equal(result.final,null); assert.equal(result.academic,null); assert.ok(result.rows.length>0);
   }
 });
 test('IU current graduate: independent arithmetic with and without V-ACT',()=>{
@@ -64,11 +65,10 @@ test('every configured IU program/combination uses subject-specific annual grade
     close(result.final,78.5);
   }
 });
-test('HCMUS THPT is reference academic component only, V-ACT/special majors blocked',()=>{
+test('HCMUS published percentile table enables verified branches; special majors remain blocked',()=>{
   const common={schoolId:'hcmus',programId:'7420101',combo:'B00',thpt:{math:8,che:8,bio:8},annual:Object.fromEntries(['math','che','bio'].flatMap(k=>[10,11,12].map(g=>[`${k}_${g}`,9])))};
   const result=calculateIntegrated(input({...common,exams:'thpt'}));
-  assert.equal(result.status,'reference'); close(result.academic,82); assert.equal(result.final,null);
-  assert.equal(calculateIntegrated(input({...common,exams:'thpt',bonus:undefined})).status,'reference','A component-only form has no bonus input');
-  for (const exams of ['both','vact']) assert.equal(calculateIntegrated(input({...common,exams})).final,null);
+  assert.equal(result.status,'official'); close(result.academic,82); close(result.final,82);
+  for (const exams of ['both','vact']) assert.equal(calculateIntegrated(input({...common,exams})).status,'official');
   assert.equal(calculateIntegrated(input({...common,programId:'74401a1',exams:'thpt'})).status,'unsupported');
 });
