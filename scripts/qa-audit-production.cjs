@@ -22,7 +22,7 @@ const { chromium } = require('playwright-core');
     await page.setViewportSize({width:1366,height:900});
     const response = await page.goto(`${base}/page2.html?school=ntu&audit=${Date.now()}`, { waitUntil:'domcontentloaded' });
     assert.equal(response.status(), 200);
-    assert.match(await response.text(), /page2\.js\?v=20261020-profile/);
+    assert.match(await response.text(), /page2\.js\?v=20261020-regression/);
     await page.locator('#schoolDialog[open]').waitFor();
     assert.match(await page.locator('#schoolDialog').innerText(), /thang 40/);
     await page.locator('#schoolDialog [data-action="close-school"]').click();
@@ -42,11 +42,29 @@ const { chromium } = require('playwright-core');
     await page.locator('#calcBtn').click();
     assert.match(await page.locator('#schoolList .school-row-status').innerText(), /24.00/);
 
+    await page.locator('input[name="admissionMethod"][value="other"]').check();
+    await page.locator('#examType').selectOption('sHsa');
+    await page.locator('#sHsa').fill('100');
+    await page.locator('#calcBtn').click();
+    assert.equal(await page.locator('.summary-item:visible').count(), 1);
+    await page.locator('#editScoreBtn').click();
+    assert.equal(await page.evaluate(() => document.activeElement.id), 'sHsa');
+    await page.locator('#resetBtn').click();
+    await page.reload({ waitUntil:'domcontentloaded' });
+    await page.waitForFunction(() => document.querySelector('#targetSchool')?.options.length > 1);
+    assert.equal(await page.locator('input[name="targetMode"][value="quick"]').isChecked(), true);
+    assert.equal(await page.locator('#targetSchool').inputValue(), '');
+
+    await page.goto(`${base}/calendar.html?year=2027`, { waitUntil:'domcontentloaded' });
+    await page.locator('#grid .cal-m').first().waitFor();
+    assert.match(await page.locator('.cal-tag').innerText(), /Chuẩn bị.*2027/);
+    assert.equal(await page.locator('[data-event-date^="2026"]').count(), 0);
+
     await page.goto(`${base}/careers-holland.html?holland=all&q=${encodeURIComponent('Bác sĩ đa khoa')}`, { waitUntil:'domcontentloaded' });
     await page.locator('#favBtn').waitFor();
     assert.match(await page.locator('.career-result').innerText(), /12 tháng/);
     assert.equal(await page.locator('a[href*="baochinhphu.vn"]').count(), 1);
     assert.deepEqual(errors, []);
-    console.log(JSON.stringify({ status:'PASS', base, checks:['deployed university-discovery version','3 editorial profiles and 8 preserved campus slides','mobile student intents visible','metrics consent defaults off, no invented sponsors','NTU scale 40 and direct school dialog','Hue system identity','FPT C00 IT rejection','FPT D01 IT component 24','doctor sourced route'], pageErrors:errors }, null, 2));
+    console.log(JSON.stringify({ status:'PASS', base, checks:['deployed university-discovery version','3 editorial profiles and 8 preserved campus slides','mobile student intents visible','metrics consent defaults off, no invented sponsors','NTU scale 40 and direct school dialog','Hue system identity','FPT C00 IT rejection','FPT D01 IT component 24','single selected exam summary and visible edit focus','reset target survives reload','2027 preparation label and year isolation','doctor sourced route'], pageErrors:errors }, null, 2));
   } finally { await browser.close(); }
 })().catch(error => { console.error(error.stack || error); process.exitCode = 1; });

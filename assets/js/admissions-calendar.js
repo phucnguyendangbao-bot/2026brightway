@@ -19,7 +19,9 @@ function selectedEvents() {
 function render() {
   const year = Number(selector.value);
   const events = selectedEvents();
-  document.querySelector('.cal-tag').textContent = 'Lịch tuyển sinh ĐH ' + year;
+  document.querySelector('.cal-tag').textContent = year === 2026
+    ? 'Lịch tuyển sinh 2026 · Dữ liệu tham khảo'
+    : 'Chuẩn bị tuyển sinh 2027';
   const now = new Date();
   const today = new Intl.DateTimeFormat('en-CA', {
     timeZone: 'Asia/Ho_Chi_Minh', year: 'numeric', month: '2-digit', day: '2-digit',

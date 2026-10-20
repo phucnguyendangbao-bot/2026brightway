@@ -199,8 +199,8 @@ html { scroll-behavior: smooth; }
 .school-card-programs { display:flex; flex-wrap:wrap; gap:7px; margin-top:12px; }
 .school-card-programs span, .school-card-programs small { padding:6px 9px; border-radius:999px; background:rgba(99,102,241,.09); color:var(--accent); font-size:.75rem; font-weight:700; }
 .school-card-programs small { background:transparent; color:var(--text-soft); }
-.school-dialog-header-actions { display:flex; align-items:center; gap:10px; }
-.school-save-button { min-height:42px; padding:9px 14px; border:1px solid rgba(99,102,241,.3); border-radius:999px; background:#fff; color:var(--accent); font:inherit; font-weight:700; cursor:pointer; }
+.school-dialog-header-actions { display:flex; align-items:center; flex-shrink:0; gap:10px; }
+.school-save-button { min-height:42px; padding:9px 14px; border:1px solid rgba(99,102,241,.3); border-radius:999px; background:#fff; color:var(--accent); font:inherit; font-weight:700; white-space:nowrap; cursor:pointer; }
 .school-save-button.is-saved { background:#ecfdf5; border-color:#10b981; color:#047857; }
 .school-name-link {
   color: inherit;
@@ -699,16 +699,15 @@ html { scroll-behavior: smooth; }
   .p2-sidebar-title { display: block; }
   .p2-sidebar-field-title { width: auto; }
   .school-section { min-height: 230px; }
-  .school-dialog-header { padding: 23px 20px; }
+  .school-dialog-header { padding: 23px 20px; flex-wrap:wrap; gap:14px; }
+  .school-dialog-header > div:first-child { flex:1 1 100%; min-width:0; }
+  .school-dialog-header-actions { width:100%; justify-content:space-between; }
   .school-dialog-content { padding: 20px; }
   .school-dialog-tabs { padding-left: 12px; }
   .school-profile-coverage { grid-template-columns:repeat(2,minmax(0,1fr)); padding:12px; }
   .school-dialog-footer { padding: 15px 20px; }
   .school-program-table { min-width: 680px; }
   .school-program-table-wrap { overscroll-behavior-inline: contain; -webkit-overflow-scrolling: touch; }
-}
-@media (max-width: 390px) {
-  .school-profile-coverage { grid-template-columns:1fr; }
 }
 
 /* Polished discovery workspace. */

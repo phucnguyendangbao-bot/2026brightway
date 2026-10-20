@@ -29,6 +29,7 @@ let activeQuery = '';
 let searchMode = 'school';
 let activeRegion = '';
 let promotionUI = null;
+let catalogReady = false;
 // A failed campaign feed/module must never prevent organic lookup from loading.
 import('./university-promotions.js').then(module => {
   promotionUI = module;
@@ -250,6 +251,7 @@ function matchingPrograms(school, query) {
 }
 
 function filterSchools(value) {
+  if (!catalogReady) return;
   const query = normalizeText(value.trim());
   activeQuery = value.trim();
   filteredSchools = schools.filter(school => {
@@ -400,11 +402,18 @@ document.getElementById('regionFilter')?.addEventListener('change', event => {
 window.addEventListener('hashchange', scrollToTargetFromUrl);
 
 async function initPage2() {
+  catalogReady = false;
+  document.getElementById('schoolCatalogStatus').textContent = 'Đang tải danh sách trường…';
+  document.getElementById('schoolCatalogCount').textContent = 'Đang tải…';
+  mainContent.setAttribute('aria-busy', 'true');
+  const controls = [...document.querySelectorAll('#searchInput, #regionFilter, input[name="schoolSearchMode"], #resetSchoolFilters')];
+  controls.forEach(control => { control.disabled = true; });
   try {
     const response = await fetch('/assets/data/schools.json', { cache: 'no-store', signal: AbortSignal.timeout(8000) });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const catalog = buildUniversityCatalog(await response.json(), sourceRegistry.universities);
     schools = catalog.schools;
+    catalogReady = true;
     const params = new URLSearchParams(location.search);
     const previousFilters = !params.size ? window.BWFlow?.read().schoolFilters : null;
     const initialQuery = params.get('major') || params.get('q') || previousFilters?.query || '';
@@ -421,7 +430,7 @@ async function initPage2() {
     // Searching is not a decision to save a major.
     document.getElementById('schoolCatalogCount').textContent = `${catalog.stats.universities} trường`;
     const career = new URLSearchParams(location.search).get('career') || window.BWFlow?.read().career?.name;
-    if (career) {
+    if (career && !document.getElementById('schoolJourney')) {
       const host = document.createElement('div');
       host.id = 'schoolJourney';
       host.className = 'flow-resume';
@@ -432,8 +441,14 @@ async function initPage2() {
     if (params.get('focus') === 'major') requestAnimationFrame(() => document.getElementById('searchInput')?.focus());
   } catch (error) {
     console.error('[school catalog]', error);
+    document.getElementById('schoolCatalogCount').textContent = 'Chưa tải được';
     document.getElementById('schoolCatalogStatus').textContent = 'Chưa tải được danh sách trường. Vui lòng thử lại.';
-    mainContent.innerHTML = '<div class="p2-no-results">Không thể tải dữ liệu trường. <button type="button" onclick="location.reload()">Tải lại</button></div>';
+    sidebar.innerHTML = '<p class="p2-sidebar-empty">Danh sách trường chưa khả dụng.</p>';
+    mainContent.innerHTML = '<div class="p2-no-results">Không thể tải dữ liệu trường. <button type="button" id="retrySchoolCatalog">Thử lại</button></div>';
+    document.getElementById('retrySchoolCatalog').addEventListener('click', initPage2);
+  } finally {
+    mainContent.setAttribute('aria-busy', 'false');
+    controls.forEach(control => { control.disabled = !catalogReady; });
   }
 }
 
