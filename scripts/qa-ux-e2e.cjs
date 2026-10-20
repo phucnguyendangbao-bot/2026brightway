@@ -131,6 +131,23 @@ async function testSchoolSearch(browser, base, report) {
   await page.reload({ waitUntil: 'domcontentloaded' });
   await page.locator('.school-section').first().waitFor();
   assert.equal(await page.locator('#searchInput').inputValue(), 'Cong nghe thong tin');
+  await page.goto(`${base}/page2.html?mode=school`, { waitUntil: 'domcontentloaded' });
+  await page.locator('.school-section').first().waitFor();
+  const compareInputs = page.locator('input[data-action="compare-school"]');
+  assert.ok(await compareInputs.count() >= 3);
+  await compareInputs.nth(0).check();
+  await page.locator('input[data-action="compare-school"]').nth(1).check();
+  await page.locator('#schoolCompare:not([hidden])').waitFor();
+  assert.equal(await page.locator('#schoolCompareTable tbody tr').count(), 5);
+  await page.locator('input[data-action="compare-school"]').nth(2).check();
+  assert.equal(await page.locator('#schoolCompareTable thead th').count(), 4);
+  await page.screenshot({ path: path.join(artifactDir, 'after-school-compare-1440.png'), fullPage: true });
+  await page.reload({ waitUntil: 'domcontentloaded' });
+  await page.locator('.school-section').first().waitFor();
+  await page.locator('#schoolCompare:not([hidden])').waitFor();
+  assert.equal(await page.locator('input[data-action="compare-school"]:checked').count(), 3);
+  await page.locator('#clearSchoolCompare').click();
+  await page.locator('#schoolCompare[hidden]').waitFor({ state: 'hidden' });
   await page.locator('input[name="schoolSearchMode"][value="school"]').check();
   await page.locator('#searchInput').fill('Dai hoc Bach khoa');
   await page.waitForFunction(() => document.querySelectorAll('.school-section').length > 0 && document.querySelector('#schoolCatalogStatus').textContent.includes('Dai hoc Bach khoa'));
@@ -139,7 +156,7 @@ async function testSchoolSearch(browser, base, report) {
   await page.screenshot({ path: path.join(artifactDir, 'after-school-search-1440.png'), fullPage: true });
   assert.deepEqual(errors, []);
   await context.close();
-  report.push({ test: '03-school-search', status: 'PASS', assertions: 10, results: majorCount });
+  report.push({ test: '03-school-search', status: 'PASS', assertions: 19, results: majorCount });
 }
 
 async function testVerifiedSchoolLogos(browser, base, report) {

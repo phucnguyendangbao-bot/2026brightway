@@ -30,6 +30,11 @@ let searchMode = 'school';
 let activeRegion = '';
 let promotionUI = null;
 let catalogReady = false;
+let compareIds = [];
+const compareHost = document.getElementById('schoolCompare');
+const compareTable = document.getElementById('schoolCompareTable');
+const compareStorageKey = 'bw-school-compare-2026';
+try { compareIds = JSON.parse(localStorage.getItem(compareStorageKey) || '[]').slice(0, 3); } catch { compareIds = []; }
 // A failed campaign feed/module must never prevent organic lookup from loading.
 import('./university-promotions.js').then(module => {
   promotionUI = module;
@@ -87,11 +92,36 @@ function renderSchools(items) {
       <p class="school-card-description">${escapeHtml(subtitle)}</p>
       <div class="school-card-bottom">
         <span>${school.identity.entity_kind === 'university_system' ? 'Đại học vùng' : source ? `Nguồn tuyển sinh ${source.admission_year}` : 'Hồ sơ trường'}</span>
-        <button type="button" class="school-card-open" data-action="open-school" data-school-id="${escapeHtml(school.id)}">Xem hồ sơ <span aria-hidden="true">→</span></button>
+        <span><label class="school-card-compare"><input type="checkbox" data-action="compare-school" data-school-id="${escapeHtml(school.id)}" ${compareIds.includes(school.id) ? 'checked' : ''} aria-label="Thêm ${escapeHtml(school.name)} vào so sánh"> So sánh</label><button type="button" class="school-card-open" data-action="open-school" data-school-id="${escapeHtml(school.id)}">Xem hồ sơ <span aria-hidden="true">→</span></button></span>
       </div>
     </section>`;
   }).join('');
   items.forEach(school => renderLogo(school));
+}
+
+function compareValue(school, kind) {
+  const details = detailsForSchool(school.id);
+  const source = sourceForSchool(school.id);
+  if (kind === 'location') return school.city || 'Chưa có dữ liệu';
+  if (kind === 'type') return school.identity.entity_kind === 'university_system' ? 'Đại học vùng' : school.website ? 'Đại học · có trang chính thức' : 'Chưa có dữ liệu';
+  if (kind === 'programs') return details?.programs?.length ? `${details.programs.length} ngành/CT đã ghi nhận` : 'Chưa có dữ liệu';
+  if (kind === 'admission') return source?.source_url ? 'Có nguồn tuyển sinh 2026' : 'Chưa có dữ liệu';
+  if (kind === 'tuition') return details?.tuition?.year === activeYear && details.tuition.summary ? details.tuition.summary : 'Chưa có dữ liệu';
+  return 'Chưa có dữ liệu';
+}
+function renderCompare() {
+  const selected = compareIds.map(id => schools.find(school => school.id === id)).filter(Boolean);
+  if (!compareHost || !compareTable) return;
+  compareHost.hidden = selected.length < 2;
+  if (selected.length < 2) { compareTable.innerHTML = ''; return; }
+  const rows = [['Địa điểm','location'],['Quy mô hồ sơ','programs'],['Tuyển sinh 2026','admission'],['Học phí đã xác minh','tuition'],['Loại hồ sơ','type']];
+  compareTable.innerHTML = `<table class="school-compare-table"><thead><tr><th scope="col">Tiêu chí</th>${selected.map(school => `<th scope="col"><strong>${escapeHtml(school.short || school.name)}</strong><button type="button" class="school-compare-remove" data-action="remove-compare" data-school-id="${escapeHtml(school.id)}">Bỏ trường</button></th>`).join('')}</tr></thead><tbody>${rows.map(([label,key]) => `<tr><th scope="row">${label}</th>${selected.map(school => `<td>${escapeHtml(compareValue(school,key))}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+}
+function updateCompare(id, checked) {
+  if (checked && !compareIds.includes(id) && compareIds.length < 3) compareIds.push(id);
+  if (!checked) compareIds = compareIds.filter(item => item !== id);
+  try { localStorage.setItem(compareStorageKey, JSON.stringify(compareIds)); } catch { /* private mode */ }
+  renderSchools(filteredSchools); renderCompare();
 }
 
 function renderLogo(school) {
@@ -329,6 +359,8 @@ document.addEventListener('click', event => {
   const target = event.target.closest('[data-action]');
   if (!target) return;
   const action = target.dataset.action;
+  if (action === 'compare-school') { event.stopPropagation(); updateCompare(target.dataset.schoolId, target.checked); return; }
+  if (action === 'remove-compare') { updateCompare(target.dataset.schoolId, false); return; }
   if (action === 'save-major' && activeSchool) {
     const program = detailsForSchool(activeSchool.id)?.programs?.[target.dataset.program];
     if (program) {
@@ -390,6 +422,7 @@ document.getElementById('resetSchoolFilters')?.addEventListener('click', () => {
   document.getElementById('searchInput').value = '';
   filterSchools('');
 });
+document.getElementById('clearSchoolCompare')?.addEventListener('click', () => { compareIds = []; try { localStorage.removeItem(compareStorageKey); } catch {} renderSchools(filteredSchools); renderCompare(); });
 document.querySelectorAll('input[name="schoolSearchMode"]').forEach(input => input.addEventListener('change', event => {
   searchMode = event.target.value;
   updateSearchSuggestions();
@@ -427,6 +460,7 @@ async function initPage2() {
     updateSearchSuggestions();
     document.getElementById('searchInput').value = initialQuery;
     filterSchools(initialQuery);
+    renderCompare();
     // Searching is not a decision to save a major.
     document.getElementById('schoolCatalogCount').textContent = `${catalog.stats.universities} trường`;
     const career = new URLSearchParams(location.search).get('career') || window.BWFlow?.read().career?.name;
