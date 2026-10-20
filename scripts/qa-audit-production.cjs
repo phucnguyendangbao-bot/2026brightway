@@ -22,7 +22,7 @@ const { chromium } = require('playwright-core');
     await page.setViewportSize({width:1366,height:900});
     const response = await page.goto(`${base}/page2.html?school=ntu&audit=${Date.now()}`, { waitUntil:'domcontentloaded' });
     assert.equal(response.status(), 200);
-    assert.match(await response.text(), /page2\.js\?v=20261020-partners/);
+    assert.match(await response.text(), /page2\.js\?v=20261020-profile/);
     await page.locator('#schoolDialog[open]').waitFor();
     assert.match(await page.locator('#schoolDialog').innerText(), /thang 40/);
     await page.locator('#schoolDialog [data-action="close-school"]').click();
