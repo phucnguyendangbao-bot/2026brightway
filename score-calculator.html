@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/assets/css/page2.css?v=20261020">
-<link rel="stylesheet" href="/assets/css/score-calculator.css?v=20261020">
+<link rel="stylesheet" href="/assets/css/score-calculator.css?v=20261020-guided">
 <link rel="stylesheet" href="/assets/css/brightway-theme.css?v=7">
 <link rel="stylesheet" href="/assets/css/flow.css?v=20261020-journey">
 <script src="/assets/js/flow.js?v=20261020-journey" defer></script>
@@ -36,8 +36,8 @@
     <span class="calc-eyebrow">CÔNG CỤ TUYỂN SINH 2026</span>
     <h1>Tính điểm xét tuyển, rõ từng bước</h1>
     <p>Công cụ tham khảo dữ liệu 2026, không áp dụng quy tắc này cho 2027. Chọn tổ hợp, nhập điểm gốc và xem thành phần nào đã có căn cứ; chưa thay thế điểm xét tuyển chính thức.</p>
-    <div class="calc-hero-steps" aria-label="Ba bước sử dụng">
-      <span><b>1</b> Chọn tổ hợp</span><span><b>2</b> Nhập điểm</span><span><b>3</b> Xem kết quả</span>
+    <div class="calc-hero-steps" aria-label="Năm bước sử dụng">
+      <span><b>1</b> Chọn cách tính</span><span><b>2</b> Chọn trường/ngành</span><span><b>3</b> Chọn phương thức</span><span><b>4</b> Nhập điểm</span><span><b>5</b> Xem kết quả</span>
     </div>
   </div>
 </section>
@@ -53,12 +53,18 @@
   <!-- LEFT: INPUT FORM -->
   <aside class="calc-input-panel">
     <div class="calc-card" id="targetCard">
-      <h2 class="calc-section-title">1. Chọn trường và ngành</h2>
-      <p>Chọn mục tiêu để đối chiếu nguồn 2026, hoặc tính tổng điểm gốc nếu chưa chọn trường.</p>
-      <label class="combo-select-label" for="targetSchool">Trường quan tâm</label>
-      <select id="targetSchool"><option value="">Chưa chọn trường · tính điểm gốc</option></select>
-      <label class="combo-select-label" for="targetProgram">Ngành / chương trình đào tạo</label>
-      <select id="targetProgram" disabled><option value="">Chọn trường trước</option></select>
+      <h2 class="calc-section-title">1. Chọn cách tính</h2>
+      <fieldset class="calc-target-modes">
+        <legend>Bạn đã có trường và ngành mục tiêu chưa?</legend>
+        <label><input type="radio" name="targetMode" value="quick" checked><span><strong>Tính nhanh</strong><small>Chỉ tính điểm gốc theo tổ hợp, chưa chọn trường.</small></span></label>
+        <label><input type="radio" name="targetMode" value="guided"><span><strong>Theo trường và ngành</strong><small>Đối chiếu đúng nguồn 2026 của mục tiêu đã chọn.</small></span></label>
+      </fieldset>
+      <div id="targetSelectors" hidden>
+        <label class="combo-select-label" for="targetSchool">Trường quan tâm</label>
+        <select id="targetSchool"><option value="">Chọn trường</option></select>
+        <label class="combo-select-label" for="targetProgram">Ngành / chương trình đào tạo</label>
+        <select id="targetProgram" disabled><option value="">Chọn trường trước</option></select>
+      </div>
       <p id="targetStatus" role="status">Đang tải danh sách trường…</p>
       <button id="retryTarget" type="button" hidden>Thử tải lại</button>
     </div>
@@ -205,6 +211,7 @@
     <div class="result-summary" id="resultSummary" hidden>
       <h2>Điểm của bạn <span class="result-context">Điểm gốc, chưa cộng ưu tiên</span></h2>
       <div class="result-calculation-context">
+        <p><strong>Mục tiêu:</strong> <span id="resultTarget">Tính nhanh · chưa chọn trường</span></p>
         <p><strong>Phương thức:</strong> <span id="resultMethod">—</span></p>
         <p><strong>Công thức:</strong> <span id="resultFormula">—</span></p>
         <p><strong>Điểm cộng:</strong> <span id="resultAdjustments">Chưa áp dụng trong phép tính cơ bản.</span></p>
@@ -236,7 +243,7 @@
 
     <!-- ELIGIBLE SCHOOLS -->
     <div class="result-schools" id="resultSchools" hidden>
-      <h2>Đối chiếu nguồn của 9 trường</h2>
+      <h2 id="resultSchoolsTitle">Đối chiếu nguồn của 9 trường</h2>
       <p class="result-tip">Chỉ hiện phép tính có đủ dữ liệu và công thức công khai. Chưa cộng điểm ưu tiên/khuyến khích, chưa xét ngành, tổ hợp được phép, điều kiện riêng hay điểm chuẩn; <strong>không dự đoán đỗ/trượt</strong>. Mở nguồn từng trường để đối chiếu.</p>
       <div id="schoolList" class="school-list"></div>
     </div>
@@ -258,7 +265,7 @@
 
 <script src="/assets/js/uni-logos.js"></script>
 <script src="/assets/js/uni-logo-svg.js"></script>
-<script type="module" src="/assets/js/score-calculator.js?v=20261020-audit"></script>
+<script type="module" src="/assets/js/score-calculator.js?v=20261020-guided"></script>
 <script src="assets/js/waybi.js"></script>
 <script src="assets/js/waybi-presence.js"></script>
 </body>

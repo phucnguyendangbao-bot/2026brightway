@@ -110,7 +110,7 @@ function renderPrograms(school, details) {
   return `<p class="school-dialog-lead"><strong>${details.programs.length} ngành/chương trình</strong> ${details.programSourceStatus === 'current_catalog' ? 'trong danh mục hiện hành; chưa xác nhận toàn bộ chương trình mở tuyển trong kỳ 2026' : 'trong dữ liệu ghi nhận cho năm ' + details.year}.${hasScores ? ' Điểm chuẩn cùng năm nằm ở cột cuối.' : ''}</p>
     ${details.programNote ? `<p class="school-program-note">${escapeHtml(details.programNote)}</p>` : ''}
     <div class="school-program-table-wrap"><table class="school-program-table"><thead><tr><th>Mã xét tuyển</th><th>Ngành / chương trình</th>${hasTracks ? '<th>Phân loại</th>' : ''}${hasQuotas ? '<th>Chỉ tiêu dự kiến</th>' : ''}${hasCombinations ? '<th>Tổ hợp trích</th>' : ''}${hasScores ? `<th>Điểm chuẩn ${details.year}${details.scoreScale ? ' · thang ' + details.scoreScale : ''}</th>` : ''}</tr></thead><tbody>
-    ${details.programs.map((program, index) => `<tr><td>${program.code ? escapeHtml(program.code) : '<span class="school-program-code-missing">Chưa đối chiếu mã</span>'}</td><td>${escapeHtml(program.name)}<div class="school-program-actions"><button type="button" data-action="save-major" data-program="${index}">Lưu ngành</button><a href="score-calculator.html?school=${encodeURIComponent(school.id)}&program=${index}">Đối chiếu điểm →</a></div></td>${hasTracks ? `<td>${escapeHtml(program.track || '')}</td>` : ''}${hasQuotas ? `<td>${Number.isFinite(program.quota) ? escapeHtml(program.quota) : ''}</td>` : ''}${hasCombinations ? `<td>${escapeHtml(program.combination || '')}</td>` : ''}${hasScores ? `<td>${Number.isFinite(program.score) ? `<strong>${escapeHtml(formatScore(program.score))}</strong>` : ''}</td>` : ''}</tr>`).join('')}
+    ${details.programs.map((program, index) => `<tr><td>${program.code ? escapeHtml(program.code) : '<span class="school-program-code-missing">Chưa đối chiếu mã</span>'}</td><td>${escapeHtml(program.name)}<div class="school-program-actions"><button type="button" data-action="save-major" data-program="${index}">Lưu ngành</button><a href="score-calculator.html?school=${encodeURIComponent(school.id)}&program=${index}" data-action="score-program" data-program="${index}">Đối chiếu điểm →</a></div></td>${hasTracks ? `<td>${escapeHtml(program.track || '')}</td>` : ''}${hasQuotas ? `<td>${Number.isFinite(program.quota) ? escapeHtml(program.quota) : ''}</td>` : ''}${hasCombinations ? `<td>${escapeHtml(program.combination || '')}</td>` : ''}${hasScores ? `<td>${Number.isFinite(program.score) ? `<strong>${escapeHtml(formatScore(program.score))}</strong>` : ''}</td>` : ''}</tr>`).join('')}
     </tbody></table></div>
     ${details.scoreMethod ? `<p class="school-dialog-footnote">${escapeHtml(details.scoreMethod)}. Chọn đúng cơ sở và chương trình khi đăng ký.</p>` : ''}
     ${officialLink(details.programSource, details.programSourceLabel || 'Danh sách ngành trên trang trường', 'school-dialog-link')}
@@ -151,19 +151,47 @@ function renderAdmission(school, details) {
   </div>`;
 }
 
+function renderCostsAndSupport(school, details) {
+  const tuition = details?.tuition;
+  const verifiedTuition = tuition?.year === activeYear && /^https:\/\//i.test(tuition.source || '') && tuition.summary;
+  const fallbackUrl = details?.admissionSource || sourceForSchool(school.id)?.source_url || school.website;
+  return `<section class="school-cost-support" aria-labelledby="schoolCostTitle">
+    <h3 id="schoolCostTitle">Học phí ${activeYear}</h3>
+    ${verifiedTuition
+      ? `<p>${escapeHtml(tuition.summary)}</p>${officialLink(tuition.source, 'Nguồn học phí chính thức', 'school-dialog-link')}`
+      : `<div class="school-dialog-empty"><h3>Chưa có dữ liệu học phí ${activeYear} đã xác minh</h3><p>BrightWay không dùng mức học phí cũ hoặc dữ liệu không rõ chương trình để lấp chỗ trống. Hãy xem nguồn trường và kiểm tra đúng ngành, khóa học, cơ sở.</p>${officialLink(fallbackUrl, 'Kiểm tra trên nguồn chính thức', 'school-dialog-link')}</div>`}
+    <div class="school-support-separator"><h3>Học bổng và hỗ trợ</h3><p>Nội dung giới thiệu hoặc tài trợ, nếu có, được gắn nhãn riêng và không ảnh hưởng kết quả tìm kiếm hay tính điểm.</p></div>
+    <div data-school-opportunities>Khu học bổng và kết nối đang tải hoặc chưa có dữ liệu được xác minh.</div>
+  </section>`;
+}
+
+function renderProfileCoverage(school, details) {
+  const source = sourceForSchool(school.id);
+  const hasPrograms = Boolean(details?.programs?.length);
+  const hasAdmission = Boolean(source?.source_url || details?.admissionSource);
+  const hasTuition = Boolean(details?.tuition?.year === activeYear && details?.tuition?.source);
+  return `<div class="school-profile-coverage" aria-label="Phạm vi dữ liệu hồ sơ">
+    <span class="${hasPrograms ? 'has-data' : ''}"><strong>Ngành</strong>${hasPrograms ? `${details.programs.length} mục` : 'Chưa có dữ liệu 2026'}</span>
+    <span class="${hasAdmission ? 'has-data' : ''}"><strong>Tuyển sinh</strong>${hasAdmission ? 'Có nguồn chính thức' : 'Chưa có nguồn 2026'}</span>
+    <span class="${hasTuition ? 'has-data' : ''}"><strong>Học phí</strong>${hasTuition ? 'Đã xác minh' : 'Chưa xác minh 2026'}</span>
+    <span><strong>Học bổng</strong>Chỉ hiện khi có nguồn</span>
+  </div>`;
+}
+
 function renderDialog() {
   if (!activeSchool || !dialog) return;
   const details = detailsForSchool(activeSchool.id);
   const tabs = [
     ['majors', 'Ngành đào tạo'], ['scores', 'Điểm chuẩn'], ['admission', 'Đề án tuyển sinh'],
-    ['opportunities', 'Học bổng & kết nối'],
+    ['opportunities', 'Học phí & học bổng'],
   ];
   const body = activeTab === 'majors' ? renderPrograms(activeSchool, details)
-    : activeTab === 'scores' ? renderScores(activeSchool, details) : activeTab === 'opportunities' ? '<div data-school-opportunities>Khu học bổng và kết nối đang tải hoặc chưa khả dụng. Bạn vẫn có thể dùng liên kết trang trường bên dưới.</div>' : renderAdmission(activeSchool, details);
+    : activeTab === 'scores' ? renderScores(activeSchool, details) : activeTab === 'opportunities' ? renderCostsAndSupport(activeSchool, details) : renderAdmission(activeSchool, details);
   const isSaved = window.BWFlow?.read().savedSchools?.some(school => school.id === activeSchool.id);
   promotionUI?.cleanupPromotionHosts(dialog);
   dialog.innerHTML = `<div class="school-dialog-shell">
     <header class="school-dialog-header"><div><span class="school-card-kicker">HỒ SƠ TRƯỜNG · ${escapeHtml(activeSchool.short || '')}</span><h2 id="schoolDialogTitle">${escapeHtml(activeSchool.name)}</h2><p>${escapeHtml(activeSchool.city)} · Dữ liệu tuyển sinh 2026 theo nguồn đã ghi nhận</p></div><div class="school-dialog-header-actions"><button type="button" class="school-save-button ${isSaved ? 'is-saved' : ''}" data-action="save-school">${isSaved ? '✓ Đã lưu' : 'Lưu trường'}</button><button type="button" class="school-dialog-close" data-action="close-school" aria-label="Đóng hồ sơ">×</button></div></header>
+    ${renderProfileCoverage(activeSchool, details)}
     <div class="school-dialog-tabs" role="tablist" aria-label="Thông tin trường">${tabs.map(([key, label]) => `<button type="button" role="tab" id="tab-${key}" aria-controls="schoolDialogPanel" aria-selected="${activeTab === key}" tabindex="${activeTab === key ? '0' : '-1'}" data-action="school-tab" data-tab="${key}">${label}</button>`).join('')}</div>
     <div class="school-dialog-content" id="schoolDialogPanel" role="tabpanel" aria-labelledby="tab-${activeTab}">${body}</div>
     <footer class="school-dialog-footer"><span>Điểm chuẩn giữa các phương thức không dùng thay thế cho nhau.</span>${officialLink(activeSchool.website, 'Trang trường', '')}</footer>
@@ -305,6 +333,14 @@ document.addEventListener('click', event => {
       window.BWFlow?.addUnique('savedMajors', { id: normalizeText(program.name), name: program.name });
       target.textContent = '✓ Đã lưu ngành';
       target.setAttribute('aria-pressed', 'true');
+    }
+  }
+  if (action === 'score-program' && activeSchool) {
+    const program = detailsForSchool(activeSchool.id)?.programs?.[target.dataset.program];
+    if (program) {
+      window.BWFlow?.addUnique('savedMajors', { id: normalizeText(program.name), name: program.name, code: program.code || '', school: activeSchool.id });
+      window.BWFlow?.addUnique('savedSchools', { id: activeSchool.id, name: activeSchool.name, city: activeSchool.city });
+      window.BWFlow?.save({ target: { mode: 'guided', school: activeSchool.id, program: target.dataset.program, name: program.name } });
     }
   }
   if (action === 'open-school') openSchool(target.dataset.schoolId);

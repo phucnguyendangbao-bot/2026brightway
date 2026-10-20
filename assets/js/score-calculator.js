@@ -25,6 +25,15 @@ const EXAMS = [
   { input: 'sTsa', output: 'sumTsa', max: 100 },
 ];
 
+function getTargetSelection() {
+  const guided = document.querySelector('input[name="targetMode"]:checked')?.value === 'guided';
+  const schoolId = guided ? document.getElementById('targetSchool').value : '';
+  const programIndex = guided ? document.getElementById('targetProgram').value : '';
+  const school = targetSchools.find(item => item.id === schoolId) || null;
+  const program = programIndex !== '' ? detailsForSchool(schoolId)?.programs?.[programIndex] || null : null;
+  return { guided, schoolId, programIndex, school, program };
+}
+
 const ADMISSIONS_2026 = [
   {
     id: 'fpt', name: 'Đại học FPT', short: 'FPTU',
@@ -99,6 +108,9 @@ function calculate() {
   const combo = document.getElementById('comboSelect').value;
   const selected = COMBO_SUBJECTS[combo];
   if (!selected) { showError('Tổ hợp không hợp lệ. Hãy chọn lại.'); return; }
+  const target = getTargetSelection();
+  if (target.guided && !target.schoolId) { showError('Hãy chọn trường trước khi đối chiếu theo trường và ngành. Bạn có thể chọn “Tính nhanh” nếu chưa có mục tiêu.'); return; }
+  if (target.guided && !document.getElementById('targetProgram').disabled && !target.program) { showError('Hãy chọn ngành hoặc chương trình đào tạo trước khi nhập kết quả đối chiếu.'); return; }
   const values = {};
   const errors = [];
   const missing = [];
@@ -163,6 +175,9 @@ function calculate() {
   document.getElementById('resultSchools').hidden = false;
   document.getElementById('resultEmpty').hidden = true;
   const methodLabels = { thpt: 'Điểm thi tốt nghiệp THPT', transcript: 'Học bạ', other: 'Bài thi riêng' };
+  document.getElementById('resultTarget').textContent = target.guided
+    ? `${target.school?.name || target.schoolId}${target.program ? ' · ' + target.program.name : ' · chưa có danh sách ngành 2026 đã đối chiếu'}`
+    : 'Tính nhanh · chưa chọn trường';
   document.getElementById('resultMethod').textContent = methodLabels[method];
   document.getElementById('resultFormula').textContent = method === 'thpt'
     ? `${combo}: ${selected.map(key => `${SUBJECTS[key][1]} ${values[key].toFixed(2)}`).join(' + ')} = ${raw.toFixed(2)}`
@@ -170,14 +185,13 @@ function calculate() {
       ? `${combo}: ${selected.map(key => `${TRANSCRIPT_SUBJECTS[key][1]} ${transcriptValues[key].toFixed(2)}`).join(' + ')} = ${transcriptRaw.toFixed(2)}`
       : 'Giữ nguyên điểm gốc của từng kỳ thi; không tự quy đổi khi chưa có công thức theo ngành và trường.';
   document.querySelectorAll('[data-summary-method]').forEach(item => { item.hidden = item.dataset.summaryMethod !== method; });
-  const selectedProgram = document.getElementById('targetProgram').value;
-  const programCode = document.getElementById('targetSchool').value === 'fpt' && selectedProgram !== ''
-    ? detailsForSchool('fpt')?.programs?.[selectedProgram]?.code || '' : '';
+  const programCode = target.schoolId === 'fpt' && target.programIndex !== ''
+    ? detailsForSchool('fpt')?.programs?.[target.programIndex]?.code || '' : '';
   renderSchools({ combo, programCode, keys: selected, raw, transcriptRaw, transcriptConfirmed, values, transcriptValues, grade12: grade12.value });
   const savedSummary = method === 'other'
     ? EXAMS.filter(exam => exams[exam.input] !== null).map(exam => `${({sVact:'V-ACT',sHsa:'HSA',sTsa:'TSA'})[exam.input]}: ${exams[exam.input]}/${exam.max} (điểm gốc)`).join(' · ')
     : document.getElementById('resultFormula').textContent;
-  window.BWFlow?.save({ admissions: { method, combo, completedAt: Date.now() }, scores: { combo, method, transcriptConfirmed, examType: document.getElementById('examType').value, summary: savedSummary, completedAt: Date.now(), values: Object.fromEntries(scoreInputs.map(input => [input.id, input.value])) } });
+  window.BWFlow?.save({ admissions: { method, combo, completedAt: Date.now() }, target: { mode: target.guided ? 'guided' : 'quick', school: target.schoolId, program: target.programIndex, name: target.program?.name || '' }, scores: { combo, method, target: target.guided ? { school: target.schoolId, program: target.programIndex, name: target.program?.name || '' } : null, transcriptConfirmed, examType: document.getElementById('examType').value, summary: savedSummary, completedAt: Date.now(), values: Object.fromEntries(scoreInputs.map(input => [input.id, input.value])) } });
   const host = document.getElementById('scoreNextStep');
   host.hidden = false;
   window.BWFlow?.nextStep(host, 'Lập kế hoạch cho hồ sơ của bạn', 'Đối chiếu đề án trường, ghi lại các mốc tuyển sinh và chuẩn bị tài liệu cần thiết.', [['Lịch tuyển sinh', 'calendar.html'], ['Tài liệu & bài viết', 'resources.html'], ['Hồ sơ của tôi', 'profile.html']]);
@@ -228,8 +242,12 @@ function schoolHeadline(school, result) {
 
 function renderSchools(result) {
   const filter = document.getElementById('schoolFilter').value.trim().toLocaleLowerCase('vi');
-  const target = document.getElementById('targetSchool').value;
+  const targetSelection = getTargetSelection();
+  const target = targetSelection.schoolId;
   const schools = ADMISSIONS_2026.filter(school => (!target || school.id === target) && (school.name.toLocaleLowerCase('vi').includes(filter) || school.short.toLowerCase().includes(filter)));
+  document.getElementById('resultSchoolsTitle').textContent = targetSelection.guided
+    ? `Đối chiếu nguồn của ${targetSelection.school?.name || 'trường đã chọn'}`
+    : 'Đối chiếu nguồn của 9 trường';
   document.getElementById('schoolList').innerHTML = schools.length
     ? schools.map(school => `
       <details class="school-row ${school.type === 'fpt' || school.type === 'ctu' ? 'school-row-calculated' : ''}" ${school.type === 'fpt' ? 'open' : ''}>
@@ -284,13 +302,17 @@ function clearWarning() {
 }
 
 function resetAll() {
-  window.BWFlow?.save({ scores: null, admissions: null });
+  window.BWFlow?.save({ scores: null, admissions: null, target: null });
   document.getElementById('scoreNextStep').hidden = true;
   document.querySelectorAll('.score-input input, .dgnl-input input').forEach(input => {
     input.value = '';
     input.classList.remove('has-value');
   });
   document.getElementById('comboSelect').value = 'A00';
+  document.querySelector('input[name="targetMode"][value="quick"]').checked = true;
+  document.getElementById('targetSchool').value = '';
+  updateTargetProgram();
+  updateTargetModeUI();
   document.querySelector('input[name="admissionMethod"][value="thpt"]').checked = true;
   document.getElementById('transcriptConfirmed').checked = false;
   updateComboUI();
@@ -305,10 +327,11 @@ function resetAll() {
 
 function updateMethodUI() {
   const method = document.querySelector('input[name="admissionMethod"]:checked')?.value || 'thpt';
+  const target = getTargetSelection();
   document.getElementById('comboCard').hidden = method === 'other';
   document.getElementById('examCard').hidden = method !== 'thpt';
   document.getElementById('transcriptCard').hidden = method !== 'transcript';
-  document.getElementById('fptCard').hidden = method !== 'thpt' || Boolean(document.getElementById('targetSchool').value && document.getElementById('targetSchool').value !== 'fpt');
+  document.getElementById('fptCard').hidden = method !== 'thpt' || Boolean(target.schoolId && target.schoolId !== 'fpt');
   document.getElementById('otherExamCard').hidden = method !== 'other';
   document.getElementById('calcBtn').firstChild.textContent = method === 'other' ? 'Đối chiếu điểm ' : 'Tính điểm ';
   window.BWFlow?.save({ admissions: { ...(window.BWFlow?.read().admissions || {}), method } });
@@ -413,17 +436,23 @@ function updateTargetProgram(restore = '') {
   updateMethodUI();
 }
 function updateTargetStatus() {
-  const id = document.getElementById('targetSchool').value;
-  const school = targetSchools.find(item => item.id === id);
+  const target = getTargetSelection();
+  const { schoolId: id, school, programIndex, program } = target;
   const details = detailsForSchool(id);
-  const programIndex = document.getElementById('targetProgram').value;
-  const program = programIndex !== '' ? details?.programs?.[programIndex] : null;
   const source = sourceRegistry.universities.find(item => item.school_id === id);
   const sourceUrl = source?.source_url || details?.admissionSource || school?.website;
-  document.getElementById('targetStatus').innerHTML = school
+  document.getElementById('targetStatus').innerHTML = !target.guided
+    ? 'Chế độ tính nhanh: chỉ tính điểm gốc từ dữ liệu bạn nhập, chưa đối chiếu ngành hoặc dự đoán trúng tuyển.'
+    : school
     ? `${escapeTarget(school.name)}${program ? ' · ' + escapeTarget(program.name) : ''}. Dữ liệu 2026. ${source?.checked_at ? 'Nguồn được rà soát: ' + escapeTarget(source.checked_at) + '. ' : 'Chưa có ngày xác minh quy định. '}Chưa xác nhận đầy đủ công thức cho từng ngành/phương thức; kết quả chỉ là điểm gốc hoặc thành phần được ghi rõ.${/^https:\/\//.test(sourceUrl || '') ? ` <a href="${escapeTarget(sourceUrl)}" target="_blank" rel="noopener noreferrer">Đọc nguồn chính thức ↗</a>` : ''}`
-    : 'Chế độ tính điểm gốc. Bạn có thể chọn trường sau; chưa đánh giá khả năng trúng tuyển.';
-  window.BWFlow?.save({ target: { school: id, program: programIndex, name: program?.name || '' } });
+    : 'Hãy chọn trường. Nếu trường chưa có danh sách ngành 2026 được đối chiếu, công cụ sẽ ghi rõ giới hạn dữ liệu.';
+  window.BWFlow?.save({ target: { mode: target.guided ? 'guided' : 'quick', school: id, program: programIndex, name: program?.name || '' } });
+}
+function updateTargetModeUI() {
+  const target = getTargetSelection();
+  document.getElementById('targetSelectors').hidden = !target.guided;
+  updateTargetStatus();
+  updateMethodUI();
 }
 async function loadTargetSchools() {
   const retry = document.getElementById('retryTarget');
@@ -433,11 +462,14 @@ async function loadTargetSchools() {
     if (!response.ok) throw new Error('School data unavailable');
     targetSchools = buildUniversityCatalog(await response.json()).schools.filter(school => school.identity.entity_kind === 'university');
     const select = document.getElementById('targetSchool');
-    select.innerHTML = '<option value="">Chưa chọn trường · tính điểm gốc</option>' + targetSchools.map(school => `<option value="${escapeTarget(school.id)}">${escapeTarget(school.name)}</option>`).join('');
+    select.innerHTML = '<option value="">Chọn trường</option>' + targetSchools.map(school => `<option value="${escapeTarget(school.id)}">${escapeTarget(school.name)}</option>`).join('');
     const saved = window.BWFlow?.read().target;
     const requested = schoolId || saved?.school;
+    const guided = Boolean(schoolId || (saved?.mode === 'guided' && requested));
+    document.querySelector(`input[name="targetMode"][value="${guided ? 'guided' : 'quick'}"]`).checked = true;
     if (targetSchools.some(school => school.id === requested)) select.value = requested;
     updateTargetProgram(new URLSearchParams(location.search).get('program') ?? (saved?.school === requested ? saved.program : ''));
+    updateTargetModeUI();
   } catch (error) {
     document.getElementById('targetStatus').textContent = 'Chưa tải được trường/ngành. Bạn vẫn có thể tính điểm gốc, hoặc thử tải lại.';
     retry.hidden = false;
@@ -445,6 +477,7 @@ async function loadTargetSchools() {
   }
 }
 document.getElementById('retryTarget').addEventListener('click', loadTargetSchools);
+document.querySelectorAll('input[name="targetMode"]').forEach(input => input.addEventListener('change', () => { updateTargetModeUI(); saveScoreDraft(); }));
 document.getElementById('targetSchool').addEventListener('change', () => { document.getElementById('schoolFilter').value = ''; updateTargetProgram(); saveScoreDraft(); });
 document.getElementById('targetProgram').addEventListener('change', () => { updateTargetStatus(); saveScoreDraft(); });
 loadTargetSchools();

@@ -130,6 +130,13 @@ test('score calculator progressively reveals inputs by admission method', () => 
   assert.match(script, /function updateMethodUI/);
   assert.match(script, /method === 'other'/);
   assert.match(script, /calc-input-error/);
+  assert.match(page, /name="targetMode" value="quick" checked/);
+  assert.match(page, /name="targetMode" value="guided"/);
+  assert.match(page, /id="targetSelectors" hidden/);
+  assert.match(page, /id="resultTarget"/);
+  assert.match(script, /target:\s*null/);
+  assert.match(script, /Hãy chọn trường trước khi đối chiếu/);
+  assert.match(script, /Hãy chọn ngành hoặc chương trình đào tạo/);
 });
 
 test('manual Holland codes require exactly three distinct RIASEC letters', () => {
@@ -203,4 +210,14 @@ test('school lookup exposes only 2026 admissions information', () => {
   assert.doesNotMatch(script, /school-dialog-years|data-action="school-year"/);
   assert.doesNotMatch(script, /historyForSchool|\[2024, 2025, 2026\]/);
   assert.match(script, /params\.get\('admission_year'\) === '2026'/);
+});
+
+test('school profiles expose verified coverage and fail closed for missing 2026 tuition', () => {
+  const script = read('assets/js/page2.js');
+  assert.match(script, /renderProfileCoverage/);
+  assert.match(script, /Học phí & học bổng/);
+  assert.match(script, /Chưa có dữ liệu học phí \$\{activeYear\} đã xác minh/);
+  assert.match(script, /không dùng mức học phí cũ hoặc dữ liệu không rõ chương trình/);
+  assert.match(script, /data-action="score-program"/);
+  assert.match(script, /target:\s*\{\s*mode:\s*'guided'/);
 });

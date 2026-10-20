@@ -123,6 +123,9 @@ async function testSchoolSearch(browser, base, report) {
   assert.match(matchText.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase(), /cong nghe thong tin/);
   await page.locator('.school-card-open').first().click();
   await page.locator('#schoolDialog[open]').waitFor();
+  assert.equal(await page.locator('.school-profile-coverage span').count(), 4);
+  await page.locator('[data-action="school-tab"][data-tab="opportunities"]').click();
+  assert.match(await page.locator('#schoolDialogPanel').innerText(), /Chưa có dữ liệu học phí 2026 đã xác minh/);
   await page.locator('[data-action="close-school"]').click();
   assert.equal(await page.locator('#searchInput').inputValue(), 'Cong nghe thong tin');
   await page.reload({ waitUntil: 'domcontentloaded' });
@@ -136,7 +139,7 @@ async function testSchoolSearch(browser, base, report) {
   await page.screenshot({ path: path.join(artifactDir, 'after-school-search-1440.png'), fullPage: true });
   assert.deepEqual(errors, []);
   await context.close();
-  report.push({ test: '03-school-search', status: 'PASS', assertions: 8, results: majorCount });
+  report.push({ test: '03-school-search', status: 'PASS', assertions: 10, results: majorCount });
 }
 
 async function testVerifiedSchoolLogos(browser, base, report) {
@@ -173,11 +176,14 @@ async function testScoreCalculator(browser, base, report) {
   const { context, page, errors } = await newCheckedPage(browser, base, { width: 1440, height: 1000 });
   await page.goto(`${base}/score-calculator.html`, { waitUntil: 'domcontentloaded' });
   await page.locator('#resetBtn').click();
+  assert.equal(await page.locator('input[name="targetMode"][value="quick"]').isChecked(), true);
+  assert.equal(await page.locator('#targetSelectors').isHidden(), true);
   assert.equal(await page.locator('#examCard .score-input:visible').count(), 3);
   assert.deepEqual(await page.locator('#examCard .score-input:visible span').allTextContents(), ['Toán', 'Vật lý', 'Hóa học']);
   for (const id of ['sMath', 'sPhy', 'sChe']) await page.locator(`#${id}`).fill('8');
   await page.locator('#calcBtn').click();
   assert.equal(await page.locator('#sumCombo').innerText(), '24.00');
+  assert.match(await page.locator('#resultTarget').innerText(), /Tính nhanh/);
   assert.equal(await page.locator('#resultMethod').innerText(), 'Điểm thi tốt nghiệp THPT');
   assert.match(await page.locator('#resultFormula').innerText(), /8\.00.*8\.00.*8\.00.*24\.00/);
   assert.match(await page.locator('#resultAdjustments').innerText(), /Chưa áp dụng/);
@@ -191,9 +197,15 @@ async function testScoreCalculator(browser, base, report) {
   await page.locator('#sChe').fill('11');
   await page.locator('#calcBtn').click();
   assert.match(await page.locator('#calcError').innerText(), /0 đến 10/);
+  await page.goto(`${base}/score-calculator.html?school=fpt&program=0`, { waitUntil: 'domcontentloaded' });
+  await page.waitForFunction(() => document.querySelector('#targetProgram')?.value === '0');
+  await page.locator('#resetBtn').click();
+  assert.equal(await page.locator('input[name="targetMode"][value="quick"]').isChecked(), true);
+  assert.equal(await page.locator('#targetSelectors').isHidden(), true);
+  assert.equal(await page.evaluate(() => BWFlow.read().target?.school || ''), '');
   assert.deepEqual(errors, []);
   await context.close();
-  report.push({ test: '04-score-a00', status: 'PASS', assertions: 10 });
+  report.push({ test: '04-score-a00', status: 'PASS', assertions: 16 });
 }
 
 async function testResponsiveAndRegression(browser, base, report) {
@@ -276,11 +288,13 @@ async function testJourneyPersistence(browser, base, report) {
   await page.locator('[data-action="save-major"]').first().click();
   await page.locator('.school-program-actions a').first().click();
   await page.waitForFunction(() => document.querySelector('#targetProgram')?.value === '0');
+  assert.equal(await page.locator('input[name="targetMode"][value="guided"]').isChecked(), true);
   assert.equal(await page.locator('#targetSchool').inputValue(), 'fpt');
   assert.equal(await page.evaluate(() => BWFlow.progress()[3].complete), false, 'Selecting a method is not completion');
   for (const id of ['sMath', 'sPhy', 'sChe']) await page.locator(`#${id}`).fill('8');
   await page.locator('#calcBtn').click();
   assert.equal(await page.locator('#sumCombo').innerText(), '24.00');
+  assert.match(await page.locator('#resultTarget').innerText(), /Đại học FPT.*Công nghệ thông tin/);
   await page.goto(`${base}/profile.html?tab=journey`, { waitUntil: 'domcontentloaded' });
   await page.locator('#journeyTask').fill('Đọc đề án FPT');
   await page.locator('#journeyTaskForm button').click();
@@ -313,6 +327,7 @@ async function testFailureStates(browser, base, report) {
   await page.unroute('**/assets/data/schools.json');
   await page.locator('#retryTarget').click();
   await page.waitForFunction(() => document.querySelector('#targetSchool').options.length > 1);
+  await page.locator('input[name="targetMode"][value="guided"]').check();
   await page.locator('#targetSchool').selectOption('huemed');
   assert.equal(await page.locator('#targetProgram').isDisabled(), true);
   assert.equal(await page.locator('#fptCard').isVisible(), false);
@@ -390,6 +405,8 @@ async function testInformationAndFunctionAudit(browser, base, report) {
   await page.locator('#calcBtn').click();
   assert.match(await page.locator('#schoolList .school-row-status').innerText(), /24.00/);
   await page.locator('#targetSchool').selectOption('ctu');
+  await page.waitForFunction(() => document.querySelector('#targetProgram')?.options.length > 1);
+  await page.locator('#targetProgram').selectOption('0');
   await page.locator('input[name="admissionMethod"][value="transcript"]').check();
   for (const id of ['hMath','hLit','hEng']) await page.locator(`#${id}`).fill('8');
   await page.locator('#calcBtn').click();
