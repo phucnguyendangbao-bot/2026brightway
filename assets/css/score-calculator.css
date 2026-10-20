@@ -724,3 +724,18 @@
 }
 #targetCard select, #examType { width:100%; min-width:0; min-height:48px; padding:10px; margin:8px 0 16px; border:1px solid #bdb2ed; border-radius:12px; background:#fff; color:#30265b; font:inherit; }
 #targetStatus { font-size:.88rem; line-height:1.65; overflow-wrap:anywhere; }
+/* Integrated admissions reuse existing cards, with scoped fields and scrollable evidence. */
+.integrated-card label:not(.transcript-confirm) { display:block; margin-top:14px; font-size:.84rem; }
+.integrated-card select { max-width:100%; width:100%; min-width:0; min-height:48px; padding:10px; margin:8px 0 12px; border:1px solid #bdb2ed; border-radius:12px; background:#fff; color:#30265b; font:inherit; text-overflow:ellipsis; }
+.integrated-card p,.integrated-result p { overflow-wrap:anywhere; line-height:1.7; }
+.integrated-card h3 { margin:20px 0 8px; font-size:1rem; }
+.integrated-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+.integrated-input { min-width:0; }
+.integrated-input span { display:block; margin-bottom:6px; }
+.integrated-input input { width:100%; min-width:0; padding:11px; border:1px solid #dcd8f0; border-radius:10px; font:inherit; box-sizing:border-box; background:rgba(255,255,255,.8); }
+.integrated-input input:focus-visible { outline:3px solid #b9adff; outline-offset:2px; }
+.integrated-table-wrap { max-width:100%; overflow-x:auto; margin:18px 0; }
+.integrated-result table { width:100%; min-width:480px; border-collapse:collapse; font-size:.8rem; }
+.integrated-result th,.integrated-result td { padding:10px; text-align:left; border-bottom:1px solid #e5e0f2; }
+.integrated-result strong { color:#5040b4; }
+@media(max-width:480px) { .integrated-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }

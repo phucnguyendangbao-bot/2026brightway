@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/assets/css/page2.css?v=20261020">
-<link rel="stylesheet" href="/assets/css/score-calculator.css?v=20261020-guided">
+<link rel="stylesheet" href="/assets/css/score-calculator.css?v=20261020-integrated">
 <link rel="stylesheet" href="/assets/css/brightway-theme.css?v=7">
 <link rel="stylesheet" href="/assets/css/flow.css?v=20261020-journey">
 <script src="/assets/js/flow.js?v=20261020-journey" defer></script>
@@ -47,7 +47,7 @@
   <h2>Quy định đang đối chiếu: tuyển sinh 2026</h2>
   <p>Thí sinh thi tốt nghiệp từ năm 2026 cần tổng 3 môn thi theo tổ hợp, hoặc Toán + Ngữ văn + một môn thi khác, đạt ít nhất 15/30 điểm gốc. Có ngoại lệ tại Điều 6 khoản 3; ngành giáo viên, sức khỏe, pháp luật còn có ngưỡng riêng.</p>
   <p>Điểm cộng tối đa 10% thang xét tuyển. Chứng chỉ ngoại ngữ chỉ dùng để quy đổi môn hoặc cộng khuyến khích. Ưu tiên khu vực: KV1 0,75; KV2-NT 0,50; KV2 0,25; KV3 0. Ưu tiên đối tượng: UT1 2,00; UT2 1,00 nếu đủ điều kiện. Từ 22,50/30, ưu tiên giảm theo [(30 − tổng điểm)/7,50] × mức ưu tiên. Kết quả thang 30 tối đa là 30.</p>
-  <p>Công cụ hiển thị điểm gốc và thành phần tính được; chưa tự cộng ưu tiên hay điểm cộng. <a href="https://congbao.chinhphu.vn/van-ban/thong-tu-so-06-2026-tt-bgddt-469029.htm" target="_blank" rel="noopener noreferrer">Thông tư 06/2026, Điều 6–7 ↗</a> · <a href="resources.html#policy-sources">Nguồn và trạng thái văn bản 2027 →</a></p>
+  <p>Ba chế độ điểm gốc chưa cộng ưu tiên hay điểm cộng. Xét tuyển tổng hợp chỉ áp dụng ưu tiên trong phạm vi trường đã xác minh và ghi rõ từng khoản trong kết quả. <a href="https://congbao.chinhphu.vn/van-ban/thong-tu-so-06-2026-tt-bgddt-469029.htm" target="_blank" rel="noopener noreferrer">Thông tư 06/2026, Điều 6–7 ↗</a> · <a href="resources.html#policy-sources">Nguồn và trạng thái văn bản 2027 →</a></p>
 </section>
 <div class="calc-layout">
   <!-- LEFT: INPUT FORM -->
@@ -75,6 +75,7 @@
         <label><input type="radio" name="admissionMethod" value="thpt" checked><span><strong>Điểm thi THPT</strong><small>Chọn tổ hợp và nhập đúng 3 môn</small></span></label>
         <label><input type="radio" name="admissionMethod" value="transcript"><span><strong>Học bạ</strong><small>Nhập điểm đã tổng hợp theo yêu cầu trường</small></span></label>
         <label><input type="radio" name="admissionMethod" value="other"><span><strong>Bài thi riêng</strong><small>V-ACT, HSA hoặc TSA</small></span></label>
+        <label><input type="radio" name="admissionMethod" value="integrated"><span><strong>Xét tuyển tổng hợp / kết hợp</strong><small>8 trường ĐHQG-HCM · cấu hình và nguồn 2026 riêng</small></span></label>
       </div>
     </div>
 
@@ -265,7 +266,7 @@
 
 <script src="/assets/js/uni-logos.js"></script>
 <script src="/assets/js/uni-logo-svg.js"></script>
-<script type="module" src="/assets/js/score-calculator.js?v=20261020-regression"></script>
+<script type="module" src="/assets/js/score-calculator.js?v=20261020-integrated"></script>
 <script src="assets/js/waybi.js"></script>
 <script src="assets/js/waybi-presence.js"></script>
 </body>

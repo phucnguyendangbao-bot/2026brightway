@@ -5,6 +5,8 @@ import sourceRegistry from '../data/school-admissions-sources.js';
 import { COMBO_SUBJECTS, parseScore, fptComponent, fptCombinationAllowed } from './score-rules.js';
 import { canonicalSchoolId, buildUniversityCatalog } from '../data/university-identities.js';
 import { detailsForSchool } from '../data/school-profile-details.js';
+import { createIntegratedCalculator } from './integrated-calculator.js';
+const integratedCalculator = createIntegratedCalculator();
 const escapeTarget = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let targetSchools = [];
 let targetRevision = 0;
@@ -106,6 +108,13 @@ function readBounded(id, max) {
 
 function calculate() {
   const method = document.querySelector('input[name="admissionMethod"]:checked')?.value || 'thpt';
+  if (method === 'integrated') {
+    clearError(); clearWarning();
+    document.getElementById('resultSummary').hidden = true;
+    document.getElementById('resultSchools').hidden = true;
+    document.getElementById('scoreNextStep').hidden = true;
+    integratedCalculator.calculate(); return;
+  }
   const combo = document.getElementById('comboSelect').value;
   const selected = COMBO_SUBJECTS[combo];
   if (!selected) { showError('Tổ hợp không hợp lệ. Hãy chọn lại.'); return; }
@@ -306,10 +315,12 @@ function clearWarning() {
 }
 
 function resetAll() {
+  integratedCalculator.reset();
   targetRevision++;
   const url = new URL(location.href);
   url.searchParams.delete('school');
   url.searchParams.delete('program');
+  for (const key of ['method','integratedSchool','integratedProgram']) url.searchParams.delete(key);
   history.replaceState(null, '', url);
   window.BWFlow?.save({ scores: null, admissions: null, target: null });
   document.getElementById('scoreNextStep').hidden = true;
@@ -343,7 +354,9 @@ function resetAll() {
 function updateMethodUI() {
   const method = document.querySelector('input[name="admissionMethod"]:checked')?.value || 'thpt';
   const target = getTargetSelection();
-  document.getElementById('comboCard').hidden = method === 'other';
+  document.getElementById('targetCard').hidden = method === 'integrated';
+  document.getElementById('comboCard').hidden = method === 'other' || method === 'integrated';
+  integratedCalculator.update(method === 'integrated');
   document.getElementById('examCard').hidden = method !== 'thpt';
   document.getElementById('transcriptCard').hidden = method !== 'transcript';
   document.getElementById('fptCard').hidden = method !== 'thpt' || Boolean(target.schoolId && target.schoolId !== 'fpt');
@@ -383,6 +396,9 @@ document.getElementById('schoolFilter').addEventListener('input', () => {
 document.querySelectorAll('.score-input input, .dgnl-input input').forEach(input => {
   input.addEventListener('input', () => input.classList.toggle('has-value', input.value.trim() !== ''));
 });
+// Respect explicit integrated deep links before initial UI synchronization.
+const requestedIntegrated = new URLSearchParams(location.search).get('method') === 'integrated';
+if (requestedIntegrated) document.querySelector('input[name="admissionMethod"][value="integrated"]').checked = true;
 updateComboUI();
 updateMethodUI();
 
@@ -395,7 +411,7 @@ const scoreInputs = [...document.querySelectorAll('.score-input input, .dgnl-inp
 const draft = window.BWFlow?.read().scores;
 if (draft) {
   if (['sVact','sHsa','sTsa'].includes(draft.examType)) document.getElementById('examType').value = draft.examType;
-  if (['thpt', 'transcript', 'other'].includes(draft.method)) document.querySelector(`input[name="admissionMethod"][value="${draft.method}"]`).checked = true;
+  if (!requestedIntegrated && ['thpt', 'transcript', 'other', 'integrated'].includes(draft.method)) document.querySelector(`input[name="admissionMethod"][value="${draft.method}"]`).checked = true;
   if (COMBO_SUBJECTS[draft.combo]) document.getElementById('comboSelect').value = draft.combo;
   document.getElementById('transcriptConfirmed').checked = draft.transcriptConfirmed === true;
   scoreInputs.forEach(input => {
