@@ -8,11 +8,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/assets/css/page2.css?v=20261016-responsive-programs">
-<link rel="stylesheet" href="/assets/css/score-calculator.css?v=20261019-aurora">
+<link rel="stylesheet" href="/assets/css/page2.css?v=20261020">
+<link rel="stylesheet" href="/assets/css/score-calculator.css?v=20261020">
 <link rel="stylesheet" href="/assets/css/brightway-theme.css?v=7">
-<link rel="stylesheet" href="/assets/css/flow.css?v=20261019-glass">
-<script src="/assets/js/flow.js?v=20261019-ux" defer></script>
+<link rel="stylesheet" href="/assets/css/flow.css?v=20261020-journey">
+<script src="/assets/js/flow.js?v=20261020-journey" defer></script>
 <link rel="stylesheet" href="/assets/css/admissions-policy.css?v=20261014">
 </head>
 <body>
@@ -52,8 +52,19 @@
 <div class="calc-layout">
   <!-- LEFT: INPUT FORM -->
   <aside class="calc-input-panel">
+    <div class="calc-card" id="targetCard">
+      <h2 class="calc-section-title">1. Chọn trường và ngành</h2>
+      <p>Chọn mục tiêu để đối chiếu nguồn 2026, hoặc tính tổng điểm gốc nếu chưa chọn trường.</p>
+      <label class="combo-select-label" for="targetSchool">Trường quan tâm</label>
+      <select id="targetSchool"><option value="">Chưa chọn trường · tính điểm gốc</option></select>
+      <label class="combo-select-label" for="targetProgram">Ngành / chương trình đào tạo</label>
+      <select id="targetProgram" disabled><option value="">Chọn trường trước</option></select>
+      <p id="targetStatus" role="status">Đang tải danh sách trường…</p>
+      <button id="retryTarget" type="button" hidden>Thử tải lại</button>
+    </div>
     <div class="calc-card calc-method-card">
-      <h2 class="calc-section-title"><span class="section-number">01</span> Bạn muốn tính theo phương thức nào?</h2>
+      <h2 class="calc-section-title">2. Chọn loại điểm để đối chiếu</h2>
+      <p class="calc-field-note">Các lựa chọn này là loại điểm đầu vào, không xác nhận trường/ngành chấp nhận phương thức đó. Xem nguồn trường bên trên.</p>
       <div class="calc-method-options" role="radiogroup" aria-label="Phương thức xét tuyển">
         <label><input type="radio" name="admissionMethod" value="thpt" checked><span><strong>Điểm thi THPT</strong><small>Chọn tổ hợp và nhập đúng 3 môn</small></span></label>
         <label><input type="radio" name="admissionMethod" value="transcript"><span><strong>Học bạ</strong><small>Nhập điểm đã tổng hợp theo yêu cầu trường</small></span></label>
@@ -62,7 +73,7 @@
     </div>
 
     <div class="calc-card" id="comboCard">
-      <h2 class="calc-section-title"><span class="section-number">02</span> Chọn tổ hợp xét tuyển</h2>
+      <h2 class="calc-section-title"><span class="section-number">03</span> Chọn tổ hợp xét tuyển</h2>
       <label class="combo-select-label" for="comboSelect">Tổ hợp môn thi</label>
       <select id="comboSelect">
         <option value="A00">A00 · Toán, Lý, Hóa</option>
@@ -87,7 +98,7 @@
     </div>
 
     <div class="calc-card" id="examCard">
-      <h2 class="calc-section-title"><span class="section-number">03</span> Nhập điểm thi THPT</h2>
+      <h2 class="calc-section-title"><span class="section-number">04</span> Nhập điểm thi THPT</h2>
       <p id="comboHint" class="combo-hint">A00 · Cần nhập Toán, Lý, Hóa</p>
       <div class="score-grid">
         <label class="score-input">
@@ -128,7 +139,7 @@
     </div>
 
     <div class="calc-card" id="transcriptCard" hidden>
-      <h2 class="calc-section-title"><span class="section-number">03</span> Nhập điểm học bạ</h2>
+      <h2 class="calc-section-title"><span class="section-number">04</span> Nhập điểm học bạ</h2>
       <p id="transcriptHint" class="combo-hint">A00 · Điểm trung bình học bạ Toán, Lý, Hóa</p>
       <label class="transcript-confirm"><input type="checkbox" id="transcriptConfirmed"> <span>Tôi đã tổng hợp điểm môn từ lớp 10–12 theo đúng yêu cầu của trường.</span></label>
       <div class="score-grid transcript-grid">
@@ -156,7 +167,9 @@
     </details>
 
     <div class="calc-card" id="otherExamCard" hidden>
-      <h2 class="calc-section-title"><span class="section-number">02</span> Nhập điểm bài thi riêng</h2>
+      <h2 class="calc-section-title"><span class="section-number">03</span> Chọn bài thi và nhập điểm</h2>
+      <label for="examType">Kỳ thi đã tham dự</label>
+      <select id="examType"><option value="sVact">V-ACT</option><option value="sHsa">HSA</option><option value="sTsa">TSA</option></select>
       <div class="dgnl-grid">
         <label class="dgnl-input">
           <span>V-ACT (ĐHQG-HCM, tối đa 1.200)</span>
@@ -245,7 +258,7 @@
 
 <script src="/assets/js/uni-logos.js"></script>
 <script src="/assets/js/uni-logo-svg.js"></script>
-<script type="module" src="/assets/js/score-calculator.js?v=20261019-ux"></script>
+<script type="module" src="/assets/js/score-calculator.js?v=20261020"></script>
 <script src="assets/js/waybi.js"></script>
 <script src="assets/js/waybi-presence.js"></script>
 </body>

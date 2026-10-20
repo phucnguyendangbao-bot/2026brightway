@@ -119,7 +119,7 @@ function renderPrograms(school, details) {
   return `<p class="school-dialog-lead"><strong>${details.programs.length} ngành/chương trình</strong> trong dữ liệu tuyển sinh ${details.year}.${hasScores ? ' Điểm chuẩn cùng năm nằm ở cột cuối.' : ''}</p>
     ${details.programNote ? `<p class="school-program-note">${escapeHtml(details.programNote)}</p>` : ''}
     <div class="school-program-table-wrap"><table class="school-program-table"><thead><tr><th>Mã xét tuyển</th><th>Ngành / chương trình</th>${hasTracks ? '<th>Phân loại</th>' : ''}${hasQuotas ? '<th>Chỉ tiêu dự kiến</th>' : ''}${hasCombinations ? '<th>Tổ hợp trích</th>' : ''}${hasScores ? `<th>Điểm chuẩn ${details.year}</th>` : ''}</tr></thead><tbody>
-    ${details.programs.map(program => `<tr><td>${program.code ? escapeHtml(program.code) : '<span class="school-program-code-missing">Chưa công bố</span>'}</td><td>${escapeHtml(program.name)}</td>${hasTracks ? `<td>${escapeHtml(program.track || '')}</td>` : ''}${hasQuotas ? `<td>${Number.isFinite(program.quota) ? escapeHtml(program.quota) : ''}</td>` : ''}${hasCombinations ? `<td>${escapeHtml(program.combination || '')}</td>` : ''}${hasScores ? `<td>${Number.isFinite(program.score) ? `<strong>${escapeHtml(formatScore(program.score))}</strong>` : ''}</td>` : ''}</tr>`).join('')}
+    ${details.programs.map((program, index) => `<tr><td>${program.code ? escapeHtml(program.code) : '<span class="school-program-code-missing">Chưa công bố</span>'}</td><td>${escapeHtml(program.name)}<div class="school-program-actions"><button type="button" data-action="save-major" data-program="${index}">Lưu ngành</button><a href="score-calculator.html?school=${encodeURIComponent(school.id)}&program=${index}">Đối chiếu điểm →</a></div></td>${hasTracks ? `<td>${escapeHtml(program.track || '')}</td>` : ''}${hasQuotas ? `<td>${Number.isFinite(program.quota) ? escapeHtml(program.quota) : ''}</td>` : ''}${hasCombinations ? `<td>${escapeHtml(program.combination || '')}</td>` : ''}${hasScores ? `<td>${Number.isFinite(program.score) ? `<strong>${escapeHtml(formatScore(program.score))}</strong>` : ''}</td>` : ''}</tr>`).join('')}
     </tbody></table></div>
     ${details.scoreMethod ? `<p class="school-dialog-footnote">${escapeHtml(details.scoreMethod)}. Chọn đúng cơ sở và chương trình khi đăng ký.</p>` : ''}
     ${officialLink(details.programSource, details.programSourceLabel || 'Danh sách ngành trên trang trường', 'school-dialog-link')}
@@ -243,6 +243,7 @@ function filterSchools(value) {
   url.searchParams.delete('major');
   if (activeRegion) url.searchParams.set('region', activeRegion); else url.searchParams.delete('region');
   history.replaceState(null, '', url.pathname + url.search + url.hash);
+  window.BWFlow?.save({ schoolFilters: { query: value.trim(), mode: searchMode, region: activeRegion } });
   document.getElementById('schoolCatalogStatus').textContent = query
     ? `Tìm thấy ${filteredSchools.length} trường theo ${searchMode === 'major' ? 'ngành đào tạo' : 'tên trường'} “${value.trim()}”${activeRegion ? ` tại ${activeRegion}` : ''}.`
     : `${schools.filter(school => school.identity.entity_kind === 'university').length} hồ sơ trường đại học · ${schools.filter(school => school.identity.entity_kind === 'university_system').length} đại học vùng · Rà soát ${REVIEWED_AT}.`;
@@ -297,6 +298,14 @@ document.addEventListener('click', event => {
   const target = event.target.closest('[data-action]');
   if (!target) return;
   const action = target.dataset.action;
+  if (action === 'save-major' && activeSchool) {
+    const program = detailsForSchool(activeSchool.id)?.programs?.[target.dataset.program];
+    if (program) {
+      window.BWFlow?.addUnique('savedMajors', { id: normalizeText(program.name), name: program.name });
+      target.textContent = '✓ Đã lưu ngành';
+      target.setAttribute('aria-pressed', 'true');
+    }
+  }
   if (action === 'open-school') openSchool(target.dataset.schoolId);
   if (action === 'close-school') dialog.close();
   if (action === 'save-school' && activeSchool) {
@@ -336,6 +345,12 @@ document.getElementById('searchClear')?.addEventListener('click', () => {
   input.focus();
   filterSchools('');
 });
+document.getElementById('resetSchoolFilters')?.addEventListener('click', () => {
+  activeRegion = '';
+  document.getElementById('regionFilter').value = '';
+  document.getElementById('searchInput').value = '';
+  filterSchools('');
+});
 document.querySelectorAll('input[name="schoolSearchMode"]').forEach(input => input.addEventListener('change', event => {
   searchMode = event.target.value;
   updateSearchSuggestions();
@@ -354,9 +369,11 @@ async function initPage2() {
     const catalog = buildUniversityCatalog(await response.json(), sourceRegistry.universities);
     schools = catalog.schools;
     const params = new URLSearchParams(location.search);
-    const initialQuery = params.get('major') || params.get('q') || '';
+    const previousFilters = !params.size ? window.BWFlow?.read().schoolFilters : null;
+    const initialQuery = params.get('major') || params.get('q') || previousFilters?.query || '';
     searchMode = params.get('mode') === 'major' || params.has('major') || params.get('focus') === 'major' ? 'major' : 'school';
     activeRegion = params.get('region') || '';
+    if (previousFilters) { searchMode = previousFilters.mode === 'major' ? 'major' : 'school'; activeRegion = previousFilters.region || ''; }
     document.querySelector(`input[name="schoolSearchMode"][value="${searchMode}"]`).checked = true;
     const regions = [...new Set(schools.map(school => school.city).filter(Boolean))].sort((first, second) => first.localeCompare(second, 'vi'));
     document.getElementById('regionFilter').innerHTML = '<option value="">Tất cả khu vực</option>' + regions.map(region => `<option value="${escapeHtml(region)}">${escapeHtml(region)}</option>`).join('');
@@ -364,7 +381,7 @@ async function initPage2() {
     updateSearchSuggestions();
     document.getElementById('searchInput').value = initialQuery;
     filterSchools(initialQuery);
-    if (initialQuery) window.BWFlow?.addUnique('savedMajors', { id: normalizeText(initialQuery), name: initialQuery });
+    // Searching is not a decision to save a major.
     document.getElementById('schoolCatalogCount').textContent = `${catalog.stats.universities} trường`;
     const career = new URLSearchParams(location.search).get('career') || window.BWFlow?.read().career?.name;
     if (career) {

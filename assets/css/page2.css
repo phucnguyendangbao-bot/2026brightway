@@ -743,3 +743,5 @@ html { scroll-behavior: smooth; }
   backdrop-filter:blur(20px) saturate(145%);
   -webkit-backdrop-filter:blur(20px) saturate(145%);
 }
+.school-program-actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+.school-program-actions button, .school-program-actions a { display:inline-flex; align-items:center; min-height:44px; padding:8px 10px; border:1px solid #bdb2ed; border-radius:10px; background:#f7f4ff; color:#47318b; font:inherit; cursor:pointer; }

@@ -43,7 +43,7 @@
   submit.addEventListener('click', () => {
     if (selected.length !== 3) return;
     const code = selected.join('');
-    try { localStorage.setItem('studentHollandImportedV1', JSON.stringify({ code, savedAt: Date.now() })); } catch { /* Navigation still works without storage. */ }
+    window.BWFlow?.storage.set('studentHollandImportedV1', JSON.stringify({ code, savedAt: Date.now() }));
     location.assign('careers-holland.html?holland=' + encodeURIComponent(code));
   });
 

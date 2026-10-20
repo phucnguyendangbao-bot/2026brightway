@@ -5,6 +5,7 @@
   'use strict';
 
   const $ = id => document.getElementById(id);
+  const escape = value => String(value ?? '').replace(/[&<>"']/g, character => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[character]);
   const fmtDate = iso => {
     if (!iso) return '';
     const d = new Date(iso);
@@ -98,7 +99,7 @@
     if (!confirm('Đăng xuất khỏi tài khoản?')) return;
     try {
       await window.BWAuth.signOut();
-      window.location.href = 'login.html';
+      renderAuthState();
     } catch (e) {
       alert('Lỗi: ' + e.message);
     }
@@ -119,11 +120,11 @@
           const j = item.job_data || item;
           return `
             <div class="list-card">
-              <div class="list-card-name">${j.name || j.job_name}</div>
-              <div class="list-card-meta">${j.en || ''} · ${j.group || ''} ${j.code ? '· Mã ' + j.code : ''}</div>
+              <div class="list-card-name">${escape(j.name || j.job_name)}</div>
+              <div class="list-card-meta">${escape(j.en)} · ${escape(j.group)} ${j.code ? '· Mã ' + escape(j.code) : ''}</div>
               <div class="list-card-foot">
                 <span class="list-card-date">${fmtDate(item.created_at)}</span>
-                <button class="btn-link" data-name="${j.name || j.job_name}">Bỏ lưu</button>
+                <button class="btn-link" data-name="${escape(j.name || j.job_name)}">Bỏ lưu</button>
               </div>
             </div>
           `;
@@ -136,7 +137,7 @@
         });
       });
     } catch (e) {
-      box.innerHTML = '<p class="empty-msg">❌ Lỗi: ' + e.message + '</p>';
+      box.textContent = 'Chưa tải được mục yêu thích. ' + e.message;
     }
   }
 
@@ -158,15 +159,15 @@
             <a class="list-row" href="careers-holland.html?q=${encodeURIComponent(h.query || '')}">
               <span class="list-row-icon">🔍</span>
               <div class="list-row-body">
-                <div class="list-row-name">${h.query || '(trống)'}</div>
-                <div class="list-row-meta">${meta}</div>
+                <div class="list-row-name">${escape(h.query || '(trống)')}</div>
+                <div class="list-row-meta">${escape(meta)}</div>
               </div>
               <span class="list-row-date">${fmtDate(h.created_at)}</span>
             </a>
           `;
         }).join('') + '</div>';
     } catch (e) {
-      box.innerHTML = '<p class="empty-msg">❌ Lỗi: ' + e.message + '</p>';
+      box.textContent = 'Chưa tải được lịch sử. ' + e.message;
     }
   }
 
@@ -188,7 +189,7 @@
         }
       }
     } else if (event === 'SIGNED_OUT') {
-      window.location.href = 'login.html';
+      renderAuthState();
     }
   });
 

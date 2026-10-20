@@ -136,7 +136,7 @@
     }
     input.removeAttribute('aria-invalid');
     error.hidden = true;
-    try { localStorage.setItem(IMPORTED_KEY, JSON.stringify({ code, savedAt: Date.now() })); } catch (e) { /* still show result */ }
+    window.BWFlow.storage.set(IMPORTED_KEY, JSON.stringify({ code, savedAt: Date.now() }));
     showImportedResult(code);
     $('importResult').open = false;
     $('resultCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -163,7 +163,7 @@
   // ─── localStorage (debounced) ───
   function saveToStorage(immediate = false) {
     clearTimeout(state.saveTimer);
-    state.saveTimer = setTimeout(() => {
+    const persist = () => {
       try {
         const arr = QUESTIONS.map((_, i) => state.answers[i] ?? null);
         const answered = arr.filter(v => v !== null).length;
@@ -179,7 +179,8 @@
         });
         const ranked = Object.keys(norm).sort((a, b) => norm[b] - norm[a]);
         const code = answered >= 18 ? ranked.slice(0, 3).join('') : '';
-        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        window.BWFlow.storage.set(STORAGE_KEY, JSON.stringify({
+          page: state.page,
           answers: arr,
           scores: norm,
           code: state.completed ? state.resultCode : code,
@@ -188,26 +189,29 @@
           source: 'holland',
           completed: state.completed === true
         }));
-        localStorage.setItem(TIMER_KEY, JSON.stringify({
+        window.BWFlow.storage.set(TIMER_KEY, JSON.stringify({
           remaining: state.timerSec,
           updatedAt: Date.now()
         }));
-      } catch (e) { /* ignore */ }
-    }, immediate ? 0 : 200);
+      } catch (e) { console.error('[Holland save]', e); }
+    };
+    if (immediate) persist(); else state.saveTimer = setTimeout(persist, 200);
   }
 
   function loadFromStorage() {
     try {
       // Load answers
-      const raw = localStorage.getItem(STORAGE_KEY);
+      const raw = window.BWFlow.storage.get(STORAGE_KEY);
       if (raw) {
         const data = JSON.parse(raw);
         if (data && Array.isArray(data.answers) && data.answers.length === QUESTIONS.length) {
           data.answers.forEach((v, i) => { if (Number.isInteger(v) && v >= 1 && v <= 5) state.answers[i] = v; });
+          state.page = Number.isInteger(data.page) ? Math.max(0, Math.min(8, data.page)) : 0;
+          state.completed = data.completed === true;
         }
       }
       // Load timer (resume nếu còn thời gian)
-      const tRaw = localStorage.getItem(TIMER_KEY);
+      const tRaw = window.BWFlow.storage.get(TIMER_KEY);
       if (tRaw) {
         const t = JSON.parse(tRaw);
         if (t && typeof t.remaining === 'number' && t.remaining > 0 && t.remaining <= TIMER_SECONDS + 5) {
@@ -263,7 +267,7 @@
         <div class="q-scale">
           <span class="q-scale-lbl">Không đúng</span>
           <div class="q-scale-btns">
-            ${[1, 2, 3, 4, 5].map(n => `<button class="q-btn${val === n ? ' selected' : ''}" data-idx="${i}" data-val="${n}" aria-label="Chọn ${n}">${n}</button>`).join('')}
+            ${[1, 2, 3, 4, 5].map(n => `<button class="q-btn${val === n ? ' selected' : ''}" data-idx="${i}" data-val="${n}" aria-pressed="${val === n}" aria-label="Câu ${i + 1}: chọn ${n} trên 5">${n}</button>`).join('')}
           </div>
           <span class="q-scale-lbl right">Rất đúng</span>
         </div>
@@ -318,7 +322,7 @@
       if (state.timerSec <= 0) {
         clearInterval(state.timerInterval);
         state.timerInterval = null;
-        hollandSubmit(true);
+        $('qTimer').textContent = 'Bạn có thể tiếp tục, không giới hạn giờ';
       }
     }, 1000);
   }
@@ -337,29 +341,23 @@
     // Update visual trong DOM (chỉ nút của câu idx)
     document.querySelectorAll(`.q-btn[data-idx="${idx}"]`).forEach(b => {
       b.classList.toggle('selected', parseInt(b.dataset.val) === val);
+      b.setAttribute('aria-pressed', String(parseInt(b.dataset.val) === val));
     });
     updateProgress();
-    saveToStorage();
-
-    // Auto-next nếu đã trả lời hết câu cuối trang
-    const end = getPageEnd();
-    const allDone = Array.from({ length: end - getPageStart() }, (_, j) => state.answers[getPageStart() + j] !== undefined).every(Boolean);
-    if (allDone) {
-      const lastPage = Math.ceil(QUESTIONS.length / PER_PAGE) - 1;
-      if (state.page < lastPage) {
-        setTimeout(() => hollandNav(1), 250);
-      }
-    }
+    state.completed = false;
+    saveToStorage(true);
   }
 
   function hollandNav(dir) {
     const lastPage = Math.ceil(QUESTIONS.length / PER_PAGE) - 1;
     state.page = Math.max(0, Math.min(lastPage, state.page + dir));
+    saveToStorage(true);
     renderPage();
   }
 
   function goToPage(p) {
-    state.page = p;
+    state.page = Math.max(0, Math.min(8, Number(p) || 0));
+    saveToStorage(true);
     renderPage();
   }
 
@@ -370,7 +368,7 @@
     }
     if (state.timerInterval) { clearInterval(state.timerInterval); state.timerInterval = null; }
     state.completed = unanswered.length === 0;
-    try { localStorage.removeItem(IMPORTED_KEY); } catch (e) {}
+    window.BWFlow.storage.remove(IMPORTED_KEY);
 
     const scores = { R: 0, I: 0, A: 0, S: 0, E: 0, C: 0 };
     QUESTIONS.forEach((q, i) => { scores[q.t] += (state.answers[i] || 0); });
@@ -440,11 +438,13 @@
   }
 
   function hollandReset() {
+    clearTimeout(state.saveTimer);
     state.completed = false;
     Object.keys(state.answers).forEach(k => delete state.answers[k]);
     state.page = 0;
     state.timerSec = TIMER_SECONDS;
-    try { localStorage.removeItem(STORAGE_KEY); localStorage.removeItem(TIMER_KEY); localStorage.removeItem(IMPORTED_KEY); } catch (e) {}
+    [STORAGE_KEY, TIMER_KEY, IMPORTED_KEY].forEach(key => window.BWFlow.storage.remove(key));
+    window.BWFlow.save({ holland: null });
     if (!state.timerInterval) startTimer();
     $('quizCard').style.display = '';
     $('jumpBarWrap').style.display = '';
@@ -468,11 +468,11 @@
     renderTypesIntro();
     if (window.location.hash === '#import-result') $('importResult').open = true;
     try {
-      const imported = JSON.parse(localStorage.getItem(IMPORTED_KEY) || 'null');
+      const imported = JSON.parse(window.BWFlow.storage.get(IMPORTED_KEY) || 'null');
       const code = normalizeCode(imported?.code);
       if (code) { showImportedResult(code); return; }
     } catch (e) { /* ignore invalid storage */ }
-    if (getAnsweredCount() === QUESTIONS.length) { hollandSubmit(); return; }
+    if (getAnsweredCount() === QUESTIONS.length && state.completed) { hollandSubmit(); return; }
     renderPage();
     startTimer();
   }
@@ -495,8 +495,6 @@
       window.HollandApp.hollandNav(1);
     } else if (e.key === 'ArrowLeft') {
       window.HollandApp.hollandNav(-1);
-    } else if (e.key === 'Enter' && state.page === Math.ceil(QUESTIONS.length / PER_PAGE) - 1) {
-      window.HollandApp.hollandSubmit();
     }
   });
 

@@ -516,7 +516,7 @@
 
 /* --- Scroll reveal animation --- */
 .bw-reveal{
-  opacity:0; transform:translateY(24px);
+  opacity:1; transform:none;
   transition:opacity 0.7s ease, transform 0.7s cubic-bezier(0.4,0,0.2,1);
 }
 .bw-reveal.revealed{ opacity:1; transform:translateY(0); }
@@ -2948,12 +2948,12 @@ body.spa-active #spa-topbar { display: flex; }
 
 </style>
 <link rel="stylesheet" href="/assets/css/brightway-theme.css?v=7">
-<link rel="stylesheet" href="/assets/css/flow.css?v=20261019-glass">
+<link rel="stylesheet" href="/assets/css/flow.css?v=20261020-journey">
 <link rel="stylesheet" href="/assets/css/admissions-home.css?v=7">
-<script src="/assets/js/flow.js?v=20261019-ux" defer></script>
+<script src="/assets/js/flow.js?v=20261020-journey" defer></script>
 <script type="module" src="/assets/js/catalog-stats.js?v=20261015"></script>
 <link rel="stylesheet" href="/assets/css/home-holland.css?v=20261015">
-<link rel="stylesheet" href="/assets/css/home-journeys.css?v=20261019-glass">
+<link rel="stylesheet" href="/assets/css/home-journeys.css?v=20261020">
 <script src="/assets/js/home-holland.js?v=20261015" defer></script>
 </head>
 <body>
@@ -3294,7 +3294,7 @@ body.spa-active #spa-topbar { display: flex; }
   }
   .bw-tools-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
     gap: 20px;
     max-width: 960px;
     margin: 0 auto;
@@ -4987,8 +4987,11 @@ body.spa-active #spa-topbar { display: flex; }
       <div class="badge">Dành cho học sinh THPT · Dữ liệu 2026</div>
       <h1 class="bw-hero-h1">Tìm hướng đi <span class="accent-yellow">phù hợp với bạn.</span></h1>
       <p class="lede">Khám phá ngành nghề, tìm trường đại học và chuẩn bị xét tuyển cùng BrightWay.</p>
+      <div class="flow-hero-actions"><a class="flow-primary" href="holland.html">Bắt đầu hướng nghiệp →</a><a href="page2.html?focus=major">Khám phá ngành &amp; trường</a></div>
       <section class="home-journey-picker" aria-labelledby="homeJourneyTitle">
         <h2 id="homeJourneyTitle">Bạn đang ở bước nào?</h2>
+        <details class="home-tools-disclosure">
+        <summary>Truy cập nhanh các công cụ</summary>
         <div class="home-journey-grid">
           <a class="home-journey-card" href="holland.html">
             <span class="home-journey-icon" aria-hidden="true">01</span>
@@ -5009,6 +5012,7 @@ body.spa-active #spa-topbar { display: flex; }
             <b>Mở công cụ tính điểm →</b>
           </a>
         </div>
+        </details>
         <a class="home-browse-link" href="careers-holland.html?holland=all">Tôi muốn tự do khám phá nghề nghiệp →</a>
       </section>
       <button type="button" class="home-waybi-shortcut" data-open-waybi><img src="assets/images/waybi/waybi-mascot-v2.png" alt="" aria-hidden="true">Chưa biết bắt đầu từ đâu? Hỏi Waybi →</button>
@@ -5185,8 +5189,8 @@ body.spa-active #spa-topbar { display: flex; }
 <section class="bw-roadmap bw-reveal" id="roadmap">
   <div class="container">
     <div class="section-eyebrow">Phương pháp</div>
-    <h2 class="section-title">4 bước hướng nghiệp — gọn, dễ nhớ</h2>
-    <p class="section-sub">Bạn có thể làm song song cả 4 bước — không nhất thiết phải xong bước 1 mới sang bước 2</p>
+    <h2 class="section-title">5 bước từ hiểu mình đến hành động</h2>
+    <p class="section-sub">Bắt đầu ở bước bạn cần. Holland là tùy chọn; lựa chọn và tiến độ được lưu trên thiết bị này.</p>
 
     <div class="bw-steps">
 
@@ -5209,7 +5213,7 @@ body.spa-active #spa-topbar { display: flex; }
         <p class="goal">Biết ngành nào hợp</p>
         <ul>
           <li>Khám phá 102 nghề theo nhóm Holland</li>
-          <li>So sánh điểm chuẩn 3 năm gần nhất</li>
+          <li>Đọc chương trình học và nguồn điểm chuẩn đúng năm</li>
           <li>Chọn 2-3 ngành, đọc review từ sinh viên</li>
         </ul>
         <a href="careers-holland.html" class="step-cta">Khám phá nghề →</a>
@@ -5225,14 +5229,20 @@ body.spa-active #spa-topbar { display: flex; }
           <li>Ghi rõ tổ hợp môn + chỉ tiêu</li>
           <li>Bấm "Tìm hiểu" để xem chi tiết từng trường</li>
         </ul>
-        <button type="button" class="step-cta" id="openSchoolModal" style="background:none;border:none;cursor:pointer;padding:0;">
-          🏫 Chọn trường ngay →
-        </button>
+        <a href="page2.html?mode=major" class="step-cta">Chọn trường ngay →</a>
         <div id="selectedSchoolsPreview" style="margin-top:12px;font-size:13px;color:#3a3a6e;"></div>
       </div>
 
       <div class="bw-step">
         <div class="bw-step-num">4</div>
+        <h3>Đối chiếu điểm</h3>
+        <p class="goal">Hiểu cách tính và điều kiện</p>
+        <ul><li>Chọn trường, ngành và loại điểm</li><li>Nhập đúng các môn cần thiết</li><li>Đọc công thức và nguồn của trường</li></ul>
+        <a href="score-calculator.html" class="step-cta">Tính điểm xét tuyển →</a>
+      </div>
+
+      <div class="bw-step">
+        <div class="bw-step-num">5</div>
         <h3>Hành động</h3>
         <p class="goal">Nộp đúng hạn, đúng cách</p>
         <ul>
@@ -5240,7 +5250,7 @@ body.spa-active #spa-topbar { display: flex; }
           <li>Chuẩn bị bài luận cá nhân nếu trường yêu cầu</li>
           <li>Theo dõi deadline từ nguyện vọng đã chọn</li>
         </ul>
-        <a href="calendar.html#study-plan" class="step-cta">Lập kế hoạch học tập →</a>
+        <a href="profile.html?tab=journey#action-plan" class="step-cta">Lập kế hoạch hành động →</a>
       </div>
 
     </div>
@@ -6603,6 +6613,7 @@ Bạn cần hỏi gì nào?</div>
       };
 
       const res = await fetch(CHAT_ENDPOINT, {
+        signal: AbortSignal.timeout(20000),
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -6623,10 +6634,10 @@ Bạn cần hỏi gì nào?</div>
     } catch (err) {
       hideTyping();
       console.error('[BW chatbot]', err);
-      addMessage('bot',
-        'Mình chưa kết nối được. Bạn thử gửi lại sau ít phút nhé.',
-        true
-      );
+      const message = addMessage('bot', 'Mình chưa kết nối được. Bạn có thể tra cứu thủ công hoặc gửi lại sau.', true);
+      const shortcuts = document.createElement('p');
+      shortcuts.innerHTML = '<a href="page2.html?mode=major">Tra cứu ngành/trường</a> · <a href="score-calculator.html">Tính điểm</a>';
+      message.appendChild(shortcuts);
     } finally {
       busy = false;
       sendBtn.disabled = false;
@@ -6964,7 +6975,7 @@ Bạn cần hỏi gì nào?</div>
     const t = document.getElementById('bwToast');
     if (!t) return;
     t.className = 'bw-toast' + (type ? ' ' + type : '');
-    t.innerHTML = message;
+    t.textContent = message;
     requestAnimationFrame(() => t.classList.add('show'));
     clearTimeout(window._bwToastTimer);
     window._bwToastTimer = setTimeout(() => t.classList.remove('show'), 2800);

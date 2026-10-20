@@ -61,6 +61,15 @@
     return getFiltered();
   }
 
+  function persistFilters() {
+    const params = new URLSearchParams();
+    if (state.query) params.set('q', state.query);
+    params.set('holland', state.importedCode || state.activeHolland);
+    history.replaceState(null, '', '?' + params.toString());
+    window.BWFlow?.save({ careerFilters: { query: state.query, holland: state.importedCode || state.activeHolland } });
+    $('careerCount').textContent = `${getFiltered().length} kết quả / ${state.jobs.length} nghề · Nhóm Holland là gợi ý sở thích`;
+  }
+
   // ─── HOLLAND FILTER UI ───
   function renderHollandFilter() {
     const wrap = $('hollandFilterChips');
@@ -83,6 +92,7 @@
       btn.addEventListener('click', () => {
         state.activeHolland = btn.dataset.code;
         state.importedCode = '';
+        persistFilters();
         $('hollandFilterLabel').textContent = '🧭 Lọc theo nhóm Holland:';
         // re-render
         renderHollandFilter();
@@ -106,7 +116,7 @@
     const wrap = $('careerChips');
     if (!wrap) return;
     wrap.innerHTML = POPULAR.map(p =>
-      `<span class="career-chip" data-name="${p}">${p}</span>`
+      `<button type="button" class="career-chip" data-name="${p}">${p}</button>`
     ).join('');
     wrap.querySelectorAll('.career-chip').forEach(el => {
       el.addEventListener('click', () => {
@@ -201,13 +211,14 @@
       </div>
     `;
     window.BWFlow?.save({ career: { name: j.name, group: j.group } });
-    history.replaceState(null, '', '?q=' + encodeURIComponent(j.name) + (state.importedCode ? '&holland=' + state.importedCode : ''));
+    persistFilters();
     const next = document.createElement('div');
     r.appendChild(next);
     window.BWFlow?.nextStep(next, 'Tìm nơi học cho nghề bạn quan tâm', 'Đọc phần học vấn ở trên, rồi đối chiếu ngành đào tạo và phương thức tuyển sinh tại các trường.', [['Tra cứu trường', 'page2.html?career=' + encodeURIComponent(j.name)], ['Tài liệu & bài viết', 'resources.html']]);
   }
 
   function renderListResult(list) {
+    $('careerCount').textContent = `${list.length} kết quả / ${state.jobs.length} nghề`;
     const r = $('careerResult');
     if (!list.length) {
       r.innerHTML = `
@@ -242,6 +253,7 @@
 
   function handle(q) {
     state.query = q;
+    persistFilters();
     const list = getFiltered();
     if (!list.length) {
       const r = $('careerResult');
@@ -270,16 +282,22 @@
     if (!btn) return;
     // Init state
     try {
-      const isFav = await window.BWSync?.isFavorited?.(job.name);
+      const isFav = window.BWFlow?.read().savedCareers.some(item => item.name === job.name) || await window.BWSync?.isFavorited?.(job.name);
       if (isFav) btn.classList.add('saved');
     } catch {}
     btn.addEventListener('click', async () => {
       btn.disabled = true;
       btn.classList.toggle('pulsing');
       try {
-        const { saved, source } = await window.BWSync.toggleFavorite(job);
+        const saved = !window.BWFlow?.read().savedCareers.some(item => item.name === job.name);
+        if (saved) window.BWFlow?.addUnique('savedCareers', { id: job.name, name: job.name, group: job.group });
+        else window.BWFlow?.removeSaved('savedCareers', job.name);
         btn.classList.toggle('saved', saved);
-        showFavToast(saved, source);
+        showFavToast(saved, 'local');
+        if (window.BWAuth?.isSignedIn() && window.BWSync?.toggleFavorite) {
+          const cloudSaved = await window.BWSync.isFavorited(job.name);
+          if (cloudSaved !== saved) await window.BWSync.toggleFavorite(job);
+        }
       } catch (e) {
         alert('Lỗi: ' + e.message);
       }
@@ -322,6 +340,8 @@
 
     input.addEventListener('input', e => {
       const v = e.target.value.trim();
+      state.query = v;
+      persistFilters();
       if (!v) {
         state.query = '';
         $('careerSuggestions').classList.remove('show');
@@ -330,6 +350,7 @@
         return;
       }
       state.query = v;
+      renderListResult(getFiltered());
       renderSuggestions(getFiltered());
     });
 
@@ -385,7 +406,8 @@
         return true;
       });
       const params = new URLSearchParams(window.location.search);
-      let hollandCode = params.get('holland');
+      const previous = window.BWFlow?.read().careerFilters;
+      let hollandCode = params.get('holland') || previous?.holland;
       if (!hollandCode) {
         hollandCode = window.BWFlow?.holland();
       }
@@ -407,7 +429,7 @@
       renderHollandFilter();
       renderListResult(getFiltered());
       // Auto-fill search if query string present
-      const q = params.get('q') || (!hollandCode ? window.BWFlow?.read().career?.name : '');
+      const q = params.has('q') ? params.get('q') : params.has('holland') ? '' : previous?.query || '';
       if (q) {
         const input = $('careerSearch');
         if (input) {

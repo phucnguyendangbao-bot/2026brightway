@@ -18,7 +18,8 @@
     if (path.includes('calendar')) return 'Bạn đang xem lịch tuyển sinh — cần mình giúp tìm mốc nào không?';
     if (path.includes('essay-review')) return 'Bạn đang tìm hướng dẫn chuẩn bị bài luận học bổng?';
     if (path.includes('score-calculator')) return 'Cần tính điểm xét tuyển hả? Mình hướng dẫn nè!';
-    if (path.includes('holland')) return 'Holland test giúp bạn tìm nghề hợp tính cách đó! 🎯';
+    if (path.includes('careers')) return 'Bạn có thể tìm nghề, xem kỹ năng rồi chuyển sang tìm ngành và trường. Bạn muốn bắt đầu ở đâu?';
+    if (path.includes('holland')) return 'Holland giúp bạn tìm hiểu sở thích nghề nghiệp. Kết quả là gợi ý để trải nghiệm thêm, không phải kết luận về năng lực.';
     if (path.includes('scholarship-roadmap')) return 'Bạn đang xem lộ trình apply nè — mốc nào cần mình giải thích thêm không?';
     if (path.includes('page2')) return 'Bạn có thể tìm trường theo tên và đọc phương thức tuyển sinh. Chọn trường rồi mở công cụ tính điểm để tiếp tục.';
     if (path.includes('majors')) return 'Đang tìm ngành học phù hợp à?';
@@ -35,7 +36,7 @@
   function getUser() {
     try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null'); } catch (e) { return null; }
   }
-  function setUser(u) { localStorage.setItem(STORAGE_KEY, JSON.stringify(u)); }
+  function setUser(u) { window.BWFlow?.storage.set(STORAGE_KEY, JSON.stringify(u)); }
 
   // ─── Render ───
   const WAYBI_MASCOT = '<img src="assets/images/waybi/waybi-mascot-v2.png" alt="" aria-hidden="true">';
@@ -251,7 +252,7 @@
         <button id="waybi-close" aria-label="Đóng">✕</button>
       </div>
 
-      <div id="waybi-messages"></div>
+      <div id="waybi-messages" role="log" aria-live="polite" aria-label="Tin nhắn Waybi"></div>
 
       <div id="waybi-suggest">
         <button class="waybi-chip" data-q="Học bổng nào phù hợp?">🎓 Học bổng</button>
@@ -310,6 +311,7 @@
     showTyping();
     try {
       const response = await fetch(CHAT_ENDPOINT, {
+        signal: AbortSignal.timeout(20000),
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -327,6 +329,7 @@
       hideTyping();
       history.pop();
       addMessage('Mình chưa kết nối được. Bạn thử gửi lại sau ít phút nhé.', 'bot');
+      addMessage('<a href="page2.html?mode=major">Tra cứu ngành và trường</a> · <a href="score-calculator.html">Tính điểm gốc</a> · <a href="profile.html?tab=journey">Mở hồ sơ hướng nghiệp</a>', 'bot', true);
       console.error('[Waybi chat]', error);
     } finally {
       busy = false;
@@ -390,6 +393,19 @@
     const wrap = document.createElement('div');
     wrap.innerHTML = buildHTML();
     document.body.appendChild(wrap);
+
+    const contextQuestions = {
+      'holland.html': ['Holland nói gì về sở thích và giới hạn của kết quả?', 'Tôi đã có mã Holland, nên làm gì tiếp?'],
+      'careers-holland.html': ['Nghề nghiệp khác ngành đào tạo như thế nào?', 'Từ nghề yêu thích, tôi tìm ngành học ra sao?'],
+      'page2.html': ['Tôi cần kiểm tra gì trong đề án tuyển sinh?', 'Làm sao tìm trường đào tạo ngành tôi thích?'],
+      'score-calculator.html': ['Điểm gốc khác điểm xét tuyển như thế nào?', 'Chưa đủ công thức của trường thì làm gì?'],
+      'profile.html': ['Tôi nên làm việc gì tiếp theo trong tuần này?', 'Dữ liệu hướng nghiệp được lưu ở đâu?']
+    };
+    const questions = contextQuestions[location.pathname.split('/').pop()];
+    if (questions) document.getElementById('waybi-suggest').innerHTML = questions.map(question => `<button class="waybi-chip" data-q="${escapeHtml(question)}">${escapeHtml(question)}</button>`).join('');
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && isOpen) { close(); document.getElementById('waybi-fab').focus(); }
+    });
 
     // bind events
     document.getElementById('waybi-fab').addEventListener('click', toggle);
