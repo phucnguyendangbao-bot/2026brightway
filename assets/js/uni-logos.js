@@ -451,9 +451,11 @@ const isWikimediaVerified = (url) => url && typeof url === 'string' && url.inclu
 
 // Render ra thẻ img HTML (ưu tiên logoLocal → Wikimedia → SVG brand)
 window.UNILogoImg = function(codeOrName, options = {}) {
+  const escapeLogo = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const info = window.UNILogo(codeOrName);
-  const size = options.size || 48;
-  const cls = options.class || 'uni-logo-img';
+  const size = Math.max(16, Math.min(512, Number(options.size) || 48));
+  const cls = escapeLogo(options.class || 'uni-logo-img');
+  const safeName = info ? String(info.short || '').replace(/'/g, "\\'") : '';
   if (!info) {
     return `<div class="${cls}" style="width:${size}px;height:${size}px;display:flex;align-items:center;justify-content:center;background:rgba(99,102,241,0.1);border-radius:8px;font-size:${size/2.5}px;">🎓</div>`;
   }
@@ -466,9 +468,9 @@ window.UNILogoImg = function(codeOrName, options = {}) {
   let onerror = '';
   if (fallbackChain.length > 1) {
     const rest = fallbackChain.slice(1).map(u => `'${u}'`).join(',');
-    onerror = `var chain=[${rest}];var i=0;function next(){if(i<chain.length){this.src=chain[i++];}else if(window.UNILogoSvg){this.outerHTML=window.UNILogoSvg('${(codeOrName||'').replace(/'/g, "\\'")}',{size:${size}});}}this.onerror=next;next.call(this);`;
+    onerror = `var chain=[${rest}];var i=0;function next(){if(i<chain.length){this.src=chain[i++];}else if(window.UNILogoSvg){this.outerHTML=window.UNILogoSvg('${safeName}',{size:${size}});}}this.onerror=next;next.call(this);`;
   } else {
-    onerror = `if(window.UNILogoSvg){this.outerHTML=window.UNILogoSvg('${(codeOrName||'').replace(/'/g, "\\'")}',{size:${size}});}else this.style.display='none';`;
+    onerror = `if(window.UNILogoSvg){this.outerHTML=window.UNILogoSvg('${safeName}',{size:${size}});}else this.style.display='none';`;
   }
   // Nếu không có URL nào → render SVG brand luôn
   if (fallbackChain.length === 0) {
@@ -479,19 +481,20 @@ window.UNILogoImg = function(codeOrName, options = {}) {
 
 // Render card đầy đủ: logo + tên trường + nhãn code (kiểu UEH)
 window.UNILogoCard = function(codeOrName, options = {}) {
+  const escapeLogo = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const info = window.UNILogo(codeOrName);
-  const size = options.size || 56;
+  const size = Math.max(16, Math.min(512, Number(options.size) || 56));
   if (!info) {
     return `
       <div class="uni-card uni-card-unknown">
-        <div class="uni-card-logo" style="background:linear-gradient(135deg,#6366f1,#a78bfa);">${(codeOrName||'?').slice(0,2).toUpperCase()}</div>
+        <div class="uni-card-logo" style="background:linear-gradient(135deg,#6366f1,#a78bfa);">${escapeLogo((codeOrName||'?').slice(0,2).toUpperCase())}</div>
         <div class="uni-card-text">
-          <div class="uni-card-name">${codeOrName || 'Trường khác'}</div>
+          <div class="uni-card-name">${escapeLogo(codeOrName || 'Trường khác')}</div>
         </div>
       </div>`;
   }
   // Quyết định render: ưu tiên logoLocal → Wikimedia → SVG brand
-  const safeName = (codeOrName || '').replace(/'/g, "\\'");
+  const safeName = (info.short || '').replace(/'/g, "\\'");
   const fallbackChain = [];
   if (info.logoLocal) fallbackChain.push(info.logoLocal);
   if (isWikimediaVerified(info.logo)) fallbackChain.push(info.logo);

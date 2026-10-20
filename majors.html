@@ -172,21 +172,19 @@ async function loadMajors() {
 
     main.className = 'grid';
     main.innerHTML = majors.map(m => {
-      const tagClass = m.category || 'khoi_khac';
-      const tagText = window.CMS.categoryLabel(m.category);
+      const tagClass = /^[a-zA-Z0-9_-]+$/.test(m.category || '') ? m.category : 'khoi_khac';
+      const tagText = escapeHtml(window.CMS.categoryLabel(m.category));
       const desc = m.description || '';
-      const salary = m.salary_range ? `<span class="major-meta-item">💰 ${escapeHtml(m.salary_range)}</span>` : '';
-      const prospects = m.job_prospects ? `<span class="major-meta-item">💼 Cơ hội việc làm</span>` : '';
+      const salary = m.salary_range ? '<span class="major-meta-item">Lương: chưa có nguồn/năm đối chiếu</span>' : '';
+      const prospects = m.job_prospects ? '<span class="major-meta-item">Việc làm: chưa có dữ liệu khảo sát</span>' : '';
       // Hiển thị logo các trường đào tạo thật
       const uniList = m.top_universities || [];
       const uniLogos = uniList.slice(0, 5).map(u => {
         const info = window.UNILogo(u);
-        if (info) {
-          return `<img src="${info.logo}" alt="${info.name}" class="uni-mini-logo" title="${info.name}" onerror="this.onerror=null;this.src='${info.fallback}'" />`;
-        }
+        if (info) return window.UNILogoImg(u, {size:36});
         // Fallback: badge gradient với initials
         const initials = (u || '?').replace(/ĐH\s*/i, '').split(' ').slice(0,2).map(w=>w[0]).join('').toUpperCase();
-        return `<div class="uni-mini-logo uni-mini-fallback" title="${escapeHtml(u)}">${initials}</div>`;
+        return `<div class="uni-mini-logo uni-mini-fallback" title="${escapeHtml(u)}">${escapeHtml(initials)}</div>`;
       }).join('');
       const unis = uniList.length ? `
         <div class="major-uni-row">
@@ -196,7 +194,7 @@ async function loadMajors() {
       ` : '';
 
       return `
-        <article class="major-card" data-cat="${tagClass}" onclick="window.location='major-detail.html?slug=${encodeURIComponent(m.slug)}'">
+        <article class="major-card" data-cat="${tagClass}" data-major-slug="${escapeHtml(m.slug)}" role="link" tabindex="0">
           <span class="major-tag ${tagClass}">${tagText}</span>
           <h3 class="major-name">${escapeHtml(m.name_vi)}</h3>
           ${m.name_en ? `<div class="major-name-en">${escapeHtml(m.name_en)}</div>` : ''}
@@ -205,10 +203,15 @@ async function loadMajors() {
             ${prospects}
             ${salary}
             ${unis}
-            <span class="major-meta-item">👁️ ${m.views_count || 0}</span>
+            <span class="major-meta-item">👁️ ${Number(m.views_count) || 0}</span>
           </div>
         </article>`;
     }).join('');
+    main.querySelectorAll('[data-major-slug]').forEach(card => {
+      const open = () => location.assign('major-detail.html?slug=' + encodeURIComponent(card.dataset.majorSlug));
+      card.addEventListener('click', open);
+      card.addEventListener('keydown', event => { if (event.key === 'Enter') open(); });
+    });
   } catch (err) {
     console.error(err);
     main.innerHTML = `

@@ -41,6 +41,13 @@ test('school profiles expose only 2026 admissions data', () => {
   assert.equal(detailsForSchool('hcmus', 2024), null);
 });
 
+test('secondary and current-catalog sources are not treated as confirmed annual program lists', () => {
+  for (const id of ['hufi', 'hub']) assert.equal(detailsForSchool(id, 2026).programSourceStatus, 'secondary');
+  assert.equal(detailsForSchool('rmit', 2026).programSourceStatus, 'current_catalog');
+  assert.equal(detailsForSchool('fpt', 2026).scoreScale, 30);
+  assert.equal(detailsForSchool('ntu', 2026).scoreScale, 40);
+});
+
 test('spreadsheet program import adds only the supplied school-year rows', () => {
   assert.equal(PROGRAM_IMPORT_METADATA.totalRows, 614);
   assert.equal(PROGRAM_IMPORT_METADATA.schoolCount, 22);
@@ -75,6 +82,8 @@ test('spreadsheet program import adds only the supplied school-year rows', () =>
   assert.equal(detailsForSchool('ntu', 2026).programs.find(program => program.code === '7340115').score, 27);
   assert.equal(detailsForSchool('ntu', 2026).programs.find(program => program.code === '7220204').combination, 'TVA2');
   assert.equal(detailsForSchool('ntu', 2026).programs.filter(program => Number.isFinite(program.score)).length, 53);
+  assert.equal(detailsForSchool('ntu', 2026).scoreScale, 40);
+  assert.ok(detailsForSchool('ntu', 2026).programs.every(program => ['T2VA', 'TVA2', 'TV2A'].includes(program.combination)));
   assert.equal(detailsForSchool('huaf', 2026).programs.find(program => program.code === '7640101').name, 'Thú y');
   assert.ok(detailsForSchool('vku', 2026).programs.every(program => !program.code));
   assert.equal(detailsForSchool('dut', 2026).programs.find(program => program.code === '7520216TN').score, 27.1);

@@ -363,6 +363,122 @@ async function testSlowAndEmptyData(browser, base, report) {
   report.push({ test: '10-slow-empty-and-untrusted-input', status: 'PASS', checks: '900ms delayed catalog, empty career data, Vietnamese empty search, HTML input rendered as text, reduced motion' });
 }
 
+async function testInformationAndFunctionAudit(browser, base, report) {
+  const { context, page, errors } = await newCheckedPage(browser, base, { width: 1366, height: 900 });
+  await page.goto(`${base}/score-calculator.html?school=fpt&program=0`, { waitUntil: 'domcontentloaded' });
+  await page.waitForFunction(() => document.querySelector('#targetProgram')?.value === '0');
+  await page.locator('#comboSelect').selectOption('C00');
+  for (const id of ['sLit','sHis','sGeo']) await page.locator(`#${id}`).fill('8');
+  await page.locator('#fptCard summary').click();
+  await page.locator('#sGrade12').fill('8');
+  await page.locator('#calcBtn').click();
+  assert.match(await page.locator('#schoolList .school-row-status').innerText(), /không áp dụng cho ngành/);
+  assert.doesNotMatch(await page.locator('#schoolList .school-outcome').innerText(), /Thành phần điểm kết hợp/);
+  await page.locator('#targetProgram').selectOption('2');
+  await page.locator('#calcBtn').click();
+  assert.match(await page.locator('#schoolList .school-row-status').innerText(), /24.00/);
+  await page.locator('#targetProgram').selectOption('0');
+  await page.locator('#comboSelect').selectOption('D01');
+  for (const id of ['sMath','sLit','sEng']) await page.locator(`#${id}`).fill('8');
+  await page.locator('#calcBtn').click();
+  assert.match(await page.locator('#schoolList .school-row-status').innerText(), /24.00/);
+  await page.locator('#targetSchool').selectOption('ctu');
+  await page.locator('input[name="admissionMethod"][value="transcript"]').check();
+  for (const id of ['hMath','hLit','hEng']) await page.locator(`#${id}`).fill('8');
+  await page.locator('#calcBtn').click();
+  await page.locator('#schoolList details summary').click();
+  assert.match(await page.locator('#schoolList .school-outcome').innerText(), /Tổng học bạ gốc/);
+  assert.doesNotMatch(await page.locator('#schoolList .school-outcome').innerText(), /Chưa xác nhận ngưỡng/);
+  await page.locator('input[name="admissionMethod"][value="other"]').check();
+  await page.locator('#examType').selectOption('sHsa');
+  await page.locator('#sHsa').fill('100');
+  await page.locator('#calcBtn').click();
+  await page.locator('#schoolList details summary').click();
+  assert.match(await page.locator('#schoolList .school-outcome').innerText(), /Chưa có công thức quy đổi/);
+  await page.goto(`${base}/profile.html?tab=journey`, { waitUntil: 'domcontentloaded' });
+  await page.locator('.flow-profile-details').waitFor();
+  assert.match(await page.locator('.flow-profile-details').innerText(), /HSA: 100\/150/);
+
+  await page.goto(`${base}/score-calculator.html?school=hufi`, { waitUntil: 'domcontentloaded' });
+  await page.waitForFunction(() => document.querySelector('#targetSchool')?.value === 'hufi');
+  assert.equal(await page.locator('#targetStatus a[href*="tuyensinh247"]').count(), 0);
+  await page.goto(`${base}/page2.html#%E0%A4%A`, { waitUntil: 'domcontentloaded' });
+  await page.locator('#hue-uni').waitFor();
+  assert.match(await page.locator('#hue-uni .school-card-kicker').innerText(), /HUEUNI/);
+  assert.equal(await page.locator('#icon-hue-uni img').count(), 0);
+  assert.match(await page.locator('#hub .school-card-status').innerText(), /nguồn thứ cấp/);
+  await page.goto(`${base}/page2.html?school=hub`, { waitUntil: 'domcontentloaded' });
+  await page.locator('#schoolDialog[open]').waitFor();
+  assert.match(await page.locator('#schoolDialog').innerText(), /nguồn tra cứu thứ cấp/);
+  await page.goto(`${base}/page2.html?school=uit`, { waitUntil: 'domcontentloaded' });
+  await page.locator('#schoolDialog[open]').waitFor();
+  assert.match(await page.locator('#schoolDialog').innerText(), /Chưa đối chiếu mã/);
+  await page.goto(`${base}/page2.html?school=ntu`, { waitUntil: 'domcontentloaded' });
+  await page.locator('#schoolDialog[open]').waitFor();
+  assert.match(await page.locator('#schoolDialog').innerText(), /thang 40/);
+
+  const query = encodeURIComponent('Bác sĩ đa khoa');
+  await page.goto(`${base}/careers-holland.html?holland=all&q=${query}`, { waitUntil: 'domcontentloaded' });
+  await page.locator('#favBtn').waitFor();
+  assert.match(await page.locator('.career-result').innerText(), /12 tháng/);
+  assert.equal(await page.locator('a[href*="baochinhphu.vn"]').count(), 1);
+  // Simulate an existing cloud favorite, without writing to a real account.
+  await page.evaluate(() => {
+    BWAuth.isSignedIn = () => true;
+    BWSync.isFavorited = async () => true;
+    BWSync.logSearch = async () => {};
+    window.auditFavoriteCalls = 0;
+    BWSync.toggleFavorite = async () => { window.auditFavoriteCalls++; return {saved:false}; };
+  });
+  await page.locator('#careerSearch').fill('Phi công');
+  await page.locator('#careerSearch').press('Enter');
+  await page.waitForFunction(() => document.querySelector('#favBtn')?.getAttribute('aria-pressed') === 'true');
+  await page.locator('#favBtn').click();
+  await page.waitForFunction(() => window.auditFavoriteCalls === 1);
+  assert.equal(await page.locator('#favBtn').getAttribute('aria-pressed'), 'false');
+  assert.doesNotMatch(await page.locator('.career-result').innerText(), /2–5 tỷ/);
+  assert.deepEqual(errors, []);
+  await context.close();
+  report.push({ test:'11-information-and-functional-audit', status:'PASS', checks:'FPT subject/program restrictions; CTU method isolation; HSA profile persistence; source provenance; Hue identity; malformed hash; doctor practice source; cloud favorite removal (simulated)' });
+}
+
+async function testLegacyMajorInformation(browser, base, report) {
+  const { context, page, errors } = await newCheckedPage(browser, base, { width: 1366, height: 900 });
+  const untrusted = '<img src=x onerror="window.auditXss=true">';
+  const fixture = {
+    slug: "x');window.auditXss=true;//", name_vi: 'Ngành thử ' + untrusted,
+    name_en: untrusted, category: untrusted, description: 'Dữ liệu giả lập để kiểm thử hiển thị.',
+    salary_range: '999 triệu/tháng', job_prospects: '100% có việc làm',
+    top_universities: [untrusted], views_count: untrusted,
+  };
+  // Replace only the data boundary: no CMS/account reads or writes in this fixture test.
+  await context.route('**/assets/js/supabase-client.js', route => route.fulfill({
+    contentType: 'application/javascript', body: 'window.getSupabase=async()=>({auth:{getUser:async()=>({data:{user:null}})}});',
+  }));
+  await context.route('**/assets/js/cms-service.js', route => route.fulfill({
+    contentType: 'application/javascript',
+    body: `window.auditFixture=${JSON.stringify(fixture)};window.CMS={listMajors:async()=>[window.auditFixture],getMajorBySlug:async slug=>{window.auditRequestedSlug=slug;return window.auditFixture;},categoryLabel:()=>window.auditFixture.category};`,
+  }));
+  await page.goto(`${base}/majors.html`, { waitUntil: 'domcontentloaded' });
+  await page.locator('.major-card').waitFor();
+  assert.equal(await page.locator('#main-content img').count(), 0);
+  assert.match(await page.locator('#main-content').innerText(), /chưa có nguồn\/năm đối chiếu/);
+  assert.doesNotMatch(await page.locator('#main-content').innerText(), /999 triệu|100% có việc làm/);
+  await page.locator('.major-card').focus();
+  await page.keyboard.press('Enter');
+  await page.waitForURL('**/major-detail.html?slug=*');
+  await page.locator('.header-card').waitFor();
+  assert.equal(await page.evaluate(() => window.auditRequestedSlug), fixture.slug);
+  assert.equal(await page.locator('#container img').count(), 0);
+  assert.match(await page.locator('#container').innerText(), /Chưa có nguồn và năm khảo sát/);
+  assert.doesNotMatch(await page.locator('#container').innerText(), /999 triệu|100% có việc làm|trường hàng đầu/i);
+  assert.match(await page.locator('.uni-card-name').innerText(), /<img src=x/);
+  assert.equal(await page.evaluate(() => Boolean(window.auditXss)), false);
+  assert.deepEqual(errors, []);
+  await context.close();
+  report.push({ test:'12-legacy-major-provenance-and-safe-rendering', status:'PASS', checks:'simulated CMS data: unsupported salary/employment claims withheld; HTML rendered as text; encoded slug and keyboard navigation; unknown school safe fallback' });
+}
+
 (async () => {
   const report = [];
   let browser;
@@ -390,6 +506,8 @@ async function testSlowAndEmptyData(browser, base, report) {
     await testJourneyPersistence(browser, base, report);
     await testFailureStates(browser, base, report);
     await testSlowAndEmptyData(browser, base, report);
+    await testInformationAndFunctionAudit(browser, base, report);
+    await testLegacyMajorInformation(browser, base, report);
     await testResponsiveAndRegression(browser, base, report);
     const result = { status: 'PASS', scenarios: report.length, report, artifacts: artifactDir };
     fs.writeFileSync(path.join(artifactDir, 'report.json'), JSON.stringify(result, null, 2));

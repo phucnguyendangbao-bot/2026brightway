@@ -2,7 +2,7 @@
 // Không dùng cutoffScores của schools.json: dữ liệu đó không có ngành/năm/nguồn.
 import { rawThresholdText } from './admissions-rules.js';
 import sourceRegistry from '../data/school-admissions-sources.js';
-import { COMBO_SUBJECTS, parseScore, fptComponent } from './score-rules.js';
+import { COMBO_SUBJECTS, parseScore, fptComponent, fptCombinationAllowed } from './score-rules.js';
 import { canonicalSchoolId, buildUniversityCatalog } from '../data/university-identities.js';
 import { detailsForSchool } from '../data/school-profile-details.js';
 const escapeTarget = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -32,7 +32,7 @@ const ADMISSIONS_2026 = [
     type: 'fpt',
     extraUrl: 'https://daihoc.fpt.edu.vn/tin-tuc/truong-dai-hoc-fpt-cong-bo-diem-san-xet-tuyen-he-dai-hoc-chinh-quy-nam-2026/',
     extraLabel: 'Thông báo điểm sàn 01/07/2026',
-    note: 'ĐXT = (tổng điểm thi 3 môn + 3 × điểm TB cả năm lớp 12)/2 + điểm khuyến khích + điểm ưu tiên. Chỉ tổ hợp Axx/Cxx; Cxx không dùng cho CNTT và Khoa học máy tính. Thông báo FPT 10/04/2026 yêu cầu thí sinh thi tốt nghiệp 2026 có tổng Axx/Cxx từ 15 điểm. Điểm hiển thị chưa cộng ưu tiên/khuyến khích và chưa xét ngành Luật.',
+    note: 'ĐXT = (tổng điểm thi 3 môn + 3 × điểm TB cả năm lớp 12)/2 + điểm khuyến khích + điểm ưu tiên. FPT định nghĩa Axx là Toán + hai môn bất kỳ; Cxx là Ngữ văn + hai môn bất kỳ, không dùng cho CNTT/Khoa học máy tính. Đối chiếu theo các môn, không chỉ theo chữ đầu mã tổ hợp. Thí sinh thi tốt nghiệp 2026 cần tổng tổ hợp từ 15 điểm. Chưa cộng ưu tiên/khuyến khích; ngành Luật còn có điều kiện riêng.',
   },
   {
     id: 'ctu', name: 'Đại học Cần Thơ', short: 'CTU',
@@ -170,8 +170,14 @@ function calculate() {
       ? `${combo}: ${selected.map(key => `${TRANSCRIPT_SUBJECTS[key][1]} ${transcriptValues[key].toFixed(2)}`).join(' + ')} = ${transcriptRaw.toFixed(2)}`
       : 'Giữ nguyên điểm gốc của từng kỳ thi; không tự quy đổi khi chưa có công thức theo ngành và trường.';
   document.querySelectorAll('[data-summary-method]').forEach(item => { item.hidden = item.dataset.summaryMethod !== method; });
-  renderSchools({ combo, keys: selected, raw, transcriptRaw, transcriptConfirmed, values, transcriptValues, grade12: grade12.value });
-  window.BWFlow?.save({ admissions: { method, combo, completedAt: Date.now() }, scores: { combo, method, transcriptConfirmed, examType: document.getElementById('examType').value, summary: document.getElementById('resultFormula').textContent, completedAt: Date.now(), values: Object.fromEntries(scoreInputs.map(input => [input.id, input.value])) } });
+  const selectedProgram = document.getElementById('targetProgram').value;
+  const programCode = document.getElementById('targetSchool').value === 'fpt' && selectedProgram !== ''
+    ? detailsForSchool('fpt')?.programs?.[selectedProgram]?.code || '' : '';
+  renderSchools({ combo, programCode, keys: selected, raw, transcriptRaw, transcriptConfirmed, values, transcriptValues, grade12: grade12.value });
+  const savedSummary = method === 'other'
+    ? EXAMS.filter(exam => exams[exam.input] !== null).map(exam => `${({sVact:'V-ACT',sHsa:'HSA',sTsa:'TSA'})[exam.input]}: ${exams[exam.input]}/${exam.max} (điểm gốc)`).join(' · ')
+    : document.getElementById('resultFormula').textContent;
+  window.BWFlow?.save({ admissions: { method, combo, completedAt: Date.now() }, scores: { combo, method, transcriptConfirmed, examType: document.getElementById('examType').value, summary: savedSummary, completedAt: Date.now(), values: Object.fromEntries(scoreInputs.map(input => [input.id, input.value])) } });
   const host = document.getElementById('scoreNextStep');
   host.hidden = false;
   window.BWFlow?.nextStep(host, 'Lập kế hoạch cho hồ sơ của bạn', 'Đối chiếu đề án trường, ghi lại các mốc tuyển sinh và chuẩn bị tài liệu cần thiết.', [['Lịch tuyển sinh', 'calendar.html'], ['Tài liệu & bài viết', 'resources.html'], ['Hồ sơ của tôi', 'profile.html']]);
@@ -179,13 +185,13 @@ function calculate() {
 
 function schoolOutcome(school, result) {
   if (school.type === 'fpt') {
-    if (!/^[AC]/.test(result.combo)) return 'Tổ hợp đã chọn không thuộc Axx/Cxx trong đề án FPT 2026.';
+    if (!fptCombinationAllowed(result.combo, result.programCode)) return 'Tổ hợp đã chọn không có Toán nên không áp dụng cho ngành Công nghệ thông tin/Khoa học máy tính theo thông báo FPT 2026. Hãy chọn tổ hợp có Toán; không dùng kết quả này cho ngành đã chọn.';
     if (result.raw === null) return 'FPT cần điểm thi THPT của 3 môn trong tổ hợp để áp dụng công thức kết hợp này.';
     if (result.grade12 === null) return 'Nhập thêm điểm trung bình cả năm lớp 12 để tính điểm kết hợp.';
     const combined = fptComponent(result);
     const fptCondition = result.raw < 15
-      ? 'Tổng tổ hợp Axx/Cxx đã chọn dưới 15; chưa đạt điều kiện riêng trong thông báo FPT dành cho thí sinh thi tốt nghiệp 2026. Đối chiếu diện và ngoại lệ với trường.'
-      : 'Tổng Axx/Cxx đã chọn đạt mức 15; vẫn cần kiểm tra ngành, cơ sở, đối tượng và điều kiện riêng.';
+      ? 'Tổng tổ hợp đã chọn dưới 15; chưa đạt điều kiện riêng trong thông báo FPT dành cho thí sinh thi tốt nghiệp 2026. Đối chiếu diện và ngoại lệ với trường.'
+      : 'Tổng tổ hợp đã chọn đạt mức 15; vẫn cần kiểm tra ngành, cơ sở, đối tượng và điều kiện riêng.';
     if (combined === null) return fptCondition + ' Không hiển thị điểm áp dụng FPT khi chưa đạt điều kiện đã kiểm tra.';
     return `Thành phần điểm kết hợp: <strong>${combined.toFixed(2)}/30</strong> (chưa cộng ưu tiên/khuyến khích, chưa xác nhận toàn bộ điều kiện ngành). ${fptCondition} Thông báo 01/07/2026 công bố điểm sàn xét tuyển 18; chương trình Cử nhân tài năng Khoa học máy tính là 21. Đây không phải ngưỡng điểm thi gốc 15. Công cụ chưa tính ĐXT đầy đủ để kết luận đạt sàn.`;
   }
@@ -193,7 +199,8 @@ function schoolOutcome(school, result) {
     const parts = [];
     if (result.raw !== null) parts.push(`Tổng điểm thi gốc: <strong>${result.raw.toFixed(2)}/30</strong>`);
     if (result.transcriptRaw !== null) parts.push(`Tổng học bạ gốc: <strong>${result.transcriptRaw.toFixed(2)}/30</strong>`);
-    return `${parts.join(' · ')}. Học bạ còn phải quy đổi theo từng môn và ngành; chỉ áp dụng nếu ngành chấp nhận tổ hợp ${result.combo}. ${rawThresholdText(result)}`;
+    if (!parts.length) return 'Chưa có công thức quy đổi bài thi riêng cho ngành đã chọn. Điểm gốc của kỳ thi không được thay cho điểm thi THPT hoặc học bạ.';
+    return `${parts.join(' · ')}. Học bạ còn phải quy đổi theo từng môn và ngành; chỉ áp dụng nếu ngành chấp nhận tổ hợp ${result.combo}. ${result.raw !== null ? rawThresholdText(result) : 'Tổng học bạ không được dùng để đánh giá ngưỡng điểm thi THPT.'}`;
   }
   if (school.type === 'hcmus') {
     if (result.raw === null && result.transcriptRaw === null) return 'Phương thức bài thi riêng cần công thức quy đổi theo ngành của trường. Công cụ chỉ hiển thị điểm gốc, không tự quy đổi khi chưa đủ dữ liệu.';
@@ -205,7 +212,7 @@ function schoolOutcome(school, result) {
 
 function schoolHeadline(school, result) {
   if (school.type === 'fpt') {
-    if (!/^[AC]/.test(result.combo)) return 'Tổ hợp không áp dụng';
+    if (!fptCombinationAllowed(result.combo, result.programCode)) return 'Tổ hợp không áp dụng cho ngành';
     if (result.raw === null) return 'Cần điểm thi THPT';
     if (result.raw < 15) return 'Tổng tổ hợp dưới 15';
     return result.grade12 === null
@@ -225,7 +232,7 @@ function renderSchools(result) {
   const schools = ADMISSIONS_2026.filter(school => (!target || school.id === target) && (school.name.toLocaleLowerCase('vi').includes(filter) || school.short.toLowerCase().includes(filter)));
   document.getElementById('schoolList').innerHTML = schools.length
     ? schools.map(school => `
-      <details class="school-row ${school.type === 'fpt' || school.type === 'ctu' ? 'school-row-calculated' : ''}" ${school.type === 'fpt' && /^[AC]/.test(result.combo) ? 'open' : ''}>
+      <details class="school-row ${school.type === 'fpt' || school.type === 'ctu' ? 'school-row-calculated' : ''}" ${school.type === 'fpt' ? 'open' : ''}>
         <summary class="school-row-summary">
           <span class="school-row-logo">${school.short}</span>
           <span class="school-row-name">${school.name}</span>
@@ -412,7 +419,7 @@ function updateTargetStatus() {
   const programIndex = document.getElementById('targetProgram').value;
   const program = programIndex !== '' ? details?.programs?.[programIndex] : null;
   const source = sourceRegistry.universities.find(item => item.school_id === id);
-  const sourceUrl = details?.programSource || details?.admissionSource || source?.source_url || school?.website;
+  const sourceUrl = source?.source_url || details?.admissionSource || school?.website;
   document.getElementById('targetStatus').innerHTML = school
     ? `${escapeTarget(school.name)}${program ? ' · ' + escapeTarget(program.name) : ''}. Dữ liệu 2026. ${source?.checked_at ? 'Nguồn được rà soát: ' + escapeTarget(source.checked_at) + '. ' : 'Chưa có ngày xác minh quy định. '}Chưa xác nhận đầy đủ công thức cho từng ngành/phương thức; kết quả chỉ là điểm gốc hoặc thành phần được ghi rõ.${/^https:\/\//.test(sourceUrl || '') ? ` <a href="${escapeTarget(sourceUrl)}" target="_blank" rel="noopener noreferrer">Đọc nguồn chính thức ↗</a>` : ''}`
     : 'Chế độ tính điểm gốc. Bạn có thể chọn trường sau; chưa đánh giá khả năng trúng tuyển.';

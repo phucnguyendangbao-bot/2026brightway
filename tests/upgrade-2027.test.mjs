@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { buildUniversityCatalog, canonicalSchoolId } from '../assets/data/university-identities.js';
-import { COMBO_SUBJECTS, parseScore, fptComponent } from '../assets/js/score-rules.js';
+import { COMBO_SUBJECTS, parseScore, fptComponent, fptCombinationAllowed } from '../assets/js/score-rules.js';
 import { officialEvents, nextOfficialEvent } from '../assets/js/calendar-rules.js';
 import policy from '../assets/data/admissions-policy.js';
 import registry from '../assets/data/school-admissions-sources.js';
@@ -44,9 +44,21 @@ test('FPT partial formula matches manual arithmetic only within tested 2026 prer
   assert.equal(fptComponent({combo:'A00',raw:26,grade12:8.4}),25.6);
   assert.equal(fptComponent({combo:'C01',raw:15,grade12:7}),18);
   assert.equal(fptComponent({combo:'A00',raw:30,grade12:10}),30);
-  for (const patch of [{raw:14.99},{grade12:null},{grade12:11},{raw:31},{combo:'D01'},{year:2027}]) {
+  for (const patch of [{raw:14.99},{grade12:null},{grade12:11},{raw:31},{combo:'INVALID'},{year:2027}]) {
     assert.equal(fptComponent({combo:'A00',raw:26,grade12:8.4,...patch}),null);
   }
+});
+
+test('FPT uses subject definitions and excludes Literature-only combinations for computing programs', () => {
+  for (const combo of ['A00', 'B00', 'D01', 'X25', 'C01']) {
+    assert.equal(fptCombinationAllowed(combo, '7480201'), true, combo);
+    assert.equal(fptComponent({ combo, raw:24, grade12:8, programCode:'7480201' }), 24);
+  }
+  for (const code of ['7480201', '7480101']) {
+    assert.equal(fptCombinationAllowed('C00', code), false);
+    assert.equal(fptComponent({ combo:'C00', raw:24, grade12:8, programCode:code }), null);
+  }
+  assert.equal(fptComponent({ combo:'C00', raw:24, grade12:8, programCode:'7340101' }), 24);
 });
 
 test('only sourced official valid dates are used in grids and countdowns', () => {
@@ -66,4 +78,19 @@ test('job names/descriptions are present and unique; unsupported salaries are no
   assert.equal(new Set(jobs.map(j=>j.name.trim().toLowerCase())).size,102);
   assert.ok(jobs.every(j=>j.name.trim()&&j.desc.trim()));
   assert.equal(jobs.filter(j=>j.salary_source_url).length,0);
+});
+
+test('reviewed healthcare and legal career routes carry dated primary sources', () => {
+  const jobs = JSON.parse(readFileSync(new URL('../assets/data/jobs.json', import.meta.url)));
+  const reviewed = ['Bác sĩ đa khoa','Bác sĩ răng hàm mặt','Điều dưỡng','Hộ sinh','Kỹ thuật viên xét nghiệm y học','Kỹ thuật viên vật lý trị liệu','Chuyên viên dinh dưỡng','Chuyên viên tâm lý','Luật sư','Công chứng viên'];
+  for (const name of reviewed) {
+    const job = jobs.find(item => item.name === name);
+    assert.ok(job, name);
+    assert.match(job.eduSource, /^https:\/\/(?:[^/]+\.)?(?:chinhphu\.vn|baochinhphu\.vn|moj\.gov\.vn)\//, name);
+    assert.equal(job.eduReviewedAt, '2026-10-20', name);
+  }
+  const doctor = jobs.find(item => item.name === 'Bác sĩ đa khoa');
+  assert.match(doctor.edu, /12 tháng/);
+  assert.doesNotMatch(doctor.edu, /18 tháng/);
+  assert.doesNotMatch(jobs.find(item => item.name.startsWith('Lập trình viên /')).edu, /cũng đủ để vào nghề/);
 });

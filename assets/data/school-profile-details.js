@@ -9,6 +9,7 @@ export const schoolProfileDetails = {
     year: 2026,
     programSource: fptProgramsUrl,
     scoreSource: fptScoresUrl,
+    scoreScale: 30,
     scoreMethod: 'Xét tuyển kết hợp điểm thi tốt nghiệp THPT và kết quả học tập lớp 12 · thang 30',
     programs: [
       { code: '7480201', name: 'Công nghệ thông tin', score: 18 },

@@ -70,7 +70,7 @@ function renderSchools(items) {
           <h2 class="school-name">${escapeHtml(school.name)}</h2>
         </div>
       </div>
-      <span class="school-card-status ${details?.programs?.length ? 'school-card-status-ready' : ''}">${details?.programs?.some(program => Number.isFinite(program.score)) ? 'Có ngành và điểm chuẩn 2026' : details?.programs?.length ? `Có ${details.programs.length} ngành 2026` : details?.scoreSource ? 'Có nguồn điểm chuẩn' : source ? 'Có nguồn tuyển sinh' : 'Đang bổ sung nguồn'}</span>
+      <span class="school-card-status ${details?.programs?.length && !details.programSourceStatus ? 'school-card-status-ready' : ''}">${details?.programSourceStatus === 'secondary' ? 'Danh mục tham khảo · nguồn thứ cấp' : details?.programSourceStatus === 'current_catalog' ? 'Danh mục hiện hành · cần kiểm tra kỳ nhập học' : details?.programs?.some(program => Number.isFinite(program.score)) ? 'Có ngành và điểm chuẩn 2026' : details?.programs?.length ? `Đã nhập ${details.programs.length} ngành/CT 2026` : details?.scoreSource ? 'Có nguồn điểm chuẩn' : source ? 'Có nguồn tuyển sinh' : 'Đang bổ sung nguồn'}</span>
       ${matches.length ? `<div class="school-card-programs" aria-label="Ngành khớp tìm kiếm">${matches.map(program => `<span>${escapeHtml(program.name)}</span>`).join('')}${matchingPrograms(school, activeQuery).length > 3 ? `<small>+${matchingPrograms(school, activeQuery).length - 3} ngành khác</small>` : ''}</div>` : ''}
       <p class="school-card-description">${escapeHtml(subtitle)}</p>
       <div class="school-card-bottom">
@@ -116,10 +116,10 @@ function renderPrograms(school, details) {
   const hasTracks = details.programs.some(program => program.track);
   const hasCombinations = details.programs.some(program => program.combination);
   const hasQuotas = details.programs.some(program => Number.isFinite(program.quota));
-  return `<p class="school-dialog-lead"><strong>${details.programs.length} ngành/chương trình</strong> trong dữ liệu tuyển sinh ${details.year}.${hasScores ? ' Điểm chuẩn cùng năm nằm ở cột cuối.' : ''}</p>
+  return `<p class="school-dialog-lead"><strong>${details.programs.length} ngành/chương trình</strong> ${details.programSourceStatus === 'current_catalog' ? 'trong danh mục hiện hành; chưa xác nhận toàn bộ chương trình mở tuyển trong kỳ 2026' : 'trong dữ liệu ghi nhận cho năm ' + details.year}.${hasScores ? ' Điểm chuẩn cùng năm nằm ở cột cuối.' : ''}</p>
     ${details.programNote ? `<p class="school-program-note">${escapeHtml(details.programNote)}</p>` : ''}
-    <div class="school-program-table-wrap"><table class="school-program-table"><thead><tr><th>Mã xét tuyển</th><th>Ngành / chương trình</th>${hasTracks ? '<th>Phân loại</th>' : ''}${hasQuotas ? '<th>Chỉ tiêu dự kiến</th>' : ''}${hasCombinations ? '<th>Tổ hợp trích</th>' : ''}${hasScores ? `<th>Điểm chuẩn ${details.year}</th>` : ''}</tr></thead><tbody>
-    ${details.programs.map((program, index) => `<tr><td>${program.code ? escapeHtml(program.code) : '<span class="school-program-code-missing">Chưa công bố</span>'}</td><td>${escapeHtml(program.name)}<div class="school-program-actions"><button type="button" data-action="save-major" data-program="${index}">Lưu ngành</button><a href="score-calculator.html?school=${encodeURIComponent(school.id)}&program=${index}">Đối chiếu điểm →</a></div></td>${hasTracks ? `<td>${escapeHtml(program.track || '')}</td>` : ''}${hasQuotas ? `<td>${Number.isFinite(program.quota) ? escapeHtml(program.quota) : ''}</td>` : ''}${hasCombinations ? `<td>${escapeHtml(program.combination || '')}</td>` : ''}${hasScores ? `<td>${Number.isFinite(program.score) ? `<strong>${escapeHtml(formatScore(program.score))}</strong>` : ''}</td>` : ''}</tr>`).join('')}
+    <div class="school-program-table-wrap"><table class="school-program-table"><thead><tr><th>Mã xét tuyển</th><th>Ngành / chương trình</th>${hasTracks ? '<th>Phân loại</th>' : ''}${hasQuotas ? '<th>Chỉ tiêu dự kiến</th>' : ''}${hasCombinations ? '<th>Tổ hợp trích</th>' : ''}${hasScores ? `<th>Điểm chuẩn ${details.year}${details.scoreScale ? ' · thang ' + details.scoreScale : ''}</th>` : ''}</tr></thead><tbody>
+    ${details.programs.map((program, index) => `<tr><td>${program.code ? escapeHtml(program.code) : '<span class="school-program-code-missing">Chưa đối chiếu mã</span>'}</td><td>${escapeHtml(program.name)}<div class="school-program-actions"><button type="button" data-action="save-major" data-program="${index}">Lưu ngành</button><a href="score-calculator.html?school=${encodeURIComponent(school.id)}&program=${index}">Đối chiếu điểm →</a></div></td>${hasTracks ? `<td>${escapeHtml(program.track || '')}</td>` : ''}${hasQuotas ? `<td>${Number.isFinite(program.quota) ? escapeHtml(program.quota) : ''}</td>` : ''}${hasCombinations ? `<td>${escapeHtml(program.combination || '')}</td>` : ''}${hasScores ? `<td>${Number.isFinite(program.score) ? `<strong>${escapeHtml(formatScore(program.score))}</strong>` : ''}</td>` : ''}</tr>`).join('')}
     </tbody></table></div>
     ${details.scoreMethod ? `<p class="school-dialog-footnote">${escapeHtml(details.scoreMethod)}. Chọn đúng cơ sở và chương trình khi đăng ký.</p>` : ''}
     ${officialLink(details.programSource, details.programSourceLabel || 'Danh sách ngành trên trang trường', 'school-dialog-link')}
@@ -132,7 +132,7 @@ function renderScores(school, details) {
     const minimum = Math.min(...programScores);
     const maximum = Math.max(...programScores);
     const scoreRange = minimum === maximum ? formatScore(minimum) : `${formatScore(minimum)} – ${formatScore(maximum)}`;
-    return `<div class="school-score-summary"><span>Điểm chuẩn ${details.year}</span><strong>${escapeHtml(scoreRange)}</strong><small>${escapeHtml(details.scoreMethod)}</small></div>
+    return `<div class="school-score-summary"><span>Điểm chuẩn ${details.year}</span><strong>${escapeHtml(scoreRange)}${details.scoreScale ? ' / ' + details.scoreScale : ''}</strong><small>${escapeHtml(details.scoreMethod)}</small></div>
       ${renderPrograms(school, details)}
       ${details.scoreSource === details.programSource ? '' : officialLink(details.scoreSource, 'Thông báo điểm chuẩn gốc', 'school-dialog-link')}`;
   }
@@ -274,7 +274,10 @@ function highlightSection(id) {
 
 function scrollToTargetFromUrl() {
   const params = new URLSearchParams(location.search);
-  const target = canonicalSchoolId(decodeURIComponent(location.hash.slice(1) || params.get('school') || ''));
+  let requested = location.hash.slice(1) || params.get('school') || '';
+  try { requested = decodeURIComponent(requested); }
+  catch { console.warn('[school catalog] Invalid encoded school identifier'); }
+  const target = canonicalSchoolId(requested);
   if (target === 'hucfl') {
     mainContent.insertAdjacentHTML('afterbegin', '<div class="school-dialog-empty">Bản ghi trường này đang chờ xác minh danh tính. Vui lòng kiểm tra tại Đại học Huế.</div>');
     return;
@@ -285,7 +288,7 @@ function scrollToTargetFromUrl() {
     filterSchools('');
   }
   highlightSection(target);
-  if (params.get('admission_year') === '2026') openSchool(target);
+  if (params.has('school') || params.get('admission_year') === '2026') openSchool(target);
 }
 
 document.addEventListener('input', event => {

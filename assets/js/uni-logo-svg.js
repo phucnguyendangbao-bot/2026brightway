@@ -56,6 +56,7 @@ window.UNI_BRAND_COLORS = {
 
 // Render SVG inline với gradient + initials (render offline, luôn hoạt động)
 window.UNILogoSvg = function(codeOrName, options = {}) {
+  const escapeLogo = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const info = window.UNILogo(codeOrName);
   const size = options.size || 48;
   const brandKey = info ? (Object.keys(window.UNI_LOGOS).find(k => window.UNI_LOGOS[k] === info) || null) : null;
@@ -81,7 +82,7 @@ window.UNILogoSvg = function(codeOrName, options = {}) {
   }
   if (!initials) initials = '?';
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="${size}" height="${size}" role="img" aria-label="${info ? info.name : text}">
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="${size}" height="${size}" role="img" aria-label="${escapeLogo(info ? info.name : text)}">
     <defs>
       <linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1">
         <stop offset="0%" stop-color="${fallback.primary}"/>
@@ -91,7 +92,7 @@ window.UNILogoSvg = function(codeOrName, options = {}) {
     <rect width="100" height="100" rx="18" fill="url(#${id})"/>
     <text x="50" y="50" font-family="'Nunito','Be Vietnam Pro',sans-serif" font-weight="900"
           font-size="${initials.length > 3 ? 26 : (initials.length > 2 ? 30 : 38)}" text-anchor="middle" dominant-baseline="central"
-          fill="#fff" letter-spacing="-0.5">${initials}</text>
+          fill="#fff" letter-spacing="-0.5">${escapeLogo(initials)}</text>
   </svg>`;
 };
 

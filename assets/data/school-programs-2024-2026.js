@@ -352,6 +352,7 @@ export const schoolProgramDetails = {
     programNote: '28 dòng tại trụ sở chính, gồm 2 ngành mở mới. Danh sách trong file chưa khẳng định đầy đủ mọi cơ sở.',
   } },
   hufi: { 2026: {
+    programSourceStatus: 'secondary',
     year: 2026,
     programs: hufiPrograms,
     programSource: 'https://diemthi.tuyensinh247.com/thong-tin-dai-hoc-cong-nghiep-thuc-pham-tphcm-DCT.html',
@@ -376,6 +377,7 @@ export const schoolProgramDetails = {
     programNote: '53 ngành được giới thiệu trên trang tuyển sinh 2026; nguồn nhập chưa kèm mã xét tuyển.',
   } },
   hub: { 2026: {
+    programSourceStatus: 'secondary',
     year: 2026,
     programs: hubPrograms,
     programSource: 'https://diemthi.tuyensinh247.com/kqxt-dai-hoc-ngan-hang-tphcm-NHS.html',
@@ -387,7 +389,8 @@ export const schoolProgramDetails = {
     programs: ntuPrograms,
     programSource: 'https://tuyensinh.ntu.edu.vn/thong-bao/diem-chuan-trung-tuyen-2026',
     scoreSource: 'https://tuyensinh.ntu.edu.vn/thong-bao/diem-chuan-trung-tuyen-2026',
-    scoreMethod: 'Điểm thi THPT 2026 theo tổ hợp được trích; một số tổ hợp có hệ số môn',
+    scoreMethod: 'Điểm thi THPT 2026 theo tổ hợp được trích T2VA, TVA2 hoặc TV2A: thang 40, có một môn nhân hệ số 2; không so trực tiếp với tổng ba môn thang 30',
+    scoreScale: 40,
     programNote: '53 ngành/chương trình từ công bố điểm trúng tuyển 2026. Điểm trong bảng là của tổ hợp được trích, không phải điểm chung cho mọi tổ hợp.',
   } },
   qnu: { 2026: {
@@ -475,6 +478,7 @@ export const schoolProgramDetails = {
     programNote: '13 mục được trích từ PDF thông tin tuyển sinh cập nhật 2026; đây chưa phải danh mục đầy đủ của trường và chưa nhập điểm chuẩn.',
   } },
   rmit: { 2026: {
+    programSourceStatus: 'current_catalog',
     year: 2026,
     programs: rmitPrograms,
     programSource: 'https://www.rmit.edu.vn/vi/hoc-tap-tai-rmit/chuong-trinh-cu-nhan',

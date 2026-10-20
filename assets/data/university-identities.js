@@ -30,6 +30,7 @@ export const identities = Object.fromEntries(definitions.map(([id, source_url, s
 }]));
 Object.assign(identities.ftu, { name: 'Trường Đại học Ngoại thương', represented_unit: 'Phân hiệu tại TP.HCM; không đếm là một trường độc lập.' });
 Object.assign(identities.hufi, { name: 'Trường Đại học Công Thương TP.HCM', short: 'HUIT' });
+Object.assign(identities['hue-uni'], { short: 'HUEUNI' });
 Object.assign(identities['smp-udn'], { name: 'Trường Y Dược – Đại học Đà Nẵng' });
 identities.hucfl = {
   id:'hucfl', entity_kind:'unresolved', status:'identity_conflict', updated_at:REVIEWED_AT,

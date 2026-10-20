@@ -14,8 +14,16 @@ export function parseScore(raw, max) {
   const value = Number(text);
   return Number.isFinite(value) && value >= 0 && value <= max ? {value} : {error:'range'};
 }
-export function fptComponent({ combo, raw, grade12, year = 2026 }) {
-  if (year !== 2026 || !COMBO_SUBJECTS[combo] || !/^[AC]/.test(combo)) return null;
+// FPT defines Axx/Cxx by the presence of Math/Literature, not the generic code prefix.
+// Official notice 10/04/2026, section I.2 (checked 20/10/2026).
+export function fptCombinationAllowed(combo, programCode = '') {
+  const subjects = COMBO_SUBJECTS[combo];
+  if (!subjects) return false;
+  if (['7480201', '7480101'].includes(programCode)) return subjects.includes('math');
+  return subjects.includes('math') || subjects.includes('lit');
+}
+export function fptComponent({ combo, raw, grade12, year = 2026, programCode = '' }) {
+  if (year !== 2026 || !fptCombinationAllowed(combo, programCode)) return null;
   if (!Number.isFinite(raw) || raw < 15 || raw > 30 || !Number.isFinite(grade12) || grade12 < 0 || grade12 > 10) return null;
   return (raw + grade12 * 3) / 2;
 }

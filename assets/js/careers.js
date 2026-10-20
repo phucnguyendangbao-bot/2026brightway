@@ -176,7 +176,7 @@
         <div class="career-result-hd">
           <div class="career-result-top">
           <div class="career-code">Mã trong dữ liệu: ${escapeHtml(j.code)} · ${escapeHtml(j.group)} (chưa đối chiếu chuẩn mã nghề)</div>
-            <button class="btn-fav" id="favBtn" data-name="${j.name}" title="Lưu nghề yêu thích">
+            <button class="btn-fav" id="favBtn" data-name="${escapeHtml(j.name)}" title="Lưu nghề yêu thích" aria-pressed="false">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
               </svg>
@@ -200,6 +200,8 @@
         <div class="career-section">
           <div class="career-label">🎓 Học vấn & Con đường học tập</div>
           <div class="career-body">${escapeHtml(j.edu)}</div>
+          <p class="career-education-note">Lộ trình định hướng, không phải danh sách đầy đủ điều kiện tuyển dụng hoặc cấp phép. Hãy kiểm tra chương trình và quy định tại thời điểm đăng ký.</p>
+          ${/^https:\/\//.test(j.eduSource || '') ? `<p class="career-education-source"><a href="${escapeHtml(j.eduSource)}" target="_blank" rel="noopener noreferrer">Nguồn yêu cầu hành nghề ↗</a> · Đối chiếu ${escapeHtml(j.eduReviewedAt)}</p>` : ''}
         </div>
         <div class="career-info-grid career-market-grid">
           <div class="career-info-item career-market-empty" role="note">
@@ -280,19 +282,23 @@
   async function bindFavButton(job) {
     const btn = $('favBtn');
     if (!btn) return;
-    // Init state
-    try {
-      const isFav = window.BWFlow?.read().savedCareers.some(item => item.name === job.name) || await window.BWSync?.isFavorited?.(job.name);
-      if (isFav) btn.classList.add('saved');
-    } catch {}
+    let modified = false;
+    const setFavoriteState = saved => {
+      btn.classList.toggle('saved', saved);
+      btn.setAttribute('aria-pressed', String(saved));
+      btn.querySelector('.fav-label').textContent = saved ? 'Bỏ lưu' : 'Lưu';
+      btn.title = saved ? 'Bỏ lưu nghề yêu thích' : 'Lưu nghề yêu thích';
+    };
+    setFavoriteState(Boolean(window.BWFlow?.read().savedCareers.some(item => item.name === job.name)));
     btn.addEventListener('click', async () => {
+      modified = true;
       btn.disabled = true;
       btn.classList.toggle('pulsing');
       try {
-        const saved = !window.BWFlow?.read().savedCareers.some(item => item.name === job.name);
+        const saved = !btn.classList.contains('saved');
         if (saved) window.BWFlow?.addUnique('savedCareers', { id: job.name, name: job.name, group: job.group });
         else window.BWFlow?.removeSaved('savedCareers', job.name);
-        btn.classList.toggle('saved', saved);
+        setFavoriteState(saved);
         showFavToast(saved, 'local');
         if (window.BWAuth?.isSignedIn() && window.BWSync?.toggleFavorite) {
           const cloudSaved = await window.BWSync.isFavorited(job.name);
@@ -304,6 +310,12 @@
       btn.disabled = false;
       btn.classList.remove('pulsing');
     });
+    if (window.BWAuth?.isSignedIn() && window.BWSync?.isFavorited) {
+      try {
+        const cloudSaved = await window.BWSync.isFavorited(job.name);
+        if (!modified && btn.isConnected && cloudSaved) setFavoriteState(true);
+      } catch (error) { console.warn('[career favorites] Cloud status unavailable; using local status.', error.message); }
+    }
   }
 
   function bindListItemClicks() {

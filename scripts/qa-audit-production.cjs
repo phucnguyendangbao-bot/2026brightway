@@ -1,0 +1,44 @@
+// Read-only production smoke test. No persistent browser profile or account is used.
+const assert = require('node:assert/strict');
+const { chromium } = require('playwright-core');
+
+(async () => {
+  const base = (process.env.BRIGHTWAY_PRODUCTION_URL || 'https://pdp-brightway-careers.vercel.app').replace(/\/$/, '');
+  const browser = await chromium.launch({ channel: process.env.BRIGHTWAY_BROWSER || 'msedge', headless: true });
+  try {
+    const context = await browser.newContext({ viewport: { width: 1366, height: 900 } });
+    // Defensive boundary: the smoke test must not write to production services.
+    await context.route('**/*', route => ['GET','HEAD'].includes(route.request().method()) ? route.continue() : route.abort());
+    const page = await context.newPage();
+    const errors = [];
+    page.on('pageerror', error => errors.push(error.message));
+    const response = await page.goto(`${base}/page2.html?school=ntu&audit=${Date.now()}`, { waitUntil:'domcontentloaded' });
+    assert.equal(response.status(), 200);
+    assert.match(await response.text(), /page2\.js\?v=20261020-audit/);
+    await page.locator('#schoolDialog[open]').waitFor();
+    assert.match(await page.locator('#schoolDialog').innerText(), /thang 40/);
+    await page.locator('#schoolDialog button').first().click();
+    assert.match(await page.locator('#hue-uni .school-card-kicker').innerText(), /HUEUNI/);
+    assert.equal(await page.locator('#icon-hue-uni img').count(), 0);
+
+    await page.goto(`${base}/score-calculator.html?school=fpt&program=0`, { waitUntil:'domcontentloaded' });
+    await page.waitForFunction(() => document.querySelector('#targetProgram')?.value === '0');
+    await page.locator('#comboSelect').selectOption('C00');
+    for (const id of ['sLit','sHis','sGeo']) await page.locator(`#${id}`).fill('8');
+    await page.locator('#fptCard summary').click();
+    await page.locator('#sGrade12').fill('8');
+    await page.locator('#calcBtn').click();
+    assert.match(await page.locator('#schoolList .school-row-status').innerText(), /không áp dụng cho ngành/);
+    await page.locator('#comboSelect').selectOption('D01');
+    for (const id of ['sMath','sLit','sEng']) await page.locator(`#${id}`).fill('8');
+    await page.locator('#calcBtn').click();
+    assert.match(await page.locator('#schoolList .school-row-status').innerText(), /24.00/);
+
+    await page.goto(`${base}/careers-holland.html?holland=all&q=${encodeURIComponent('Bác sĩ đa khoa')}`, { waitUntil:'domcontentloaded' });
+    await page.locator('#favBtn').waitFor();
+    assert.match(await page.locator('.career-result').innerText(), /12 tháng/);
+    assert.equal(await page.locator('a[href*="baochinhphu.vn"]').count(), 1);
+    assert.deepEqual(errors, []);
+    console.log(JSON.stringify({ status:'PASS', base, checks:['deployed audit version','NTU scale 40 and direct school dialog','Hue system identity','FPT C00 IT rejection','FPT D01 IT component 24','doctor sourced route'], pageErrors:errors }, null, 2));
+  } finally { await browser.close(); }
+})().catch(error => { console.error(error.stack || error); process.exitCode = 1; });
