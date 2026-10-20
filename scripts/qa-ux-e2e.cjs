@@ -479,6 +479,122 @@ async function testLegacyMajorInformation(browser, base, report) {
   report.push({ test:'12-legacy-major-provenance-and-safe-rendering', status:'PASS', checks:'simulated CMS data: unsupported salary/employment claims withheld; HTML rendered as text; encoded slug and keyboard navigation; unknown school safe fallback' });
 }
 
+async function testUniversityDiscoveryAndPrivacy(browser, base, report) {
+  const {context,page,errors} = await newCheckedPage(browser,base,{width:390,height:900});
+  await page.goto(`${base}/index.html`,{waitUntil:'domcontentloaded'});
+  await page.waitForFunction(()=>document.querySelectorAll('[data-featured-universities] .university-card').length===3);
+  for (const card of await page.locator('.home-journey-card').all()) assert.equal(await card.isVisible(),true);
+  assert.equal(await page.locator('#bwHeroCarousel .slide').count(),8);
+  assert.equal(await page.locator('#admissionsHighlights .admissions-news-card').count(),3);
+  assert.equal(await page.locator('.is-sponsored').count(),0);
+  assert.equal(await page.locator('[data-university-discovery-retry]').isVisible(),false);
+  assert.equal(await page.evaluate(()=>document.querySelector('#university-discovery').getBoundingClientRect().top > document.querySelector('.home-journey-grid').getBoundingClientRect().bottom),true);
+  const metrics = () => page.evaluate(async()=> (await import('/assets/js/university-promotion-metrics.js')).promotionMetrics.snapshot());
+  const firstCard = page.locator('[data-featured-universities] .university-card').first();
+  const firstLink = firstCard.locator('.university-card-actions a').first();
+  await firstLink.evaluate(link=>link.addEventListener('click',event=>event.preventDefault()));
+  await firstLink.click();
+  assert.deepEqual(await metrics(),[]);
+  await page.locator('.university-transparency summary').click();
+  await page.locator('[data-promotion-consent]').check();
+  await firstCard.scrollIntoViewIfNeeded();
+  await page.waitForFunction(async()=> (await import('/assets/js/university-promotion-metrics.js')).promotionMetrics.snapshot().some(row=>row.action==='impression'),{},{timeout:6000});
+  await firstLink.click();
+  assert.ok((await metrics()).some(row=>row.action==='click'));
+  await page.locator('[data-promotion-consent]').uncheck();
+  assert.deepEqual(await metrics(),[]);
+
+  await page.locator('[data-open-university-consultation="fpt-consultation"]').click();
+  const consultation = page.locator('.university-consultation-dialog[open]');
+  await consultation.waitFor();
+  assert.equal(await consultation.locator('[data-consultation-confirm]').isChecked(),false);
+  assert.equal(await consultation.locator('[data-consultation-continue]').isVisible(),false);
+  assert.equal(await consultation.locator('input:not([type="checkbox"])').count(),0);
+  await consultation.locator('[data-consultation-confirm]').check();
+  const outbound = consultation.locator('[data-consultation-continue]');
+  assert.equal(await outbound.getAttribute('referrerpolicy'),'no-referrer');
+  assert.match(await outbound.getAttribute('href'),/^https:\/\/daihoc\.fpt\.edu\.vn\//);
+  await consultation.locator('[data-consultation-cancel]').click();
+  assert.equal(await page.locator('.university-consultation-dialog[open]').count(),0);
+  await page.locator('#university-discovery').screenshot({path:path.join(artifactDir,'university-discovery-390.png')});
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+  await page.goto(`${base}/page2.html?school=fpt`,{waitUntil:'domcontentloaded'});
+  await page.locator('#schoolDialog[open]').waitFor();
+  await page.locator('[data-tab="opportunities"]').click();
+  assert.match(await page.locator('#schoolDialogPanel').innerText(),/Học bổng Nguyễn Văn Đạo/);
+  assert.equal(await page.locator('#schoolDialogPanel .is-sponsored').count(),0);
+  assert.match(await page.locator('#schoolDialogPanel').innerText(),/Tư liệu đã công bố/);
+  await page.locator('[data-tab="opportunities"]').press('ArrowLeft');
+  assert.equal(await page.locator('[data-tab="admission"]').getAttribute('aria-selected'),'true');
+  await page.locator('[data-tab="admission"]').press('ArrowRight');
+  assert.equal(await page.locator('[data-tab="opportunities"]').getAttribute('aria-selected'),'true');
+  assert.deepEqual(errors,[]);
+  await context.close();
+  report.push({test:'13-university-discovery-and-privacy',status:'PASS',checks:'three visible student intents on mobile; preserved 8 campus slides and 3 news cards; 3 editorial profiles; consent defaults off/opt-in impressions and clicks/erase; voluntary outbound consultation gate with no contact fields; profile opportunities'});
+}
+
+async function testSponsoredPlacementIsolation(browser, base, report) {
+  const {context,page,errors} = await newCheckedPage(browser,base,{width:1366,height:900});
+  const target = `${base}/page2.html?mode=major&q=${encodeURIComponent('Công nghệ thông tin')}`;
+  await page.goto(target,{waitUntil:'domcontentloaded'});
+  await page.locator('#mainContent .school-section').first().waitFor();
+  const baseline = await page.locator('#mainContent .school-section').evaluateAll(cards=>cards.map(card=>card.id));
+  const now = Date.now();
+  const date = delta=>new Date(now+delta*86400000).toISOString();
+  const partner = {id:'synthetic-partner',schoolId:'fpt',status:'verified',verifiedAt:date(-1),expiresAt:date(2)};
+  const campaign = {id:'synthetic-campaign',partnerId:partner.id,schoolId:'fpt',funding:'sponsored',status:'verified',availability:'active',kind:'admissions',title:'Synthetic test campaign',description:'Browser fixture only; not a real partnership.',verifiedAt:date(-1),startsAt:date(-1),endsAt:date(1),placements:['home_featured','major_context'],programCodes:['7480201'],sourceUrl:'https://daihoc.fpt.edu.vn/'};
+  const original = fs.readFileSync(path.join(root,'assets/data/university-promotions.js'),'utf8');
+  await context.route('**/assets/data/university-promotions.js',route=>route.fulfill({contentType:'application/javascript',body:original.replace('export const universityPartners = [];',`export const universityPartners = ${JSON.stringify([partner])};`).replace('export const universityCampaigns = [];',`export const universityCampaigns = ${JSON.stringify([campaign])};`)}));
+  await page.goto(target,{waitUntil:'domcontentloaded'});
+  await page.locator('#contextualUniversityPromotions .is-sponsored').waitFor();
+  assert.deepEqual(await page.locator('#mainContent .school-section').evaluateAll(cards=>cards.map(card=>card.id)),baseline);
+  assert.equal(await page.locator('#mainContent .is-sponsored').count(),0);
+  assert.equal(await page.locator('#contextualUniversityPromotions .is-sponsored').innerText(),'Được tài trợ');
+  assert.ok(await page.locator('#contextualUniversityPromotions a[rel~="sponsored"]').count()>0);
+  await page.locator('#contextualUniversityPromotions').screenshot({path:path.join(artifactDir,'university-context-sponsored-fixture-1366.png')});
+  await page.locator('#searchInput').fill('Y khoa');
+  await page.waitForFunction(()=>document.querySelector('#schoolCatalogStatus').textContent.includes('Y khoa'));
+  assert.equal(await page.locator('#contextualUniversityPromotions .is-sponsored').count(),0);
+  await page.goto(`${base}/index.html`,{waitUntil:'domcontentloaded'});
+  await page.locator('[data-sponsored-universities] .is-sponsored').waitFor();
+  assert.equal(await page.locator('[data-featured-universities] .is-sponsored').count(),0);
+  assert.deepEqual(errors,[]);
+  await context.close();
+  report.push({test:'14-paid-placement-isolation-fixture',status:'PASS',checks:'synthetic verified sponsor only: explicit label and rel=sponsored; separate home/context slot; identical organic IDs/order; unrelated major excludes promotion; no live partner created'});
+}
+
+async function testPromotionFailureAndPrivacySignals(browser, base, report) {
+  const {context,page,errors} = await newCheckedPage(browser,base,{width:390,height:900});
+  await context.addInitScript(()=>Object.defineProperty(navigator,'globalPrivacyControl',{get:()=>true,configurable:true}));
+  let unavailable = true;
+  await context.route('**/assets/data/schools.json',route=>unavailable ? route.fulfill({status:503,body:'unavailable'}) : route.continue());
+  await page.goto(`${base}/index.html`,{waitUntil:'domcontentloaded'});
+  await page.locator('[data-university-discovery-retry]').waitFor();
+  assert.equal(await page.locator('.home-journey-card').count(),3);
+  assert.equal(await page.locator('#university-discovery a[href="page2.html"]').isVisible(),true);
+  await page.locator('.university-transparency summary').click();
+  assert.equal(await page.locator('[data-promotion-consent]').isDisabled(),true);
+  assert.equal(await page.locator('[data-promotion-consent]').isChecked(),false);
+  unavailable = false;
+  await page.locator('[data-university-discovery-retry]').click();
+  await page.waitForFunction(()=>document.querySelectorAll('[data-featured-universities] .university-card').length===3);
+  assert.equal(await page.locator('[data-university-discovery-retry]').isVisible(),false);
+  assert.deepEqual(await page.evaluate(async()=> (await import('/assets/js/university-promotion-metrics.js')).promotionMetrics.snapshot()),[]);
+  await context.route('**/assets/data/university-promotions.js',route=>route.fulfill({status:503,body:'unavailable'}));
+  await page.goto(`${base}/page2.html?mode=school`,{waitUntil:'domcontentloaded'});
+  await page.waitForFunction(()=>document.querySelectorAll('#mainContent .school-section').length===37);
+  await page.waitForFunction(()=>document.querySelector('#universityPromotionPrivacy').textContent.includes('đang không khả dụng'));
+  await page.locator('#searchInput').fill('FPT');
+  await page.waitForFunction(()=>document.querySelector('#schoolCatalogStatus').textContent.includes('FPT'));
+  assert.equal(await page.locator('#mainContent .school-section').count(),1);
+  assert.ok(errors.some(error=>error.startsWith('503 ')));
+  // Edge reports the intentionally rejected module as both HTTP 503 and ERR_ABORTED.
+  const expectedFailures = new Set([`503 ${base}/assets/data/schools.json`, `503 ${base}/assets/data/university-promotions.js`, `requestfailed: ${base}/assets/data/university-promotions.js net::ERR_ABORTED`]);
+  assert.deepEqual(errors.filter(error=>!expectedFailures.has(error)),[]);
+  await context.close();
+  report.push({test:'15-promotion-retry-and-privacy-signals',status:'PASS',checks:'503 section fallback and retry; failed promotional feed cannot block organic FPT search; Global Privacy Control disables counting, no consent preselection'});
+}
+
 (async () => {
   const report = [];
   let browser;
@@ -508,6 +624,9 @@ async function testLegacyMajorInformation(browser, base, report) {
     await testSlowAndEmptyData(browser, base, report);
     await testInformationAndFunctionAudit(browser, base, report);
     await testLegacyMajorInformation(browser, base, report);
+    await testUniversityDiscoveryAndPrivacy(browser, base, report);
+    await testSponsoredPlacementIsolation(browser, base, report);
+    await testPromotionFailureAndPrivacySignals(browser, base, report);
     await testResponsiveAndRegression(browser, base, report);
     const result = { status: 'PASS', scenarios: report.length, report, artifacts: artifactDir };
     fs.writeFileSync(path.join(artifactDir, 'report.json'), JSON.stringify(result, null, 2));

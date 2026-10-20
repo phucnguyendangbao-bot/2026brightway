@@ -1,6 +1,7 @@
 import sourceRegistry from '../data/school-admissions-sources.js';
 import { buildUniversityCatalog, canonicalSchoolId, REVIEWED_AT } from '../data/university-identities.js';
 import { detailsForSchool } from '../data/school-profile-details.js';
+import { universityIdentityHTML, renderUniversityLogo } from './university-card.js';
 
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[char]);
 const formatScore = value => Number.isFinite(value)
@@ -27,6 +28,22 @@ let searchTimer;
 let activeQuery = '';
 let searchMode = 'school';
 let activeRegion = '';
+let promotionUI = null;
+// A failed campaign feed/module must never prevent organic lookup from loading.
+import('./university-promotions.js').then(module => {
+  promotionUI = module;
+  refreshContextualPromotions();
+  if (dialog?.open && activeTab === 'opportunities') renderDialog();
+}).catch(error => {
+  console.warn('[university promotion] Discovery unavailable; organic lookup remains independent.', error.message);
+  const privacy = document.getElementById('universityPromotionPrivacy');
+  if (privacy) privacy.textContent = 'Khu giới thiệu trường đang không khả dụng. Tra cứu tự nhiên và liên kết nguồn trường vẫn hoạt động.';
+});
+
+function refreshContextualPromotions() {
+  try { promotionUI?.renderContextualUniversityPromotions(document.getElementById('contextualUniversityPromotions'), schools, {mode:searchMode, query:activeQuery, region:activeRegion}); }
+  catch (error) { console.warn('[university promotion] Context unavailable.', error.message); }
+}
 
 const sourceForSchool = id => sourceRegistry.universities.find(row => row.school_id === canonicalSchoolId(id));
 
@@ -63,13 +80,7 @@ function renderSchools(items) {
     const matches = matchingPrograms(school, activeQuery).slice(0, 3);
     const subtitle = source?.source_summary || 'Mở hồ sơ để xem nguồn tuyển sinh của trường và tình trạng dữ liệu hiện có.';
     return `<section class="school-section" id="${escapeHtml(school.id)}">
-      <div class="school-card-top">
-        <button type="button" class="school-icon" id="icon-${escapeHtml(school.id)}" data-action="open-school" data-school-id="${escapeHtml(school.id)}" aria-label="Xem ngành, điểm chuẩn và đề án tuyển sinh của ${escapeHtml(school.name)}"></button>
-        <div class="school-card-identity">
-          <span class="school-card-kicker">${escapeHtml(school.short || 'TRƯỜNG ĐẠI HỌC')} · ${escapeHtml(school.city)}</span>
-          <h2 class="school-name">${escapeHtml(school.name)}</h2>
-        </div>
-      </div>
+      ${universityIdentityHTML(school, {logoId:'icon-' + school.id, titleTag:'h2', interactive:true})}
       <span class="school-card-status ${details?.programs?.length && !details.programSourceStatus ? 'school-card-status-ready' : ''}">${details?.programSourceStatus === 'secondary' ? 'Danh mục tham khảo · nguồn thứ cấp' : details?.programSourceStatus === 'current_catalog' ? 'Danh mục hiện hành · cần kiểm tra kỳ nhập học' : details?.programs?.some(program => Number.isFinite(program.score)) ? 'Có ngành và điểm chuẩn 2026' : details?.programs?.length ? `Đã nhập ${details.programs.length} ngành/CT 2026` : details?.scoreSource ? 'Có nguồn điểm chuẩn' : source ? 'Có nguồn tuyển sinh' : 'Đang bổ sung nguồn'}</span>
       ${matches.length ? `<div class="school-card-programs" aria-label="Ngành khớp tìm kiếm">${matches.map(program => `<span>${escapeHtml(program.name)}</span>`).join('')}${matchingPrograms(school, activeQuery).length > 3 ? `<small>+${matchingPrograms(school, activeQuery).length - 3} ngành khác</small>` : ''}</div>` : ''}
       <p class="school-card-description">${escapeHtml(subtitle)}</p>
@@ -83,27 +94,7 @@ function renderSchools(items) {
 }
 
 function renderLogo(school) {
-  const host = document.getElementById(`icon-${school.id}`);
-  if (!host) return;
-  const logo = window.UNILogo?.(school.short || school.name);
-  const sources = [school.logoUrl, logo?.logo, logo?.logoAlt].filter(url =>
-    typeof url === 'string' && (/^assets\/images\/logos\//.test(url) || /^https:\/\/upload\.wikimedia\.org\/wikipedia\/commons\//.test(url))
-  );
-  let position = 0;
-  const fallback = () => {
-    host.innerHTML = window.UNILogoSvg?.(school.short || school.name, { size: 60 }) || `<span class="school-icon-fallback">${escapeHtml(school.short || school.name.slice(0, 2))}</span>`;
-  };
-  if (!sources.length) { fallback(); return; }
-  const image = document.createElement('img');
-  image.alt = '';
-  image.loading = 'lazy';
-  image.onerror = () => {
-    position += 1;
-    if (position < sources.length) image.src = sources[position];
-    else fallback();
-  };
-  image.src = sources[position];
-  host.appendChild(image);
+  renderUniversityLogo(document.getElementById(`icon-${school.id}`), school);
 }
 
 function renderPrograms(school, details) {
@@ -165,16 +156,22 @@ function renderDialog() {
   const details = detailsForSchool(activeSchool.id);
   const tabs = [
     ['majors', 'Ngành đào tạo'], ['scores', 'Điểm chuẩn'], ['admission', 'Đề án tuyển sinh'],
+    ['opportunities', 'Học bổng & kết nối'],
   ];
   const body = activeTab === 'majors' ? renderPrograms(activeSchool, details)
-    : activeTab === 'scores' ? renderScores(activeSchool, details) : renderAdmission(activeSchool, details);
+    : activeTab === 'scores' ? renderScores(activeSchool, details) : activeTab === 'opportunities' ? '<div data-school-opportunities>Khu học bổng và kết nối đang tải hoặc chưa khả dụng. Bạn vẫn có thể dùng liên kết trang trường bên dưới.</div>' : renderAdmission(activeSchool, details);
   const isSaved = window.BWFlow?.read().savedSchools?.some(school => school.id === activeSchool.id);
+  promotionUI?.cleanupPromotionHosts(dialog);
   dialog.innerHTML = `<div class="school-dialog-shell">
     <header class="school-dialog-header"><div><span class="school-card-kicker">HỒ SƠ TRƯỜNG · ${escapeHtml(activeSchool.short || '')}</span><h2 id="schoolDialogTitle">${escapeHtml(activeSchool.name)}</h2><p>${escapeHtml(activeSchool.city)} · Dữ liệu tuyển sinh 2026 theo nguồn đã ghi nhận</p></div><div class="school-dialog-header-actions"><button type="button" class="school-save-button ${isSaved ? 'is-saved' : ''}" data-action="save-school">${isSaved ? '✓ Đã lưu' : 'Lưu trường'}</button><button type="button" class="school-dialog-close" data-action="close-school" aria-label="Đóng hồ sơ">×</button></div></header>
     <div class="school-dialog-tabs" role="tablist" aria-label="Thông tin trường">${tabs.map(([key, label]) => `<button type="button" role="tab" id="tab-${key}" aria-controls="schoolDialogPanel" aria-selected="${activeTab === key}" tabindex="${activeTab === key ? '0' : '-1'}" data-action="school-tab" data-tab="${key}">${label}</button>`).join('')}</div>
     <div class="school-dialog-content" id="schoolDialogPanel" role="tabpanel" aria-labelledby="tab-${activeTab}">${body}</div>
     <footer class="school-dialog-footer"><span>Điểm chuẩn giữa các phương thức không dùng thay thế cho nhau.</span>${officialLink(activeSchool.website, 'Trang trường', '')}</footer>
   </div>`;
+  if (activeTab === 'opportunities' && promotionUI) {
+    try { promotionUI.renderSchoolOpportunities(dialog.querySelector('[data-school-opportunities]'), activeSchool); }
+    catch (error) { console.warn('[university promotion] School opportunities unavailable.', error.message); }
+  }
 }
 
 function openSchool(id) {
@@ -236,6 +233,7 @@ function filterSchools(value) {
   });
   renderSidebar(filteredSchools);
   renderSchools(filteredSchools);
+  refreshContextualPromotions();
   document.getElementById('searchClear').hidden = !query;
   const url = new URL(location.href);
   url.searchParams.set('mode', searchMode);
@@ -317,7 +315,7 @@ document.addEventListener('click', event => {
     else window.BWFlow?.addUnique('savedSchools', { id: activeSchool.id, name: activeSchool.name, city: activeSchool.city });
     renderDialog();
   }
-  if (action === 'school-tab' && ['majors', 'scores', 'admission'].includes(target.dataset.tab)) {
+  if (action === 'school-tab' && ['majors', 'scores', 'admission', 'opportunities'].includes(target.dataset.tab)) {
     activeTab = target.dataset.tab;
     renderDialog();
     document.getElementById(`tab-${activeTab}`)?.focus();
@@ -334,7 +332,7 @@ document.addEventListener('click', event => {
 dialog?.addEventListener('keydown', event => {
   if (!['ArrowLeft', 'ArrowRight'].includes(event.key) || event.target.getAttribute('role') !== 'tab') return;
   event.preventDefault();
-  const tabs = ['majors', 'scores', 'admission'];
+  const tabs = [...dialog.querySelectorAll('[role="tab"]')].map(tab => tab.dataset.tab);
   const offset = event.key === 'ArrowRight' ? 1 : -1;
   activeTab = tabs[(tabs.indexOf(activeTab) + offset + tabs.length) % tabs.length];
   renderDialog();

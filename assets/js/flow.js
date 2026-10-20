@@ -164,8 +164,6 @@
 
   function init() {
     if (page === 'index.html') {
-      const shortcuts = document.querySelector('.home-tools-disclosure');
-      if (shortcuts) shortcuts.open = window.innerWidth >= 900;
       const benefits = document.createElement('section');
       benefits.className = 'flow-benefits';
       benefits.setAttribute('aria-label', 'BrightWay giúp bạn');
@@ -173,7 +171,7 @@
       const hero = document.getElementById('hero-actions');
       hero?.after(benefits);
       let anchor = benefits;
-      for (const id of ['roadmap', 'tools', 'admissions-news']) {
+      for (const id of ['university-discovery', 'roadmap', 'tools', 'admissions-news']) {
         const section = document.getElementById(id);
         if (section) { anchor.after(section); anchor = section; }
       }

@@ -78,6 +78,7 @@
 .home-journey-card b { display:inline-flex; align-items:center; gap:6px; }
 .home-journey-card b::after { content:"→"; transition:transform .18s ease; }
 .home-journey-card:hover b::after { transform:translateX(4px); }
+.home-journey-card b::after { content:none; }
 .home-tools-disclosure summary { min-height:44px; padding:10px 0; color:#49328e; font-weight:700; cursor:pointer; }
 .home-tools-disclosure[open] summary { margin-bottom:10px; }
 @media(min-width:1100px) {

@@ -2950,10 +2950,12 @@ body.spa-active #spa-topbar { display: flex; }
 <link rel="stylesheet" href="/assets/css/brightway-theme.css?v=7">
 <link rel="stylesheet" href="/assets/css/flow.css?v=20261020-journey">
 <link rel="stylesheet" href="/assets/css/admissions-home.css?v=7">
-<script src="/assets/js/flow.js?v=20261020-journey" defer></script>
+<script src="/assets/js/flow.js?v=20261020-partners" defer></script>
 <script type="module" src="/assets/js/catalog-stats.js?v=20261015"></script>
 <link rel="stylesheet" href="/assets/css/home-holland.css?v=20261015">
-<link rel="stylesheet" href="/assets/css/home-journeys.css?v=20261020">
+<link rel="stylesheet" href="/assets/css/home-journeys.css?v=20261020-partners">
+<link rel="stylesheet" href="/assets/css/university-promotions.css?v=20261020-partners">
+<script type="module" src="/assets/js/university-promotions.js?v=20261020-partners"></script>
 <script src="/assets/js/home-holland.js?v=20261015" defer></script>
 </head>
 <body>
@@ -4990,8 +4992,7 @@ body.spa-active #spa-topbar { display: flex; }
       <div class="flow-hero-actions"><a class="flow-primary" href="holland.html">Bắt đầu hướng nghiệp →</a><a href="page2.html?focus=major">Khám phá ngành &amp; trường</a></div>
       <section class="home-journey-picker" aria-labelledby="homeJourneyTitle">
         <h2 id="homeJourneyTitle">Bạn đang ở bước nào?</h2>
-        <details class="home-tools-disclosure">
-        <summary>Truy cập nhanh các công cụ</summary>
+        <div class="home-intent-entries">
         <div class="home-journey-grid">
           <a class="home-journey-card" href="holland.html">
             <span class="home-journey-icon" aria-hidden="true">01</span>
@@ -5012,7 +5013,7 @@ body.spa-active #spa-topbar { display: flex; }
             <b>Mở công cụ tính điểm →</b>
           </a>
         </div>
-        </details>
+        </div>
         <a class="home-browse-link" href="careers-holland.html?holland=all">Tôi muốn tự do khám phá nghề nghiệp →</a>
       </section>
       <button type="button" class="home-waybi-shortcut" data-open-waybi><img src="assets/images/waybi/waybi-mascot-v2.png" alt="" aria-hidden="true">Chưa biết bắt đầu từ đâu? Hỏi Waybi →</button>
@@ -5091,6 +5092,20 @@ body.spa-active #spa-topbar { display: flex; }
     </a>
   </div>
   <p id="catalogCountNote" class="bw-metric-note" role="status">Đang kiểm tra số lượng hồ sơ trường…</p>
+</section>
+
+<section class="university-discovery" id="university-discovery" aria-labelledby="universityDiscoveryTitle">
+  <header class="university-discovery-heading">
+    <div><span class="university-eyebrow">TỪ NGÀNH QUAN TÂM ĐẾN NGÔI TRƯỜNG CỦA BẠN</span><h2 id="universityDiscoveryTitle">Trường nổi bật</h2><p>Thêm góc nhìn trước khi chọn trường: khám phá không gian học tập, chương trình đào tạo và cơ hội từ nguồn chính thức.</p></div>
+    <a href="page2.html">Khám phá tất cả trường →</a>
+  </header>
+  <div class="university-featured-grid" data-featured-universities></div>
+  <div class="university-sponsored-grid" data-sponsored-universities hidden></div>
+  <p class="university-discovery-status" data-university-discovery-status role="status">Đang tải hồ sơ giới thiệu trường…</p>
+  <button type="button" class="university-discovery-retry" data-university-discovery-retry hidden>Thử tải lại khu giới thiệu</button>
+  <div class="university-opportunities-heading"><h3>Học bổng, tuyển sinh & kết nối</h3><p>Đọc điều kiện và mốc thời gian tại nguồn trường. Chỉ hiển thị thông tin đã đối chiếu; không tự xem tư liệu cũ là cơ hội đang mở.</p></div>
+  <div class="university-opportunity-grid" data-university-opportunities></div>
+  <div data-university-privacy></div>
 </section>
 
 <section class="bw-waybi-home" id="waybi-home" aria-labelledby="waybi-home-title">

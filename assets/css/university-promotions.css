@@ -1,0 +1,56 @@
+.university-discovery { max-width:1240px; margin:40px auto; padding:28px 20px; color:var(--bw-ink,#211c46); font-family:'Be Vietnam Pro',sans-serif; text-align:left; }
+.university-discovery-heading { display:flex; align-items:start; justify-content:space-between; gap:20px; margin-bottom:22px; }
+.university-eyebrow { display:block; color:var(--bw-brand,#6651ce); font-size:12px; font-weight:800; letter-spacing:.12em; margin-bottom:8px; }
+.university-discovery h2 { font-family:'Nunito',sans-serif; font-size:clamp(25px,3vw,36px); line-height:1.2; margin:0 0 10px; }
+.university-discovery-heading p, .university-discovery-status { color:var(--bw-muted,#615c7e); font-size:14px; line-height:1.7; max-width:730px; margin:0; }
+.university-discovery-heading > a { flex-shrink:0; color:var(--bw-brand,#6651ce); font-weight:700; font-size:14px; padding:12px 0; }
+.university-featured-grid, .university-opportunity-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+.university-card { display:flex; flex-direction:column; min-width:0; overflow:hidden; border:1px solid var(--bw-line,rgba(113,98,205,.22)); border-radius:24px; background:var(--bw-paper,rgba(255,255,255,.7)); box-shadow:0 12px 38px rgba(62,48,119,.07); }
+.university-card-cover { display:block; flex:0 0 auto; aspect-ratio:16/9; overflow:hidden; background:#e8e9f5; }
+.university-card-cover img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .25s ease; }
+.university-card-cover:hover img { transform:scale(1.035); }
+.university-card-body { display:flex; flex:1; flex-direction:column; gap:14px; padding:22px; }
+.university-placement-label { display:inline-flex; align-self:start; padding:6px 9px; border-radius:8px; background:var(--bw-tint,#efedff); color:var(--bw-brand,#6651ce); font-size:11px; line-height:1.4; font-weight:750; }
+.university-placement-label.is-sponsored { background:#fff2d2; color:#714e00; border:1px solid #d8b45c; }
+.university-card-sponsored { border:2px solid #d8b45c; }
+.university-card .school-card-top { display:flex; align-items:center; gap:12px; margin:0; }
+.university-card .school-icon { width:54px; height:54px; flex:0 0 54px; display:grid; place-items:center; padding:7px; background:#fff; border:1px solid #e8e4fd; border-radius:15px; box-sizing:border-box; }
+.university-card .school-icon img { width:100%; height:100%; object-fit:contain; }
+.university-card .school-icon-fallback { color:#5240a8; font-size:14px; font-weight:800; }
+.university-card .school-card-identity { min-width:0; }
+.university-card .school-card-kicker { display:block; color:var(--bw-muted,#615c7e); font-size:11px; font-weight:700; margin-bottom:5px; }
+.university-card .school-name { font-size:17px; line-height:1.4; font-weight:800; margin:0; color:var(--bw-ink,#211c46); }
+.university-card h4 { font-size:17px; line-height:1.45; margin:0; }
+.university-card p { font-size:13px; line-height:1.7; color:var(--bw-muted,#615c7e); margin:0; overflow-wrap:anywhere; }
+.university-card .university-source-meta { font-size:11px; }
+.university-program-preview { display:flex; flex-wrap:wrap; list-style:none; gap:6px; padding:0; margin:0; }
+.university-program-preview li { font-size:11px; line-height:1.5; padding:5px 8px; border:1px solid var(--bw-line,#ded9f4); border-radius:7px; color:var(--bw-muted,#615c7e); }
+.university-card-actions { display:flex; flex-wrap:wrap; align-items:center; gap:8px 14px; margin-top:auto; }
+.university-card-actions :is(a,button), .university-discovery-retry { display:inline-flex; align-items:center; justify-content:center; min-height:44px; font:inherit; font-size:12px; font-weight:750; color:var(--bw-brand,#6651ce); text-decoration:none; cursor:pointer; border:1px solid var(--bw-line,#ded9f4); border-radius:10px; padding:10px 12px; background:var(--bw-paper,#fff); }
+.university-card-actions a:first-child { background:var(--bw-brand,#6651ce); border-color:transparent; color:#fff; }
+.university-card-actions [hidden], [data-sponsored-universities][hidden], [data-university-discovery-retry][hidden], #contextualUniversityPromotions[hidden] { display:none!important; }
+.university-card :is(a,button):focus-visible, .university-transparency summary:focus-visible, .university-consultation-dialog :is(a,button,input):focus-visible { outline:3px solid #8070f5; outline-offset:4px; }
+.university-opportunities-heading { margin:32px 0 18px; }
+.university-opportunities-heading h3 { font-size:22px; margin:0 0 8px; }
+.university-opportunities-heading p { font-size:13px; line-height:1.6; color:var(--bw-muted,#615c7e); }
+.university-sponsored-grid { display:grid; gap:18px; margin-top:20px; }
+.university-discovery-status { margin-top:18px; }
+.university-transparency { padding:16px 0; margin-top:10px; border-top:1px solid var(--bw-line,#ded9f4); font-size:12px; line-height:1.8; color:var(--bw-muted,#615c7e); }
+.university-transparency summary { min-height:40px; cursor:pointer; font-weight:750; color:var(--bw-brand,#6651ce); }
+.university-transparency p { margin:8px 0; max-width:900px; }
+.university-transparency label, .university-consultation-dialog label { display:flex; gap:10px; align-items:start; cursor:pointer; padding:10px 0; }
+.university-transparency input, .university-consultation-dialog input { margin-top:5px; flex-shrink:0; width:18px; height:18px; accent-color:#6651ce; }
+.university-context-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+#contextualUniversityPromotions { margin-top:14px; margin-bottom:10px; padding:20px; border-radius:24px; background:var(--bw-subtle,rgba(236,232,255,.55)); }
+#contextualUniversityPromotions h2 { font-size:24px; }
+.university-organic-heading, #universityPromotionPrivacy { max-width:1200px; margin:10px auto; padding:0 20px; color:var(--bw-muted,#615c7e); }
+.university-organic-heading h2 { color:var(--bw-ink,#211c46); font-size:20px; margin:16px 0 6px; }
+.university-organic-heading p { font-size:12px; }
+.school-dialog .university-opportunity-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.university-consultation-dialog { max-width:560px; width:calc(100% - 32px); max-height:85dvh; overflow:auto; box-sizing:border-box; margin:auto; border:1px solid var(--bw-line,#ded9f4); border-radius:24px; padding:28px; background:var(--bw-paper,#fff); color:var(--bw-ink,#211c46); box-shadow:0 24px 90px rgba(23,15,62,.3); font-family:'Be Vietnam Pro',sans-serif; font-size:14px; line-height:1.7; }
+.university-consultation-dialog::backdrop { background:rgba(20,17,50,.5); backdrop-filter:blur(4px); }
+.university-consultation-dialog h2 { font-size:23px; margin:0 0 14px; }
+.university-consultation-dialog p { margin:12px 0; }
+@media(max-width:900px) { .university-featured-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .university-opportunity-grid { grid-template-columns:1fr; } }
+@media(max-width:620px) { .university-discovery { padding:20px 16px; margin:24px auto; } .university-discovery-heading { flex-direction:column; gap:4px; } .university-featured-grid, .university-context-grid, .school-dialog .university-opportunity-grid { grid-template-columns:1fr; } .university-card-body { padding:18px; } .university-card { border-radius:20px; } .university-consultation-dialog { padding:22px; } }
+@media(prefers-reduced-motion:reduce) { .university-card-cover img { transition:none; } }
