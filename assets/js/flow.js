@@ -25,7 +25,11 @@
       catch { warnStorage('Trình duyệt đang chặn lưu dữ liệu. Tiến độ chỉ giữ trong trang này; tải lại có thể mất dữ liệu.'); return memory.get(key) ?? null; }
     },
     set(key, value) {
-      try { localStorage.setItem(key, value); memory.delete(key); return true; }
+      try {
+        localStorage.setItem(key, value); memory.delete(key);
+        if (['studentHollandV1','studentHollandImportedV1'].includes(key)) window.dispatchEvent(new CustomEvent('bw:journey-change', { detail: { storageKey:key } }));
+        return true;
+      }
       catch { memory.set(key, value); warnStorage('Chưa lưu được trên thiết bị. Tiến độ chỉ giữ trong trang này; hãy kiểm tra dung lượng hoặc quyền lưu của trình duyệt.'); return false; }
     },
     remove(key) {
@@ -63,6 +67,7 @@
     for (const key of [KEY, LEGACY_KEY, 'studentHollandV1', 'studentHollandImportedV1', 'studentHollandTimer', 'bw_favorites', 'bw_history', 'bw_schools_selected', 'bw-school-compare-2026']) {
       if (!storage.remove(key)) cleared = false;
     }
+    window.dispatchEvent(new CustomEvent('bw:waybi-privacy-reset'));
     window.dispatchEvent(new CustomEvent('bw:journey-change'));
     if (!cleared) return null;
     return emptyState();
@@ -116,7 +121,7 @@
     container.innerHTML = `<section class="flow-journey ${compact ? 'flow-journey-compact' : ''}" aria-labelledby="flowJourneyTitle"><div class="flow-journey-heading"><div><span class="flow-kicker">LƯU TRÊN THIẾT BỊ NÀY</span><h2 id="flowJourneyTitle">Hành trình của tôi</h2><p>Các bước là gợi ý, không phải điều kiện bắt buộc.</p></div><a class="flow-continue" href="${escape(next.href)}">${steps.every(step => step.complete) ? 'Xem lại kế hoạch' : 'Tiếp tục: ' + escape(next.label)} →</a></div><ol class="flow-journey-steps">${steps.map((step, index) => `<li class="${step.complete ? 'is-complete' : ''}"><a href="${escape(step.href)}"><span>${step.complete ? '✓' : index + 1}</span><strong>${escape(step.label)}</strong><small>${escape(step.detail)}</small></a></li>`).join('')}</ol>${compact ? '' : '<button type="button" class="flow-reset" data-flow-reset>Xóa dữ liệu hành trình trên thiết bị</button>'}</section>`;
   }
 
-  window.BWFlow = { read, save, clear, holland, nextStep, progress, renderJourney, addUnique, removeSaved, storage };
+  window.BWFlow = { read, save, clear, holland, nextStep, progress, renderJourney, addUnique, removeSaved, storage, get storageWarning() { return storageWarning; } };
   const page = location.pathname.split('/').pop() || 'index.html';
   const nav = document.querySelector('nav.bw-nav, nav.p2-nav, nav.lp-nav, nav.nav');
   if (nav) {
@@ -214,6 +219,13 @@
       if (clear()) location.reload();
     });
     if (storageWarning) warnStorage(storageWarning);
+    import('./personalization.js').then(module => module.initPersonalization()).catch(() => {
+      const host = document.createElement('p');
+      host.className = 'flow-status'; host.setAttribute('role','status');
+      host.innerHTML = 'Chưa mở được cá nhân hóa. Lựa chọn đã lưu vẫn được giữ. <button type="button">Thử tải lại</button>';
+      host.querySelector('button').addEventListener('click', () => location.reload());
+      if (page === 'profile.html') document.querySelector('.flow-local-profile')?.prepend(host);
+    });
     const stepIndex = { 'holland.html': 0, 'careers-holland.html': 1, 'page2.html': 2, 'score-calculator.html': 3 }[page];
     if (stepIndex !== undefined) {
       const steps = progress();

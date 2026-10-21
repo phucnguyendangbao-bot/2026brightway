@@ -93,7 +93,7 @@ async function comparison(page) {
       await page.goto(base+(home?'/index.html':'/profile.html?tab=journey#my-choices'),{waitUntil:'domcontentloaded'});
       await page.locator(home?'#bwChatLauncher':'#waybi-fab').click();
       const panel=page.locator(home?'#bwChatPanel':'#waybi-panel');
-      await panel.locator('input,textarea').fill('Làm sao sắp xếp nguyện vọng của tôi?');
+      await panel.getByRole('textbox', {name:'Câu hỏi cho Waybi'}).fill('Làm sao sắp xếp nguyện vọng của tôi?');
       await page.locator(home?'#bwChatSend':'#waybi-send').click();
       await panel.getByText(/Mình chưa kết nối được/).waitFor();
       await panel.screenshot({path:path.join(artifacts,home?'waybi-home-error.png':'waybi-shared-error.png')});
