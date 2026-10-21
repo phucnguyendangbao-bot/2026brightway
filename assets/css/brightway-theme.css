@@ -50,6 +50,29 @@
   --shadow: 0 12px 32px rgba(99,102,241,.16) !important;
   --shadow-soft: 0 4px 18px rgba(99,102,241,.1) !important;
   --shadow-lg: 0 24px 60px rgba(99,102,241,.2) !important;
+  /* Shared design-system scale. Keep aliases above for legacy pages. */
+  --bw-space-1: 4px;
+  --bw-space-2: 8px;
+  --bw-space-3: 12px;
+  --bw-space-4: 16px;
+  --bw-space-5: 24px;
+  --bw-space-6: 32px;
+  --bw-space-7: 48px;
+  --bw-radius-sm: 10px;
+  --bw-radius-md: 16px;
+  --bw-radius-lg: 24px;
+  --bw-radius-pill: 999px;
+  --bw-shadow-surface: 0 2px 5px rgba(39,35,92,.04), 0 18px 44px rgba(54,48,130,.08);
+  --bw-shadow-overlay: 0 12px 32px rgba(45,40,105,.16);
+  --bw-container: 1200px;
+  --bw-container-wide: 1400px;
+  --bw-focus-ring: 0 0 0 4px rgba(107,96,255,.22);
+  --bw-duration-fast: 160ms;
+  --bw-duration-base: 220ms;
+  --bw-type-xs: .75rem;
+  --bw-type-sm: .875rem;
+  --bw-type-body: 1rem;
+  --bw-type-title: clamp(1.55rem,3vw,2.35rem);
 }
 :root[data-theme="dark"] {
   --bw-canvas: #16142b;
@@ -99,6 +122,19 @@ body :is(a,button,input,select,textarea,summary):focus-visible {
   outline: 3px solid var(--bw-brand);
   outline-offset: 4px;
 }
+
+/* Reusable primitives for shared and progressively-migrated surfaces. */
+html body .bw-ui-container { width:min(calc(100% - 32px),var(--bw-container)); margin-inline:auto; }
+html body .bw-ui-card { border:1px solid var(--bw-line); border-radius:var(--bw-radius-lg); background:color-mix(in srgb,var(--bw-paper) 86%,transparent); box-shadow:var(--bw-shadow-surface); }
+html body .bw-ui-button { min-height:44px; display:inline-flex; align-items:center; justify-content:center; gap:var(--bw-space-2); padding:10px 18px; border:1px solid var(--bw-line); border-radius:var(--bw-radius-pill); background:var(--bw-paper); color:var(--bw-brand); font:600 var(--bw-type-sm)/1.35 var(--font); text-decoration:none; cursor:pointer; transition:background var(--bw-duration-fast),border-color var(--bw-duration-fast),transform var(--bw-duration-fast); }
+html body .bw-ui-button[data-variant="primary"] { border-color:transparent; background:var(--bw-brand-gradient); color:var(--bw-on-brand); box-shadow:0 9px 22px rgba(93,78,231,.2); }
+html body .bw-ui-button[data-variant="tertiary"] { border-color:transparent; background:transparent; box-shadow:none; }
+html body .bw-ui-field { min-height:44px; width:100%; padding:10px 13px; border:1px solid var(--bw-line); border-radius:var(--bw-radius-md); background:var(--bw-paper); color:var(--bw-ink); font:inherit; }
+html body .bw-ui-badge { display:inline-flex; align-items:center; min-height:28px; padding:4px 10px; border-radius:var(--bw-radius-pill); background:var(--bw-tint); color:var(--bw-brand); font-size:var(--bw-type-xs); font-weight:700; }
+html body :is(.bw-ui-empty,.bw-ui-loading,.bw-ui-error,.bw-ui-toast) { padding:var(--bw-space-4); border-radius:var(--bw-radius-md); background:var(--bw-subtle); color:var(--bw-muted); line-height:1.6; }
+html body .bw-ui-error { border-left:3px solid #c2410c; }
+html body .bw-ui-toast { position:fixed; right:var(--bw-space-4); bottom:var(--bw-space-4); z-index:1000; max-width:min(380px,calc(100vw - 32px)); background:var(--bw-paper); box-shadow:var(--bw-shadow-overlay); }
+html { scroll-padding-top:88px; }
 
 /* Reference homepage: generous two-column hero and a visible Waybi strip. */
 html body #home-view { background: #fff; font-family: var(--font); }

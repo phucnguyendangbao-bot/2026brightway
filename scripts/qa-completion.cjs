@@ -193,6 +193,7 @@ const catalog = async page => {
         assert.equal(await panel.isVisible(),false);
         await page.setViewportSize({width:390,height:900});
         await page.locator('.flow-menu').click();
+        await page.locator('.flow-more-button').click();
         await page.locator('#navLinks a[href="profile.html?tab=journey#my-choices"]').click();
         await page.waitForURL(/profile\.html\?tab=journey#my-choices$/);
         await page.locator('#my-choices').waitFor();

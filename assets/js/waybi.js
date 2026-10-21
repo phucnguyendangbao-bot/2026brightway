@@ -159,7 +159,7 @@
         box-shadow: 0 2px 8px rgba(99,102,241,0.06);
         white-space: pre-wrap;
       }
-      .waybi-msg.bot b { color: #6366f1; }
+      .waybi-msg.bot b { color: #5548cf; }
 
       .waybi-typing {
         align-self: flex-start;

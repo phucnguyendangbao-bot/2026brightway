@@ -132,14 +132,22 @@
     const items = [
       ['Trang chủ', 'index.html', ['index.html']],
       ['Khám phá nghề', 'careers-holland.html', ['careers-holland.html','holland.html','majors.html','major-detail.html']],
-      ['Tìm ngành & trường', 'page2.html?focus=major', ['page2.html']],
+      ['Khám phá trường', 'page2.html?mode=school', ['page2.html']],
       ['Tính điểm', 'score-calculator.html', ['score-calculator.html']],
       ['Hành trình của tôi', 'profile.html?tab=journey', ['profile.html']],
-      ['Nguyện vọng', 'profile.html?tab=journey#my-choices', []],
     ];
+    const tools = [
+      ['Trắc nghiệm Holland', 'holland.html', ['holland.html']],
+      ['Nguyện vọng của tôi', 'profile.html?tab=journey#my-choices', []],
+      ['BrightWay Countdown', 'profile.html?tab=journey#countdowns', []],
+      ['Lịch Lớp 12', 'calendar.html', ['calendar.html']],
+      ['Tin tuyển sinh', 'resources.html', ['resources.html','news.html','news-detail.html']],
+      ['Lộ trình học bổng', 'scholarship-roadmap.html', ['scholarship-roadmap.html','essay-review.html','interview-prep.html']],
+    ];
+    const hashActive = href => page === 'profile.html' && href.includes(location.hash) && Boolean(location.hash);
     nav.className = 'flow-nav';
     nav.setAttribute('aria-label', 'Điều hướng chính');
-    nav.innerHTML = `<div class="flow-nav-inner"><a class="flow-logo" href="index.html"><img src="assets/images/brand/brightway-mark.png" alt="" aria-hidden="true"><span>BrightWay Career</span></a><button type="button" class="flow-menu" aria-controls="navLinks" aria-expanded="false" aria-label="Mở menu">Menu <span aria-hidden="true">☰</span></button><div id="navLinks" class="flow-links">${items.map(([label, href, pages]) => `<a href="${href}" ${pages.includes(page) ? 'class="active" aria-current="page"' : ''}>${label}</a>`).join('')}<a class="flow-waybi-link" href="waybi.html">Waybi</a></div></div>`;
+    nav.innerHTML = `<div class="flow-nav-inner"><a class="flow-logo" href="index.html"><img src="assets/images/brand/brightway-mark.png" alt="" aria-hidden="true"><span>BrightWay Career</span></a><button type="button" class="flow-menu" aria-controls="navLinks" aria-expanded="false" aria-label="Mở menu chính">Menu <span aria-hidden="true">☰</span></button><div id="navLinks" class="flow-links">${items.map(([label, href, pages]) => `<a href="${href}" ${pages.includes(page) ? 'class="active" aria-current="page"' : ''}>${label}</a>`).join('')}<div class="flow-more"><button type="button" class="flow-more-button" aria-controls="flowMoreMenu" aria-expanded="false">Công cụ <span aria-hidden="true">⌄</span></button><div id="flowMoreMenu" class="flow-more-menu">${tools.map(([label, href, pages]) => `<a href="${href}" ${(pages.includes(page) || hashActive(href)) ? 'class="active" aria-current="page"' : ''}>${label}</a>`).join('')}</div></div><a class="flow-waybi-link ${page === 'waybi.html' ? 'active' : ''}" href="waybi.html" ${page === 'waybi.html' ? 'aria-current="page"' : ''}>Waybi</a></div></div>`;
     const links = nav.querySelector('#navLinks');
     if (senior) links.appendChild(senior);
     if (theme) { theme.classList.add('flow-theme'); links.appendChild(theme); }
@@ -155,13 +163,35 @@
       nav.after(toolbar);
     }
     const button = nav.querySelector('.flow-menu');
-    const close = () => { links.classList.remove('open'); button.setAttribute('aria-expanded','false'); };
+    const more = nav.querySelector('.flow-more');
+    const moreButton = nav.querySelector('.flow-more-button');
+    const closeMore = () => { more?.classList.remove('open'); moreButton?.setAttribute('aria-expanded','false'); };
+    const close = () => { links.classList.remove('open'); button.setAttribute('aria-expanded','false'); closeMore(); };
     button.addEventListener('click', () => {
       const open = links.classList.toggle('open');
       button.setAttribute('aria-expanded', String(open));
     });
     links.addEventListener('click', event => { if (event.target.closest('a')) close(); });
-    document.addEventListener('keydown', event => { if (event.key === 'Escape' && links.classList.contains('open')) { close(); button.focus(); } });
+    moreButton?.addEventListener('click', event => {
+      event.stopPropagation();
+      const open = more.classList.toggle('open');
+      moreButton.setAttribute('aria-expanded', String(open));
+    });
+    document.addEventListener('click', event => { if (more?.classList.contains('open') && !event.target.closest('.flow-more')) closeMore(); });
+    document.addEventListener('keydown', event => {
+      if (event.key !== 'Escape') return;
+      if (more?.classList.contains('open')) { closeMore(); moreButton.focus(); return; }
+      if (links.classList.contains('open')) { close(); button.focus(); }
+    });
+  }
+
+  function ensureSharedFooter() {
+    if (['admin.html','careers.html'].includes(page)) return;
+    let footer = document.querySelector('footer');
+    if (!footer) { footer = document.createElement('footer'); document.body.append(footer); }
+    footer.className = 'flow-footer';
+    footer.setAttribute('aria-label', 'Thông tin BrightWay Career');
+    footer.innerHTML = `<div class="flow-footer-inner"><div class="flow-footer-brand"><a href="index.html"><img src="assets/images/brand/brightway-mark.png" alt=""><strong>BrightWay Career</strong></a><p>Đồng hành cùng học sinh trên hành trình hướng nghiệp và chuẩn bị xét tuyển.</p></div><nav aria-label="Liên kết cuối trang"><a href="careers-holland.html">Khám phá nghề</a><a href="page2.html?mode=school">Khám phá trường</a><a href="profile.html?tab=journey#my-choices">Nguyện vọng</a><a href="profile.html?tab=journey#countdowns">Countdown</a><a href="resources.html">Tin tuyển sinh</a><a href="calendar.html">Lịch Lớp 12</a></nav><div class="flow-footer-meta"><a href="mailto:pdpbrightwaycarrers@gmail.com">pdpbrightwaycarrers@gmail.com</a><a href="tel:+84939249060">0939 249 060</a><p>© ${new Date().getFullYear()} BrightWay Career</p></div></div><p class="flow-footer-note">Thông tin chỉ mang tính tham khảo; hãy kiểm tra nguồn chính thức trước khi đưa ra quyết định tuyển sinh.</p>`;
   }
 
   document.querySelectorAll('a[href="login.html"]').forEach(anchor => {
@@ -169,6 +199,8 @@
   });
 
   function init() {
+    document.body.dataset.bwPage = page;
+    ensureSharedFooter();
     if (page === 'index.html') {
       const hero = document.getElementById('hero-actions');
       // The three intent cards already explain these benefits on the homepage.
@@ -225,6 +257,15 @@
       host.innerHTML = 'Chưa mở được cá nhân hóa. Lựa chọn đã lưu vẫn được giữ. <button type="button">Thử tải lại</button>';
       host.querySelector('button').addEventListener('click', () => location.reload());
       if (page === 'profile.html') document.querySelector('.flow-local-profile')?.prepend(host);
+    });
+    import('./countdown.js').then(module => module.initCountdown()).catch(() => {
+      if (!['index.html','profile.html'].includes(page)) return;
+      const host = document.createElement('p');
+      host.className = 'flow-status'; host.setAttribute('role','status');
+      host.innerHTML = 'Chưa mở được BrightWay Countdown. Dữ liệu hành trình khác vẫn được giữ. <button type="button">Thử tải lại</button>';
+      host.querySelector('button').addEventListener('click', () => location.reload());
+      if (page === 'profile.html') document.querySelector('.flow-local-profile')?.append(host);
+      else document.querySelector('.flow-resume')?.after(host);
     });
     const stepIndex = { 'holland.html': 0, 'careers-holland.html': 1, 'page2.html': 2, 'score-calculator.html': 3 }[page];
     if (stepIndex !== undefined) {

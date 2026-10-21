@@ -1,0 +1,51 @@
+.countdown-widget,.countdown-manager{box-sizing:border-box;color:var(--bw-ink,#1a1a3e);font-family:var(--font,'Be Vietnam Pro',sans-serif);text-align:left}
+.countdown-widget{max-width:1160px;margin:18px auto 34px;padding:22px 24px;border:1px solid rgba(107,96,255,.14);border-radius:26px;background:linear-gradient(145deg,rgba(255,255,255,.82),rgba(243,241,255,.72));box-shadow:0 18px 50px rgba(53,47,125,.09);backdrop-filter:blur(20px)}
+.countdown-manager{margin:24px 0;padding:28px;border:1px solid rgba(107,96,255,.15);border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.88),rgba(246,244,255,.74));box-shadow:0 20px 52px rgba(53,47,125,.09);scroll-margin-top:90px}
+.countdown-widget h2,.countdown-manager h2{margin:4px 0 6px;font-size:clamp(1.35rem,3vw,1.8rem);line-height:1.3}
+.countdown-widget h3,.countdown-manager h3{margin:7px 0;font-size:1.05rem;line-height:1.45}
+.countdown-widget p,.countdown-manager p{color:var(--bw-muted,#4c4770);line-height:1.65}
+.countdown-widget a,.countdown-manager a{color:#5945c3;overflow-wrap:anywhere}
+.countdown-widget-heading,.countdown-heading,.countdown-card-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}
+.countdown-widget-heading>a{padding:8px 0;font-weight:700;text-decoration:none;white-space:nowrap}
+.countdown-icon{width:58px;height:58px;display:grid;place-items:center;flex:0 0 58px;border:1px solid rgba(107,96,255,.14);border-radius:20px;background:rgba(255,255,255,.68);font-size:1.8rem;box-shadow:0 12px 28px rgba(64,54,150,.10)}
+.countdown-card{min-width:0;padding:18px;border:1px solid rgba(107,96,255,.14);border-radius:20px;background:rgba(255,255,255,.72);box-shadow:0 9px 24px rgba(48,42,110,.055)}
+.countdown-card.is-pinned{border-color:rgba(107,96,255,.32)}
+.countdown-card.is-overdue{border-color:rgba(194,65,12,.28)}
+.countdown-days{display:inline-flex;align-items:center;min-height:34px;padding:5px 11px;border-radius:999px;background:#ede9fe;color:#5137b2;font-size:.86rem;white-space:nowrap}
+.countdown-date{margin:6px 0!important;font-size:.88rem}
+.countdown-badge{display:inline-flex;margin:0 6px 3px 0;padding:4px 9px;border-radius:999px;background:#f2efff;color:#5844b6;font-size:.72rem;font-weight:700}
+.countdown-badge.is-official{background:#e8f8f0;color:#08734d}.countdown-badge.is-changed{background:#fff3d8;color:#8a4c00}.countdown-badge.is-tentative{background:#f3f1f8;color:#625b78}
+.countdown-alert{display:block;margin:10px 0;color:#a63b08;font-size:.86rem}
+.countdown-source{font-size:.77rem;margin:8px 0 0!important}
+.countdown-progress{margin:14px 0}.countdown-progress>div{display:flex;justify-content:space-between;gap:10px;margin-bottom:6px;color:var(--bw-muted,#4c4770);font-size:.78rem}.countdown-progress progress{display:block;width:100%;height:8px;accent-color:#6657dc}
+.countdown-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0}
+.countdown-card-actions,.countdown-form-actions,.countdown-data-actions,.countdown-toolbar,.countdown-suggestions>div{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.countdown-manager button,.countdown-editor summary{min-height:44px;padding:9px 15px;border:1px solid rgba(107,96,255,.2);border-radius:999px;background:rgba(248,247,255,.94);color:#49369d;font:inherit;font-size:.82rem;font-weight:650;cursor:pointer}
+.countdown-manager button:hover{border-color:rgba(107,96,255,.42);background:#f0edff}
+.countdown-manager button.is-primary,.countdown-toolbar button[aria-pressed="true"]{border-color:transparent;background:#5b47cd;color:#fff}
+.countdown-manager button.is-danger{color:#a12c2c;background:#fff7f7;border-color:#efd4d4}
+.countdown-manager button:focus-visible,.countdown-manager :is(input,select,textarea,summary):focus-visible,.countdown-widget a:focus-visible{outline:3px solid #6047d5;outline-offset:3px}
+.countdown-suggestions{margin:20px 0;padding:16px 18px;border-left:3px solid #8b7cf2;border-radius:4px 18px 18px 4px;background:rgba(239,236,255,.62)}
+.countdown-suggestions h3,.countdown-suggestions p{margin:2px 0}.countdown-suggestions>div{margin-top:10px}
+.countdown-editor{margin:22px 0;border:1px solid rgba(107,96,255,.14);border-radius:22px;background:rgba(255,255,255,.62);overflow:hidden}
+.countdown-editor>summary{display:flex;align-items:center;border:0;border-radius:0;background:transparent;font-size:.95rem;list-style-position:inside}
+.countdown-editor form{padding:0 20px 22px}
+.countdown-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:8px 0 16px}
+.countdown-editor label{display:flex;flex-direction:column;gap:7px;color:var(--bw-muted,#4c4770);font-size:.82rem}
+.countdown-editor [hidden]{display:none!important}
+.countdown-editor :is(input:not([type=checkbox]),select,textarea){box-sizing:border-box;width:100%;min-width:0;min-height:44px;padding:10px 12px;border:1px solid rgba(107,96,255,.22);border-radius:14px;background:var(--bw-paper,#fff);color:var(--bw-ink,#1a1a3e);font:inherit}
+.countdown-editor textarea{resize:vertical;line-height:1.55}
+.countdown-editor fieldset{margin:18px 0;padding:0;border:0}.countdown-editor legend{margin-bottom:8px;color:var(--bw-muted,#4c4770);font-size:.82rem}
+.countdown-reminders{display:flex;flex-wrap:wrap;gap:8px 16px}.countdown-reminders label,.countdown-check{display:flex!important;flex-direction:row!important;align-items:center;min-height:36px;gap:7px!important}.countdown-reminders input,.countdown-check input,.countdown-milestones input{width:18px;height:18px;flex:0 0 18px;accent-color:#5b47cd}
+.countdown-note{padding:11px 14px;border-radius:14px;background:#f3f1ff;font-size:.8rem}
+.countdown-toolbar{padding-top:2px}.countdown-toolbar button{min-height:40px;padding:7px 13px}
+.countdown-milestones{list-style:none;margin:14px 0;padding:0;border-top:1px solid rgba(107,96,255,.1)}.countdown-milestones li{margin:0;padding:9px 0;border-bottom:1px solid rgba(107,96,255,.08)}.countdown-milestones label{display:flex;align-items:flex-start;gap:9px;line-height:1.5;font-size:.84rem;cursor:pointer}
+.countdown-data-actions{padding-top:18px;border-top:1px solid rgba(107,96,255,.12)}
+.countdown-empty{padding:20px;border:1px dashed rgba(107,96,255,.25);border-radius:18px;color:var(--bw-muted,#4c4770)}
+.countdown-privacy{margin-top:18px;color:var(--bw-muted,#4c4770);font-size:.82rem}.countdown-privacy summary{min-height:44px;padding:10px 0;cursor:pointer;font-weight:650}
+:root[data-theme="dark"] :is(.countdown-widget,.countdown-manager){background:linear-gradient(145deg,rgba(31,27,61,.94),rgba(38,32,76,.86));border-color:rgba(180,164,255,.22)}
+:root[data-theme="dark"] :is(.countdown-card,.countdown-editor){background:rgba(30,26,58,.72)}
+:root[data-theme="dark"] :is(.countdown-widget a,.countdown-manager a){color:#cabfff}
+@media(max-width:700px){.countdown-widget{margin:14px 16px 28px;padding:18px;border-radius:22px}.countdown-manager{padding:18px;border-radius:22px}.countdown-list,.countdown-form-grid{grid-template-columns:minmax(0,1fr)}.countdown-card-heading,.countdown-heading{gap:10px}.countdown-card-heading{flex-direction:column}.countdown-days{align-self:flex-start}.countdown-widget-heading{align-items:center}.countdown-widget-heading>a{font-size:.8rem}.countdown-card-actions button{flex:1 1 calc(50% - 8px)}}
+@media(max-width:390px){.countdown-manager{padding:14px}.countdown-widget{margin-left:12px;margin-right:12px;padding:16px}.countdown-icon{display:none}.countdown-editor form{padding-left:14px;padding-right:14px}.countdown-data-actions button{width:100%}}
+@media(prefers-reduced-motion:reduce){.countdown-widget *,.countdown-manager *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
