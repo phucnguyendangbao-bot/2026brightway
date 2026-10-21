@@ -54,3 +54,8 @@
 @media(max-width:900px) { .university-featured-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .university-opportunity-grid { grid-template-columns:1fr; } }
 @media(max-width:620px) { .university-discovery { padding:20px 16px; margin:24px auto; } .university-discovery-heading { flex-direction:column; gap:4px; } .university-featured-grid, .university-context-grid, .school-dialog .university-opportunity-grid { grid-template-columns:1fr; } .university-card-body { padding:18px; } .university-card { border-radius:20px; } .university-consultation-dialog { padding:22px; } }
 @media(prefers-reduced-motion:reduce) { .university-card-cover img { transition:none; } }
+
+/* Round only the home university-card action buttons. */
+#university-discovery .university-card-actions :is(a,button) {
+  border-radius:999px;
+}
