@@ -69,6 +69,7 @@
   --bw-focus-ring: 0 0 0 4px rgba(107,96,255,.22);
   --bw-duration-fast: 160ms;
   --bw-duration-base: 220ms;
+  --bw-target-min: 44px;
   --bw-type-xs: .75rem;
   --bw-type-sm: .875rem;
   --bw-type-body: 1rem;

@@ -101,6 +101,13 @@ async function captureBaseline() {
         assert.ok(await page.locator('.flow-more-menu a').count() >= 6);
         await page.keyboard.press('Escape');
         assert.equal(await page.locator('.flow-more-button').getAttribute('aria-expanded'), 'false');
+        await page.goto(`${base}/calendar.html`, { waitUntil: 'domcontentloaded' });
+        await page.waitForFunction(() => Boolean(window.BWFlow));
+        assert.ok(await page.locator('.flow-more-button').evaluate(node => node.classList.contains('active')), 'Secondary page exposes its active group');
+        await page.goto(`${base}/holland.html`, { waitUntil: 'domcontentloaded' });
+        await page.waitForFunction(() => Boolean(window.BWFlow));
+        assert.equal(await page.locator('.flow-links > a[aria-current="page"]').innerText(), 'Khám phá nghề');
+        assert.equal(await page.locator('.flow-more-button').evaluate(node => node.classList.contains('active')), false, 'Main category remains the visible active state');
         await page.goto(`${base}/waybi.html`, { waitUntil: 'domcontentloaded' });
         await page.waitForFunction(() => Boolean(window.BWFlow));
         assert.equal(await page.locator('.flow-waybi-link').getAttribute('aria-current'), 'page');
@@ -113,6 +120,10 @@ async function captureBaseline() {
         assert.equal(await page.locator('.flow-menu').getAttribute('aria-expanded'), 'true');
         await page.locator('.flow-more-button').click();
         assert.equal(await page.locator('.flow-more-button').getAttribute('aria-expanded'), 'true');
+        for (const target of ['.flow-menu', '.flow-more-button', '.flow-more-menu a']) {
+          const box = await page.locator(target).first().boundingBox();
+          assert.ok(box && box.height >= 44, `${target}: touch target must be at least 44px high`);
+        }
         const countdown = page.locator('.flow-more-menu a[href="profile.html?tab=journey#countdowns"]');
         assert.equal(await countdown.innerText(), 'BrightWay Countdown');
         await countdown.click();
