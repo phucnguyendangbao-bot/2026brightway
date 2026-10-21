@@ -2954,7 +2954,7 @@ body.spa-active #spa-topbar { display: flex; }
 <script src="/assets/js/flow.js?v=20261020-wishes" defer></script>
 <script type="module" src="/assets/js/catalog-stats.js?v=20261015"></script>
 <link rel="stylesheet" href="/assets/css/home-holland.css?v=20261015">
-<link rel="stylesheet" href="/assets/css/home-journeys.css?v=20261020-hero">
+<link rel="stylesheet" href="/assets/css/home-journeys.css?v=20261021-soft-hero">
 <link rel="stylesheet" href="/assets/css/university-promotions.css?v=20261020-partners">
 <script type="module" src="/assets/js/university-promotions.js?v=20261020-partners"></script>
 <script src="/assets/js/home-holland.js?v=20261015" defer></script>
@@ -5056,7 +5056,9 @@ body.spa-active #spa-topbar { display: flex; }
         <button type="button" class="nav prev" id="bwHeroPrev" aria-label="Ảnh trước">‹</button>
         <button type="button" class="nav next" id="bwHeroNext" aria-label="Ảnh tiếp theo">›</button>
       </div>
+      <div class="bw-hero-footer">
       <p class="bw-hero-caption" id="bwHeroCaption" aria-live="polite">FPT - Cần Thơ</p>
+      <button type="button" id="bwHeroAutoplay" class="bw-hero-autoplay" aria-pressed="false" title="Tự chuyển ảnh: Tắt"><span>Tự chuyển ảnh</span><span class="bw-hero-autoplay-track" aria-hidden="true"></span></button>
       <div class="bw-hero-dots" id="bwHeroDots" role="tablist" aria-label="Chọn ảnh trường">
         <button type="button" class="is-active" role="tab" aria-selected="true" data-i="0" aria-label="FPT Cần Thơ"></button>
         <button type="button" role="tab" aria-selected="false" data-i="1" aria-label="ĐH Cần Thơ"></button>
@@ -5067,7 +5069,7 @@ body.spa-active #spa-topbar { display: flex; }
         <button type="button" role="tab" aria-selected="false" data-i="6" aria-label="Tôn Đức Thắng"></button>
         <button type="button" role="tab" aria-selected="false" data-i="7" aria-label="Khoa học Tự nhiên"></button>
       </div>
-      <button type="button" id="bwHeroAutoplay" class="bw-hero-autoplay" aria-pressed="false">Tự chuyển ảnh: Tắt</button>
+      </div>
     </div>
   </div>
   <section class="home-journey-picker" aria-labelledby="homeJourneyTitle">
@@ -6769,7 +6771,7 @@ Bạn cần hỏi gì nào?</div>
   autoplayButton?.addEventListener('click', () => {
     autoplay = !autoplay;
     autoplayButton.setAttribute('aria-pressed',String(autoplay));
-    autoplayButton.textContent = `Tự chuyển ảnh: ${autoplay ? 'Bật' : 'Tắt'}`;
+    autoplayButton.title = `Tự chuyển ảnh: ${autoplay ? 'Bật' : 'Tắt'}`;
     if (autoplay) start(); else stop();
   });
 
