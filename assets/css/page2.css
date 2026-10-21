@@ -760,4 +760,13 @@ html { scroll-behavior: smooth; }
 .school-card-compare{display:inline-flex;align-items:center;gap:6px;margin-left:8px;color:#5d56c8;font-size:.78rem;font-weight:800;cursor:pointer}.school-card-compare input{accent-color:#635bdb}
 .school-compare-table thead strong { display:block; margin-bottom:6px; }
 .school-compare-remove { display:block; min-height:44px; min-width:44px; text-align:left; }
+.school-compare-table { table-layout:fixed; min-width:700px; }
+.school-compare-table caption { text-align:left; padding:0 0 14px; line-height:1.6; color:#555375; font-size:.9rem; }
+.school-compare-table p { margin:0 0 10px; line-height:1.6; overflow-wrap:anywhere; }
+.school-compare-table small { display:block; line-height:1.5; }
+.school-compare-table summary { min-height:44px; cursor:pointer; color:#493793; font-weight:700; }
+.school-compare-table ul { padding-left:20px; line-height:1.6; overflow-wrap:anywhere; }
+.school-compare-source, .school-compare-profile { display:block; margin-top:8px; min-height:44px; padding:8px 0; color:#493793; font:inherit; font-weight:700; text-align:left; line-height:1.5; overflow-wrap:anywhere; }
+.school-compare-profile { border:0; background:none; cursor:pointer; }
+#resetSchoolFilters, #clearSchoolCompare { color:#513fa8; }
 @media(max-width:640px){.school-compare{margin:14px 12px 0;padding:18px 14px;border-radius:20px}.school-compare-heading{display:block}.school-compare-heading .school-save-button{margin-top:12px}.school-compare-table th,.school-compare-table td{padding:10px;font-size:.82rem}}

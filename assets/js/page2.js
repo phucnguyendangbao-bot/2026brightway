@@ -3,6 +3,7 @@ import { buildUniversityCatalog, canonicalSchoolId, REVIEWED_AT } from '../data/
 import { detailsForSchool } from '../data/school-profile-details.js';
 import { universityIdentityHTML, renderUniversityLogo } from './university-card.js';
 import { uniqueSchools, normalizeWishes, wishKey, addWish, wishFromProgram, importLegacySchools } from './selection-model.js';
+import { comparisonCells } from './school-comparison-model.js';
 
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[char]);
 const formatScore = value => Number.isFinite(value)
@@ -30,6 +31,12 @@ let activeQuery = '';
 let searchMode = 'school';
 let activeRegion = '';
 let promotionUI = null;
+let comparisonOpportunities = [];
+// Optional editorial scholarship data must never become a dependency of lookup.
+import('../data/university-promotions.js').then(module => {
+  comparisonOpportunities = module.universityOpportunities;
+  renderCompare();
+}).catch(() => { /* comparison keeps explicit missing data; organic lookup remains available */ });
 let catalogReady = false;
 let savedOnly = false;
 const savedSchools = () => uniqueSchools(window.BWFlow?.read().savedSchools);
@@ -106,15 +113,8 @@ function renderSchools(items) {
   items.forEach(school => renderLogo(school));
 }
 
-function compareValue(school, kind) {
-  const details = detailsForSchool(school.id);
-  const source = sourceForSchool(school.id);
-  if (kind === 'location') return school.city || 'Chưa có dữ liệu';
-  if (kind === 'type') return school.identity.entity_kind === 'university_system' ? 'Đại học vùng' : school.website ? 'Đại học · có trang chính thức' : 'Chưa có dữ liệu';
-  if (kind === 'programs') return details?.programs?.length ? `${details.programs.length} ngành/CT đã ghi nhận` : 'Chưa có dữ liệu';
-  if (kind === 'admission') return source?.source_url ? 'Có nguồn tuyển sinh 2026' : 'Chưa có dữ liệu';
-  if (kind === 'tuition') return details?.tuition?.year === activeYear && details.tuition.summary ? details.tuition.summary : 'Chưa có dữ liệu';
-  return 'Chưa có dữ liệu';
+function compareCell(school, cell) {
+  return `<p>${escapeHtml(cell.text)}</p>${cell.programs ? `<details><summary>Xem danh mục ngành</summary><ul>${cell.programs.map(program => `<li>${escapeHtml(program.name)}${program.code ? ` · ${escapeHtml(program.code)}` : ''}${program.track ? ` · ${escapeHtml(program.track)}` : ''}${program.campus ? ` · ${escapeHtml(program.campus)}` : ''}</li>`).join('')}</ul></details>` : ''}${cell.reviewed ? `<small>Đối chiếu nguồn: ${escapeHtml(cell.reviewed)}</small>` : ''}${cell.source ? officialLink(cell.source, cell.sourceLabel || 'Xem nguồn chính thức', 'school-compare-source') : ''}${(cell.links || []).map(link => officialLink(link.url, link.label, 'school-compare-source')).join('')}${cell.action ? `<button type="button" class="school-compare-profile" data-action="compare-profile" data-school-id="${escapeHtml(school.id)}" data-tab="${cell.action}">Mở hồ sơ ${escapeHtml(school.short || school.name)} →</button>` : ''}`;
 }
 function renderCompare() {
   const selected = compareIds.map(id => schools.find(school => school.id === id)).filter(Boolean);
@@ -123,14 +123,19 @@ function renderCompare() {
   if (!compareHost || !compareTable) return;
   compareHost.hidden = selected.length < 2;
   if (selected.length < 2) { compareTable.innerHTML = ''; return; }
-  const rows = [['Địa điểm','location'],['Quy mô hồ sơ','programs'],['Tuyển sinh 2026','admission'],['Học phí đã xác minh','tuition'],['Loại hồ sơ','type']];
-  compareTable.innerHTML = `<table class="school-compare-table"><thead><tr><th scope="col">Tiêu chí</th>${selected.map(school => `<th scope="col"><strong>${escapeHtml(school.short || school.name)}</strong><button type="button" class="school-compare-remove" data-action="remove-compare" data-school-id="${escapeHtml(school.id)}">Bỏ trường</button></th>`).join('')}</tr></thead><tbody>${rows.map(([label,key]) => `<tr><th scope="row">${label}</th>${selected.map(school => `<td>${escapeHtml(compareValue(school,key))}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+  const rows = [['Khu vực','location'],['Ngành đào tạo · 2026','programs'],['Học phí · 2026','tuition'],['Học bổng · nguồn tham khảo','scholarship'],['Phương thức xét tuyển · 2026','admission'],['Điểm chuẩn theo năm · 2026','scores'],['Website chính thức','website']];
+  const cells = selected.map(school => comparisonCells(school, detailsForSchool(school.id), sourceForSchool(school.id), {year:activeYear,opportunities:comparisonOpportunities}));
+  compareTable.innerHTML = `<table class="school-compare-table"><caption>Đối chiếu nguồn trước khi chọn trường. Điểm chuẩn khác phương thức hoặc thang điểm không dùng thay thế cho nhau. Nguồn 2026 chưa xác nhận tuyển sinh 2027.</caption><thead><tr><th scope="col">Tiêu chí</th>${selected.map(school => `<th scope="col"><strong>${escapeHtml(school.name)}</strong><button type="button" class="school-compare-remove" data-action="remove-compare" data-school-id="${escapeHtml(school.id)}" aria-label="Bỏ ${escapeHtml(school.name)} khỏi so sánh">Bỏ trường</button></th>`).join('')}</tr></thead><tbody>${rows.map(([label,key]) => `<tr><th scope="row">${label}</th>${selected.map((school,index) => `<td>${compareCell(school,cells[index][key])}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
 }
-function updateCompare(id, checked) {
+function updateCompare(id, checked, fromCheckbox = false) {
   if (checked && !compareIds.includes(id) && compareIds.length < 3) compareIds.push(id);
   if (!checked) compareIds = compareIds.filter(item => item !== id);
   try { localStorage.setItem(compareStorageKey, JSON.stringify(compareIds)); } catch { /* private mode */ }
   renderSchools(filteredSchools); renderCompare();
+  const focusTarget = fromCheckbox
+    ? [...mainContent.querySelectorAll('[data-action="compare-school"]')].find(node => node.dataset.schoolId === id)
+    : compareHost?.hidden ? document.getElementById('compareSelectionStatus') : compareHost?.querySelector('[data-action="remove-compare"]');
+  focusTarget?.focus({preventScroll:true});
 }
 
 function renderLogo(school) {
@@ -248,10 +253,10 @@ function renderDialog() {
   }
 }
 
-function openSchool(id) {
+function openSchool(id, tab = 'majors') {
   activeSchool = schools.find(school => school.id === canonicalSchoolId(id));
   if (!activeSchool) return;
-  activeTab = 'majors';
+  activeTab = ['majors','scores','admission','opportunities'].includes(tab) ? tab : 'majors';
   renderDialog();
   if (!dialog.open) dialog.showModal();
 }
@@ -394,11 +399,13 @@ document.addEventListener('click', event => {
       if (isSchoolSaved(school.id)) window.BWFlow?.save({ savedSchools: savedSchools().filter(item => item.id !== school.id) });
       else window.BWFlow?.addUnique('savedSchools', { id: school.id, name: school.name, city: school.city });
       filterSchools(document.getElementById('searchInput').value);
+      [...mainContent.querySelectorAll('[data-action="toggle-saved-school"]')].find(node => node.dataset.schoolId === school.id)?.focus({preventScroll:true});
     }
     return;
   }
-  if (action === 'compare-school') { event.stopPropagation(); updateCompare(target.dataset.schoolId, target.checked); return; }
+  if (action === 'compare-school') { event.stopPropagation(); updateCompare(target.dataset.schoolId, target.checked, true); return; }
   if (action === 'remove-compare') { updateCompare(target.dataset.schoolId, false); return; }
+  if (action === 'compare-profile') { openSchool(target.dataset.schoolId, target.dataset.tab); return; }
   if (action === 'save-major' && activeSchool) {
     const program = detailsForSchool(activeSchool.id)?.programs?.[target.dataset.program];
     if (program) {

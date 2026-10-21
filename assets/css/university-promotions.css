@@ -10,7 +10,7 @@
 .university-card-cover img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .25s ease; }
 .university-card-cover:hover img { transform:scale(1.035); }
 .university-card-body { display:flex; flex:1; flex-direction:column; gap:14px; padding:22px; }
-.university-placement-label { display:inline-flex; align-self:start; padding:6px 9px; border-radius:8px; background:var(--bw-tint,#efedff); color:var(--bw-brand,#6651ce); font-size:11px; line-height:1.4; font-weight:750; }
+.university-placement-label { display:inline-flex; align-self:start; padding:6px 9px; border-radius:8px; background:var(--bw-tint,#efedff); color:#513fa8; font-size:11px; line-height:1.4; font-weight:750; }
 .university-placement-label.is-sponsored { background:#fff2d2; color:#714e00; border:1px solid #d8b45c; }
 .university-card-sponsored { border:2px solid #d8b45c; }
 .university-card .school-card-top { display:flex; align-items:center; gap:12px; margin:0; }
@@ -26,8 +26,8 @@
 .university-program-preview { display:flex; flex-wrap:wrap; list-style:none; gap:6px; padding:0; margin:0; }
 .university-program-preview li { font-size:11px; line-height:1.5; padding:5px 8px; border:1px solid var(--bw-line,#ded9f4); border-radius:7px; color:var(--bw-muted,#615c7e); }
 .university-card-actions { display:flex; flex-wrap:wrap; align-items:center; gap:8px 14px; margin-top:auto; }
-.university-card-actions :is(a,button), .university-discovery-retry { display:inline-flex; align-items:center; justify-content:center; min-height:44px; font:inherit; font-size:12px; font-weight:750; color:var(--bw-brand,#6651ce); text-decoration:none; cursor:pointer; border:1px solid var(--bw-line,#ded9f4); border-radius:10px; padding:10px 12px; background:var(--bw-paper,#fff); }
-.university-card-actions a:first-child { background:var(--bw-brand,#6651ce); border-color:transparent; color:#fff; }
+.university-card-actions :is(a,button), .university-discovery-retry { display:inline-flex; align-items:center; justify-content:center; min-height:44px; font:inherit; font-size:12px; font-weight:750; color:#513fa8; text-decoration:none; cursor:pointer; border:1px solid var(--bw-line,#ded9f4); border-radius:10px; padding:10px 12px; background:var(--bw-paper,#fff); }
+.university-card-actions a:first-child { background:#6154cf; border-color:transparent; color:#fff; }
 .university-card-actions [hidden], [data-sponsored-universities][hidden], [data-university-discovery-retry][hidden], #contextualUniversityPromotions[hidden] { display:none!important; }
 .university-card :is(a,button):focus-visible, .university-transparency summary:focus-visible, .university-consultation-dialog :is(a,button,input):focus-visible { outline:3px solid #8070f5; outline-offset:4px; }
 .university-opportunities-heading { margin:32px 0 18px; }

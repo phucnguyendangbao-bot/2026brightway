@@ -222,7 +222,9 @@
     pathways.setAttribute('aria-label', 'Ngành đào tạo đã đối chiếu');
     pathways.textContent = 'Đang đối chiếu ngành đào tạo từ nguồn hiện có…';
     next.before(pathways);
-    import('./career-pathways.js').then(({ relatedMajorNames }) => {
+    let pathwayTimer;
+    const pathwayTimeout = new Promise((resolve, reject) => { pathwayTimer = setTimeout(() => reject(new Error('Pathways timeout')), 8000); });
+    Promise.race([import('./career-pathways.js'), pathwayTimeout]).then(({ relatedMajorNames }) => {
       if (!pathways.isConnected) return;
       const majors = relatedMajorNames(j);
       pathways.innerHTML = '<h2>Ngành đào tạo liên quan</h2>' + (majors.length
@@ -231,7 +233,14 @@
           return `<a href="page2.html?${escapeHtml(params.toString())}">${escapeHtml(name)} · Tìm trường →</a>`;
         }).join('') + '</div>'
         : '<p>Chưa có đối chiếu đủ nguồn giữa nghề này và danh mục ngành. Bạn có thể mở tra cứu trường để tự tìm ngành quan tâm.</p>');
-    }).catch(() => { if (pathways.isConnected) pathways.textContent = 'Chưa tải được dữ liệu đối chiếu ngành. Bạn vẫn có thể dùng liên kết Tra cứu trường bên dưới.'; });
+    }).catch(() => {
+      if (!pathways.isConnected) return;
+      pathways.textContent = 'Chưa tải được dữ liệu đối chiếu ngành. Bạn vẫn có thể dùng liên kết Tra cứu trường bên dưới. ';
+      const retry = document.createElement('button');
+      retry.type = 'button'; retry.className = 'flow-clear-filters'; retry.textContent = 'Thử tải lại đối chiếu ngành';
+      retry.addEventListener('click', () => location.reload());
+      pathways.appendChild(retry);
+    }).finally(() => clearTimeout(pathwayTimer));
   }
 
   function renderListResult(list) {

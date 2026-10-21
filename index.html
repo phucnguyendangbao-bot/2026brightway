@@ -15,7 +15,6 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=20261014">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&family=Poppins:wght@400;500;600;700;800;900&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
@@ -5023,7 +5022,7 @@ body.spa-active #spa-topbar { display: flex; }
     <div class="bw-hero-visual">
       <div class="bw-hero-carousel" id="bwHeroCarousel" aria-roledescription="carousel" aria-label="Ảnh 8 trường đại học Việt Nam">
         <div class="slide is-active" data-school="FPT - Cần Thơ">
-          <img src="assets/images/hero/01-fpt-can-tho.jpg?v=3" alt="Đại học FPT - cơ sở Cần Thơ" loading="eager" decoding="async"
+          <img src="assets/images/hero/01-fpt-can-tho.jpg?v=3" alt="Đại học FPT - cơ sở Cần Thơ" loading="eager" fetchpriority="high" decoding="async"
                onerror="this.onerror=null;this.src='assets/images/hero/01-fpt-can-tho.jpg?v=3';">
           <div class="school-tag"><small>Campus miền Tây</small>ĐH FPT — Cần Thơ</div>
         </div>
@@ -5068,6 +5067,7 @@ body.spa-active #spa-topbar { display: flex; }
         <button type="button" role="tab" aria-selected="false" data-i="6" aria-label="Tôn Đức Thắng"></button>
         <button type="button" role="tab" aria-selected="false" data-i="7" aria-label="Khoa học Tự nhiên"></button>
       </div>
+      <button type="button" id="bwHeroAutoplay" class="bw-hero-autoplay" aria-pressed="false">Tự chuyển ảnh: Tắt</button>
     </div>
   </div>
   <section class="home-journey-picker" aria-labelledby="homeJourneyTitle">
@@ -5137,7 +5137,7 @@ body.spa-active #spa-topbar { display: flex; }
 <section class="bw-waybi-home" id="waybi-home" aria-labelledby="waybi-home-title">
   <div class="bw-waybi-home-inner">
     <div class="bw-waybi-home-visual">
-      <img src="assets/images/waybi/waybi-mascot-v2.png" alt="Trợ lý hướng nghiệp Waybi" loading="eager">
+      <img src="assets/images/waybi/waybi-mascot-v2.png" alt="Trợ lý hướng nghiệp Waybi" loading="lazy" decoding="async">
     </div>
     <div class="bw-waybi-home-copy">
       <div class="eyebrow">Đồng hành cùng bạn</div>
@@ -5184,7 +5184,7 @@ body.spa-active #spa-topbar { display: flex; }
     <div class="admissions-highlights" id="admissionsHighlights" aria-label="Tin tuyển sinh nổi bật" tabindex="0">
       <article class="admissions-news-card">
         <a class="admissions-news-photo" href="https://daihoc.fpt.edu.vn/thong-bao-tuyen-sinh/thong-tin-tuyen-sinh-nam-2026/" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
-          <img src="assets/images/hero/01-fpt-can-tho.jpg?v=3" alt="" width="700" height="438" loading="eager">
+          <img src="assets/images/hero/01-fpt-can-tho.jpg?v=3" alt="" width="700" height="438" loading="lazy" decoding="async">
           <span class="admissions-news-badge">Nổi bật · 2026</span>
         </a>
         <div class="admissions-news-body">
@@ -5196,7 +5196,7 @@ body.spa-active #spa-topbar { display: flex; }
       </article>
       <article class="admissions-news-card">
         <a class="admissions-news-photo" href="https://tuyensinh.ctu.edu.vn/dai-hoc-chinh-quy/thong-tin-tuyen-sinh" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
-          <img src="assets/images/hero/02-ctu.jpg?v=4" alt="" width="700" height="394" loading="eager">
+          <img src="assets/images/hero/02-ctu.jpg?v=4" alt="" width="700" height="394" loading="lazy" decoding="async">
           <span class="admissions-news-badge">Cần đọc · 2026</span>
         </a>
         <div class="admissions-news-body">
@@ -5208,7 +5208,7 @@ body.spa-active #spa-topbar { display: flex; }
       </article>
       <article class="admissions-news-card">
         <a class="admissions-news-photo" href="https://tuyensinh.ueh.edu.vn/bai-viet/thong-tin-tuyen-sinh-dai-hoc-chinh-quy-khoa-52-nam-2026/" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
-          <img src="assets/images/hero/03-ueh.jpg?v=3" alt="" width="700" height="438" loading="eager">
+          <img src="assets/images/hero/03-ueh.jpg?v=3" alt="" width="700" height="438" loading="lazy" decoding="async">
           <span class="admissions-news-badge">Nổi bật · 2026</span>
         </a>
         <div class="admissions-news-body">
@@ -5268,7 +5268,7 @@ body.spa-active #spa-topbar { display: flex; }
         <ul>
           <li>So sánh năng lực, điều kiện và chi phí; xếp nguyện vọng theo mức độ yêu thích</li>
           <li>Ghi rõ tổ hợp môn + chỉ tiêu</li>
-          <li>Bấm "Tìm hiểu" để xem chi tiết từng trường</li>
+          <li>Mở "Xem hồ sơ" để đối chiếu nguồn và thêm nguyện vọng</li>
         </ul>
         <a href="page2.html?mode=major" class="step-cta">Chọn trường ngay →</a>
         <div id="selectedSchoolsPreview" style="margin-top:12px;font-size:13px;color:#3a3a6e;"></div>
@@ -6504,7 +6504,7 @@ body.spa-active #spa-topbar { display: flex; }
 }
 </style>
 
-<button id="bwChatLauncher" aria-label="Mở Trợ lý hướng nghiệp Waybi" title="Trợ lý hướng nghiệp Waybi">
+<button id="bwChatLauncher" aria-label="Mở Trợ lý hướng nghiệp Waybi" title="Trợ lý hướng nghiệp Waybi" aria-controls="bwChatPanel" aria-expanded="false">
   <span class="bw-pulse"></span>
   <img src="assets/images/waybi/waybi-mascot-v2.png" alt="" aria-hidden="true">
 </button>
@@ -6518,7 +6518,7 @@ body.spa-active #spa-topbar { display: flex; }
     </div>
     <button class="bw-chat-close" id="bwChatClose" aria-label="Đóng">✕</button>
   </div>
-  <div class="bw-chat-body" id="bwChatBody">
+  <div class="bw-chat-body" id="bwChatBody" role="log" aria-live="polite" aria-label="Tin nhắn Waybi">
     <div class="bw-msg bot">👋 Chào bạn! Mình là Trợ lý hướng nghiệp Waybi của BrightWay. Mình có thể giúp bạn tìm hiểu về:
 • Danh sách hồ sơ trường trên trang tra cứu; số lượng được thống kê từ dữ liệu thực tế, không đếm trùng cơ sở
 • Điểm chuẩn, học bổng, deadline nộp hồ sơ
@@ -6534,7 +6534,7 @@ Bạn cần hỏi gì nào?</div>
     <button class="bw-chip" data-q="Công cụ tra cứu trên web dùng thế nào?">🛠️ Hướng dẫn dùng web</button>
   </div>
   <div class="bw-chat-input-wrap">
-    <textarea id="bwChatInput" class="bw-chat-input" rows="1" placeholder="Hỏi về học bổng, trường, ngành..." maxlength="1000"></textarea>
+    <textarea id="bwChatInput" class="bw-chat-input" rows="1" aria-label="Câu hỏi cho Waybi" placeholder="Hỏi về học bổng, trường, ngành..." maxlength="1000"></textarea>
     <button class="bw-chat-send" id="bwChatSend" aria-label="Gửi">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
         <line x1="22" y1="2" x2="11" y2="13"/>
@@ -6566,11 +6566,14 @@ Bạn cần hỏi gì nào?</div>
   function openPanel(){
     panel.classList.add('open');
     launcher.classList.add('open');
-    setTimeout(() => input.focus(), 280);
+    launcher.setAttribute('aria-expanded','true');
+    setTimeout(() => { if (panel.classList.contains('open')) input.focus(); }, 280);
   }
   function closePanel(){
     panel.classList.remove('open');
     launcher.classList.remove('open');
+    launcher.setAttribute('aria-expanded','false');
+    launcher.focus({preventScroll:true});
   }
   launcher.addEventListener('click', () => {
     panel.classList.contains('open') ? closePanel() : openPanel();
@@ -6633,15 +6636,18 @@ Bạn cần hỏi gì nào?</div>
   }
 
 
-  async function sendMessage(){
-    const text = input.value.trim();
+  async function sendMessage(retryText){
+    const retrying = typeof retryText === 'string';
+    const text = retrying ? retryText : input.value.trim();
     if (!text || busy) return;
 
     busy = true;
     sendBtn.disabled = true;
+    body.setAttribute('aria-busy','true');
+    body.querySelectorAll('[data-waybi-retry]').forEach(button => { button.disabled = true; });
     suggestions.classList.add('hidden');
 
-    addMessage('user', text);
+    if (!retrying) addMessage('user', text);
     history.push({ role: 'user', content: text });
     input.value = '';
     input.style.height = 'auto';
@@ -6650,7 +6656,7 @@ Bạn cần hỏi gì nào?</div>
     try {
       const payload = {
         messages: history.slice(-MAX_HISTORY),
-        currentTab: (typeof currentTab !== 'undefined' ? currentTab : null)
+        currentTab: location.pathname
       };
 
       const res = await fetch(CHAT_ENDPOINT, {
@@ -6675,14 +6681,21 @@ Bạn cần hỏi gì nào?</div>
     } catch (err) {
       hideTyping();
       console.error('[BW chatbot]', err);
+      history.pop();
       const message = addMessage('bot', 'Mình chưa kết nối được. Bạn có thể tra cứu thủ công hoặc gửi lại sau.', true);
+      const retry = document.createElement('button');
+      retry.type = 'button'; retry.className = 'bw-chip'; retry.dataset.waybiRetry = ''; retry.textContent = 'Thử gửi lại';
+      retry.addEventListener('click', () => { if (!busy) { message.remove(); sendMessage(text); } });
+      message.appendChild(document.createElement('br')); message.appendChild(retry);
       const shortcuts = document.createElement('p');
-      shortcuts.innerHTML = '<a href="page2.html?mode=major">Tra cứu ngành/trường</a> · <a href="score-calculator.html">Tính điểm</a>';
+      shortcuts.innerHTML = '<a href="page2.html?mode=major">Tra cứu ngành/trường</a> · <a href="profile.html?tab=journey#my-choices">Nguyện vọng của tôi</a>';
       message.appendChild(shortcuts);
     } finally {
       busy = false;
       sendBtn.disabled = false;
-      input.focus();
+      body.setAttribute('aria-busy','false');
+      body.querySelectorAll('[data-waybi-retry]').forEach(button => { button.disabled = false; });
+      if (panel.classList.contains('open')) input.focus();
     }
   }
 })();
@@ -6704,6 +6717,8 @@ Bạn cần hỏi gì nào?</div>
   if (slides.length < 2) return;
 
   let i = 0, timer = null;
+  let autoplay = false;
+  const autoplayButton = document.getElementById('bwHeroAutoplay');
   const INTERVAL = 4000; // 4s/ảnh
 
   // Progress bar animation
@@ -6742,6 +6757,7 @@ Bạn cần hỏi gì nào?</div>
   function prev() { go(i - 1); }
   function start() {
     stop();
+    if (!autoplay) return;
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     timer = setInterval(next, INTERVAL);
     startBar();
@@ -6750,6 +6766,12 @@ Bạn cần hỏi gì nào?</div>
     if (timer) { clearInterval(timer); timer = null; }
     stopBar();
   }
+  autoplayButton?.addEventListener('click', () => {
+    autoplay = !autoplay;
+    autoplayButton.setAttribute('aria-pressed',String(autoplay));
+    autoplayButton.textContent = `Tự chuyển ảnh: ${autoplay ? 'Bật' : 'Tắt'}`;
+    if (autoplay) start(); else stop();
+  });
 
   // Click dots
   dots.forEach((d, idx) => {

@@ -377,9 +377,9 @@ body {
   transform: translateY(-1px);
 }
 .holland-chip.active {
-  background: var(--c);
+  background: #5745b5;
   color: #fff;
-  border-color: var(--c);
+  border-color: #5745b5;
   box-shadow: 0 4px 10px color-mix(in srgb, var(--c) 35%, transparent);
 }
 

@@ -1,4 +1,4 @@
-import { uniqueSchools, normalizeWishes, moveWish, wishText, textKey, importLegacySchools } from './selection-model.js';
+import { uniqueSchools, normalizeWishes, moveWish, wishText, wishCsv, textKey, importLegacySchools } from './selection-model.js';
 import { buildUniversityCatalog } from '../data/university-identities.js';
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[char]);
@@ -27,6 +27,7 @@ function renderWishes() {
   document.getElementById('wishCount').textContent = `${rows.length} nguyện vọng dự kiến`;
   list.innerHTML = rows.length ? rows.map((item, index) => `<li data-wish-id="${esc(item.id)}"><span class="choice-priority" aria-label="Ưu tiên ${index + 1}">${index + 1}</span><div class="choice-detail"><h3>${esc(item.programName)}</h3><a href="page2.html?school=${encodeURIComponent(item.schoolId)}">${esc(item.schoolName)}</a><p>${item.programCode ? `Mã: ${esc(item.programCode)}` : 'Chưa có mã đã đối chiếu'}${item.track ? ` · ${esc(item.track)}` : ''}${item.campus ? ` · ${esc(item.campus)}` : ''}</p><p>Năm dự kiến: <strong>${item.year}</strong> · Dữ liệu nguồn: ${item.sourceYear}</p>${item.year !== item.sourceYear ? `<p class="choice-reference">Nguồn ${item.sourceYear} dùng tham khảo, chưa xác nhận mở tuyển năm ${item.year}.</p>` : ''}<a href="${esc(item.source)}" target="_blank" rel="noopener noreferrer">Nguồn danh mục ngành ${item.sourceYear} ↗</a></div><div class="choice-actions"><button type="button" data-move-wish="-1" ${index === 0 ? 'disabled' : ''} aria-label="Tăng ưu tiên ${esc(item.programName)}">↑</button><button type="button" data-move-wish="1" ${index === rows.length - 1 ? 'disabled' : ''} aria-label="Giảm ưu tiên ${esc(item.programName)}">↓</button><button type="button" data-delete-wish aria-label="Xóa nguyện vọng ${esc(item.programName)}">Xóa</button></div></li>`).join('') : '<li>Chưa có nguyện vọng. Mở hồ sơ trường → Ngành đào tạo → Thêm nguyện vọng.</li>';
   document.getElementById('exportWishes').disabled = !rows.length;
+  document.getElementById('exportWishesCsv').disabled = !rows.length;
 }
 function renderSummary() {
   const count = saved().length, wishCount = wishes().length;
@@ -42,6 +43,7 @@ function renderHomePreview() {
 function init() {
   if (profile) {
     profile.innerHTML = `<div class="choices-heading"><div><span class="flow-kicker">LƯU TRÊN THIẾT BỊ NÀY</span><h2 id="myChoicesTitle">Nguyện vọng của tôi</h2><p>Danh sách để tìm hiểu và lập kế hoạch, chưa đăng ký nguyện vọng chính thức. Trường yêu thích và nguyện vọng được lưu riêng.</p></div><a href="page2.html?mode=major">Thêm ngành từ hồ sơ trường →</a></div><section aria-labelledby="savedSchoolsTitle"><h3 id="savedSchoolsTitle">Trường yêu thích</h3><div class="choices-filters"><label>Tìm trong trường đã lưu<input type="search" id="savedSchoolSearch" placeholder="Tên trường, mã hoặc địa điểm"></label><label>Khu vực<select id="savedSchoolCity"></select></label><a href="page2.html?saved=1">Tra cứu & so sánh trường đã lưu →</a></div><p id="savedSchoolCount" role="status"></p><ul id="mySavedSchools" class="choices-list"></ul></section><section aria-labelledby="wishListTitle"><div class="choices-heading"><h3 id="wishListTitle">Thứ tự nguyện vọng dự kiến</h3><button type="button" id="exportWishes">Xuất danh sách .txt</button></div><p>Thứ tự dưới đây do bạn sắp xếp. Có thể thêm nhiều lựa chọn; kiểm tra quy định áp dụng cho đúng năm khi đăng ký chính thức.</p><p id="wishCount" role="status"></p><ol id="myWishes" class="choices-list"></ol><p id="choiceStatus" role="status" aria-live="polite"></p></section>`;
+    document.getElementById('exportWishes').insertAdjacentHTML('afterend', '<button type="button" id="exportWishesCsv">Xuất CSV</button>');
     profile.addEventListener('input', event => { if (event.target.id === 'savedSchoolSearch') { query = event.target.value; renderFavorites(); } });
     profile.addEventListener('change', event => { if (event.target.id === 'savedSchoolCity') { city = event.target.value; renderFavorites(); } });
     profile.addEventListener('click', event => {
@@ -58,9 +60,10 @@ function init() {
         focusTarget?.focus();
         document.getElementById('choiceStatus').textContent = `Đã chuyển tới ưu tiên ${rows.findIndex(item => item.id === id) + 1}.`;
       }
-      if (button.id === 'exportWishes') {
-        const url = URL.createObjectURL(new Blob([wishText(wishes())], { type:'text/plain;charset=utf-8' }));
-        const anchor = document.createElement('a'); anchor.href = url; anchor.download = 'brightway-nguyen-vong.txt'; anchor.click();
+      if (button.id === 'exportWishes' || button.id === 'exportWishesCsv') {
+        const csv = button.id === 'exportWishesCsv';
+        const url = URL.createObjectURL(new Blob([csv ? wishCsv(wishes()) : wishText(wishes())], { type:csv ? 'text/csv;charset=utf-8' : 'text/plain;charset=utf-8' }));
+        const anchor = document.createElement('a'); anchor.href = url; anchor.download = csv ? 'brightway-nguyen-vong.csv' : 'brightway-nguyen-vong.txt'; anchor.click();
         setTimeout(() => URL.revokeObjectURL(url), 1000);
         document.getElementById('choiceStatus').textContent = 'Đã xuất danh sách dự kiến kèm năm và nguồn.';
       }
@@ -69,6 +72,7 @@ function init() {
   const update = () => { renderFavorites(); renderWishes(); renderSummary(); renderHomePreview(); };
   window.addEventListener('bw:journey-change', update);
   update();
+  profile?.setAttribute('aria-busy', 'false');
   // Import the old home picker once per recognized code. Keep its original
   // storage intact, including schools that cannot yet be resolved reliably.
   let legacy = [];

@@ -8,6 +8,8 @@
     "test": "node --test tests/*.test.mjs",
     "test:e2e": "node scripts/qa-ux-e2e.cjs",
     "test:e2e:completion": "node scripts/qa-completion.cjs",
+    "test:e2e:quality": "node scripts/qa-quality.cjs",
+    "audit:lighthouse": "node scripts/qa-lighthouse.cjs",
     "test:e2e:admissions": "node scripts/qa-admissions-regression.cjs",
     "test:e2e:integrated": "node scripts/qa-integrated-admissions.cjs"
   },

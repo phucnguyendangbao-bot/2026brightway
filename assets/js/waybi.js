@@ -188,13 +188,13 @@
       .waybi-chip {
         background: #fff;
         border: 1.5px solid rgba(99,102,241,0.25);
-        color: #6366f1; font-size: 12px; font-weight: 600;
+        color: #513fa8; font-size: 12px; font-weight: 600;
         padding: 6px 12px; border-radius: 999px;
         cursor: pointer; transition: all .15s;
         font-family: inherit;
       }
       .waybi-chip:hover {
-        background: linear-gradient(135deg, #6b8eff 0%, #8b6bff 100%);
+        background: #6154cf;
         color: #fff; border-color: transparent;
         transform: translateY(-1px);
       }
@@ -236,7 +236,7 @@
   // ─── HTML structure ───
   function buildHTML() {
     return `
-    <button id="waybi-fab" aria-label="Mở Trợ lý hướng nghiệp Waybi">
+    <button id="waybi-fab" aria-label="Mở Trợ lý hướng nghiệp Waybi" aria-controls="waybi-panel" aria-expanded="false">
       ${WAYBI_MASCOT}
       <span id="waybi-badge" style="display:none">1</span>
       <span id="waybi-hint">Chào mình là Waybi! 👋</span>
@@ -263,7 +263,7 @@
       </div>
 
       <div id="waybi-input-wrap">
-        <input id="waybi-input" type="text" placeholder="Nhập câu hỏi..." autocomplete="off"/>
+        <input id="waybi-input" type="text" aria-label="Câu hỏi cho Waybi" placeholder="Nhập câu hỏi..." autocomplete="off" maxlength="1000"/>
         <button id="waybi-send" aria-label="Gửi">➤</button>
       </div>
     </div>
@@ -284,6 +284,7 @@
     else div.textContent = text;
     msgs.appendChild(div);
     msgs.scrollTop = msgs.scrollHeight;
+    return div;
   }
 
   function showTyping() {
@@ -300,12 +301,14 @@
     if (t) t.remove();
   }
 
-  async function send(text) {
+  async function send(text, retrying = false) {
     if (!text || !text.trim() || busy) return;
     busy = true;
     const sendBtn = document.getElementById('waybi-send');
     sendBtn.disabled = true;
-    addMessage(text, 'user');
+    document.querySelectorAll('[data-waybi-retry]').forEach(button => { button.disabled = true; });
+    document.getElementById('waybi-messages').setAttribute('aria-busy','true');
+    if (!retrying) addMessage(text, 'user');
     history.push({ role: 'user', content: text });
     document.getElementById('waybi-input').value = '';
     showTyping();
@@ -328,12 +331,18 @@
     } catch (error) {
       hideTyping();
       history.pop();
-      addMessage('Mình chưa kết nối được. Bạn thử gửi lại sau ít phút nhé.', 'bot');
-      addMessage('<a href="page2.html?mode=major">Tra cứu ngành và trường</a> · <a href="score-calculator.html">Tính điểm gốc</a> · <a href="profile.html?tab=journey">Mở hồ sơ hướng nghiệp</a>', 'bot', true);
+      const message = addMessage('Mình chưa kết nối được. Bạn có thể thử gửi lại câu hỏi này.', 'bot');
+      const retry = document.createElement('button');
+      retry.type = 'button'; retry.className = 'waybi-chip'; retry.dataset.waybiRetry = ''; retry.textContent = 'Thử gửi lại';
+      retry.addEventListener('click', () => { if (!busy) { message.remove(); send(text, true); } });
+      message.appendChild(document.createElement('br')); message.appendChild(retry);
+      message.insertAdjacentHTML('beforeend', '<p><a href="page2.html?mode=major">Tra cứu ngành và trường</a> · <a href="profile.html?tab=journey#my-choices">Nguyện vọng của tôi</a></p>');
       console.error('[Waybi chat]', error);
     } finally {
       busy = false;
       sendBtn.disabled = false;
+      document.querySelectorAll('[data-waybi-retry]').forEach(button => { button.disabled = false; });
+      document.getElementById('waybi-messages').setAttribute('aria-busy','false');
     }
   }
 
@@ -366,6 +375,7 @@
     if (isOpen) return;
     isOpen = true;
     document.getElementById('waybi-panel').classList.add('open');
+    document.getElementById('waybi-fab').setAttribute('aria-expanded','true');
     document.getElementById('waybi-badge').style.display = 'none';
     document.getElementById('waybi-hint').style.display = 'none';
     if (!greeted) {
@@ -374,12 +384,14 @@
         addMessage(getGreeting(), 'bot', true);
       }, 200);
     }
-    setTimeout(() => document.getElementById('waybi-input').focus(), 300);
+    setTimeout(() => { if (isOpen) document.getElementById('waybi-input').focus(); }, 300);
   }
 
   function close() {
     isOpen = false;
     document.getElementById('waybi-panel').classList.remove('open');
+    document.getElementById('waybi-fab').setAttribute('aria-expanded','false');
+    document.getElementById('waybi-fab').focus({preventScroll:true});
   }
 
   function toggle() { isOpen ? close() : open(); }
@@ -399,7 +411,7 @@
       'careers-holland.html': ['Nghề nghiệp khác ngành đào tạo như thế nào?', 'Từ nghề yêu thích, tôi tìm ngành học ra sao?'],
       'page2.html': ['Tôi cần kiểm tra gì trong đề án tuyển sinh?', 'Làm sao tìm trường đào tạo ngành tôi thích?'],
       'score-calculator.html': ['Điểm gốc khác điểm xét tuyển như thế nào?', 'Chưa đủ công thức của trường thì làm gì?'],
-      'profile.html': ['Tôi nên làm việc gì tiếp theo trong tuần này?', 'Dữ liệu hướng nghiệp được lưu ở đâu?']
+      'profile.html': ['Làm sao sắp xếp danh sách nguyện vọng dự kiến?', 'Dữ liệu hướng nghiệp được lưu ở đâu?']
     };
     const questions = contextQuestions[location.pathname.split('/').pop()];
     if (questions) document.getElementById('waybi-suggest').innerHTML = questions.map(question => `<button class="waybi-chip" data-q="${escapeHtml(question)}">${escapeHtml(question)}</button>`).join('');

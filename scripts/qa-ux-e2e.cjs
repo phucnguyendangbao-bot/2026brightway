@@ -63,7 +63,10 @@ async function testNewUser(browser, base, report) {
   const expected = [/holland\.html$/, /page2\.html\?focus=major$/, /score-calculator\.html$/];
   for (let index = 0; index < expected.length; index += 1) {
     await page.locator('.home-journey-card').nth(index).click();
-    await page.waitForURL(expected[index]);
+    await page.waitForURL(expected[index], {waitUntil:'domcontentloaded'}).catch(async error => {
+      await page.screenshot({path:path.join(artifactDir,`home-intent-${index}-failure.png`),fullPage:true});
+      throw new Error(`Home intent ${index}: ${page.url()} — ${error.message}`);
+    });
     await page.goBack({ waitUntil: 'domcontentloaded' });
   }
   for (const selector of ['#roadmap', '#tools', '.bw-faq']) {
@@ -138,7 +141,8 @@ async function testSchoolSearch(browser, base, report) {
   await compareInputs.nth(0).check();
   await page.locator('input[data-action="compare-school"]').nth(1).check();
   await page.locator('#schoolCompare:not([hidden])').waitFor();
-  assert.equal(await page.locator('#schoolCompareTable tbody tr').count(), 5);
+  assert.equal(await page.locator('#schoolCompareTable tbody tr').count(), 7);
+  assert.deepEqual(await page.locator('#schoolCompareTable tbody th').allTextContents(), ['Khu vực','Ngành đào tạo · 2026','Học phí · 2026','Học bổng · nguồn tham khảo','Phương thức xét tuyển · 2026','Điểm chuẩn theo năm · 2026','Website chính thức']);
   await page.locator('input[data-action="compare-school"]').nth(2).check();
   assert.equal(await page.locator('#schoolCompareTable thead th').count(), 4);
   await page.screenshot({ path: path.join(artifactDir, 'after-school-compare-1440.png'), fullPage: true });

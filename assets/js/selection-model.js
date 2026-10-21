@@ -1,6 +1,6 @@
 import { canonicalSchoolId } from '../data/university-identities.js';
 
-export const textKey = value => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').toLowerCase().replace(/\s+/g, ' ').trim();
+export const textKey = value => String(value ?? '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/\s+/g, ' ').trim();
 export function uniqueSchools(rows = []) {
   const seen = new Set();
   return (Array.isArray(rows) ? rows : []).filter(row => row && typeof row.id === 'string').map(row => ({ ...row, id: canonicalSchoolId(row.id) })).filter(row => {
@@ -43,6 +43,18 @@ export function moveWish(rows, id, direction) {
 }
 export function wishText(rows) {
   return ['NGUYỆN VỌNG DỰ KIẾN — BRIGHTWAY', 'Danh sách cá nhân, chưa đăng ký nguyện vọng chính thức.', ...normalizeWishes(rows).map((item, index) => `${index + 1}. ${item.schoolName} — ${item.programName}${item.programCode ? ` (${item.programCode})` : ''}${item.track ? ` · ${item.track}` : ''}\nNăm dự kiến: ${item.year} · Nguồn tuyển sinh: ${item.sourceYear}\n${item.source}`)].join('\n\n');
+}
+
+// Quote every field and prevent a saved text value from becoming a spreadsheet
+// formula. Numeric metadata and source URLs retain their own columns.
+export function wishCsv(rows) {
+  const field = value => {
+    const text = String(value ?? '');
+    return '"' + (/^[\s]*[=+@-]/.test(text) ? "'" + text : text).replace(/"/g, '""') + '"';
+  };
+  const header = ['Ưu tiên','Trường đại học','Ngành / chương trình','Mã ngành','Phân loại','Cơ sở','Năm dự kiến','Năm nguồn','Nguồn','Lưu ý'];
+  const records = normalizeWishes(rows).map((item,index) => [index+1,item.schoolName,item.programName,item.programCode || '',item.track || '',item.campus || '',item.year,item.sourceYear,item.source,'Danh sách dự kiến, chưa đăng ký nguyện vọng chính thức.' + (item.year !== item.sourceYear ? ` Nguồn ${item.sourceYear} tham khảo; chưa xác nhận mở tuyển ${item.year}.` : '')]);
+  return '\uFEFF' + [header,...records].map(row => row.map(field).join(',')).join('\r\n') + '\r\n';
 }
 
 // A choice can only originate from the existing annual official program catalog.

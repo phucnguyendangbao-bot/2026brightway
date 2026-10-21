@@ -436,7 +436,7 @@ body {
 }
 .jump-btn:hover { border-color: var(--primary); color: var(--primary); }
 .jump-btn.done { background: rgba(16,185,129,0.10); border-color: rgba(16,185,129,0.35); color: #047857; }
-.jump-btn.current { background: var(--primary); border-color: var(--primary); color: #fff; }
+.jump-btn.current { background: #6154cf; border-color: #6154cf; color: #fff; }
 
 /* === NAV BUTTONS === */
 .quiz-nav {
