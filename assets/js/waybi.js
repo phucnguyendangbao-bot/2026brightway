@@ -236,18 +236,18 @@
   // ─── HTML structure ───
   function buildHTML() {
     return `
-    <button id="waybi-fab" aria-label="Mở chat với Waybi">
+    <button id="waybi-fab" aria-label="Mở Trợ lý hướng nghiệp Waybi">
       ${WAYBI_MASCOT}
       <span id="waybi-badge" style="display:none">1</span>
       <span id="waybi-hint">Chào mình là Waybi! 👋</span>
     </button>
 
-    <div id="waybi-panel" role="dialog" aria-label="Chat với Waybi">
+    <div id="waybi-panel" role="dialog" aria-label="Trợ lý hướng nghiệp Waybi">
       <div id="waybi-header">
         <div id="waybi-avatar">${WAYBI_MASCOT}</div>
         <div id="waybi-info">
-          <div id="waybi-name">Waybi ✨</div>
-          <div id="waybi-status">Trợ lý hướng nghiệp</div>
+          <div id="waybi-name">Trợ lý hướng nghiệp Waybi</div>
+          <div id="waybi-status">BrightWay Career</div>
         </div>
         <button id="waybi-close" aria-label="Đóng">✕</button>
       </div>
@@ -352,7 +352,7 @@
 
     const name = u && u.name ? ` <b>${escapeHtml(u.name)}</b>` : '';
     const ctx = getContextGreeting();
-    return `${timeOfDay}${name}! Mình là <b>Waybi</b> — trợ lý ảo của BrightWay 👋✨${ctx ? '<br><br>' + ctx : ''}`;
+    return `${timeOfDay}${name}! Mình là <b>Trợ lý hướng nghiệp Waybi</b> của BrightWay 👋✨${ctx ? '<br><br>' + ctx : ''}`;
   }
 
   function askName() {

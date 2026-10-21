@@ -164,7 +164,7 @@
 
   // Lời chào theo trang
   const GREETINGS = {
-    'index.html': { h: 'Xin chào! Mình là Waybi 👋', p: 'Mình sẽ giúp bạn chọn ngành, tìm trường, học bổng và lên kế hoạch học tập. Cứ hỏi mình nhé!' },
+    'index.html': { h: 'Trợ lý hướng nghiệp Waybi 👋', p: 'Mình sẽ giúp bạn chọn ngành, tìm trường, học bổng và lên kế hoạch học tập. Cứ hỏi mình nhé!' },
     'calendar.html': { h: 'Đây là Lịch tuyển sinh 2026 📅', p: 'Tất cả mốc thi, nộp hồ sơ, công bố điểm chuẩn theo tháng. Click ngày để xem chi tiết!' },
     'scholarship-roadmap.html': { h: 'Lộ trình apply 12 tháng 🗺️', p: 'Mỗi tháng có những việc cần làm. Click vào lịch ở dưới để xem chi tiết từng mốc nhé!' },
     'essay-review.html': { h: 'Cùng nhau viết Essay nhé! ✨', p: 'Đưa mình đọc bản nháp, mình sẽ gợi ý chỉnh sửa.' },
@@ -178,7 +178,7 @@
     'profile.html': { h: 'Hồ sơ cá nhân 👤', p: 'Cập nhật thông tin để Waybi gợi ý phù hợp hơn.' },
     'news.html': { h: 'Tin tức học bổng mới nhất 📰', p: 'Cập nhật học bổng mới mỗi ngày.' },
   };
-  const DEFAULT = { h: 'Waybi · Trợ lý hướng nghiệp 👋', p: 'Mình giúp bạn tìm hiểu nghề, ngành, trường và lập kế hoạch. Bấm vào icon chat để nói chuyện với mình nhé!' };
+  const DEFAULT = { h: 'Trợ lý hướng nghiệp Waybi 👋', p: 'Mình giúp bạn tìm hiểu nghề, ngành, trường và lập kế hoạch. Bấm vào icon chat để nói chuyện với mình nhé!' };
 
   function getGreeting() {
     const path = location.pathname.toLowerCase();

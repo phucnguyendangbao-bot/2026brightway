@@ -13,7 +13,9 @@ function renderFavorites() {
   if (!list) return;
   const all = saved();
   const select = document.getElementById('savedSchoolCity');
-  select.innerHTML = '<option value="">Tất cả khu vực</option>' + [...new Set(all.map(item => item.city).filter(Boolean))].sort().map(value => `<option ${value === city ? 'selected' : ''}>${esc(value)}</option>`).join('');
+  const cities = [...new Set(all.map(item => item.city).filter(Boolean))].sort();
+  if (city && !cities.includes(city)) city = '';
+  select.innerHTML = '<option value="">Tất cả khu vực</option>' + cities.map(value => `<option ${value === city ? 'selected' : ''}>${esc(value)}</option>`).join('');
   const filtered = all.filter(item => (!city || city === item.city) && textKey(`${item.name} ${item.id} ${item.city}`).includes(textKey(query)));
   document.getElementById('savedSchoolCount').textContent = `${filtered.length}/${all.length} trường đã lưu`;
   list.innerHTML = filtered.length ? filtered.map(item => `<li><div><a href="page2.html?school=${encodeURIComponent(item.id)}">${esc(item.name || item.id)}</a><p>${esc(item.city || 'Chưa có địa điểm trong dữ liệu đã lưu')}</p></div><button type="button" data-unsave-school="${esc(item.id)}" aria-label="Bỏ lưu ${esc(item.name || item.id)}">Bỏ lưu</button></li>`).join('') : `<li>${all.length ? 'Không có trường khớp bộ lọc.' : 'Chưa lưu trường nào. Tìm trường và chọn “Lưu trường” để bắt đầu.'}</li>`;
@@ -52,7 +54,8 @@ function init() {
         const rows = moveWish(wishes(), id, Number(button.dataset.moveWish));
         window.BWFlow.save({ wishes: rows });
         const row = [...profile.querySelectorAll('[data-wish-id]')].find(node => node.dataset.wishId === id);
-        row?.querySelector(`button[data-move-wish="${button.dataset.moveWish}"]:not(:disabled)`)?.focus();
+        const focusTarget = row?.querySelector(`button[data-move-wish="${button.dataset.moveWish}"]:not(:disabled)`) || row?.querySelector('button:not(:disabled)');
+        focusTarget?.focus();
         document.getElementById('choiceStatus').textContent = `Đã chuyển tới ưu tiên ${rows.findIndex(item => item.id === id) + 1}.`;
       }
       if (button.id === 'exportWishes') {
