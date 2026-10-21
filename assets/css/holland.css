@@ -23,7 +23,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+  font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
   background: var(--bg-grad);
   color: var(--text);
   min-height: 100vh;
@@ -171,7 +171,7 @@ body {
   font-weight: 800;
   color: var(--primary);
 }
-.import-card summary span { display: block; margin: 3px 0 0 24px; font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 500; color: var(--text-mid); }
+.import-card summary span { display: block; margin: 3px 0 0 24px; font-family: 'Be Vietnam Pro', sans-serif; font-size: 13px; font-weight: 500; color: var(--text-mid); }
 .import-form { padding-top: 20px; }
 .import-form label { display: block; margin-bottom: 8px; font-size: 14px; font-weight: 700; }
 .import-form-row { display: flex; gap: 10px; align-items: stretch; }

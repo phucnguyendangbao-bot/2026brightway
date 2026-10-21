@@ -108,7 +108,7 @@
       }
       #waybi-avatar img { width: 100%; height: 100%; object-fit: contain; display: block; }
       #waybi-info { flex: 1; min-width: 0; }
-      #waybi-name { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1rem; }
+      #waybi-name { font-family: var(--font-display, 'Quicksand', 'Be Vietnam Pro', sans-serif); font-weight: 700; font-size: 1rem; }
       #waybi-status {
         font-size: 11px; opacity: .9;
         display: flex; align-items: center; gap: 4px;

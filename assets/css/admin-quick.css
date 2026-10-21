@@ -147,7 +147,7 @@
 }
 
 .aq-modal-title {
-  font-family: 'Nunito', sans-serif;
+  font-family: var(--font-display, 'Quicksand', 'Be Vietnam Pro', sans-serif);
   font-weight: 800;
   font-size: 20px;
   color: #1a1a3e;
@@ -284,7 +284,7 @@
   color: #1a1a3e;
 }
 .aq-preview h1, .aq-preview h2, .aq-preview h3 {
-  font-family: 'Nunito', sans-serif;
+  font-family: var(--font-display, 'Quicksand', 'Be Vietnam Pro', sans-serif);
   margin: 12px 0 6px;
 }
 .aq-preview h2 { font-size: 20px; font-weight: 800; color: #6366f1; }

@@ -43,7 +43,7 @@
   --grad: linear-gradient(135deg, #6b8eff 0%, #8b6bff 100%) !important;
   --grad-btn: linear-gradient(135deg, #6b8eff 0%, #8b6bff 100%) !important;
   --font: 'Be Vietnam Pro', system-ui, sans-serif !important;
-  --font-display: 'Quicksand', 'Nunito', sans-serif !important;
+  --font-display: 'Quicksand', 'Be Vietnam Pro', sans-serif !important;
   --radius-md: 20px !important;
   --radius-lg: 28px !important;
   --radius-xl: 32px !important;
@@ -88,6 +88,7 @@ html body {
   font-family: var(--font) !important;
   color: var(--bw-ink);
   -webkit-font-smoothing: antialiased;
+  font-synthesis: none;
 }
 html body :is(h1,h2,h3,h4,.page-title,.section-title) {
   font-family: var(--font-display) !important;

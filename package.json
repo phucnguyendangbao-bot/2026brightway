@@ -11,7 +11,8 @@
     "test:e2e:quality": "node scripts/qa-quality.cjs",
     "audit:lighthouse": "node scripts/qa-lighthouse.cjs",
     "test:e2e:admissions": "node scripts/qa-admissions-regression.cjs",
-    "test:e2e:integrated": "node scripts/qa-integrated-admissions.cjs"
+    "test:e2e:integrated": "node scripts/qa-integrated-admissions.cjs",
+    "qa:fonts": "node scripts/qa-font.cjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.30.0"

@@ -90,7 +90,7 @@ window.UNILogoSvg = function(codeOrName, options = {}) {
       </linearGradient>
     </defs>
     <rect width="100" height="100" rx="18" fill="url(#${id})"/>
-    <text x="50" y="50" font-family="'Nunito','Be Vietnam Pro',sans-serif" font-weight="900"
+    <text x="50" y="50" font-family="'Quicksand','Be Vietnam Pro',sans-serif" font-weight="700"
           font-size="${initials.length > 3 ? 26 : (initials.length > 2 ? 30 : 38)}" text-anchor="middle" dominant-baseline="central"
           fill="#fff" letter-spacing="-0.5">${escapeLogo(initials)}</text>
   </svg>`;

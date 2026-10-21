@@ -13,7 +13,7 @@
   margin: 0 auto;
 }
 .calc-hero h1 {
-  font-family: 'Nunito', sans-serif;
+  font-family: var(--font-display, 'Quicksand', 'Be Vietnam Pro', sans-serif);
   font-size: 1.6rem;
   font-weight: 900;
   margin: 0 0 8px;
@@ -79,7 +79,7 @@
 .result-calculation-context p + p { margin-top:5px; }
 .result-edit-button { margin-top:14px; }
 .calc-section-title {
-  font-family: 'Nunito', sans-serif;
+  font-family: var(--font-display, 'Quicksand', 'Be Vietnam Pro', sans-serif);
   font-size: .95rem;
   font-weight: 800;
   color: var(--text-dark, #1a1a3e);
@@ -264,7 +264,7 @@
   padding: 22px 24px;
 }
 .result-summary h2 {
-  font-family: 'Nunito', sans-serif;
+  font-family: var(--font-display, 'Quicksand', 'Be Vietnam Pro', sans-serif);
   font-size: 1.15rem;
   font-weight: 800;
   color: #1a1a3e;
@@ -291,7 +291,7 @@
   margin-bottom: 6px;
 }
 .summary-value {
-  font-family: 'Nunito', sans-serif;
+  font-family: var(--font-display, 'Quicksand', 'Be Vietnam Pro', sans-serif);
   font-size: 1.4rem;
   font-weight: 900;
   background: linear-gradient(135deg, #6366f1, #7c3aed);
@@ -303,7 +303,7 @@
 
 /* SCHOOL LIST */
 .result-schools h2 {
-  font-family: 'Nunito', sans-serif;
+  font-family: var(--font-display, 'Quicksand', 'Be Vietnam Pro', sans-serif);
   font-size: 1.15rem;
   font-weight: 800;
   color: #1a1a3e;
@@ -425,7 +425,7 @@
 .school-row-logo img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
 .school-row-body { min-width: 0; }
 .school-row-name {
-  font-family: 'Nunito', sans-serif;
+  font-family: var(--font-display, 'Quicksand', 'Be Vietnam Pro', sans-serif);
   font-weight: 800;
   font-size: .95rem;
   color: #1a1a3e;
@@ -448,7 +448,7 @@
 }
 .school-row-score .label { font-size: .68rem; color: #6b7280; font-weight: 600; }
 .school-row-score .value {
-  font-family: 'Nunito', sans-serif;
+  font-family: var(--font-display, 'Quicksand', 'Be Vietnam Pro', sans-serif);
   font-size: 1.1rem;
   font-weight: 900;
   color: #6366f1;
@@ -478,7 +478,7 @@
   border-radius: 20px;
 }
 .result-empty h3 {
-  font-family: 'Nunito', sans-serif;
+  font-family: var(--font-display, 'Quicksand', 'Be Vietnam Pro', sans-serif);
   font-size: 1.1rem;
   font-weight: 800;
   color: #1a1a3e;

@@ -22,7 +22,7 @@
   --shadow-sm: 0 2px 8px rgba(99,102,241,0.08);
   --shadow-lg: 0 16px 48px rgba(99,102,241,0.2);
   --font: 'Be Vietnam Pro', system-ui, sans-serif;
-  --font-display: 'Nunito', sans-serif;
+  --font-display: 'Quicksand', 'Be Vietnam Pro', sans-serif;
   --sidebar-w: 260px;
 }
 body{font-family:var(--font);background:var(--bg);color:var(--text-dark);min-height:100vh;display:flex;}
