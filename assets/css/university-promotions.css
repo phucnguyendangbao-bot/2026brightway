@@ -1,11 +1,11 @@
-.university-discovery { max-width:1240px; margin:40px auto; padding:28px 20px; color:var(--bw-ink,#211c46); font-family:'Be Vietnam Pro',sans-serif; text-align:left; }
+.university-discovery { max-width:1240px; margin:40px auto; padding:28px 20px; color:var(--bw-ink,#211c46); font-family:var(--font,'Be Vietnam Pro',sans-serif); text-align:left; }
 .university-discovery-heading { display:flex; align-items:start; justify-content:space-between; gap:20px; margin-bottom:22px; }
 .university-eyebrow { display:block; color:var(--bw-brand,#6651ce); font-size:12px; font-weight:800; letter-spacing:.12em; margin-bottom:8px; }
-.university-discovery h2 { font-family:'Nunito',sans-serif; font-size:clamp(25px,3vw,36px); line-height:1.2; margin:0 0 10px; }
+.university-discovery h2 { font-family:var(--font-display,'Quicksand',sans-serif); font-size:clamp(25px,3vw,36px); font-weight:700; line-height:1.2; margin:0 0 10px; }
 .university-discovery-heading p, .university-discovery-status { color:var(--bw-muted,#615c7e); font-size:14px; line-height:1.7; max-width:730px; margin:0; }
 .university-discovery-heading > a { flex-shrink:0; color:var(--bw-brand,#6651ce); font-weight:700; font-size:14px; padding:12px 0; }
 .university-featured-grid, .university-opportunity-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
-.university-card { display:flex; flex-direction:column; min-width:0; overflow:hidden; border:1px solid var(--bw-line,rgba(113,98,205,.22)); border-radius:24px; background:var(--bw-paper,rgba(255,255,255,.7)); box-shadow:0 12px 38px rgba(62,48,119,.07); }
+.university-card { display:flex; flex-direction:column; min-width:0; overflow:hidden; border:1px solid var(--bw-line,rgba(113,98,205,.22)); border-radius:24px; background:var(--bw-paper,rgba(255,255,255,.7)); box-shadow:0 12px 38px rgba(62,48,119,.07); font-family:var(--font,'Be Vietnam Pro',sans-serif); }
 .university-card-cover { display:block; flex:0 0 auto; aspect-ratio:16/9; overflow:hidden; background:#e8e9f5; }
 .university-card-cover img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .25s ease; }
 .university-card-cover:hover img { transform:scale(1.035); }
@@ -19,14 +19,14 @@
 .university-card .school-icon-fallback { color:#5240a8; font-size:14px; font-weight:800; }
 .university-card .school-card-identity { min-width:0; }
 .university-card .school-card-kicker { display:block; color:var(--bw-muted,#615c7e); font-size:11px; font-weight:700; margin-bottom:5px; }
-.university-card .school-name { font-size:17px; line-height:1.4; font-weight:800; margin:0; color:var(--bw-ink,#211c46); }
-.university-card h4 { font-size:17px; line-height:1.45; margin:0; }
+.university-card .school-name { font-family:var(--font,'Be Vietnam Pro',sans-serif) !important; font-size:17px; line-height:1.4; font-weight:700; margin:0; color:var(--bw-ink,#211c46); }
+.university-card h4 { font-family:var(--font,'Be Vietnam Pro',sans-serif) !important; font-size:16px; line-height:1.5; font-weight:600; margin:0; }
 .university-card p { font-size:13px; line-height:1.7; color:var(--bw-muted,#615c7e); margin:0; overflow-wrap:anywhere; }
 .university-card .university-source-meta { font-size:11px; }
 .university-program-preview { display:flex; flex-wrap:wrap; list-style:none; gap:6px; padding:0; margin:0; }
 .university-program-preview li { font-size:11px; line-height:1.5; padding:5px 8px; border:1px solid var(--bw-line,#ded9f4); border-radius:7px; color:var(--bw-muted,#615c7e); }
 .university-card-actions { display:flex; flex-wrap:wrap; align-items:center; gap:8px 14px; margin-top:auto; }
-.university-card-actions :is(a,button), .university-discovery-retry { display:inline-flex; align-items:center; justify-content:center; min-height:44px; font:inherit; font-size:12px; font-weight:750; color:#513fa8; text-decoration:none; cursor:pointer; border:1px solid var(--bw-line,#ded9f4); border-radius:10px; padding:10px 12px; background:var(--bw-paper,#fff); }
+.university-card-actions :is(a,button), .university-discovery-retry { display:inline-flex; align-items:center; justify-content:center; min-height:44px; font:inherit; font-size:12px; font-weight:600; color:#513fa8; text-decoration:none; cursor:pointer; border:1px solid var(--bw-line,#ded9f4); border-radius:10px; padding:10px 12px; background:var(--bw-paper,#fff); }
 .university-card-actions a:first-child { background:#6154cf; border-color:transparent; color:#fff; }
 .university-card-actions [hidden], [data-sponsored-universities][hidden], [data-university-discovery-retry][hidden], #contextualUniversityPromotions[hidden] { display:none!important; }
 .university-card :is(a,button):focus-visible, .university-transparency summary:focus-visible, .university-consultation-dialog :is(a,button,input):focus-visible { outline:3px solid #8070f5; outline-offset:4px; }
