@@ -83,8 +83,60 @@
 .home-journey-card b::after { content:none; }
 .home-tools-disclosure summary { min-height:44px; padding:10px 0; color:#49328e; font-weight:700; cursor:pointer; }
 .home-tools-disclosure[open] summary { margin-bottom:10px; }
-@media(min-width:1100px) {
-  html body #home-view .bw-steps { grid-template-columns:repeat(5,minmax(0,1fr)); max-width:1200px; }
+/* Give each roadmap step enough reading width instead of forcing five columns. */
+html body #home-view #roadmap { padding:44px 24px !important; }
+#roadmap > .container { width:100%; max-width:1120px; padding:0; }
+html body #home-view #roadmap .bw-steps {
+  display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:20px;
+  max-width:none; margin-top:28px;
+}
+html body #home-view #roadmap .bw-step {
+  grid-column:span 2; min-width:0; display:flex; flex-direction:column;
+  padding:26px; border-radius:26px;
+}
+html body #home-view #roadmap .bw-step:nth-child(4) { grid-column:2 / span 2; }
+html body #home-view #roadmap .bw-step:nth-child(5) { grid-column:4 / span 2; }
+#roadmap .bw-step-heading { display:grid; grid-template-columns:40px minmax(0,1fr); align-items:start; gap:14px; margin-bottom:20px; }
+html body #home-view #roadmap .bw-step-num {
+  width:40px; height:40px; margin:0; border-radius:14px;
+  font-size:19px; font-weight:700; line-height:1;
+  box-shadow:0 5px 14px rgba(107,96,255,.17);
+}
+html body #home-view #roadmap .bw-step h3 { margin:0 0 6px; font-size:20px; line-height:1.35; font-weight:700; }
+html body #home-view #roadmap .bw-step .goal {
+  margin:0; color:#6253c2; font-size:13px; line-height:1.6; font-weight:600;
+  text-transform:none; letter-spacing:0;
+}
+#roadmap .bw-step ul { margin:0 0 22px; }
+#roadmap .bw-step ul li { padding:0 0 0 21px; margin:0 0 10px; font-size:14px; line-height:1.7; }
+#roadmap .bw-step ul li:last-child { margin-bottom:0; }
+#roadmap .bw-step-actions { display:flex; flex-direction:column; align-items:flex-start; gap:4px; margin-top:auto; }
+#roadmap .bw-step .step-cta {
+  display:block; max-width:100%; min-height:36px; padding:6px 0;
+  color:#6050cf; font-size:13px; font-weight:700; line-height:1.7;
+}
+#roadmap .bw-step .step-cta-secondary { color:#6b6384; font-size:12px; font-weight:500; }
+#roadmap .bw-step .step-cta:hover { text-decoration:underline; text-underline-offset:4px; }
+html body #home-view #roadmap #selectedSchoolsPreview {
+  width:100%; margin-top:8px; padding-top:12px; border-top:1px solid rgba(107,96,255,.12);
+  font-size:12px; color:#69617f; line-height:1.7;
+}
+#roadmap #selectedSchoolsPreview strong { font-weight:500; }
+#roadmap #selectedSchoolsPreview p { margin:2px 0 0; }
+#roadmap #selectedSchoolsPreview a { display:inline-block; padding:5px 0; color:#6050cf; font-size:12px; line-height:1.7; text-decoration:none; }
+#roadmap #selectedSchoolsPreview a:hover { text-decoration:underline; text-underline-offset:4px; }
+@media(max-width:1023px) {
+  html body #home-view #roadmap .bw-steps { grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; }
+  html body #home-view #roadmap .bw-step:nth-child(4) { grid-column:span 2; }
+  html body #home-view #roadmap .bw-step:nth-child(5) { grid-column:2 / span 2; }
+  html body #home-view #roadmap .bw-step { padding:22px; }
+}
+@media(max-width:639px) {
+  html body #home-view #roadmap { padding:32px 20px !important; }
+  html body #home-view #roadmap .bw-steps { grid-template-columns:minmax(0,1fr); gap:16px; margin-top:24px; }
+  html body #home-view #roadmap .bw-step:nth-child(n) { grid-column:1; padding:22px; }
+  #roadmap .bw-step-heading { margin-bottom:18px; }
+  #roadmap .bw-step ul { margin-bottom:16px; }
 }
 @media(max-width:900px) {
   html body #home-view .bw-hero-visual { display:grid!important; max-width:420px; width:100%; padding:8px; }

@@ -2950,7 +2950,7 @@ body.spa-active #spa-topbar { display: flex; }
 <script src="/assets/js/flow.js?v=20261020-wishes" defer></script>
 <script type="module" src="/assets/js/catalog-stats.js?v=20261015"></script>
 <link rel="stylesheet" href="/assets/css/home-holland.css?v=20261015">
-<link rel="stylesheet" href="/assets/css/home-journeys.css?v=20261021-soft-hero">
+<link rel="stylesheet" href="/assets/css/home-journeys.css?v=20261021-roadmap">
 <link rel="stylesheet" href="/assets/css/university-promotions.css?v=20261020-partners">
 <script type="module" src="/assets/js/university-promotions.js?v=20261020-partners"></script>
 <script src="/assets/js/home-holland.js?v=20261015" defer></script>
@@ -5234,62 +5234,71 @@ body.spa-active #spa-topbar { display: flex; }
     <div class="bw-steps">
 
       <div class="bw-step" id="holland-mini">
-        <div class="bw-step-num">1</div>
-        <h3>Hiểu mình</h3>
-        <p class="goal">Biết mình muốn gì</p>
+        <div class="bw-step-heading">
+          <div class="bw-step-num">1</div>
+          <div><h3>Hiểu mình</h3><p class="goal">Biết mình muốn gì</p></div>
+        </div>
         <ul>
           <li>Trắc nghiệm Holland (42 câu, khoảng 7 phút)</li>
           <li>Liệt kê 5 môn học thích + 5 môn học giỏi</li>
           <li>Hỏi giáo viên chủ nhiệm nhận xét</li>
         </ul>
-        <a href="holland.html" class="step-cta">Làm trắc nghiệm →</a>
-        <a href="holland.html#import-result" class="step-cta">Tôi đã làm test Holland rồi →</a>
+        <div class="bw-step-actions">
+          <a href="holland.html" class="step-cta">Làm trắc nghiệm →</a>
+          <a href="holland.html#import-result" class="step-cta step-cta-secondary">Tôi đã làm test Holland rồi →</a>
+        </div>
       </div>
 
       <div class="bw-step">
-        <div class="bw-step-num">2</div>
-        <h3>Tìm ngành phù hợp</h3>
-        <p class="goal">Biết ngành nào hợp</p>
+        <div class="bw-step-heading">
+          <div class="bw-step-num">2</div>
+          <div><h3>Tìm ngành phù hợp</h3><p class="goal">Biết ngành nào hợp</p></div>
+        </div>
         <ul>
           <li>Khám phá 102 nghề theo nhóm Holland</li>
           <li>Đọc chương trình học và nguồn điểm chuẩn đúng năm</li>
           <li>Chọn 2-3 ngành, đọc review từ sinh viên</li>
         </ul>
-        <a href="careers-holland.html" class="step-cta">Khám phá nghề →</a>
+        <div class="bw-step-actions"><a href="careers-holland.html" class="step-cta">Khám phá nghề →</a></div>
       </div>
 
       <div class="bw-step" id="bw-step-3">
-        <div class="bw-step-num">3</div>
         <span id="schools-mini"></span>
-        <h3>Chọn trường</h3>
-        <p class="goal">Chốt danh sách nguyện vọng</p>
+        <div class="bw-step-heading">
+          <div class="bw-step-num">3</div>
+          <div><h3>Chọn trường</h3><p class="goal">Chốt danh sách nguyện vọng</p></div>
+        </div>
         <ul>
           <li>So sánh năng lực, điều kiện và chi phí; xếp nguyện vọng theo mức độ yêu thích</li>
           <li>Ghi rõ tổ hợp môn + chỉ tiêu</li>
           <li>Mở "Xem hồ sơ" để đối chiếu nguồn và thêm nguyện vọng</li>
         </ul>
-        <a href="page2.html?mode=major" class="step-cta">Chọn trường ngay →</a>
-        <div id="selectedSchoolsPreview" style="margin-top:12px;font-size:13px;color:#3a3a6e;"></div>
+        <div class="bw-step-actions">
+          <a href="page2.html?mode=major" class="step-cta">Chọn trường ngay →</a>
+          <div id="selectedSchoolsPreview"></div>
+        </div>
       </div>
 
       <div class="bw-step">
-        <div class="bw-step-num">4</div>
-        <h3>Đối chiếu điểm</h3>
-        <p class="goal">Hiểu cách tính và điều kiện</p>
+        <div class="bw-step-heading">
+          <div class="bw-step-num">4</div>
+          <div><h3>Đối chiếu điểm</h3><p class="goal">Hiểu cách tính và điều kiện</p></div>
+        </div>
         <ul><li>Chọn trường, ngành và loại điểm</li><li>Nhập đúng các môn cần thiết</li><li>Đọc công thức và nguồn của trường</li></ul>
-        <a href="score-calculator.html" class="step-cta">Tính điểm xét tuyển →</a>
+        <div class="bw-step-actions"><a href="score-calculator.html" class="step-cta">Tính điểm xét tuyển →</a></div>
       </div>
 
       <div class="bw-step">
-        <div class="bw-step-num">5</div>
-        <h3>Hành động</h3>
-        <p class="goal">Nộp đúng hạn, đúng cách</p>
+        <div class="bw-step-heading">
+          <div class="bw-step-num">5</div>
+          <div><h3>Hành động</h3><p class="goal">Nộp đúng hạn, đúng cách</p></div>
+        </div>
         <ul>
           <li>Ôn theo tổ hợp đã chọn</li>
           <li>Chuẩn bị bài luận cá nhân nếu trường yêu cầu</li>
           <li>Theo dõi deadline từ nguyện vọng đã chọn</li>
         </ul>
-        <a href="profile.html?tab=journey#action-plan" class="step-cta">Lập kế hoạch hành động →</a>
+        <div class="bw-step-actions"><a href="profile.html?tab=journey#action-plan" class="step-cta">Lập kế hoạch hành động →</a></div>
       </div>
 
     </div>
