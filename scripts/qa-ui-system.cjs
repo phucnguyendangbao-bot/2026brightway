@@ -118,6 +118,12 @@ async function captureBaseline() {
         await openFlowPage(page, 'index.html');
         await page.locator('.flow-menu').click();
         assert.equal(await page.locator('.flow-menu').getAttribute('aria-expanded'), 'true');
+        const mobileItems = await page.locator('.flow-links > a').evaluateAll(items => items.map(item => {
+          const box = item.getBoundingClientRect();
+          return { top: box.top, bottom: box.bottom, left: box.left, right: box.right, viewport: window.innerWidth };
+        }));
+        assert.ok(mobileItems.every((box, index) => !index || box.top >= mobileItems[index - 1].bottom), 'Mobile navigation items stack vertically without overlap');
+        assert.ok(mobileItems.every(box => box.left >= 0 && box.right <= box.viewport), 'Mobile navigation items stay inside the viewport');
         await page.locator('.flow-more-button').click();
         assert.equal(await page.locator('.flow-more-button').getAttribute('aria-expanded'), 'true');
         for (const target of ['.flow-menu', '.flow-more-button', '.flow-more-menu a']) {

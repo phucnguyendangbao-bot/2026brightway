@@ -63,7 +63,7 @@ body [data-profile-view][hidden] { display:none !important; }
 @media(max-width:1180px) {
   body .flow-menu { display:block; }
   body .flow-nav-inner { position:relative; }
-  body .flow-links { display:none; position:absolute; left:-24px; right:-24px; top:100%; padding:12px 24px; background:var(--bw-paper); border-bottom:1px solid var(--bw-line); max-height:75vh; overflow:auto; justify-content:flex-start; box-shadow:0 12px 28px rgba(99,102,241,.14); }
+  body .flow-links { display:none; position:absolute; left:-24px; right:-24px; top:100%; padding:12px 24px; background:var(--bw-paper); border-bottom:1px solid var(--bw-line); max-height:75vh; overflow:auto; flex-direction:column; align-items:stretch; justify-content:flex-start; gap:4px; box-shadow:0 12px 28px rgba(99,102,241,.14); }
   body .flow-links.open { display:flex; }
   body .flow-links > a { width:100%; }
   body .flow-more { width:100%; }
