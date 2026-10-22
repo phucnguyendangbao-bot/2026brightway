@@ -125,7 +125,7 @@
   const page = location.pathname.split('/').pop() || 'index.html';
   const nav = document.querySelector('nav.bw-nav, nav.p2-nav, nav.lp-nav, nav.nav');
   if (nav) {
-    const search = nav.querySelector('.p2-search-bar');
+    const search = nav.querySelector('.p2-search-bar') || document.querySelector('[data-flow-toolbar-source] .p2-search-bar');
     const senior = nav.querySelector('.senior-toggle');
     const auth = document.getElementById('navAuthSlot');
     const theme = document.getElementById('themeToggle');
@@ -159,6 +159,7 @@
       const toolbar = document.createElement('div');
       toolbar.className = 'flow-toolbar';
       toolbar.appendChild(search);
+      document.querySelector('[data-flow-toolbar-source]')?.remove();
       const other = document.createElement('a');
       other.href = page === 'page2.html' ? 'score-calculator.html' : 'page2.html?focus=major';
       other.textContent = page === 'page2.html' ? 'Tính điểm xét tuyển →' : 'Tìm ngành & trường →';
@@ -218,6 +219,15 @@
       if (read().updatedAt || holland()) renderJourney(host, true);
     }
     if (page === 'profile.html') {
+      const requestedTab = new URLSearchParams(location.search).get('tab');
+      const profileView = ['account','info','favorites','history'].includes(requestedTab) ? 'account' : 'journey';
+      document.querySelectorAll('[data-profile-view]').forEach(section => { section.hidden = section.dataset.profileView !== profileView; });
+      document.querySelectorAll('[data-profile-view-link]').forEach(link => {
+        const active = link.dataset.profileViewLink === profileView;
+        link.classList.toggle('active', active);
+        if (active) link.setAttribute('aria-current', 'page'); else link.removeAttribute('aria-current');
+      });
+      document.body.dataset.profileView = profileView;
       const host = document.createElement('div');
       host.className = 'flow-local-profile';
       const choices = document.getElementById('my-choices');

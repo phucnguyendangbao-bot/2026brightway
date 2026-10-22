@@ -61,6 +61,19 @@ test('homepage starts with the hero and has one main career process', () => {
   assert.match(home, /href="calendar.html#study-plan"/);
 });
 
+test('five primary pages ship the shared navigation before JavaScript enhancement', () => {
+  const pages = ['index.html', 'careers-holland.html', 'page2.html', 'score-calculator.html', 'profile.html'];
+  const labels = ['Trang chủ', 'Khám phá nghề', 'Khám phá trường', 'Tính điểm', 'Hành trình của tôi'];
+  for (const file of pages) {
+    const html = read(file);
+    const nav = html.match(/<nav\b[^>]*class="[^"]*flow-nav[^"]*"[^>]*>[\s\S]*?<\/nav>/i)?.[0] || '';
+    assert.ok(nav, `${file}: shared fallback header`);
+    for (const label of labels) assert.match(nav, new RegExp(`>${label}<`), `${file}: ${label}`);
+    assert.match(nav, />Waybi</, `${file}: Waybi access`);
+    assert.doesNotMatch(nav, />Tra cứu nghề<|>Test Holland<|>Tra cứu & Test<|>Đề án tuyển sinh</, `${file}: legacy header label`);
+  }
+});
+
 test('Can Tho University homepage photo uses a documented official source', () => {
   const home = read('index.html');
   const sources = read('assets/images/hero/SOURCES.md');
@@ -185,7 +198,7 @@ test('career lookup has no quiz tab or mini-test; full test remains standalone',
   assert.doesNotMatch(careers, /hollandTab|hollandPanel|hollandMini|holland-mini.js|2 công cụ trong/);
   assert.doesNotMatch(script, /switchTab|activeTab/);
   assert.match(careers, /id="hollandFilter"/);
-  assert.match(careers, /href="holland.html">Test Holland/);
+  assert.match(careers, /href="holland.html">Trắc nghiệm Holland/);
   assert.match(read('holland.html'), /id="importForm"/);
   assert.match(script, /state\.importedCode\.includes\(k\)/);
   assert.match(script, /state\.importedCode\.indexOf\(k\) \+ 1/);

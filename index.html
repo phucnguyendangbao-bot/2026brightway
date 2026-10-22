@@ -2942,12 +2942,12 @@ body.spa-active #spa-topbar { display: flex; }
 }
 
 </style>
-<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261021-system2">
-<link rel="stylesheet" href="/assets/css/flow.css?v=20261021-system2">
+<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261021-system3">
+<link rel="stylesheet" href="/assets/css/flow.css?v=20261021-system3">
 <link rel="stylesheet" href="/assets/css/selections.css?v=20261020-wishes">
 <script type="module" src="/assets/js/selections.js?v=20261020-wishes"></script>
 <link rel="stylesheet" href="/assets/css/admissions-home.css?v=7">
-<script src="/assets/js/flow.js?v=20261021-system2" defer></script>
+<script src="/assets/js/flow.js?v=20261021-system3" defer></script>
 <script type="module" src="/assets/js/catalog-stats.js?v=20261015"></script>
 <link rel="stylesheet" href="/assets/css/home-holland.css?v=20261015">
 <link rel="stylesheet" href="/assets/css/home-journeys.css?v=20261021-roadmap">
@@ -2961,20 +2961,15 @@ body.spa-active #spa-topbar { display: flex; }
 <!-- Fixed background layer (thay thế background-attachment:fixed gây scroll freeze bug) -->
 <div id="bg-layer" aria-hidden="true"></div>
 
-<!-- Top Nav (shared với các trang khác, có nút Đăng nhập) -->
-<nav class="bw-nav">
-  <div class="bw-nav-inner">
-    <a href="index.html" class="bw-logo">BrightWay Career</a>
-    <button class="bw-nav-menu-btn" id="bwNavMenuBtn" type="button" aria-label="Mở menu điều hướng" aria-expanded="false" aria-controls="navLinks">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-    </button>
-    <div class="bw-nav-links" id="navLinks" aria-label="Điều hướng chính">
-      <a href="index.html" class="active" aria-current="page">Trang chủ</a>
-      <a href="#waybi-home">Waybi</a>
-      <a href="careers-holland.html">Tra cứu nghề</a>
-      <a href="holland.html">Test Holland</a>
-      <a href="resources.html">Tài liệu</a>
-      <button type="button" class="senior-toggle" aria-pressed="false" title="Phông chữ lớn hơn, dễ đọc hơn">Chữ lớn</button>
+<!-- Shared navigation fallback; flow.js enhances behavior without changing its information architecture. -->
+<nav class="bw-nav flow-nav" aria-label="Điều hướng chính">
+  <div class="flow-nav-inner">
+    <a class="flow-logo" href="index.html"><img src="assets/images/brand/brightway-mark.png" alt="" aria-hidden="true"><span>BrightWay Career</span></a>
+    <button type="button" class="flow-menu" aria-controls="navLinks" aria-expanded="false" aria-label="Mở menu chính">Menu <span aria-hidden="true">☰</span></button>
+    <div id="navLinks" class="flow-links">
+      <a href="index.html" class="active" aria-current="page">Trang chủ</a><a href="careers-holland.html">Khám phá nghề</a><a href="page2.html?mode=school">Khám phá trường</a><a href="score-calculator.html">Tính điểm</a><a href="profile.html?tab=journey">Hành trình của tôi</a>
+      <div class="flow-more"><button type="button" class="flow-more-button" aria-controls="flowMoreMenu" aria-expanded="false">Công cụ <span aria-hidden="true">⌄</span></button><div id="flowMoreMenu" class="flow-more-menu"><a href="holland.html">Trắc nghiệm Holland</a><a href="profile.html?tab=journey#my-choices">Nguyện vọng của tôi</a><a href="profile.html?tab=journey#countdowns">BrightWay Countdown</a><a href="calendar.html">Lịch Lớp 12</a><a href="resources.html">Tin tuyển sinh</a><a href="scholarship-roadmap.html">Lộ trình học bổng</a></div></div>
+      <a class="flow-waybi-link" href="waybi.html">Waybi</a><button type="button" class="senior-toggle" aria-pressed="false" title="Phông chữ lớn hơn, dễ đọc hơn">Chữ lớn</button>
     </div>
   </div>
 </nav>

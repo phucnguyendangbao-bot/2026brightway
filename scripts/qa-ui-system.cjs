@@ -136,7 +136,17 @@ async function captureBaseline() {
         assert.ok(await page.locator('body').isVisible());
       }, { width: 390, height: 900 });
 
-      await runScenario('03-all-routes-shared-shell-responsive', async page => {
+      await runScenario('03-static-header-fallbacks', async page => {
+        await page.route('**/assets/js/flow.js*', route => route.abort('failed'));
+        for (const route of ['index.html', 'careers-holland.html', 'page2.html?mode=school', 'score-calculator.html', 'profile.html?tab=journey']) {
+          await page.goto(`${base}/${route}`, { waitUntil: 'domcontentloaded' });
+          const labels = await page.locator('.flow-nav #navLinks > a:not(.flow-waybi-link)').allTextContents();
+          assert.deepEqual(labels.map(value => value.trim()), mainLabels, `${route}: static shared header`);
+          assert.equal(await page.locator('.flow-nav').count(), 1, `${route}: one fallback header`);
+        }
+      });
+
+      await runScenario('04-all-routes-shared-shell-responsive', async page => {
         for (const route of publicRoutes) {
           await openFlowPage(page, route);
           assert.equal(await page.locator('.flow-nav').count(), 1, `${route}: one shared header`);
@@ -156,7 +166,7 @@ async function captureBaseline() {
         }
       });
 
-      await runScenario('04-shared-footer-on-legacy-pages', async page => {
+      await runScenario('05-shared-footer-on-legacy-pages', async page => {
         for (const route of ['essay-review.html', 'interview-prep.html', 'major-detail.html', 'majors.html', 'news-detail.html', 'news.html']) {
           await openFlowPage(page, route);
           await page.locator('.flow-footer').scrollIntoViewIfNeeded();
@@ -165,7 +175,7 @@ async function captureBaseline() {
         }
       });
 
-      await runScenario('05-waybi-shared-name-and-bounds', async page => {
+      await runScenario('06-waybi-shared-name-and-bounds', async page => {
         for (const route of ['index.html', 'careers-holland.html?holland=all', 'page2.html?mode=school', 'profile.html?tab=journey', 'score-calculator.html']) {
           await openFlowPage(page, route);
           for (const width of [360, 390, 768, 1366]) {
@@ -185,8 +195,14 @@ async function captureBaseline() {
         }
       });
 
-      await runScenario('06-journey-storage-shared-across-pages', async page => {
+      await runScenario('07-profile-journey-and-storage', async page => {
         await openFlowPage(page, 'profile.html?tab=journey#countdowns');
+        assert.equal(await page.locator('body').getAttribute('data-profile-view'), 'journey');
+        assert.equal(await page.locator('.profile-page [data-profile-view="journey"]').isVisible(), true);
+        assert.equal(await page.locator('.profile-page [data-profile-view="account"]').isVisible(), false);
+        await page.locator('.flow-profile-details').waitFor();
+        await page.locator('#countdowns').waitFor();
+        assert.equal(await page.locator('[data-profile-view-link="journey"]').getAttribute('aria-current'), 'page');
         await page.evaluate(() => window.BWFlow.save({ savedSchools: [{ id: 'ctu', name: 'Đại học Cần Thơ' }] }));
         await page.reload({ waitUntil: 'domcontentloaded' });
         await page.waitForFunction(() => Boolean(window.BWFlow));
@@ -197,10 +213,14 @@ async function captureBaseline() {
         assert.ok(await page.locator('.flow-resume').isVisible(), 'Home compact journey widget is visible');
         const keys = await page.evaluate(() => Object.keys(localStorage).filter(key => /journey|countdown/i.test(key)));
         assert.deepEqual(keys, ['bwJourneyV2'], 'Journey and countdown use one canonical localStorage record');
+        await page.goto(`${base}/profile.html?tab=account`, { waitUntil: 'domcontentloaded' });
+        await page.waitForFunction(() => document.body.dataset.profileView === 'account');
+        assert.equal(await page.locator('.profile-page [data-profile-view="journey"]').isVisible(), false);
+        assert.equal(await page.locator('.profile-page [data-profile-view="account"]').isVisible(), true);
       });
 
-      await runScenario('07-screenshots-key-pages', async page => {
-        for (const [route, label] of [['index.html', 'home'], ['page2.html?mode=school', 'schools'], ['profile.html?tab=journey#countdowns', 'journey']]) {
+      await runScenario('08-screenshots-five-primary-pages', async page => {
+        for (const [route, label] of [['index.html', 'home'], ['careers-holland.html?holland=all', 'careers'], ['page2.html?mode=school', 'schools'], ['score-calculator.html', 'score'], ['profile.html?tab=journey#countdowns', 'journey']]) {
           for (const width of [390, 1366]) {
             await page.setViewportSize({ width, height: 900 });
             await openFlowPage(page, route);

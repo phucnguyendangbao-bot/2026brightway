@@ -8,10 +8,10 @@
 <link rel="stylesheet" href="assets/css/careers.css">
 <link rel="stylesheet" href="assets/css/auth.css">
 <link rel="stylesheet" href="assets/css/profile.css?v=20261020-admin-avatar">
-<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261021-system2">
-<link rel="stylesheet" href="/assets/css/flow.css?v=20261021-system2">
+<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261021-system3">
+<link rel="stylesheet" href="/assets/css/flow.css?v=20261021-system3">
 <link rel="stylesheet" href="/assets/css/selections.css?v=20261020-wishes">
-<script src="/assets/js/flow.js?v=20261021-system2" defer></script>
+<script src="/assets/js/flow.js?v=20261021-system3" defer></script>
 </head>
 <body>
 
@@ -20,20 +20,25 @@
   <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
 </button>
 
-<nav class="bw-nav">
-  <div class="bw-nav-inner">
-    <a href="index.html" class="bw-logo">BrightWay Career</a>
-    <div class="bw-nav-links" id="navLinks">
-      <a href="index.html">Trang chủ</a>
-      <a href="careers-holland.html">Tra cứu & Test</a>
-      <a href="resources.html">Tài liệu</a>
+<nav class="bw-nav flow-nav" aria-label="Điều hướng chính">
+  <div class="flow-nav-inner">
+    <a class="flow-logo" href="index.html"><img src="assets/images/brand/brightway-mark.png" alt="" aria-hidden="true"><span>BrightWay Career</span></a>
+    <button type="button" class="flow-menu" aria-controls="navLinks" aria-expanded="false" aria-label="Mở menu chính">Menu <span aria-hidden="true">☰</span></button>
+    <div id="navLinks" class="flow-links">
+      <a href="index.html">Trang chủ</a><a href="careers-holland.html">Khám phá nghề</a><a href="page2.html?mode=school">Khám phá trường</a><a href="score-calculator.html">Tính điểm</a><a href="profile.html?tab=journey" class="active" aria-current="page">Hành trình của tôi</a>
+      <div class="flow-more"><button type="button" class="flow-more-button" aria-controls="flowMoreMenu" aria-expanded="false">Công cụ <span aria-hidden="true">⌄</span></button><div id="flowMoreMenu" class="flow-more-menu"><a href="holland.html">Trắc nghiệm Holland</a><a href="profile.html?tab=journey#my-choices">Nguyện vọng của tôi</a><a href="profile.html?tab=journey#countdowns">BrightWay Countdown</a><a href="calendar.html">Lịch Lớp 12</a><a href="resources.html">Tin tuyển sinh</a><a href="scholarship-roadmap.html">Lộ trình học bổng</a></div></div>
+      <a class="flow-waybi-link" href="waybi.html">Waybi</a>
     </div>
   </div>
 </nav>
 
 <section class="profile-page">
   <div class="container">
+    <nav class="profile-view-tabs" aria-label="Khu vực hồ sơ"><a href="profile.html?tab=journey" data-profile-view-link="journey">Hành trình của tôi</a><a href="profile.html?tab=account" data-profile-view-link="account">Tài khoản (tùy chọn)</a></nav>
+    <div data-profile-view="journey">
     <section id="my-choices" class="my-choices" aria-labelledby="myChoicesTitle" aria-busy="true"><h2 id="myChoicesTitle">Nguyện vọng của tôi</h2><p>Đang mở lựa chọn đã lưu trên thiết bị…</p></section>
+    </div>
+    <div data-profile-view="account" hidden>
     <div id="notSignedIn" hidden>
       <div class="empty-state">
         <div style="font-size:64px;margin-bottom:12px;">🔐</div>
@@ -129,6 +134,7 @@
         </div>
       </div>
 
+    </div>
     </div>
   </div>
 </section>

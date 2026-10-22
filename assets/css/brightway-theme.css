@@ -15,6 +15,7 @@
   --bw-brand-2: #8b6bff;
   --bw-brand-light: #a99cff;
   --bw-brand-hover: #6154ed;
+  --bw-brand-text: #584bd8;
   --bw-tint: #eeedff;
   --bw-on-brand: #ffffff;
   --bw-brand-gradient: linear-gradient(135deg, #6b60ff 0%, #8b6bff 100%);
@@ -86,6 +87,7 @@
   --bw-brand-2: #8f85ff;
   --bw-brand-light: #c9bcff;
   --bw-brand-hover: #c9bcff;
+  --bw-brand-text: #c9bcff;
   --bw-tint: #38315b;
   --bw-on-brand: #ffffff;
   --bg-1: #16142b;
