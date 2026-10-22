@@ -90,9 +90,9 @@ h1.title{font-family:var(--font-display);font-weight:900;font-size:38px;line-hei
   .section{padding:24px;}
 }
 </style>
-<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261021-system3">
-<link rel="stylesheet" href="/assets/css/flow.css?v=20261022-system4">
-<script src="/assets/js/flow.js?v=20261021-system3" defer></script>
+<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261022-polish">
+<link rel="stylesheet" href="/assets/css/flow.css?v=20261022-polish">
+<script src="/assets/js/flow.js?v=20261022-polish" defer></script>
 </head>
 <body>
 
@@ -117,8 +117,9 @@ h1.title{font-family:var(--font-display);font-weight:900;font-size:38px;line-hei
 
 <script src="assets/js/supabase-client.js"></script>
 <script src="assets/js/cms-service.js"></script>
+<script src="assets/js/content-state.js?v=20261022-polish"></script>
 <script src="assets/js/admin-quick.js"></script>
-<script src="assets/js/uni-logos.js"></script>
+<script src="assets/js/uni-logos.js?v=20261022-polish"></script>
 <script src="assets/js/uni-logo-svg.js"></script>
 <script>
 function escapeHtml(s) {
@@ -142,9 +143,7 @@ async function load() {
     return;
   }
 
-  try {
-    await window.getSupabase();
-    const m = await window.CMS.getMajorBySlug(slug);
+  return window.BWContent.load(container, () => window.CMS.getMajorBySlug(slug), m => {
 
     const tagText = window.CMS.categoryLabel(m.category);
 
@@ -214,22 +213,13 @@ async function load() {
     `;
 
     document.title = `${m.name_vi} – BrightWay Career`;
-  } catch (err) {
-    console.error(err);
-    container.innerHTML = `
-      <div class="state">
-        <div class="icon">⚠️</div>
-        <h2>Không thể tải thông tin</h2>
-        <p>${escapeHtml(err.message)}</p>
-        <a href="majors.html" class="back-btn">← Quay lại</a>
-      </div>`;
-  }
+  }, {errorTitle:'Không thể tải thông tin ngành',retry:load});
 }
 load();
 </script>
 
-<script src="assets/js/waybi.js"></script>
-<script src="assets/js/waybi-presence.js"></script>
+<script src="assets/js/waybi.js?v=20261022-polish"></script>
+<script src="assets/js/waybi-presence.js?v=20261022-polish"></script>
 </body>
 </html>
 

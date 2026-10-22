@@ -22,7 +22,7 @@ body .flow-next h2 { font-size:20px; line-height:1.35; margin:6px 0; color:var(-
 body .flow-next p { color:var(--bw-muted); font-size:14px; line-height:1.6; margin:0; }
 body .flow-kicker { font-size:12px; font-weight:700; color:var(--bw-brand); }
 body .flow-actions { display:flex; gap:8px; flex-wrap:wrap; }
-body .flow-actions a { display:inline-block; border:1px solid var(--bw-line); border-radius:7px; padding:10px 14px; background:var(--bw-paper); color:var(--bw-brand); text-decoration:none; font-size:14px; font-weight:650; }
+body .flow-actions a { display:inline-block; border:1px solid var(--bw-line); border-radius:var(--bw-radius-pill); padding:10px 14px; background:var(--bw-paper); color:var(--bw-brand-text); text-decoration:none; font-size:14px; font-weight:650; }
 body .flow-actions a:first-child { background:var(--bw-brand); color:var(--bw-on-brand); border-color:var(--bw-brand); }
 body .flow-resume { max-width:1200px; margin:auto; padding:0 20px; }
 body .flow-waybi-link { border:1px solid var(--bw-line); }

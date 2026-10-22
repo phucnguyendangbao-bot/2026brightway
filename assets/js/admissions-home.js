@@ -6,7 +6,7 @@
   const original = [...grid.children].map(card => card.outerHTML);
   const escape = value => String(value || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const admissions = /tuyển sinh|xét tuyển|điểm chuẩn|nguyện vọng|nhập học|học bổng|tổ hợp/i;
-  const placeholder = '/assets/images/waybi/waybi-mascot-v2.png';
+  const placeholder = '/assets/images/waybi/waybi-ui-192.webp';
   function cover(value) {
     if (!value) return placeholder;
     try { const url = new URL(value, location.href); return /^https?:$/.test(url.protocol) ? url.href : placeholder; }

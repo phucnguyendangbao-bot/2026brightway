@@ -181,7 +181,11 @@
       const open = more.classList.toggle('open');
       moreButton.setAttribute('aria-expanded', String(open));
     });
-    document.addEventListener('click', event => { if (more?.classList.contains('open') && !event.target.closest('.flow-more')) closeMore(); });
+    document.addEventListener('click', event => {
+      if (!nav.contains(event.target)) { close(); return; }
+      if (more?.classList.contains('open') && !event.target.closest('.flow-more')) closeMore();
+    });
+    window.matchMedia('(min-width:1181px)').addEventListener('change', event => { if (event.matches) close(); });
     document.addEventListener('keydown', event => {
       if (event.key !== 'Escape') return;
       if (more?.classList.contains('open')) { closeMore(); moreButton.focus(); return; }

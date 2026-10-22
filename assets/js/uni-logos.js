@@ -67,7 +67,8 @@ window.UNI_LOGOS = {
     name: 'ĐH Kinh tế Quốc dân',
     short: 'NEU',
     aliases: ['KTQD'],
-    logoLocal: 'assets/images/logos/neu.png',
+    // No verified local image is bundled; use an explicitly labelled abbreviation.
+    initialsOnly: true,
     logo: 'https://upload.wikimedia.org/wikipedia/vi/thumb/f/f0/Logo_NEU.png/330px-Logo_NEU.png',
     fallback: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=120&h=120&fit=crop'
   },
@@ -456,6 +457,10 @@ window.UNILogoImg = function(codeOrName, options = {}) {
   const size = Math.max(16, Math.min(512, Number(options.size) || 48));
   const cls = escapeLogo(options.class || 'uni-logo-img');
   const safeName = info ? String(info.short || '').replace(/'/g, "\\'") : '';
+  if (info?.initialsOnly) {
+    const label = escapeLogo(`${info.name} · Ký hiệu viết tắt, chưa có logo đã đối chiếu`);
+    return `<span class="${cls}" role="img" aria-label="${label}" title="${label}" style="width:${size}px;height:${size}px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;background:var(--bw-tint,#eeedff);color:var(--bw-brand-text,#584bd8);font-size:${Math.max(10, size / 3.6)}px;font-weight:700;">${escapeLogo(info.short)}</span>`;
+  }
   if (!info) {
     return `<div class="${cls}" style="width:${size}px;height:${size}px;display:flex;align-items:center;justify-content:center;background:rgba(99,102,241,0.1);border-radius:8px;font-size:${size/2.5}px;">🎓</div>`;
   }
@@ -500,7 +505,9 @@ window.UNILogoCard = function(codeOrName, options = {}) {
   if (isWikimediaVerified(info.logo)) fallbackChain.push(info.logo);
   if (isWikimediaVerified(info.logoAlt) && info.logoAlt !== info.logo) fallbackChain.push(info.logoAlt);
   let logoHtml;
-  if (fallbackChain.length > 0) {
+  if (info.initialsOnly) {
+    logoHtml = window.UNILogoImg(codeOrName, {size,class:'uni-card-logo'});
+  } else if (fallbackChain.length > 0) {
     let onerror = '';
     if (fallbackChain.length > 1) {
       const rest = fallbackChain.slice(1).map(u => `'${u}'`).join(',');

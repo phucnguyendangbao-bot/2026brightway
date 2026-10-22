@@ -2,9 +2,11 @@
   margin-top: 28px;
   text-align: left;
 }
-/* Fixed image frame and a short fade; motion remains visitor-controlled. */
-#home-view #bwHeroCarousel .slide { display:flex; transition:opacity .45s ease,visibility 0s; }
-#home-view #bwHeroCarousel .slide:not(.is-active) { opacity:0; visibility:hidden; pointer-events:none; transition:opacity .45s ease,visibility 0s .45s; }
+/* Keep hidden lazy images out of layout so all eight campuses do not download on arrival. */
+#home-view #bwHeroCarousel .slide { transition:none; }
+#home-view #bwHeroCarousel .slide:not(.is-active) { display:none; pointer-events:none; }
+#home-view #bwHeroCarousel .slide.is-active { animation:hero-campus-reveal .32s ease-out; }
+@keyframes hero-campus-reveal { from { opacity:.65; } to { opacity:1; } }
 .home-journey-picker h2 {
   margin: 0 0 14px;
   color: #17163d;

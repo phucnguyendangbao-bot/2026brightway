@@ -8,7 +8,7 @@
 (function () {
   'use strict';
 
-  const WAYBI_MASCOT_URL = 'assets/images/waybi/waybi-mascot-v2.png';
+  const WAYBI_MASCOT_URL = 'assets/images/waybi/waybi-ui-192.webp';
 
   function makeMascot(alt) {
     return `<img src="${WAYBI_MASCOT_URL}" alt="${alt || ''}"${alt ? '' : ' aria-hidden="true"'}>`;

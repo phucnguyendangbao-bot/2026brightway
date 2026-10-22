@@ -34,8 +34,11 @@ export function universityCardHTML(school, { image, programs = [], placement = '
   const contentId = campaign?.id || `featured-${school.id}`;
   const source = officialUniversityUrl(campaign?.sourceUrl || school.official_source || school.website, school);
   const cover = safeAsset(image);
+  const responsiveCover = ['assets/images/hero/01-fpt-can-tho.jpg','assets/images/hero/16-uit-campus.png','assets/images/hero/17-tdtu-campus.png'].includes(cover)
+    ? cover.replace(/\.(?:jpg|png)$/, '') : '';
+  const responsiveAttributes = responsiveCover ? ` srcset="${responsiveCover}-640.webp 640w, ${responsiveCover}-1280.webp 1280w" sizes="(max-width:600px) calc(100vw - 32px), (max-width:1000px) 50vw, 440px"` : '';
   return `<article class="university-card ${sponsored ? 'university-card-sponsored' : ''}" data-promotion-card data-school="${escapeUniversity(school.id)}" data-content="${escapeUniversity(contentId)}" data-placement="${escapeUniversity(placement)}">
-    ${cover ? `<a class="university-card-cover" href="page2.html?school=${encodeURIComponent(school.id)}" data-promotion-action="click" aria-label="Khám phá ${escapeUniversity(school.name)}"><img src="${cover}" alt="${escapeUniversity(school.id === 'fpt' ? 'Không gian học tập FPT từ bộ ảnh hiện có' : 'Khuôn viên ' + school.name)}" loading="lazy" width="700" height="438"></a>` : ''}
+    ${cover ? `<a class="university-card-cover" href="page2.html?school=${encodeURIComponent(school.id)}" data-promotion-action="click" aria-label="Khám phá ${escapeUniversity(school.name)}"><img src="${cover}"${responsiveAttributes} alt="${escapeUniversity(school.id === 'fpt' ? 'Không gian học tập FPT từ bộ ảnh hiện có' : 'Khuôn viên ' + school.name)}" loading="lazy" decoding="async" width="700" height="438"></a>` : ''}
     <div class="university-card-body"><span class="university-placement-label ${sponsored ? 'is-sponsored' : ''}">${sponsored ? 'Được tài trợ' : 'Biên tập giới thiệu · Không tài trợ'}</span>
     ${universityIdentityHTML(school)}
     ${campaign ? `<h4>${escapeUniversity(campaign.title)}</h4><p>${escapeUniversity(campaign.description)}</p>` : '<p>Khám phá chương trình đào tạo, nguồn tuyển sinh và những điều cần đối chiếu trước khi chọn trường.</p>'}

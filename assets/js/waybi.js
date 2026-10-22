@@ -39,7 +39,7 @@
   function setUser(u) { window.BWFlow?.storage.set(STORAGE_KEY, JSON.stringify(u)); }
 
   // ─── Render ───
-  const WAYBI_MASCOT = '<img src="assets/images/waybi/waybi-mascot-v2.png" alt="" aria-hidden="true">';
+  const WAYBI_MASCOT = '<img src="assets/images/waybi/waybi-ui-192.webp" alt="" aria-hidden="true" width="192" height="192">';
 
   const styles = `
     <style id="waybi-styles">

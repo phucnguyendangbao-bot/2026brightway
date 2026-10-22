@@ -91,9 +91,9 @@ a{color:inherit;text-decoration:none;}
   .grid{grid-template-columns:1fr;}
 }
 </style>
-<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261021-system3">
-<link rel="stylesheet" href="/assets/css/flow.css?v=20261022-system4">
-<script src="/assets/js/flow.js?v=20261021-system3" defer></script>
+<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261022-polish">
+<link rel="stylesheet" href="/assets/css/flow.css?v=20261022-polish">
+<script src="/assets/js/flow.js?v=20261022-polish" defer></script>
 </head>
 <body>
 
@@ -123,7 +123,7 @@ a{color:inherit;text-decoration:none;}
 </div>
 
 <div class="search-box">
-  <input type="text" id="search-input" placeholder="Tìm kiếm ngành học..." />
+  <input type="search" id="search-input" aria-label="Tìm kiếm ngành học" placeholder="Tìm kiếm ngành học..." />
 </div>
 
 <main id="main-content">
@@ -135,8 +135,9 @@ a{color:inherit;text-decoration:none;}
 
 <script src="assets/js/supabase-client.js"></script>
 <script src="assets/js/cms-service.js"></script>
+<script src="assets/js/content-state.js?v=20261022-polish"></script>
 <script src="assets/js/admin-quick.js"></script>
-<script src="assets/js/uni-logos.js"></script>
+<script src="assets/js/uni-logos.js?v=20261022-polish"></script>
 <script src="assets/js/uni-logo-svg.js"></script>
 <script>
 let currentCategory = '';
@@ -151,14 +152,10 @@ function escapeHtml(s) {
 async function loadMajors() {
   const main = document.getElementById('main-content');
   main.className = '';
-  main.innerHTML = `<div class="state"><div class="spinner"></div><p>Đang tải...</p></div>`;
-
-  try {
-    const majors = await window.CMS.listMajors({
+  return window.BWContent.load(main, () => window.CMS.listMajors({
       category: currentCategory || null,
       search: currentSearch || null
-    });
-
+    }), majors => {
     if (!majors.length) {
       main.innerHTML = `
         <div class="state">
@@ -211,15 +208,7 @@ async function loadMajors() {
       card.addEventListener('click', open);
       card.addEventListener('keydown', event => { if (event.key === 'Enter') open(); });
     });
-  } catch (err) {
-    console.error(err);
-    main.innerHTML = `
-      <div class="state">
-        <div class="icon">⚠️</div>
-        <h2>Không thể tải danh sách ngành</h2>
-        <p>${escapeHtml(err.message)}</p>
-      </div>`;
-  }
+  }, {errorTitle:'Không thể tải danh sách ngành',retry:loadMajors});
 }
 
 document.querySelectorAll('.pill').forEach(p => {
@@ -241,7 +230,6 @@ document.getElementById('search-input').addEventListener('input', e => {
 });
 
 async function init() {
-  await window.getSupabase();
   const params = new URLSearchParams(location.search);
   if (params.get('khoi')) {
     currentCategory = params.get('khoi');
@@ -254,8 +242,8 @@ async function init() {
 init();
 </script>
 
-<script src="assets/js/waybi.js"></script>
-<script src="assets/js/waybi-presence.js"></script>
+<script src="assets/js/waybi.js?v=20261022-polish"></script>
+<script src="assets/js/waybi-presence.js?v=20261022-polish"></script>
 </body>
 </html>
 

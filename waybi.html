@@ -321,9 +321,9 @@ body::after{
 .lp-footer-links a{font-size:.8rem;color:var(--text-soft);text-decoration:none;font-weight:600;transition:color .2s;}
 .lp-footer-links a:hover{color:var(--accent);}
 </style>
-<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261021-system3">
-<link rel="stylesheet" href="/assets/css/flow.css?v=20261022-system4">
-<script src="/assets/js/flow.js?v=20261021-system3" defer></script>
+<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261022-polish">
+<link rel="stylesheet" href="/assets/css/flow.css?v=20261022-polish">
+<script src="/assets/js/flow.js?v=20261022-polish" defer></script>
 </head>
 <body>
 
@@ -332,7 +332,7 @@ body::after{
   <div class="lp-nav-inner">
     <a href="index.html" class="lp-logo">
       <div class="lp-logo-emoji">
-        <img src="assets/images/waybi/waybi-mascot-v2.png" alt="Waybi"/>
+        <img src="assets/images/waybi/waybi-ui-512.webp" alt="Waybi"/>
       </div>
       <span class="lp-logo-text">BrightWay</span>
     </a>
@@ -360,7 +360,7 @@ body::after{
     <span class="w-hero-bubble b1">Hello! ✨</span>
     <span class="w-hero-bubble b2">Mình giúp nhé!</span>
     <span class="w-hero-bubble b3">📅 Lịch 2026</span>
-    <img src="assets/images/waybi/waybi-mascot-v2.png" alt="Waybi mascot"/>
+    <img src="assets/images/waybi/waybi-ui-512.webp" alt="Waybi mascot" width="512" height="512"/>
   </div>
 </section>
 
@@ -383,7 +383,7 @@ body::after{
   <div class="w-section-head">
     <div class="eyebrow">📅 Lộ trình 12 tháng</div>
     <h2>Mỗi tháng một bước — đi cùng Waybi</h2>
-    <p>Click vào ngày có sự kiện để xem chi tiết. Màu sắc mỗi loại sự kiện như dưới.</p>
+    <p>Lịch tham khảo 2026 dùng chung bộ nguồn đã đối chiếu của BrightWay. Di chuột vào ngày được đánh dấu để xem mốc; mở lịch đầy đủ để đọc nguồn và trạng thái năm 2027.</p>
   </div>
 
   <div class="cal-container">
@@ -408,7 +408,7 @@ body::after{
 <footer class="lp-footer">
   <div class="lp-footer-inner">
     <div class="lp-footer-logo">
-      <div class="emoji"><img src="assets/images/waybi/waybi-mascot-v2.png" alt="Waybi"/></div>
+      <div class="emoji"><img src="assets/images/waybi/waybi-ui-512.webp" alt="Waybi"/></div>
       <span>BrightWay</span>
     </div>
     <div class="lp-footer-links">
@@ -422,8 +422,10 @@ body::after{
   </div>
 </footer>
 
-<script>
-/* ── WAYBI CALENDAR 12 THÁNG (data giống calendar.html) ── */
+<script type="module">
+/* Shared verified admissions source; never maintain a second set of dates here. */
+import policy from './assets/data/admissions-policy.js';
+import { officialEvents } from './assets/js/calendar-rules.js';
 (function(){
   const CAT = {
     thi:   { color: '#ef4444', icon: '📝' },
@@ -433,48 +435,7 @@ body::after{
     hocba: { color: '#10b981', icon: '📚' },
     tuvan: { color: '#06b6d4', icon: '💡' },
   };
-  const EVENTS = [
-    { d: '2026-01-15', cat: 'tuvan', title: 'Mở ĐK xét tuyển sớm', sub: 'Các trường ĐH mở cổng ĐK NV đợt đầu.' },
-    { d: '2026-01-20', cat: 'hocba', title: 'Nhận hồ sơ học bạ đợt 1', sub: 'Nhận hồ sơ xét học bạ 5 HK.' },
-    { d: '2026-02-10', cat: 'tuvan', title: 'Tư vấn xét tuyển tại THPT', sub: 'Đoàn tư vấn các ĐH đến tư vấn trực tiếp.' },
-    { d: '2026-02-15', cat: 'nop', title: 'Deadline nộp hồ sơ xét sớm', sub: 'Hết hạn ĐK NV xét sớm đợt 1.' },
-    { d: '2026-02-25', cat: 'thi', title: 'Thi HSA đợt 1 (ĐHQG HN)', sub: 'Kỳ thi ĐGNL HSA.' },
-    { d: '2026-03-05', cat: 'cbt', title: 'Công bố trúng tuyển sớm đợt 1', sub: 'Các trường công bố DS trúng tuyển.' },
-    { d: '2026-03-10', cat: 'hocba', title: 'Deadline hồ sơ học bạ đợt 1', sub: 'Hết hạn nộp học bạ đợt 1.' },
-    { d: '2026-03-15', cat: 'thi', title: 'Thi V-ACT đợt 1', sub: 'Kỳ thi V-ACT tại ĐHQG HCM.' },
-    { d: '2026-03-20', cat: 'tuvan', title: 'Open Day các trường ĐH', sub: 'HCMUT, UIT, UEH, FTU… mở cửa tham quan.' },
-    { d: '2026-03-25', cat: 'cbt', title: 'Công bố trúng tuyển học bạ đợt 1', sub: 'DS trúng tuyển theo học bạ.' },
-    { d: '2026-04-05', cat: 'thi', title: 'Thi V-ACT đợt 2', sub: 'Đợt thi V-ACT thứ hai.' },
-    { d: '2026-04-10', cat: 'hocba', title: 'Nhận hồ sơ học bạ đợt 2', sub: 'Đợt xét học bạ tiếp theo.' },
-    { d: '2026-04-15', cat: 'tuvan', title: 'Ngày hội tư vấn toàn quốc', sub: 'Bộ GD&ĐT và Sở GD&ĐT tổ chức.' },
-    { d: '2026-04-25', cat: 'thi', title: 'Thi TSA (ĐHBK HN)', sub: 'Kỳ thi TSA do ĐHBK HN tổ chức.' },
-    { d: '2026-05-05', cat: 'nop', title: 'ĐK dự thi tốt nghiệp THPT', sub: 'ĐK trên cổng Bộ GD&ĐT.' },
-    { d: '2026-05-15', cat: 'hocba', title: 'Deadline học bạ đợt 2', sub: 'Hết hạn đợt 2 xét học bạ.' },
-    { d: '2026-05-20', cat: 'cbt', title: 'Công bố trúng tuyển học bạ đợt 2', sub: 'Đợt công bố cuối cho xét học bạ.' },
-    { d: '2026-05-24', cat: 'thi', title: 'Thi V-ACT đợt 3', sub: 'Đợt thi V-ACT cuối.' },
-    { d: '2026-05-30', cat: 'tuvan', title: 'Hạn cuối ĐK xét tuyển thẳng', sub: 'Nộp hồ sơ xét tuyển thẳng.' },
-    { d: '2026-06-10', cat: 'thi', title: 'Thi H-SCA (ĐHSP TPHCM)', sub: 'Kỳ thi ĐGNL chuyên biệt H-SCA.' },
-    { d: '2026-06-25', cat: 'cbt', title: 'Công bố lịch thi THPT QG', sub: 'Bộ GD&ĐT công bố lịch thi.' },
-    { d: '2026-07-01', cat: 'thi', title: 'Khai mạc kỳ thi tốt nghiệp THPT', sub: 'Các ngày thi diễn ra trong tuần đầu tháng 7.' },
-    { d: '2026-07-03', cat: 'thi', title: 'Thi tổ hợp KHXH, KHTN', sub: 'Thi các môn tổ hợp.' },
-    { d: '2026-07-15', cat: 'nop', title: 'Mở ĐK nguyện vọng xét tuyển', sub: 'Cổng ĐK NV của Bộ GD&ĐT mở.' },
-    { d: '2026-07-20', cat: 'cbt', title: 'Công bố điểm thi tốt nghiệp', sub: 'Bộ GD&ĐT công bố điểm thi.' },
-    { d: '2026-07-30', cat: 'nop', title: 'Deadline ĐK nguyện vọng', sub: 'Hết hạn ĐK NV trên cổng Bộ.' },
-    { d: '2026-08-05', cat: 'cbt', title: 'Lọc ảo, xét tuyển đợt 1', sub: 'Các trường nhận kết quả và lọc ảo.' },
-    { d: '2026-08-15', cat: 'cbt', title: 'Công bố điểm chuẩn đợt 1', sub: 'Các trường công bố điểm chuẩn.' },
-    { d: '2026-08-18', cat: 'nop', title: 'Xác nhận nhập học đợt 1', sub: 'Thí sinh xác nhận nhập học.' },
-    { d: '2026-08-25', cat: 'cbt', title: 'Xét tuyển bổ sung đợt 1', sub: 'Cho các ngành còn chỉ tiêu.' },
-    { d: '2026-08-30', cat: 'phong', title: 'Phỏng vấn học bổng', sub: 'Một số CT học bổng tổ chức PV.' },
-    { d: '2026-09-10', cat: 'cbt', title: 'Công bố điểm chuẩn BS đợt 1', sub: 'Điểm chuẩn bổ sung đợt 1.' },
-    { d: '2026-09-15', cat: 'cbt', title: 'Nhập học đợt đầu', sub: 'Sinh viên năm nhất nhập học.' },
-    { d: '2026-09-25', cat: 'nop', title: 'Xét tuyển bổ sung đợt 2', sub: 'Nếu còn chỉ tiêu.' },
-    { d: '2026-10-01', cat: 'cbt', title: 'Công bố điểm chuẩn BS đợt 2', sub: 'Đợt cuối công bố điểm chuẩn.' },
-    { d: '2026-10-15', cat: 'phong', title: 'PV học bổng tư thục', sub: 'FPT, Duy Tân, RMIT… tổ chức PV.' },
-    { d: '2026-11-05', cat: 'nop', title: 'Deadline HB quốc tế', sub: 'Hết hạn nộp nhiều học bổng quốc tế.' },
-    { d: '2026-11-15', cat: 'phong', title: 'PV học bổng chính phủ', sub: 'Chevening, Fulbright, MEXT…' },
-    { d: '2026-12-01', cat: 'cbt', title: 'Kết quả HB quốc tế đợt 1', sub: 'Nhiều CT học bổng công bố kết quả.' },
-    { d: '2026-12-15', cat: 'tuvan', title: 'Tổng kết mùa tuyển sinh 2026', sub: 'Rút kinh nghiệm cho mùa sau.' },
-  ];
+  const EVENTS = officialEvents(policy, 2026);
   const MONTHS = ['Tháng 1','Tháng 2','Tháng 3','Tháng 4','Tháng 5','Tháng 6',
                   'Tháng 7','Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12'];
   const now = new Date();
@@ -525,7 +486,7 @@ body::after{
   }
 })();
 </script>
-<script src="assets/js/waybi.js"></script>
-<script src="assets/js/waybi-presence.js"></script>
+<script src="assets/js/waybi.js?v=20261022-polish"></script>
+<script src="assets/js/waybi-presence.js?v=20261022-polish"></script>
 </body>
 </html>

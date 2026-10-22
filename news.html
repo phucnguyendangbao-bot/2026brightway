@@ -77,9 +77,9 @@ a{color:inherit;text-decoration:none;}
   .hero{padding:32px 20px 16px;}
 }
 </style>
-<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261021-system3">
-<link rel="stylesheet" href="/assets/css/flow.css?v=20261022-system4">
-<script src="/assets/js/flow.js?v=20261021-system3" defer></script>
+<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261022-polish">
+<link rel="stylesheet" href="/assets/css/flow.css?v=20261022-polish">
+<script src="/assets/js/flow.js?v=20261022-polish" defer></script>
 </head>
 <body>
 
@@ -110,7 +110,7 @@ a{color:inherit;text-decoration:none;}
 </div>
 
 <div class="search-box">
-  <input type="text" id="search-input" placeholder="Tìm kiếm bài viết..." />
+  <input type="search" id="search-input" aria-label="Tìm kiếm bài viết" placeholder="Tìm kiếm bài viết..." />
 </div>
 
 <main id="main-content">
@@ -122,6 +122,7 @@ a{color:inherit;text-decoration:none;}
 
 <script src="assets/js/supabase-client.js"></script>
 <script src="assets/js/cms-service.js"></script>
+<script src="assets/js/content-state.js?v=20261022-polish"></script>
 <script src="assets/js/admin-quick.js"></script>
 <script>
 let currentCategory = '';
@@ -129,15 +130,12 @@ let currentSearch = '';
 
 async function loadPosts() {
   const main = document.getElementById('main-content');
-  main.innerHTML = `<div class="state"><div class="spinner"></div><p>Đang tải...</p></div>`;
-
-  try {
-    const posts = await window.CMS.listPublishedPosts({
+  main.className = '';
+  return window.BWContent.load(main, () => window.CMS.listPublishedPosts({
       limit: 50,
       category: currentCategory || null,
       search: currentSearch || null
-    });
-
+    }), posts => {
     if (!posts.length) {
       main.innerHTML = `
         <div class="state">
@@ -151,13 +149,13 @@ async function loadPosts() {
     main.className = 'grid';
     main.innerHTML = posts.map(p => {
       const cover = p.cover_image
-        ? `<img src="${p.cover_image}" alt="${escapeHtml(p.title)}">`
+        ? `<img src="${escapeHtml(p.cover_image)}" alt="${escapeHtml(p.title)}" loading="lazy" decoding="async">`
         : `<div style="width:100%;height:100%;background:var(--grad);display:flex;align-items:center;justify-content:center;color:#fff;font-size:48px;">📰</div>`;
       const author = p.author?.full_name || 'Ban biên tập';
       const date = window.CMS.formatDate(p.published_at || p.created_at);
-      const cat = window.CMS.categoryLabel(p.category);
+      const cat = escapeHtml(window.CMS.categoryLabel(p.category));
       return `
-        <article class="card" onclick="window.location='news-detail.html?slug=${encodeURIComponent(p.slug)}'">
+        <article class="card" data-post-slug="${escapeHtml(p.slug)}" role="link" tabindex="0">
           <div class="card-cover">
             <span class="badge">${cat}</span>
             ${cover}
@@ -168,22 +166,19 @@ async function loadPosts() {
               <span>•</span>
               <span>📅 ${date}</span>
               <span>•</span>
-              <span>👁️ ${p.views_count || 0}</span>
+              <span>👁️ ${Number(p.views_count) || 0}</span>
             </div>
             <h3 class="card-title">${escapeHtml(p.title)}</h3>
             <p class="card-summary">${escapeHtml(p.summary || '')}</p>
           </div>
         </article>`;
     }).join('');
-  } catch (err) {
-    console.error(err);
-    main.innerHTML = `
-      <div class="state">
-        <div class="icon">⚠️</div>
-        <h2>Không thể tải bài viết</h2>
-        <p>${escapeHtml(err.message)}</p>
-      </div>`;
-  }
+    main.querySelectorAll('[data-post-slug]').forEach(card => {
+      const open = () => location.assign('news-detail.html?slug=' + encodeURIComponent(card.dataset.postSlug));
+      card.addEventListener('click', open);
+      card.addEventListener('keydown', event => { if (event.key === 'Enter') open(); });
+    });
+  }, {errorTitle:'Không thể tải bài viết',retry:loadPosts});
 }
 
 function escapeHtml(s) {
@@ -214,7 +209,6 @@ document.getElementById('search-input').addEventListener('input', e => {
 
 // Init
 async function init() {
-  await window.getSupabase();
   // Check URL params
   const params = new URLSearchParams(location.search);
   if (params.get('cat')) currentCategory = params.get('cat');
@@ -232,8 +226,8 @@ async function init() {
 init();
 </script>
 
-<script src="assets/js/waybi.js"></script>
-<script src="assets/js/waybi-presence.js"></script>
+<script src="assets/js/waybi.js?v=20261022-polish"></script>
+<script src="assets/js/waybi-presence.js?v=20261022-polish"></script>
 </body>
 </html>
 

@@ -15,7 +15,9 @@
     "qa:fonts": "node scripts/qa-font.cjs",
     "test:e2e:personalization": "node scripts/qa-personalization.cjs",
     "test:e2e:countdown": "node scripts/qa-countdown.cjs",
-    "test:e2e:ui-system": "node scripts/qa-ui-system.cjs after"
+    "test:e2e:ui-system": "node scripts/qa-ui-system.cjs after",
+    "test:e2e:content": "node scripts/qa-content-states.cjs",
+    "audit:product": "node scripts/qa-product-polish.cjs after"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.30.0"

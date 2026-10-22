@@ -76,9 +76,9 @@ h1.title{font-family:var(--font-display);font-weight:900;font-size:38px;line-hei
   .content{font-size:15px;}
 }
 </style>
-<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261021-system3">
-<link rel="stylesheet" href="/assets/css/flow.css?v=20261022-system4">
-<script src="/assets/js/flow.js?v=20261021-system3" defer></script>
+<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261022-polish">
+<link rel="stylesheet" href="/assets/css/flow.css?v=20261022-polish">
+<script src="/assets/js/flow.js?v=20261022-polish" defer></script>
 </head>
 <body>
 
@@ -103,6 +103,7 @@ h1.title{font-family:var(--font-display);font-weight:900;font-size:38px;line-hei
 
 <script src="assets/js/supabase-client.js"></script>
 <script src="assets/js/cms-service.js"></script>
+<script src="assets/js/content-state.js?v=20261022-polish"></script>
 <script src="assets/js/admin-quick.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
@@ -164,9 +165,7 @@ async function load() {
     return;
   }
 
-  try {
-    await window.getSupabase();
-    const post = await window.CMS.getPostBySlug(slug);
+  return window.BWContent.load(container, () => window.CMS.getPostBySlug(slug), post => {
 
     const cover = post.cover_image
       ? `<div class="cover"><img src="${post.cover_image}" alt="${escapeHtml(post.title)}"></div>`
@@ -197,22 +196,13 @@ async function load() {
       <div class="content">${renderMarkdown(post.content)}</div>
     `;
     document.title = `${post.title} – BrightWay Career`;
-  } catch (err) {
-    console.error(err);
-    container.innerHTML = `
-      <div class="state">
-        <div class="icon">⚠️</div>
-        <h2>Không thể tải bài viết</h2>
-        <p>${escapeHtml(err.message)}</p>
-        <a href="resources.html" class="back-btn">← Tài liệu & bài viết</a>
-      </div>`;
-  }
+  }, {errorTitle:'Không thể tải bài viết',retry:load});
 }
 load();
 </script>
 
-<script src="assets/js/waybi.js"></script>
-<script src="assets/js/waybi-presence.js"></script>
+<script src="assets/js/waybi.js?v=20261022-polish"></script>
+<script src="assets/js/waybi-presence.js?v=20261022-polish"></script>
 </body>
 </html>
 

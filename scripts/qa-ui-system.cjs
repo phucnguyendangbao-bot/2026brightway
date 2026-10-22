@@ -22,7 +22,7 @@ const publicRoutes = [
   'page2.html?mode=school', 'profile.html?tab=journey', 'resources.html',
   'scholarship-roadmap.html', 'score-calculator.html', 'waybi.html',
 ];
-const responsiveWidths = [360, 390, 768, 1024, 1366, 1920];
+const responsiveWidths = [360, 390, 768, 1024, 1366, 1440, 1920];
 const mainLabels = ['Trang chủ', 'Khám phá nghề', 'Khám phá trường', 'Tính điểm', 'Hành trình của tôi'];
 const scenarios = [];
 let browser;
@@ -124,6 +124,13 @@ async function captureBaseline() {
         }));
         assert.ok(mobileItems.every((box, index) => !index || box.top >= mobileItems[index - 1].bottom), 'Mobile navigation items stack vertically without overlap');
         assert.ok(mobileItems.every(box => box.left >= 0 && box.right <= box.viewport), 'Mobile navigation items stay inside the viewport');
+        await page.mouse.click(8, 850);
+        assert.equal(await page.locator('.flow-menu').getAttribute('aria-expanded'), 'false', 'Clicking outside closes mobile navigation');
+        await page.locator('.flow-menu').click();
+        await page.setViewportSize({width:1366,height:900});
+        await page.setViewportSize({width:390,height:900});
+        assert.equal(await page.locator('.flow-menu').getAttribute('aria-expanded'), 'false', 'Returning from desktop does not reopen a stale mobile menu');
+        await page.locator('.flow-menu').click();
         await page.locator('.flow-more-button').click();
         assert.equal(await page.locator('.flow-more-button').getAttribute('aria-expanded'), 'true');
         for (const target of ['.flow-menu', '.flow-more-button', '.flow-more-menu a']) {
