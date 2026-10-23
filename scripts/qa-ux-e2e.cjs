@@ -80,7 +80,9 @@ async function testNewUser(browser, base, report) {
   const ctuImage = page.locator('#bwHeroCarousel .slide[data-school="ĐH Cần Thơ"] img');
   assert.equal(await page.locator('#bwHeroCarousel .slide[data-school="ĐH Cần Thơ"]').getAttribute('class'), 'slide is-active');
   assert.equal(await ctuImage.getAttribute('alt'), 'Nhà Điều hành Đại học Cần Thơ tại Khu II');
-  assert.equal(await ctuImage.evaluate(image => image.complete && image.naturalWidth === 3115), true);
+  // Responsive srcset intentionally serves the 640/1280px WebP variants;
+  // do not pin this regression check to the retired 3115px source image.
+  assert.equal(await ctuImage.evaluate(image => image.complete && image.naturalWidth >= 640), true);
   await page.locator('#bwHeroCarousel').screenshot({ path: path.join(artifactDir, 'ctu-campus-1440.png') });
   await page.screenshot({ path: path.join(artifactDir, 'after-home-1440.png'), fullPage: true });
   assert.deepEqual(errors, []);

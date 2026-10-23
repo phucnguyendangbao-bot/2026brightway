@@ -55,7 +55,7 @@
       #waybi-fab:hover { transform: scale(1.08) rotate(-5deg); box-shadow: 0 10px 32px rgba(99,102,241,0.45); }
       #waybi-fab img { width: 100%; height: 100%; object-fit: contain; display: block; }
       #waybi-badge {
-        position: absolute; top: -4px; right: -4px;
+        position: absolute; top: -4px; right: 0;
         background: #ef4444; color: #fff;
         width: 20px; height: 20px; border-radius: 50%;
         font-size: 11px; font-weight: 800;

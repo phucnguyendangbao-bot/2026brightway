@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="/assets/css/flow.css?v=20261022-polish">
 <script src="/assets/js/flow.js?v=20261022-polish" defer></script>
 <link rel="stylesheet" href="/assets/css/admissions-policy.css?v=20261022-polish">
+<link rel="stylesheet" href="/assets/css/score-redesign.css?v=20261023">
 </head>
 <body>
 
@@ -31,17 +32,18 @@
 <section class="calc-hero">
   <div class="calc-hero-inner">
     <span class="calc-eyebrow">CÔNG CỤ TUYỂN SINH 2026 · Dữ liệu tham khảo</span>
-    <h1>Tính điểm xét tuyển, rõ từng bước</h1>
+    <h1><span>Tính điểm xét tuyển,</span><br>rõ từng bước</h1>
     <p>Công cụ tham khảo dữ liệu 2026, không áp dụng quy tắc này cho 2027. Chọn tổ hợp, nhập điểm gốc và xem thành phần nào đã có căn cứ; chưa thay thế điểm xét tuyển chính thức.</p>
     <div class="calc-hero-steps" aria-label="Năm bước sử dụng">
-      <span><b>1</b> Chọn cách tính</span><span><b>2</b> Chọn trường/ngành</span><span><b>3</b> Chọn phương thức</span><span><b>4</b> Nhập điểm</span><span><b>5</b> Xem kết quả</span>
+      <span><b>1</b><span>Chọn loại điểm<small>Điểm thi, học bạ hoặc kết hợp</small></span></span><span><b>2</b><span>Chọn mục tiêu<small>Tính nhanh hoặc theo trường</small></span></span><span><b>3</b><span>Chọn tổ hợp<small>Đối chiếu yêu cầu xét tuyển</small></span></span><span><b>4</b><span>Nhập điểm<small>Nhập điểm gốc của bạn</small></span></span><span><b>5</b><span>Xem kết quả<small>Xem công thức và nguồn</small></span></span>
     </div>
+    <div class="calc-hero-art" aria-hidden="true"><div class="calc-art-orbit"></div><span class="calc-art-star">✦</span><span class="calc-art-note calc-art-note-one">✧ <span>Hiểu điểm của mình<br><strong>Chọn hướng đi phù hợp</strong></span></span><img src="assets/images/waybi/waybi-ui-512.webp" alt="" width="512" height="512"><span class="calc-art-note calc-art-note-two">✓ <span>Từng bước rõ ràng<br><strong>Có nguồn để đối chiếu</strong></span></span><span class="calc-art-caption">CÙNG WAYBI CHUẨN BỊ TƯƠNG LAI</span></div>
   </div>
 </section>
 
 <!-- LAYOUT -->
 <section class="policy-panel">
-  <h2>Quy định đang đối chiếu: tuyển sinh 2026</h2>
+  <div class="calc-policy-heading"><span class="calc-policy-icon" aria-hidden="true">▤</span><h2>Quy định đang đối chiếu: tuyển sinh 2026</h2><span class="calc-policy-badge">ⓘ Dữ liệu tham khảo 2026</span></div>
   <p>Thí sinh thi tốt nghiệp từ năm 2026 cần tổng 3 môn thi theo tổ hợp, hoặc Toán + Ngữ văn + một môn thi khác, đạt ít nhất 15/30 điểm gốc. Có ngoại lệ tại Điều 6 khoản 3; ngành giáo viên, sức khỏe, pháp luật còn có ngưỡng riêng.</p>
   <p>Điểm cộng tối đa 10% thang xét tuyển. Chứng chỉ ngoại ngữ chỉ dùng để quy đổi môn hoặc cộng khuyến khích. Ưu tiên khu vực: KV1 0,75; KV2-NT 0,50; KV2 0,25; KV3 0. Ưu tiên đối tượng: UT1 2,00; UT2 1,00 nếu đủ điều kiện. Từ 22,50/30, ưu tiên giảm theo [(30 − tổng điểm)/7,50] × mức ưu tiên. Kết quả thang 30 tối đa là 30.</p>
   <p>Ba chế độ điểm gốc chưa cộng ưu tiên hay điểm cộng. Xét tuyển tổng hợp chỉ áp dụng ưu tiên trong phạm vi trường đã xác minh và ghi rõ từng khoản trong kết quả. <a href="https://congbao.chinhphu.vn/van-ban/thong-tu-so-06-2026-tt-bgddt-469029.htm" target="_blank" rel="noopener noreferrer">Thông tư 06/2026, Điều 6–7 ↗</a> · <a href="resources.html#policy-sources">Nguồn và trạng thái văn bản 2027 →</a></p>
@@ -50,7 +52,7 @@
   <!-- LEFT: INPUT FORM -->
   <aside class="calc-input-panel">
     <div class="calc-card" id="targetCard">
-      <h2 class="calc-section-title">1. Chọn cách tính</h2>
+      <h2 class="calc-section-title"><span class="section-number">2</span> Chọn cách tính và mục tiêu</h2>
       <fieldset class="calc-target-modes">
         <legend>Bạn đã có trường và ngành mục tiêu chưa?</legend>
         <label><input type="radio" name="targetMode" value="quick" checked><span><strong>Tính nhanh</strong><small>Chỉ tính điểm gốc theo tổ hợp, chưa chọn trường.</small></span></label>
@@ -66,13 +68,13 @@
       <button id="retryTarget" type="button" hidden>Thử tải lại</button>
     </div>
     <div class="calc-card calc-method-card">
-      <h2 class="calc-section-title">2. Chọn loại điểm để đối chiếu</h2>
+      <h2 class="calc-section-title"><span class="section-number">1</span> Chọn loại điểm để đối chiếu</h2>
       <p class="calc-field-note">Các lựa chọn này là loại điểm đầu vào, không xác nhận trường/ngành chấp nhận phương thức đó. Xem nguồn trường bên trên.</p>
       <div class="calc-method-options" role="radiogroup" aria-label="Phương thức xét tuyển">
-        <label><input type="radio" name="admissionMethod" value="thpt" checked><span><strong>Điểm thi THPT</strong><small>Chọn tổ hợp và nhập đúng 3 môn</small></span></label>
-        <label><input type="radio" name="admissionMethod" value="transcript"><span><strong>Học bạ</strong><small>Nhập điểm đã tổng hợp theo yêu cầu trường</small></span></label>
-        <label><input type="radio" name="admissionMethod" value="other"><span><strong>Bài thi riêng</strong><small>V-ACT, HSA hoặc TSA</small></span></label>
-        <label><input type="radio" name="admissionMethod" value="integrated"><span><strong>Xét tuyển tổng hợp / kết hợp</strong><small>8 trường ĐHQG-HCM · cấu hình và nguồn 2026 riêng</small></span></label>
+        <label><input type="radio" name="admissionMethod" value="thpt" checked><i aria-hidden="true">🎓</i><span><strong>Điểm thi tốt nghiệp THPT</strong><small>Sử dụng điểm 3 môn theo tổ hợp xét tuyển năm 2026</small></span></label>
+        <label><input type="radio" name="admissionMethod" value="transcript"><i aria-hidden="true">📖</i><span><strong>Điểm học bạ THPT</strong><small>Sử dụng điểm đã tổng hợp theo quy định của từng trường</small></span></label>
+        <label><input type="radio" name="admissionMethod" value="other"><i aria-hidden="true">🏆</i><span><strong>Các bài thi riêng</strong><small>V-ACT, HSA hoặc TSA · giữ đúng thang điểm từng kỳ thi</small></span></label>
+        <label><input type="radio" name="admissionMethod" value="integrated"><i aria-hidden="true">▤</i><span><strong>Kết hợp nhiều phương thức</strong><small>8 trường ĐHQG-HCM · cấu hình và nguồn 2026 riêng</small></span></label>
       </div>
     </div>
 

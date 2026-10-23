@@ -45,6 +45,10 @@ function inventory(dir) {
         await page.goto(base+'/'+route,{waitUntil:'domcontentloaded'});
         await page.waitForFunction(()=>Boolean(window.BWFlow));
         await page.evaluate(()=>document.fonts.ready);
+        // Waybi reveals its unread badge after a short idle period. Keep the
+        // regression check long enough to catch badge animations that enlarge
+        // document scroll width on narrow screens.
+        if (route.startsWith('page2.html') || route.startsWith('profile.html')) await page.waitForTimeout(3200);
         // Allow asynchronous catalogs to settle, without requiring backend-only account services.
         await page.waitForFunction(()=>!document.querySelector('#schoolCatalogStatus[aria-busy="true"],#my-choices[aria-busy="true"]'),null,{timeout:8000}).catch(()=>{});
         result.shell=await page.evaluate(()=>({header:document.querySelectorAll('.flow-nav').length,footer:document.querySelectorAll('.flow-footer').length,active:[...document.querySelectorAll('.flow-nav [aria-current="page"]')].map(a=>a.textContent.trim()),font:getComputedStyle(document.body).fontFamily,labels:[...document.querySelectorAll('.flow-links>a:not(.flow-waybi-link)')].map(a=>a.textContent.trim())}));
