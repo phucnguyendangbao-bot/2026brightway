@@ -1,0 +1,40 @@
+/* University discovery: search-led hero and quiet, readable catalog cards. */
+body.school-explorer { background:#f8f9fd; }
+.school-explorer .p2-intro { max-width:1240px; margin:28px auto 0; padding:44px; gap:48px; border:1px solid #e3ddf6; border-radius:26px; background:radial-gradient(ellipse at 100% 0,#dbd6ff,transparent 55%),linear-gradient(120deg,#f5f0ff,#edf4ff); box-shadow:none; }
+.school-explorer .p2-intro h1 { font-size:clamp(32px,3.5vw,48px); letter-spacing:-1.5px; line-height:1.2; }
+.school-explorer .p2-intro h1 span { color:#7350d7; }
+.school-explorer .p2-intro-copy > p { font-size:14px; color:#625c7d; }
+.school-explorer .p2-intro-eyebrow { color:#7051cc; font-size:10px; letter-spacing:1.4px; }
+.school-explorer .p2-intro-search { max-width:none; padding:22px; background:#ffffffd9; border:1px solid #fff; border-radius:18px; margin-top:26px; box-shadow:0 8px 24px #57448c08; }
+.school-explorer .school-search-modes label { border-radius:9px; min-height:44px; }
+.school-explorer .school-search-field input[type="search"], .school-explorer .school-region-filter select { border:1px solid #d4cbe9; background:#fff; border-radius:10px; font-size:13px; }
+.school-explorer .saved-school-filter { font-size:12px; color:#69617f; }
+.school-explorer .p2-intro-aside { position:relative; align-self:center; min-height:300px; padding:26px; border:1px solid #ffffffb3; background:#ffffff91; border-radius:22px; overflow:hidden; }
+.school-hero-symbol { position:absolute; right:12px; top:-26px; font-size:150px; line-height:1; color:#a995df; opacity:.22; }
+.school-explorer .p2-intro-aside strong { position:relative; font-size:30px; margin:32px 0 8px; }
+.school-explorer .p2-intro-aside p { font-size:13px; }
+.school-explorer .p2-intro-aside a { padding-top:28px; color:#6845c9; }
+.school-explorer :is(.p2-catalog-status,.flow-resume,.university-organic-heading) { max-width:1240px; padding-left:24px; padding-right:24px; }
+.school-explorer .p2-catalog-status { font-size:12px; line-height:1.7; margin-top:24px; }
+.school-explorer .choices-summary { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; padding-top:16px; padding-bottom:16px; border-bottom:1px solid #e6e1f0; }
+.school-explorer .choices-summary p { font-size:12px; max-width:620px; }
+.school-explorer .university-organic-heading { margin-top:28px; }
+.school-explorer .university-organic-heading h2 { font-size:28px; color:#33274f; margin-top:8px; letter-spacing:-.6px; }
+.school-explorer .university-organic-heading p { font-size:13px; color:#6a627e; }
+.school-explorer .p2-layout { max-width:1240px; grid-template-columns:210px minmax(0,1fr); gap:22px; padding:22px 24px 48px; }
+.school-explorer .p2-sidebar { border-radius:16px; border-color:#e4deef; box-shadow:none; padding:14px 10px; }
+.school-explorer .p2-sidebar-title { font-size:12px; color:#665782; }
+.school-explorer .p2-main { gap:16px; }
+.school-explorer .school-section { padding:22px; min-height:290px; border:1px solid #e4deef; border-radius:18px; box-shadow:none; }
+.school-explorer .school-section:hover { transform:none; border-color:#ae96db; box-shadow:0 10px 24px #6e4ca30c; }
+.school-explorer .school-icon { width:54px; height:54px; border-radius:13px; box-shadow:none; }
+.school-explorer .school-card-description { font-size:12px; line-height:1.8; color:#6b647d; }
+.school-explorer .school-card-status { font-size:10px; line-height:1.6; padding:6px 9px; border-radius:7px; }
+.school-explorer .school-card-bottom { gap:10px; flex-wrap:wrap; }
+.school-explorer .school-card-open { border-radius:9px; background:#eee7ff; color:#6741c4; min-height:44px; }
+.school-explorer .school-section > .school-save-button { border-radius:9px; background:#fff; border-color:#dcd2ee; font-size:12px; }
+.school-explorer .school-dialog { border-radius:20px; border:1px solid #ded5ef; }
+.school-explorer .school-dialog-header { background:#f7f3ff; }
+.school-explorer :is(a,button,input,select):focus-visible { outline:3px solid #a58ada; outline-offset:3px; }
+@media(max-width:1050px) { .school-explorer .p2-intro { margin:20px 20px 0; gap:24px; padding:28px; grid-template-columns:minmax(0,1fr); } .school-explorer .p2-intro-aside { display:none; } .school-explorer .p2-layout { grid-template-columns:180px minmax(0,1fr); } .school-explorer .p2-main { grid-template-columns:1fr; } }
+@media(max-width:700px) { .school-explorer .p2-intro { margin:16px 14px 0; padding:24px 18px; border-radius:20px; } .school-explorer .p2-intro h1 { font-size:32px; letter-spacing:-1px; } .school-explorer .p2-intro-search { padding:16px; } .school-explorer .p2-layout { display:block; padding:16px 14px 36px; } .school-explorer .p2-sidebar { display:none; } .school-explorer .p2-main { grid-template-columns:1fr; } .school-explorer .school-section { padding:18px; } .school-explorer :is(.p2-catalog-status,.flow-resume,.university-organic-heading) { padding-left:18px; padding-right:18px; } .school-explorer .choices-summary .flow-primary { font-size:13px; } }
