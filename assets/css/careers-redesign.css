@@ -1,0 +1,68 @@
+/* Scoped explorer layout; shared navigation and footer keep their own styles. */
+.career-explorer { background: #f8f9fd; }
+.career-explorer > .container, .career-explorer .bw-hero > .container { max-width: 1240px; }
+.career-explorer .bw-hero { padding: 56px 0 64px; text-align: left; background: radial-gradient(ellipse at 80% 15%,#dedbff 0,transparent 55%),linear-gradient(120deg,#f4f1ff,#eef4ff); }
+.explorer-hero-grid { display: grid; grid-template-columns: minmax(0,1.6fr) minmax(0,1fr); gap: 64px; align-items: center; }
+.explorer-eyebrow { color: #6d50d5; font-size: 11px; font-weight: 800; letter-spacing: 1.6px; margin-bottom: 14px; }
+.career-explorer .bw-hero h1 { font-size: clamp(32px,3.8vw,51px); line-height: 1.2; letter-spacing: -1.8px; margin-bottom: 20px; }
+.career-explorer .bw-hero h1 .grad { background-image: linear-gradient(100deg,#5a50e8,#9137d4); }
+.career-explorer .bw-hero .lede { margin: 0 0 24px; font-size: 16px; line-height: 1.8; max-width: 590px; color: #56577a; }
+.explorer-cta { display: inline-flex; align-items: center; gap: 32px; padding: 13px 22px; color: #fff; background: #7050e5; border-radius: 12px; text-decoration: none; font-weight: 700; box-shadow: 0 8px 20px #7150e529; }
+.explorer-cta:hover { background: #5834cf; }
+.explorer-hero-note { font-size: 12px; color: #666786; margin-top: 14px; }
+.explorer-compass { position: relative; padding: 30px; border: 1px solid #fff; border-radius: 26px; background: #ffffffbc; box-shadow: 0 20px 50px #7770b71a; overflow: hidden; }
+.explorer-compass h2 { position: relative; font-size: 27px; line-height: 1.35; letter-spacing: -.6px; margin-bottom: 12px; }
+.explorer-compass > p:not(.explorer-eyebrow) { max-width: 270px; font-size: 14px; color: #62617f; }
+.explorer-orbit { position: absolute; right: 15px; top: -18px; font-size: 120px; color: #c6b6ff; line-height: 1; opacity: .5; transform: rotate(15deg); }
+.explorer-letters { display: flex; gap: 8px; margin: 22px 0; }
+.explorer-letters span { width: 36px; height: 38px; display: grid; place-items: center; background: #f0ebff; color: #7652cf; border-radius: 10px; font-weight: 800; }
+.explorer-letters span:nth-child(2n) { background: #e8f3f3; color: #31776c; }
+.explorer-compass a { color: #6741c9; font-size: 13px; font-weight: 700; text-decoration: none; display: flex; justify-content: space-between; }
+.career-explorer .career-panel { padding: 30px; margin: -24px 0 48px; border: 1px solid #e7e4f4; border-radius: 22px; background: var(--surface); box-shadow: 0 12px 32px #41386d07; position: relative; scroll-margin-top: 100px; }
+.career-explorer .career-wrap { max-width: none; }
+.career-explorer .career-intro { text-align: left; margin-bottom: 22px; }
+.career-explorer .career-intro h2 { font-size: 25px; margin-bottom: 6px; }
+.career-explorer .career-intro p { max-width: none; margin-left: 0; }
+.career-explorer .career-search-input { border-radius: 12px; background: var(--surface); font-size: 16px; padding-top: 17px; padding-bottom: 17px; border: 1px solid #cec6ed; box-shadow: 0 3px 10px #6355b108; }
+.career-explorer .career-search-input:focus { outline: 3px solid #9b7af02e; border-color: #8057da; }
+.career-explorer .career-count { text-align: left; font-size: 13px; margin: 15px 0 5px; }
+.career-explorer .flow-clear-filters { font-size: 12px; }
+.career-explorer .career-chips { justify-content: flex-start; gap: 8px; margin: 18px 0; }
+.career-explorer .career-chip { background: var(--surface); box-shadow: none; border: 1px solid var(--border); border-radius: 8px; padding: 7px 12px; font-size: 12px; }
+.explorer-data-note { font-size: 12px; line-height: 1.7; color: var(--text-soft); padding-bottom: 22px; max-width: 840px; }
+.career-explorer .holland-filter { border: 0; border-top: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft); border-radius: 0; background: transparent; padding: 20px 0; margin-bottom: 24px; }
+.career-explorer .holland-filter-label { font-size: 11px; letter-spacing: 1px; margin-bottom: 12px; }
+.career-explorer .holland-filter-chips { justify-content: flex-start; gap: 8px; }
+.career-explorer .holland-chip { border-radius: 10px; padding: 10px 14px; box-shadow: none; }
+.career-explorer .career-list { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; }
+.career-explorer .career-list-item { display: flex; flex-direction: column; align-items: flex-start; gap: 9px; padding: 22px; border-radius: 14px; min-width: 0; background: var(--surface); border: 1px solid var(--border); box-shadow: none; text-align: left; transition: border-color .2s,box-shadow .2s; }
+.career-explorer .career-list-item:hover { transform: none; border-color: #a18ae1; box-shadow: 0 8px 24px #6e52ba12; }
+.career-explorer .career-list-name { font-size: 16px; line-height: 1.5; }
+.career-explorer .career-list-meta { font-size: 12px; line-height: 1.7; color: var(--text-soft); overflow-wrap: anywhere; }
+.career-explorer .career-list-holland { margin-top: auto; padding-top: 8px; }
+.career-explorer .career-list-more { grid-column: 1 / -1; padding: 18px; font-size: 13px; }
+.career-explorer .career-result { box-shadow: none; border-radius: 16px; }
+.career-explorer :is(a,button):focus-visible { outline: 3px solid #9c7ce7; outline-offset: 3px; }
+:root[data-theme="dark"] .career-explorer { background: var(--bg-1); }
+:root[data-theme="dark"] .career-explorer .bw-hero { background: linear-gradient(120deg,#221c40,#1d253d); }
+:root[data-theme="dark"] .explorer-compass { background: var(--surface); border-color: var(--border); }
+:root[data-theme="dark"] .career-explorer .bw-hero .lede, :root[data-theme="dark"] .explorer-compass > p:not(.explorer-eyebrow) { color: var(--text-mid); }
+@media(max-width: 1000px) { .explorer-hero-grid { gap: 28px; } .career-explorer .career-list { grid-template-columns: repeat(2,minmax(0,1fr)); } .explorer-compass { padding: 24px; } }
+@media(max-width: 700px) {
+  .career-explorer .bw-hero { padding: 32px 0 48px; }
+  .explorer-hero-grid { grid-template-columns: 1fr; gap: 26px; }
+  .career-explorer > .container, .career-explorer .bw-hero > .container { padding-left: 18px; padding-right: 18px; }
+  .career-explorer .bw-hero h1 { font-size: 33px; letter-spacing: -1.1px; }
+  .career-explorer .bw-hero .lede { font-size: 14px; }
+  .explorer-compass { padding: 22px; }
+  .explorer-compass h2 { font-size: 22px; }
+  .explorer-compass h2 br { display: none; }
+  .explorer-compass > p:not(.explorer-eyebrow) { max-width: none; }
+  .explorer-letters { margin: 16px 0; }
+  .career-explorer .career-panel { padding: 22px 16px; border-radius: 18px; }
+  .career-explorer .career-intro h2 { font-size: 22px; }
+  .career-explorer .career-list { grid-template-columns: 1fr; gap: 10px; }
+  .career-explorer .career-list-item { padding: 18px; }
+  .career-explorer .holland-chip { padding: 8px 10px; }
+  .explorer-eyebrow { font-size: 10px; letter-spacing: 1px; }
+}

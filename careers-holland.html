@@ -10,9 +10,10 @@
 <link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261022-polish">
 <link rel="stylesheet" href="/assets/css/flow.css?v=20261022-polish">
 <link rel="stylesheet" href="/assets/css/selections.css?v=20261020-wishes">
+<link rel="stylesheet" href="/assets/css/careers-redesign.css?v=20261023">
 <script src="/assets/js/flow.js?v=20261022-polish" defer></script>
 </head>
-<body>
+<body class="career-explorer">
 
 <!-- DARK MODE TOGGLE (fixed top-right) -->
 <button id="themeToggle" class="theme-toggle" aria-label="Chuyển sáng/tối" title="Chuyển sáng/tối">
@@ -33,9 +34,22 @@
 </nav>
 
 <section class="bw-hero">
-  <div class="container">
-    <h1><span class="grad">Khám phá nghề nghiệp</span><br/>của bạn</h1>
-    <p class="lede">Khám phá nghề nghiệp, kỹ năng và con đường học tập. Bạn có thể tra cứu trực tiếp hoặc lọc theo nhóm sở thích Holland, không cần làm test trước.</p>
+  <div class="container explorer-hero-grid">
+    <div>
+      <p class="explorer-eyebrow">KHÁM PHÁ BẢN THÂN · MỞ LỐI TƯƠNG LAI</p>
+      <h1>Một thế giới nghề nghiệp.<br/><span class="grad">Đâu là hướng của bạn?</span></h1>
+      <p class="lede">Bắt đầu từ điều bạn tò mò. Tìm hiểu công việc, kỹ năng và con đường học tập để từng bước chọn hướng đi phù hợp.</p>
+      <a class="explorer-cta" href="#searchPanel">Khám phá nghề ngay <span aria-hidden="true">↗</span></a>
+      <p class="explorer-hero-note">Tra cứu tự do · Không cần làm trắc nghiệm trước</p>
+    </div>
+    <aside class="explorer-compass" aria-label="Gợi ý khám phá">
+      <span class="explorer-orbit" aria-hidden="true">✳</span>
+      <p class="explorer-eyebrow">BẮT ĐẦU TỪ SỞ THÍCH</p>
+      <h2>Hiểu mình hơn.<br/>Chọn hướng rõ hơn.</h2>
+      <p>6 nhóm Holland giúp bạn khám phá những hoạt động mình yêu thích.</p>
+      <div class="explorer-letters" aria-hidden="true"><span>R</span><span>I</span><span>A</span><span>S</span><span>E</span><span>C</span></div>
+      <a href="holland.html">Khám phá nhóm của bạn <span aria-hidden="true">→</span></a>
+    </aside>
   </div>
 </section>
 
@@ -44,15 +58,16 @@
   <main class="career-panel active" id="searchPanel" aria-label="Tra cứu nghề nghiệp">
     <div class="career-wrap">
       <div class="career-intro">
-        <h2>🔍 Tra cứu nghề nghiệp</h2>
-        <p>Tra cứu nghề nghiệp và kỹ năng; nghề không đồng nhất với ngành đào tạo. Phần học vấn chỉ gợi ý con đường học tập. Khi chưa có nguồn và năm dữ liệu lương, website sẽ ghi rõ chưa xác minh.</p>
+        <p class="explorer-eyebrow">TỪ TÒ MÒ ĐẾN HIỂU BIẾT</p>
+        <h2>Bạn muốn tìm hiểu nghề gì?</h2>
+        <p>Tìm theo tên nghề hoặc khám phá theo nhóm sở thích Holland.</p>
       </div>
 
       <div class="career-search-box">
         <span class="career-search-icon">🔍</span>
         <label class="sr-only" for="careerSearch">Tìm kiếm nghề nghiệp</label>
         <input type="text" id="careerSearch" class="career-search-input"
-               placeholder="Nhập tên nghề (VD: Lập trình viên, Bác sĩ, Phi công...)"
+               placeholder="Tìm tên nghề, ví dụ: Lập trình viên…"
                autocomplete="off" role="combobox" aria-autocomplete="list" aria-controls="careerSuggestions" aria-expanded="false" />
         <div class="career-suggestions" id="careerSuggestions" role="listbox" aria-label="Gợi ý nghề nghiệp"></div>
       </div>
@@ -61,6 +76,7 @@
       <a class="flow-clear-filters" href="careers-holland.html?holland=all&q=">Xóa tất cả bộ lọc</a>
 
       <div class="career-chips" id="careerChips"></div>
+      <p class="explorer-data-note">Nghề nghiệp và ngành đào tạo có thể khác nhau. Lộ trình học tập là gợi ý để tìm hiểu; dữ liệu lương chưa xác minh được ghi rõ trong từng hồ sơ.</p>
 
       <!-- HOLLAND FILTER (NEW #7) -->
       <div class="holland-filter" id="hollandFilter" hidden>
