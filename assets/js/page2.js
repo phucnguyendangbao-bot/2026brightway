@@ -4,7 +4,8 @@ import { detailsForSchool } from '../data/school-profile-details.js';
 import { universityIdentityHTML, renderUniversityLogo } from './university-card.js';
 import { uniqueSchools, normalizeWishes, wishKey, addWish, wishFromProgram, importLegacySchools } from './selection-model.js';
 import { comparisonCells } from './school-comparison-model.js';
-import { sortedPrograms, searchScore, TAXONOMY_SOURCE } from './training-taxonomy.js';
+import { canDisplayProgramScores } from './score-provenance.js';
+import { sortedPrograms, searchScore, schoolSearchScore, classifyProgram, catalogVersionForYear, TAXONOMY_SOURCE } from './training-taxonomy.js';
 
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[char]);
 const formatScore = value => Number.isFinite(value)
@@ -32,6 +33,7 @@ let searchTimer;
 let activeQuery = '';
 let searchMode = 'school';
 let activeRegion = '';
+let activeGroupCode = '';
 let promotionUI = null;
 let comparisonOpportunities = [];
 // Optional editorial scholarship data must never become a dependency of lookup.
@@ -98,12 +100,13 @@ function renderSchools(items) {
   mainContent.innerHTML = items.map(school => {
     const details = detailsForSchool(school.id);
     const source = sourceForSchool(school.id);
-    const matches = matchingPrograms(school, activeQuery).slice(0, 3);
+    const matching = matchingPrograms(school, searchMode === 'major' ? activeQuery : '', activeGroupCode);
+    const matches = matching.slice(0, 3);
     const subtitle = source?.source_summary || 'Mở hồ sơ để xem nguồn tuyển sinh của trường và tình trạng dữ liệu hiện có.';
     return `<section class="school-section" id="${escapeHtml(school.id)}">
       ${universityIdentityHTML(school, {logoId:'icon-' + school.id, titleTag:'h2', interactive:true})}
-      <span class="school-card-status ${details?.programs?.length && !details.programSourceStatus ? 'school-card-status-ready' : ''}">${details?.programSourceStatus === 'secondary' ? 'Danh mục tham khảo · nguồn thứ cấp' : details?.programSourceStatus === 'current_catalog' ? 'Danh mục hiện hành · cần kiểm tra kỳ nhập học' : details?.programs?.some(program => Number.isFinite(program.score)) ? 'Có ngành và điểm chuẩn 2026' : details?.programs?.length ? `Đã nhập ${details.programs.length} ngành/CT 2026` : details?.scoreSource ? 'Có nguồn điểm chuẩn' : source ? 'Có nguồn tuyển sinh' : 'Đang bổ sung nguồn'}</span>
-      ${matches.length ? `<div class="school-card-programs" aria-label="Ngành khớp tìm kiếm">${matches.map(program => `<span>${escapeHtml(program.name)}</span>`).join('')}${matchingPrograms(school, activeQuery).length > 3 ? `<small>+${matchingPrograms(school, activeQuery).length - 3} ngành khác</small>` : ''}</div>` : ''}
+      <span class="school-card-status ${details?.programs?.length && !details.programSourceStatus ? 'school-card-status-ready' : ''}">${details?.programSourceStatus === 'secondary' ? 'Danh mục tham khảo · nguồn thứ cấp' : details?.programSourceStatus === 'current_catalog' ? 'Danh mục hiện hành · cần kiểm tra kỳ nhập học' : canDisplayProgramScores(details,activeYear) && details?.programs?.some(program => Number.isFinite(program.score)) ? 'Có ngành và điểm chuẩn 2026' : details?.programs?.length ? `Đã nhập ${details.programs.length} ngành/CT 2026` : details?.scoreSource ? 'Có nguồn điểm chuẩn' : source ? 'Có nguồn tuyển sinh' : 'Đang bổ sung nguồn'}</span>
+      ${matches.length ? `<div class="school-card-programs" aria-label="Ngành khớp tìm kiếm">${matches.map(program => `<span>${escapeHtml(program.name)}</span>`).join('')}${matching.length > 3 ? `<small>+${matching.length - 3} ngành khác</small>` : ''}</div>` : ''}
       <p class="school-card-description">${escapeHtml(subtitle)}</p>
       <div class="school-card-bottom">
         <span>${school.identity.entity_kind === 'university_system' ? 'Đại học vùng' : source ? `Nguồn tuyển sinh ${source.admission_year}` : 'Hồ sơ trường'}</span>
@@ -150,7 +153,7 @@ function renderPrograms(school, details) {
     <p>Chưa xác minh được bảng ngành theo đúng năm, cơ sở và chương trình. Không dùng danh sách của năm khác để thay thế.</p>
     ${officialLink(details?.admissionSource || sourceForSchool(school.id)?.source_url, 'Xem nguồn năm 2026', 'school-dialog-link')}
   </div>`;
-  const hasScores = details.programs.some(program => Number.isFinite(program.score));
+  const hasScores = canDisplayProgramScores(details,activeYear) && details.programs.some(program => Number.isFinite(program.score));
   const hasTracks = details.programs.some(program => program.track);
   const hasCombinations = details.programs.some(program => program.combination);
   const hasQuotas = details.programs.some(program => Number.isFinite(program.quota));
@@ -178,7 +181,7 @@ function renderPrograms(school, details) {
   }).join('');
   return `<p class="school-dialog-lead"><strong>${details.programs.length} ngành/chương trình</strong> ${details.programSourceStatus === 'current_catalog' ? 'trong danh mục hiện hành; chưa xác nhận toàn bộ chương trình mở tuyển trong kỳ 2026' : 'trong dữ liệu ghi nhận cho năm ' + details.year}.${hasScores ? ' Điểm chuẩn cùng năm nằm ở cột cuối.' : ''}</p>
     ${details.programNote ? `<p class="school-program-note">${escapeHtml(details.programNote)}</p>` : ''}
-    <div class="school-program-sort"><label for="schoolProgramSort">Sắp xếp trong nhóm ngành</label><select id="schoolProgramSort"><option value="code" ${programSort === 'code' ? 'selected' : ''}>Mã ngành tăng dần</option><option value="az" ${programSort === 'az' ? 'selected' : ''}>Tên A–Z</option></select></div><p class="school-taxonomy-note">Lĩnh vực → Nhóm ngành → Ngành chuẩn → Chương trình trường. Mã xét tuyển riêng được giữ nguyên; các mục chưa đối chiếu được tách riêng. <a href="${escapeHtml(TAXONOMY_SOURCE)}" target="_blank" rel="noopener noreferrer">Danh mục Bộ GD&ĐT ↗</a></p>
+    <div class="school-program-sort"><label for="schoolProgramSort">Sắp xếp trong nhóm ngành</label><select id="schoolProgramSort"><option value="code" ${programSort === 'code' ? 'selected' : ''}>Mã ngành tăng dần</option><option value="az" ${programSort === 'az' ? 'selected' : ''}>Tên A–Z</option></select></div><p class="school-taxonomy-note">Lĩnh vực → Nhóm ngành → Ngành chuẩn → Chương trình trường. Danh mục 2026 đối chiếu theo <a href="${escapeHtml(TAXONOMY_SOURCE)}" target="_blank" rel="noopener noreferrer">Thông tư 09/2022 ↗</a> và <a href="${escapeHtml(catalogVersionForYear(2026).supplementarySource)}" target="_blank" rel="noopener noreferrer">ngành thí điểm 2024 ↗</a>; mã xét tuyển riêng được giữ nguyên. <a href="${escapeHtml(catalogVersionForYear(2027).source)}" target="_blank" rel="noopener noreferrer">Danh mục áp dụng từ tuyển sinh 2027 ↗</a>. Các mục chưa đối chiếu được tách riêng.</p>
     <div class="school-program-table-wrap"><table class="school-program-table"><thead><tr><th>Mã xét tuyển</th><th>Ngành / chương trình</th>${hasTracks ? '<th>Phân loại</th>' : ''}${hasQuotas ? '<th>Chỉ tiêu dự kiến</th>' : ''}${hasCombinations ? '<th>Tổ hợp trích</th>' : ''}${hasScores ? `<th>Điểm chuẩn ${details.year}${details.scoreScale ? ' · thang ' + details.scoreScale : ''}</th>` : ''}</tr></thead><tbody>
     ${rows}
     </tbody></table></div>
@@ -189,7 +192,8 @@ function renderPrograms(school, details) {
 }
 
 function renderScores(school, details) {
-  const programScores = details?.programs?.filter(program => Number.isFinite(program.score)).map(program => program.score) || [];
+  const programScores = canDisplayProgramScores(details,activeYear)
+    ? details.programs.filter(program => Number.isFinite(program.score)).map(program => program.score) : [];
   if (programScores.length) {
     const minimum = Math.min(...programScores);
     const maximum = Math.max(...programScores);
@@ -198,11 +202,11 @@ function renderScores(school, details) {
       ${renderPrograms(school, details)}
       ${details.scoreSource === details.programSource ? '' : officialLink(details.scoreSource, 'Thông báo điểm chuẩn gốc', 'school-dialog-link')}`;
   }
-  if (details?.score) return `<div class="school-score-summary"><span>Điểm chuẩn ${activeYear}</span><strong>${escapeHtml(details.score)}</strong><small>${escapeHtml(details.scoreMethod)}</small></div>
+  if (details?.score && canDisplayProgramScores(details,activeYear)) return `<div class="school-score-summary"><span>Điểm chuẩn ${activeYear}</span><strong>${escapeHtml(details.score)}</strong><small>${escapeHtml(details.scoreMethod)}</small></div>
     ${details.scoreNote ? `<p class="school-dialog-footnote">${escapeHtml(details.scoreNote)}</p>` : ''}
     ${officialLink(details.scoreSource, 'Thông báo điểm chuẩn gốc', 'school-dialog-link')}`;
   if (details?.scoreSource) return `<div class="school-dialog-empty"><h3>Trường đã công bố điểm chuẩn ${details.year}</h3>
-    <p>Bảng điểm được đăng dưới dạng hình hoặc tài liệu. Hãy xem bảng gốc để đối chiếu đúng ngành, chương trình và phương thức; chưa nhập số lẻ chưa xác minh vào hệ thống.</p>
+    <p>Chưa hiển thị số khi phương thức hoặc thang điểm chưa được đối chiếu. Hãy xem bảng gốc để xác định đúng ngành, chương trình, phương thức và điều kiện áp dụng.</p>
     ${officialLink(details.scoreSource, 'Mở bảng điểm chuẩn chính thức', 'school-dialog-link')}</div>`;
   return `<div class="school-dialog-empty"><h3>Chưa nhập bảng điểm chuẩn ${activeYear}</h3>
     <p>Không dùng điểm tham khảo trong dữ liệu cũ hoặc điểm của năm khác làm điểm trúng tuyển. Hãy đối chiếu đúng phương thức và chương trình trên cổng trường.</p>
@@ -316,10 +320,14 @@ function safelyMatches(candidate, query) {
   ));
 }
 
-function matchingPrograms(school, query) {
-  if (!String(query || '').trim()) return [];
-  return (detailsForSchool(school.id)?.programs || []).map((program,index) => ({program,index,rank:searchScore(program,query)}))
-    .filter(item => item.rank > 0).sort((a,b) => b.rank-a.rank || a.index-b.index).map(item => item.program);
+function matchingPrograms(school, query, groupCode = activeGroupCode) {
+  const details = detailsForSchool(school.id);
+  if (!String(query || '').trim() && !groupCode) return [];
+  return (details?.programs || []).map((program,index) => ({
+    program,index,taxonomy:classifyProgram(program,details.year),rank:query ? searchScore(program,query,details.year) : 1,
+  })).filter(item => item.rank > 0 && (!groupCode || (groupCode === 'unverified' ? !item.taxonomy.groupCode : item.taxonomy.groupCode === groupCode)))
+    .sort((a,b) => b.rank-a.rank || (a.taxonomy.majorCode || '9999999').localeCompare(b.taxonomy.majorCode || '9999999') || a.index-b.index)
+    .map(item => item.program);
 }
 
 function filterSchools(value) {
@@ -329,14 +337,17 @@ function filterSchools(value) {
   filteredSchools = schools.filter(school => {
     if (savedOnly && !isSchoolSaved(school.id)) return false;
     if (activeRegion && normalizeText(school.city) !== normalizeText(activeRegion)) return false;
+    if (activeGroupCode && !matchingPrograms(school,'',activeGroupCode).length) return false;
     if (!query) return true;
     return searchMode === 'major'
       ? matchingPrograms(school, value).length > 0
-      : safelyMatches([school.name, school.short, school.city, school.id, ...(school.aliases || [])].join(' '), value);
+      : schoolSearchScore(school,value) > 0 || safelyMatches([school.name, school.short, school.city, school.id, ...(school.aliases || [])].join(' '), value);
   });
   if (query && searchMode === 'major') filteredSchools = filteredSchools.map(school => ({
     school, rank: searchScore(matchingPrograms(school,value)[0],value),
   })).sort((a,b) => b.rank-a.rank || a.school.name.localeCompare(b.school.name,'vi')).map(item => item.school);
+  if (query && searchMode === 'school') filteredSchools.sort((a,b) =>
+    schoolSearchScore(b,value)-schoolSearchScore(a,value) || a.name.localeCompare(b.name,'vi'));
   renderSidebar(filteredSchools);
   renderSchools(filteredSchools);
   refreshContextualPromotions();
@@ -346,13 +357,14 @@ function filterSchools(value) {
   if (value.trim()) url.searchParams.set('q', value.trim()); else url.searchParams.delete('q');
   url.searchParams.delete('major');
   if (activeRegion) url.searchParams.set('region', activeRegion); else url.searchParams.delete('region');
+  if (activeGroupCode) url.searchParams.set('group', activeGroupCode); else url.searchParams.delete('group');
   if (savedOnly) url.searchParams.set('saved', '1'); else url.searchParams.delete('saved');
   history.replaceState(null, '', url.pathname + url.search + url.hash);
   document.getElementById('savedSchoolTotal').textContent = savedSchools().length;
-  window.BWFlow?.save({ schoolFilters: { query: value.trim(), mode: searchMode, region: activeRegion, savedOnly } });
+  window.BWFlow?.save({ schoolFilters: { query: value.trim(), mode: searchMode, region: activeRegion, group: activeGroupCode, savedOnly } });
   document.getElementById('schoolCatalogStatus').textContent = query
-    ? `Tìm thấy ${filteredSchools.length} trường theo ${searchMode === 'major' ? 'ngành đào tạo' : 'tên trường'} “${value.trim()}”${activeRegion ? ` tại ${activeRegion}` : ''}.`
-    : savedOnly ? `${filteredSchools.length} trường yêu thích${activeRegion ? ` tại ${activeRegion}` : ''}.` : `${schools.filter(school => school.identity.entity_kind === 'university').length} hồ sơ trường đại học · ${schools.filter(school => school.identity.entity_kind === 'university_system').length} đại học vùng · Rà soát ${REVIEWED_AT}.`;
+    ? `Tìm thấy ${filteredSchools.length} trường theo ${searchMode === 'major' ? 'ngành đào tạo' : 'tên trường'} “${value.trim()}”${activeRegion ? ` tại ${activeRegion}` : ''}${activeGroupCode ? ' trong nhóm ngành đã chọn' : ''}.`
+    : savedOnly || activeRegion || activeGroupCode ? `${filteredSchools.length} trường phù hợp với bộ lọc hiện tại.` : `${schools.filter(school => school.identity.entity_kind === 'university').length} hồ sơ trường đại học · ${schools.filter(school => school.identity.entity_kind === 'university_system').length} đại học vùng · Rà soát ${REVIEWED_AT}.`;
 }
 
 function updateSearchSuggestions() {
@@ -493,6 +505,8 @@ document.getElementById('resetSchoolFilters')?.addEventListener('click', () => {
   document.getElementById('savedSchoolOnly').checked = false;
   activeRegion = '';
   document.getElementById('regionFilter').value = '';
+  activeGroupCode = '';
+  document.getElementById('groupFilter').value = '';
   document.getElementById('searchInput').value = '';
   filterSchools('');
 });
@@ -507,6 +521,10 @@ document.getElementById('regionFilter')?.addEventListener('change', event => {
   activeRegion = event.target.value;
   filterSchools(document.getElementById('searchInput').value);
 });
+document.getElementById('groupFilter')?.addEventListener('change', event => {
+  activeGroupCode = event.target.value;
+  filterSchools(document.getElementById('searchInput').value);
+});
 window.addEventListener('hashchange', scrollToTargetFromUrl);
 
 async function initPage2() {
@@ -514,7 +532,7 @@ async function initPage2() {
   document.getElementById('schoolCatalogStatus').textContent = 'Đang tải danh sách trường…';
   document.getElementById('schoolCatalogCount').textContent = 'Đang tải…';
   mainContent.setAttribute('aria-busy', 'true');
-  const controls = [...document.querySelectorAll('#searchInput, #regionFilter, input[name="schoolSearchMode"], #resetSchoolFilters, #savedSchoolOnly')];
+  const controls = [...document.querySelectorAll('#searchInput, #regionFilter, #groupFilter, input[name="schoolSearchMode"], #resetSchoolFilters, #savedSchoolOnly')];
   controls.forEach(control => { control.disabled = true; });
   try {
     const response = await fetch('/assets/data/schools.json', { cache: 'no-store', signal: AbortSignal.timeout(8000) });
@@ -532,11 +550,24 @@ async function initPage2() {
     const initialQuery = params.get('major') || params.get('q') || previousFilters?.query || '';
     searchMode = params.get('mode') === 'major' || params.has('major') || params.get('focus') === 'major' ? 'major' : 'school';
     activeRegion = params.get('region') || '';
-    if (previousFilters) { searchMode = previousFilters.mode === 'major' ? 'major' : 'school'; activeRegion = previousFilters.region || ''; }
+    activeGroupCode = params.get('group') || '';
+    if (previousFilters) { searchMode = previousFilters.mode === 'major' ? 'major' : 'school'; activeRegion = previousFilters.region || ''; activeGroupCode = previousFilters.group || ''; }
     document.querySelector(`input[name="schoolSearchMode"][value="${searchMode}"]`).checked = true;
     const regions = [...new Set(schools.map(school => school.city).filter(Boolean))].sort((first, second) => first.localeCompare(second, 'vi'));
     document.getElementById('regionFilter').innerHTML = '<option value="">Tất cả khu vực</option>' + regions.map(region => `<option value="${escapeHtml(region)}">${escapeHtml(region)}</option>`).join('');
     if (regions.includes(activeRegion)) document.getElementById('regionFilter').value = activeRegion; else activeRegion = '';
+    const groups = new Map();
+    let hasUnverified = false;
+    schools.forEach(school => (detailsForSchool(school.id)?.programs || []).forEach(program => {
+      const taxonomy = classifyProgram(program);
+      if (taxonomy.groupCode) groups.set(taxonomy.groupCode,taxonomy.groupName);
+      else hasUnverified = true;
+    }));
+    document.getElementById('groupFilter').innerHTML = '<option value="">Tất cả nhóm ngành</option>'
+      + [...groups].sort(([a],[b]) => a.localeCompare(b)).map(([code,name]) => `<option value="${escapeHtml(code)}">${escapeHtml(code)} · ${escapeHtml(name)}</option>`).join('')
+      + (hasUnverified ? '<option value="unverified">Chưa xác minh nhóm</option>' : '');
+    if (activeGroupCode === 'unverified' && hasUnverified || groups.has(activeGroupCode)) document.getElementById('groupFilter').value = activeGroupCode;
+    else activeGroupCode = '';
     updateSearchSuggestions();
     document.getElementById('searchInput').value = initialQuery;
     filterSchools(initialQuery);

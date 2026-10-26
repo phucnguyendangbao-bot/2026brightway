@@ -30,8 +30,34 @@ const server = http.createServer((req,res) => {
     assert.ok(await page.locator('.school-section').count() > 0,'Abbreviation search must return schools');
     assert.ok((await page.locator('.school-card-programs').first().innerText()).toLowerCase().includes('công nghệ thông tin'));
 
-    await page.locator('#searchInput').fill('');
-    await page.waitForFunction(() => !new URL(location.href).searchParams.has('q'));
+    await page.locator('#groupFilter').selectOption('74802');
+    await page.locator('#regionFilter').selectOption({label:'Cần Thơ'});
+    assert.ok(await page.locator('.school-section').count() > 0,'Combined group and region should find CTU');
+    assert.ok(await page.locator('.school-section#ctu').count() === 1);
+    await page.reload({waitUntil:'domcontentloaded'});
+    await page.waitForFunction(() => !document.querySelector('#groupFilter').disabled);
+    assert.equal(await page.locator('#groupFilter').inputValue(),'74802');
+    assert.equal(await page.locator('#regionFilter').inputValue(),'Cần Thơ');
+    assert.equal(await page.locator('.school-section#ctu').count(),1);
+    await page.locator('input[name="schoolSearchMode"][value="school"]').check();
+    await page.locator('#searchInput').fill('ctu');
+    await page.waitForFunction(() => document.querySelector('#schoolCatalogStatus').textContent.includes('ctu'));
+    assert.equal(await page.locator('.school-section').first().getAttribute('id'),'ctu');
+    await page.locator('#searchInput').fill('nganh-khong-ton-tai-xyz');
+    await page.waitForFunction(() => document.querySelector('#schoolCatalogStatus').textContent.includes('nganh-khong-ton-tai-xyz'));
+    assert.equal(await page.locator('.school-section').count(),0);
+    assert.ok(await page.locator('.p2-no-results').isVisible());
+
+    await page.locator('#resetSchoolFilters').click();
+    await page.waitForFunction(() => !new URL(location.href).searchParams.has('q') && !new URL(location.href).searchParams.has('group'));
+    assert.equal(await page.locator('#groupFilter').inputValue(),'');
+    assert.equal(await page.locator('#regionFilter').inputValue(),'');
+    await page.locator('.school-card-open[data-school-id="dut"]').click();
+    const dutDialog = page.locator('#schoolDialog');
+    await dutDialog.locator('#tab-scores').click();
+    assert.equal(await dutDialog.locator('.school-score-summary').count(),0,'Unverified DUT scale/method must not publish numeric cutoffs');
+    assert.ok((await dutDialog.locator('#schoolDialogPanel').innerText()).includes('Chưa hiển thị số'));
+    await dutDialog.locator('[data-action="close-school"]').click();
     await page.locator('.school-card-open[data-school-id="ctu"]').click();
     const dialog = page.locator('#schoolDialog');
     assert.ok(await dialog.isVisible());
@@ -47,6 +73,9 @@ const server = http.createServer((req,res) => {
     const after = await dialog.locator('tr[data-program-index]').evaluateAll(rows => rows.map(row => row.dataset.programIndex));
     assert.notDeepEqual(after,before,'A–Z must change ordering within the taxonomy');
     assert.deepEqual([...after].sort((a,b)=>Number(a)-Number(b)),[...before].sort((a,b)=>Number(a)-Number(b)),'Sorting cannot remove or duplicate programs');
+    await dialog.locator('#wishPlanYear').selectOption('2027');
+    assert.ok((await dialog.innerText()).includes('Nguồn ngành: 2026'));
+    assert.equal(await dialog.locator('tr[data-program-index]').count(),127);
 
     const first = dialog.locator('tr[data-program-index]').first();
     const index = await first.getAttribute('data-program-index');
@@ -57,7 +86,7 @@ const server = http.createServer((req,res) => {
     assert.equal(await page.locator('#targetProgram').inputValue(),index,'Calculator must keep original row index after display sorting');
     assert.ok((await page.locator('#targetProgram option:checked').innerText()).includes(name));
     assert.deepEqual(errors,[]);
-    console.log('PASS: major search, hierarchy, A–Z, original index and calculator handoff');
+    console.log('PASS: major/school ranking, combined filters, empty state, hierarchy, year isolation, A–Z and calculator handoff');
   } finally {
     await browser.close();
     server.close();

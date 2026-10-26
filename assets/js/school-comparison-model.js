@@ -1,6 +1,7 @@
 // Read-only presentation of existing annual records; no ranking or score engine.
 import { selectEditorialOpportunities } from './university-promotion-rules.js';
 import { sortedPrograms } from './training-taxonomy.js';
+import { canDisplayProgramScores } from './score-provenance.js';
 
 const https = value => {
   try { const url = new URL(value); return url.protocol === 'https:' && !url.username && !url.password ? url.href : ''; }
@@ -17,7 +18,7 @@ export function comparisonCells(school, details, source, {year = 2026, opportuni
   const scoreSource = annual && https(annual.scoreSource);
   // Compare only values with a named method and scale. Each school's scale is
   // kept separate; these are historic cutoffs, never admission predictions.
-  const scores = scoreSource && annual.scoreMethod && Number.isFinite(annual.scoreScale)
+  const scores = scoreSource && canDisplayProgramScores(annual,year)
     ? (annual.programs || []).filter(row => Number.isFinite(row.score)).map(row => row.score) : [];
   const format = value => new Intl.NumberFormat('vi-VN',{maximumFractionDigits:2}).format(value);
   return {

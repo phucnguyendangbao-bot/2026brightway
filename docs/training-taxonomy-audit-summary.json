@@ -1,0 +1,31 @@
+{
+  "schools": 35,
+  "schoolsWithPrograms": 23,
+  "programs": 622,
+  "uniqueProgramNames": 335,
+  "programSourceProfiles": {
+    "school-source": 20,
+    "current_catalog": 1,
+    "secondary": 2
+  },
+  "integratedCalculatorProgramRows": 69,
+  "integratedCalculatorSchoolScopes": 5,
+  "uniqueLinkedOfficialMajors": 175,
+  "officialMajorsWithoutProfileLink": 206,
+  "pilotMajors": 40,
+  "pilotClassifiedPrograms": 4,
+  "pilotMajorsWithoutProfileLink": 36,
+  "legacyCutoffSchoolRecords": 35,
+  "issueCounts": {
+    "missing-code": 176,
+    "school-specific-code": 79,
+    "unlisted-code": 48,
+    "code-name-difference": 4,
+    "cutoff-incomplete-provenance": 2,
+    "same-code-different-names": 3,
+    "same-name-different-codes": 32,
+    "no-program-list": 12,
+    "catalog-group-conflict": 1,
+    "ambiguous-2027-transition": 1
+  }
+}
