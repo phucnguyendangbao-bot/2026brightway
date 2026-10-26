@@ -17,6 +17,8 @@
     "test:e2e:countdown": "node scripts/qa-countdown.cjs",
     "test:e2e:ui-system": "node scripts/qa-ui-system.cjs after",
     "test:e2e:content": "node scripts/qa-content-states.cjs",
+    "test:e2e:training-taxonomy": "node scripts/qa-training-taxonomy.cjs",
+    "audit:training-taxonomy": "node scripts/audit-training-taxonomy.mjs",
     "audit:product": "node scripts/qa-product-polish.cjs after"
   },
   "dependencies": {

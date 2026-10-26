@@ -139,7 +139,8 @@ a{color:inherit;text-decoration:none;}
 <script src="assets/js/admin-quick.js"></script>
 <script src="assets/js/uni-logos.js?v=20261022-polish"></script>
 <script src="assets/js/uni-logo-svg.js"></script>
-<script>
+<script type="module">
+import { searchScore } from './assets/js/training-taxonomy.js';
 let currentCategory = '';
 let currentSearch = '';
 
@@ -153,9 +154,12 @@ async function loadMajors() {
   const main = document.getElementById('main-content');
   main.className = '';
   return window.BWContent.load(main, () => window.CMS.listMajors({
-      category: currentCategory || null,
-      search: currentSearch || null
-    }), majors => {
+      category: currentCategory || null
+    }), records => {
+    const majors = currentSearch
+      ? records.map((major,index) => ({major,index,rank:searchScore({name:major.name_vi,code:major.code || '',track:major.name_en},currentSearch)}))
+        .filter(item => item.rank > 0).sort((a,b) => b.rank-a.rank || a.index-b.index).map(item => item.major)
+      : records;
     if (!majors.length) {
       main.innerHTML = `
         <div class="state">
@@ -208,7 +212,7 @@ async function loadMajors() {
       card.addEventListener('click', open);
       card.addEventListener('keydown', event => { if (event.key === 'Enter') open(); });
     });
-  }, {errorTitle:'Không thể tải danh sách ngành',retry:loadMajors});
+  }, {errorTitle:'Không thể tải danh sách ngành',retry:loadMajors,timeoutMs:20000});
 }
 
 document.querySelectorAll('.pill').forEach(p => {

@@ -47,7 +47,7 @@ const server=http.createServer((req,res)=>{
         await retry.click();
         await page.waitForFunction(()=>Boolean(window.supabaseClient),null,{timeout:20000});
         await page.waitForFunction(()=>!document.querySelector('[aria-busy="true"]'),null,{timeout:20000});
-        if(!file.includes('detail'))assert.equal(await retry.count(),0,'Live CMS list must recover to real records or a verified empty state');
+        if(!file.includes('detail'))assert.equal(await retry.count(),0,'Live CMS list must recover to real records or a verified empty state: '+(await host.innerText()));
         else assert.ok((await host.innerText()).includes('Không thể tải'),'Missing slug ends in a clear recoverable state');
       });
     }

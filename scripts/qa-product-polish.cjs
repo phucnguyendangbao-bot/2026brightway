@@ -8,7 +8,7 @@ const phase = process.argv[2] === 'before' ? 'before' : 'after';
 const out = path.join(root, '.cache/product-polish', phase);
 fs.mkdirSync(out, { recursive: true });
 const routes = ['index.html','careers-holland.html?holland=all','holland.html','page2.html?mode=school','score-calculator.html','profile.html?tab=journey','profile.html?tab=account','calendar.html','resources.html','news.html','news-detail.html','majors.html','major-detail.html','scholarship-roadmap.html','essay-review.html','interview-prep.html','login.html','waybi.html'];
-const widths = [360,390,768,1024,1366,1440,1920];
+const widths = [320,360,390,768,1024,1366,1440,1920];
 const mime = {'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.json':'application/json','.woff2':'font/woff2'};
 const server = http.createServer((req,res) => {
   const file = path.resolve(root, '.' + new URL(req.url,'http://localhost').pathname);
@@ -63,6 +63,9 @@ function inventory(dir) {
             result.screenshots.push(name);
           }
         }
+        await page.setViewportSize({width:768,height:432});
+        const landscape=await page.evaluate(()=>document.documentElement.scrollWidth);
+        if(landscape>769) result.issues.push(`overflow landscape 768: ${landscape}`);
         await page.setViewportSize({width:390,height:900});
         await page.locator('.flow-menu').click();
         result.mobileMenu=await page.locator('.flow-menu').getAttribute('aria-expanded')==='true';

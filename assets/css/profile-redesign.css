@@ -14,10 +14,11 @@
 .journey-shortcuts a span:last-child { margin-left:auto; }
 body:has(#my-choices) .flow-local-profile { display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); gap:24px; margin-top:24px; align-items:start; }
 body:has(#my-choices) .flow-local-profile > * { min-width:0; margin:0; }
-body:has(#my-choices) .flow-local-profile > .personal-section { grid-column:1; grid-row:1; }
-body:has(#my-choices) .flow-local-profile > .flow-profile-details { grid-column:2; }
-body:has(#my-choices) .flow-local-profile > .countdown-manager { grid-column:1; grid-row:2; }
-body:has(#my-choices) .flow-local-profile > .flow-journey { grid-column:2; grid-row:2; }
+body:has(#my-choices) .flow-local-profile > #personal-profile { grid-column:1; grid-row:1; }
+body:has(#my-choices) .flow-local-profile > #personalDashboard { grid-column:1; grid-row:2; }
+body:has(#my-choices) .flow-local-profile > .flow-profile-details { grid-column:2; grid-row:1 / span 2; }
+body:has(#my-choices) .flow-local-profile > .countdown-manager { grid-column:1; grid-row:3; }
+body:has(#my-choices) .flow-local-profile > .flow-journey { grid-column:2; grid-row:3; }
 body:has(#my-choices) .flow-local-profile .flow-journey-heading { flex-direction:column; align-items:flex-start; }
 body:has(#my-choices) .flow-local-profile .flow-journey-steps { grid-template-columns:1fr; }
 body:has(#my-choices) .flow-profile-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }

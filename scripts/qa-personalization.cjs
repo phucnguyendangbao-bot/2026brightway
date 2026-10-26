@@ -50,7 +50,7 @@ async function chat(page,question,home=false){
       await open(page);await page.locator('#personalYear').selectOption('2027');await page.locator('#personalRegion').selectOption('Cần Thơ');await enable(page);
       assert.equal(await page.evaluate(()=>BWFlow.read().personalization.year),2027);
       await page.reload();await page.locator('#personalRegion').waitFor();assert.equal(await page.locator('#personalRegion').inputValue(),'Cần Thơ');
-      const downloadPromise=page.waitForEvent('download');await page.locator('#personalExport').click();const download=await downloadPromise;const target=path.join(artifacts,'profile-export.json');await download.saveAs(target);
+      const [download]=await Promise.all([page.waitForEvent('download'),page.locator('#personalExport').click()]);const target=path.join(artifacts,'profile-export.json');await download.saveAs(target);
       const file=JSON.parse(fs.readFileSync(target,'utf8'));assert.equal(file.personalization.year,2027);assert.equal(file.format,'brightway-personal-profile');assert.equal('scores' in file,false);
       await open(page,'index.html');assert.equal(await page.locator('#personalDashboard').isVisible(),true);assert.equal(await page.locator('.flow-resume > .flow-journey').isVisible(),false);
     });

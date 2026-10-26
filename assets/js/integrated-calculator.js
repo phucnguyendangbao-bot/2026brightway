@@ -4,6 +4,7 @@ import { parseScore } from './score-rules.js';
 import { detailsForSchool } from '../data/school-profile-details.js';
 import { integratedVerification } from './integrated-verification.js';
 import { integratedThresholds } from './integrated-thresholds.js';
+import { sortedPrograms } from './training-taxonomy.js';
 const esc = value => String(value ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const statusText = { official:'Công thức đã đối chiếu · kết quả theo dữ liệu bạn khai', reference:'Tham khảo · không phải điểm xét tuyển cuối cùng', unsupported:'Chưa hỗ trợ tính nhánh này', invalid:'Kiểm tra dữ liệu đầu vào' };
 export function createIntegratedCalculator() {
@@ -96,7 +97,7 @@ export function createIntegratedCalculator() {
   function renderSchool(restoreProgram = '') {
     currentSchool = schoolSelect.value;
     const config = integratedSchool(currentSchool);
-    programSelect.innerHTML = '<option value="">'+(config?.programs.length?'Chọn ngành / chương trình':config?'Chưa xác minh đủ cấu hình theo ngành':'Chọn trường trước')+'</option>'+(config?.programs || []).map(p=>`<option value="${p.programId}">${p.programId} · ${esc(p.name)}</option>`).join('');
+    programSelect.innerHTML = '<option value="">'+(config?.programs.length?'Chọn ngành / chương trình':config?'Chưa xác minh đủ cấu hình theo ngành':'Chọn trường trước')+'</option>'+sortedPrograms((config?.programs || []).map(p=>({...p,code:p.programId}))).map(({program:p})=>`<option value="${p.programId}">${p.programId} · ${esc(p.name)}</option>`).join('');
     programSelect.disabled = !config?.programs.length;
     if (config?.programs.some(p=>p.programId===restoreProgram)) programSelect.value = restoreProgram;
     host.querySelector('#integratedPolicy').innerHTML = config ? `<p><strong>${config.verificationStatus==='verified-scope'?'Có công thức chính thức trong phạm vi giới hạn':config.verificationStatus==='components-only'?'Chỉ quy đổi thành phần · chưa xuất điểm tổng hợp':'Tham khảo · chưa xuất điểm cuối cùng'}</strong></p><p>${esc(config.missing)}</p><p class="calc-field-note">Năm 2026 · Rà soát ${config.checkedAt}. ${config.sourceDate?'Mốc văn bản: '+config.sourceDate+'. ':'Chưa xác nhận ngày ban hành đầy đủ. '}${esc(config.sourceDateNote || '')}</p><a href="${esc(config.sourceUrl)}" target="_blank" rel="noopener noreferrer">Nguồn chính thức ↗</a>${(config.extraSources || []).map(s=>` · <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.label)} ↗</a>`).join('')}` : '<p>Chọn trường để xem dữ liệu và phạm vi hỗ trợ.</p>';

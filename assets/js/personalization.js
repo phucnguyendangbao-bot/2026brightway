@@ -62,7 +62,7 @@ function editor() {
     const state=read();
     const exported={format:'brightway-personal-profile',version:1,personalization:preferences(),holland:flow.holland(),savedCareers:state.savedCareers,savedMajors:state.savedMajors,savedSchools:state.savedSchools,wishes:state.wishes||[],tasks:state.tasks||[]};
     const url=URL.createObjectURL(new Blob([JSON.stringify(exported,null,2)],{type:'application/json'}));
-    const link=document.createElement('a');link.href=url;link.download='brightway-ho-so-huong-nghiep.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+    const link=document.createElement('a');link.href=url;link.download='brightway-ho-so-huong-nghiep.json';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
     panel.querySelector('#personalProfileStatus').textContent='Đã xuất hồ sơ trên thiết bị; không kèm tài khoản hoặc lịch sử chat.';
   });
   panel.querySelector('#personalWaybi').addEventListener('change',event=>{

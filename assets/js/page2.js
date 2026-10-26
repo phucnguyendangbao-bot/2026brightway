@@ -4,6 +4,7 @@ import { detailsForSchool } from '../data/school-profile-details.js';
 import { universityIdentityHTML, renderUniversityLogo } from './university-card.js';
 import { uniqueSchools, normalizeWishes, wishKey, addWish, wishFromProgram, importLegacySchools } from './selection-model.js';
 import { comparisonCells } from './school-comparison-model.js';
+import { sortedPrograms, searchScore, TAXONOMY_SOURCE } from './training-taxonomy.js';
 
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[char]);
 const formatScore = value => Number.isFinite(value)
@@ -25,6 +26,7 @@ let schools = [];
 let filteredSchools = [];
 let activeSchool = null;
 let activeTab = 'majors';
+let programSort = 'code';
 const activeYear = 2026;
 let searchTimer;
 let activeQuery = '';
@@ -153,16 +155,34 @@ function renderPrograms(school, details) {
   const hasCombinations = details.programs.some(program => program.combination);
   const hasQuotas = details.programs.some(program => Number.isFinite(program.quota));
   const canPlan = Boolean(wishFromProgram(school, details, 0, wishYear()));
+  const columnCount = 2 + Number(hasTracks) + Number(hasQuotas) + Number(hasCombinations) + Number(hasScores);
+  let previousField = '', previousGroup = '', previousMajor = '';
+  const rows = sortedPrograms(details.programs, programSort).map(({program,index,taxonomy}) => {
+    let headings = '';
+    if (taxonomy.fieldName !== previousField) {
+      headings += `<tr class="school-taxonomy-field"><th colspan="${columnCount}" scope="colgroup">${escapeHtml(taxonomy.fieldCode ? `${taxonomy.fieldCode} · ` : '')}${escapeHtml(taxonomy.fieldName)}</th></tr>`;
+      previousField = taxonomy.fieldName; previousGroup = ''; previousMajor = '';
+    }
+    if (taxonomy.groupName !== previousGroup) {
+      headings += `<tr class="school-taxonomy-group"><th colspan="${columnCount}" scope="colgroup">${escapeHtml(taxonomy.groupCode ? `${taxonomy.groupCode} · ` : '')}${escapeHtml(taxonomy.groupName)}</th></tr>`;
+      previousGroup = taxonomy.groupName; previousMajor = '';
+    }
+    if (taxonomy.majorCode !== previousMajor && taxonomy.majorCode) {
+      headings += `<tr class="school-taxonomy-major"><th colspan="${columnCount}" scope="colgroup">${escapeHtml(taxonomy.majorCode)} · ${escapeHtml(taxonomy.majorName)}</th></tr>`;
+      previousMajor = taxonomy.majorCode;
+    }
+    const candidate = wishFromProgram(school, details, index, wishYear());
+    const added = candidate && selectedWishes().some(item => item.id === wishKey(candidate));
+    const verify = taxonomy.needsVerification ? `<small class="school-program-verify">${taxonomy.status === 'missing-code' ? 'Thiếu mã · cần xác minh' : taxonomy.status === 'unknown-code' ? 'Mã chưa có trong danh mục đối chiếu · cần xác minh' : 'Mã/tên chương trình riêng · cần đối chiếu ngành chuẩn'}</small>` : '';
+    return `${headings}<tr data-program-index="${index}"><td>${program.code ? escapeHtml(program.code) : '<span class="school-program-code-missing">Chưa đối chiếu mã</span>'}</td><td>${escapeHtml(program.name)}${verify}<div class="school-program-actions"><button type="button" data-action="save-major" data-program="${index}">Lưu ngành</button>${candidate ? `<button type="button" data-action="add-wish" data-program="${index}" ${added ? 'disabled' : ''}>${added ? '✓ Đã thêm nguyện vọng' : 'Thêm nguyện vọng'}</button>` : ''}<a href="score-calculator.html?school=${encodeURIComponent(school.id)}&program=${index}" data-action="score-program" data-program="${index}">Đối chiếu điểm →</a></div></td>${hasTracks ? `<td>${escapeHtml(program.track || '')}</td>` : ''}${hasQuotas ? `<td>${Number.isFinite(program.quota) ? escapeHtml(program.quota) : ''}</td>` : ''}${hasCombinations ? `<td>${escapeHtml(program.combination || '')}</td>` : ''}${hasScores ? `<td>${Number.isFinite(program.score) ? `<strong>${escapeHtml(formatScore(program.score))}</strong>` : ''}</td>` : ''}</tr>`;
+  }).join('');
   return `<p class="school-dialog-lead"><strong>${details.programs.length} ngành/chương trình</strong> ${details.programSourceStatus === 'current_catalog' ? 'trong danh mục hiện hành; chưa xác nhận toàn bộ chương trình mở tuyển trong kỳ 2026' : 'trong dữ liệu ghi nhận cho năm ' + details.year}.${hasScores ? ' Điểm chuẩn cùng năm nằm ở cột cuối.' : ''}</p>
-    <div class="wish-planning"><label for="wishPlanYear">Năm dự kiến của danh sách nguyện vọng</label><select id="wishPlanYear"><option value="2026" ${wishYear() === 2026 ? 'selected' : ''}>2026</option><option value="2027" ${wishYear() === 2027 ? 'selected' : ''}>2027 · chuẩn bị</option></select><p>Nguồn ngành: ${details.year}. Khi lập danh sách cho 2027, nguồn 2026 chỉ để tham khảo; cần kiểm tra thông báo mới trước khi đăng ký.</p>${canPlan ? '' : '<p>Danh mục này chưa có nguồn chính thức theo năm đủ để thêm nguyện vọng. Bạn vẫn có thể lưu trường hoặc ngành quan tâm.</p>'}<a href="profile.html?tab=journey#my-choices">Xem Nguyện vọng của tôi →</a></div>
     ${details.programNote ? `<p class="school-program-note">${escapeHtml(details.programNote)}</p>` : ''}
+    <div class="school-program-sort"><label for="schoolProgramSort">Sắp xếp trong nhóm ngành</label><select id="schoolProgramSort"><option value="code" ${programSort === 'code' ? 'selected' : ''}>Mã ngành tăng dần</option><option value="az" ${programSort === 'az' ? 'selected' : ''}>Tên A–Z</option></select></div><p class="school-taxonomy-note">Lĩnh vực → Nhóm ngành → Ngành chuẩn → Chương trình trường. Mã xét tuyển riêng được giữ nguyên; các mục chưa đối chiếu được tách riêng. <a href="${escapeHtml(TAXONOMY_SOURCE)}" target="_blank" rel="noopener noreferrer">Danh mục Bộ GD&ĐT ↗</a></p>
     <div class="school-program-table-wrap"><table class="school-program-table"><thead><tr><th>Mã xét tuyển</th><th>Ngành / chương trình</th>${hasTracks ? '<th>Phân loại</th>' : ''}${hasQuotas ? '<th>Chỉ tiêu dự kiến</th>' : ''}${hasCombinations ? '<th>Tổ hợp trích</th>' : ''}${hasScores ? `<th>Điểm chuẩn ${details.year}${details.scoreScale ? ' · thang ' + details.scoreScale : ''}</th>` : ''}</tr></thead><tbody>
-    ${details.programs.map((program, index) => {
-      const candidate = wishFromProgram(school, details, index, wishYear());
-      const added = candidate && selectedWishes().some(item => item.id === wishKey(candidate));
-      return `<tr><td>${program.code ? escapeHtml(program.code) : '<span class="school-program-code-missing">Chưa đối chiếu mã</span>'}</td><td>${escapeHtml(program.name)}<div class="school-program-actions"><button type="button" data-action="save-major" data-program="${index}">Lưu ngành</button>${candidate ? `<button type="button" data-action="add-wish" data-program="${index}" ${added ? 'disabled' : ''}>${added ? '✓ Đã thêm nguyện vọng' : 'Thêm nguyện vọng'}</button>` : ''}<a href="score-calculator.html?school=${encodeURIComponent(school.id)}&program=${index}" data-action="score-program" data-program="${index}">Đối chiếu điểm →</a></div></td>${hasTracks ? `<td>${escapeHtml(program.track || '')}</td>` : ''}${hasQuotas ? `<td>${Number.isFinite(program.quota) ? escapeHtml(program.quota) : ''}</td>` : ''}${hasCombinations ? `<td>${escapeHtml(program.combination || '')}</td>` : ''}${hasScores ? `<td>${Number.isFinite(program.score) ? `<strong>${escapeHtml(formatScore(program.score))}</strong>` : ''}</td>` : ''}</tr>`;
-    }).join('')}
+    ${rows}
     </tbody></table></div>
+    <div class="wish-planning"><label for="wishPlanYear">Năm dự kiến của danh sách nguyện vọng</label><select id="wishPlanYear"><option value="2026" ${wishYear() === 2026 ? 'selected' : ''}>2026</option><option value="2027" ${wishYear() === 2027 ? 'selected' : ''}>2027 · chuẩn bị</option></select><p>Nguồn ngành: ${details.year}. Khi lập danh sách cho 2027, nguồn 2026 chỉ để tham khảo; cần kiểm tra thông báo mới trước khi đăng ký.</p>${canPlan ? '' : '<p>Danh mục này chưa có nguồn chính thức theo năm đủ để thêm nguyện vọng. Bạn vẫn có thể lưu trường hoặc ngành quan tâm.</p>'}<a href="profile.html?tab=journey#my-choices">Xem Nguyện vọng của tôi →</a></div>
     ${details.scoreMethod ? `<p class="school-dialog-footnote">${escapeHtml(details.scoreMethod)}. Chọn đúng cơ sở và chương trình khi đăng ký.</p>` : ''}
     ${officialLink(details.programSource, details.programSourceLabel || 'Danh sách ngành trên trang trường', 'school-dialog-link')}
     ${(details.supplementarySources || []).map(source => officialLink(source.url, source.label, 'school-dialog-link')).join('')}`;
@@ -257,6 +277,7 @@ function openSchool(id, tab = 'majors') {
   activeSchool = schools.find(school => school.id === canonicalSchoolId(id));
   if (!activeSchool) return;
   activeTab = ['majors','scores','admission','opportunities'].includes(tab) ? tab : 'majors';
+  programSort = 'code';
   renderDialog();
   if (!dialog.open) dialog.showModal();
 }
@@ -297,7 +318,8 @@ function safelyMatches(candidate, query) {
 
 function matchingPrograms(school, query) {
   if (!String(query || '').trim()) return [];
-  return (detailsForSchool(school.id)?.programs || []).filter(program => safelyMatches([program.name, program.code, program.track].join(' '), query));
+  return (detailsForSchool(school.id)?.programs || []).map((program,index) => ({program,index,rank:searchScore(program,query)}))
+    .filter(item => item.rank > 0).sort((a,b) => b.rank-a.rank || a.index-b.index).map(item => item.program);
 }
 
 function filterSchools(value) {
@@ -312,6 +334,9 @@ function filterSchools(value) {
       ? matchingPrograms(school, value).length > 0
       : safelyMatches([school.name, school.short, school.city, school.id, ...(school.aliases || [])].join(' '), value);
   });
+  if (query && searchMode === 'major') filteredSchools = filteredSchools.map(school => ({
+    school, rank: searchScore(matchingPrograms(school,value)[0],value),
+  })).sort((a,b) => b.rank-a.rank || a.school.name.localeCompare(b.school.name,'vi')).map(item => item.school);
   renderSidebar(filteredSchools);
   renderSchools(filteredSchools);
   refreshContextualPromotions();
@@ -379,6 +404,7 @@ document.addEventListener('input', event => {
 });
 document.addEventListener('change', event => {
   if (event.target.id === 'wishPlanYear') { window.BWFlow?.save({ admissionPlanYear: Number(event.target.value) }); renderDialog(); dialog.querySelector('#wishPlanYear')?.focus(); }
+  if (event.target.id === 'schoolProgramSort') { programSort = event.target.value === 'az' ? 'az' : 'code'; renderDialog(); dialog.querySelector('#schoolProgramSort')?.focus(); }
 });
 
 document.addEventListener('click', event => {

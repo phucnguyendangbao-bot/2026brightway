@@ -186,9 +186,10 @@ async function run() {
       assert.ok(await table.evaluate(node => node.scrollWidth >= node.clientWidth));
       await page.locator('#schoolDialog').screenshot({ path:path.join(artifacts, 'school-' + width + '.png') });
       await noOverflow(page);
+      const selectedProgram = await page.locator('.school-program-actions a').first().getAttribute('data-program');
       await page.locator('.school-program-actions a').first().click();
       await loadedTargets(page);
-      assert.equal(await page.locator('#targetProgram').inputValue(), '0');
+      assert.equal(await page.locator('#targetProgram').inputValue(), selectedProgram);
       for (const id of ['sMath','sPhy','sChe']) await page.locator('#' + id).fill('8');
       await page.locator('#calcBtn').click();
       assert.equal(await page.locator('#sumCombo').innerText(), '24.00');
@@ -198,7 +199,7 @@ async function run() {
       await page.reload({ waitUntil:'domcontentloaded' });
       await loadedTargets(page);
       assert.equal(await page.locator('#sMath').inputValue(), '8');
-      assert.equal(await page.locator('#targetProgram').inputValue(), '0');
+      assert.equal(await page.locator('#targetProgram').inputValue(), selectedProgram);
       assert.equal(await page.evaluate(() => BWFlow.read().savedSchools.some(s => s.id === 'fpt')), true);
       return { questions:42, screenshots:5, data:'Actual repository catalogs', horizontalOverflow:false };
     }, width);

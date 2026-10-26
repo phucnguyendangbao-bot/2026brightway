@@ -30,7 +30,7 @@ async function run() {
       await page.locator('#integratedSchool').selectOption(id);
       assert.match(await page.locator('#integratedPolicy a').first().getAttribute('href'),/^https:/);
       assert.ok(await page.locator('#integratedProgram option').count()>1);
-      const value=await page.locator('#integratedProgram option').nth(1).getAttribute('value');
+      const value=id==='agu'?'7480201':id==='uel'?'401':await page.locator('#integratedProgram option').nth(1).getAttribute('value');
       await page.locator('#integratedProgram').selectOption(value);await scores(page);await page.locator('#calcBtn').click();
       if(['uhs','ussh','uit'].includes(id)) {assert.equal(await page.locator('#integratedAcademic').count(),0);assert.equal(await page.locator('#integratedTotal').count(),0);assert.match(await page.locator('#integratedResult').innerText(),/Chỉ quy đổi điểm thành phần/);}
       else if(['agu','uel'].includes(id)) {assert.equal(await page.locator('#integratedTotal').count(),0);assert.match(await page.locator('#integratedResult').innerText(),/Tham khảo/);}

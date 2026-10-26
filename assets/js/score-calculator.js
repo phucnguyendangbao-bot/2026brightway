@@ -6,6 +6,7 @@ import { COMBO_SUBJECTS, parseScore, fptComponent, fptCombinationAllowed } from 
 import { canonicalSchoolId, buildUniversityCatalog } from '../data/university-identities.js';
 import { detailsForSchool } from '../data/school-profile-details.js';
 import { createIntegratedCalculator } from './integrated-calculator.js?v=20261020-expanded';
+import { sortedPrograms } from './training-taxonomy.js';
 const integratedCalculator = createIntegratedCalculator();
 const escapeTarget = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let targetSchools = [];
@@ -460,7 +461,7 @@ function updateTargetProgram(restore = '') {
   const id = document.getElementById('targetSchool').value;
   const select = document.getElementById('targetProgram');
   const programs = detailsForSchool(id)?.programs || [];
-  select.innerHTML = '<option value="">' + (programs.length ? 'Chọn ngành / chương trình' : id ? 'Chưa có danh sách ngành đã đối chiếu' : 'Chọn trường trước') + '</option>' + programs.map((program, index) => `<option value="${index}">${escapeTarget(program.code)} · ${escapeTarget(program.name)}${program.track ? ' · ' + escapeTarget(program.track) : ''}</option>`).join('');
+  select.innerHTML = '<option value="">' + (programs.length ? 'Chọn ngành / chương trình' : id ? 'Chưa có danh sách ngành đã đối chiếu' : 'Chọn trường trước') + '</option>' + sortedPrograms(programs).map(({program,index}) => `<option value="${index}">${program.code ? escapeTarget(program.code) + ' · ' : 'Cần xác minh mã · '}${escapeTarget(program.name)}${program.track ? ' · ' + escapeTarget(program.track) : ''}</option>`).join('');
   select.disabled = !programs.length;
   if (programs[restore]) select.value = restore;
   updateTargetStatus();

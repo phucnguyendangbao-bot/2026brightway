@@ -664,6 +664,15 @@ html { scroll-behavior: smooth; }
 .school-program-table th:nth-child(n+3), .school-program-table td:nth-child(n+3) { min-width: 128px; }
 .school-program-table td:last-child strong { color: var(--bw-brand, #6b60ff); }
 .school-program-code-missing { color: var(--text-muted); font-size: .78rem; font-weight: 500; white-space: nowrap; }
+.school-program-sort { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top:16px; }
+.school-program-sort label { font-weight:700; color:var(--bw-ink,#242045); }
+.school-program-sort select { min-height:44px; padding:8px 12px; border:1px solid #aaa2d8; border-radius:10px; background:#fff; color:#242045; }
+.school-taxonomy-note { margin:8px 0 0; color:var(--bw-muted,#4c486b); font-size:.78rem; line-height:1.5; }
+.school-taxonomy-field th, .school-taxonomy-group th, .school-taxonomy-major th { position:static; white-space:normal; text-align:left; border-top:1px solid #d9d4f4; }
+.school-program-table .school-taxonomy-field th { background:#e8e4ff; color:#35247b; font-size:.82rem; }
+.school-program-table .school-taxonomy-group th { background:#f1efff; color:#463793; }
+.school-program-table .school-taxonomy-major th { background:#f7f6ff; color:#53468e; font-weight:650; }
+.school-program-verify { display:block; margin-top:3px; color:#7a4b00; font-size:.74rem; line-height:1.35; }
 .school-dialog-footnote, .school-admission-panel small { display: block; margin-top: 14px; color: var(--bw-soft, #6b7194); font-size: .73rem; line-height: 1.6; }
 .school-dialog-link { display: inline-flex; margin: 14px 10px 0 0; color: var(--bw-brand, #6b60ff); font-size: .81rem; font-weight: 800; text-decoration: none; }
 .school-dialog-link:hover, .school-dialog-footer a:hover { text-decoration: underline; }
