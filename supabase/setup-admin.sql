@@ -2,6 +2,9 @@
 -- SETUP ADMIN MẶC ĐỊNH
 -- Chạy 1 lần trong Supabase SQL Editor để tạo sẵn
 -- các tài khoản giáo viên/admin với email + password
+-- Bản bootstrap cũ đã được gỡ vì chứa mật khẩu mẫu và RPC thiếu kiểm tra quyền.
+-- Với dự án hiện có, áp dụng migrations/002_secure_admin_access.sql.
+-- Tạo admin đầu tiên trong Supabase Auth Dashboard rồi gán role bằng SQL Editor tin cậy.
 -- ═══════════════════════════════════════════════════════
 
 -- 1. Function tạo user có password + auto-confirm email
@@ -14,6 +17,7 @@ CREATE OR REPLACE FUNCTION public.admin_create_user(
 RETURNS JSONB
 LANGUAGE plpgsql
 SECURITY DEFINER
+SET search_path = pg_catalog, extensions, public, auth
 AS $$
 DECLARE
   user_id UUID;
@@ -21,6 +25,11 @@ DECLARE
   hashed_pw TEXT;
   result JSONB;
 BEGIN
+  IF auth.uid() IS NULL OR NOT EXISTS (
+    SELECT 1 FROM public.profiles WHERE id = auth.uid() AND role = 'admin'
+  ) THEN
+    RAISE EXCEPTION 'Permission denied' USING ERRCODE = '42501';
+  END IF;
   IF email_input IS NULL OR email_input = '' THEN
     RAISE EXCEPTION 'Email không được để trống';
   END IF;
@@ -66,6 +75,7 @@ BEGIN
 END;
 $$;
 
+REVOKE EXECUTE ON FUNCTION public.admin_create_user(TEXT, TEXT, TEXT, TEXT) FROM PUBLIC, anon;
 GRANT EXECUTE ON FUNCTION public.admin_create_user(TEXT, TEXT, TEXT, TEXT) TO authenticated;
 
 -- 2. Function reset password
@@ -73,10 +83,16 @@ CREATE OR REPLACE FUNCTION public.admin_set_password(user_id_input UUID, new_pas
 RETURNS JSONB
 LANGUAGE plpgsql
 SECURITY DEFINER
+SET search_path = pg_catalog, extensions, public, auth
 AS $$
 DECLARE
   hashed_pw TEXT;
 BEGIN
+  IF auth.uid() IS NULL OR NOT EXISTS (
+    SELECT 1 FROM public.profiles WHERE id = auth.uid() AND role = 'admin'
+  ) THEN
+    RAISE EXCEPTION 'Permission denied' USING ERRCODE = '42501';
+  END IF;
   IF new_password_input IS NULL OR length(new_password_input) < 6 THEN
     RAISE EXCEPTION 'Mật khẩu phải ít nhất 6 ký tự';
   END IF;
@@ -87,6 +103,7 @@ BEGIN
 END;
 $$;
 
+REVOKE EXECUTE ON FUNCTION public.admin_set_password(UUID, TEXT) FROM PUBLIC, anon;
 GRANT EXECUTE ON FUNCTION public.admin_set_password(UUID, TEXT) TO authenticated;
 
 -- 3. Function list tất cả user (kể cả email từ auth.users)
@@ -94,6 +111,7 @@ CREATE OR REPLACE FUNCTION public.admin_list_users()
 RETURNS TABLE (id UUID, email TEXT, full_name TEXT, role TEXT, created_at TIMESTAMPTZ, last_sign_in_at TIMESTAMPTZ)
 LANGUAGE plpgsql
 SECURITY DEFINER
+SET search_path = pg_catalog, extensions, public, auth
 AS $$
 BEGIN
   IF NOT EXISTS (SELECT 1 FROM public.profiles WHERE id = auth.uid() AND role = 'admin') THEN
@@ -110,6 +128,7 @@ BEGIN
 END;
 $$;
 
+REVOKE EXECUTE ON FUNCTION public.admin_list_users() FROM PUBLIC, anon;
 GRANT EXECUTE ON FUNCTION public.admin_list_users() TO authenticated;
 
 -- 4. Trigger auto-create profile cho user mới (Google hoặc email)
@@ -117,6 +136,7 @@ CREATE OR REPLACE FUNCTION public.handle_new_user()
 RETURNS TRIGGER
 LANGUAGE plpgsql
 SECURITY DEFINER
+SET search_path = pg_catalog, extensions, public, auth
 AS $$
 BEGIN
   INSERT INTO public.profiles (id, full_name, avatar_url, role, created_at, updated_at)
@@ -137,26 +157,5 @@ CREATE TRIGGER on_auth_user_created
   AFTER INSERT ON auth.users
   FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
 
--- ═══════════════════════════════════════════════════════
--- TẠO TÀI KHOẢN MẶC ĐỊNH
--- ĐỔI EMAIL/PASSWORD theo ý bạn trước khi chạy
--- ═══════════════════════════════════════════════════════
-
--- Tài khoản admin chính (ĐỔI EMAIL thành email thật của bạn)
-SELECT public.admin_create_user(
-  'admin@brightway.vn',
-  'admin123fpt',
-  'Admin BrightWay',
-  'admin'
-);
-
--- Tài khoản giáo viên mẫu
-SELECT public.admin_create_user(
-  'gv1@brightway.vn',
-  'admin123fpt',
-  'Giáo viên 1',
-  'teacher'
-);
-
--- (Optional) Thêm giáo viên khác nếu cần
--- SELECT public.admin_create_user('gv2@brightway.vn', 'admin123fpt', 'GV 2', 'teacher');
+-- Không đưa email/mật khẩu mẫu vào file SQL. Sau khi có admin thật, màn hình
+-- quản trị mới gọi các RPC trên với JWT của admin đã xác thực.

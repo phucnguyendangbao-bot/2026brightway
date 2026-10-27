@@ -185,7 +185,9 @@ async function testVerifiedSchoolLogos(browser, base, report) {
       return Boolean(node?.complete && node.naturalWidth > 0);
     }, `#icon-${item.id} img`);
     assert.equal(await image.evaluate(node => node.complete && node.naturalWidth > 0), true);
-    assert.match(await image.getAttribute('src'), new RegExp(`${item.file.replace('.', '\\.')}$`));
+    const rendered = item.file.endsWith('.svg') ? item.file
+      : `thumbs/${item.file.replace(/\.(png|jpe?g)$/, '-$1.webp')}`;
+    assert.ok((await image.getAttribute('src')).endsWith(rendered));
     assert.equal(await page.locator(`#${item.id}`).count(), 1);
     await page.locator(`#${item.id}`).screenshot({ path: path.join(artifactDir, `school-logo-${item.id}.png`) });
   }
@@ -308,8 +310,10 @@ async function testJourneyPersistence(browser, base, report) {
   await page.goto(`${base}/page2.html?mode=school&q=FPT`, { waitUntil: 'domcontentloaded' });
   await page.locator('#fpt .school-card-open').click();
   await page.locator('[data-action="save-school"]').click();
-  await page.locator('[data-action="save-major"]').first().click();
-  await page.locator('.school-program-actions a').first().click();
+  // Display order follows the ministry taxonomy; the calculator keeps the
+  // original admission row index for the intended FPT IT program.
+  await page.locator('tr[data-program-index="0"] [data-action="save-major"]').click();
+  await page.locator('tr[data-program-index="0"] [data-action="score-program"]').click();
   await page.waitForFunction(() => document.querySelector('#targetProgram')?.value === '0');
   assert.equal(await page.locator('input[name="targetMode"][value="guided"]').isChecked(), true);
   assert.equal(await page.locator('#targetSchool').inputValue(), 'fpt');

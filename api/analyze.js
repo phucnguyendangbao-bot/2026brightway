@@ -11,6 +11,7 @@
 
 import Anthropic from '@anthropic-ai/sdk';
 import { checkRateLimit, getClientIp } from './_ratelimit.js';
+import { bodyTooLarge, setApiCors } from './_request-guards.js';
 import { buildRequest, ALLOWED_TYPES, MAX_TOKENS_BY_TYPE } from './prompts.js';
 
 export const config = {
@@ -62,11 +63,7 @@ function validateRequest(body) {
 
 export default async function handler(req, res) {
   // ── CORS ──
-  const allowed = process.env.ALLOWED_ORIGIN || '*';
-  res.setHeader('Access-Control-Allow-Origin', allowed);
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  res.setHeader('Vary', 'Origin');
+  const originAllowed = setApiCors(req, res);
 
   // ── Anti-cache ──
   res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
@@ -76,10 +73,12 @@ export default async function handler(req, res) {
   res.setHeader('Expires', '0');
 
   // ── Preflight ──
+  if (!originAllowed) return jsonError(res, 403, 'origin_forbidden', 'Origin không được phép');
   if (req.method === 'OPTIONS') return res.status(204).end();
   if (req.method !== 'POST') {
     return jsonError(res, 405, 'method_not_allowed', 'Method not allowed');
   }
+  if (bodyTooLarge(req, 32 * 1024)) return jsonError(res, 413, 'payload_too_large', 'Yêu cầu quá lớn');
 
   // ── Rate limit ──
   const ip = getClientIp(req);

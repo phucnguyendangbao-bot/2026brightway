@@ -1,7 +1,18 @@
 -- ============================================
 -- MIGRATION: Web hướng nghiệp trường THPT
 -- Created: 2026-09-29
+-- Bootstrap lịch sử, chỉ dành cho database trống. Chặn chạy lại để tránh DROP dữ liệu.
 -- ============================================
+
+DO $$ BEGIN
+  IF to_regclass('public.profiles') IS NOT NULL
+    OR to_regclass('public.posts') IS NOT NULL
+    OR to_regclass('public.majors') IS NOT NULL
+    OR to_regclass('public.tags') IS NOT NULL
+    OR to_regclass('public.post_tags') IS NOT NULL THEN
+    RAISE EXCEPTION '001_init chỉ dùng cho database trống; không chạy lại trên dữ liệu hiện có';
+  END IF;
+END $$;
 
 -- Drop functions cũ nếu tồn tại (tránh conflict)
 DROP FUNCTION IF EXISTS public.handle_new_user() CASCADE;
@@ -126,7 +137,7 @@ BEGIN
   VALUES (
     NEW.id,
     COALESCE(NEW.raw_user_meta_data->>'full_name', NEW.email),
-    COALESCE(NEW.raw_user_meta_data->>'role', 'student')
+    'student'
   );
   RETURN NEW;
 END;

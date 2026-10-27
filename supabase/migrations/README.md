@@ -1,58 +1,25 @@
-# Hướng dẫn chạy Migration Supabase
+# Supabase migrations
 
-## ❌ Lỗi gặp phải
-```
-ERROR: 42703: column "role" does not exist
-```
-→ Nguyên nhân: trigger `handle_new_user()` cũ trong project tham chiếu cột `role` không tồn tại.
+`001_init.sql` is a historical bootstrap for an **empty** database. It contains
+`DROP TABLE` statements and must never be rerun against a project with data.
+The file now refuses to run when any of its application tables already exists.
 
-## ✅ Cách fix
+For an existing BrightWay database, the security repair is
+[`002_secure_admin_access.sql`](002_secure_admin_access.sql). It replaces the
+admin RPC bodies, limits their EXECUTE grants, prevents client role escalation,
+and revokes the legacy email-only RPC grants. It does not delete user rows.
 
-### Bước 1: Mở SQL Editor
-```
-https://supabase.com/dashboard/project/nybtwbkkbiqedqqqxqcc/sql/new
-```
+Before applying 002 to production:
 
-### Bước 2: Chạy từng phần (QUAN TRỌNG!)
+1. Export a restorable database backup and the current definitions/grants for
+   the affected functions and trigger.
+2. Inspect the live `public.profiles` schema and test the migration on a copy.
+3. Run the complete migration in the trusted Supabase SQL Editor. It is wrapped
+   in a transaction and fails on an unexpected profile schema.
+4. Verify ordinary users cannot change `profiles.role` or call admin RPCs,
+   while a real admin can create/list users and reset a password.
+5. Check whether the legacy email-only functions or sample account passwords
+   were ever used; rotate affected passwords and review accounts as needed.
 
-Không chạy toàn bộ file `001_init.sql` 1 lần. Chạy theo 3 phases:
-
----
-
-#### PHASE 1: DROP + CREATE tables
-Copy nội dung từ đầu file đến dòng `-- ========== ROW LEVEL SECURITY (RLS)`, paste vào SQL Editor → Run.
-
-#### PHASE 2: RLS
-Copy phần ROW LEVEL SECURITY → Run.
-
-#### PHASE 3: Functions + Triggers + Sample data
-Copy phần còn lại → Run.
-
----
-
-### Bước 3: Verify
-
-Vào Table Editor:
-```
-https://supabase.com/dashboard/project/nybtwbkkbiqedqqqxqcc/editor
-```
-
-Kiểm tra có 5 bảng:
-- ✅ profiles
-- ✅ posts
-- ✅ majors (có 10 sample rows)
-- ✅ tags
-- ✅ post_tags
-
----
-
-## 🔧 Nếu vẫn lỗi
-
-Chạy SQL này TRƯỚC để drop trigger cũ:
-
-```sql
-DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users CASCADE;
-DROP FUNCTION IF EXISTS public.handle_new_user() CASCADE;
-```
-
-Sau đó chạy lại Phase 1 → 2 → 3.
+Deploying the static site through Vercel does **not** apply SQL migrations.
+Never copy the old `001_init.sql` phases into a live database as an upgrade.

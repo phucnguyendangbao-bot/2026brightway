@@ -1,6 +1,8 @@
 -- ═══════════════════════════════════════════════════════
 -- ADMIN FUNCTIONS — Tạo tài khoản có password (không OTP)
 -- Chạy SQL này trong Supabase SQL Editor
+-- Với dự án đã chạy bản cũ, áp dụng migrations/002_secure_admin_access.sql
+-- trước khi cho phép tài khoản học sinh sử dụng. Không chạy script này để bootstrap admin.
 -- ═══════════════════════════════════════════════════════
 
 -- 1. Function: tạo user mới với password
@@ -13,6 +15,7 @@ CREATE OR REPLACE FUNCTION public.admin_create_user(
 RETURNS JSONB
 LANGUAGE plpgsql
 SECURITY DEFINER
+SET search_path = pg_catalog, extensions, public, auth
 AS $$
 DECLARE
   user_id UUID;
@@ -20,6 +23,11 @@ DECLARE
   hashed_pw TEXT;
   result JSONB;
 BEGIN
+  IF auth.uid() IS NULL OR NOT EXISTS (
+    SELECT 1 FROM public.profiles WHERE id = auth.uid() AND role = 'admin'
+  ) THEN
+    RAISE EXCEPTION 'Permission denied' USING ERRCODE = '42501';
+  END IF;
   -- Validate
   IF email_input IS NULL OR email_input = '' THEN
     RAISE EXCEPTION 'Email không được để trống';
@@ -87,6 +95,7 @@ BEGIN
 END;
 $$;
 
+REVOKE EXECUTE ON FUNCTION public.admin_create_user(TEXT, TEXT, TEXT, TEXT) FROM PUBLIC, anon;
 GRANT EXECUTE ON FUNCTION public.admin_create_user(TEXT, TEXT, TEXT, TEXT) TO authenticated;
 
 -- 2. Function: đổi mật khẩu cho user (admin)
@@ -97,11 +106,17 @@ CREATE OR REPLACE FUNCTION public.admin_set_password(
 RETURNS JSONB
 LANGUAGE plpgsql
 SECURITY DEFINER
+SET search_path = pg_catalog, extensions, public, auth
 AS $$
 DECLARE
   hashed_pw TEXT;
   result JSONB;
 BEGIN
+  IF auth.uid() IS NULL OR NOT EXISTS (
+    SELECT 1 FROM public.profiles WHERE id = auth.uid() AND role = 'admin'
+  ) THEN
+    RAISE EXCEPTION 'Permission denied' USING ERRCODE = '42501';
+  END IF;
   IF new_password_input IS NULL OR length(new_password_input) < 6 THEN
     RAISE EXCEPTION 'Mật khẩu phải ít nhất 6 ký tự';
   END IF;
@@ -125,6 +140,7 @@ BEGIN
 END;
 $$;
 
+REVOKE EXECUTE ON FUNCTION public.admin_set_password(UUID, TEXT) FROM PUBLIC, anon;
 GRANT EXECUTE ON FUNCTION public.admin_set_password(UUID, TEXT) TO authenticated;
 
 -- 3. Function: lấy danh sách tất cả user (cho admin)
@@ -140,6 +156,7 @@ RETURNS TABLE (
 )
 LANGUAGE plpgsql
 SECURITY DEFINER
+SET search_path = pg_catalog, extensions, public, auth
 AS $$
 BEGIN
   -- Chỉ admin mới được gọi
@@ -164,6 +181,7 @@ BEGIN
 END;
 $$;
 
+REVOKE EXECUTE ON FUNCTION public.admin_list_users() FROM PUBLIC, anon;
 GRANT EXECUTE ON FUNCTION public.admin_list_users() TO authenticated;
 
 -- 4. (Optional) Auto-tạo profile trigger khi có user mới qua auth.users
@@ -171,6 +189,7 @@ CREATE OR REPLACE FUNCTION public.handle_new_user()
 RETURNS TRIGGER
 LANGUAGE plpgsql
 SECURITY DEFINER
+SET search_path = pg_catalog, extensions, public, auth
 AS $$
 BEGIN
   INSERT INTO public.profiles (id, full_name, role, created_at, updated_at)

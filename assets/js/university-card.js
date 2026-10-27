@@ -14,7 +14,13 @@ export function renderUniversityLogo(host, school, size = 60) {
   if (!host) return;
   host.replaceChildren();
   const registry = window.UNILogo?.(school.short || school.name);
-  const sources = [safeAsset(school.logoUrl), safeAsset(registry?.logoLocal)].filter(Boolean);
+  const originals = [safeAsset(school.logoUrl), safeAsset(registry?.logoLocal)].filter(Boolean);
+  const thumbnail = source => source.replace(/^assets\/images\/logos\/([^/]+)\.(png|jpe?g)$/i,
+    (_, name, extension) => `assets/images/logos/thumbs/${name}-${extension.toLowerCase()}.webp`);
+  const sources = [...new Set(originals.flatMap(source => {
+    const small = thumbnail(source);
+    return small === source ? [source] : [small, source];
+  }))];
   const fallback = () => {
     const badge = document.createElement('span');
     badge.className = 'school-icon-fallback';

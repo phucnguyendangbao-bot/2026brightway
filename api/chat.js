@@ -6,6 +6,7 @@
 
 import Anthropic from '@anthropic-ai/sdk';
 import { checkRateLimit, getClientIp } from './_ratelimit.js';
+import { bodyTooLarge, setApiCors } from './_request-guards.js';
 import admissionsPolicy from '../assets/data/admissions-policy.js';
 import { WAYBI_SYSTEM_PROMPT } from './waybi-prompt.js';
 
@@ -25,11 +26,7 @@ const SYSTEM_PROMPT = WAYBI_SYSTEM_PROMPT;
 // ══ HANDLER chính ══
 export default async function handler(req, res){
   // CORS headers
-  const allowed = process.env.ALLOWED_ORIGIN || '*';
-  res.setHeader('Access-Control-Allow-Origin', allowed);
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  res.setHeader('Vary', 'Origin');
+  const originAllowed = setApiCors(req, res);
 
   // ✨ CHỐNG CACHE — quan trọng nhất: Vercel/CDN/browser không được cache response này
   res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
@@ -38,6 +35,7 @@ export default async function handler(req, res){
   res.setHeader('Pragma', 'no-cache');
   res.setHeader('Expires', '0');
 
+  if (!originAllowed) return res.status(403).json({ error: 'Origin không được phép' });
   // Preflight
   if (req.method === 'OPTIONS'){
     return res.status(204).end();
@@ -45,6 +43,7 @@ export default async function handler(req, res){
   if (req.method !== 'POST'){
     return res.status(405).json({ error: 'Method not allowed' });
   }
+  if (bodyTooLarge(req, 128 * 1024)) return res.status(413).json({ error: 'Yêu cầu quá lớn' });
 
   // Rate limit theo IP (Upstash REST + in-memory fallback xem api/_ratelimit.js)
   const ip = getClientIp(req);
@@ -66,8 +65,13 @@ export default async function handler(req, res){
         // Stream → đọc raw
         body = await new Promise((resolve, reject) => {
           let data = '';
-          req.on('data', chunk => { data += chunk; });
+          let bytes = 0;
+          req.on('data', chunk => {
+            bytes += chunk.length;
+            if (bytes <= 128 * 1024) data += chunk;
+          });
           req.on('end', () => {
+            if (bytes > 128 * 1024) return reject(Object.assign(new Error('Yêu cầu quá lớn'), { status: 413 }));
             try { resolve(data ? JSON.parse(data) : {}); }
             catch (e) { reject(e); }
           });
@@ -136,6 +140,7 @@ export default async function handler(req, res){
       }
     });
   } catch (err) {
+    if (err.status === 413) return res.status(413).json({ error: 'Yêu cầu quá lớn' });
     console.error('[chat error]', err);
     const status = err.status || 500;
     return res.status(status).json({
