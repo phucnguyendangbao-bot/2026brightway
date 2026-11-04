@@ -15,9 +15,9 @@ html body #home-view .admissions-home h2 { font-size:clamp(23px,1.8vw,28px); lin
 .admissions-news-badge { position:absolute; left:6px; top:8px; max-width:calc(100% - 12px); border-radius:999px; background:linear-gradient(135deg,#fff2df,#ffe8f1); color:#93470e; border:1px solid #fff; padding:5px 7px; font-size:10px; font-weight:800; }
 .admissions-news-body { display:flex; flex-direction:column; flex:1; min-width:0; padding:14px; }
 .admissions-news-school { color:#6b60ff; font-size:12px; font-weight:700; margin-bottom:6px; }
-html body #home-view .admissions-news-card h3 { font-size:17px; line-height:1.4; font-weight:700; margin:0 0 12px; }
-.admissions-news-card h3 a { color:#1a1a3e; text-decoration:none; }
-.admissions-news-card h3 a:hover { color:#6b60ff; }
+html body #home-view .admissions-news-card h4 { font-size:17px; line-height:1.4; font-weight:700; margin:0 0 12px; }
+.admissions-news-card h4 a { color:#1a1a3e; text-decoration:none; }
+.admissions-news-card h4 a:hover { color:#6b60ff; }
 .admissions-news-body p { display:none; }
 .admissions-news-links { display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-top:auto; }
 .admissions-news-links a { color:#6656e8; font-weight:700; font-size:12px; text-decoration:none; }
@@ -29,7 +29,7 @@ html body #home-view .admissions-news-card h3 { font-size:17px; line-height:1.4;
 @media(min-width:701px) and (max-width:1100px) {
   .admissions-highlights { grid-template-columns:minmax(0,1fr); gap:10px; }
   .admissions-news-photo { width:130px; min-height:106px; }
-  html body #home-view .admissions-news-card h3 { font-size:17px; }
+  html body #home-view .admissions-news-card h4 { font-size:17px; }
 }
 @media(max-width:700px) {
   html body #home-view .admissions-home { padding:20px 18px; }
@@ -40,7 +40,7 @@ html body #home-view .admissions-news-card h3 { font-size:17px; line-height:1.4;
   .admissions-news-card { scroll-snap-align:start; }
   .admissions-news-photo { width:86px; min-height:160px; }
   .admissions-news-body { padding:12px; }
-  html body #home-view .admissions-news-card h3 { font-size:16px; }
+  html body #home-view .admissions-news-card h4 { font-size:16px; }
   .admissions-school-shortcuts { margin-top:12px; gap:8px; flex-wrap:nowrap; overflow-x:auto; padding-bottom:4px; }
   .admissions-school-shortcuts > * { flex-shrink:0; }
 }

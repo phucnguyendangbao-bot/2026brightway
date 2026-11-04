@@ -5,6 +5,7 @@
   const status = document.getElementById('homeHollandSelection');
   const submit = document.getElementById('homeHollandSubmit');
   const clear = document.getElementById('homeHollandClear');
+  const slots = [...document.querySelectorAll('[data-holland-slot]')];
   if (buttons.length !== 6 || !status || !submit || !clear) return;
 
   const savedCode = window.BWFlow?.holland() || '';
@@ -24,6 +25,15 @@
       : 'Chưa chọn nhóm nào · cần chọn 3 nhóm';
     submit.disabled = !complete;
     clear.hidden = selected.length === 0;
+    slots.forEach((slot, rank) => {
+      const letter = selected[rank] || '';
+      if (slot.textContent === letter) return;
+      slot.textContent = letter;
+      slot.classList.toggle('is-filled', Boolean(letter));
+      if (letter) { slot.classList.remove('is-new'); void slot.offsetWidth; slot.classList.add('is-new'); }
+    });
+    // Chapter 2 listens so the story continues from the code being built.
+    document.dispatchEvent(new CustomEvent('bw:holland-pick', { detail: { code: complete ? code : '' } }));
   }
 
   buttons.forEach(button => button.addEventListener('click', () => {

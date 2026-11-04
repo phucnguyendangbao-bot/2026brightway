@@ -210,17 +210,11 @@
     document.body.dataset.bwPage = page;
     ensureSharedFooter();
     if (page === 'index.html') {
-      const hero = document.getElementById('hero-actions');
-      // The three intent cards already explain these benefits on the homepage.
-      let anchor = hero;
-      for (const id of ['university-discovery', 'roadmap', 'tools', 'admissions-news']) {
-        const section = document.getElementById(id);
-        if (section) { anchor.after(section); anchor = section; }
-      }
-      const host = document.createElement('div');
-      host.className = 'flow-resume';
-      document.getElementById('hero-actions')?.after(host);
-      if (read().updatedAt || holland()) renderJourney(host, true);
+      // The homepage tells the journey in HTML order; the ending scene shows this visitor's road.
+      let host = document.querySelector('[data-journey-host]');
+      if (!host) { host = document.createElement('div'); host.className = 'flow-resume'; document.getElementById('hero-actions')?.after(host); }
+      renderJourney(host, true);
+      window.addEventListener('bw:journey-change', () => renderJourney(host, true));
     }
     if (page === 'profile.html') {
       const requestedTab = new URLSearchParams(location.search).get('tab');

@@ -241,7 +241,7 @@ export function initCountdown() {
   const page = location.pathname.split('/').pop() || 'index.html';
   if (page === 'index.html') {
     widget = document.createElement('section'); widget.id = 'countdownWidget'; widget.className = 'countdown-widget'; widget.setAttribute('aria-labelledby', 'countdownWidgetTitle');
-    const resume = document.querySelector('.flow-resume'); if (resume) resume.after(widget); else document.querySelector('#hero-actions')?.after(widget);
+    const slot = document.querySelector('[data-countdown-slot]'); const resume = document.querySelector('.flow-resume'); if (slot) slot.append(widget); else if (resume) resume.after(widget); else document.querySelector('#hero-actions')?.after(widget);
   }
   if (page === 'profile.html') {
     manager = document.createElement('section'); manager.id = 'countdowns'; manager.className = 'countdown-manager'; manager.setAttribute('aria-labelledby', 'countdownManagerTitle'); manager.innerHTML = managerHTML();

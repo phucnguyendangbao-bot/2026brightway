@@ -159,8 +159,8 @@ async function initUniversityDiscovery() {
     const paidHost = host.querySelector('[data-sponsored-universities]');
     paidHost.hidden = !paid.length;
     renderGroup(paidHost, schools, paid, 'home_featured');
-    const opportunities = selectEditorialOpportunities(universityOpportunities, schools).slice(0,3);
-    renderGroup(host.querySelector('[data-university-opportunities]'), schools, opportunities, 'home_opportunity');
+    const opportunityHost = host.querySelector('[data-university-opportunities]');
+    if (opportunityHost) renderGroup(opportunityHost, schools, selectEditorialOpportunities(universityOpportunities, schools).slice(0,3), 'home_opportunity');
     status.textContent = 'Lựa chọn biên tập để khám phá, không phải bảng xếp hạng hay danh sách đối tác. Học bổng và tuyển sinh cũ được ghi rõ là tư liệu.';
   } catch (error) {
     status.textContent = 'Chưa tải được khu giới thiệu trường. Bạn vẫn có thể mở thư viện trường; hãy thử tải lại khu này.';

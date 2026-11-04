@@ -24,17 +24,11 @@
         box-shadow: 0 4px 16px rgba(99,102,241,0.25);
         display: flex; align-items: center; justify-content: center;
         padding: 4px;
-        animation: waybi-float 3s ease-in-out infinite;
         cursor: pointer;
         transition: transform .25s;
       }
       #waybi-left:hover { transform: scale(1.1) rotate(8deg); }
       #waybi-left img { width: 100%; height: 100%; object-fit: contain; display: block; }
-      @keyframes waybi-float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-6px); }
-      }
-      #waybi-left:hover { animation: none; }
 
       /* ═══ 2. WELCOME BANNER đầu trang ═══ */
       #waybi-banner {
@@ -70,15 +64,10 @@
         background: rgba(255,255,255,0.95);
         border-radius: 50%;
         padding: 6px;
-        animation: waybi-bob 2.5s ease-in-out infinite;
         z-index: 1;
         box-shadow: 0 4px 14px rgba(0,0,0,0.15);
       }
       .waybi-banner-mascot img { width: 100%; height: 100%; object-fit: contain; display: block; }
-      @keyframes waybi-bob {
-        0%, 100% { transform: translateY(0) rotate(-3deg); }
-        50% { transform: translateY(-4px) rotate(3deg); }
-      }
       .waybi-banner-text { flex: 1; min-width: 0; z-index: 1; }
       .waybi-banner-text h3 {
         font-family: var(--font-display, 'Quicksand', 'Be Vietnam Pro', sans-serif); font-weight: 700;
@@ -145,7 +134,6 @@
       }
       .waybi-empty-mascot {
         width: 100px; height: 100px; margin: 0 auto 12px;
-        animation: waybi-bob 2.5s ease-in-out infinite;
       }
       .waybi-empty-mascot img {
         width: 100%; height: 100%; object-fit: contain; display: block;
@@ -225,7 +213,7 @@
     // Bỏ qua banner + left mascot ở trang login/admin (giữ chat nổi)
     if (!isLogin) {
       // Trang chủ đã có khu Waybi riêng nên không cần lặp thêm mascot nổi bên trái.
-      if (!document.getElementById('waybi-home')) {
+      if (!document.getElementById('waybi-home') && !document.querySelector('[data-story]')) {
         const leftMascot = document.createElement('div');
         leftMascot.id = 'waybi-left';
         leftMascot.title = 'Chào bạn! 👋';
@@ -235,7 +223,7 @@
       }
 
       // 2. Welcome banner dưới nav (chỉ ở trang index)
-      if ((path.endsWith('/') || path.endsWith('index.html') || path === '/' || path === '') && !document.getElementById('waybi-home')) {
+      if ((path.endsWith('/') || path.endsWith('index.html') || path === '/' || path === '') && !document.getElementById('waybi-home') && !document.querySelector('[data-story]')) {
         // chèn sau nav
         const nav = document.querySelector('.lp-nav') || document.querySelector('nav');
         if (nav) {

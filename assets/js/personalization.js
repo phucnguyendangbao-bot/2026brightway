@@ -183,7 +183,8 @@ export function initPersonalization() {
   // New visitors still see the original introduction; the entry point is optional.
   if(page==='index.html') {
     const link=document.createElement('a');link.className='personal-start';link.href='profile.html?tab=journey#personal-profile';link.textContent='Tùy chỉnh hành trình theo sở thích của bạn →';
-    document.querySelector('#hero-actions .home-waybi-shortcut')?.after(link);
+    const slot=document.querySelector('[data-personal-start-slot]');
+    if(slot)slot.append(link);else document.querySelector('#hero-actions .home-waybi-shortcut')?.after(link);
     if(!link.isConnected)document.querySelector('.flow-resume')?.before(link);
   }
   let previous=read();

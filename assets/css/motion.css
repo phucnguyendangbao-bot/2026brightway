@@ -1,0 +1,53 @@
+/* BrightWay motion: four durations, one curve.
+   Motion only shows direction, progress or the result of a tap. */
+:root {
+  --motion-fast: 120ms;
+  --motion-sm: 200ms;
+  --motion-md: 320ms;
+  --motion-lg: 480ms;
+  --motion-ease: cubic-bezier(.2, .8, .2, 1);
+  --motion-stagger: 60ms;
+}
+
+/* Weak devices and data saver: keep feedback, drop travel. */
+html.bw-lite {
+  --motion-md: var(--motion-sm);
+  --motion-lg: var(--motion-sm);
+  --motion-stagger: 0ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-sm: 0ms;
+    --motion-md: 120ms;
+    --motion-lg: 0ms;
+    --motion-stagger: 0ms;
+  }
+  html { scroll-behavior: auto !important; }
+}
+
+/* Loading placeholders keep the final size so nothing jumps when data arrives. */
+.bw-skeleton {
+  display: block;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #ecebff 0%, #f6f5ff 50%, #ecebff 100%) 0 0 / 200% 100%;
+}
+.bw-skeleton-text {
+  display: inline-block;
+  min-width: 2.5ch;
+  height: .9em;
+  vertical-align: -.05em;
+  border-radius: 6px;
+  background: #e4e2ff;
+}
+.bw-visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) { .bw-typing span { animation: none; } }

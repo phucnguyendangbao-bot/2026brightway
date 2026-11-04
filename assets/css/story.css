@@ -1,0 +1,384 @@
+/* Homepage story layout. The road is the one bold element; everything else stays quiet. */
+.story {
+  --page-pad: 28px;   /* matches the hero's own side padding */
+  --gutter: 72px;
+  --marker: 40px;
+  --marker-left: var(--page-pad);
+  position: relative;
+}
+.story > * { position: relative; z-index: 1; }
+
+/* The road: a dotted footpath ("lối") that becomes a paved road ("đường") as you go. */
+.story > .story-rail {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+.story-rail path { fill: none; stroke-linecap: round; }
+.story-rail-trail { stroke: #cfc9ff; stroke-width: 3; stroke-dasharray: 1 11; }
+.story-rail-road { stroke: var(--bw-brand, #6b60ff); stroke-width: 6; }
+
+/* ---------- Chapters ---------- */
+.story-chapter {
+  margin: 0;
+  padding: 64px var(--page-pad) 24px calc(var(--page-pad) + var(--gutter));
+  scroll-margin-top: 80px;
+}
+.chapter-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.chapter-heading { flex: 1; min-width: 0; }
+.chapter-marker {
+  position: absolute;
+  left: var(--marker-left);
+  top: 64px;
+  width: var(--marker);
+  height: var(--marker);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  border: 2px solid #cfc9ff;
+  color: var(--bw-brand-text, #584bd8);
+  font: 800 16px/1 var(--font, 'Be Vietnam Pro', sans-serif);
+  transition: background-color var(--motion-md) var(--motion-ease), border-color var(--motion-md) var(--motion-ease), color var(--motion-md) var(--motion-ease);
+}
+.chapter-marker.is-reached { background: var(--bw-brand, #6b60ff); border-color: var(--bw-brand, #6b60ff); color: #fff; }
+.chapter-marker.is-done { font-size: 0; }
+.chapter-marker.is-done::after { content: '✓'; font-size: 18px; }
+.chapter-marker-end { border-radius: 12px; }
+.chapter-marker-end::after { content: ''; width: 12px; height: 12px; border-radius: 3px; background: currentColor; }
+.chapter-marker-end.is-reached::after { background: #ffd166; }
+
+.chapter-kicker {
+  margin: 6px 0 4px;
+  color: var(--bw-brand-text, #584bd8);
+  font-size: 14px;
+  font-weight: 700;
+}
+.chapter-title {
+  margin: 0;
+  color: var(--bw-ink, #1a1a3e);
+  font-family: var(--font-display, 'Quicksand', sans-serif);
+  font-size: clamp(25px, 3.2vw, 36px);
+  font-weight: 700;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+.chapter-title:focus { outline: none; }
+.chapter-title:focus-visible { outline: 3px solid var(--bw-brand, #6b60ff); outline-offset: 4px; border-radius: 6px; }
+.chapter-done { margin: 8px 0 0; color: var(--bw-success, #087f5b); font-size: 14px; font-weight: 700; }
+.chapter-toggle {
+  flex: none;
+  margin-top: 6px;
+  padding: 8px 14px;
+  border: 1px solid var(--bw-line, #e2e3ff);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--bw-brand-text, #584bd8);
+  font: 700 14px/1 var(--font, sans-serif);
+  cursor: pointer;
+}
+.chapter-toggle:focus-visible { outline: 3px solid var(--bw-brand, #6b60ff); outline-offset: 3px; }
+.story-chapter.is-folded { padding-bottom: 8px; }
+.story-chapter.is-folded .chapter-head { margin-bottom: 0; }
+
+.chapter-body { max-width: 960px; }
+.chapter-body > * + * { margin-top: 20px; }
+.chapter-lead { max-width: 62ch; margin: 0; color: var(--bw-muted, #3a3a6e); font-size: 17px; line-height: 1.6; }
+.chapter-heading .chapter-lead { margin-top: 10px; }
+.chapter-links { display: flex; flex-wrap: wrap; gap: 10px 20px; margin: 0; }
+.chapter-links a, .home-holland-more a {
+  color: var(--bw-brand-text, #584bd8);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.chapter-body h3 {
+  margin: 0;
+  color: var(--bw-ink, #1a1a3e);
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+/* Waybi as a guide at the edge of each chapter, not a separate section. */
+.chapter-waybi {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 640px;
+  margin: 24px 0 0;
+  color: var(--bw-muted, #3a3a6e);
+  font-size: 15px;
+  line-height: 1.5;
+}
+.chapter-waybi img { width: 36px; height: 36px; flex: none; }
+.chapter-waybi span { flex: 1; }
+.chapter-waybi button {
+  flex: none;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--bw-tint, #eeedff);
+  color: var(--bw-brand-text, #584bd8);
+  font: 700 14px/1 var(--font, sans-serif);
+  cursor: pointer;
+}
+.chapter-waybi button:focus-visible { outline: 3px solid var(--bw-brand, #6b60ff); outline-offset: 3px; }
+
+/* ---------- Hero ---------- */
+#hero-actions .bw-hero-meta { margin: 14px 0 0; color: var(--bw-soft, #6b7194); font-size: 14px; }
+.story-resume {
+  margin-top: 20px;
+  padding: 18px 20px;
+  border: 1px solid #d9d5ff;
+  border-radius: 20px;
+  background: #fff;
+}
+.story-resume-title { margin: 0 0 10px; color: var(--bw-ink, #1a1a3e); font-weight: 700; }
+.story-resume-dots { display: flex; gap: 6px; margin: 0 0 14px; padding: 0; list-style: none; }
+.story-resume-dots li { width: 28px; height: 6px; border-radius: 3px; background: #e4e2ff; }
+.story-resume-dots li.is-done { background: var(--bw-brand, #6b60ff); }
+.story-resume-go {
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--bw-brand-gradient, linear-gradient(135deg, #6b60ff, #8b6bff));
+  color: #fff;
+  font: 700 15px/1.2 var(--font, sans-serif);
+  cursor: pointer;
+}
+.story-resume-go:focus-visible { outline: 3px solid var(--bw-ink, #1a1a3e); outline-offset: 3px; }
+.home-journey-picker.is-returning { display: none; }
+
+/* ---------- Chapter 1: the Holland code assembles ---------- */
+.home-holland-card h3 { font-family: var(--font-display, 'Quicksand', sans-serif); font-size: 22px; }
+.holland-code { display: flex; justify-content: center; gap: 10px; margin: 18px 0; }
+.holland-code span {
+  width: 56px;
+  height: 56px;
+  border: 2px dashed #cfc9ff;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  color: transparent;
+  font: 800 26px/1 var(--font-display, 'Quicksand', sans-serif);
+}
+.holland-code span.is-filled { border: 2px solid var(--bw-brand, #6b60ff); background: var(--bw-brand, #6b60ff); color: #fff; }
+.holland-code span.is-new { animation: slot-in var(--motion-lg) var(--motion-ease); }
+@keyframes slot-in { from { transform: translateY(-14px) scale(.7); opacity: 0; } }
+.home-holland-more { margin: 14px 0 0; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px 16px; font-size: 14px; }
+
+/* ---------- Chapter 2: careers ---------- */
+.career-code { color: var(--bw-brand-text, #584bd8); letter-spacing: .08em; }
+.career-picks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.career-picks:empty { display: none; }
+.career-pick {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px;
+  border: 1px solid var(--bw-line, #e2e3ff);
+  border-radius: 18px;
+  background: #fff;
+  color: var(--bw-muted, #3a3a6e);
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 1.5;
+  animation: pick-in var(--motion-md) var(--motion-ease) both;
+  animation-delay: calc(var(--i, 0) * var(--motion-stagger));
+}
+.career-pick strong { color: var(--bw-ink, #1a1a3e); font-size: 17px; line-height: 1.35; }
+.career-pick:hover strong { color: var(--bw-brand-text, #584bd8); }
+.career-pick:focus-visible { outline: 3px solid var(--bw-brand, #6b60ff); outline-offset: 3px; }
+.career-pick-letters { display: flex; gap: 4px; }
+.career-pick-letters b {
+  width: 26px; height: 26px; border-radius: 8px;
+  display: grid; place-items: center;
+  background: var(--bw-subtle, #f5f6ff); color: var(--bw-soft, #6b7194);
+  font-size: 13px;
+}
+.career-pick-letters b.is-match { background: var(--bw-tint, #eeedff); color: var(--bw-brand-text, #584bd8); }
+@keyframes pick-in { from { opacity: 0; transform: translateY(10px); } }
+.career-skeleton { height: 150px; }
+.career-empty { grid-column: 1 / -1; margin: 0; color: var(--bw-muted, #3a3a6e); }
+
+/* ---------- Chapter 3: schools ---------- */
+#chuong-3 .university-discovery, #chuong-3 .admissions-home { margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; max-width: none; background: none; box-shadow: none; border: 0; }
+#chuong-3 .university-discovery-heading, #chuong-3 .admissions-home-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 12px; margin-bottom: 14px; }
+#chuong-3 .university-discovery-heading a, #chuong-3 .admissions-all { color: var(--bw-brand-text, #584bd8); font-weight: 700; font-size: 14px; }
+.university-skeleton { min-height: 340px; }
+#chuong-3 .university-discovery-status:has(> .bw-visually-hidden:only-child) { margin: 0; }
+
+/* ---------- Chapter 4: quick total ---------- */
+.mini-score {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px 24px;
+  align-items: end;
+  max-width: 760px;
+  padding: 22px;
+  border: 1px solid var(--bw-line, #e2e3ff);
+  border-radius: 22px;
+  background: #fff;
+}
+.mini-score label { display: grid; gap: 6px; color: var(--bw-muted, #3a3a6e); font-size: 14px; font-weight: 700; }
+.mini-score-combo { grid-column: 1 / -1; max-width: 360px; }
+.mini-score select, .mini-score input {
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid #cfd0ee;
+  border-radius: 12px;
+  background: #fff;
+  color: var(--bw-ink, #1a1a3e);
+  font: 600 16px/1.2 var(--font, sans-serif);
+  box-sizing: border-box;
+}
+.mini-score input[aria-invalid="true"] { border-color: var(--bw-error, #b42335); }
+.mini-score select:focus-visible, .mini-score input:focus-visible { outline: 3px solid var(--bw-brand, #6b60ff); outline-offset: 1px; }
+.mini-score-inputs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.mini-score-total { display: flex; align-items: baseline; gap: 2px; min-width: 6ch; justify-content: flex-end; }
+.mini-score-number { color: var(--bw-brand-text, #584bd8); font: 700 48px/1 var(--font-display, 'Quicksand', sans-serif); font-variant-numeric: tabular-nums; }
+.mini-score-scale { color: var(--bw-soft, #6b7194); font-weight: 700; }
+.mini-score-note { grid-column: 1 / -1; margin: 0; color: var(--bw-soft, #6b7194); font-size: 14px; }
+
+/* ---------- Chapter 5: months ---------- */
+.month-strip {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 4px 2px 8px;
+  scrollbar-width: thin;
+}
+.month-strip button {
+  position: relative;
+  flex: none;
+  min-width: 56px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--bw-line, #e2e3ff);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--bw-muted, #3a3a6e);
+  font: 700 15px/1 var(--font, sans-serif);
+  cursor: pointer;
+}
+.month-strip button.is-past { color: var(--bw-soft, #6b7194); background: var(--bw-subtle, #f5f6ff); }
+.month-strip button[aria-pressed="true"] { border-color: var(--bw-brand, #6b60ff); background: var(--bw-brand, #6b60ff); color: #fff; }
+.month-strip button:focus-visible { outline: 3px solid var(--bw-ink, #1a1a3e); outline-offset: 2px; }
+/* The single looping signal on the page: where you are this month. */
+.month-now-dot {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #ffb020;
+  animation: now-pulse 2.4s ease-in-out infinite;
+}
+@keyframes now-pulse { 50% { box-shadow: 0 0 0 6px rgba(255, 176, 32, .25); } }
+.month-card {
+  max-width: 720px;
+  padding: 20px 22px;
+  border: 1px solid var(--bw-line, #e2e3ff);
+  border-left: 6px solid var(--bw-brand, #6b60ff);
+  border-radius: 18px;
+  background: #fff;
+  color: var(--bw-muted, #3a3a6e);
+  line-height: 1.6;
+}
+.month-card.is-new { animation: card-in var(--motion-sm) var(--motion-ease); }
+@keyframes card-in { from { opacity: .3; } }
+.month-card-label { margin: 0 0 4px; color: var(--bw-brand-text, #584bd8); font-size: 14px; font-weight: 700; }
+.month-card h3 { margin-bottom: 6px; }
+.month-card p:last-child { margin-bottom: 0; }
+.month-skeleton { height: 96px; }
+
+/* ---------- Ending ---------- */
+.story-ending { padding-bottom: 56px; }
+.story-ending .chapter-body > .flow-resume { margin: 0; }
+.story-ending .flow-journey { margin: 0; }
+
+@media (max-width: 700px) {
+  .story { --page-pad: 16px; --gutter: 36px; --marker: 32px; --marker-left: 8px; }
+  .story-chapter { padding: 44px 16px 16px calc(var(--marker-left) + var(--gutter)); }
+  .chapter-marker { top: 46px; font-size: 14px; }
+  .chapter-head { flex-wrap: wrap; gap: 8px; }
+  .chapter-toggle { margin-top: 0; }
+  .career-picks { grid-template-columns: 1fr; }
+  .mini-score { grid-template-columns: 1fr; padding: 18px; }
+  .mini-score-total { justify-content: flex-start; }
+  .mini-score-inputs { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .chapter-waybi { flex-wrap: wrap; }
+  .chapter-waybi span { flex-basis: calc(100% - 48px); }
+  .chapter-waybi button { margin-left: 48px; }
+  .university-skeleton { min-height: 280px; }
+
+  /* One phone screen per scene: compact choices, side-scrolling cards. */
+  #hero-actions .lede { font-size: 15px; line-height: 1.55; }
+  .home-journey-picker { margin-top: 20px; }
+  .home-journey-card {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    column-gap: 12px;
+    row-gap: 2px;
+    align-items: center;
+    padding: 12px 14px;
+  }
+  .home-journey-card .home-journey-icon { grid-row: span 2; width: 36px; height: 36px; }
+  .home-journey-card strong { font-size: 16px; }
+  .home-journey-card > span:not(.home-journey-icon) { font-size: 13px; line-height: 1.45; }
+  #chuong-3 .university-featured-grid,
+  #chuong-3 .admissions-highlights {
+    display: grid;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 86%;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 6px;
+  }
+  #chuong-3 .university-featured-grid > *,
+  #chuong-3 .admissions-highlights > * { scroll-snap-align: start; }
+  #chuong-3 .university-discovery-heading { flex-direction: row; }
+  .story-ending .flow-journey-steps { grid-template-columns: 1fr; gap: 6px; }
+  .story-ending .flow-journey-steps a { min-height: 0; flex-direction: row; align-items: center; gap: 10px; padding: 10px 12px; }
+  .story-ending .flow-journey-steps small { display: none; }
+  .home-journey-card > span:not(.home-journey-icon) { display: none; }
+  .home-journey-card .home-journey-icon { grid-row: auto; }
+  #chuong-1 .home-holland-card { padding: 18px 14px; }
+  #chuong-1 .home-holland-card > p:first-of-type { font-size: 14px; margin-bottom: 0; }
+  .holland-code { margin: 12px 0; }
+  .holland-code span { width: 46px; height: 46px; font-size: 22px; }
+  #chuong-1 .home-holland-groups { margin-bottom: 10px; }
+  #chuong-1 .home-holland-actions { flex-wrap: nowrap; gap: 8px; }
+  #chuong-1 .home-holland-actions .bw-btn { width: auto; flex: 1; padding: 12px 10px; font-size: 14px; }
+  #chuong-3 .university-program-preview { display: none; }
+  #chuong-3 .university-card-actions :is(a, button) { min-height: 40px; }
+  .story-ending .flow-journey-heading { margin-bottom: 10px; }
+  .story-ending .flow-journey-heading > div { display: none; }
+}
+
+/* The ending already names this road; keep only the continue button from the shared journey header. */
+.story-ending .flow-journey-heading > div { display: none; }
+.story-ending .flow-journey-heading { justify-content: flex-start; }
+
+@media (prefers-reduced-motion: reduce) {
+  .month-now-dot { animation: none; box-shadow: 0 0 0 4px rgba(255, 176, 32, .25); }
+  .career-pick, .holland-code span.is-new, .month-card.is-new { animation: none; }
+}
+
+/* Sections that used to stand alone now sit inside a chapter column. */
+#chuong-1 .home-holland { margin: 0; padding: 0; max-width: none; }
+#chuong-1 .home-holland-card { margin: 0; max-width: 760px; }

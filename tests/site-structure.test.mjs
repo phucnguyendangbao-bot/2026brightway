@@ -51,14 +51,18 @@ test('every user-facing page loads the shared BrightWay colour theme', () => {
   assert.match(read('assets/css/admissions-home.css'), /\.bw-metric-band[^]*background:var\(--bw-brand-gradient\)/);
 });
 
-test('homepage starts with the hero and has one main career process', () => {
+test('homepage tells one journey: hero, five chapters in order, then the ending', () => {
   const home = read('index.html');
-  assert.ok(home.indexOf('<section class="bw-hero"') < home.indexOf('<section class="admissions-home"'));
-  assert.equal((home.match(/<section class="bw-roadmap/g) || []).length, 1);
-  assert.doesNotMatch(home, /<section class="bw-(audience|timeline|stage|next|schools-mini|school-gallery)/);
-  assert.doesNotMatch(home, /<div class="bw-(tabbar|fab|sticky-cta)/);
+  const order = ['id="hero-actions"', 'id="chuong-1"', 'id="chuong-2"', 'id="chuong-3"', 'id="chuong-4"', 'id="chuong-5"', 'id="chuong-ket"'];
+  order.reduce((previous, marker) => { const at = home.indexOf(marker); assert.ok(at > previous, marker); return at; }, -1);
+  for (const step of [0, 1, 2, 3, 4]) assert.equal((home.match(new RegExp(`data-step="${step}"`, 'g')) || []).length, 1);
+  assert.doesNotMatch(home, /<section class="bw-(roadmap|tools|waybi-home|audience|timeline|stage|next|schools-mini|school-gallery)/);
+  assert.doesNotMatch(home, /<div class="bw-(tabbar|fab|sticky-cta|metric-band)/);
+  assert.doesNotMatch(home, /SPA ROUTER|id="spa-view"|id="schoolModal"/);
   assert.match(home, /href="holland.html#import-result"/);
   assert.match(home, /href="calendar.html#study-plan"/);
+  assert.match(home, /data-journey-host/);
+  assert.match(home, /data-countdown-slot/);
 });
 
 test('five primary pages ship the shared navigation before JavaScript enhancement', () => {
@@ -90,9 +94,9 @@ test('12 study suggestions are separate from official admissions dates', () => {
   assert.match(calendar, /không tự xác định giai đoạn/);
 });
 
-test('home foregrounds three clear journeys, Waybi, and a three-group Holland picker', () => {
+test('home foregrounds three clear journeys, a Waybi guide per chapter, and a three-group Holland picker', () => {
   const home = read('index.html');
-  const hero = home.slice(home.indexOf('<section class="bw-hero"'), home.indexOf('<section class="bw-waybi-home"'));
+  const hero = home.slice(home.indexOf('<section class="bw-hero'), home.indexOf('id="chuong-1"'));
   assert.match(hero, /Đi để lối thành[\s\S]*đường của bạn/);
   assert.match(hero, /Bạn đang ở bước nào\?/);
   assert.match(hero, /href="holland.html"[\s\S]*Chưa biết chọn ngành gì/);
@@ -100,15 +104,20 @@ test('home foregrounds three clear journeys, Waybi, and a three-group Holland pi
   assert.match(hero, /href="score-calculator.html"[\s\S]*Muốn tính điểm xét tuyển/);
   assert.equal((hero.match(/class="home-journey-card"/g) || []).length, 3);
   assert.match(hero, /data-open-waybi/);
-  assert.equal((home.match(/id="waybi-home"/g) || []).length, 1);
-  assert.ok(home.indexOf('<section class="bw-waybi-home"') < home.indexOf('<section class="admissions-home"'));
-  assert.ok(home.indexOf('<section class="home-holland"') < home.indexOf('<section class="admissions-home"'));
+  assert.doesNotMatch(home, /id="waybi-home"/);
+  for (const n of [1, 2, 3, 4]) assert.match(home, new RegExp(`data-waybi-line="${n}"`));
+  const chapterOne = home.slice(home.indexOf('id="chuong-1"'), home.indexOf('id="chuong-2"'));
+  assert.match(chapterOne, /<section class="home-holland" id="home-holland"/);
+  assert.equal((chapterOne.match(/data-holland-slot=/g) || []).length, 3);
   for (const group of 'RIASEC') assert.match(home, new RegExp('data-holland-code="' + group + '"'));
   assert.match(home, /<strong>R<\/strong><span>Kỹ thuật<\/span>/);
   assert.match(home, /<strong>C<\/strong><span>Nghiệp vụ<\/span>/);
   assert.equal((home.match(/data-holland-code=/g) || []).length, 6);
   assert.match(home, /id="homeHollandSubmit" disabled/);
   assert.match(home, /Chọn đúng 3 nhóm theo thứ tự ưu tiên/);
+  const chapterThree = home.slice(home.indexOf('id="chuong-3"'), home.indexOf('id="chuong-4"'));
+  assert.match(chapterThree, /id="university-discovery"/);
+  assert.match(chapterThree, /id="admissions-news"/);
 });
 
 test('shared journey uses a versioned local profile and simplified navigation', () => {
@@ -166,30 +175,27 @@ test('manual Holland codes require exactly three distinct RIASEC letters', () =>
   assert.match(flow, /new Set\(code\)\.size === 3/);
 });
 
-test('homepage presents four useful linked figures as a responsive metric band', () => {
+test('homepage loading states keep their size instead of printing placeholder text', () => {
   const home = read('index.html');
-  const css = read('assets/css/admissions-home.css');
-  const band = home.slice(home.indexOf('<div class="bw-metric-band'), home.indexOf('<section class="bw-waybi-home"'));
-  assert.equal((band.match(/class="bw-metric-item"/g) || []).length, 4);
-  assert.match(band, /href="careers-holland\.html"[^]*>102<[^]*nghề nghiệp để khám phá/);
-  assert.match(band, /href="page2\.html"[^]*data-catalog-count[^]*hồ sơ trường đại học/);
-  assert.match(band, /href="holland\.html"[^]*>6<[^]*nhóm sở thích Holland/);
-  assert.match(band, /href="calendar\.html#study-plan"[^]*>12<[^]*tháng lập lộ trình/);
-  assert.doesNotMatch(band, /bw-trust-divider/);
-  assert.match(css, /\.bw-metric-band[^]*grid-template-columns:repeat\(4,minmax\(0,1fr\)\)/);
-  assert.match(css, /@media\(max-width:900px\)[^]*\.bw-metric-band[^]*repeat\(2,minmax\(0,1fr\)\)/);
+  const story = home.slice(home.indexOf('data-story'), home.indexOf('class="bw-faq"'));
+  assert.match(story, /data-catalog-count><span class="bw-skeleton-text"/);
+  assert.equal((story.match(/class="bw-skeleton university-skeleton"/g) || []).length, 3);
+  assert.doesNotMatch(story, />…</);
+  assert.doesNotMatch(story, />Đang tải hồ sơ giới thiệu trường…</);
+  assert.match(read('assets/css/motion.css'), /\.bw-skeleton\s*\{/);
 });
 
-test('homepage tool cards keep incomplete rows visually centered', () => {
+test('homepage motion uses shared tokens and keeps a single looping signal', () => {
   const home = read('index.html');
-  const theme = read('assets/css/brightway-theme.css');
-  assert.match(home, /\.bw-tools-grid\s*\{[^}]*grid-template-columns:\s*repeat\(6,\s*minmax\(0,\s*1fr\)\)/);
-  assert.match(home, /\.bw-tool-card:nth-child\(4\)\s*\{\s*grid-column:\s*2\s*\/\s*span\s*2/);
-  assert.match(home, /\.bw-tool-card:nth-child\(5\)\s*\{\s*grid-column:\s*4\s*\/\s*span\s*2/);
-  assert.match(home, /@media \(max-width:\s*640px\)[^]*\.bw-tools-grid\s*\{\s*grid-template-columns:\s*1fr/);
-  assert.match(home, /\.bw-tool-card\s*\{[^}]*display:\s*flex[^}]*min-height:\s*300px/);
-  assert.match(theme, /\.bw-tool-card \.icon\s*\{[^}]*aspect-ratio:\s*1\s*\/\s*1/);
-  assert.match(theme, /\.bw-tool-card \.icon img\s*\{[^}]*width:\s*auto[^}]*height:\s*auto[^}]*max-width:\s*100%[^}]*max-height:\s*100%[^}]*object-fit:\s*contain/);
+  const motion = read('assets/css/motion.css');
+  const story = read('assets/css/story.css');
+  for (const token of ['--motion-fast', '--motion-sm', '--motion-md', '--motion-lg', '--motion-ease']) assert.match(motion, new RegExp(token + ':'));
+  assert.match(motion, /prefers-reduced-motion: reduce/);
+  const loops = [home, story].join('\n').match(/animation:[^;]*infinite/g) || [];
+  assert.deepEqual(loops.map(rule => rule.match(/animation:\s*([\w-]+)/)[1]).sort(), ['bwDot', 'now-pulse']);
+  assert.doesNotMatch(home, /bwHeroAutoplay|setInterval\(next/);
+  assert.match(story, /prefers-reduced-motion: reduce[\s\S]*\.month-now-dot \{ animation: none/);
+  assert.doesNotMatch(read('assets/js/waybi-presence.js'), /infinite/);
 });
 
 test('career lookup has no quiz tab or mini-test; full test remains standalone', () => {

@@ -20,7 +20,7 @@
     return `<article class="admissions-news-card">
       <a class="admissions-news-photo ${image === placeholder ? 'admissions-news-placeholder' : ''}" href="${href}" tabindex="-1" aria-hidden="true"><img src="${escape(image)}" alt="" width="700" height="438" loading="lazy" onerror="this.onerror=null;this.parentNode.classList.add('admissions-news-placeholder');this.src='${placeholder}'"><span class="admissions-news-badge">${label}</span></a>
       <div class="admissions-news-body"><span class="admissions-news-school">BrightWay${!date || Number.isNaN(date.getTime()) ? '' : ' · ' + date.toLocaleDateString('vi-VN')}</span>
-        <h3><a href="${href}">${escape(post.title)}</a></h3><p>${escape(post.summary)}</p>
+        <h4><a href="${href}">${escape(post.title)}</a></h4><p>${escape(post.summary)}</p>
         <div class="admissions-news-links"><a href="${href}">Đọc bài viết →</a><a href="page2.html">Tra cứu trường →</a></div>
       </div>
     </article>`;
