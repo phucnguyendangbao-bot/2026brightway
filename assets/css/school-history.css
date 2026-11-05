@@ -3,25 +3,25 @@
 .school-years-label { display: block; margin-bottom: 8px; color: var(--text-dark); font-size: .85rem; font-weight: 700; }
 .school-year-controls { display: flex; flex-wrap: wrap; gap: 8px; }
 .school-year-controls button {
-  border: 1px solid #ded7fb; border-radius: 999px; background: #fff;
-  color: #564395; padding: 9px 16px; font: 700 .85rem var(--font);
+  border: 1px solid #b4e6d4; border-radius: 999px; background: #fff;
+  color: #285a48; padding: 9px 16px; font: 700 .85rem var(--font);
   cursor: pointer; min-height: 42px;
 }
 .school-year-controls button[aria-pressed="true"] { background: var(--grad); border-color: transparent; color: #fff; }
-.school-year-controls button:focus-visible { outline: 3px solid #b5a9e4; outline-offset: 3px; }
+.school-year-controls button:focus-visible { outline: 3px solid #77bfa4; outline-offset: 3px; }
 .school-year-panel[hidden] { display: none !important; }
 .school-history-content {
-  margin: 16px 20px 0; padding: 20px; border: 1px solid #ded7fb;
-  background: #f7f5fe; border-radius: 16px; color: var(--text-mid); line-height: 1.7;
+  margin: 16px 20px 0; padding: 20px; border: 1px solid #b4e6d4;
+  background: #edf9f5; border-radius: 16px; color: var(--text-mid); line-height: 1.7;
 }
 .school-history-heading { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
 .school-history-content h3 { color: var(--text-dark); font-size: 1rem; }
 .school-history-content p { margin-top: 12px; }
-.school-history-status { flex-shrink: 0; border-radius: 999px; padding: 3px 10px; background: #e9e4fc; color: #564395; font-size: .75rem; font-weight: 700; }
+.school-history-status { flex-shrink: 0; border-radius: 999px; padding: 3px 10px; background: #cdeee2; color: #285a48; font-size: .75rem; font-weight: 700; }
 .school-history-note, .school-history-meta { font-size: .82rem; }
 .school-history-links { display: flex; flex-wrap: wrap; gap: 10px 18px; margin-top: 16px; }
-.school-history-links a { color: #5d3dc2; font-size: .85rem; font-weight: 700; text-underline-offset: 3px; overflow-wrap: anywhere; }
-.school-history-disclaimer { padding-top: 12px; border-top: 1px solid #ded7fb; font-size: .8rem; }
+.school-history-links a { color: #2d604e; font-size: .85rem; font-weight: 700; text-underline-offset: 3px; overflow-wrap: anywhere; }
+.school-history-disclaimer { padding-top: 12px; border-top: 1px solid #b4e6d4; font-size: .8rem; }
 @media (max-width:640px) {
   .school-years { padding: 16px 12px 0; }
   .school-history-content { margin: 14px 12px 0; padding: 16px; }

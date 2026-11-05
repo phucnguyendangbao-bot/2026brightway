@@ -57,12 +57,12 @@
         padding: 8px 18px !important;
         border-radius: 999px !important;
         font-weight: 800 !important;
-        box-shadow: 0 3px 10px rgba(118, 105, 208,0.30);
+        box-shadow: 0 3px 10px rgba(62, 132, 104,0.30);
         text-decoration: none;
         transition: all .2s;
         white-space: nowrap;
       }
-      .btn-nav-login:hover { transform: translateY(-1px); box-shadow: 0 5px 14px rgba(118, 105, 208,0.42); }
+      .btn-nav-login:hover { transform: translateY(-1px); box-shadow: 0 5px 14px rgba(62, 132, 104,0.42); }
       .nav-user-menu {
         position: relative;
         display: block;
@@ -73,11 +73,11 @@
         gap: 10px;
         min-height: 44px;
         padding: 4px 10px 4px 4px;
-        border: 1px solid rgba(118, 105, 208, .16);
+        border: 1px solid rgba(62, 132, 104, .16);
         border-radius: 999px;
         background: rgba(255, 255, 255, .72);
-        color: var(--text, #282248);
-        box-shadow: 0 6px 20px rgba(66, 55, 123, .08), inset 0 1px 0 rgba(255, 255, 255, .85);
+        color: var(--text, #152c23);
+        box-shadow: 0 6px 20px rgba(33, 73, 57, .08), inset 0 1px 0 rgba(255, 255, 255, .85);
         backdrop-filter: blur(16px) saturate(145%);
         -webkit-backdrop-filter: blur(16px) saturate(145%);
         cursor: pointer;
@@ -87,18 +87,18 @@
       .nav-user-trigger:hover,
       .nav-user-trigger[aria-expanded="true"] {
         transform: translateY(-1px);
-        border-color: rgba(118, 105, 208, .34);
+        border-color: rgba(62, 132, 104, .34);
         background: rgba(255, 255, 255, .9);
-        box-shadow: 0 10px 28px rgba(66, 55, 123, .14), inset 0 1px 0 #fff;
+        box-shadow: 0 10px 28px rgba(33, 73, 57, .14), inset 0 1px 0 #fff;
       }
       .nav-user-trigger:focus-visible {
-        outline: 3px solid rgba(118, 105, 208, .22);
+        outline: 3px solid rgba(62, 132, 104, .22);
         outline-offset: 3px;
       }
       .nav-avatar {
         width: 34px; height: 34px;
         border-radius: 50%;
-        background: linear-gradient(135deg, #7e6ed1, #5e4cc7);
+        background: linear-gradient(135deg, #41896e, #326a55);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -109,14 +109,14 @@
         flex-shrink: 0;
         overflow: hidden;
         border: 2px solid rgba(255, 255, 255, .92);
-        box-shadow: 0 0 0 1px rgba(118, 105, 208, .18), 0 3px 10px rgba(94, 76, 199, .18);
+        box-shadow: 0 0 0 1px rgba(62, 132, 104, .18), 0 3px 10px rgba(50, 106, 85, .18);
       }
       .nav-avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
       .nav-user-name {
         display: block;
         max-width: 156px;
         overflow: hidden;
-        color: var(--text, #282248);
+        color: var(--text, #152c23);
         font-size: 13px;
         font-weight: 800;
         line-height: 1.2;
@@ -151,7 +151,7 @@
         background: rgba(255, 255, 255, .88);
         border: 1px solid rgba(255, 255, 255, .78);
         border-radius: 22px;
-        box-shadow: 0 24px 70px rgba(48, 40, 89, .2), 0 4px 16px rgba(94, 76, 199, .08), inset 0 1px 0 #fff;
+        box-shadow: 0 24px 70px rgba(24, 53, 42, .2), 0 4px 16px rgba(50, 106, 85, .08), inset 0 1px 0 #fff;
         backdrop-filter: blur(24px) saturate(155%);
         -webkit-backdrop-filter: blur(24px) saturate(155%);
         transition: opacity .18s ease, transform .18s ease, visibility .18s;
@@ -162,8 +162,8 @@
         inset: 0;
         z-index: -1;
         background:
-          radial-gradient(circle at 92% 4%, rgba(148, 140, 219, .16), transparent 38%),
-          linear-gradient(145deg, rgba(255, 255, 255, .7), rgba(247, 247, 254, .42));
+          radial-gradient(circle at 92% 4%, rgba(78, 165, 130, .16), transparent 38%),
+          linear-gradient(145deg, rgba(255, 255, 255, .7), rgba(240, 250, 246, .42));
         pointer-events: none;
       }
       .nav-dropdown.show {
@@ -188,10 +188,10 @@
       }
       .nav-role-badge {
         padding: 4px 8px;
-        border: 1px solid rgba(118, 105, 208, .12);
+        border: 1px solid rgba(62, 132, 104, .12);
         border-radius: 999px;
-        background: rgba(118, 105, 208, .08);
-        color: #604dc7;
+        background: rgba(62, 132, 104, .08);
+        color: #326b56;
         font-size: 10px;
         font-weight: 900;
       }
@@ -205,7 +205,7 @@
         border-radius: 14px;
         background: transparent;
         border: 1px solid transparent;
-        color: var(--text, #282248);
+        color: var(--text, #152c23);
         text-decoration: none;
         cursor: pointer;
         font-family: inherit;
@@ -215,10 +215,10 @@
       .nav-dropdown a:hover, .nav-dropdown button:hover,
       .nav-dropdown a:focus-visible, .nav-dropdown button:focus-visible {
         transform: translateX(2px);
-        border-color: rgba(118, 105, 208, .11);
+        border-color: rgba(62, 132, 104, .11);
         outline: none;
         background: rgba(255, 255, 255, .7);
-        box-shadow: 0 7px 18px rgba(94, 76, 199, .08);
+        box-shadow: 0 7px 18px rgba(50, 106, 85, .08);
       }
       .nav-menu-icon {
         display: grid;
@@ -227,8 +227,8 @@
         flex: 0 0 34px;
         place-items: center;
         border-radius: 11px;
-        background: rgba(118, 105, 208, .1);
-        color: #6552c9;
+        background: rgba(62, 132, 104, .1);
+        color: #357059;
       }
       .nav-menu-icon svg { width: 17px; height: 17px; }
       .nav-menu-copy { min-width: 0; }
@@ -249,18 +249,18 @@
       }
       .nav-dropdown .divider {
         height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(118, 105, 208, .18), transparent);
+        background: linear-gradient(90deg, transparent, rgba(62, 132, 104, .18), transparent);
         margin: 5px 4px;
       }
       .nav-dropdown .staff-link {
-        background: linear-gradient(135deg, rgba(118, 105, 208, .11), rgba(131, 107, 208, .08));
-        border-color: rgba(118, 105, 208, .12);
-        color: #5c48c5;
+        background: linear-gradient(135deg, rgba(62, 132, 104, .11), rgba(64, 136, 111, .08));
+        border-color: rgba(62, 132, 104, .12);
+        color: #306752;
       }
       .nav-dropdown .staff-link .nav-menu-icon {
-        background: linear-gradient(135deg, #7867cf, #836bd0);
+        background: linear-gradient(135deg, #3e8369, #40886f);
         color: #fff;
-        box-shadow: 0 6px 15px rgba(120, 103, 207, .25);
+        box-shadow: 0 6px 15px rgba(62, 131, 105, .25);
       }
       .nav-dropdown .danger { color: #d94646; }
       .nav-dropdown .danger .nav-menu-icon { background: rgba(239, 68, 68, .09); color: #e04747; }

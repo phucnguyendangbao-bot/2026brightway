@@ -8,18 +8,18 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --bg:linear-gradient(145deg,#ededfd 0%,#e6e6fc 20%,#e4dffb 50%,#e5e5fc 80%,#ecedfd 100%);
+  --bg:linear-gradient(145deg,#ddf4ea 0%,#cfefe1 20%,#c3ebdc 50%,#cdeee0 80%,#dcf3e9 100%);
   --glass:rgba(255,255,255,0.62);
-  --grad:linear-gradient(135deg,#807bd5 0%,#7c66cf 50%,#8a6cd1 100%);
-  --grad-btn:linear-gradient(135deg,#908cdb 0%,#8a77d4 100%);
-  --text-dark:#1e1a39;
-  --text-mid:#3f396c;
-  --text-soft:#7875b0;
-  --accent:#7669d0;
-  --accent2:#a392dd;
+  --grad:linear-gradient(135deg,#459473 0%,#3e836a 50%,#418b72 100%);
+  --grad-btn:linear-gradient(135deg,#4da480 0%,#459376 100%);
+  --text-dark:#0f221b;
+  --text-mid:#254639;
+  --text-soft:#4d866e;
+  --accent:#3e8468;
+  --accent2:#51ad8c;
   --white:#ffffff;
-  --shadow:0 8px 32px rgba(118, 105, 208,0.15);
-  --shadow-lg:0 16px 48px rgba(118, 105, 208,0.2);
+  --shadow:0 8px 32px rgba(62, 132, 104,0.15);
+  --shadow-lg:0 16px 48px rgba(62, 132, 104,0.2);
   --font:'Be Vietnam Pro',system-ui,sans-serif;
   --font-display:'Quicksand','Be Vietnam Pro',sans-serif;
 }
@@ -39,7 +39,7 @@ body{font-family:var(--font);color:var(--text-dark);background:var(--bg);min-hei
 .iv-page-hero .tag{
   display:inline-flex;align-items:center;gap:6px;
   background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.3);
-  color:#e7e5fc;font-size:.75rem;font-weight:700;letter-spacing:.06em;
+  color:#ceefe1;font-size:.75rem;font-weight:700;letter-spacing:.06em;
   padding:4px 12px;border-radius:999px;margin-bottom:14px;
 }
 .iv-page-hero h1{font-family:var(--font-display);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;line-height:1.2;margin-bottom:10px;}
@@ -57,13 +57,13 @@ body{font-family:var(--font);color:var(--text-dark);background:var(--bg);min-hei
 .iv-nav-btn{
   flex-shrink:0;
   display:inline-flex;align-items:center;gap:6px;
-  padding:8px 16px;border-radius:999px;border:1.5px solid rgba(118, 105, 208,0.22);
+  padding:8px 16px;border-radius:999px;border:1.5px solid rgba(62, 132, 104,0.22);
   background:rgba(255,255,255,0.7);color:var(--text-mid);font-size:.82rem;font-weight:700;
   cursor:pointer;transition:all .2s;white-space:nowrap;backdrop-filter:blur(8px);
   font-family:var(--font);
 }
 .iv-nav-btn:hover{background:#fff;border-color:var(--accent);color:var(--accent);}
-.iv-nav-btn.active{background:var(--grad-btn);color:#fff;border-color:transparent;box-shadow:0 6px 18px rgba(118, 105, 208,0.32);}
+.iv-nav-btn.active{background:var(--grad-btn);color:#fff;border-color:transparent;box-shadow:0 6px 18px rgba(62, 132, 104,0.32);}
 
 /* ── TOPIC CARD ── */
 .iv-topic{
@@ -79,13 +79,13 @@ body{font-family:var(--font);color:var(--text-dark);background:var(--bg);min-hei
 .iv-topic.active{display:block;}
 .iv-topic-head{
   padding:24px 26px 20px;
-  border-bottom:1px solid rgba(118, 105, 208,0.1);
+  border-bottom:1px solid rgba(62, 132, 104,0.1);
   display:flex;align-items:flex-start;gap:14px;
 }
 .iv-topic-icon{
   width:52px;height:52px;border-radius:16px;flex-shrink:0;
   display:flex;align-items:center;justify-content:center;font-size:1.5rem;
-  background:linear-gradient(135deg,rgba(118, 105, 208,0.12),rgba(163, 146, 221,0.12));
+  background:linear-gradient(135deg,rgba(62, 132, 104,0.12),rgba(81, 173, 140,0.12));
 }
 .iv-topic-meta{flex:1;}
 .iv-topic-title{font-family:var(--font-display);font-size:1.2rem;font-weight:800;color:var(--text-dark);margin-bottom:6px;}
@@ -104,20 +104,20 @@ body{font-family:var(--font);color:var(--text-dark);background:var(--bg);min-hei
 @media(min-width:640px){.iv-info-row{grid-template-columns:1fr 1fr;}}
 .iv-info-box{
   border-radius:14px;padding:14px 16px;
-  border:1px solid rgba(118, 105, 208,0.15);background:rgba(249, 248, 254,0.7);
+  border:1px solid rgba(62, 132, 104,0.15);background:rgba(242, 251, 247,0.7);
 }
 .iv-info-box h4{font-size:.82rem;font-weight:800;color:var(--accent);margin-bottom:8px;display:flex;align-items:center;gap:6px;text-transform:uppercase;letter-spacing:.05em;}
 .iv-info-box ul{padding-left:14px;display:flex;flex-direction:column;gap:4px;}
 .iv-info-box li{font-size:.84rem;color:var(--text-soft);}
-.iv-info-box.intent{border-color:rgba(131, 107, 208,0.2);background:rgba(131, 107, 208,0.04);}
-.iv-info-box.intent h4{color:#7051c8;}
+.iv-info-box.intent{border-color:rgba(64, 136, 111,0.2);background:rgba(64, 136, 111,0.04);}
+.iv-info-box.intent h4{color:#35725d;}
 
 /* ── ANSWER TABS ── */
 .iv-ans-label{font-size:.92rem;font-weight:700;color:var(--text-dark);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
 .iv-ans-label svg{width:16px;height:16px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 .iv-ans-tabs{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap;}
 .iv-ans-tab{
-  padding:6px 14px;border-radius:999px;border:1.5px solid rgba(118, 105, 208,0.22);
+  padding:6px 14px;border-radius:999px;border:1.5px solid rgba(62, 132, 104,0.22);
   background:transparent;color:var(--text-soft);font-size:.78rem;font-weight:700;
   cursor:pointer;transition:all .18s;font-family:var(--font);
 }
@@ -129,7 +129,7 @@ body{font-family:var(--font);color:var(--text-dark);background:var(--bg);min-hei
 
 .iv-ans-card{
   border-radius:16px;padding:18px 20px;
-  border:1.5px solid rgba(118, 105, 208,0.15);
+  border:1.5px solid rgba(62, 132, 104,0.15);
   background:rgba(255,255,255,0.85);
   position:relative;
 }
@@ -155,7 +155,7 @@ body{font-family:var(--font);color:var(--text-dark);background:var(--bg);min-hei
 /* ── STAR EXPLAINER ── */
 .iv-star-tip{
   border-radius:14px;padding:14px 16px;
-  border:1px solid rgba(118, 105, 208,0.2);background:rgba(118, 105, 208,0.04);
+  border:1px solid rgba(62, 132, 104,0.2);background:rgba(62, 132, 104,0.04);
   display:flex;align-items:flex-start;gap:10px;
 }
 .iv-star-tip svg{width:16px;height:16px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:2px;}
@@ -165,7 +165,7 @@ body{font-family:var(--font);color:var(--text-dark);background:var(--bg);min-hei
 /* ── PROGRESS BAR ── */
 .iv-progress-section{margin-bottom:28px;}
 .iv-progress-label{font-size:.82rem;font-weight:700;color:var(--text-soft);margin-bottom:6px;}
-.iv-progress-track{width:100%;height:6px;border-radius:999px;background:rgba(118, 105, 208,0.1);overflow:hidden;}
+.iv-progress-track{width:100%;height:6px;border-radius:999px;background:rgba(62, 132, 104,0.1);overflow:hidden;}
 .iv-progress-fill{height:100%;border-radius:999px;background:var(--grad);transition:width .5s ease;}
 
 /* ── FRAMEWORK BOX ── */
@@ -184,8 +184,8 @@ body{font-family:var(--font);color:var(--text-dark);background:var(--bg);min-hei
 
 /* ── SCROLLBAR ── */
 ::-webkit-scrollbar{width:5px;height:5px;}
-::-webkit-scrollbar-track{background:rgba(118, 105, 208,0.05);}
-::-webkit-scrollbar-thumb{background:rgba(118, 105, 208,0.25);border-radius:3px;}
+::-webkit-scrollbar-track{background:rgba(62, 132, 104,0.05);}
+::-webkit-scrollbar-thumb{background:rgba(62, 132, 104,0.25);border-radius:3px;}
 </style>
 <link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261105p">
 <link rel="stylesheet" href="/assets/css/flow.css?v=20261105p">

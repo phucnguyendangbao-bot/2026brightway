@@ -10,13 +10,13 @@
   ];
 
   const HOLLAND_META = {
-    all: { label: 'Tất cả', emoji: '🌐', color: '#7669d0', desc: 'Mọi nhóm' },
+    all: { label: 'Tất cả', emoji: '🌐', color: '#3e8468', desc: 'Mọi nhóm' },
     R: { label: 'Kỹ thuật', emoji: '🔧', color: '#f59e0b', desc: 'Làm việc với tay, máy móc.' },
-    I: { label: 'Nghiên cứu', emoji: '🔬', color: '#7669d0', desc: 'Phân tích, khám phá, giải quyết vấn đề.' },
+    I: { label: 'Nghiên cứu', emoji: '🔬', color: '#3e8468', desc: 'Phân tích, khám phá, giải quyết vấn đề.' },
     A: { label: 'Nghệ thuật', emoji: '🎨', color: '#ec4899', desc: 'Sáng tạo, biểu đạt phong phú.' },
     S: { label: 'Xã hội', emoji: '🤝', color: '#10b981', desc: 'Giao tiếp, giúp đỡ mọi người.' },
     E: { label: 'Lãnh đạo', emoji: '🚀', color: '#f97316', desc: 'Kinh doanh, thuyết phục, dẫn dắt.' },
-    C: { label: 'Nghiệp vụ', emoji: '📊', color: '#7c7cd6', desc: 'Trật tự, chi tiết, dữ liệu.' }
+    C: { label: 'Nghiệp vụ', emoji: '📊', color: '#459472', desc: 'Trật tự, chi tiết, dữ liệu.' }
   };
 
   const state = {

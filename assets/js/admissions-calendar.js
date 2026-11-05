@@ -4,7 +4,7 @@ import { officialEvents, nextOfficialEvent } from './calendar-rules.js';
 const categories = {
   thi: { color: '#ef4444', icon: '📝' },
   nop: { color: '#f59e0b', icon: '📤' },
-  cbt: { color: '#7c7cd6', icon: '📊' },
+  cbt: { color: '#459472', icon: '📊' },
 };
 const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const selector = document.getElementById('calendarYear');

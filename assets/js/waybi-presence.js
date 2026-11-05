@@ -21,7 +21,7 @@
         position: fixed; bottom: 20px; left: 20px; z-index: 9990;
         width: 48px; height: 48px;
         background: #fff; border-radius: 50%;
-        box-shadow: 0 4px 16px rgba(118, 105, 208,0.25);
+        box-shadow: 0 4px 16px rgba(62, 132, 104,0.25);
         display: flex; align-items: center; justify-content: center;
         padding: 4px;
         cursor: pointer;
@@ -36,12 +36,12 @@
         position: relative; z-index: 1;
       }
       .waybi-banner-card {
-        background: linear-gradient(135deg, #908cdb 0%, #8a77d4 50%, #a392dd 100%);
+        background: linear-gradient(135deg, #4da480 0%, #459376 50%, #51ad8c 100%);
         border-radius: 18px;
         padding: 18px 22px;
         display: flex; align-items: center; gap: 18px;
         color: #fff;
-        box-shadow: 0 8px 28px rgba(118, 105, 208,0.28);
+        box-shadow: 0 8px 28px rgba(62, 132, 104,0.28);
         position: relative;
         overflow: hidden;
       }
@@ -78,7 +78,7 @@
         font-size: 0.82rem; opacity: 0.95; margin: 0; line-height: 1.5;
       }
       .waybi-banner-cta {
-        background: #fff; color: #7669d0;
+        background: #fff; color: #3e8468;
         font-weight: 800; font-size: 0.78rem;
         padding: 8px 16px; border-radius: 999px;
         text-decoration: none; white-space: nowrap;
@@ -110,8 +110,8 @@
       /* ═══ 3. WAYBI TAG inline (dùng trong heading) ═══ */
       .waybi-tag {
         display: inline-flex; align-items: center; gap: 6px;
-        background: linear-gradient(135deg, rgba(144, 140, 219,0.12), rgba(163, 146, 221,0.12));
-        border: 1.5px solid rgba(118, 105, 208,0.25);
+        background: linear-gradient(135deg, rgba(77, 164, 128,0.12), rgba(81, 173, 140,0.12));
+        border: 1.5px solid rgba(62, 132, 104,0.25);
         color: var(--accent);
         font-family: var(--font-display, 'Quicksand', 'Be Vietnam Pro', sans-serif);
         font-weight: 800; font-size: 0.72rem;
@@ -127,9 +127,9 @@
       /* ═══ 4. EMPTY STATE — Waybi bảo chưa có data ═══ */
       .waybi-empty {
         text-align: center; padding: 36px 20px;
-        background: linear-gradient(180deg, rgba(144, 140, 219,0.04), rgba(163, 146, 221,0.04));
+        background: linear-gradient(180deg, rgba(77, 164, 128,0.04), rgba(81, 173, 140,0.04));
         border-radius: 16px;
-        border: 1.5px dashed rgba(118, 105, 208,0.25);
+        border: 1.5px dashed rgba(62, 132, 104,0.25);
         max-width: 480px; margin: 20px auto;
       }
       .waybi-empty-mascot {
@@ -140,11 +140,11 @@
       }
       .waybi-empty h4 {
         font-family: var(--font-display, 'Quicksand', 'Be Vietnam Pro', sans-serif); font-weight: 700;
-        font-size: 1rem; color: var(--text-dark, #1e1a39);
+        font-size: 1rem; color: var(--text-dark, #0f221b);
         margin: 0 0 6px;
       }
       .waybi-empty p {
-        font-size: 0.84rem; color: var(--text-soft, #7875b0);
+        font-size: 0.84rem; color: var(--text-soft, #4d866e);
         margin: 0 0 14px;
       }
     </style>

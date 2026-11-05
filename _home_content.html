@@ -5,20 +5,20 @@
 
 <style>
   #home-view {
-    background: linear-gradient(145deg, #ededfd 0%, #e6e6fc 20%, #e4dffb 50%, #e5e5fc 80%, #ecedfd 100%);
-    color: #1e1a39;
+    background: linear-gradient(145deg, #ddf4ea 0%, #cfefe1 20%, #c3ebdc 50%, #cdeee0 80%, #dcf3e9 100%);
+    color: #0f221b;
     font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
     padding-bottom: 0;
     position: relative;
   }
   #home-view::before {
     content:'';position:fixed;top:-15%;left:-10%;width:55vw;height:55vw;
-    background:radial-gradient(circle,rgba(131, 112, 210,0.18),transparent 65%);
+    background:radial-gradient(circle,rgba(66, 140, 113,0.18),transparent 65%);
     border-radius:50%;pointer-events:none;z-index:0;
   }
   #home-view::after {
     content:'';position:fixed;bottom:-15%;right:-10%;width:50vw;height:50vw;
-    background:radial-gradient(circle,rgba(156, 158, 224,0.16),transparent 65%);
+    background:radial-gradient(circle,rgba(95, 180, 142,0.16),transparent 65%);
     border-radius:50%;pointer-events:none;z-index:0;
   }
   #home-view * { position: relative; z-index: 1; }
@@ -32,9 +32,9 @@
   }
   .bw-hero .badge {
     display:inline-flex; align-items:center; gap:6px;
-    background: rgba(118, 105, 208,0.12);
-    border: 1px solid rgba(118, 105, 208,0.22);
-    color: #7669d0; font-weight: 700; font-size: 13px;
+    background: rgba(62, 132, 104,0.12);
+    border: 1px solid rgba(62, 132, 104,0.22);
+    color: #3e8468; font-weight: 700; font-size: 13px;
     padding: 8px 16px; border-radius: 999px;
     margin-bottom: 24px;
   }
@@ -43,11 +43,11 @@
     font-weight: 800;
     line-height: 1.12;
     margin: 0 0 20px;
-    color: #1e1a39;
+    color: #0f221b;
     letter-spacing: -0.02em;
   }
   .bw-hero h1 .grad {
-    background: linear-gradient(135deg,#807bd5 0%,#7c66cf 50%,#8a6cd1 100%);
+    background: linear-gradient(135deg,#459473 0%,#3e836a 50%,#418b72 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -55,12 +55,12 @@
   }
   .bw-hero .lede {
     font-size: 18px;
-    color: #3f396c;
+    color: #254639;
     max-width: 640px;
     margin: 0 auto 32px;
     line-height: 1.6;
   }
-  .bw-hero .lede strong { color: #7669d0; font-weight: 700; }
+  .bw-hero .lede strong { color: #3e8468; font-weight: 700; }
 
   /* Buttons */
   .bw-btn {
@@ -73,21 +73,21 @@
     cursor: pointer; border: none;
   }
   .bw-btn-primary {
-    background: linear-gradient(135deg,#908cdb 0%,#8a77d4 100%);
+    background: linear-gradient(135deg,#4da480 0%,#459376 100%);
     color: #fff;
-    box-shadow: 0 8px 24px rgba(118, 105, 208,0.32);
+    box-shadow: 0 8px 24px rgba(62, 132, 104,0.32);
   }
   .bw-btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(118, 105, 208,0.42);
+    box-shadow: 0 12px 32px rgba(62, 132, 104,0.42);
   }
   .bw-btn-outline {
     background: rgba(255,255,255,0.72);
-    color: #7669d0;
-    border: 1.5px solid rgba(118, 105, 208,0.3);
+    color: #3e8468;
+    border: 1.5px solid rgba(62, 132, 104,0.3);
   }
   .bw-btn-outline:hover {
-    background: #fff; border-color: #7669d0;
+    background: #fff; border-color: #3e8468;
     transform: translateY(-2px);
   }
 
@@ -99,7 +99,7 @@
     text-align: center;
     font-size: 13px;
     font-weight: 700;
-    color: #7669d0;
+    color: #3e8468;
     text-transform: uppercase;
     letter-spacing: 0.14em;
     margin-bottom: 12px;
@@ -109,12 +109,12 @@
     font-size: 32px;
     font-weight: 800;
     margin: 0 0 12px;
-    color: #1e1a39;
+    color: #0f221b;
     letter-spacing: -0.02em;
   }
   .section-sub {
     text-align: center;
-    color: #3f396c;
+    color: #254639;
     font-size: 16px;
     margin: 0 0 40px;
   }
@@ -136,18 +136,18 @@
     transition: all 0.18s ease;
   }
   .bw-stage-card:hover {
-    border-color: #a392dd;
+    border-color: #51ad8c;
     transform: translateY(-3px);
-    box-shadow: 0 12px 28px rgba(118, 105, 208,0.12);
+    box-shadow: 0 12px 28px rgba(62, 132, 104,0.12);
   }
   .bw-stage-card.active {
-    border-color: #7669d0;
+    border-color: #3e8468;
     background: rgba(255,255,255,0.95);
-    box-shadow: 0 12px 32px rgba(118, 105, 208,0.22);
+    box-shadow: 0 12px 32px rgba(62, 132, 104,0.22);
   }
   .bw-stage-card .emoji { font-size: 32px; margin-bottom: 6px; }
-  .bw-stage-card .label { font-size: 17px; font-weight: 700; color: #1e1a39; }
-  .bw-stage-card .desc { font-size: 13px; color: #7875b0; margin-top: 2px; }
+  .bw-stage-card .label { font-size: 17px; font-weight: 700; color: #0f221b; }
+  .bw-stage-card .desc { font-size: 13px; color: #4d866e; margin-top: 2px; }
 
   /* === ROADMAP === */
   .bw-roadmap {
@@ -164,32 +164,32 @@
     border-radius: 20px;
     padding: 28px 24px;
     border: 1.5px solid rgba(255,255,255,0.9);
-    box-shadow: 0 4px 16px rgba(118, 105, 208,0.06);
+    box-shadow: 0 4px 16px rgba(62, 132, 104,0.06);
     transition: all 0.2s ease;
   }
   .bw-step:hover {
     transform: translateY(-4px);
-    box-shadow: 0 16px 36px rgba(118, 105, 208,0.18);
+    box-shadow: 0 16px 36px rgba(62, 132, 104,0.18);
   }
   .bw-step-num {
     display: inline-flex;
     align-items: center; justify-content: center;
     width: 48px; height: 48px;
     border-radius: 50%;
-    background: linear-gradient(135deg,#908cdb 0%,#8a77d4 100%);
+    background: linear-gradient(135deg,#4da480 0%,#459376 100%);
     color: #fff;
     font-size: 22px;
     font-weight: 800;
     margin-bottom: 14px;
-    box-shadow: 0 6px 16px rgba(118, 105, 208,0.32);
+    box-shadow: 0 6px 16px rgba(62, 132, 104,0.32);
   }
   .bw-step h3 {
     font-size: 18px; font-weight: 700;
-    margin: 0 0 6px; color: #1e1a39;
+    margin: 0 0 6px; color: #0f221b;
   }
   .bw-step p.goal {
     font-size: 13px;
-    color: #7669d0;
+    color: #3e8468;
     font-weight: 700;
     margin: 0 0 14px;
     text-transform: uppercase;
@@ -198,18 +198,18 @@
   .bw-step ul { list-style: none; padding: 0; margin: 0 0 18px; }
   .bw-step ul li {
     font-size: 14px;
-    color: #3f396c;
+    color: #254639;
     padding: 5px 0 5px 22px;
     position: relative;
     line-height: 1.5;
   }
   .bw-step ul li::before {
     content: "✓"; position: absolute; left: 0;
-    color: #7c66cf; font-weight: 700;
+    color: #3e836a; font-weight: 700;
   }
   .bw-step .step-cta {
     display: inline-flex; align-items: center; gap: 6px;
-    color: #7669d0; font-weight: 700; font-size: 14px;
+    color: #3e8468; font-weight: 700; font-size: 14px;
     text-decoration: none;
   }
   .bw-step .step-cta:hover { gap: 10px; }
@@ -230,7 +230,7 @@
     position: absolute;
     left: 24px; top: 0; bottom: 0;
     width: 2px;
-    background: linear-gradient(180deg, #7669d0 0%, #a392dd 100%);
+    background: linear-gradient(180deg, #3e8468 0%, #51ad8c 100%);
   }
   .bw-tl-item {
     display: flex;
@@ -243,18 +243,18 @@
     width: 50px; height: 50px;
     border-radius: 50%;
     background: #fff;
-    border: 3px solid #7669d0;
+    border: 3px solid #3e8468;
     display: flex; align-items: center; justify-content: center;
     font-weight: 800; font-size: 13px;
-    color: #7669d0;
-    box-shadow: 0 4px 12px rgba(118, 105, 208,0.2);
+    color: #3e8468;
+    box-shadow: 0 4px 12px rgba(62, 132, 104,0.2);
     z-index: 1;
   }
   .bw-tl-dot.now {
-    background: linear-gradient(135deg,#908cdb 0%,#8a77d4 100%);
+    background: linear-gradient(135deg,#4da480 0%,#459376 100%);
     color: #fff;
     border-color: #fff;
-    box-shadow: 0 6px 18px rgba(118, 105, 208,0.4);
+    box-shadow: 0 6px 18px rgba(62, 132, 104,0.4);
   }
   .bw-tl-content {
     background: rgba(255,255,255,0.85);
@@ -267,8 +267,8 @@
   .bw-tl-content .when {
     display: inline-block;
     font-size: 12px; font-weight: 700;
-    color: #7c66cf;
-    background: rgba(163, 146, 221,0.15);
+    color: #3e836a;
+    background: rgba(81, 173, 140,0.15);
     padding: 4px 10px;
     border-radius: 999px;
     margin-bottom: 8px;
@@ -276,13 +276,13 @@
   .bw-tl-content h4 {
     margin: 0 0 6px;
     font-size: 16px;
-    color: #1e1a39;
+    color: #0f221b;
     font-weight: 700;
   }
   .bw-tl-content p {
     margin: 0;
     font-size: 14px;
-    color: #3f396c;
+    color: #254639;
     line-height: 1.5;
   }
 
@@ -308,12 +308,12 @@
     text-decoration: none;
     display: block;
     color: inherit;
-    box-shadow: 0 4px 16px rgba(118, 105, 208,0.06);
+    box-shadow: 0 4px 16px rgba(62, 132, 104,0.06);
   }
   .bw-tool-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 16px 36px rgba(118, 105, 208,0.18);
-    border-color: #a392dd;
+    box-shadow: 0 16px 36px rgba(62, 132, 104,0.18);
+    border-color: #51ad8c;
   }
   .bw-tool-card .icon {
     font-size: 36px;
@@ -323,11 +323,11 @@
     font-size: 18px;
     font-weight: 700;
     margin: 0 0 6px;
-    color: #1e1a39;
+    color: #0f221b;
   }
   .bw-tool-card p {
     font-size: 14px;
-    color: #3f396c;
+    color: #254639;
     margin: 0;
     line-height: 1.5;
   }
@@ -339,12 +339,12 @@
   .bw-next-card {
     max-width: 760px;
     margin: 0 auto;
-    background: linear-gradient(135deg,#807bd5 0%,#7c66cf 50%,#8a6cd1 100%);
+    background: linear-gradient(135deg,#459473 0%,#3e836a 50%,#418b72 100%);
     border-radius: 24px;
     padding: 40px 36px;
     color: #fff;
     text-align: center;
-    box-shadow: 0 20px 50px rgba(118, 105, 208,0.32);
+    box-shadow: 0 20px 50px rgba(62, 132, 104,0.32);
   }
   .bw-next-card .label {
     font-size: 12px;
@@ -367,11 +367,11 @@
   }
   .bw-next-card .bw-btn {
     background: #fff;
-    color: #7669d0;
+    color: #3e8468;
   }
   .bw-next-card .bw-btn:hover {
-    background: #f9fafd;
-    color: #5e4cc7;
+    background: #f5fcf8;
+    color: #326a55;
   }
 
   /* === FAQ === */
@@ -385,7 +385,7 @@
   }
   .bw-faq-item {
     background: rgba(255,255,255,0.9);
-    border: 1px solid rgba(118, 105, 208,0.12);
+    border: 1px solid rgba(62, 132, 104,0.12);
     border-radius: 14px;
     margin-bottom: 12px;
     overflow: hidden;
@@ -394,7 +394,7 @@
   .bw-faq-item summary {
     padding: 18px 24px;
     font-weight: 600;
-    color: #1e1a39;
+    color: #0f221b;
     cursor: pointer;
     list-style: none;
     display: flex;
@@ -405,22 +405,22 @@
   .bw-faq-item summary::-webkit-details-marker { display: none; }
   .bw-faq-item summary::after {
     content: "+"; font-size: 24px;
-    color: #7669d0;
+    color: #3e8468;
     font-weight: 300;
     transition: transform 0.2s;
   }
   .bw-faq-item[open] summary::after { transform: rotate(45deg); }
   .bw-faq-item .faq-body {
     padding: 0 24px 20px;
-    color: #3f396c;
+    color: #254639;
     line-height: 1.6;
     font-size: 15px;
   }
 
   /* === FOOTER === */
   .bw-footer {
-    background: rgba(30, 26, 57,0.92);
-    color: #cac8e1;
+    background: rgba(15, 34, 27,0.92);
+    color: #aed3c3;
     padding: 48px 24px 32px;
     text-align: center;
     backdrop-filter: blur(10px);
@@ -428,14 +428,14 @@
   .bw-footer .logo {
     font-size: 20px;
     font-weight: 800;
-    background: linear-gradient(135deg,#a392dd 0%,#c3b6f7 100%);
+    background: linear-gradient(135deg,#51ad8c 0%,#90cbb5 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 8px;
   }
   .bw-footer p { margin: 4px 0; font-size: 14px; }
-  .bw-footer .small { font-size: 13px; color: #a4a0ca; margin-top: 16px; }
+  .bw-footer .small { font-size: 13px; color: #73b198; margin-top: 16px; }
 
   /* MOBILE */
   @media (max-width: 640px) {
@@ -647,7 +647,7 @@
         <button type="button" class="step-cta" id="openSchoolModal" style="background:none;border:none;cursor:pointer;padding:0;">
           🏫 Chọn trường ngay →
         </button>
-        <div id="selectedSchoolsPreview" style="margin-top:12px;font-size:13px;color:#3f396c;"></div>
+        <div id="selectedSchoolsPreview" style="margin-top:12px;font-size:13px;color:#254639;"></div>
       </div>
 
       <div class="bw-step">
@@ -762,31 +762,31 @@
 </section>
 
 <!-- ===== MODAL CHỌN TRƯỜNG ===== -->
-<div id="schoolModal" style="display:none;position:fixed;inset:0;background:rgba(18, 15, 34,0.55);z-index:9999;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(6px);">
-  <div style="background:#fff;border-radius:20px;width:100%;max-width:720px;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(118, 105, 208,0.35);">
-    <div style="padding:20px 24px;border-bottom:1px solid #e6e7f2;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,#f2f1fd,#f5f3fe);">
+<div id="schoolModal" style="display:none;position:fixed;inset:0;background:rgba(9, 20, 16,0.55);z-index:9999;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(6px);">
+  <div style="background:#fff;border-radius:20px;width:100%;max-width:720px;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(62, 132, 104,0.35);">
+    <div style="padding:20px 24px;border-bottom:1px solid #daece4;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,#e5f6ef,#e9f8f2);">
       <div>
-        <h3 style="margin:0;font-size:18px;color:#1e1a39;">🏫 Chọn trường đại học</h3>
-        <p style="margin:4px 0 0;font-size:13px;color:#7875b0;">Đã chọn <span id="modalCount">0</span> trường</p>
+        <h3 style="margin:0;font-size:18px;color:#0f221b;">🏫 Chọn trường đại học</h3>
+        <p style="margin:4px 0 0;font-size:13px;color:#4d866e;">Đã chọn <span id="modalCount">0</span> trường</p>
       </div>
-      <button id="closeSchoolModal" style="background:none;border:none;font-size:24px;color:#7875b0;cursor:pointer;line-height:1;">×</button>
+      <button id="closeSchoolModal" style="background:none;border:none;font-size:24px;color:#4d866e;cursor:pointer;line-height:1;">×</button>
     </div>
 
-    <div style="padding:14px 24px;background:#f9fafd;border-bottom:1px solid #e6e7f2;">
-      <input id="schoolSearch" type="text" placeholder="🔍 Tìm trường theo tên..." style="width:100%;padding:10px 14px;border:1px solid #d2d3e5;border-radius:10px;font-size:14px;outline:none;box-sizing:border-box;">
+    <div style="padding:14px 24px;background:#f5fcf8;border-bottom:1px solid #daece4;">
+      <input id="schoolSearch" type="text" placeholder="🔍 Tìm trường theo tên..." style="width:100%;padding:10px 14px;border:1px solid #c0dace;border-radius:10px;font-size:14px;outline:none;box-sizing:border-box;">
       <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;font-size:12px;">
-        <button class="region-btn" data-region="all" style="padding:6px 12px;border-radius:999px;border:1px solid #d2d3e5;background:#7669d0;color:#fff;cursor:pointer;font-weight:600;">Tất cả</button>
-        <button class="region-btn" data-region="mb" style="padding:6px 12px;border-radius:999px;border:1px solid #d2d3e5;background:#fff;color:#3f396c;cursor:pointer;">Miền Bắc</button>
-        <button class="region-btn" data-region="mt" style="padding:6px 12px;border-radius:999px;border:1px solid #d2d3e5;background:#fff;color:#3f396c;cursor:pointer;">Miền Trung</button>
-        <button class="region-btn" data-region="mn" style="padding:6px 12px;border-radius:999px;border:1px solid #d2d3e5;background:#fff;color:#3f396c;cursor:pointer;">Miền Nam</button>
+        <button class="region-btn" data-region="all" style="padding:6px 12px;border-radius:999px;border:1px solid #c0dace;background:#3e8468;color:#fff;cursor:pointer;font-weight:600;">Tất cả</button>
+        <button class="region-btn" data-region="mb" style="padding:6px 12px;border-radius:999px;border:1px solid #c0dace;background:#fff;color:#254639;cursor:pointer;">Miền Bắc</button>
+        <button class="region-btn" data-region="mt" style="padding:6px 12px;border-radius:999px;border:1px solid #c0dace;background:#fff;color:#254639;cursor:pointer;">Miền Trung</button>
+        <button class="region-btn" data-region="mn" style="padding:6px 12px;border-radius:999px;border:1px solid #c0dace;background:#fff;color:#254639;cursor:pointer;">Miền Nam</button>
       </div>
     </div>
 
     <div id="schoolList" style="flex:1;overflow-y:auto;padding:12px 24px;"></div>
 
-    <div style="padding:14px 24px;border-top:1px solid #e6e7f2;display:flex;gap:10px;background:#f9fafd;">
-      <button id="saveSchools" style="flex:1;background:linear-gradient(135deg,#908cdb,#8a77d4);color:#fff;border:none;padding:12px 20px;border-radius:10px;font-weight:700;cursor:pointer;font-size:14px;">Lưu &amp; đóng</button>
-      <button id="clearSchools" style="background:#fff;border:1.5px solid #d2d3e5;color:#3f396c;padding:12px 20px;border-radius:10px;font-weight:600;cursor:pointer;font-size:14px;">Xóa hết</button>
+    <div style="padding:14px 24px;border-top:1px solid #daece4;display:flex;gap:10px;background:#f5fcf8;">
+      <button id="saveSchools" style="flex:1;background:linear-gradient(135deg,#4da480,#459376);color:#fff;border:none;padding:12px 20px;border-radius:10px;font-weight:700;cursor:pointer;font-size:14px;">Lưu &amp; đóng</button>
+      <button id="clearSchools" style="background:#fff;border:1.5px solid #c0dace;color:#254639;padding:12px 20px;border-radius:10px;font-weight:600;cursor:pointer;font-size:14px;">Xóa hết</button>
     </div>
   </div>
 </div>
@@ -911,7 +911,7 @@
       var lbl = document.createElement('span');
       lbl.className = 'bw-tl-now-badge';
       lbl.textContent = '🔴 Bạn đang ở đây';
-      lbl.style.cssText = 'display:inline-block;font-size:11px;font-weight:700;color:#fff;background:#7669d0;padding:3px 8px;border-radius:999px;margin-left:8px;';
+      lbl.style.cssText = 'display:inline-block;font-size:11px;font-weight:700;color:#fff;background:#3e8468;padding:3px 8px;border-radius:999px;margin-left:8px;';
       var when = targetItem.querySelector('.when');
       if (when) when.appendChild(lbl);
     }
@@ -1239,17 +1239,17 @@
         return matchQ && matchR;
       });
       if (!filtered.length) {
-        listEl.innerHTML = '<div style="text-align:center;color:#a4a0ca;padding:40px 0;font-size:14px;">Không tìm thấy trường nào phù hợp.</div>';
+        listEl.innerHTML = '<div style="text-align:center;color:#73b198;padding:40px 0;font-size:14px;">Không tìm thấy trường nào phù hợp.</div>';
         return;
       }
       var html = '<div style="display:flex;flex-direction:column;gap:8px;">';
       filtered.forEach(function(s){
         var isSelected = selected.indexOf(s.code) !== -1;
-        html += '<label style="display:flex;align-items:center;gap:12px;padding:12px;border:1.5px solid ' + (isSelected ? '#7669d0' : '#e6e7f2') + ';border-radius:12px;cursor:pointer;background:' + (isSelected ? '#f2f1fd' : '#fff') + ';transition:all .15s;">';
-        html += '<input type="checkbox" data-code="' + s.code + '" ' + (isSelected ? 'checked' : '') + ' style="width:18px;height:18px;accent-color:#7669d0;cursor:pointer;">';
+        html += '<label style="display:flex;align-items:center;gap:12px;padding:12px;border:1.5px solid ' + (isSelected ? '#3e8468' : '#daece4') + ';border-radius:12px;cursor:pointer;background:' + (isSelected ? '#e5f6ef' : '#fff') + ';transition:all .15s;">';
+        html += '<input type="checkbox" data-code="' + s.code + '" ' + (isSelected ? 'checked' : '') + ' style="width:18px;height:18px;accent-color:#3e8468;cursor:pointer;">';
         html += '<div style="flex:1;">';
-        html += '<div style="font-weight:700;color:#1e1a39;font-size:14px;">' + escapeHtml(s.name) + '</div>';
-        html += '<div style="font-size:12px;color:#7875b0;margin-top:2px;">Tổ hợp: ' + escapeHtml(s.combo) + ' · ' + regionLabel(s.region) + '</div>';
+        html += '<div style="font-weight:700;color:#0f221b;font-size:14px;">' + escapeHtml(s.name) + '</div>';
+        html += '<div style="font-size:12px;color:#4d866e;margin-top:2px;">Tổ hợp: ' + escapeHtml(s.combo) + ' · ' + regionLabel(s.region) + '</div>';
         html += '</div>';
         html += '</label>';
       });
@@ -1270,24 +1270,24 @@
 
     function renderPreview() {
       if (!selected.length) {
-        previewEl.innerHTML = '<em style="color:#a4a0ca;">Chưa chọn trường nào.</em>';
+        previewEl.innerHTML = '<em style="color:#73b198;">Chưa chọn trường nào.</em>';
         return;
       }
       var html = '<div style="margin-top:10px;">';
       selected.forEach(function(code){
         var s = SCHOOLS.find(function(x){ return x.code === code; });
         if (!s) return;
-        html += '<div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:10px;padding:10px;background:#fafafe;border-radius:10px;border:1px solid #e6e7f2;">';
-        html += '<span style="color:#7669d0;margin-top:2px;">✓</span>';
+        html += '<div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:10px;padding:10px;background:#f5fcf9;border-radius:10px;border:1px solid #daece4;">';
+        html += '<span style="color:#3e8468;margin-top:2px;">✓</span>';
         html += '<div style="flex:1;">';
-        html += '<div style="font-weight:700;color:#1e1a39;font-size:14px;">' + escapeHtml(s.name) + '</div>';
-        html += '<div style="font-size:12px;color:#7875b0;margin-top:2px;">' + escapeHtml(s.combo) + ' · ' + regionLabel(s.region) + '</div>';
+        html += '<div style="font-weight:700;color:#0f221b;font-size:14px;">' + escapeHtml(s.name) + '</div>';
+        html += '<div style="font-size:12px;color:#4d866e;margin-top:2px;">' + escapeHtml(s.combo) + ' · ' + regionLabel(s.region) + '</div>';
         html += '</div>';
-        html += '<button type="button" data-code="' + s.code + '" class="school-detail-btn" style="flex-shrink:0;padding:5px 10px;background:linear-gradient(135deg,#908cdb,#8a77d4);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;">Tìm hiểu →</button>';
+        html += '<button type="button" data-code="' + s.code + '" class="school-detail-btn" style="flex-shrink:0;padding:5px 10px;background:linear-gradient(135deg,#4da480,#459376);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;">Tìm hiểu →</button>';
         html += '</div>';
       });
       html += '</div>';
-      previewEl.innerHTML = '<strong style="color:#7669d0;">Nguyện vọng đã chọn (' + selected.length + ' trường):</strong>' + html;
+      previewEl.innerHTML = '<strong style="color:#3e8468;">Nguyện vọng đã chọn (' + selected.length + ' trường):</strong>' + html;
       // Gắn sự kiện cho nút "Tìm hiểu"
       previewEl.querySelectorAll('.school-detail-btn').forEach(function(btn){
         btn.addEventListener('click', function(){
@@ -1307,36 +1307,36 @@
       if (existing) existing.remove();
       var overlay = document.createElement('div');
       overlay.id = 'schoolDetailModal';
-      overlay.style.cssText = 'position:fixed;inset:0;background:rgba(18, 15, 34,0.55);z-index:99999;display:flex;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(6px);';
+      overlay.style.cssText = 'position:fixed;inset:0;background:rgba(9, 20, 16,0.55);z-index:99999;display:flex;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(6px);';
 
-      var regionColor = {'mb':'#7c7cd6','mt':'#10b981','mn':'#f59e0b'}[s.region] || '#7669d0';
+      var regionColor = {'mb':'#459472','mt':'#10b981','mn':'#f59e0b'}[s.region] || '#3e8468';
       var regionText = {'mb':'Miền Bắc','mt':'Miền Trung','mn':'Miền Nam'}[s.region] || s.region;
 
       overlay.innerHTML = '\
-<div style="background:#fff;border-radius:20px;width:100%;max-width:680px;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(118, 105, 208,0.35);">\
-  <div style="padding:20px 24px;border-bottom:1px solid #e6e7f2;display:flex;align-items:flex-start;justify-content:space-between;background:linear-gradient(135deg,#f2f1fd,#f5f3fe);">\
+<div style="background:#fff;border-radius:20px;width:100%;max-width:680px;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(62, 132, 104,0.35);">\
+  <div style="padding:20px 24px;border-bottom:1px solid #daece4;display:flex;align-items:flex-start;justify-content:space-between;background:linear-gradient(135deg,#e5f6ef,#e9f8f2);">\
     <div style="flex:1;padding-right:16px;">\
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">\
         <span style="font-size:13px;font-weight:700;color:#fff;background:' + regionColor + ';padding:3px 10px;border-radius:999px;">' + regionText + '</span>\
-        <span style="font-size:12px;color:#7875b0;">' + escapeHtml(s.combo) + '</span>\
+        <span style="font-size:12px;color:#4d866e;">' + escapeHtml(s.combo) + '</span>\
       </div>\
-      <h3 style="margin:0;font-size:20px;color:#1e1a39;line-height:1.3;">' + escapeHtml(s.name) + '</h3>\
+      <h3 style="margin:0;font-size:20px;color:#0f221b;line-height:1.3;">' + escapeHtml(s.name) + '</h3>\
     </div>\
-    <button id="closeSchoolDetail" style="background:none;border:none;font-size:28px;color:#a4a0ca;cursor:pointer;line-height:1;flex-shrink:0;margin-top:-4px;">×</button>\
+    <button id="closeSchoolDetail" style="background:none;border:none;font-size:28px;color:#73b198;cursor:pointer;line-height:1;flex-shrink:0;margin-top:-4px;">×</button>\
   </div>\
   <div style="flex:1;overflow-y:auto;padding:20px 24px;">\
-    <p style="margin:0 0 20px;font-size:14px;color:#3f396c;line-height:1.6;background:#fafafe;padding:14px;border-radius:12px;border-left:3px solid #7669d0;">' + escapeHtml(s.desc) + '</p>\
-    <div style="font-size:12px;color:#7875b0;margin-bottom:6px;">📌 Ghi chú</div>\
+    <p style="margin:0 0 20px;font-size:14px;color:#254639;line-height:1.6;background:#f5fcf9;padding:14px;border-radius:12px;border-left:3px solid #3e8468;">' + escapeHtml(s.desc) + '</p>\
+    <div style="font-size:12px;color:#4d866e;margin-bottom:6px;">📌 Ghi chú</div>\
     <div style="font-size:13px;color:#475569;margin-bottom:20px;padding:10px 14px;background:#fffbeb;border-radius:10px;border:1px solid #fde68a;">' + escapeHtml(s.note) + '</div>\
-    <div style="font-size:14px;font-weight:700;color:#1e1a39;margin-bottom:10px;">💪 Điểm mạnh</div>\
+    <div style="font-size:14px;font-weight:700;color:#0f221b;margin-bottom:10px;">💪 Điểm mạnh</div>\
     <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;">' +
-      s.strengths.map(function(st){ return '<span style="font-size:12px;font-weight:600;color:#7669d0;background:#f2f1fd;padding:5px 10px;border-radius:999px;border:1px solid #d2cffa;">' + escapeHtml(st) + '</span>'; }).join('') +
+      s.strengths.map(function(st){ return '<span style="font-size:12px;font-weight:600;color:#3e8468;background:#e5f6ef;padding:5px 10px;border-radius:999px;border:1px solid #a2e0c7;">' + escapeHtml(st) + '</span>'; }).join('') +
     '</div>\
-    <div style="font-size:14px;font-weight:700;color:#1e1a39;margin-bottom:10px;">🎓 Học bổng</div>\
+    <div style="font-size:14px;font-weight:700;color:#0f221b;margin-bottom:10px;">🎓 Học bổng</div>\
     <div style="background:#f0fdf4;border-radius:12px;padding:14px;margin-bottom:20px;">' +
       s.scholarships.map(function(sc){ return '<div style="font-size:13px;color:#166534;padding:4px 0;display:flex;gap:8px;align-items:flex-start;"><span style="color:#22c55e;font-weight:700;margin-top:1px;">✓</span><span>' + escapeHtml(sc) + '</span></div>'; }).join('') +
     '</div>\
-    <a href="' + escapeHtml(s.website) + '" class="school-website-btn" style="display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:linear-gradient(135deg,#908cdb,#8a77d4);color:#fff;border-radius:10px;text-decoration:none;font-size:14px;font-weight:700;box-shadow:0 4px 12px rgba(118, 105, 208,0.25);transition:transform .15s;" onmouseover="this.style.transform=\'translateY(-2px)\'" onmouseout="this.style.transform=\'translateY(0)\'">📚 Xem học bổng & chi tiết →</a>\
+    <a href="' + escapeHtml(s.website) + '" class="school-website-btn" style="display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:linear-gradient(135deg,#4da480,#459376);color:#fff;border-radius:10px;text-decoration:none;font-size:14px;font-weight:700;box-shadow:0 4px 12px rgba(62, 132, 104,0.25);transition:transform .15s;" onmouseover="this.style.transform=\'translateY(-2px)\'" onmouseout="this.style.transform=\'translateY(0)\'">📚 Xem học bổng & chi tiết →</a>\
   </div>\
 </div>';
 
@@ -1358,19 +1358,19 @@
         return matchQ && matchR;
       });
       if (!filtered.length) {
-        listEl.innerHTML = '<div style="text-align:center;color:#a4a0ca;padding:40px 0;font-size:14px;">Không tìm thấy trường nào phù hợp.</div>';
+        listEl.innerHTML = '<div style="text-align:center;color:#73b198;padding:40px 0;font-size:14px;">Không tìm thấy trường nào phù hợp.</div>';
         return;
       }
       var html = '<div style="display:flex;flex-direction:column;gap:8px;">';
       filtered.forEach(function(s){
         var isSelected = selected.indexOf(s.code) !== -1;
-        html += '<div style="display:flex;align-items:center;gap:10px;padding:12px;border:1.5px solid ' + (isSelected ? '#7669d0' : '#e6e7f2') + ';border-radius:12px;background:' + (isSelected ? '#f2f1fd' : '#fff') + ';transition:all .15s;">';
-        html += '<input type="checkbox" data-code="' + s.code + '" ' + (isSelected ? 'checked' : '') + ' style="width:18px;height:18px;accent-color:#7669d0;cursor:pointer;flex-shrink:0;">';
+        html += '<div style="display:flex;align-items:center;gap:10px;padding:12px;border:1.5px solid ' + (isSelected ? '#3e8468' : '#daece4') + ';border-radius:12px;background:' + (isSelected ? '#e5f6ef' : '#fff') + ';transition:all .15s;">';
+        html += '<input type="checkbox" data-code="' + s.code + '" ' + (isSelected ? 'checked' : '') + ' style="width:18px;height:18px;accent-color:#3e8468;cursor:pointer;flex-shrink:0;">';
         html += '<div style="flex:1;min-width:0;">';
-        html += '<div style="font-weight:700;color:#1e1a39;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + escapeHtml(s.name) + '</div>';
-        html += '<div style="font-size:12px;color:#7875b0;margin-top:2px;">' + escapeHtml(s.combo) + ' · ' + regionLabel(s.region) + '</div>';
+        html += '<div style="font-weight:700;color:#0f221b;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + escapeHtml(s.name) + '</div>';
+        html += '<div style="font-size:12px;color:#4d866e;margin-top:2px;">' + escapeHtml(s.combo) + ' · ' + regionLabel(s.region) + '</div>';
         html += '</div>';
-        html += '<button type="button" data-code="' + s.code + '" class="list-detail-btn" style="flex-shrink:0;padding:5px 10px;background:#f4f4fa;color:#475569;border:1px solid #e6e7f2;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;">ℹ️</button>';
+        html += '<button type="button" data-code="' + s.code + '" class="list-detail-btn" style="flex-shrink:0;padding:5px 10px;background:#edf7f3;color:#475569;border:1px solid #daece4;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;">ℹ️</button>';
         html += '</div>';
       });
       html += '</div>';
@@ -1429,9 +1429,9 @@
       btn.addEventListener('click', function(){
         document.querySelectorAll('.region-btn').forEach(function(b){
           b.style.background = '#fff';
-          b.style.color = '#3f396c';
+          b.style.color = '#254639';
         });
-        btn.style.background = '#7669d0';
+        btn.style.background = '#3e8468';
         btn.style.color = '#fff';
         currentRegion = btn.getAttribute('data-region');
         renderList();
