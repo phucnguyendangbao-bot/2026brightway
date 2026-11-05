@@ -13,7 +13,7 @@
   text-align: center;
   padding: 32px 16px 24px;
   margin-bottom: 28px;
-  background: linear-gradient(135deg, rgba(118, 105, 208,0.10), rgba(141, 110, 209,0.10));
+  background: linear-gradient(135deg, rgba(48, 101, 154,0.10), rgba(55, 106, 174,0.10));
   border-radius: 24px;
   border: 1px solid var(--border-soft);
 }
@@ -61,11 +61,11 @@
   transition: all .2s;
   white-space: nowrap;
 }
-.res-filter-btn:hover { background: rgba(118, 105, 208,0.08); color: var(--primary); }
+.res-filter-btn:hover { background: rgba(48, 101, 154,0.08); color: var(--primary); }
 .res-filter-btn.active {
   background: var(--grad-btn);
   color: #fff;
-  box-shadow: 0 3px 10px rgba(118, 105, 208,0.30);
+  box-shadow: 0 3px 10px rgba(48, 101, 154,0.30);
 }
 .res-search {
   flex: 1;
@@ -80,7 +80,7 @@
   outline: none;
   transition: all .2s;
 }
-.res-search:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(118, 105, 208,0.10); }
+.res-search:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(48, 101, 154,0.10); }
 
 /* Grid */
 .res-grid {
@@ -101,7 +101,7 @@
 }
 .res-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(118, 105, 208,0.18);
+  box-shadow: 0 12px 28px rgba(48, 101, 154,0.18);
   border-color: var(--primary);
 }
 
@@ -135,7 +135,7 @@
   letter-spacing: 0.04em;
 }
 :root[data-theme="dark"] .res-cat {
-  background: rgba(33, 29, 59,0.92);
+  background: rgba(23, 34, 46,0.92);
   color: #fff;
 }
 
@@ -200,7 +200,7 @@
   font-size: 11px;
   font-weight: 600;
   color: var(--primary);
-  background: rgba(118, 105, 208,0.10);
+  background: rgba(48, 101, 154,0.10);
   padding: 3px 8px;
   border-radius: 999px;
 }
@@ -234,12 +234,12 @@
   text-decoration: none !important;
   letter-spacing: 0.04em;
   transition: all .2s;
-  box-shadow: 0 3px 10px rgba(118, 105, 208,0.28);
+  box-shadow: 0 3px 10px rgba(48, 101, 154,0.28);
   white-space: nowrap;
 }
 .res-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 5px 14px rgba(118, 105, 208,0.40);
+  box-shadow: 0 5px 14px rgba(48, 101, 154,0.40);
 }
 
 /* Empty state */
@@ -291,18 +291,18 @@
 .news-filter { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; margin-bottom: 12px; }
 .news-filter label { display: flex; flex-direction: column; gap: 6px; color: var(--text-mid); font-size: 12px; font-weight: 800; }
 .news-filter select, .news-filter input { width: 100%; min-width: 0; min-height: 46px; padding: 11px 13px; border: 1.5px solid var(--border); border-radius: 12px; color: var(--text); background: var(--surface); font-size: 16px; font-weight: 500; font-family: inherit; }
-.news-filter select:focus, .news-filter input:focus { outline: 3px solid rgba(118, 105, 208,.16); border-color: var(--primary); }
+.news-filter select:focus, .news-filter input:focus { outline: 3px solid rgba(48, 101, 154,.16); border-color: var(--primary); }
 .news-filter input::placeholder { color: var(--text-soft); opacity: 1; }
 :root[data-theme="dark"] .news-filter select { color-scheme: dark; }
-:root[data-theme="dark"] .news-filter select option { color: #f6f5fa; background: #251f43; }
+:root[data-theme="dark"] .news-filter select option { color: #f3f6f9; background: #182534; }
 .news-status { margin: 14px 0 22px; color: var(--text-mid); font-size: 13px; }
 .news-card .res-body { padding: 20px; gap: 10px; }
 .news-card .res-title { font-size: 18px; }
 .news-card .res-desc { margin: 0 0 12px; }
-.news-thumb { display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #f2f2fe, #e5e0fc); }
-.news-thumb img { width: 38%; height: 58%; object-fit: contain; filter: drop-shadow(0 8px 16px rgba(40, 34, 76, .12)); }
+.news-thumb { display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #eaf4fd, #d2e5fb); }
+.news-thumb img { width: 38%; height: 58%; object-fit: contain; filter: drop-shadow(0 8px 16px rgba(26, 41, 57, .12)); }
 .news-card:hover .news-thumb img { transform: scale(1.04); }
-.news-logo-fallback { width: 90px; height: 90px; border-radius: 20px; background: #fff; display: grid; place-items: center; color: #6b59cb; font-weight: 900; font-size: 26px; }
+.news-logo-fallback { width: 90px; height: 90px; border-radius: 20px; background: #fff; display: grid; place-items: center; color: #2c5a8b; font-weight: 900; font-size: 26px; }
 .news-year { background: var(--grad-btn); }
 .news-profile { color: var(--primary); font-size: 12px; font-weight: 800; text-decoration: none; }
 .news-profile:hover { text-decoration: underline; }

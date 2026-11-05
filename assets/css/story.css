@@ -28,8 +28,8 @@
 .story-rail-reveal { overflow: hidden; transform: translate3d(0, -100%, 0); }
 .story-rail-inner { transform: translate3d(0, 100%, 0); }
 .story-rail path { fill: none; stroke-linecap: round; }
-.story-rail-trail { stroke: #d1c9f9; stroke-width: 3; stroke-dasharray: 1 11; }
-.story-rail-road { stroke: var(--bw-brand, #7969d0); stroke-width: 6; }
+.story-rail-trail { stroke: #b1d2f6; stroke-width: 3; stroke-dasharray: 1 11; }
+.story-rail-road { stroke: var(--bw-brand, #31659d); stroke-width: 6; }
 
 /* ---------- Chapters ---------- */
 .story-chapter {
@@ -57,12 +57,12 @@
   display: grid;
   place-items: center;
   background: #fff;
-  border: 2px solid #d1c9f9;
-  color: var(--bw-brand-text, #614ec7);
+  border: 2px solid #b1d2f6;
+  color: var(--bw-brand-text, #28527f);
   font: 800 16px/1 var(--font, 'Be Vietnam Pro', sans-serif);
   transition: background-color var(--motion-md) var(--motion-ease), border-color var(--motion-md) var(--motion-ease), color var(--motion-md) var(--motion-ease);
 }
-.chapter-marker.is-reached { background: var(--bw-brand, #7969d0); border-color: var(--bw-brand, #7969d0); color: #fff; }
+.chapter-marker.is-reached { background: var(--bw-brand, #31659d); border-color: var(--bw-brand, #31659d); color: #fff; }
 .chapter-marker.is-done { font-size: 0; }
 .chapter-marker.is-done::after { content: '✓'; font-size: 18px; }
 .chapter-marker-end { border-radius: 12px; }
@@ -71,13 +71,13 @@
 
 .chapter-kicker {
   margin: 6px 0 4px;
-  color: var(--bw-brand-text, #614ec7);
+  color: var(--bw-brand-text, #28527f);
   font-size: 14px;
   font-weight: 700;
 }
 .chapter-title {
   margin: 0;
-  color: var(--bw-ink, #1e1a39);
+  color: var(--bw-ink, #141f2b);
   font-family: var(--font-display, 'Quicksand', sans-serif);
   font-size: clamp(25px, 3.2vw, 36px);
   font-weight: 700;
@@ -85,37 +85,37 @@
   text-wrap: balance;
 }
 .chapter-title:focus { outline: none; }
-.chapter-title:focus-visible { outline: 3px solid var(--bw-brand, #7969d0); outline-offset: 4px; border-radius: 6px; }
+.chapter-title:focus-visible { outline: 3px solid var(--bw-brand, #31659d); outline-offset: 4px; border-radius: 6px; }
 .chapter-done { margin: 8px 0 0; color: var(--bw-success, #087f5b); font-size: 14px; font-weight: 700; }
 .chapter-toggle {
   flex: none;
   margin-top: 6px;
   padding: 8px 14px;
-  border: 1px solid var(--bw-line, #e5e2fc);
+  border: 1px solid var(--bw-line, #d4e7fb);
   border-radius: 999px;
   background: #fff;
-  color: var(--bw-brand-text, #614ec7);
+  color: var(--bw-brand-text, #28527f);
   font: 700 14px/1 var(--font, sans-serif);
   cursor: pointer;
 }
-.chapter-toggle:focus-visible { outline: 3px solid var(--bw-brand, #7969d0); outline-offset: 3px; }
+.chapter-toggle:focus-visible { outline: 3px solid var(--bw-brand, #31659d); outline-offset: 3px; }
 .story-chapter.is-folded { padding-bottom: 8px; }
 .story-chapter.is-folded .chapter-head { margin-bottom: 0; }
 
 .chapter-body { max-width: none; }
 .chapter-body > * + * { margin-top: 20px; }
-.chapter-lead { max-width: 62ch; margin: 0; color: var(--bw-muted, #3f396c); font-size: 17px; line-height: 1.6; }
+.chapter-lead { max-width: 62ch; margin: 0; color: var(--bw-muted, #253545); font-size: 17px; line-height: 1.6; }
 .chapter-heading .chapter-lead { margin-top: 10px; }
 .chapter-links { display: flex; flex-wrap: wrap; gap: 10px 20px; margin: 0; }
 .chapter-links a, .home-holland-more a {
-  color: var(--bw-brand-text, #614ec7);
+  color: var(--bw-brand-text, #28527f);
   font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 .chapter-body h3 {
   margin: 0;
-  color: var(--bw-ink, #1e1a39);
+  color: var(--bw-ink, #141f2b);
   font-size: 20px;
   line-height: 1.3;
 }
@@ -127,7 +127,7 @@
   gap: 12px;
   max-width: 640px;
   margin: 24px 0 0;
-  color: var(--bw-muted, #3f396c);
+  color: var(--bw-muted, #253545);
   font-size: 15px;
   line-height: 1.5;
 }
@@ -138,36 +138,36 @@
   padding: 8px 14px;
   border: 0;
   border-radius: 999px;
-  background: var(--bw-tint, #efedfd);
-  color: var(--bw-brand-text, #614ec7);
+  background: var(--bw-tint, #e5f0fc);
+  color: var(--bw-brand-text, #28527f);
   font: 700 14px/1 var(--font, sans-serif);
   cursor: pointer;
 }
-.chapter-waybi button:focus-visible { outline: 3px solid var(--bw-brand, #7969d0); outline-offset: 3px; }
+.chapter-waybi button:focus-visible { outline: 3px solid var(--bw-brand, #31659d); outline-offset: 3px; }
 
 /* ---------- Hero ---------- */
 #hero-actions .bw-hero-meta { margin: 14px 0 0; color: var(--bw-soft, #6b7194); font-size: 14px; }
 .story-resume {
   margin-top: 20px;
   padding: 18px 20px;
-  border: 1px solid #dbd5fa;
+  border: 1px solid #c3dcf8;
   border-radius: 20px;
   background: #fff;
 }
-.story-resume-title { margin: 0 0 10px; color: var(--bw-ink, #1e1a39); font-weight: 700; }
+.story-resume-title { margin: 0 0 10px; color: var(--bw-ink, #141f2b); font-weight: 700; }
 .story-resume-dots { display: flex; gap: 6px; margin: 0 0 14px; padding: 0; list-style: none; }
-.story-resume-dots li { width: 28px; height: 6px; border-radius: 3px; background: #e6e2fc; }
-.story-resume-dots li.is-done { background: var(--bw-brand, #7969d0); }
+.story-resume-dots li { width: 28px; height: 6px; border-radius: 3px; background: #d5e7fb; }
+.story-resume-dots li.is-done { background: var(--bw-brand, #31659d); }
 .story-resume-go {
   padding: 12px 18px;
   border: 0;
   border-radius: 999px;
-  background: var(--bw-brand-gradient, linear-gradient(135deg, #7969d0, #8a77d4));
+  background: var(--bw-brand-gradient, linear-gradient(135deg, #31659d, #386fb0));
   color: #fff;
   font: 700 15px/1.2 var(--font, sans-serif);
   cursor: pointer;
 }
-.story-resume-go:focus-visible { outline: 3px solid var(--bw-ink, #1e1a39); outline-offset: 3px; }
+.story-resume-go:focus-visible { outline: 3px solid var(--bw-ink, #141f2b); outline-offset: 3px; }
 .home-journey-picker.is-returning { display: none; }
 
 /* ---------- Chapter 1: the Holland code assembles ---------- */
@@ -176,20 +176,20 @@
 .holland-code span {
   width: 56px;
   height: 56px;
-  border: 2px dashed #d1c9f9;
+  border: 2px dashed #b1d2f6;
   border-radius: 16px;
   display: grid;
   place-items: center;
   color: transparent;
   font: 800 26px/1 var(--font-display, 'Quicksand', sans-serif);
 }
-.holland-code span.is-filled { border: 2px solid var(--bw-brand, #7969d0); background: var(--bw-brand, #7969d0); color: #fff; }
+.holland-code span.is-filled { border: 2px solid var(--bw-brand, #31659d); background: var(--bw-brand, #31659d); color: #fff; }
 .holland-code span.is-new { animation: slot-in var(--motion-lg) var(--motion-ease); }
 @keyframes slot-in { from { transform: translateY(-14px) scale(.7); opacity: 0; } }
 .home-holland-more { margin: 14px 0 0; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px 16px; font-size: 14px; }
 
 /* ---------- Chapter 2: careers ---------- */
-.career-code { color: var(--bw-brand-text, #614ec7); letter-spacing: .08em; }
+.career-code { color: var(--bw-brand-text, #28527f); letter-spacing: .08em; }
 .career-picks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
 .career-picks:empty { display: none; }
 .career-pick {
@@ -197,30 +197,30 @@
   flex-direction: column;
   gap: 8px;
   padding: 18px;
-  border: 1px solid var(--bw-line, #e5e2fc);
+  border: 1px solid var(--bw-line, #d4e7fb);
   border-radius: 18px;
   background: #fff;
-  color: var(--bw-muted, #3f396c);
+  color: var(--bw-muted, #253545);
   text-decoration: none;
   font-size: 14px;
   line-height: 1.5;
   animation: pick-in var(--motion-md) var(--motion-ease) both;
   animation-delay: calc(var(--i, 0) * var(--motion-stagger));
 }
-.career-pick strong { color: var(--bw-ink, #1e1a39); font-size: 17px; line-height: 1.35; }
-.career-pick:hover strong { color: var(--bw-brand-text, #614ec7); }
-.career-pick:focus-visible { outline: 3px solid var(--bw-brand, #7969d0); outline-offset: 3px; }
+.career-pick strong { color: var(--bw-ink, #141f2b); font-size: 17px; line-height: 1.35; }
+.career-pick:hover strong { color: var(--bw-brand-text, #28527f); }
+.career-pick:focus-visible { outline: 3px solid var(--bw-brand, #31659d); outline-offset: 3px; }
 .career-pick-letters { display: flex; gap: 4px; }
 .career-pick-letters b {
   width: 26px; height: 26px; border-radius: 8px;
   display: grid; place-items: center;
-  background: var(--bw-subtle, #f6f6fe); color: var(--bw-soft, #6b7194);
+  background: var(--bw-subtle, #f1f8fd); color: var(--bw-soft, #6b7194);
   font-size: 13px;
 }
-.career-pick-letters b.is-match { background: var(--bw-tint, #efedfd); color: var(--bw-brand-text, #614ec7); }
+.career-pick-letters b.is-match { background: var(--bw-tint, #e5f0fc); color: var(--bw-brand-text, #28527f); }
 @keyframes pick-in { from { opacity: 0; transform: translateY(10px); } }
 .career-skeleton { height: 150px; }
-.career-empty { grid-column: 1 / -1; margin: 0; color: var(--bw-muted, #3f396c); }
+.career-empty { grid-column: 1 / -1; margin: 0; color: var(--bw-muted, #253545); }
 
 /* ---------- Chapter 3: schools ---------- */
 html body #home-view #chuong-3 :is(.university-discovery, .admissions-home) { margin: 0; padding: 0; max-width: none; background: none; box-shadow: none; border: 0; }
@@ -231,7 +231,7 @@ html body #home-view #chuong-3 .admissions-home { margin-top: 40px; }
 #chuong-3 .university-discovery-heading, #chuong-3 .admissions-home-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 12px; margin-bottom: 14px; }
 html body #home-view #chuong-3 :is(.university-discovery-heading > a, .admissions-all) {
   display: inline; padding: 0; border-radius: 0; background: none; box-shadow: none;
-  color: var(--bw-brand-text, #614ec7); font-size: 14px; font-weight: 700;
+  color: var(--bw-brand-text, #28527f); font-size: 14px; font-weight: 700;
   text-decoration: underline; text-underline-offset: 3px;
 }
 html body #home-view #chuong-3 :is(.university-discovery-heading, .admissions-home-heading) h3 { margin: 0; font-size: 20px; }
@@ -246,28 +246,28 @@ html body #home-view #chuong-3 :is(.university-discovery-heading, .admissions-ho
   align-items: end;
   max-width: 760px;
   padding: 22px;
-  border: 1px solid var(--bw-line, #e5e2fc);
+  border: 1px solid var(--bw-line, #d4e7fb);
   border-radius: 22px;
   background: #fff;
 }
-.mini-score label { display: grid; gap: 6px; color: var(--bw-muted, #3f396c); font-size: 14px; font-weight: 700; }
+.mini-score label { display: grid; gap: 6px; color: var(--bw-muted, #253545); font-size: 14px; font-weight: 700; }
 .mini-score-combo { grid-column: 1 / -1; max-width: 360px; }
 .mini-score select, .mini-score input {
   width: 100%;
   min-height: 46px;
   padding: 10px 12px;
-  border: 1px solid #d3cfee;
+  border: 1px solid #c1d5e9;
   border-radius: 12px;
   background: #fff;
-  color: var(--bw-ink, #1e1a39);
+  color: var(--bw-ink, #141f2b);
   font: 600 16px/1.2 var(--font, sans-serif);
   box-sizing: border-box;
 }
 .mini-score input[aria-invalid="true"] { border-color: var(--bw-error, #b42335); }
-.mini-score select:focus-visible, .mini-score input:focus-visible { outline: 3px solid var(--bw-brand, #7969d0); outline-offset: 1px; }
+.mini-score select:focus-visible, .mini-score input:focus-visible { outline: 3px solid var(--bw-brand, #31659d); outline-offset: 1px; }
 .mini-score-inputs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
 .mini-score-total { display: flex; align-items: baseline; gap: 2px; min-width: 6ch; justify-content: flex-end; }
-.mini-score-number { color: var(--bw-brand-text, #614ec7); font: 700 48px/1 var(--font-display, 'Quicksand', sans-serif); font-variant-numeric: tabular-nums; }
+.mini-score-number { color: var(--bw-brand-text, #28527f); font: 700 48px/1 var(--font-display, 'Quicksand', sans-serif); font-variant-numeric: tabular-nums; }
 .mini-score-scale { color: var(--bw-soft, #6b7194); font-weight: 700; }
 .mini-score-note { grid-column: 1 / -1; margin: 0; color: var(--bw-soft, #6b7194); font-size: 14px; }
 
@@ -285,16 +285,16 @@ html body #home-view #chuong-3 :is(.university-discovery-heading, .admissions-ho
   min-width: 56px;
   min-height: 44px;
   padding: 8px 12px;
-  border: 1px solid var(--bw-line, #e5e2fc);
+  border: 1px solid var(--bw-line, #d4e7fb);
   border-radius: 999px;
   background: #fff;
-  color: var(--bw-muted, #3f396c);
+  color: var(--bw-muted, #253545);
   font: 700 15px/1 var(--font, sans-serif);
   cursor: pointer;
 }
-.month-strip button.is-past { color: var(--bw-soft, #6b7194); background: var(--bw-subtle, #f6f6fe); }
-.month-strip button[aria-pressed="true"] { border-color: var(--bw-brand, #7969d0); background: var(--bw-brand, #7969d0); color: #fff; }
-.month-strip button:focus-visible { outline: 3px solid var(--bw-ink, #1e1a39); outline-offset: 2px; }
+.month-strip button.is-past { color: var(--bw-soft, #6b7194); background: var(--bw-subtle, #f1f8fd); }
+.month-strip button[aria-pressed="true"] { border-color: var(--bw-brand, #31659d); background: var(--bw-brand, #31659d); color: #fff; }
+.month-strip button:focus-visible { outline: 3px solid var(--bw-ink, #141f2b); outline-offset: 2px; }
 /* The single looping signal on the page: where you are this month. */
 .month-now-dot {
   position: absolute;
@@ -311,16 +311,16 @@ html body #home-view #chuong-3 :is(.university-discovery-heading, .admissions-ho
 .month-card {
   max-width: 720px;
   padding: 20px 22px;
-  border: 1px solid var(--bw-line, #e5e2fc);
-  border-left: 6px solid var(--bw-brand, #7969d0);
+  border: 1px solid var(--bw-line, #d4e7fb);
+  border-left: 6px solid var(--bw-brand, #31659d);
   border-radius: 18px;
   background: #fff;
-  color: var(--bw-muted, #3f396c);
+  color: var(--bw-muted, #253545);
   line-height: 1.6;
 }
 .month-card.is-new { animation: card-in var(--motion-sm) var(--motion-ease); }
 @keyframes card-in { from { opacity: .3; } }
-.month-card-label { margin: 0 0 4px; color: var(--bw-brand-text, #614ec7); font-size: 14px; font-weight: 700; }
+.month-card-label { margin: 0 0 4px; color: var(--bw-brand-text, #28527f); font-size: 14px; font-weight: 700; }
 .month-card h3 { margin-bottom: 6px; }
 .month-card p:last-child { margin-bottom: 0; }
 .month-skeleton { height: 96px; }

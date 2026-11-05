@@ -38,8 +38,8 @@
 }
 .profile-avatar.is-admin {
   background: #fff;
-  border: 1px solid rgba(118, 105, 208,0.16);
-  box-shadow: 0 8px 22px rgba(94, 76, 199,0.14);
+  border: 1px solid rgba(48, 101, 154,0.16);
+  box-shadow: 0 8px 22px rgba(39, 80, 124,0.14);
 }
 .profile-avatar img {
   width: 100%;
@@ -73,7 +73,7 @@
   font-size: 11px;
   font-weight: 700;
 }
-.badge-provider { background: rgba(118, 105, 208,0.12); color: var(--primary); }
+.badge-provider { background: rgba(48, 101, 154,0.12); color: var(--primary); }
 .badge-meta { background: rgba(16,185,129,0.10); color: #10b981; }
 
 .btn-logout {
@@ -121,11 +121,11 @@
   transition: all .2s;
   -webkit-tap-highlight-color: transparent;
 }
-.profile-tab:hover { background: rgba(118, 105, 208,0.06); }
+.profile-tab:hover { background: rgba(48, 101, 154,0.06); }
 .profile-tab.active {
   background: var(--grad-btn);
   color: #fff;
-  box-shadow: 0 3px 10px rgba(118, 105, 208,0.30);
+  box-shadow: 0 3px 10px rgba(48, 101, 154,0.30);
 }
 
 .profile-panel { display: none; }

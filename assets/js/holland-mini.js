@@ -7,11 +7,11 @@
 
   const TYPES = {
     R: { name: 'Kỹ thuật', emoji: '🔧', color: '#f59e0b', desc: 'Thích làm việc với tay, máy móc, vật thể cụ thể.' },
-    I: { name: 'Nghiên cứu', emoji: '🔬', color: '#7669d0', desc: 'Thích phân tích, khám phá, giải quyết vấn đề phức tạp.' },
+    I: { name: 'Nghiên cứu', emoji: '🔬', color: '#30659a', desc: 'Thích phân tích, khám phá, giải quyết vấn đề phức tạp.' },
     A: { name: 'Nghệ thuật', emoji: '🎨', color: '#ec4899', desc: 'Sáng tạo, biểu đạt phong phú, thích tự do.' },
     S: { name: 'Xã hội', emoji: '🤝', color: '#10b981', desc: 'Yêu giao tiếp, giúp đỡ, làm việc với mọi người.' },
     E: { name: 'Lãnh đạo', emoji: '🚀', color: '#f97316', desc: 'Tư duy kinh doanh, thuyết phục, muốn dẫn dắt.' },
-    C: { name: 'Nghiệp vụ', emoji: '📊', color: '#7c7cd6', desc: 'Thích trật tự, chi tiết, làm việc với dữ liệu.' }
+    C: { name: 'Nghiệp vụ', emoji: '📊', color: '#3472a7', desc: 'Thích trật tự, chi tiết, làm việc với dữ liệu.' }
   };
 
   const MINI_Q = [
@@ -37,7 +37,7 @@
     const wrap = document.getElementById('hollandMini');
     if (!wrap) return;
     wrap.innerHTML = `
-      <div style="background: rgba(255,255,255,0.92); border: 1.5px solid rgba(118, 105, 208,0.10); border-radius: 20px; padding: 24px;">
+      <div style="background: rgba(255,255,255,0.92); border: 1.5px solid rgba(48, 101, 154,0.10); border-radius: 20px; padding: 24px;">
         <h3 style="font-family: 'Quicksand', sans-serif; font-size: 18px; font-weight: 800; color: var(--text); margin-bottom: 6px;">
           🎯 Thử nhanh 4 câu (xem trước)
         </h3>
@@ -51,7 +51,7 @@
     const list = document.getElementById('miniQList');
     MINI_Q.forEach((q, i) => {
       const card = document.createElement('div');
-      card.style.cssText = 'padding: 16px; background: rgba(118, 105, 208,0.03); border: 1.5px solid rgba(118, 105, 208,0.08); border-radius: 14px;';
+      card.style.cssText = 'padding: 16px; background: rgba(48, 101, 154,0.03); border: 1.5px solid rgba(48, 101, 154,0.08); border-radius: 14px;';
       card.innerHTML = `
         <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
           <span style="font-size: 11px; font-weight: 800; color: var(--primary); letter-spacing: 0.08em; text-transform: uppercase;">CÂU ${i + 1}/4</span>
@@ -84,8 +84,8 @@
           b.style.transform = 'scale(1)';
           b.setAttribute('aria-pressed', 'false');
         });
-        btn.style.background = 'linear-gradient(135deg, #7669d0, #948cdb)';
-        btn.style.borderColor = '#7669d0';
+        btn.style.background = 'linear-gradient(135deg, #30659a, #3c7fc1)';
+        btn.style.borderColor = '#30659a';
         btn.style.color = '#fff';
         btn.style.transform = 'scale(1.1)';
         btn.setAttribute('aria-pressed', 'true');

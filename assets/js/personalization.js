@@ -171,7 +171,7 @@ function recordMetric(key) {
 export function initPersonalization() {
   if(window.BWPersonalization || !window.BWFlow)return;
   flow=window.BWFlow;
-  const css=document.createElement('link');css.rel='stylesheet';css.href='/assets/css/personalization.css?v=20261105p';document.head.append(css);
+  const css=document.createElement('link');css.rel='stylesheet';css.href='/assets/css/personalization.css?v=20261105b';document.head.append(css);
   window.BWPersonalization={context:question=>contextForQuestion(question,read(),{...data,holland:flow.holland()}),record:recordMetric};
   const page=location.pathname.split('/').pop()||'index.html';
   if(page==='profile.html')editor();
