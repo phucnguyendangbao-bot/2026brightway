@@ -47,12 +47,12 @@
         position: fixed; bottom: 20px; right: 20px; z-index: 9999;
         width: 60px; height: 60px; border-radius: 50%;
         background: #fff; border: none; cursor: pointer;
-        box-shadow: 0 6px 24px rgba(118, 105, 208,0.35);
+        box-shadow: 0 6px 24px rgba(58, 123, 182,0.35);
         display: flex; align-items: center; justify-content: center;
         transition: transform .25s, box-shadow .25s;
         padding: 0; overflow: visible;
       }
-      #waybi-fab:hover { transform: scale(1.08) rotate(-5deg); box-shadow: 0 10px 32px rgba(118, 105, 208,0.45); }
+      #waybi-fab:hover { transform: scale(1.08) rotate(-5deg); box-shadow: 0 10px 32px rgba(58, 123, 182,0.45); }
       #waybi-fab img { width: 100%; height: 100%; object-fit: contain; display: block; }
       #waybi-badge {
         position: absolute; top: -4px; right: 0;
@@ -70,7 +70,7 @@
       /* tooltip nổi lên khi hover fab */
       #waybi-hint {
         position: absolute; right: 70px; top: 50%; transform: translateY(-50%);
-        background: #1e1a39; color: #fff; font-size: 13px; font-weight: 600;
+        background: #131f2a; color: #fff; font-size: 13px; font-weight: 600;
         padding: 8px 14px; border-radius: 14px 14px 4px 14px;
         white-space: nowrap; opacity: 0; pointer-events: none;
         transition: opacity .25s, transform .25s;
@@ -83,10 +83,10 @@
         width: 360px; max-width: calc(100vw - 32px);
         height: 520px; max-height: calc(100vh - 120px);
         background: #fff; border-radius: 20px;
-        box-shadow: 0 20px 60px rgba(118, 105, 208,0.3);
+        box-shadow: 0 20px 60px rgba(58, 123, 182,0.3);
         display: none; flex-direction: column;
         overflow: hidden;
-        border: 1px solid rgba(118, 105, 208,0.15);
+        border: 1px solid rgba(58, 123, 182,0.15);
         animation: waybi-slide-up .3s ease-out;
       }
       #waybi-panel.open { display: flex; }
@@ -96,7 +96,7 @@
       }
 
       #waybi-header {
-        background: linear-gradient(135deg, #908cdb 0%, #8a77d4 100%);
+        background: linear-gradient(135deg, #5d9acc 0%, #4b89c6 100%);
         color: #fff; padding: 14px 16px;
         display: flex; align-items: center; gap: 12px;
         position: relative;
@@ -129,11 +129,11 @@
 
       #waybi-messages {
         flex: 1; overflow-y: auto; padding: 16px;
-        background: linear-gradient(180deg, #f9f9fe 0%, #fff 100%);
+        background: linear-gradient(180deg, #f6fafd 0%, #fff 100%);
         display: flex; flex-direction: column; gap: 10px;
       }
       #waybi-messages::-webkit-scrollbar { width: 5px; }
-      #waybi-messages::-webkit-scrollbar-thumb { background: rgba(118, 105, 208,0.2); border-radius: 999px; }
+      #waybi-messages::-webkit-scrollbar-thumb { background: rgba(58, 123, 182,0.2); border-radius: 999px; }
 
       .waybi-msg {
         max-width: 80%; padding: 9px 13px; border-radius: 16px;
@@ -146,31 +146,31 @@
       }
       .waybi-msg.user {
         align-self: flex-end;
-        background: linear-gradient(135deg, #908cdb 0%, #8a77d4 100%);
+        background: linear-gradient(135deg, #5d9acc 0%, #4b89c6 100%);
         color: #fff;
         border-bottom-right-radius: 4px;
       }
       .waybi-msg.bot {
         align-self: flex-start;
         background: #fff;
-        color: #1e1a39;
-        border: 1px solid rgba(118, 105, 208,0.12);
+        color: #131f2a;
+        border: 1px solid rgba(58, 123, 182,0.12);
         border-bottom-left-radius: 4px;
-        box-shadow: 0 2px 8px rgba(118, 105, 208,0.06);
+        box-shadow: 0 2px 8px rgba(58, 123, 182,0.06);
         white-space: pre-wrap;
       }
-      .waybi-msg.bot b { color: #5d48c5; }
+      .waybi-msg.bot b { color: #2e6090; }
 
       .waybi-typing {
         align-self: flex-start;
-        background: #fff; border: 1px solid rgba(118, 105, 208,0.12);
+        background: #fff; border: 1px solid rgba(58, 123, 182,0.12);
         padding: 10px 14px; border-radius: 16px;
         border-bottom-left-radius: 4px;
         display: flex; gap: 4px;
       }
       .waybi-typing span {
         width: 7px; height: 7px; border-radius: 50%;
-        background: #a392dd;
+        background: #71a1d2;
         animation: waybi-typing 1.2s ease-in-out infinite;
       }
       .waybi-typing span:nth-child(2) { animation-delay: .2s; }
@@ -183,18 +183,18 @@
       #waybi-suggest {
         display: flex; gap: 6px; flex-wrap: wrap;
         padding: 0 16px 10px;
-        background: linear-gradient(180deg, #f9f9fe 0%, #fff 100%);
+        background: linear-gradient(180deg, #f6fafd 0%, #fff 100%);
       }
       .waybi-chip {
         background: #fff;
-        border: 1.5px solid rgba(118, 105, 208,0.25);
-        color: #533fa7; font-size: 12px; font-weight: 600;
+        border: 1.5px solid rgba(58, 123, 182,0.25);
+        color: #2e5379; font-size: 12px; font-weight: 600;
         padding: 6px 12px; border-radius: 999px;
         cursor: pointer; transition: all .15s;
         font-family: inherit;
       }
       .waybi-chip:hover {
-        background: #6754c9;
+        background: #326a9f;
         color: #fff; border-color: transparent;
         transform: translateY(-1px);
       }
@@ -202,20 +202,20 @@
       #waybi-input-wrap {
         padding: 12px;
         background: #fff;
-        border-top: 1px solid rgba(118, 105, 208,0.1);
+        border-top: 1px solid rgba(58, 123, 182,0.1);
         display: flex; gap: 8px; align-items: center;
       }
       #waybi-input {
-        flex: 1; border: 1.5px solid rgba(118, 105, 208,0.2);
-        background: #f9f9fe;
+        flex: 1; border: 1.5px solid rgba(58, 123, 182,0.2);
+        background: #f6fafd;
         padding: 10px 14px; border-radius: 999px;
-        font-size: 13.5px; font-family: inherit; color: #1e1a39;
+        font-size: 13.5px; font-family: inherit; color: #131f2a;
         outline: none; transition: border-color .15s;
       }
-      #waybi-input:focus { border-color: #7669d0; }
+      #waybi-input:focus { border-color: #3a7bb6; }
       #waybi-send {
         width: 40px; height: 40px; border-radius: 50%;
-        background: linear-gradient(135deg, #908cdb 0%, #8a77d4 100%);
+        background: linear-gradient(135deg, #5d9acc 0%, #4b89c6 100%);
         color: #fff; border: none; cursor: pointer;
         display: flex; align-items: center; justify-content: center;
         font-size: 16px; transition: transform .15s;

@@ -1,31 +1,31 @@
 /* Hero first; keep the restored BrightWay gradient and rounded cards. */
-html body #home-view .admissions-home { padding:26px 24px 22px; background:linear-gradient(180deg,#f8f7fe,#fff); scroll-margin-top:85px; }
+html body #home-view .admissions-home { padding:26px 24px 22px; background:linear-gradient(180deg,#f3f8fe,#fff); scroll-margin-top:85px; }
 .admissions-home-inner { max-width:1400px; margin:auto; min-width:0; }
 .admissions-home-heading { display:flex; align-items:center; justify-content:space-between; gap:20px; margin-bottom:16px; }
-.admissions-eyebrow { display:block; color:#7969d0; font-size:12px; font-weight:800; letter-spacing:.1em; margin-bottom:7px; }
-html body #home-view .admissions-home h2 { font-size:clamp(23px,1.8vw,28px); line-height:1.3; color:#1e1a39; margin:0 0 5px; font-weight:700; }
+.admissions-eyebrow { display:block; color:#3a7cb9; font-size:12px; font-weight:800; letter-spacing:.1em; margin-bottom:7px; }
+html body #home-view .admissions-home h2 { font-size:clamp(23px,1.8vw,28px); line-height:1.3; color:#131f2a; margin:0 0 5px; font-weight:700; }
 .admissions-home-heading p { color:#505078; font-size:15px; line-height:1.65; margin:0; }
-.admissions-all { display:inline-flex; align-items:center; gap:10px; flex-shrink:0; background:var(--grad-btn); color:#fff; border-radius:999px; padding:13px 22px; font-weight:700; font-size:14px; text-decoration:none; box-shadow:0 8px 22px rgba(118, 105, 208,.17); }
+.admissions-all { display:inline-flex; align-items:center; gap:10px; flex-shrink:0; background:var(--grad-btn); color:#fff; border-radius:999px; padding:13px 22px; font-weight:700; font-size:14px; text-decoration:none; box-shadow:0 8px 22px rgba(58, 123, 182,.17); }
 .admissions-highlights { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; min-width:0; }
-.admissions-news-card { display:flex; flex-direction:row; min-width:0; background:#fff; border:1px solid #e9e5fc; border-radius:20px; box-shadow:0 5px 18px rgba(118, 105, 208,.08); overflow:hidden; }
+.admissions-news-card { display:flex; flex-direction:row; min-width:0; background:#fff; border:1px solid #d9eafb; border-radius:20px; box-shadow:0 5px 18px rgba(58, 123, 182,.08); overflow:hidden; }
 .admissions-news-photo { position:relative; display:block; width:112px; min-height:150px; overflow:hidden; flex-shrink:0; }
 .admissions-news-photo img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
-.admissions-news-placeholder { background:linear-gradient(135deg,#edecfd,#f1ecfd); }
+.admissions-news-placeholder { background:linear-gradient(135deg,#e1f0fc,#e5f0fc); }
 .admissions-news-placeholder img { object-fit:contain; padding:20px; }
 .admissions-news-badge { position:absolute; left:6px; top:8px; max-width:calc(100% - 12px); border-radius:999px; background:linear-gradient(135deg,#fff2df,#ffe8f1); color:#93470e; border:1px solid #fff; padding:5px 7px; font-size:10px; font-weight:800; }
 .admissions-news-body { display:flex; flex-direction:column; flex:1; min-width:0; padding:14px; }
-.admissions-news-school { color:#7969d0; font-size:12px; font-weight:700; margin-bottom:6px; }
+.admissions-news-school { color:#3a7cb9; font-size:12px; font-weight:700; margin-bottom:6px; }
 html body #home-view .admissions-news-card h4 { font-size:17px; line-height:1.4; font-weight:700; margin:0 0 12px; }
-.admissions-news-card h4 a { color:#1e1a39; text-decoration:none; }
-.admissions-news-card h4 a:hover { color:#7969d0; }
+.admissions-news-card h4 a { color:#131f2a; text-decoration:none; }
+.admissions-news-card h4 a:hover { color:#3a7cb9; }
 .admissions-news-body p { display:none; }
 .admissions-news-links { display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-top:auto; }
-.admissions-news-links a { color:#6f5ccb; font-weight:700; font-size:12px; text-decoration:none; }
+.admissions-news-links a { color:#3671a9; font-weight:700; font-size:12px; text-decoration:none; }
 .admissions-news-links a:hover { text-decoration:underline; }
 .admissions-school-shortcuts { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:14px; }
 .admissions-school-shortcuts span { color:#575777; font-size:12px; font-weight:700; margin-right:3px; }
-.admissions-school-shortcuts a { padding:7px 13px; border:1px solid #e1dcfb; background:#f6f5fe; color:#6b57ca; border-radius:999px; font-weight:600; font-size:12px; text-decoration:none; }
-.admissions-school-shortcuts a:hover { background:#eeebfd; }
+.admissions-school-shortcuts a { padding:7px 13px; border:1px solid #cbe2f9; background:#f0f7fd; color:#346ca3; border-radius:999px; font-weight:600; font-size:12px; text-decoration:none; }
+.admissions-school-shortcuts a:hover { background:#e1effc; }
 @media(min-width:701px) and (max-width:1100px) {
   .admissions-highlights { grid-template-columns:minmax(0,1fr); gap:10px; }
   .admissions-news-photo { width:130px; min-height:106px; }
@@ -62,18 +62,18 @@ html body #home-view .bw-hero-cta-row { flex-direction:row; flex-wrap:wrap; gap:
 html body #home-view .bw-btn-xl { min-height:48px !important; padding:12px 20px !important; font-size:16px !important; }
 html body #home-view .bw-hero-visual {
   max-width:520px; margin:auto; display:grid; grid-template-columns:minmax(0,1fr);
-  gap:14px; padding:10px 10px 16px; border:1px solid #e9e8f2;
+  gap:14px; padding:10px 10px 16px; border:1px solid #e3eaef;
   border-radius:24px; background:#fff; overflow:hidden;
-  box-shadow:0 12px 36px rgba(37, 37, 72,.08);
+  box-shadow:0 12px 36px rgba(28, 42, 54,.08);
 }
 html body #home-view .bw-hero-visual::before { content:none; }
-html body #home-view .bw-hero-carousel { border-radius:16px; box-shadow:none; background:#f5f4fa; }
+html body #home-view .bw-hero-carousel { border-radius:16px; box-shadow:none; background:#f1f5f9; }
 html body #home-view .bw-hero-carousel .slide img {
-  object-fit:cover; object-position:var(--hero-position, center); background:#f5f4fa;
+  object-fit:cover; object-position:var(--hero-position, center); background:#f1f5f9;
 }
 html body #home-view .bw-hero-caption {
   display:block; font-size:14px; line-height:1.5; font-weight:700;
-  padding:0 12px; margin:0; border:0; border-radius:0; box-shadow:none; color:#312f5e;
+  padding:0 12px; margin:0; border:0; border-radius:0; box-shadow:none; color:#233746;
 }
 html body #home-view .bw-hero-caption::before { content:none; }
 html body #home-view .bw-hero-dots { margin:0; gap:2px; align-items:center; flex-wrap:wrap; }
@@ -82,14 +82,14 @@ html body #home-view .bw-hero-dots button {
   background:#d7d8e7; background-clip:padding-box;
 }
 html body #home-view .bw-hero-dots button.is-active {
-  width:40px; border-radius:12px; background:#7e6dd1; background-clip:padding-box;
+  width:40px; border-radius:12px; background:#3c7fbf; background-clip:padding-box;
 }
 html body #home-view .bw-metric-band {
   width:min(100%,1400px); margin:24px auto 0; display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr)); overflow:hidden;
   border:1px solid rgba(255,255,255,.45); border-radius:22px;
   background:var(--bw-brand-gradient);
-  box-shadow:0 18px 40px rgba(121, 105, 208,.22); color:#fff;
+  box-shadow:0 18px 40px rgba(58, 124, 185,.22); color:#fff;
 }
 html body #home-view .bw-metric-item {
   min-width:0; min-height:150px; display:flex; flex-direction:column;
@@ -103,7 +103,7 @@ html body #home-view .bw-metric-item:last-child { border-right:0; }
 html body #home-view .bw-metric-number {
   display:block; color:#fff; font-family:var(--font-display); font-size:clamp(2.35rem,4vw,3.45rem);
   font-weight:900; line-height:1; letter-spacing:-.04em; font-variant-numeric:tabular-nums;
-  text-shadow:0 2px 12px rgba(67, 67, 148,.16);
+  text-shadow:0 2px 12px rgba(47, 80, 105,.16);
 }
 html body #home-view .bw-metric-label {
   color:rgba(255,255,255,.94); font-size:clamp(.82rem,1.1vw,1rem);

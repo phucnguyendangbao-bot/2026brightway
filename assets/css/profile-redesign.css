@@ -1,16 +1,16 @@
 /* Journey dashboard, scoped to the profile page. */
 .journey-welcome { display:grid; grid-template-columns:1.5fr 1fr; gap:48px; align-items:center; margin:38px 0 28px; }
-.journey-eyebrow { font-size:11px; letter-spacing:2px; font-weight:800; color:#6f57ca; }
-.journey-welcome h1 { font-size:clamp(32px,4vw,52px); line-height:1.18; letter-spacing:-1.5px; margin:14px 0; color:#272047; }
-.journey-welcome h1 span { color:#7258ca; }
+.journey-eyebrow { font-size:11px; letter-spacing:2px; font-weight:800; color:#356da6; }
+.journey-welcome h1 { font-size:clamp(32px,4vw,52px); line-height:1.18; letter-spacing:-1.5px; margin:14px 0; color:#182736; }
+.journey-welcome h1 span { color:#366ea9; }
 .journey-welcome p { font-size:14px; line-height:1.8; color:#68617e; max-width:480px; }
-.journey-welcome aside { position:relative; border-left:2px solid #c7bdea; padding:18px 24px; }
-.journey-welcome aside > span { display:block; color:#8e79d5; font-size:46px; line-height:1; margin-bottom:16px; }
-.journey-welcome aside strong { display:block; color:#43376d; margin-bottom:8px; }
+.journey-welcome aside { position:relative; border-left:2px solid #a9c6e4; padding:18px 24px; }
+.journey-welcome aside > span { display:block; color:#508bc8; font-size:46px; line-height:1; margin-bottom:16px; }
+.journey-welcome aside strong { display:block; color:#2c4157; margin-bottom:8px; }
 .journey-shortcuts { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-bottom:32px; }
-.journey-shortcuts a { display:flex; align-items:center; gap:10px; min-height:72px; padding:14px; text-decoration:none; background:#ffffffb3; border:1px solid #e3ddf5; border-radius:14px; color:#4a3d77; font-size:12px; font-weight:700; }
-.journey-shortcuts a:hover { border-color:#9580d7; background:#f3f0fd; }
-.journey-shortcuts a span:first-child { color:#8b76ce; font-size:11px; }
+.journey-shortcuts a { display:flex; align-items:center; gap:10px; min-height:72px; padding:14px; text-decoration:none; background:#ffffffb3; border:1px solid #d3e2f2; border-radius:14px; color:#314860; font-size:12px; font-weight:700; }
+.journey-shortcuts a:hover { border-color:#5a91cb; background:#eaf3fc; }
+.journey-shortcuts a span:first-child { color:#5187c1; font-size:11px; }
 .journey-shortcuts a span:last-child { margin-left:auto; }
 body:has(#my-choices) .flow-local-profile { display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); gap:24px; margin-top:24px; align-items:start; }
 body:has(#my-choices) .flow-local-profile > * { min-width:0; margin:0; }
@@ -22,53 +22,53 @@ body:has(#my-choices) .flow-local-profile > .flow-journey { grid-column:2; grid-
 body:has(#my-choices) .flow-local-profile .flow-journey-heading { flex-direction:column; align-items:flex-start; }
 body:has(#my-choices) .flow-local-profile .flow-journey-steps { grid-template-columns:1fr; }
 body:has(#my-choices) .flow-profile-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
-body:has(#my-choices) .flow-profile-grid article { padding:14px; border-radius:12px; background:#f8f6fd; }
+body:has(#my-choices) .flow-profile-grid article { padding:14px; border-radius:12px; background:#f3f7fc; }
 body:has(#my-choices) .flow-profile-details h1 { font-size:24px; line-height:1.3; }
-body:has(#my-choices) :is(.personal-section,.flow-profile-details,.countdown-manager,.flow-journey) { border-radius:20px; box-shadow:none; background:#fff; border:1px solid #e3def2; padding:24px; }
+body:has(#my-choices) :is(.personal-section,.flow-profile-details,.countdown-manager,.flow-journey) { border-radius:20px; box-shadow:none; background:#fff; border:1px solid #d6e2ef; padding:24px; }
 body:has(#my-choices) :is(#personal-profile,#action-plan,#countdowns) { scroll-margin-top:100px; }
 @media(max-width:900px) { body:has(#my-choices) .flow-local-profile { grid-template-columns:1fr; } body:has(#my-choices) .flow-local-profile > * { grid-column:1!important; grid-row:auto!important; } .journey-shortcuts { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media(max-width:600px) { .journey-welcome { grid-template-columns:1fr; gap:20px; margin:24px 0; } .journey-welcome aside { padding:6px 16px; } .journey-welcome aside > span { display:none; } body:has(#my-choices) :is(.personal-section,.flow-profile-details,.countdown-manager,.flow-journey) { padding:18px; } }
-body:has(#my-choices) { background: #f8f8fd; }
-body:has(#my-choices) .profile-page { position: relative; overflow: hidden; padding: 46px 24px 76px; background: radial-gradient(circle at 8% 12%,#eae6fc 0,transparent 32%),radial-gradient(circle at 94% 15%,#f0f0fd 0,transparent 30%); }
-body:has(#my-choices) .profile-page::before { content:""; position:absolute; width:320px; height:320px; left:-190px; top:350px; border-radius:50%; background:#ece7fc; filter:blur(12px); opacity:.7; pointer-events:none; }
+body:has(#my-choices) { background: #f5f9fc; }
+body:has(#my-choices) .profile-page { position: relative; overflow: hidden; padding: 46px 24px 76px; background: radial-gradient(circle at 8% 12%,#daebfb 0,transparent 32%),radial-gradient(circle at 94% 15%,#e7f3fc 0,transparent 30%); }
+body:has(#my-choices) .profile-page::before { content:""; position:absolute; width:320px; height:320px; left:-190px; top:350px; border-radius:50%; background:#ddebfb; filter:blur(12px); opacity:.7; pointer-events:none; }
 body:has(#my-choices) .profile-page > .container { position:relative; z-index:1; max-width:1140px; }
-body:has(#my-choices) .profile-view-tabs { max-width:760px; margin:0 auto 32px; padding:6px; border:1px solid #e2def4; border-radius:999px; background:#f5f4fbcc; box-shadow:0 10px 26px #4d408b0c; }
-body:has(#my-choices) .profile-view-tabs a { min-height:52px; font-size:15px; color:#453b70; }
-body:has(#my-choices) .profile-view-tabs a.active { color:#664fc7; box-shadow:0 7px 18px #5946a51b; }
-body:has(#my-choices) .my-choices { margin:0; padding:42px 44px 48px; border:1px solid #e1def1; border-radius:28px; background:#ffffffeb; box-shadow:0 24px 70px #4e418a12; backdrop-filter:blur(16px); scroll-margin-top:100px; }
+body:has(#my-choices) .profile-view-tabs { max-width:760px; margin:0 auto 32px; padding:6px; border:1px solid #d4e2f1; border-radius:999px; background:#f1f5facc; box-shadow:0 10px 26px #314e6a0c; }
+body:has(#my-choices) .profile-view-tabs a { min-height:52px; font-size:15px; color:#2f455a; }
+body:has(#my-choices) .profile-view-tabs a.active { color:#31669b; box-shadow:0 7px 18px #35587c1b; }
+body:has(#my-choices) .my-choices { margin:0; padding:42px 44px 48px; border:1px solid #d5e2ed; border-radius:28px; background:#ffffffeb; box-shadow:0 24px 70px #324e6a12; backdrop-filter:blur(16px); scroll-margin-top:100px; }
 body:has(#my-choices) .my-choices[aria-busy="true"] { min-height:420px; }
-body:has(#my-choices) .choices-heading { gap:26px; align-items:flex-end; padding-bottom:32px; border-bottom:1px solid #e7e4f3; }
+body:has(#my-choices) .choices-heading { gap:26px; align-items:flex-end; padding-bottom:32px; border-bottom:1px solid #dee7f0; }
 body:has(#my-choices) .choices-heading > div { flex:1; min-width:240px; }
-body:has(#my-choices) .choices-heading .flow-kicker { display:block; color:#6d58ca; font-size:11px; font-weight:800; letter-spacing:1.6px; margin-bottom:14px; }
-body:has(#my-choices) .my-choices h2 { margin:0 0 14px; color:#33295c; font-size:clamp(32px,4vw,48px); line-height:1.12; letter-spacing:-1.4px; }
+body:has(#my-choices) .choices-heading .flow-kicker { display:block; color:#346da5; font-size:11px; font-weight:800; letter-spacing:1.6px; margin-bottom:14px; }
+body:has(#my-choices) .my-choices h2 { margin:0 0 14px; color:#1f3346; font-size:clamp(32px,4vw,48px); line-height:1.12; letter-spacing:-1.4px; }
 body:has(#my-choices) .my-choices p { color:#5e587b; line-height:1.7; }
-body:has(#my-choices) .choices-heading > a { display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:12px; color:#5c43c4; background:#f1edfd; font-weight:700; text-decoration:none; white-space:nowrap; }
-body:has(#my-choices) .choices-heading > a:hover { background:#e7e1fc; }
+body:has(#my-choices) .choices-heading > a { display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:12px; color:#2c5d8d; background:#e6f0fc; font-weight:700; text-decoration:none; white-space:nowrap; }
+body:has(#my-choices) .choices-heading > a:hover { background:#d4e7fa; }
 body:has(#my-choices) .my-choices > section { border-top:0; margin-top:30px; padding-top:0; }
-body:has(#my-choices) .my-choices > section + section { border-top:1px solid #e7e4f3; margin-top:34px; padding-top:30px; }
-body:has(#my-choices) .my-choices h3 { color:#3a3163; font-size:23px; letter-spacing:-.3px; margin:0 0 6px; }
+body:has(#my-choices) .my-choices > section + section { border-top:1px solid #dee7f0; margin-top:34px; padding-top:30px; }
+body:has(#my-choices) .my-choices h3 { color:#263a4d; font-size:23px; letter-spacing:-.3px; margin:0 0 6px; }
 body:has(#my-choices) .choices-filters { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(180px,.9fr) auto; align-items:end; gap:14px; margin-top:18px; }
 body:has(#my-choices) .choices-filters label { color:#5e587b; font-size:13px; font-weight:700; gap:8px; }
-body:has(#my-choices) .choices-filters input, body:has(#my-choices) .choices-filters select { min-height:50px; padding:12px 14px; border:1px solid #cec7ea; border-radius:12px; color:#3e3567; background:#fff; box-shadow:none; }
-body:has(#my-choices) .choices-filters input:focus, body:has(#my-choices) .choices-filters select:focus { outline:3px solid #907dd62e; border-color:#7d66cf; }
-body:has(#my-choices) .choices-filters > a { padding-bottom:13px; color:#5c43c4; font-weight:700; white-space:nowrap; }
-body:has(#my-choices) #savedSchoolCount, body:has(#my-choices) #wishCount { margin:8px 0 12px; color:#453b70; font-size:14px; font-weight:700; }
-body:has(#my-choices) .choices-list li { margin:10px 0; padding:18px 20px; border-color:#e1dcf1; border-radius:16px; background:#fff; box-shadow:0 5px 15px #4e418a07; }
+body:has(#my-choices) .choices-filters input, body:has(#my-choices) .choices-filters select { min-height:50px; padding:12px 14px; border:1px solid #b8cee4; border-radius:12px; color:#2a3e52; background:#fff; box-shadow:none; }
+body:has(#my-choices) .choices-filters input:focus, body:has(#my-choices) .choices-filters select:focus { outline:3px solid #548ec92e; border-color:#3b7aba; }
+body:has(#my-choices) .choices-filters > a { padding-bottom:13px; color:#2c5d8d; font-weight:700; white-space:nowrap; }
+body:has(#my-choices) #savedSchoolCount, body:has(#my-choices) #wishCount { margin:8px 0 12px; color:#2f455a; font-size:14px; font-weight:700; }
+body:has(#my-choices) .choices-list li { margin:10px 0; padding:18px 20px; border-color:#d4e0ee; border-radius:16px; background:#fff; box-shadow:0 5px 15px #324e6a07; }
 body:has(#my-choices) .choices-list li:has(.choice-priority) { align-items:center; }
-body:has(#my-choices) .choices-list li:not(:has(.choice-priority)) { color:#68627f; background:#fbfafe; }
+body:has(#my-choices) .choices-list li:not(:has(.choice-priority)) { color:#68627f; background:#f8fbfe; }
 body:has(#my-choices) .choices-list h3 { font-size:16px; margin-bottom:5px; }
 body:has(#my-choices) .choices-list p { font-size:13px; margin:4px 0; }
-body:has(#my-choices) .choices-list a { color:#553cbd; font-weight:700; }
-body:has(#my-choices) .choice-priority { width:42px; height:42px; flex-basis:42px; border-radius:14px; color:#634cc6; background:#ede9fd; }
+body:has(#my-choices) .choices-list a { color:#2a5683; font-weight:700; }
+body:has(#my-choices) .choice-priority { width:42px; height:42px; flex-basis:42px; border-radius:14px; color:#306497; background:#dfedfb; }
 body:has(#my-choices) .choice-actions { align-items:center; }
 body:has(#my-choices) .choice-actions button { min-width:42px; border-radius:10px; }
-body:has(#my-choices) .choices-heading button, body:has(#my-choices) #exportWishes, body:has(#my-choices) #exportWishesCsv { min-height:42px; padding:9px 14px; border:1px solid #d6cff1; border-radius:10px; color:#6149c5; background:#f4f1fd; font:inherit; font-size:13px; font-weight:700; cursor:pointer; }
+body:has(#my-choices) .choices-heading button, body:has(#my-choices) #exportWishes, body:has(#my-choices) #exportWishesCsv { min-height:42px; padding:9px 14px; border:1px solid #c0d6ec; border-radius:10px; color:#2f6193; background:#ecf4fc; font:inherit; font-size:13px; font-weight:700; cursor:pointer; }
 body:has(#my-choices) #exportWishes:disabled, body:has(#my-choices) #exportWishesCsv:disabled { opacity:.5; cursor:default; }
 body:has(#my-choices) .choices-heading:has(#wishListTitle) { align-items:center; padding-bottom:0; border-bottom:0; }
 body:has(#my-choices) .choices-heading:has(#wishListTitle) > h3 { margin-right:auto; }
 body:has(#my-choices) .choices-heading:has(#wishListTitle) > button { white-space:nowrap; }
 :root[data-theme="dark"] body:has(#my-choices) { background:var(--bg-1); }
-:root[data-theme="dark"] body:has(#my-choices) .profile-page { background:radial-gradient(circle at 8% 12%,#2c2450 0,transparent 34%),var(--bg-1); }
+:root[data-theme="dark"] body:has(#my-choices) .profile-page { background:radial-gradient(circle at 8% 12%,#1b2c3d 0,transparent 34%),var(--bg-1); }
 :root[data-theme="dark"] body:has(#my-choices) .my-choices { background:var(--surface); border-color:var(--border); }
 @media(max-width:760px) {
   body:has(#my-choices) .profile-page { padding:26px 14px 58px; }
