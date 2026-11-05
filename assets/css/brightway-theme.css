@@ -302,14 +302,21 @@ html body.senior-mode #home-view .bw-hero-h1 { font-size:clamp(2.6rem,4.6vw,4.8r
   --bw-shadow-lift: 0 4px 8px rgba(39,35,92,.06), 0 28px 68px rgba(54,48,130,.15);
 }
 html { background:#f5f6ff; }
-html body {
+/* The page light sits on its own fixed layer. background-attachment:fixed on body made the
+   browser repaint the whole page on every scroll frame; a fixed layer is only composited. */
+html::before {
+  content:'';
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
   background:
     radial-gradient(circle at -4% 2%, rgba(123,92,255,.22), transparent 34rem),
     radial-gradient(circle at 104% 16%, rgba(80,177,255,.20), transparent 32rem),
     radial-gradient(circle at 52% 66%, rgba(202,119,255,.09), transparent 38rem),
     linear-gradient(165deg,#fbfbff 0%,#f0f3ff 48%,#faf7ff 100%);
-  background-attachment:fixed;
 }
+html body { background:transparent; }
 html body::selection { background:rgba(107,96,255,.2); color:var(--bw-ink); }
 html body :is(h1,h2,h3) { text-wrap:balance; }
 html body p { text-wrap:pretty; }
@@ -433,6 +440,5 @@ html body ::-webkit-scrollbar { width:11px; height:11px; }
 html body ::-webkit-scrollbar-track { background:rgba(238,239,252,.65); }
 html body ::-webkit-scrollbar-thumb { background:linear-gradient(180deg,#a79cff,#7465ef); border:3px solid rgba(245,246,255,.9); border-radius:999px; }
 @media(max-width:700px) {
-  html body { background-attachment:scroll; }
   html body #home-view :is(.bw-step,.bw-tool-card,.admissions-news-card):hover { transform:none; }
 }

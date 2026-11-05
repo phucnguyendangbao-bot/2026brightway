@@ -8,16 +8,24 @@
 }
 .story > * { position: relative; z-index: 1; }
 
-/* The road: a dotted footpath ("lối") that becomes a paved road ("đường") as you go. */
+/* The road: a dotted footpath ("lối") that becomes a paved road ("đường") as you go.
+   It lives in a narrow gutter layer and is revealed by moving composited layers, never repainted. */
 .story > .story-rail {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
   z-index: 0;
-  width: 100%;
-  height: 100%;
   pointer-events: none;
-  overflow: visible;
+  contain: strict;
 }
+.story-rail svg { position: absolute; top: 0; left: 0; display: block; overflow: visible; }
+.story-rail-reveal, .story-rail-inner {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+.story-rail-reveal { overflow: hidden; transform: translate3d(0, -100%, 0); }
+.story-rail-inner { transform: translate3d(0, 100%, 0); }
 .story-rail path { fill: none; stroke-linecap: round; }
 .story-rail-trail { stroke: #cfc9ff; stroke-width: 3; stroke-dasharray: 1 11; }
 .story-rail-road { stroke: var(--bw-brand, #6b60ff); stroke-width: 6; }
@@ -211,9 +219,18 @@
 .career-empty { grid-column: 1 / -1; margin: 0; color: var(--bw-muted, #3a3a6e); }
 
 /* ---------- Chapter 3: schools ---------- */
-#chuong-3 .university-discovery, #chuong-3 .admissions-home { margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; max-width: none; background: none; box-shadow: none; border: 0; }
+html body #home-view #chuong-3 :is(.university-discovery, .admissions-home) { margin: 0; padding: 0; max-width: none; background: none; box-shadow: none; border: 0; }
+html body #home-view #chuong-3 .admissions-home-inner { max-width: none; margin: 0; }
+html body #home-view #chuong-3 .admissions-home { margin-top: 40px; }
+#chuong-3 .university-discovery-status { margin-top: 14px; }
+#chuong-3 [data-university-privacy] { margin-top: 8px; }
 #chuong-3 .university-discovery-heading, #chuong-3 .admissions-home-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 12px; margin-bottom: 14px; }
-#chuong-3 .university-discovery-heading a, #chuong-3 .admissions-all { color: var(--bw-brand-text, #584bd8); font-weight: 700; font-size: 14px; }
+html body #home-view #chuong-3 :is(.university-discovery-heading > a, .admissions-all) {
+  display: inline; padding: 0; border-radius: 0; background: none; box-shadow: none;
+  color: var(--bw-brand-text, #584bd8); font-size: 14px; font-weight: 700;
+  text-decoration: underline; text-underline-offset: 3px;
+}
+html body #home-view #chuong-3 :is(.university-discovery-heading, .admissions-home-heading) h3 { margin: 0; font-size: 20px; }
 .university-skeleton { min-height: 340px; }
 #chuong-3 .university-discovery-status:has(> .bw-visually-hidden:only-child) { margin: 0; }
 
@@ -382,3 +399,7 @@
 /* Sections that used to stand alone now sit inside a chapter column. */
 #chuong-1 .home-holland { margin: 0; padding: 0; max-width: none; }
 #chuong-1 .home-holland-card { margin: 0; max-width: 760px; }
+
+/* Glass blur is invisible on this near-solid background but forces a full re-composite on every scroll frame. */
+.story :is(*, *::before, *::after), .bw-faq * { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+.story .home-journey-card, .story .flow-journey, .story .flow-journey-steps a, .story .countdown-widget, .story .admissions-news-card { background: #fff; }

@@ -18,80 +18,78 @@ function whenNear(el, fn, margin = '600px') {
   io.observe(el);
 }
 
-/* ---------- The road ---------- */
+/* ---------- The road ----------
+   Drawn once into a narrow layer in the left gutter. Scrolling only moves two composited
+   layers (a clip window and its counter-shifted content), so the browser never repaints the path. */
 function initRail() {
-  const svg = story?.querySelector('.story-rail');
-  if (!svg) return;
-  const trail = svg.querySelector('.story-rail-trail');
-  const road = svg.querySelector('.story-rail-road');
+  const rail = story?.querySelector('.story-rail');
+  if (!rail) return;
+  const trailSvg = rail.querySelector('.story-rail-trail-svg');
+  const roadSvg = rail.querySelector('.story-rail-road-svg');
+  const reveal = rail.querySelector('.story-rail-reveal');
+  const inner = rail.querySelector('.story-rail-inner');
   const markers = [...story.querySelectorAll('.chapter-marker')];
-  let stops = [];   // { y, length } for each marker
-  let total = 0;
-  let ticking = false;
+  let stops = [];          // marker centre y, in story coordinates
+  let height = 0, storyTop = 0, shown = -1, reachedCount = -1, ticking = false;
 
   function layout() {
     const box = story.getBoundingClientRect();
     const first = document.getElementById('chuong-1');
     if (!first || !markers.length) return;
-    svg.setAttribute('width', box.width);
-    svg.setAttribute('height', box.height);
-    svg.setAttribute('viewBox', `0 0 ${box.width} ${box.height}`);
     const points = markers.map(m => { const r = m.getBoundingClientRect(); return { x: r.left - box.left + r.width / 2, y: r.top - box.top + r.height / 2 }; });
+    const width = Math.ceil(Math.max(...points.map(p => p.x)) + 40);
     const startY = Math.max(0, first.getBoundingClientRect().top - box.top - 72);
-    const sway = box.width < 700 ? 8 : 28;
-    let d = `M${points[0].x} ${startY}`;
-    const segments = [`M${points[0].x} ${startY} L${points[0].x} ${points[0].y}`];
-    d += ` L${points[0].x} ${points[0].y}`;
+    const sway = box.width < 700 ? 6 : 18;
+    let d = `M${points[0].x} ${startY} L${points[0].x} ${points[0].y}`;
     for (let i = 1; i < points.length; i++) {
-      const a = points[i - 1], b = points[i], dir = i % 2 ? 1 : -1, mid = (b.y - a.y) / 3;
-      const seg = ` C${a.x + sway * dir} ${a.y + mid} ${b.x + sway * dir} ${b.y - mid} ${b.x} ${b.y}`;
-      d += seg;
-      segments.push(`M${a.x} ${a.y}${seg}`);
+      const a = points[i - 1], b = points[i], dir = i % 2 ? 1 : -1, third = (b.y - a.y) / 3;
+      d += ` C${a.x + sway * dir} ${a.y + third} ${b.x + sway * dir} ${b.y - third} ${b.x} ${b.y}`;
     }
-    trail.setAttribute('d', d);
-    road.setAttribute('d', d);
-    // Measure each segment once so scroll updates are a lookup, not geometry.
-    const probe = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    svg.append(probe);
-    let length = 0;
-    stops = segments.map((seg, i) => { probe.setAttribute('d', seg); length += probe.getTotalLength(); return { y: points[i].y, length }; });
-    stops.unshift({ y: startY, length: 0 });
-    probe.remove();
-    total = length;
-    road.style.strokeDasharray = `${total} ${total}`;
+    height = Math.ceil(box.height);
+    storyTop = box.top + scrollY;
+    stops = points.map(p => p.y);
+    stops.unshift(startY);
+    rail.style.width = width + 'px';
+    rail.style.height = height + 'px';
+    for (const svg of [trailSvg, roadSvg]) {
+      svg.setAttribute('width', width);
+      svg.setAttribute('height', height);
+      svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+      svg.querySelector('path').setAttribute('d', d);
+    }
+    shown = -1; reachedCount = -1;
     update();
   }
 
-  function lengthAt(y) {
-    if (y <= stops[0].y) return 0;
-    for (let i = 1; i < stops.length; i++) {
-      const a = stops[i - 1], b = stops[i];
-      if (y <= b.y) return a.length + (b.length - a.length) * ((y - a.y) / (b.y - a.y || 1));
-    }
-    return total;
-  }
-
-  function savedLength() {
+  function savedReach() {
     // Without scroll-linked motion the road shows how far this visitor has actually come.
-    const steps = flow()?.progress() || [];
-    const done = steps.filter(step => step.complete).length;
-    return done ? stops[Math.min(done, stops.length - 1)].length : 0;
+    const done = (flow()?.progress() || []).filter(step => step.complete).length;
+    return done ? stops[Math.min(done, stops.length - 1)] : 0;
   }
 
   function update() {
     ticking = false;
     if (!stops.length) return;
-    const top = story.getBoundingClientRect().top;
-    const reach = reduced.matches ? savedLength() : lengthAt(innerHeight * 0.6 - top);
-    road.style.strokeDashoffset = String(total - reach);
-    markers.forEach((marker, i) => marker.classList.toggle('is-reached', reach >= stops[i + 1].length - 1));
+    const reach = Math.round(Math.max(0, Math.min(height, reduced.matches ? savedReach() : scrollY + innerHeight * 0.6 - storyTop)));
+    if (reach !== shown) {
+      shown = reach;
+      reveal.style.transform = `translate3d(0, ${reach - height}px, 0)`;
+      inner.style.transform = `translate3d(0, ${height - reach}px, 0)`;
+    }
+    const count = stops.slice(1).filter(y => reach >= y - 1).length;
+    if (count !== reachedCount) {
+      reachedCount = count;
+      markers.forEach((marker, i) => marker.classList.toggle('is-reached', i < count));
+    }
   }
 
   addEventListener('scroll', () => { if (!ticking && !reduced.matches) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  addEventListener('resize', () => requestAnimationFrame(update), { passive: true });
   reduced.addEventListener?.('change', update);
-  if ('ResizeObserver' in window) new ResizeObserver(() => requestAnimationFrame(layout)).observe(story);
-  else addEventListener('resize', layout);
-  addEventListener('load', layout);
+  let pending = 0;
+  const relayout = () => { cancelAnimationFrame(pending); pending = requestAnimationFrame(layout); };
+  if ('ResizeObserver' in window) new ResizeObserver(relayout).observe(story);
+  addEventListener('load', relayout);
   layout();
   return { refresh: update };
 }

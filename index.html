@@ -337,7 +337,7 @@ body{overflow-x:visible;}
 }
 
 </style>
-<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261022-polish">
+<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261105">
 <link rel="stylesheet" href="/assets/css/flow.css?v=20261022-polish">
 <link rel="stylesheet" href="/assets/css/selections.css?v=20261020-wishes">
 <script type="module" src="/assets/js/selections.js?v=20261020-wishes"></script>
@@ -347,8 +347,8 @@ body{overflow-x:visible;}
 <link rel="stylesheet" href="/assets/css/home-holland.css?v=20261015">
 <link rel="stylesheet" href="/assets/css/home-journeys.css?v=20261022-polish">
 <link rel="stylesheet" href="/assets/css/university-promotions.css?v=20261021-rounded-buttons">
-<link rel="stylesheet" href="/assets/css/motion.css?v=20261104">
-<link rel="stylesheet" href="/assets/css/story.css?v=20261104">
+<link rel="stylesheet" href="/assets/css/motion.css?v=20261105">
+<link rel="stylesheet" href="/assets/css/story.css?v=20261105">
 <script type="module" src="/assets/js/university-promotions.js?v=20261104"></script>
 <script src="/assets/js/home-holland.js?v=20261104" defer></script>
 </head>
@@ -970,7 +970,10 @@ body{overflow-x:visible;}
 
 <!-- ===== CÂU CHUYỆN LỚP 12: mở đầu, 5 chương, kết ===== -->
 <div class="story" id="story" data-story>
-<svg class="story-rail" aria-hidden="true" focusable="false"><path class="story-rail-trail" d=""/><path class="story-rail-road" d=""/></svg>
+<div class="story-rail" aria-hidden="true">
+  <svg class="story-rail-trail-svg" focusable="false"><path class="story-rail-trail" d=""/></svg>
+  <div class="story-rail-reveal"><div class="story-rail-inner"><svg class="story-rail-road-svg" focusable="false"><path class="story-rail-road" d=""/></svg></div></div>
+</div>
 
 <section class="bw-hero story-scene" id="hero-actions" aria-labelledby="heroTitle">
   <div class="bw-hero-grid">
@@ -1705,7 +1708,7 @@ Bạn cần hỏi gì nào?</div>
 <script src="assets/js/waybi.js?v=20261022-polish"></script>
 <script src="assets/js/waybi-presence.js?v=20261104"></script>
 
-<script type="module" src="/assets/js/story.js?v=20261104"></script>
+<script type="module" src="/assets/js/story.js?v=20261105"></script>
 </body>
 </html>
 
