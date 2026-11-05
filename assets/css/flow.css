@@ -60,7 +60,7 @@ body .profile-view-tabs a.active { color:var(--bw-brand-text); background:var(--
 body [data-profile-view][hidden] { display:none !important; }
 :root[data-theme="dark"] body .flow-footer { background:linear-gradient(145deg,rgba(34,32,68,.94),rgba(27,24,52,.92)); }
 :root[data-theme="dark"] body .flow-footer :is(nav a,.flow-footer-meta a) { color:#c9bcff; }
-@media(max-width:1180px) {
+@media(max-width:1300px) {
   body .flow-menu { display:block; }
   body .flow-nav-inner { position:relative; }
   body .flow-links { display:none; position:absolute; left:-24px; right:-24px; top:100%; padding:12px 24px; background:var(--bw-paper); border-bottom:1px solid var(--bw-line); max-height:75vh; overflow:auto; flex-direction:column; align-items:stretch; justify-content:flex-start; gap:4px; box-shadow:0 12px 28px rgba(99,102,241,.14); }
@@ -102,7 +102,7 @@ body .flow-journey-steps a::after { content:""; position:absolute; width:80px; h
 body .flow-journey-steps a:hover { transform:translateY(-3px); border-color:rgba(107,96,255,.28); box-shadow:0 15px 32px rgba(54,48,130,.10); }
 body .flow-journey-steps span { box-shadow:0 7px 16px rgba(107,96,255,.24),inset 0 1px rgba(255,255,255,.3); }
 body .flow-next { border-color:rgba(107,96,255,.13); box-shadow:0 14px 38px rgba(54,48,130,.08); }
-@media(max-width:1180px) { body .flow-links { background:rgba(255,255,255,.84); backdrop-filter:blur(22px); border-bottom-color:rgba(107,96,255,.12); } }
+@media(max-width:1300px) { body .flow-links { background:rgba(255,255,255,.84); backdrop-filter:blur(22px); border-bottom-color:rgba(107,96,255,.12); } }
 /* Shared journey controls: compact on phones and usable without animation. */
 .flow-hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin:24px 0; align-items:center; }
 .flow-hero-actions a, .flow-stepbar a, .flow-profile-details button { min-height:44px; display:inline-flex; align-items:center; padding:10px 16px; border-radius:14px; }
@@ -141,4 +141,10 @@ body .flow-next { border-color:rgba(107,96,255,.13); box-shadow:0 14px 38px rgba
 @media(prefers-reduced-motion:reduce) {
   html { scroll-behavior:auto!important; }
   *, *::before, *::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; scroll-behavior:auto!important; }
+}
+/* Between the mobile menu and wide screens, tighten the links so the bar never scrolls sideways. */
+@media(min-width:1301px) and (max-width:1440px) {
+  body .flow-nav-inner { gap:12px; }
+  body .flow-logo { font-size:20px; }
+  body .flow-links > a, body .flow-more-button { padding:10px 8px; font-size:14px; }
 }

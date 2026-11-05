@@ -249,7 +249,7 @@ async function testResponsiveAndRegression(browser, base, report) {
       }).slice(0, 12).map(el => ({tag:el.tagName,id:el.id,class:el.className,width:Math.round(el.getBoundingClientRect().width)})));
       if (await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1)) layoutFailures.push({file,width,overflowing});
       if (width === 320 || width === 1366) await page.screenshot({ path: path.join(artifactDir, `review-${file.split('.')[0]}-${width}.png`), fullPage: true });
-      if (width < 1180) {
+      if (width <= 1300) {
         await page.locator('.flow-menu').click();
         assert.equal(await page.locator('.flow-menu').getAttribute('aria-expanded'), 'true');
         await page.keyboard.press('Escape');

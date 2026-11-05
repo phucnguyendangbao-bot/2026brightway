@@ -1,9 +1,10 @@
 /* Homepage story layout. The road is the one bold element; everything else stays quiet. */
 .story {
   --page-pad: 28px;   /* matches the hero's own side padding */
+  --column: 1240px;   /* same column as the hero, centred */
   --gutter: 72px;
   --marker: 40px;
-  --marker-left: var(--page-pad);
+  --marker-left: 0px;
   position: relative;
 }
 .story > * { position: relative; z-index: 1; }
@@ -33,7 +34,10 @@
 /* ---------- Chapters ---------- */
 .story-chapter {
   margin: 0;
-  padding: 64px var(--page-pad) 24px calc(var(--page-pad) + var(--gutter));
+  width: min(var(--column), 100% - 2 * var(--page-pad));
+  margin-inline: auto;
+  padding: 64px 0 24px var(--gutter);
+  box-sizing: border-box;
   scroll-margin-top: 80px;
 }
 .chapter-head {
@@ -98,7 +102,7 @@
 .story-chapter.is-folded { padding-bottom: 8px; }
 .story-chapter.is-folded .chapter-head { margin-bottom: 0; }
 
-.chapter-body { max-width: 960px; }
+.chapter-body { max-width: none; }
 .chapter-body > * + * { margin-top: 20px; }
 .chapter-lead { max-width: 62ch; margin: 0; color: var(--bw-muted, #3a3a6e); font-size: 17px; line-height: 1.6; }
 .chapter-heading .chapter-lead { margin-top: 10px; }
@@ -327,8 +331,8 @@ html body #home-view #chuong-3 :is(.university-discovery-heading, .admissions-ho
 .story-ending .flow-journey { margin: 0; }
 
 @media (max-width: 700px) {
-  .story { --page-pad: 16px; --gutter: 36px; --marker: 32px; --marker-left: 8px; }
-  .story-chapter { padding: 44px 16px 16px calc(var(--marker-left) + var(--gutter)); }
+  .story { --page-pad: 16px; --gutter: 36px; --marker: 32px; --marker-left: -8px; }
+  .story-chapter { width: auto; margin: 0 16px 0 16px; padding: 44px 0 16px var(--gutter); }
   .chapter-marker { top: 46px; font-size: 14px; }
   .chapter-head { flex-wrap: wrap; gap: 8px; }
   .chapter-toggle { margin-top: 0; }
