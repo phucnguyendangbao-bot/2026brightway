@@ -46,8 +46,8 @@ test('every user-facing page loads the shared BrightWay colour theme', () => {
     assert.match(read(file), /\/assets\/css\/brightway-theme\.css\?v=[\w-]+/, file);
   }
   const theme = read('assets/css/brightway-theme.css');
-  assert.match(theme, /--bw-brand:\s*#6b60ff/);
-  assert.match(theme, /--bw-brand-gradient:\s*linear-gradient\(135deg, #6b60ff 0%, #8b6bff 100%\)/);
+  assert.match(theme, /--bw-brand:\s*#7969d0/);
+  assert.match(theme, /--bw-brand-gradient:\s*linear-gradient\(135deg, #7969d0 0%, #8a77d4 100%\)/);
   assert.match(read('assets/css/admissions-home.css'), /\.bw-metric-band[^]*background:var\(--bw-brand-gradient\)/);
 });
 

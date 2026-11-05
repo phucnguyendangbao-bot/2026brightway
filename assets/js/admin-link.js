@@ -30,7 +30,7 @@
       link.href = 'admin/index.html';
       link.setAttribute('data-admin-link', 'true');
       link.textContent = '⚙️ Quản trị';
-      link.style.cssText = 'padding:8px 14px;border-radius:10px;font-weight:600;color:var(--accent);background:rgba(99,102,241,0.1);';
+      link.style.cssText = 'padding:8px 14px;border-radius:10px;font-weight:600;color:var(--accent);background:rgba(118, 105, 208,0.1);';
       navLinks.appendChild(link);
     } catch (err) {
       console.warn('[admin-link]', err);

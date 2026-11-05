@@ -236,7 +236,7 @@ function mountMilestoneChecks() {
 export function initCountdown() {
   if (window.BWCountdown || !window.BWFlow) return;
   flow = window.BWFlow;
-  const css = document.createElement('link'); css.rel = 'stylesheet'; css.href = '/assets/css/countdown.css?v=20261021'; document.head.append(css);
+  const css = document.createElement('link'); css.rel = 'stylesheet'; css.href = '/assets/css/countdown.css?v=20261105p'; document.head.append(css);
   window.BWCountdown = { read:data, days:calendarDayDifference };
   const page = location.pathname.split('/').pop() || 'index.html';
   if (page === 'index.html') {

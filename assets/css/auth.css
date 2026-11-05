@@ -63,11 +63,11 @@
   transition: all .2s;
   -webkit-tap-highlight-color: transparent;
 }
-.auth-tab:hover { background: rgba(99,102,241,0.06); }
+.auth-tab:hover { background: rgba(118, 105, 208,0.06); }
 .auth-tab.active {
   background: var(--grad-btn);
   color: #fff;
-  box-shadow: 0 3px 10px rgba(99,102,241,0.30);
+  box-shadow: 0 3px 10px rgba(118, 105, 208,0.30);
 }
 
 /* Tab Admin — phân biệt rõ ràng với tab Student */
@@ -160,7 +160,7 @@
 .auth-field input::placeholder { color: var(--text-soft); }
 .auth-field input:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 4px rgba(99,102,241,0.10);
+  box-shadow: 0 0 0 4px rgba(118, 105, 208,0.10);
 }
 
 .btn-google {
@@ -171,7 +171,7 @@
   width: 100%;
   padding: 13px 20px;
   background: #fff;
-  color: #1a1a3e;
+  color: #1e1a39;
   border: 2px solid #dadce0;
   border-radius: 14px;
   font-size: 15px;
@@ -188,8 +188,8 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.10);
 }
 :root[data-theme="dark"] .btn-google {
-  background: #f5f5fa;
-  color: #1a1a3e;
+  background: #f6f5fa;
+  color: #1e1a39;
 }
 :root[data-theme="dark"] .btn-google:hover { background: #fff; }
 
@@ -205,10 +205,10 @@
   font-family: inherit;
   cursor: pointer;
   transition: all .2s;
-  box-shadow: 0 4px 12px rgba(99,102,241,0.32);
+  box-shadow: 0 4px 12px rgba(118, 105, 208,0.32);
   -webkit-tap-highlight-color: transparent;
 }
-.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(99,102,241,0.42); }
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(118, 105, 208,0.42); }
 .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
 .btn-link {
@@ -265,7 +265,7 @@
   animation: fadeIn .2s ease;
 }
 .auth-status.show { display: block; }
-.auth-status.info  { background: rgba(99,102,241,0.10); color: var(--primary); }
+.auth-status.info  { background: rgba(118, 105, 208,0.10); color: var(--primary); }
 .auth-status.success { background: rgba(16,185,129,0.12); color: #10b981; }
 .auth-status.error { background: rgba(239,68,68,0.12); color: #ef4444; }
 :root[data-theme="dark"] .auth-status.success { color: #34d399; }

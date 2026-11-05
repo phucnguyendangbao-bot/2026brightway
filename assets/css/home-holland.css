@@ -1,39 +1,39 @@
 .home-waybi-shortcut {
   display: inline-flex; align-items: center; gap: 9px; margin-top: 16px;
-  padding: 8px 12px; border: 1px solid #e1daff; border-radius: 14px;
-  background: #f7f5ff; color: #59409a; font-size: 14px; font-weight: 700; cursor: pointer;
+  padding: 8px 12px; border: 1px solid #e1dbfb; border-radius: 14px;
+  background: #f7f5fe; color: #564395; font-size: 14px; font-weight: 700; cursor: pointer;
   font-family: inherit; text-align: left;
 }
 .home-waybi-shortcut img { width: 34px; height: 38px; object-fit: contain; }
 .home-holland { padding: 28px 24px; scroll-margin-top: 100px; }
 .home-holland-card {
   max-width: 900px; margin: auto; padding: 28px;
-  background: linear-gradient(135deg,#eef1ff,#faf1fc); border: 1px solid #dfd7ff;
-  border-radius: 24px; text-align: center; color: #3a3a6e;
+  background: linear-gradient(135deg,#f1f0fd,#f6f2fc); border: 1px solid #dfd8fb;
+  border-radius: 24px; text-align: center; color: #3f396c;
 }
-.home-holland-card h2 { display: flex; align-items: center; justify-content: center; gap: 10px; color: #1a1a3e; font-family: var(--font-display, 'Quicksand', 'Be Vietnam Pro', sans-serif); font-size: 25px; line-height: 1.3; }
+.home-holland-card h2 { display: flex; align-items: center; justify-content: center; gap: 10px; color: #1e1a39; font-family: var(--font-display, 'Quicksand', 'Be Vietnam Pro', sans-serif); font-size: 25px; line-height: 1.3; }
 .home-holland-card h2 img { width: 36px; height: 36px; object-fit: contain; }
 .home-holland-card > p { margin: 12px 0 20px; font-size: 14px; line-height: 1.7; }
 .home-holland-groups { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 10px; margin-bottom: 20px; }
-.home-holland-groups button { position:relative; display:flex; flex-direction:column; align-items:center; gap:4px; padding:12px 5px; border-radius:12px; border:1px solid #e1daff; background:#fff; color:#3a3a6e; font:inherit; font-size:12px; cursor:pointer; transition:.18s ease; }
-.home-holland-groups strong { color: #7453d6; font-size: 21px; }
-.home-holland-groups button:hover { background:#f8f5ff; border-color:#9c83ec; transform:translateY(-2px); }
-.home-holland-groups button[aria-pressed="true"] { color:#fff; border-color:transparent; background:var(--bw-brand-gradient); box-shadow:0 8px 20px rgba(107,96,255,.24); }
+.home-holland-groups button { position:relative; display:flex; flex-direction:column; align-items:center; gap:4px; padding:12px 5px; border-radius:12px; border:1px solid #e1dbfb; background:#fff; color:#3f396c; font:inherit; font-size:12px; cursor:pointer; transition:.18s ease; }
+.home-holland-groups strong { color: #7158ca; font-size: 21px; }
+.home-holland-groups button:hover { background:#f7f5fe; border-color:#9988d9; transform:translateY(-2px); }
+.home-holland-groups button[aria-pressed="true"] { color:#fff; border-color:transparent; background:var(--bw-brand-gradient); box-shadow:0 8px 20px rgba(121, 105, 208,.24); }
 .home-holland-groups button[aria-pressed="true"] strong { color:#fff; }
 .home-holland-groups small { position:absolute; top:7px; right:8px; display:none; width:20px; height:20px; place-items:center; border-radius:50%; background:#fff; color:var(--bw-brand); font-size:11px; font-weight:800; }
 .home-holland-groups button[aria-pressed="true"] small { display:grid; }
-.home-holland-selection { margin:-7px 0 18px !important; color:#59409a; font-size:13px !important; font-weight:700; }
+.home-holland-selection { margin:-7px 0 18px !important; color:#564395; font-size:13px !important; font-weight:700; }
 .home-holland-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
 .home-holland-actions button:disabled { cursor:not-allowed; opacity:.48; box-shadow:none; }
-.home-holland-clear { margin-top:12px; border:0; background:transparent; color:#653bbe; font:inherit; font-size:13px; font-weight:700; text-decoration:underline; cursor:pointer; }
-.home-holland-import { text-align: left; margin-top: 22px; border-top: 1px solid #dfd7ff; padding-top: 18px; }
+.home-holland-clear { margin-top:12px; border:0; background:transparent; color:#5d3dc2; font:inherit; font-size:13px; font-weight:700; text-decoration:underline; cursor:pointer; }
+.home-holland-import { text-align: left; margin-top: 22px; border-top: 1px solid #dfd8fb; padding-top: 18px; }
 .home-holland-import label { display: block; margin-bottom: 10px; font-size: 13px; font-weight: 600; }
 .home-holland-input-row { display: flex; gap: 10px; }
-.home-holland-input-row input { min-width: 0; flex: 1; background: #fff; border: 1px solid #b9a8f0; border-radius: 14px; padding: 12px; color: #1a1a3e; font: inherit; text-transform: uppercase; }
+.home-holland-input-row input { min-width: 0; flex: 1; background: #fff; border: 1px solid #b7abe4; border-radius: 14px; padding: 12px; color: #1e1a39; font: inherit; text-transform: uppercase; }
 #homeHollandError { color: #a32238; margin-top: 10px; font-size: 13px; }
 .home-holland-card .home-holland-saved { margin-bottom: 0; }
-.home-holland-saved a { color: #653bbe; font-weight: 700; }
-.home-holland :focus-visible, .home-waybi-shortcut:focus-visible { outline: 3px solid #9c83ec; outline-offset: 3px; }
+.home-holland-saved a { color: #5d3dc2; font-weight: 700; }
+.home-holland :focus-visible, .home-waybi-shortcut:focus-visible { outline: 3px solid #9988d9; outline-offset: 3px; }
 .home-holland [hidden] { display: none !important; }
 @media (max-width:600px) {
   .home-holland { padding: 24px 16px; }

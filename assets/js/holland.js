@@ -10,7 +10,7 @@
     R: { name: 'Kỹ thuật (Realistic)', emoji: '🔧', color: '#f59e0b',
       desc: 'Bạn quan tâm các hoạt động thực hành với máy móc, dụng cụ hoặc vật thể cụ thể. Sở thích không tự xác nhận năng lực kỹ thuật.',
       majors: ['Kỹ thuật cơ khí', 'Điện – Điện tử', 'Xây dựng', 'Nông nghiệp', 'Kiến trúc', 'Lâm nghiệp', 'Hàng không'] },
-    I: { name: 'Nghiên cứu (Investigative)', emoji: '🔬', color: '#6366f1',
+    I: { name: 'Nghiên cứu (Investigative)', emoji: '🔬', color: '#7669d0',
       desc: 'Bạn quan tâm việc phân tích, khám phá và giải quyết vấn đề. Hãy trải nghiệm thêm để tìm hiểu năng lực ở lĩnh vực này.',
       majors: ['Khoa học máy tính', 'Toán học', 'Vật lý', 'Hóa học', 'Y khoa', 'Sinh học', 'Dược học', 'Công nghệ AI'] },
     A: { name: 'Nghệ thuật (Artistic)', emoji: '🎨', color: '#ec4899',
@@ -22,7 +22,7 @@
     E: { name: 'Lãnh đạo (Enterprising)', emoji: '🚀', color: '#f97316',
       desc: 'Bạn quan tâm việc thuyết phục, tổ chức, kinh doanh hoặc dẫn dắt hoạt động. Nên đối chiếu với trải nghiệm và kỹ năng thực tế.',
       majors: ['Quản trị kinh doanh', 'Marketing', 'Luật', 'Tài chính – Ngân hàng', 'Kinh tế', 'Khởi nghiệp', 'Quan hệ công chúng'] },
-    C: { name: 'Nghiệp vụ (Conventional)', emoji: '📊', color: '#3b82f6',
+    C: { name: 'Nghiệp vụ (Conventional)', emoji: '📊', color: '#7c7cd6',
       desc: 'Bạn thích công việc có trật tự, quy trình, dữ liệu hoặc con số. Đây là gợi ý sở thích, không khẳng định phẩm chất hay năng lực.',
       majors: ['Kế toán – Kiểm toán', 'Hệ thống thông tin', 'Thống kê', 'Tài chính', 'Hành chính văn phòng', 'Logistics', 'Ngân hàng'] }
   };
@@ -390,7 +390,7 @@
     $('resultTieNote').textContent = ties.length > 1 ? `Các nhóm đồng điểm cao nhất: ${ties.join(', ')}. Thứ tự mã không thể hiện chênh lệch giữa các nhóm này.` : '';
     $('resultCareersLink').href = state.completed ? `careers-holland.html?holland=${top3.join('')}` : 'careers-holland.html?holland=all';
 
-    const barColors = { R: '#f59e0b', I: '#6366f1', A: '#ec4899', S: '#10b981', E: '#f97316', C: '#3b82f6' };
+    const barColors = { R: '#f59e0b', I: '#7669d0', A: '#ec4899', S: '#10b981', E: '#f97316', C: '#7c7cd6' };
     $('rBars').innerHTML = sorted.map(([k, v]) => {
       const max = counts[k] * 5;
       return `
