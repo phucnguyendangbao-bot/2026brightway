@@ -308,19 +308,23 @@
     }
     const nav = document.querySelector('.flow-nav');
     if (!nav) return;
-    const navBox = nav.getBoundingClientRect(), bandBox = band.getBoundingClientRect();
-    if (bandBox.width < innerWidth - 4) band.classList.add('glow-band-bleed');
+    if (band.getBoundingClientRect().width < innerWidth - 4) band.classList.add('glow-band-bleed');
+    // Measure in page coordinates so a restored scroll position cannot skew the result.
+    const docTop = el => el.getBoundingClientRect().top + scrollY;
+    const navH = nav.offsetHeight;
     const stepbar = document.querySelector('.flow-stepbar');
+    if (docTop(band) - navH >= 160) return;              // the band does not open the page
+    if (stepbar && stepbar.compareDocumentPosition(band) & Node.DOCUMENT_POSITION_FOLLOWING) band.prepend(stepbar);
     // A band that opens the page slides under the see-through navigation.
-    if (bandBox.top + scrollY - (navBox.bottom + scrollY) < 140) {
-      if (stepbar && stepbar.compareDocumentPosition(band) & Node.DOCUMENT_POSITION_FOLLOWING) band.prepend(stepbar);
-      const pad = parseFloat(getComputedStyle(band).paddingTop) || 0;
-      const gap = Math.max(0, bandBox.top - navBox.bottom);
-      band.style.marginTop = `-${Math.round(navBox.height + gap)}px`;
-      band.style.paddingTop = `${Math.round(pad + navBox.height + Math.max(gap, 24))}px`;
-      if ('IntersectionObserver' in window) {
-        new IntersectionObserver(([e]) => document.body.classList.toggle('bw-nav-glass', e.isIntersecting), { rootMargin: `-${Math.round(navBox.height)}px 0px 0px 0px` }).observe(band);
-      }
+    const gap = Math.max(0, docTop(band) - navH);
+    const pad = parseFloat(getComputedStyle(band).paddingTop) || 0;
+    band.style.marginTop = `-${Math.round(navH + gap)}px`;
+    band.style.paddingTop = `${Math.round(pad + navH + Math.min(Math.max(gap, 24), 48))}px`;
+    // Collapsing margins can shift the result; land the band exactly at the top of the page.
+    const drift = Math.round(docTop(band));
+    if (drift) band.style.marginTop = `${parseFloat(band.style.marginTop) - drift}px`;
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(([e]) => document.body.classList.toggle('bw-nav-glass', e.isIntersecting), { rootMargin: `-${navH}px 0px 0px 0px` }).observe(band);
     }
   }
 
