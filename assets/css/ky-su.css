@@ -458,3 +458,76 @@ html body #home-view .story-ending .personal-start { color: var(--ks-on-deep); }
 }
 
 html body #home-view .chapter-body > .chapter-links { margin-top: 24px; }
+
+/* ---------- Tighter rhythm: less empty paper, shorter page ---------- */
+/* Table of contents: heading beside its lead, all five chapters on one row, shortcuts on one line. */
+html body #home-view .ks-toc {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 48px;
+  align-items: end;
+  padding: 64px 0 40px;
+}
+html body #home-view .ks-toc > .ks-kicker { grid-column: 1 / -1; }
+html body #home-view .ks-toc h2 { grid-column: 1; margin: 0; }
+html body #home-view .ks-toc > .ks-lead { grid-column: 2; font-size: 1.1rem; }
+html body #home-view .ks-toc .ks-toc-list {
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0 20px;
+  margin: 32px 0 20px;
+}
+html body #home-view .ks-toc .home-journey-card {
+  grid-template-columns: 1fr;
+  grid-template-rows: none;
+  row-gap: 4px;
+  padding: 16px 0 18px;
+}
+html body #home-view .ks-toc .home-journey-card > .ks-toc-num { grid-row: auto; margin-bottom: 6px; font-size: clamp(2rem, 1.6rem + 1vw, 2.6rem) !important; }
+html body #home-view .ks-toc .home-journey-card strong { font-size: 17px; }
+html body #home-view .ks-toc .home-journey-card > span:not(.ks-toc-num) { font-size: 14px; }
+html body #home-view .ks-toc .ks-toc-direct,
+html body #home-view .ks-toc .home-waybi-shortcut { grid-column: 1 / -1; }
+html body #home-view .ks-toc .ks-toc-direct { margin: 0; }
+html body #home-view .ks-toc .ks-toc-direct + .home-waybi-shortcut { justify-self: start; margin-top: 14px; }
+@media (min-width: 1101px) {
+  html body #home-view .ks-toc { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; }
+  html body #home-view .ks-toc .ks-toc-direct { grid-column: 1 / 3; align-self: center; }
+  html body #home-view .ks-toc .ks-toc-direct + .home-waybi-shortcut { grid-column: 3; justify-self: end; margin-top: 0; }
+  html body #home-view .ks-toc > .ks-lead { grid-column: 2 / -1; }
+}
+
+/* Chapters breathe less. */
+html body #home-view .story-chapter { padding: 72px 0 40px; }
+html body #home-view .chapter-head { margin-bottom: 28px; gap: 24px; }
+html body #home-view .chapter-title { margin-bottom: 12px; }
+.ks-art { width: 180px; }
+html body #home-view .chapter-head { grid-template-columns: minmax(0, 1fr) 180px; }
+.ks-next { margin-top: 48px; }
+.ks-next-link { margin-top: 16px; }
+html body #home-view .story-ending { padding-bottom: 72px; }
+html body #home-view .bw-faq { padding: 72px 0 !important; }
+
+@media (max-width: 1100px) {
+  html body #home-view .ks-toc .ks-toc-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  html body #home-view .ks-toc { grid-template-columns: 1fr; padding: 48px 0 24px; }
+  html body #home-view .ks-toc > .ks-lead { grid-column: 1; margin-top: 12px; font-size: 1rem; }
+  html body #home-view .ks-toc .ks-toc-list { grid-template-columns: 1fr; margin: 20px 0 16px; }
+  html body #home-view .ks-toc .home-journey-card { grid-template-columns: 52px 1fr !important; column-gap: 14px; padding: 12px 0 14px; }
+  html body #home-view .ks-toc .home-journey-card > .ks-toc-num { grid-row: 1 / span 2; margin: 0; }
+  html body #home-view .story-chapter { padding: 48px 0 24px; }
+  html body #home-view .chapter-head { grid-template-columns: 1fr; }
+  .ks-next { margin-top: 32px; }
+}
+html body #home-view .ks-toc h2 { font-size: clamp(2rem, 1.4rem + 1.8vw, 3rem); }
+html body #home-view .ks-toc + .story-chapter, html body #home-view #chuong-1 { padding-top: 40px; }
+@media (max-width: 760px) { html body #home-view #chuong-1 { padding-top: 28px; } }
+@media (min-width: 1101px) {
+  html body #home-view .ks-toc { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+  html body #home-view .ks-toc > .ks-lead { grid-column: 2; }
+  html body #home-view .ks-toc .ks-toc-direct { grid-column: 1; }
+  html body #home-view .ks-toc .ks-toc-direct + .home-waybi-shortcut { grid-column: 2; }
+}
+html body #home-view .ks-toc .ks-toc-direct a { white-space: nowrap; }
