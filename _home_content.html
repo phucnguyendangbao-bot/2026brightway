@@ -5,20 +5,20 @@
 
 <style>
   #home-view {
-    background: linear-gradient(145deg, #e3f0fc 0%, #d8eafa 20%, #d2e4f9 50%, #d6e9fa 80%, #e1f0fc 100%);
-    color: #141f2b;
+    background: linear-gradient(145deg, #e9eefb 0%, #e0e8fa 20%, #d9e2f8 50%, #dfe7f9 80%, #e8eefb 100%);
+    color: #0b202b;
     font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
     padding-bottom: 0;
     position: relative;
   }
   #home-view::before {
     content:'';position:fixed;top:-15%;left:-10%;width:55vw;height:55vw;
-    background:radial-gradient(circle,rgba(53, 106, 167,0.18),transparent 65%);
+    background:radial-gradient(circle,rgba(9, 49, 141,0.18),transparent 65%);
     border-radius:50%;pointer-events:none;z-index:0;
   }
   #home-view::after {
     content:'';position:fixed;bottom:-15%;right:-10%;width:50vw;height:50vw;
-    background:radial-gradient(circle,rgba(72, 141, 198,0.16),transparent 65%);
+    background:radial-gradient(circle,rgba(12, 64, 187,0.16),transparent 65%);
     border-radius:50%;pointer-events:none;z-index:0;
   }
   #home-view * { position: relative; z-index: 1; }
@@ -32,9 +32,9 @@
   }
   .bw-hero .badge {
     display:inline-flex; align-items:center; gap:6px;
-    background: rgba(48, 101, 154,0.12);
-    border: 1px solid rgba(48, 101, 154,0.22);
-    color: #30659a; font-weight: 700; font-size: 13px;
+    background: rgba(8, 46, 133,0.12);
+    border: 1px solid rgba(8, 46, 133,0.22);
+    color: #082e85; font-weight: 700; font-size: 13px;
     padding: 8px 16px; border-radius: 999px;
     margin-bottom: 24px;
   }
@@ -43,11 +43,11 @@
     font-weight: 800;
     line-height: 1.12;
     margin: 0 0 20px;
-    color: #141f2b;
+    color: #0b202b;
     letter-spacing: -0.02em;
   }
   .bw-hero h1 .grad {
-    background: linear-gradient(135deg,#3671a9 0%,#31639d 50%,#3668ab 100%);
+    background: linear-gradient(135deg,#0a3395 0%,#082d83 50%,#09308c 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -55,12 +55,12 @@
   }
   .bw-hero .lede {
     font-size: 18px;
-    color: #253545;
+    color: #12374a;
     max-width: 640px;
     margin: 0 auto 32px;
     line-height: 1.6;
   }
-  .bw-hero .lede strong { color: #30659a; font-weight: 700; }
+  .bw-hero .lede strong { color: #082e85; font-weight: 700; }
 
   /* Buttons */
   .bw-btn {
@@ -73,21 +73,21 @@
     cursor: pointer; border: none;
   }
   .bw-btn-primary {
-    background: linear-gradient(135deg,#3b7fbd 0%,#386fb0 100%);
+    background: linear-gradient(135deg,#0b3aa8 0%,#093395 100%);
     color: #fff;
-    box-shadow: 0 8px 24px rgba(48, 101, 154,0.32);
+    box-shadow: 0 8px 24px rgba(8, 46, 133,0.32);
   }
   .bw-btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(48, 101, 154,0.42);
+    box-shadow: 0 12px 32px rgba(8, 46, 133,0.42);
   }
   .bw-btn-outline {
     background: rgba(255,255,255,0.72);
-    color: #30659a;
-    border: 1.5px solid rgba(48, 101, 154,0.3);
+    color: #082e85;
+    border: 1.5px solid rgba(8, 46, 133,0.3);
   }
   .bw-btn-outline:hover {
-    background: #fff; border-color: #30659a;
+    background: #fff; border-color: #082e85;
     transform: translateY(-2px);
   }
 
@@ -99,7 +99,7 @@
     text-align: center;
     font-size: 13px;
     font-weight: 700;
-    color: #30659a;
+    color: #082e85;
     text-transform: uppercase;
     letter-spacing: 0.14em;
     margin-bottom: 12px;
@@ -109,12 +109,12 @@
     font-size: 32px;
     font-weight: 800;
     margin: 0 0 12px;
-    color: #141f2b;
+    color: #0b202b;
     letter-spacing: -0.02em;
   }
   .section-sub {
     text-align: center;
-    color: #253545;
+    color: #12374a;
     font-size: 16px;
     margin: 0 0 40px;
   }
@@ -136,18 +136,18 @@
     transition: all 0.18s ease;
   }
   .bw-stage-card:hover {
-    border-color: #4c84c7;
+    border-color: #0b3db2;
     transform: translateY(-3px);
-    box-shadow: 0 12px 28px rgba(48, 101, 154,0.12);
+    box-shadow: 0 12px 28px rgba(8, 46, 133,0.12);
   }
   .bw-stage-card.active {
-    border-color: #30659a;
+    border-color: #082e85;
     background: rgba(255,255,255,0.95);
-    box-shadow: 0 12px 32px rgba(48, 101, 154,0.22);
+    box-shadow: 0 12px 32px rgba(8, 46, 133,0.22);
   }
   .bw-stage-card .emoji { font-size: 32px; margin-bottom: 6px; }
-  .bw-stage-card .label { font-size: 17px; font-weight: 700; color: #141f2b; }
-  .bw-stage-card .desc { font-size: 13px; color: #4b6883; margin-top: 2px; }
+  .bw-stage-card .label { font-size: 17px; font-weight: 700; color: #0b202b; }
+  .bw-stage-card .desc { font-size: 13px; color: #092f89; margin-top: 2px; }
 
   /* === ROADMAP === */
   .bw-roadmap {
@@ -164,32 +164,32 @@
     border-radius: 20px;
     padding: 28px 24px;
     border: 1.5px solid rgba(255,255,255,0.9);
-    box-shadow: 0 4px 16px rgba(48, 101, 154,0.06);
+    box-shadow: 0 4px 16px rgba(8, 46, 133,0.06);
     transition: all 0.2s ease;
   }
   .bw-step:hover {
     transform: translateY(-4px);
-    box-shadow: 0 16px 36px rgba(48, 101, 154,0.18);
+    box-shadow: 0 16px 36px rgba(8, 46, 133,0.18);
   }
   .bw-step-num {
     display: inline-flex;
     align-items: center; justify-content: center;
     width: 48px; height: 48px;
     border-radius: 50%;
-    background: linear-gradient(135deg,#3b7fbd 0%,#386fb0 100%);
+    background: linear-gradient(135deg,#0b3aa8 0%,#093395 100%);
     color: #fff;
     font-size: 22px;
     font-weight: 800;
     margin-bottom: 14px;
-    box-shadow: 0 6px 16px rgba(48, 101, 154,0.32);
+    box-shadow: 0 6px 16px rgba(8, 46, 133,0.32);
   }
   .bw-step h3 {
     font-size: 18px; font-weight: 700;
-    margin: 0 0 6px; color: #141f2b;
+    margin: 0 0 6px; color: #0b202b;
   }
   .bw-step p.goal {
     font-size: 13px;
-    color: #30659a;
+    color: #082e85;
     font-weight: 700;
     margin: 0 0 14px;
     text-transform: uppercase;
@@ -198,18 +198,18 @@
   .bw-step ul { list-style: none; padding: 0; margin: 0 0 18px; }
   .bw-step ul li {
     font-size: 14px;
-    color: #253545;
+    color: #12374a;
     padding: 5px 0 5px 22px;
     position: relative;
     line-height: 1.5;
   }
   .bw-step ul li::before {
     content: "✓"; position: absolute; left: 0;
-    color: #31639d; font-weight: 700;
+    color: #082d83; font-weight: 700;
   }
   .bw-step .step-cta {
     display: inline-flex; align-items: center; gap: 6px;
-    color: #30659a; font-weight: 700; font-size: 14px;
+    color: #082e85; font-weight: 700; font-size: 14px;
     text-decoration: none;
   }
   .bw-step .step-cta:hover { gap: 10px; }
@@ -230,7 +230,7 @@
     position: absolute;
     left: 24px; top: 0; bottom: 0;
     width: 2px;
-    background: linear-gradient(180deg, #30659a 0%, #4c84c7 100%);
+    background: linear-gradient(180deg, #082e85 0%, #0b3db2 100%);
   }
   .bw-tl-item {
     display: flex;
@@ -243,18 +243,18 @@
     width: 50px; height: 50px;
     border-radius: 50%;
     background: #fff;
-    border: 3px solid #30659a;
+    border: 3px solid #082e85;
     display: flex; align-items: center; justify-content: center;
     font-weight: 800; font-size: 13px;
-    color: #30659a;
-    box-shadow: 0 4px 12px rgba(48, 101, 154,0.2);
+    color: #082e85;
+    box-shadow: 0 4px 12px rgba(8, 46, 133,0.2);
     z-index: 1;
   }
   .bw-tl-dot.now {
-    background: linear-gradient(135deg,#3b7fbd 0%,#386fb0 100%);
+    background: linear-gradient(135deg,#0b3aa8 0%,#093395 100%);
     color: #fff;
     border-color: #fff;
-    box-shadow: 0 6px 18px rgba(48, 101, 154,0.4);
+    box-shadow: 0 6px 18px rgba(8, 46, 133,0.4);
   }
   .bw-tl-content {
     background: rgba(255,255,255,0.85);
@@ -267,8 +267,8 @@
   .bw-tl-content .when {
     display: inline-block;
     font-size: 12px; font-weight: 700;
-    color: #31639d;
-    background: rgba(76, 132, 199,0.15);
+    color: #082d83;
+    background: rgba(11, 61, 178,0.15);
     padding: 4px 10px;
     border-radius: 999px;
     margin-bottom: 8px;
@@ -276,13 +276,13 @@
   .bw-tl-content h4 {
     margin: 0 0 6px;
     font-size: 16px;
-    color: #141f2b;
+    color: #0b202b;
     font-weight: 700;
   }
   .bw-tl-content p {
     margin: 0;
     font-size: 14px;
-    color: #253545;
+    color: #12374a;
     line-height: 1.5;
   }
 
@@ -308,12 +308,12 @@
     text-decoration: none;
     display: block;
     color: inherit;
-    box-shadow: 0 4px 16px rgba(48, 101, 154,0.06);
+    box-shadow: 0 4px 16px rgba(8, 46, 133,0.06);
   }
   .bw-tool-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 16px 36px rgba(48, 101, 154,0.18);
-    border-color: #4c84c7;
+    box-shadow: 0 16px 36px rgba(8, 46, 133,0.18);
+    border-color: #0b3db2;
   }
   .bw-tool-card .icon {
     font-size: 36px;
@@ -323,11 +323,11 @@
     font-size: 18px;
     font-weight: 700;
     margin: 0 0 6px;
-    color: #141f2b;
+    color: #0b202b;
   }
   .bw-tool-card p {
     font-size: 14px;
-    color: #253545;
+    color: #12374a;
     margin: 0;
     line-height: 1.5;
   }
@@ -339,12 +339,12 @@
   .bw-next-card {
     max-width: 760px;
     margin: 0 auto;
-    background: linear-gradient(135deg,#3671a9 0%,#31639d 50%,#3668ab 100%);
+    background: linear-gradient(135deg,#0a3395 0%,#082d83 50%,#09308c 100%);
     border-radius: 24px;
     padding: 40px 36px;
     color: #fff;
     text-align: center;
-    box-shadow: 0 20px 50px rgba(48, 101, 154,0.32);
+    box-shadow: 0 20px 50px rgba(8, 46, 133,0.32);
   }
   .bw-next-card .label {
     font-size: 12px;
@@ -367,11 +367,11 @@
   }
   .bw-next-card .bw-btn {
     background: #fff;
-    color: #30659a;
+    color: #082e85;
   }
   .bw-next-card .bw-btn:hover {
     background: #f7fbfc;
-    color: #27507c;
+    color: #072468;
   }
 
   /* === FAQ === */
@@ -385,7 +385,7 @@
   }
   .bw-faq-item {
     background: rgba(255,255,255,0.9);
-    border: 1px solid rgba(48, 101, 154,0.12);
+    border: 1px solid rgba(8, 46, 133,0.12);
     border-radius: 14px;
     margin-bottom: 12px;
     overflow: hidden;
@@ -394,7 +394,7 @@
   .bw-faq-item summary {
     padding: 18px 24px;
     font-weight: 600;
-    color: #141f2b;
+    color: #0b202b;
     cursor: pointer;
     list-style: none;
     display: flex;
@@ -405,22 +405,22 @@
   .bw-faq-item summary::-webkit-details-marker { display: none; }
   .bw-faq-item summary::after {
     content: "+"; font-size: 24px;
-    color: #30659a;
+    color: #082e85;
     font-weight: 300;
     transition: transform 0.2s;
   }
   .bw-faq-item[open] summary::after { transform: rotate(45deg); }
   .bw-faq-item .faq-body {
     padding: 0 24px 20px;
-    color: #253545;
+    color: #12374a;
     line-height: 1.6;
     font-size: 15px;
   }
 
   /* === FOOTER === */
   .bw-footer {
-    background: rgba(20, 31, 43,0.92);
-    color: #92abc3;
+    background: rgba(11, 32, 43,0.92);
+    color: #0f50e9;
     padding: 48px 24px 32px;
     text-align: center;
     backdrop-filter: blur(10px);
@@ -428,14 +428,14 @@
   .bw-footer .logo {
     font-size: 20px;
     font-weight: 800;
-    background: linear-gradient(135deg,#4c84c7 0%,#63a1e9 100%);
+    background: linear-gradient(135deg,#0b3db2 0%,#0e4bda 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 8px;
   }
   .bw-footer p { margin: 4px 0; font-size: 14px; }
-  .bw-footer .small { font-size: 13px; color: #6a8bac; margin-top: 16px; }
+  .bw-footer .small { font-size: 13px; color: #0c40bb; margin-top: 16px; }
 
   /* MOBILE */
   @media (max-width: 640px) {
@@ -647,7 +647,7 @@
         <button type="button" class="step-cta" id="openSchoolModal" style="background:none;border:none;cursor:pointer;padding:0;">
           🏫 Chọn trường ngay →
         </button>
-        <div id="selectedSchoolsPreview" style="margin-top:12px;font-size:13px;color:#253545;"></div>
+        <div id="selectedSchoolsPreview" style="margin-top:12px;font-size:13px;color:#12374a;"></div>
       </div>
 
       <div class="bw-step">
@@ -762,31 +762,31 @@
 </section>
 
 <!-- ===== MODAL CHỌN TRƯỜNG ===== -->
-<div id="schoolModal" style="display:none;position:fixed;inset:0;background:rgba(11, 18, 25,0.55);z-index:9999;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(6px);">
-  <div style="background:#fff;border-radius:20px;width:100%;max-width:720px;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(48, 101, 154,0.35);">
-    <div style="padding:20px 24px;border-bottom:1px solid #e1e9ef;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,#eaf3fc,#eef5fe);">
+<div id="schoolModal" style="display:none;position:fixed;inset:0;background:rgba(6, 19, 25,0.55);z-index:9999;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(6px);">
+  <div style="background:#fff;border-radius:20px;width:100%;max-width:720px;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(8, 46, 133,0.35);">
+    <div style="padding:20px 24px;border-bottom:1px solid #e4e8f1;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,#eef2fc,#f1f4fd);">
       <div>
-        <h3 style="margin:0;font-size:18px;color:#141f2b;">🏫 Chọn trường đại học</h3>
-        <p style="margin:4px 0 0;font-size:13px;color:#4b6883;">Đã chọn <span id="modalCount">0</span> trường</p>
+        <h3 style="margin:0;font-size:18px;color:#0b202b;">🏫 Chọn trường đại học</h3>
+        <p style="margin:4px 0 0;font-size:13px;color:#092f89;">Đã chọn <span id="modalCount">0</span> trường</p>
       </div>
-      <button id="closeSchoolModal" style="background:none;border:none;font-size:24px;color:#4b6883;cursor:pointer;line-height:1;">×</button>
+      <button id="closeSchoolModal" style="background:none;border:none;font-size:24px;color:#092f89;cursor:pointer;line-height:1;">×</button>
     </div>
 
-    <div style="padding:14px 24px;background:#f7fbfc;border-bottom:1px solid #e1e9ef;">
-      <input id="schoolSearch" type="text" placeholder="🔍 Tìm trường theo tên..." style="width:100%;padding:10px 14px;border:1px solid #c9d6e0;border-radius:10px;font-size:14px;outline:none;box-sizing:border-box;">
+    <div style="padding:14px 24px;background:#f7fbfc;border-bottom:1px solid #e4e8f1;">
+      <input id="schoolSearch" type="text" placeholder="🔍 Tìm trường theo tên..." style="width:100%;padding:10px 14px;border:1px solid #3d73f3;border-radius:10px;font-size:14px;outline:none;box-sizing:border-box;">
       <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;font-size:12px;">
-        <button class="region-btn" data-region="all" style="padding:6px 12px;border-radius:999px;border:1px solid #c9d6e0;background:#30659a;color:#fff;cursor:pointer;font-weight:600;">Tất cả</button>
-        <button class="region-btn" data-region="mb" style="padding:6px 12px;border-radius:999px;border:1px solid #c9d6e0;background:#fff;color:#253545;cursor:pointer;">Miền Bắc</button>
-        <button class="region-btn" data-region="mt" style="padding:6px 12px;border-radius:999px;border:1px solid #c9d6e0;background:#fff;color:#253545;cursor:pointer;">Miền Trung</button>
-        <button class="region-btn" data-region="mn" style="padding:6px 12px;border-radius:999px;border:1px solid #c9d6e0;background:#fff;color:#253545;cursor:pointer;">Miền Nam</button>
+        <button class="region-btn" data-region="all" style="padding:6px 12px;border-radius:999px;border:1px solid #3d73f3;background:#082e85;color:#fff;cursor:pointer;font-weight:600;">Tất cả</button>
+        <button class="region-btn" data-region="mb" style="padding:6px 12px;border-radius:999px;border:1px solid #3d73f3;background:#fff;color:#12374a;cursor:pointer;">Miền Bắc</button>
+        <button class="region-btn" data-region="mt" style="padding:6px 12px;border-radius:999px;border:1px solid #3d73f3;background:#fff;color:#12374a;cursor:pointer;">Miền Trung</button>
+        <button class="region-btn" data-region="mn" style="padding:6px 12px;border-radius:999px;border:1px solid #3d73f3;background:#fff;color:#12374a;cursor:pointer;">Miền Nam</button>
       </div>
     </div>
 
     <div id="schoolList" style="flex:1;overflow-y:auto;padding:12px 24px;"></div>
 
-    <div style="padding:14px 24px;border-top:1px solid #e1e9ef;display:flex;gap:10px;background:#f7fbfc;">
-      <button id="saveSchools" style="flex:1;background:linear-gradient(135deg,#3b7fbd,#386fb0);color:#fff;border:none;padding:12px 20px;border-radius:10px;font-weight:700;cursor:pointer;font-size:14px;">Lưu &amp; đóng</button>
-      <button id="clearSchools" style="background:#fff;border:1.5px solid #c9d6e0;color:#253545;padding:12px 20px;border-radius:10px;font-weight:600;cursor:pointer;font-size:14px;">Xóa hết</button>
+    <div style="padding:14px 24px;border-top:1px solid #e4e8f1;display:flex;gap:10px;background:#f7fbfc;">
+      <button id="saveSchools" style="flex:1;background:linear-gradient(135deg,#0b3aa8,#093395);color:#fff;border:none;padding:12px 20px;border-radius:10px;font-weight:700;cursor:pointer;font-size:14px;">Lưu &amp; đóng</button>
+      <button id="clearSchools" style="background:#fff;border:1.5px solid #3d73f3;color:#12374a;padding:12px 20px;border-radius:10px;font-weight:600;cursor:pointer;font-size:14px;">Xóa hết</button>
     </div>
   </div>
 </div>
@@ -911,7 +911,7 @@
       var lbl = document.createElement('span');
       lbl.className = 'bw-tl-now-badge';
       lbl.textContent = '🔴 Bạn đang ở đây';
-      lbl.style.cssText = 'display:inline-block;font-size:11px;font-weight:700;color:#fff;background:#30659a;padding:3px 8px;border-radius:999px;margin-left:8px;';
+      lbl.style.cssText = 'display:inline-block;font-size:11px;font-weight:700;color:#fff;background:#082e85;padding:3px 8px;border-radius:999px;margin-left:8px;';
       var when = targetItem.querySelector('.when');
       if (when) when.appendChild(lbl);
     }
@@ -1239,17 +1239,17 @@
         return matchQ && matchR;
       });
       if (!filtered.length) {
-        listEl.innerHTML = '<div style="text-align:center;color:#6a8bac;padding:40px 0;font-size:14px;">Không tìm thấy trường nào phù hợp.</div>';
+        listEl.innerHTML = '<div style="text-align:center;color:#0c40bb;padding:40px 0;font-size:14px;">Không tìm thấy trường nào phù hợp.</div>';
         return;
       }
       var html = '<div style="display:flex;flex-direction:column;gap:8px;">';
       filtered.forEach(function(s){
         var isSelected = selected.indexOf(s.code) !== -1;
-        html += '<label style="display:flex;align-items:center;gap:12px;padding:12px;border:1.5px solid ' + (isSelected ? '#30659a' : '#e1e9ef') + ';border-radius:12px;cursor:pointer;background:' + (isSelected ? '#eaf3fc' : '#fff') + ';transition:all .15s;">';
-        html += '<input type="checkbox" data-code="' + s.code + '" ' + (isSelected ? 'checked' : '') + ' style="width:18px;height:18px;accent-color:#30659a;cursor:pointer;">';
+        html += '<label style="display:flex;align-items:center;gap:12px;padding:12px;border:1.5px solid ' + (isSelected ? '#082e85' : '#e4e8f1') + ';border-radius:12px;cursor:pointer;background:' + (isSelected ? '#eef2fc' : '#fff') + ';transition:all .15s;">';
+        html += '<input type="checkbox" data-code="' + s.code + '" ' + (isSelected ? 'checked' : '') + ' style="width:18px;height:18px;accent-color:#082e85;cursor:pointer;">';
         html += '<div style="flex:1;">';
-        html += '<div style="font-weight:700;color:#141f2b;font-size:14px;">' + escapeHtml(s.name) + '</div>';
-        html += '<div style="font-size:12px;color:#4b6883;margin-top:2px;">Tổ hợp: ' + escapeHtml(s.combo) + ' · ' + regionLabel(s.region) + '</div>';
+        html += '<div style="font-weight:700;color:#0b202b;font-size:14px;">' + escapeHtml(s.name) + '</div>';
+        html += '<div style="font-size:12px;color:#092f89;margin-top:2px;">Tổ hợp: ' + escapeHtml(s.combo) + ' · ' + regionLabel(s.region) + '</div>';
         html += '</div>';
         html += '</label>';
       });
@@ -1270,24 +1270,24 @@
 
     function renderPreview() {
       if (!selected.length) {
-        previewEl.innerHTML = '<em style="color:#6a8bac;">Chưa chọn trường nào.</em>';
+        previewEl.innerHTML = '<em style="color:#0c40bb;">Chưa chọn trường nào.</em>';
         return;
       }
       var html = '<div style="margin-top:10px;">';
       selected.forEach(function(code){
         var s = SCHOOLS.find(function(x){ return x.code === code; });
         if (!s) return;
-        html += '<div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:10px;padding:10px;background:#f8fbfe;border-radius:10px;border:1px solid #e1e9ef;">';
-        html += '<span style="color:#30659a;margin-top:2px;">✓</span>';
+        html += '<div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:10px;padding:10px;background:#f9fbfe;border-radius:10px;border:1px solid #e4e8f1;">';
+        html += '<span style="color:#082e85;margin-top:2px;">✓</span>';
         html += '<div style="flex:1;">';
-        html += '<div style="font-weight:700;color:#141f2b;font-size:14px;">' + escapeHtml(s.name) + '</div>';
-        html += '<div style="font-size:12px;color:#4b6883;margin-top:2px;">' + escapeHtml(s.combo) + ' · ' + regionLabel(s.region) + '</div>';
+        html += '<div style="font-weight:700;color:#0b202b;font-size:14px;">' + escapeHtml(s.name) + '</div>';
+        html += '<div style="font-size:12px;color:#092f89;margin-top:2px;">' + escapeHtml(s.combo) + ' · ' + regionLabel(s.region) + '</div>';
         html += '</div>';
-        html += '<button type="button" data-code="' + s.code + '" class="school-detail-btn" style="flex-shrink:0;padding:5px 10px;background:linear-gradient(135deg,#3b7fbd,#386fb0);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;">Tìm hiểu →</button>';
+        html += '<button type="button" data-code="' + s.code + '" class="school-detail-btn" style="flex-shrink:0;padding:5px 10px;background:linear-gradient(135deg,#0b3aa8,#093395);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;">Tìm hiểu →</button>';
         html += '</div>';
       });
       html += '</div>';
-      previewEl.innerHTML = '<strong style="color:#30659a;">Nguyện vọng đã chọn (' + selected.length + ' trường):</strong>' + html;
+      previewEl.innerHTML = '<strong style="color:#082e85;">Nguyện vọng đã chọn (' + selected.length + ' trường):</strong>' + html;
       // Gắn sự kiện cho nút "Tìm hiểu"
       previewEl.querySelectorAll('.school-detail-btn').forEach(function(btn){
         btn.addEventListener('click', function(){
@@ -1307,36 +1307,36 @@
       if (existing) existing.remove();
       var overlay = document.createElement('div');
       overlay.id = 'schoolDetailModal';
-      overlay.style.cssText = 'position:fixed;inset:0;background:rgba(11, 18, 25,0.55);z-index:99999;display:flex;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(6px);';
+      overlay.style.cssText = 'position:fixed;inset:0;background:rgba(6, 19, 25,0.55);z-index:99999;display:flex;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(6px);';
 
-      var regionColor = {'mb':'#3472a7','mt':'#10b981','mn':'#f59e0b'}[s.region] || '#30659a';
+      var regionColor = {'mb':'#0a3496','mt':'#10b981','mn':'#f59e0b'}[s.region] || '#082e85';
       var regionText = {'mb':'Miền Bắc','mt':'Miền Trung','mn':'Miền Nam'}[s.region] || s.region;
 
       overlay.innerHTML = '\
-<div style="background:#fff;border-radius:20px;width:100%;max-width:680px;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(48, 101, 154,0.35);">\
-  <div style="padding:20px 24px;border-bottom:1px solid #e1e9ef;display:flex;align-items:flex-start;justify-content:space-between;background:linear-gradient(135deg,#eaf3fc,#eef5fe);">\
+<div style="background:#fff;border-radius:20px;width:100%;max-width:680px;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(8, 46, 133,0.35);">\
+  <div style="padding:20px 24px;border-bottom:1px solid #e4e8f1;display:flex;align-items:flex-start;justify-content:space-between;background:linear-gradient(135deg,#eef2fc,#f1f4fd);">\
     <div style="flex:1;padding-right:16px;">\
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">\
         <span style="font-size:13px;font-weight:700;color:#fff;background:' + regionColor + ';padding:3px 10px;border-radius:999px;">' + regionText + '</span>\
-        <span style="font-size:12px;color:#4b6883;">' + escapeHtml(s.combo) + '</span>\
+        <span style="font-size:12px;color:#092f89;">' + escapeHtml(s.combo) + '</span>\
       </div>\
-      <h3 style="margin:0;font-size:20px;color:#141f2b;line-height:1.3;">' + escapeHtml(s.name) + '</h3>\
+      <h3 style="margin:0;font-size:20px;color:#0b202b;line-height:1.3;">' + escapeHtml(s.name) + '</h3>\
     </div>\
-    <button id="closeSchoolDetail" style="background:none;border:none;font-size:28px;color:#6a8bac;cursor:pointer;line-height:1;flex-shrink:0;margin-top:-4px;">×</button>\
+    <button id="closeSchoolDetail" style="background:none;border:none;font-size:28px;color:#0c40bb;cursor:pointer;line-height:1;flex-shrink:0;margin-top:-4px;">×</button>\
   </div>\
   <div style="flex:1;overflow-y:auto;padding:20px 24px;">\
-    <p style="margin:0 0 20px;font-size:14px;color:#253545;line-height:1.6;background:#f8fbfe;padding:14px;border-radius:12px;border-left:3px solid #30659a;">' + escapeHtml(s.desc) + '</p>\
-    <div style="font-size:12px;color:#4b6883;margin-bottom:6px;">📌 Ghi chú</div>\
+    <p style="margin:0 0 20px;font-size:14px;color:#12374a;line-height:1.6;background:#f9fbfe;padding:14px;border-radius:12px;border-left:3px solid #082e85;">' + escapeHtml(s.desc) + '</p>\
+    <div style="font-size:12px;color:#092f89;margin-bottom:6px;">📌 Ghi chú</div>\
     <div style="font-size:13px;color:#475569;margin-bottom:20px;padding:10px 14px;background:#fffbeb;border-radius:10px;border:1px solid #fde68a;">' + escapeHtml(s.note) + '</div>\
-    <div style="font-size:14px;font-weight:700;color:#141f2b;margin-bottom:10px;">💪 Điểm mạnh</div>\
+    <div style="font-size:14px;font-weight:700;color:#0b202b;margin-bottom:10px;">💪 Điểm mạnh</div>\
     <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;">' +
-      s.strengths.map(function(st){ return '<span style="font-size:12px;font-weight:600;color:#30659a;background:#eaf3fc;padding:5px 10px;border-radius:999px;border:1px solid #b5d7f7;">' + escapeHtml(st) + '</span>'; }).join('') +
+      s.strengths.map(function(st){ return '<span style="font-size:12px;font-weight:600;color:#082e85;background:#eef2fc;padding:5px 10px;border-radius:999px;border:1px solid #3c73f3;">' + escapeHtml(st) + '</span>'; }).join('') +
     '</div>\
-    <div style="font-size:14px;font-weight:700;color:#141f2b;margin-bottom:10px;">🎓 Học bổng</div>\
+    <div style="font-size:14px;font-weight:700;color:#0b202b;margin-bottom:10px;">🎓 Học bổng</div>\
     <div style="background:#f0fdf4;border-radius:12px;padding:14px;margin-bottom:20px;">' +
       s.scholarships.map(function(sc){ return '<div style="font-size:13px;color:#166534;padding:4px 0;display:flex;gap:8px;align-items:flex-start;"><span style="color:#22c55e;font-weight:700;margin-top:1px;">✓</span><span>' + escapeHtml(sc) + '</span></div>'; }).join('') +
     '</div>\
-    <a href="' + escapeHtml(s.website) + '" class="school-website-btn" style="display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:linear-gradient(135deg,#3b7fbd,#386fb0);color:#fff;border-radius:10px;text-decoration:none;font-size:14px;font-weight:700;box-shadow:0 4px 12px rgba(48, 101, 154,0.25);transition:transform .15s;" onmouseover="this.style.transform=\'translateY(-2px)\'" onmouseout="this.style.transform=\'translateY(0)\'">📚 Xem học bổng & chi tiết →</a>\
+    <a href="' + escapeHtml(s.website) + '" class="school-website-btn" style="display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:linear-gradient(135deg,#0b3aa8,#093395);color:#fff;border-radius:10px;text-decoration:none;font-size:14px;font-weight:700;box-shadow:0 4px 12px rgba(8, 46, 133,0.25);transition:transform .15s;" onmouseover="this.style.transform=\'translateY(-2px)\'" onmouseout="this.style.transform=\'translateY(0)\'">📚 Xem học bổng & chi tiết →</a>\
   </div>\
 </div>';
 
@@ -1358,19 +1358,19 @@
         return matchQ && matchR;
       });
       if (!filtered.length) {
-        listEl.innerHTML = '<div style="text-align:center;color:#6a8bac;padding:40px 0;font-size:14px;">Không tìm thấy trường nào phù hợp.</div>';
+        listEl.innerHTML = '<div style="text-align:center;color:#0c40bb;padding:40px 0;font-size:14px;">Không tìm thấy trường nào phù hợp.</div>';
         return;
       }
       var html = '<div style="display:flex;flex-direction:column;gap:8px;">';
       filtered.forEach(function(s){
         var isSelected = selected.indexOf(s.code) !== -1;
-        html += '<div style="display:flex;align-items:center;gap:10px;padding:12px;border:1.5px solid ' + (isSelected ? '#30659a' : '#e1e9ef') + ';border-radius:12px;background:' + (isSelected ? '#eaf3fc' : '#fff') + ';transition:all .15s;">';
-        html += '<input type="checkbox" data-code="' + s.code + '" ' + (isSelected ? 'checked' : '') + ' style="width:18px;height:18px;accent-color:#30659a;cursor:pointer;flex-shrink:0;">';
+        html += '<div style="display:flex;align-items:center;gap:10px;padding:12px;border:1.5px solid ' + (isSelected ? '#082e85' : '#e4e8f1') + ';border-radius:12px;background:' + (isSelected ? '#eef2fc' : '#fff') + ';transition:all .15s;">';
+        html += '<input type="checkbox" data-code="' + s.code + '" ' + (isSelected ? 'checked' : '') + ' style="width:18px;height:18px;accent-color:#082e85;cursor:pointer;flex-shrink:0;">';
         html += '<div style="flex:1;min-width:0;">';
-        html += '<div style="font-weight:700;color:#141f2b;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + escapeHtml(s.name) + '</div>';
-        html += '<div style="font-size:12px;color:#4b6883;margin-top:2px;">' + escapeHtml(s.combo) + ' · ' + regionLabel(s.region) + '</div>';
+        html += '<div style="font-weight:700;color:#0b202b;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + escapeHtml(s.name) + '</div>';
+        html += '<div style="font-size:12px;color:#092f89;margin-top:2px;">' + escapeHtml(s.combo) + ' · ' + regionLabel(s.region) + '</div>';
         html += '</div>';
-        html += '<button type="button" data-code="' + s.code + '" class="list-detail-btn" style="flex-shrink:0;padding:5px 10px;background:#f1f5f9;color:#475569;border:1px solid #e1e9ef;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;">ℹ️</button>';
+        html += '<button type="button" data-code="' + s.code + '" class="list-detail-btn" style="flex-shrink:0;padding:5px 10px;background:#f2f5fa;color:#475569;border:1px solid #e4e8f1;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;">ℹ️</button>';
         html += '</div>';
       });
       html += '</div>';
@@ -1429,9 +1429,9 @@
       btn.addEventListener('click', function(){
         document.querySelectorAll('.region-btn').forEach(function(b){
           b.style.background = '#fff';
-          b.style.color = '#253545';
+          b.style.color = '#12374a';
         });
-        btn.style.background = '#30659a';
+        btn.style.background = '#082e85';
         btn.style.color = '#fff';
         currentRegion = btn.getAttribute('data-region');
         renderList();

@@ -20,5 +20,18 @@
     "https://fonts.gstatic.com/s/quicksand/v37/6xKtdSZaM9iE8KbpRA_hJVQNcOM.woff2",
     "https://fonts.gstatic.com/s/quicksand/v37/6xKtdSZaM9iE8KbpRA_hK1QN.woff2"
   ],
-  "licenseSource": "https://github.com/google/fonts/tree/main/ofl"
+  "licenseSource": "https://github.com/google/fonts/tree/main/ofl",
+  "additional": [
+    {
+      "family": "Newsreader",
+      "package": "@fontsource-variable/newsreader@5.3.0",
+      "license": "OFL-1.1",
+      "files": [
+        "newsreader-latin-wght-normal.woff2",
+        "newsreader-latin-wght-italic.woff2",
+        "newsreader-vietnamese-wght-normal.woff2",
+        "newsreader-vietnamese-wght-italic.woff2"
+      ]
+    }
+  ]
 }

@@ -14,19 +14,19 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --bg: linear-gradient(145deg, #e3f0fc 0%, #d8eafa 20%, #d2e4f9 50%, #d6e9fa 80%, #e1f0fc 100%);
+  --bg: linear-gradient(145deg, #e9eefb 0%, #e0e8fa 20%, #d9e2f8 50%, #dfe7f9 80%, #e8eefb 100%);
   --glass: rgba(255,255,255,0.62);
   --glass-border: rgba(255,255,255,0.85);
-  --grad: linear-gradient(135deg,#3671a9 0%,#31639d 50%,#3668ab 100%);
-  --grad-btn: linear-gradient(135deg,#3b7fbd 0%,#386fb0 100%);
-  --text-dark: #141f2b;
-  --text-mid: #253545;
-  --text-soft: #4b6883;
-  --accent: #30659a;
-  --accent2: #4c84c7;
+  --grad: linear-gradient(135deg,#0a3395 0%,#082d83 50%,#09308c 100%);
+  --grad-btn: linear-gradient(135deg,#0b3aa8 0%,#093395 100%);
+  --text-dark: #0b202b;
+  --text-mid: #12374a;
+  --text-soft: #092f89;
+  --accent: #082e85;
+  --accent2: #0b3db2;
   --white: #ffffff;
-  --shadow: 0 8px 32px rgba(48, 101, 154,0.15);
-  --shadow-lg: 0 16px 48px rgba(48, 101, 154,0.2);
+  --shadow: 0 8px 32px rgba(8, 46, 133,0.15);
+  --shadow-lg: 0 16px 48px rgba(8, 46, 133,0.2);
   --font: 'Be Vietnam Pro', 'Be Vietnam Pro', system-ui, sans-serif;
   --font-display: 'Quicksand', 'Be Vietnam Pro', sans-serif;
   /* Mở rộng bảng màu cho UI upgrade (Phase 1) */
@@ -36,13 +36,13 @@
   --warning-light: #fef3c7;
   --danger:  #ef4444;
   --danger-light: #fee2e2;
-  --info:    #3472a7;
-  --info-light: #d8ebfa;
+  --info:    #0a3496;
+  --info-light: #e1e9fa;
   --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
   --gradient-warning: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
   --gradient-danger:  linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-  --gradient-info:    linear-gradient(135deg, #3472a7 0%, #2b5d89 100%);
-  --gradient-hero:    linear-gradient(135deg, #3671aa 0%, #354f72 100%);
+  --gradient-info:    linear-gradient(135deg, #0a3496 0%, #082a79 100%);
+  --gradient-hero:    linear-gradient(135deg, #0a3395 0%, #072467 100%);
   --gradient-cta:     linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
   --radius-sm: 8px;
   --radius-md: 14px;
@@ -56,7 +56,7 @@
    ════════════════════════════════════════════════════════════════ */
 
 .bw-hero{
-  background:linear-gradient(180deg,#f8fcff 0%,#fff 60%,#f8fcff 100%) !important;
+  background:linear-gradient(180deg,#fafbfe 0%,#fff 60%,#fafbfe 100%) !important;
   padding:80px 24px 60px !important;
 }
 
@@ -67,7 +67,7 @@
   line-height:1.12 !important;
   letter-spacing:0 !important;
   margin:0 0 24px !important;
-  color:#141f2b !important;
+  color:#0b202b !important;
 }
 .bw-hero-h1 .accent-yellow{
   background:linear-gradient(135deg,#f59e0b 0%,#ec4899 100%) !important;
@@ -89,8 +89,8 @@
   aspect-ratio:4/5;
   border-radius:32px;
   overflow:hidden;
-  box-shadow:0 30px 60px -20px rgba(48, 101, 154,0.25), 0 0 0 1px rgba(48, 101, 154,0.08);
-  background:#f1f5f9;
+  box-shadow:0 30px 60px -20px rgba(8, 46, 133,0.25), 0 0 0 1px rgba(8, 46, 133,0.08);
+  background:#f2f5fa;
 }
 .bw-hero-carousel .slide{
   position:absolute;
@@ -121,7 +121,7 @@
   width:10px; height:10px;
   border-radius:50%;
   border:none;
-  background:rgba(48, 101, 154,0.25);
+  background:rgba(8, 46, 133,0.25);
   cursor:pointer;
   transition:all 0.3s;
   padding:0;
@@ -132,12 +132,12 @@
   background:var(--grad);
 }
 .bw-hero-dots button:hover{
-  background:rgba(48, 101, 154,0.5);
+  background:rgba(8, 46, 133,0.5);
 }
 .bw-hero-caption{
   margin:14px 0 0;
   text-align:center;
-  color:#253545;
+  color:#12374a;
   font-size:13px;
   font-weight:700;
 }
@@ -151,7 +151,7 @@
   background:rgba(255,255,255,0.9);
   border:none;
   font-size:1.4rem;
-  color:#30659a;
+  color:#082e85;
   cursor:pointer;
   box-shadow:0 4px 16px rgba(0,0,0,0.1);
   z-index:3;
@@ -191,7 +191,7 @@
 }
 .step:hover{
   transform:translateY(-6px);
-  box-shadow:0 16px 40px rgba(48, 101, 154,0.18);
+  box-shadow:0 16px 40px rgba(8, 46, 133,0.18);
 }
 
 /* --- Smooth hover for buttons --- */
@@ -212,7 +212,7 @@
 .bw-toast{
   position:fixed; bottom:24px; left:50%;
   transform:translateX(-50%) translateY(20px);
-  background:rgba(15, 25, 34,0.95);
+  background:rgba(9, 26, 35,0.95);
   color:#fff; padding:12px 20px; border-radius:12px;
   font-weight:600; font-size:0.9rem;
   box-shadow:0 12px 32px rgba(0,0,0,0.3);
@@ -225,7 +225,7 @@
 .bw-toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
 .bw-toast.success{ background:linear-gradient(135deg,#10b981,#059669); }
 .bw-toast.error{ background:linear-gradient(135deg,#ef4444,#dc2626); }
-.bw-toast.info{ background:linear-gradient(135deg,#3472a7,#2b5d89); }
+.bw-toast.info{ background:linear-gradient(135deg,#0a3496,#082a79); }
 
 /* --- Skip-to-content (a11y) --- */
 .bw-skip-link{
@@ -266,7 +266,7 @@ body::before, body::after { display:none !important; }
   background:rgba(255,255,255,0.78);
   backdrop-filter:blur(20px);
   border-bottom:1px solid rgba(255,255,255,0.9);
-  box-shadow:0 2px 20px rgba(48, 101, 154,0.08);
+  box-shadow:0 2px 20px rgba(8, 46, 133,0.08);
 }
 .lp-nav-links{display:flex;align-items:center;gap:28px;}
 .lp-nav-links a{font-size:.875rem;font-weight:600;color:var(--text-mid);text-decoration:none;transition:color .2s;}
@@ -280,19 +280,19 @@ body::before, body::after { display:none !important; }
   display:inline-flex;align-items:center;gap:8px;
   background:var(--grad-btn);color:#fff;font-weight:700;font-size:.9rem;
   padding:12px 26px;border-radius:999px;border:none;cursor:pointer;
-  box-shadow:0 8px 24px rgba(48, 101, 154,0.35);
+  box-shadow:0 8px 24px rgba(8, 46, 133,0.35);
   transition:transform .2s,box-shadow .2s;
 }
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(48, 101, 154,0.45);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(8, 46, 133,0.45);}
 
 /* Reusing original sn-* class structure but overriding for light theme */
 *, *::before, *::after{box-sizing:border-box;}
 
 /* Scrollbar */
 ::-webkit-scrollbar{width:6px;height:6px;}
-::-webkit-scrollbar-track{background:rgba(48, 101, 154,0.05);}
-::-webkit-scrollbar-thumb{background:rgba(48, 101, 154,0.25);border-radius:3px;}
-::-webkit-scrollbar-thumb:hover{background:rgba(48, 101, 154,0.45);}
+::-webkit-scrollbar-track{background:rgba(8, 46, 133,0.05);}
+::-webkit-scrollbar-thumb{background:rgba(8, 46, 133,0.25);border-radius:3px;}
+::-webkit-scrollbar-thumb:hover{background:rgba(8, 46, 133,0.45);}
 
 /* ── CONTACT (PAGE 1) ── */
 #contact { scroll-margin-top: 90px; }
@@ -315,17 +315,17 @@ body{overflow-x:visible;}
 /* Ripple effect on click */
 .auth-tab{
   flex:1;padding:9px;border-radius:9px;border:none;background:transparent;
-  font-family:inherit;font-weight:700;font-size:.85rem;color:#4b6883;
+  font-family:inherit;font-weight:700;font-size:.85rem;color:#092f89;
   cursor:pointer;transition:all .15s;
 }
-.auth-tab.active{background:#fff;color:#2b5d89;box-shadow:0 2px 6px rgba(15, 25, 33,.06);}
+.auth-tab.active{background:#fff;color:#082a79;box-shadow:0 2px 6px rgba(9, 26, 34,.06);}
 
 /* === TOP NAV (shared với careers-holland.html) === */
 .bw-nav {
   position: sticky; top: 0; z-index: 100;
   background: rgba(255,255,255,0.72);
   backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(48, 101, 154,0.10);
+  border-bottom: 1px solid rgba(8, 46, 133,0.10);
   padding: 12px 24px;
 }
 @media (max-width: 900px) {
@@ -333,20 +333,21 @@ body{overflow-x:visible;}
 }
 
 </style>
-<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261105b">
-<link rel="stylesheet" href="/assets/css/flow.css?v=20261105b">
-<link rel="stylesheet" href="/assets/css/selections.css?v=20261105b">
+<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261110k">
+<link rel="stylesheet" href="/assets/css/flow.css?v=20261110k">
+<link rel="stylesheet" href="/assets/css/selections.css?v=20261110k">
 <script type="module" src="/assets/js/selections.js?v=20261020-wishes"></script>
-<link rel="stylesheet" href="/assets/css/admissions-home.css?v=20261105b">
+<link rel="stylesheet" href="/assets/css/admissions-home.css?v=20261110k">
 <script src="/assets/js/flow.js?v=20261104" defer></script>
 <script type="module" src="/assets/js/catalog-stats.js?v=20261015"></script>
-<link rel="stylesheet" href="/assets/css/home-holland.css?v=20261105b">
-<link rel="stylesheet" href="/assets/css/home-journeys.css?v=20261105b">
-<link rel="stylesheet" href="/assets/css/university-promotions.css?v=20261105b">
-<link rel="stylesheet" href="/assets/css/motion.css?v=20261105b">
-<link rel="stylesheet" href="/assets/css/story.css?v=20261105b">
+<link rel="stylesheet" href="/assets/css/home-holland.css?v=20261110k">
+<link rel="stylesheet" href="/assets/css/home-journeys.css?v=20261110k">
+<link rel="stylesheet" href="/assets/css/university-promotions.css?v=20261110k">
+<link rel="stylesheet" href="/assets/css/motion.css?v=20261110k">
+<link rel="stylesheet" href="/assets/css/story.css?v=20261110k">
+<link rel="stylesheet" href="/assets/css/ky-su.css?v=20261110k">
 <script type="module" src="/assets/js/university-promotions.js?v=20261104"></script>
-<script src="/assets/js/home-holland.js?v=20261105b" defer></script>
+<script src="/assets/js/home-holland.js?v=20261110k" defer></script>
 </head>
 <body>
 <!-- Skip link (a11y) -->
@@ -376,20 +377,20 @@ body{overflow-x:visible;}
 
 <style>
   #home-view {
-    background: linear-gradient(145deg, #e3f0fc 0%, #d8eafa 20%, #d2e4f9 50%, #d6e9fa 80%, #e1f0fc 100%);
-    color: #141f2b;
+    background: linear-gradient(145deg, #e9eefb 0%, #e0e8fa 20%, #d9e2f8 50%, #dfe7f9 80%, #e8eefb 100%);
+    color: #0b202b;
     font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
     padding-bottom: 0;
     position: relative;
   }
   #home-view::before {
     content:'';position:fixed;top:-15%;left:-10%;width:55vw;height:55vw;
-    background:radial-gradient(circle,rgba(53, 106, 167,0.18),transparent 65%);
+    background:radial-gradient(circle,rgba(9, 49, 141,0.18),transparent 65%);
     border-radius:50%;pointer-events:none;z-index:0;
   }
   #home-view::after {
     content:'';position:fixed;bottom:-15%;right:-10%;width:50vw;height:50vw;
-    background:radial-gradient(circle,rgba(72, 141, 198,0.16),transparent 65%);
+    background:radial-gradient(circle,rgba(12, 64, 187,0.16),transparent 65%);
     border-radius:50%;pointer-events:none;z-index:0;
   }
   /* Keep page sections above the decorative background without changing the
@@ -405,9 +406,9 @@ body{overflow-x:visible;}
   }
   .bw-hero .badge {
     display:inline-flex; align-items:center; gap:6px;
-    background: rgba(48, 101, 154,0.12);
-    border: 1px solid rgba(48, 101, 154,0.22);
-    color: #30659a; font-weight: 700; font-size: 13px;
+    background: rgba(8, 46, 133,0.12);
+    border: 1px solid rgba(8, 46, 133,0.22);
+    color: #082e85; font-weight: 700; font-size: 13px;
     padding: 8px 16px; border-radius: 999px;
     margin-bottom: 24px;
   }
@@ -416,17 +417,17 @@ body{overflow-x:visible;}
     font-weight: 800;
     line-height: 1.12;
     margin: 0 0 20px;
-    color: #141f2b;
+    color: #0b202b;
     letter-spacing: -0.02em;
   }
   .bw-hero .lede {
     font-size: 18px;
-    color: #253545;
+    color: #12374a;
     max-width: 640px;
     margin: 0 auto 32px;
     line-height: 1.6;
   }
-  .bw-hero .lede strong { color: #30659a; font-weight: 700; }
+  .bw-hero .lede strong { color: #082e85; font-weight: 700; }
 
   /* Buttons */
   .bw-btn {
@@ -439,21 +440,21 @@ body{overflow-x:visible;}
     cursor: pointer; border: none;
   }
   .bw-btn-primary {
-    background: linear-gradient(135deg,#3b7fbd 0%,#386fb0 100%);
+    background: linear-gradient(135deg,#0b3aa8 0%,#093395 100%);
     color: #fff;
-    box-shadow: 0 8px 24px rgba(48, 101, 154,0.32);
+    box-shadow: 0 8px 24px rgba(8, 46, 133,0.32);
   }
   .bw-btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(48, 101, 154,0.42);
+    box-shadow: 0 12px 32px rgba(8, 46, 133,0.42);
   }
   .bw-btn-outline {
     background: rgba(255,255,255,0.72);
-    color: #30659a;
-    border: 1.5px solid rgba(48, 101, 154,0.3);
+    color: #082e85;
+    border: 1.5px solid rgba(8, 46, 133,0.3);
   }
   .bw-btn-outline:hover {
-    background: #fff; border-color: #30659a;
+    background: #fff; border-color: #082e85;
     transform: translateY(-2px);
   }
 
@@ -463,7 +464,7 @@ body{overflow-x:visible;}
     font-size: 32px;
     font-weight: 800;
     margin: 0 0 12px;
-    color: #141f2b;
+    color: #0b202b;
     letter-spacing: -0.02em;
   }
 
@@ -478,7 +479,7 @@ body{overflow-x:visible;}
   }
   .bw-faq-item {
     background: rgba(255,255,255,0.9);
-    border: 1px solid rgba(48, 101, 154,0.12);
+    border: 1px solid rgba(8, 46, 133,0.12);
     border-radius: 14px;
     margin-bottom: 12px;
     overflow: hidden;
@@ -487,7 +488,7 @@ body{overflow-x:visible;}
   .bw-faq-item summary {
     padding: 18px 24px;
     font-weight: 600;
-    color: #141f2b;
+    color: #0b202b;
     cursor: pointer;
     list-style: none;
     display: flex;
@@ -498,22 +499,22 @@ body{overflow-x:visible;}
   .bw-faq-item summary::-webkit-details-marker { display: none; }
   .bw-faq-item summary::after {
     content: "+"; font-size: 24px;
-    color: #30659a;
+    color: #082e85;
     font-weight: 300;
     transition: transform 0.2s;
   }
   .bw-faq-item[open] summary::after { transform: rotate(45deg); }
   .bw-faq-item .faq-body {
     padding: 0 24px 20px;
-    color: #253545;
+    color: #12374a;
     line-height: 1.6;
     font-size: 15px;
   }
 
   /* === FOOTER === */
   .bw-footer {
-    background: rgba(20, 31, 43,0.92);
-    color: #92abc3;
+    background: rgba(11, 32, 43,0.92);
+    color: #0f50e9;
     padding: 48px 24px 32px;
     text-align: center;
     backdrop-filter: blur(10px);
@@ -521,19 +522,19 @@ body{overflow-x:visible;}
   .bw-footer .logo {
     font-size: 20px;
     font-weight: 800;
-    background: linear-gradient(135deg,#4c84c7 0%,#63a1e9 100%);
+    background: linear-gradient(135deg,#0b3db2 0%,#0e4bda 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 8px;
   }
   .bw-footer p { margin: 4px 0; font-size: 14px; }
-  .bw-footer .small { font-size: 13px; color: #6a8bac; margin-top: 16px; }
+  .bw-footer .small { font-size: 13px; color: #0c40bb; margin-top: 16px; }
   .bw-footer-contact { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:8px 18px; max-width:760px; margin:18px auto 0; font-size:14px; }
-  .bw-footer-contact a { color:#c7dff9; font-weight:700; text-decoration:none; }
+  .bw-footer-contact a { color:#d1ddf7; font-weight:700; text-decoration:none; }
   .bw-footer-contact a:hover { color:#fff; text-decoration:underline; }
-  .bw-footer-contact span { color:#92abc3; }
-  .bw-footer-contact .contact-label { color:#4c84c7; font-weight:700; }
+  .bw-footer-contact span { color:#0f50e9; }
+  .bw-footer-contact .contact-label { color:#0b3db2; font-weight:700; }
   @media (max-width:640px) { .bw-footer-contact { flex-direction:column; gap:8px; font-size:13px; } }
 
   /* MOBILE */
@@ -551,8 +552,8 @@ body{overflow-x:visible;}
     --pink-soft: #fbcfe8;
     --warm-yellow: #fbbf24;
     --warm-cream: #fefcf8;
-    --gradient-hero: linear-gradient(135deg, #30659a 0%, #3467a4 50%, #ec4899 100%);
-    --gradient-cta: linear-gradient(135deg, #27507c 0%, #ec4899 100%);
+    --gradient-hero: linear-gradient(135deg, #082e85 0%, #092f89 50%, #ec4899 100%);
+    --gradient-cta: linear-gradient(135deg, #072468 0%, #ec4899 100%);
     --gradient-warm: linear-gradient(135deg, #fef3c7 0%, #fce7f3 100%);
   }
 
@@ -573,9 +574,9 @@ body{overflow-x:visible;}
   .bw-hero-text { text-align: left; }
   .bw-hero-text .badge {
     display:inline-flex; align-items:center; gap:6px;
-    background: rgba(48, 101, 154,0.10);
-    border: 1px solid rgba(48, 101, 154,0.22);
-    color: #30659a; font-weight: 700; font-size: 13px;
+    background: rgba(8, 46, 133,0.10);
+    border: 1px solid rgba(8, 46, 133,0.22);
+    color: #082e85; font-weight: 700; font-size: 13px;
     padding: 8px 16px; border-radius: 999px;
     margin-bottom: 20px;
   }
@@ -585,7 +586,7 @@ body{overflow-x:visible;}
     font-weight: 800;
     line-height: 1.15;
     margin: 0 0 18px;
-    color: #141f2b;
+    color: #0b202b;
     letter-spacing: -0.02em;
   }
   .bw-hero-text h1 .accent-yellow {
@@ -597,18 +598,18 @@ body{overflow-x:visible;}
   }
   .bw-hero-text .lede {
     font-size: 17px;
-    color: #253545;
+    color: #12374a;
     line-height: 1.65;
     margin: 0 0 28px;
     max-width: 520px;
   }
-  .bw-hero-text .lede strong { color: #30659a; font-weight: 700; }
+  .bw-hero-text .lede strong { color: #082e85; font-weight: 700; }
   .bw-hero-meta {
     display: flex;
     gap: 20px;
     margin-top: 24px;
     font-size: 13px;
-    color: #4b6883;
+    color: #092f89;
     flex-wrap: wrap;
   }
   .bw-hero-meta span {
@@ -644,8 +645,8 @@ body{overflow-x:visible;}
   /* Senior mode toggle button */
   .senior-toggle {
     background: rgba(255,255,255,0.7);
-    border: 1.5px solid rgba(48, 101, 154,0.30);
-    color: #30659a;
+    border: 1.5px solid rgba(8, 46, 133,0.30);
+    color: #082e85;
     border-radius: 999px;
     padding: 6px 12px;
     font-size: 13px;
@@ -654,11 +655,11 @@ body{overflow-x:visible;}
     transition: all .2s;
     -webkit-tap-highlight-color: transparent;
   }
-  .senior-toggle:hover { background: #eaf3fc; }
+  .senior-toggle:hover { background: #eef2fc; }
   body.senior-mode .senior-toggle {
-    background: #30659a;
+    background: #082e85;
     color: #fff;
-    border-color: #30659a;
+    border-color: #082e85;
   }
 
   /* Hero visual — carousel 4 ảnh trường thật */
@@ -667,8 +668,8 @@ body{overflow-x:visible;}
     aspect-ratio: 4 / 5;
     border-radius: 28px;
     overflow: hidden;
-    box-shadow: 0 30px 80px rgba(48, 101, 154,0.25);
-    background: #101922;
+    box-shadow: 0 30px 80px rgba(8, 46, 133,0.25);
+    background: #091a23;
   }
   .bw-hero-carousel {
     position: absolute;
@@ -702,7 +703,7 @@ body{overflow-x:visible;}
     padding: 8px 14px 9px;
     font-size: 13px;
     font-weight: 800;
-    color: #141f2b;
+    color: #0b202b;
     line-height: 1.25;
     box-shadow: 0 8px 24px rgba(0,0,0,0.18);
     max-width: calc(100% - 36px);
@@ -710,7 +711,7 @@ body{overflow-x:visible;}
   .bw-hero-carousel .slide .school-tag small {
     display: block;
     font-size: 10px;
-    color: #4b6883;
+    color: #092f89;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -773,7 +774,7 @@ body{overflow-x:visible;}
     background: rgba(255,255,255,0.85);
     backdrop-filter: blur(6px);
     border: none;
-    color: #141f2b;
+    color: #0b202b;
     font-size: 22px;
     font-weight: 800;
     line-height: 1;
@@ -791,7 +792,7 @@ body{overflow-x:visible;}
     transform: translateY(-50%) scale(1.08);
   }
   .bw-hero-carousel .nav:focus-visible {
-    outline: 2px solid #30659a;
+    outline: 2px solid #082e85;
     outline-offset: 3px;
   }
   .bw-hero-carousel .nav.prev { left: 12px; }
@@ -799,7 +800,7 @@ body{overflow-x:visible;}
   .bw-hero-carousel .nav svg {
     width: 18px;
     height: 18px;
-    stroke: #141f2b;
+    stroke: #0b202b;
     stroke-width: 2.5;
     fill: none;
     stroke-linecap: round;
@@ -815,7 +816,7 @@ body{overflow-x:visible;}
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(16, 25, 34,0) 40%, rgba(16, 25, 34,0.55) 100%);
+    background: linear-gradient(180deg, rgba(9, 26, 35,0) 40%, rgba(9, 26, 35,0.55) 100%);
     z-index: 2;
     pointer-events: none;
   }
@@ -829,7 +830,7 @@ body{overflow-x:visible;}
   }
   /* Override bw-step / bw-card để bo góc lớn + shadow ấm hơn */
   #home-view .bw-btn-primary {
-    box-shadow: 0 10px 24px rgba(48, 101, 154,0.35);
+    box-shadow: 0 10px 24px rgba(8, 46, 133,0.35);
   }
   /* Responsive hero */
   @media (max-width: 860px) {
@@ -889,10 +890,10 @@ body{overflow-x:visible;}
     gap: 6px;
     margin: 10px 0 0;
     padding: 6px 11px;
-    border: 1px solid #e0eaf3;
+    border: 1px solid #e4e9f4;
     border-radius: 999px;
     background: #fff;
-    box-shadow: 0 4px 14px rgba(29, 47, 63, .06);
+    box-shadow: 0 4px 14px rgba(16, 49, 65, .06);
     font-size: 11px;
     font-weight: 800;
     color: #4c5575;
@@ -904,7 +905,7 @@ body{overflow-x:visible;}
 
   /* Every campus photo fills the same carousel frame. */
   #home-view .bw-hero-carousel .slide {
-    background: #d9e5ef;
+    background: #dee3f1;
   }
   #home-view .bw-hero-carousel .slide img {
     left: 0;
@@ -955,7 +956,7 @@ body{overflow-x:visible;}
     width: 100%;
     aspect-ratio: 16 / 10;
     border-radius: 22px;
-    box-shadow: 0 16px 42px rgba(28, 42, 54, 0.14);
+    box-shadow: 0 16px 42px rgba(15, 44, 58, 0.14);
   }
   @media (max-width: 620px) {
     #home-view .bw-hero {
@@ -966,59 +967,56 @@ body{overflow-x:visible;}
 
 <!-- ===== CÂU CHUYỆN LỚP 12: mở đầu, 5 chương, kết ===== -->
 <div class="story" id="story" data-story>
-<div class="story-rail" aria-hidden="true">
-  <svg class="story-rail-trail-svg" focusable="false"><path class="story-rail-trail" d=""/></svg>
-  <div class="story-rail-reveal"><div class="story-rail-inner"><svg class="story-rail-road-svg" focusable="false"><path class="story-rail-road" d=""/></svg></div></div>
-</div>
-
 <section class="bw-hero story-scene" id="hero-actions" aria-labelledby="heroTitle">
   <div class="bw-hero-grid">
     <div class="bw-hero-text">
-      <p class="badge" data-today>Dành cho học sinh lớp 12</p>
-      <h1 class="bw-hero-h1" id="heroTitle">Đi để lối thành <span class="accent-yellow">đường của bạn</span></h1>
-      <p class="lede">Bạn đang đứng ở ngã rẽ. Đi từng bước một: hiểu mình, tìm ngành, chọn trường, đối chiếu điểm, rồi hành động.</p>
+      <p class="ks-kicker ks-kicker-light" data-today>Năm lớp 12 · năm chương</p>
+      <h1 class="bw-hero-h1" id="heroTitle">Đi để lối<br>thành <em>đường của bạn.</em></h1>
+      <p class="lede">Bạn đang đứng ở ngã rẽ. Đi từng chương một: hiểu mình, tìm ngành, chọn trường, đối chiếu điểm, rồi hành động.</p>
+      <div class="ks-hero-actions"><a class="ks-btn ks-btn-solid" href="#chuong-1">Bắt đầu hành trình</a><a class="ks-btn ks-btn-ghost" href="score-calculator.html">Tính điểm xét tuyển</a></div>
       <div class="story-resume" data-story-resume hidden></div>
       <p class="bw-hero-meta">Miễn phí, không cần đăng ký. Tiến độ lưu trên thiết bị này.</p>
     </div>
     <div class="bw-hero-visual">
       <div class="bw-hero-carousel" id="bwHeroCarousel" aria-roledescription="carousel" aria-label="Ảnh 8 trường đại học Việt Nam">
         <div class="slide is-active" data-school="FPT - Cần Thơ">
-          <img src="assets/images/hero/01-fpt-can-tho.jpg?v=3" srcset="assets/images/hero/01-fpt-can-tho-640.webp 640w, assets/images/hero/01-fpt-can-tho-1280.webp 1280w" sizes="(max-width:600px) calc(100vw - 32px), (max-width:1000px) 720px, 560px" width="2000" height="1125" alt="Đại học FPT - cơ sở Cần Thơ" loading="eager" fetchpriority="high" decoding="async"
+          <img src="assets/images/hero/01-fpt-can-tho.jpg?v=3" srcset="assets/images/hero/01-fpt-can-tho-640.webp 640w, assets/images/hero/01-fpt-can-tho-1280.webp 1280w" sizes="100vw" width="2000" height="1125" alt="Đại học FPT - cơ sở Cần Thơ" loading="eager" fetchpriority="high" decoding="async"
                onerror="this.onerror=null;this.removeAttribute('srcset');this.src='assets/images/hero/01-fpt-can-tho.jpg?v=3';">
           <div class="school-tag"><small>Campus miền Tây</small>ĐH FPT — Cần Thơ</div>
         </div>
         <div class="slide" data-school="ĐH Cần Thơ">
-          <img src="assets/images/hero/02-ctu.jpg?v=4" srcset="assets/images/hero/02-ctu-640.webp 640w, assets/images/hero/02-ctu-1280.webp 1280w" sizes="(max-width:600px) calc(100vw - 32px), (max-width:1000px) 720px, 560px" alt="Nhà Điều hành Đại học Cần Thơ tại Khu II" loading="lazy" decoding="async"
+          <img src="assets/images/hero/02-ctu.jpg?v=4" srcset="assets/images/hero/02-ctu-640.webp 640w, assets/images/hero/02-ctu-1280.webp 1280w" sizes="100vw" alt="Nhà Điều hành Đại học Cần Thơ tại Khu II" loading="lazy" decoding="async"
                onerror="this.onerror=null;this.removeAttribute('srcset');this.src='assets/images/hero/01-fpt-can-tho.jpg?v=3';">
           <div class="school-tag"><small>Khu II · Nhà Điều hành</small>ĐH Cần Thơ (CTU)</div>
         </div>
         <div class="slide" data-school="UEH - TP.HCM">
-          <img src="assets/images/hero/03-ueh.jpg?v=3" srcset="assets/images/hero/03-ueh-640.webp 640w, assets/images/hero/03-ueh-1280.webp 1280w" sizes="(max-width:600px) calc(100vw - 32px), (max-width:1000px) 720px, 560px" alt="ĐH Kinh tế TP.HCM" loading="lazy" decoding="async"
+          <img src="assets/images/hero/03-ueh.jpg?v=3" srcset="assets/images/hero/03-ueh-640.webp 640w, assets/images/hero/03-ueh-1280.webp 1280w" sizes="100vw" alt="ĐH Kinh tế TP.HCM" loading="lazy" decoding="async"
                onerror="this.onerror=null;this.removeAttribute('srcset');this.src='assets/images/hero/01-fpt-can-tho.jpg?v=3';">
           <div class="school-tag"><small>Kinh tế hàng đầu</small>ĐH Kinh tế TP.HCM (UEH)</div>
         </div>
         <div class="slide" data-school="RMIT Vietnam">
-          <img src="assets/images/hero/14-rmit.jpg?v=3" srcset="assets/images/hero/14-rmit-640.webp 640w, assets/images/hero/14-rmit-1280.webp 1280w" sizes="(max-width:600px) calc(100vw - 32px), (max-width:1000px) 720px, 560px" alt="RMIT Vietnam - Nam Sài Gòn" loading="lazy" decoding="async"
+          <img src="assets/images/hero/14-rmit.jpg?v=3" srcset="assets/images/hero/14-rmit-640.webp 640w, assets/images/hero/14-rmit-1280.webp 1280w" sizes="100vw" alt="RMIT Vietnam - Nam Sài Gòn" loading="lazy" decoding="async"
                onerror="this.onerror=null;this.removeAttribute('srcset');this.src='assets/images/hero/01-fpt-can-tho.jpg?v=3';">
         </div>
         <div class="slide" data-school="ĐH Văn Lang">
-          <img src="assets/images/hero/06-vlu.jpg?v=3" srcset="assets/images/hero/06-vlu-640.webp 640w, assets/images/hero/06-vlu-1280.webp 1280w" sizes="(max-width:600px) calc(100vw - 32px), (max-width:1000px) 720px, 560px" alt="ĐH Văn Lang" loading="lazy" decoding="async"
+          <img src="assets/images/hero/06-vlu.jpg?v=3" srcset="assets/images/hero/06-vlu-640.webp 640w, assets/images/hero/06-vlu-1280.webp 1280w" sizes="100vw" alt="ĐH Văn Lang" loading="lazy" decoding="async"
                onerror="this.onerror=null;this.removeAttribute('srcset');this.src='assets/images/hero/01-fpt-can-tho.jpg?v=3';">
         </div>
         <div class="slide" data-school="ĐH Công nghệ Thông tin – ĐHQG TP.HCM">
-          <img src="assets/images/hero/16-uit-campus.png" srcset="assets/images/hero/16-uit-campus-640.webp 640w, assets/images/hero/16-uit-campus-1280.webp 1280w" sizes="(max-width:600px) calc(100vw - 32px), (max-width:1000px) 720px, 560px" alt="Khuôn viên Đại học Công nghệ Thông tin – ĐHQG TP.HCM" loading="lazy" decoding="async">
+          <img src="assets/images/hero/16-uit-campus.png" srcset="assets/images/hero/16-uit-campus-640.webp 640w, assets/images/hero/16-uit-campus-1280.webp 1280w" sizes="100vw" alt="Khuôn viên Đại học Công nghệ Thông tin – ĐHQG TP.HCM" loading="lazy" decoding="async">
         </div>
         <div class="slide" data-school="ĐH Tôn Đức Thắng" style="--hero-position:68% center">
-          <img src="assets/images/hero/17-tdtu-campus.png" srcset="assets/images/hero/17-tdtu-campus-640.webp 640w, assets/images/hero/17-tdtu-campus-1280.webp 1280w" sizes="(max-width:600px) calc(100vw - 32px), (max-width:1000px) 720px, 560px" alt="Khuôn viên Đại học Tôn Đức Thắng" loading="lazy" decoding="async">
+          <img src="assets/images/hero/17-tdtu-campus.png" srcset="assets/images/hero/17-tdtu-campus-640.webp 640w, assets/images/hero/17-tdtu-campus-1280.webp 1280w" sizes="100vw" alt="Khuôn viên Đại học Tôn Đức Thắng" loading="lazy" decoding="async">
         </div>
         <div class="slide" data-school="ĐH Khoa học Tự nhiên – ĐHQG TP.HCM">
-          <img src="assets/images/hero/11-hcmus.jpg?v=3" srcset="assets/images/hero/11-hcmus-640.webp 640w, assets/images/hero/11-hcmus-1280.webp 1280w" sizes="(max-width:600px) calc(100vw - 32px), (max-width:1000px) 720px, 560px" alt="Khuôn viên Đại học Khoa học Tự nhiên – ĐHQG TP.HCM" loading="lazy" decoding="async">
+          <img src="assets/images/hero/11-hcmus.jpg?v=3" srcset="assets/images/hero/11-hcmus-640.webp 640w, assets/images/hero/11-hcmus-1280.webp 1280w" sizes="100vw" alt="Khuôn viên Đại học Khoa học Tự nhiên – ĐHQG TP.HCM" loading="lazy" decoding="async">
         </div>
         <button type="button" class="nav prev" id="bwHeroPrev" aria-label="Ảnh trước">‹</button>
         <button type="button" class="nav next" id="bwHeroNext" aria-label="Ảnh tiếp theo">›</button>
       </div>
       <div class="bw-hero-footer">
         <p class="bw-hero-caption" id="bwHeroCaption" aria-live="polite">FPT - Cần Thơ</p>
+        <a class="ks-scroll-cue" href="#muc-luc">Cuộn để đọc</a>
         <div class="bw-hero-dots" id="bwHeroDots" role="tablist" aria-label="Chọn ảnh trường">
           <button type="button" class="is-active" role="tab" aria-selected="true" data-i="0" aria-label="FPT Cần Thơ"></button>
           <button type="button" role="tab" aria-selected="false" data-i="1" aria-label="ĐH Cần Thơ"></button>
@@ -1032,38 +1030,33 @@ body{overflow-x:visible;}
       </div>
     </div>
   </div>
-  <section class="home-journey-picker" aria-labelledby="homeJourneyTitle">
-    <h2 id="homeJourneyTitle">Bạn đang ở bước nào?</h2>
-    <div class="home-journey-grid">
-      <a class="home-journey-card" href="holland.html">
-        <span class="home-journey-icon" aria-hidden="true">1</span>
-        <strong>Chưa biết chọn ngành gì</strong>
-        <span>Khám phá sở thích và tìm ngành nghề phù hợp.</span>
-      </a>
-      <a class="home-journey-card" href="page2.html?focus=major">
-        <span class="home-journey-icon" aria-hidden="true">3</span>
-        <strong>Đã có ngành yêu thích</strong>
-        <span>Tìm trường đào tạo và cơ hội xét tuyển.</span>
-      </a>
-      <a class="home-journey-card" href="score-calculator.html">
-        <span class="home-journey-icon" aria-hidden="true">4</span>
-        <strong>Muốn tính điểm xét tuyển</strong>
-        <span>Chọn phương thức, nhập điểm và xem cách tính.</span>
-      </a>
-    </div>
+</section>
+
+<section class="home-journey-picker ks-toc" id="muc-luc" aria-labelledby="homeJourneyTitle">
+    <p class="ks-kicker">Mục lục</p>
+    <h2 id="homeJourneyTitle">Một hành trình, năm chương.</h2>
+    <p class="ks-lead">Đọc lần lượt từ hiểu mình đến hành động, hoặc chọn chương bạn đang cần. Mỗi chương dẫn tới một công cụ, cuối mỗi chương có lối sang chương tiếp theo.</p>
+    <ol class="ks-toc-list">
+      <li><a class="home-journey-card" href="#chuong-1" data-toc-step="0"><span class="ks-toc-num" aria-hidden="true">01</span><strong>Hiểu mình</strong><span>Chưa biết chọn ngành gì</span><small data-toc-status>Holland 42 câu hoặc chọn 3 nhóm</small></a></li>
+      <li><a class="home-journey-card" href="#chuong-2" data-toc-step="1"><span class="ks-toc-num" aria-hidden="true">02</span><strong>Tìm ngành</strong><span>Nghề nào hợp với mã của mình</span><small data-toc-status>102 nghề theo nhóm Holland</small></a></li>
+      <li><a class="home-journey-card" href="#chuong-3" data-toc-step="2"><span class="ks-toc-num" aria-hidden="true">03</span><strong>Chọn trường</strong><span>Đã có ngành yêu thích</span><small data-toc-status>Hồ sơ trường và tin tuyển sinh</small></a></li>
+      <li><a class="home-journey-card ks-toc-plain" href="#chuong-4" data-toc-step="3"><span class="ks-toc-num" aria-hidden="true">04</span><strong>Đối chiếu điểm</strong><span>Muốn tính điểm xét tuyển</span><small data-toc-status>Tổng 3 môn theo tổ hợp</small></a></li>
+      <li><a class="home-journey-card ks-toc-plain" href="#chuong-5" data-toc-step="4"><span class="ks-toc-num" aria-hidden="true">05</span><strong>Hành động</strong><span>Tháng này cần làm gì</span><small data-toc-status>Lịch 12 tháng và countdown</small></a></li>
+    </ol>
+    <p class="ks-toc-direct">Hoặc đi thẳng tới công cụ: <a href="holland.html">Chưa biết chọn ngành gì</a> · <a href="page2.html?focus=major">Đã có ngành yêu thích</a> · <a href="score-calculator.html">Muốn tính điểm xét tuyển</a></p>
     <button type="button" class="home-waybi-shortcut" data-open-waybi><img src="assets/images/waybi/waybi-ui-192.webp" alt="" aria-hidden="true" width="192" height="192">Chưa biết bắt đầu từ đâu? Hỏi Waybi</button>
-  </section>
 </section>
 
 <section class="story-chapter" id="chuong-1" data-step="0" aria-labelledby="ch1Title">
   <header class="chapter-head">
-    <span class="chapter-marker" aria-hidden="true">1</span>
     <div class="chapter-heading">
-      <p class="chapter-kicker">Chương 1: Hiểu mình</p>
+      <p class="chapter-kicker ks-kicker">Chương 01 · Hiểu mình</p>
       <h2 class="chapter-title" id="ch1Title">Mình hợp với nhóm nghề nào?</h2>
       <p class="chapter-done" data-chapter-done hidden></p>
+      <p class="ks-intro">Trước khi chọn ngành, hãy hiểu mình thích làm gì. Chọn ba nhóm sở thích giống bạn nhất, hoặc làm trắc nghiệm 42 câu. Đây là gợi ý để tìm hiểu, không phải bản án về năng lực.</p>
     </div>
     <button type="button" class="chapter-toggle" data-chapter-toggle aria-controls="ch1Body" aria-expanded="true" hidden>Xem lại</button>
+    <svg class="ks-art" viewBox="0 0 220 160" aria-hidden="true" focusable="false"><circle cx="110" cy="80" r="56"/><circle cx="110" cy="80" r="44" class="ks-thin"/><path d="M110 18v10M110 132v10M48 80h10M162 80h10"/><path class="ks-accent" d="M110 80l18-38-18 46-18-8z"/><path d="M110 80l-18 38 18-46 18 8z"/><circle cx="110" cy="80" r="4"/></svg>
   </header>
   <div class="chapter-body" id="ch1Body">
     <section class="home-holland" id="home-holland" aria-labelledby="home-holland-title">
@@ -1089,17 +1082,23 @@ body{overflow-x:visible;}
     </section>
     <p class="chapter-waybi"><img src="assets/images/waybi/waybi-ui-192.webp" alt="" aria-hidden="true" width="192" height="192"><span data-waybi-line="1">Holland chỉ gợi ý sở thích, không đo năng lực. Nếu phân vân giữa hai nhóm, cứ hỏi mình.</span><button type="button" data-open-waybi>Hỏi Waybi</button></p>
   </div>
+  <nav class="ks-next" data-chapter-next aria-label="Chương tiếp">
+    <svg class="ks-wave" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="ks-wave-ahead" d="M0 20 C 125 0, 250 40, 375 20 S 625 0, 750 20 S 1000 40, 1000 20"/><path class="ks-wave-behind" d="M0 20 C 125 0, 250 40, 375 20 S 625 0, 750 20 S 1000 40, 1000 20"/></svg>
+    <span class="ks-traveller" aria-hidden="true"><svg viewBox="0 0 40 28" focusable="false"><path d="M20 2 38 10 20 18 2 10z"/><path d="M9 13v7c6 5 16 5 22 0v-7"/><path d="M38 10v9"/></svg></span>
+    <a class="ks-next-link" href="#chuong-2"><span>Chương tiếp</span> 02 · Tìm ngành <b aria-hidden="true">↓</b></a>
+  </nav>
 </section>
 
-<section class="story-chapter" id="chuong-2" data-step="1" aria-labelledby="ch2Title">
+<section class="story-chapter is-deep" id="chuong-2" data-step="1" aria-labelledby="ch2Title">
   <header class="chapter-head">
-    <span class="chapter-marker" aria-hidden="true">2</span>
     <div class="chapter-heading">
-      <p class="chapter-kicker">Chương 2: Tìm ngành</p>
+      <p class="chapter-kicker ks-kicker">Chương 02 · Tìm ngành</p>
       <h2 class="chapter-title" id="ch2Title">Với mã đó, nghề nào hợp với mình?</h2>
       <p class="chapter-done" data-chapter-done hidden></p>
+      <p class="ks-intro">Mỗi mã Holland mở ra một nhóm nghề. Đọc thử công việc hằng ngày của vài nghề, rồi giữ lại hai, ba ngành bạn muốn tìm hiểu sâu.</p>
     </div>
     <button type="button" class="chapter-toggle" data-chapter-toggle aria-controls="ch2Body" aria-expanded="true" hidden>Xem lại</button>
+    <svg class="ks-art" viewBox="0 0 220 160" aria-hidden="true" focusable="false"><path d="M108 150V20"/><path class="ks-accent" d="M108 34h70l14 12-14 12h-70z"/><path d="M108 70H44L30 82l14 12h64z"/><path d="M108 104h56l12 10-12 10h-56z"/><path class="ks-thin" d="M70 150h76"/></svg>
   </header>
   <div class="chapter-body" id="ch2Body">
     <p class="chapter-lead" data-career-lead>Chọn 3 nhóm ở chương 1, BrightWay sẽ gợi ý 3 nghề gần nhất với mã của bạn trong 102 nghề.</p>
@@ -1107,17 +1106,23 @@ body{overflow-x:visible;}
     <p class="chapter-links"><a href="careers-holland.html?holland=all" data-career-all>Xem cả 102 nghề</a></p>
     <p class="chapter-waybi"><img src="assets/images/waybi/waybi-ui-192.webp" alt="" aria-hidden="true" width="192" height="192"><span data-waybi-line="2">Muốn biết một nghề làm gì mỗi ngày, học ngành nào để vào nghề? Hỏi mình.</span><button type="button" data-open-waybi>Hỏi Waybi</button></p>
   </div>
+  <nav class="ks-next" data-chapter-next aria-label="Chương tiếp">
+    <svg class="ks-wave" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="ks-wave-ahead" d="M0 20 C 125 0, 250 40, 375 20 S 625 0, 750 20 S 1000 40, 1000 20"/><path class="ks-wave-behind" d="M0 20 C 125 0, 250 40, 375 20 S 625 0, 750 20 S 1000 40, 1000 20"/></svg>
+    <span class="ks-traveller" aria-hidden="true"><svg viewBox="0 0 40 28" focusable="false"><path d="M20 2 38 10 20 18 2 10z"/><path d="M9 13v7c6 5 16 5 22 0v-7"/><path d="M38 10v9"/></svg></span>
+    <a class="ks-next-link" href="#chuong-3"><span>Chương tiếp</span> 03 · Chọn trường <b aria-hidden="true">↓</b></a>
+  </nav>
 </section>
 
 <section class="story-chapter" id="chuong-3" data-step="2" aria-labelledby="ch3Title">
   <header class="chapter-head">
-    <span class="chapter-marker" aria-hidden="true">3</span>
     <div class="chapter-heading">
-      <p class="chapter-kicker">Chương 3: Chọn trường</p>
+      <p class="chapter-kicker ks-kicker">Chương 03 · Chọn trường</p>
       <h2 class="chapter-title" id="ch3Title">Học ngành đó ở đâu?</h2>
       <p class="chapter-done" data-chapter-done hidden></p>
+      <p class="ks-intro">Cùng một ngành, mỗi trường dạy một kiểu và xét tuyển một cách. Đọc hồ sơ trường và thông báo từ nguồn chính thức trước khi xếp nguyện vọng.</p>
     </div>
     <button type="button" class="chapter-toggle" data-chapter-toggle aria-controls="ch3Body" aria-expanded="true" hidden>Xem lại</button>
+    <svg class="ks-art" viewBox="0 0 220 160" aria-hidden="true" focusable="false"><path class="ks-accent" d="M40 62l70-36 70 36z"/><path d="M48 62h124M54 70v58M82 70v58M138 70v58M166 70v58M44 128h132M36 140h148"/><path d="M98 128v-30h24v30"/><path class="ks-thin" d="M110 26V10l16 5-16 5"/></svg>
   </header>
   <div class="chapter-body" id="ch3Body">
     <p class="chapter-lead">BrightWay có <strong data-catalog-count><span class="bw-skeleton-text" aria-hidden="true"></span><span class="bw-visually-hidden">Đang đếm</span></strong> hồ sơ trường đại học. Đây là 3 trường biên tập chọn để bạn bắt đầu.</p>
@@ -1126,7 +1131,7 @@ body{overflow-x:visible;}
         <h3 id="universityDiscoveryTitle">Trường nổi bật</h3>
         <a href="page2.html">Khám phá tất cả trường</a>
       </header>
-      <div class="university-featured-grid" data-featured-universities>
+      <div class="university-featured-grid" data-featured-universities data-ks-rail>
         <div class="bw-skeleton university-skeleton" aria-hidden="true"></div>
         <div class="bw-skeleton university-skeleton" aria-hidden="true"></div>
         <div class="bw-skeleton university-skeleton" aria-hidden="true"></div>
@@ -1143,7 +1148,7 @@ body{overflow-x:visible;}
           <h3 id="admissions-title">Tin tuyển sinh cần đọc</h3>
           <a href="page2.html" class="admissions-all">Xem tất cả trường</a>
         </div>
-        <div class="admissions-highlights" id="admissionsHighlights" aria-label="Tin tuyển sinh nổi bật" tabindex="0">
+        <div class="admissions-highlights" id="admissionsHighlights" aria-label="Tin tuyển sinh nổi bật" tabindex="0" data-ks-rail>
           <article class="admissions-news-card">
             <a class="admissions-news-photo" href="https://daihoc.fpt.edu.vn/thong-bao-tuyen-sinh/thong-tin-tuyen-sinh-nam-2026/" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
               <img src="assets/images/hero/01-fpt-can-tho.jpg?v=3" srcset="assets/images/hero/01-fpt-can-tho-640.webp 640w, assets/images/hero/01-fpt-can-tho-1280.webp 1280w" sizes="(max-width:600px) 400px, 440px" alt="" width="700" height="438" loading="lazy" decoding="async">
@@ -1185,17 +1190,23 @@ body{overflow-x:visible;}
     </section>
     <p class="chapter-waybi"><img src="assets/images/waybi/waybi-ui-192.webp" alt="" aria-hidden="true" width="192" height="192"><span data-waybi-line="3">Phân vân giữa hai trường? Kể mình nghe ngành và khu vực bạn muốn học.</span><button type="button" data-open-waybi>Hỏi Waybi</button></p>
   </div>
+  <nav class="ks-next" data-chapter-next aria-label="Chương tiếp">
+    <svg class="ks-wave" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="ks-wave-ahead" d="M0 20 C 125 0, 250 40, 375 20 S 625 0, 750 20 S 1000 40, 1000 20"/><path class="ks-wave-behind" d="M0 20 C 125 0, 250 40, 375 20 S 625 0, 750 20 S 1000 40, 1000 20"/></svg>
+    <span class="ks-traveller" aria-hidden="true"><svg viewBox="0 0 40 28" focusable="false"><path d="M20 2 38 10 20 18 2 10z"/><path d="M9 13v7c6 5 16 5 22 0v-7"/><path d="M38 10v9"/></svg></span>
+    <a class="ks-next-link" href="#chuong-4"><span>Chương tiếp</span> 04 · Đối chiếu điểm <b aria-hidden="true">↓</b></a>
+  </nav>
 </section>
 
-<section class="story-chapter" id="chuong-4" data-step="3" aria-labelledby="ch4Title">
+<section class="story-chapter is-deep" id="chuong-4" data-step="3" aria-labelledby="ch4Title">
   <header class="chapter-head">
-    <span class="chapter-marker" aria-hidden="true">4</span>
     <div class="chapter-heading">
-      <p class="chapter-kicker">Chương 4: Đối chiếu điểm</p>
+      <p class="chapter-kicker ks-kicker">Chương 04 · Đối chiếu điểm</p>
       <h2 class="chapter-title" id="ch4Title">Điểm của mình đủ chưa?</h2>
       <p class="chapter-done" data-chapter-done hidden></p>
+      <p class="ks-intro">Nhập ba môn để thấy tổng điểm của tổ hợp. Muốn đặt điểm của mình cạnh điểm chuẩn từng trường, hãy mở công cụ tính điểm đầy đủ.</p>
     </div>
     <button type="button" class="chapter-toggle" data-chapter-toggle aria-controls="ch4Body" aria-expanded="true" hidden>Xem lại</button>
+    <svg class="ks-art" viewBox="0 0 220 160" aria-hidden="true" focusable="false"><path d="M110 22v114M78 142h64M110 30l-62 12M110 30l62 12"/><path d="M48 42l-22 46h44z"/><path class="ks-accent" d="M172 42l-22 46h44z"/><path class="ks-thin" d="M26 88a22 10 0 0 0 44 0M150 88a22 10 0 0 0 44 0"/><circle cx="110" cy="26" r="5"/></svg>
   </header>
   <div class="chapter-body" id="ch4Body">
     <form class="mini-score" data-mini-score novalidate>
@@ -1219,17 +1230,23 @@ body{overflow-x:visible;}
     <p class="chapter-links"><a href="score-calculator.html">Mở công cụ tính điểm đầy đủ</a></p>
     <p class="chapter-waybi"><img src="assets/images/waybi/waybi-ui-192.webp" alt="" aria-hidden="true" width="192" height="192"><span data-waybi-line="4">Chưa rõ trường bạn thích xét học bạ hay điểm thi? Hỏi mình trước khi tính.</span><button type="button" data-open-waybi>Hỏi Waybi</button></p>
   </div>
+  <nav class="ks-next" data-chapter-next aria-label="Chương tiếp">
+    <svg class="ks-wave" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="ks-wave-ahead" d="M0 20 C 125 0, 250 40, 375 20 S 625 0, 750 20 S 1000 40, 1000 20"/><path class="ks-wave-behind" d="M0 20 C 125 0, 250 40, 375 20 S 625 0, 750 20 S 1000 40, 1000 20"/></svg>
+    <span class="ks-traveller" aria-hidden="true"><svg viewBox="0 0 40 28" focusable="false"><path d="M20 2 38 10 20 18 2 10z"/><path d="M9 13v7c6 5 16 5 22 0v-7"/><path d="M38 10v9"/></svg></span>
+    <a class="ks-next-link" href="#chuong-5"><span>Chương tiếp</span> 05 · Hành động <b aria-hidden="true">↓</b></a>
+  </nav>
 </section>
 
 <section class="story-chapter" id="chuong-5" data-step="4" aria-labelledby="ch5Title">
   <header class="chapter-head">
-    <span class="chapter-marker" aria-hidden="true">5</span>
     <div class="chapter-heading">
-      <p class="chapter-kicker">Chương 5: Hành động</p>
+      <p class="chapter-kicker ks-kicker">Chương 05 · Hành động</p>
       <h2 class="chapter-title" id="ch5Title">Tháng này mình cần làm gì?</h2>
       <p class="chapter-done" data-chapter-done hidden></p>
+      <p class="ks-intro">Năm lớp 12 có nhịp riêng của nó. Mỗi tháng một việc vừa sức, đúng lúc, là đủ để không bị dồn hết về cuối năm.</p>
     </div>
     <button type="button" class="chapter-toggle" data-chapter-toggle aria-controls="ch5Body" aria-expanded="true" hidden>Xem lại</button>
+    <svg class="ks-art" viewBox="0 0 220 160" aria-hidden="true" focusable="false"><rect x="44" y="34" width="132" height="104" rx="10"/><path d="M44 60h132M76 24v20M144 24v20"/><path class="ks-thin" d="M66 80h16M98 80h16M130 80h16M66 104h16M98 104h16"/><path class="ks-accent" d="M128 108l10 10 20-24"/></svg>
   </header>
   <div class="chapter-body" id="ch5Body">
     <div class="month-strip" data-month-strip role="group" aria-label="Chọn tháng trong năm lớp 12"></div>
@@ -1239,13 +1256,18 @@ body{overflow-x:visible;}
     <div data-countdown-slot></div>
     <p class="chapter-links"><a href="calendar.html#study-plan">Xem lịch lớp 12 đủ 12 tháng</a><a href="profile.html?tab=journey#action-plan">Lập kế hoạch hành động</a></p>
   </div>
+  <nav class="ks-next" data-chapter-next aria-label="Chương tiếp">
+    <svg class="ks-wave" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="ks-wave-ahead" d="M0 20 C 125 0, 250 40, 375 20 S 625 0, 750 20 S 1000 40, 1000 20"/><path class="ks-wave-behind" d="M0 20 C 125 0, 250 40, 375 20 S 625 0, 750 20 S 1000 40, 1000 20"/></svg>
+    <span class="ks-traveller" aria-hidden="true"><svg viewBox="0 0 40 28" focusable="false"><path d="M20 2 38 10 20 18 2 10z"/><path d="M9 13v7c6 5 16 5 22 0v-7"/><path d="M38 10v9"/></svg></span>
+    <a class="ks-next-link" href="#chuong-ket"><span>Chương tiếp</span> Con đường của bạn <b aria-hidden="true">↓</b></a>
+  </nav>
 </section>
 
-<section class="story-chapter story-ending" id="chuong-ket" aria-labelledby="endTitle">
+<section class="story-chapter story-ending is-deep" id="chuong-ket" aria-labelledby="endTitle">
   <header class="chapter-head">
-    <span class="chapter-marker chapter-marker-end" aria-hidden="true"></span>
     <div class="chapter-heading">
-      <h2 class="chapter-title" id="endTitle">Đây là con đường của bạn</h2>
+      <p class="ks-kicker">Kết</p>
+      <h2 class="chapter-title" id="endTitle">Đây là con đường của bạn.</h2>
       <p class="chapter-lead">Mỗi bước bạn làm đều được lưu trên thiết bị này. Quay lại lúc nào cũng được.</p>
     </div>
   </header>
@@ -1314,19 +1336,19 @@ body{overflow-x:visible;}
   position:fixed;right:20px;bottom:20px;z-index:9998;
   width:60px;height:60px;border-radius:50%;border:none;cursor:pointer;
   background:#fff;
-  box-shadow:0 10px 28px rgba(48, 101, 154,.45);
+  box-shadow:0 10px 28px rgba(8, 46, 133,.45);
   display:flex;align-items:center;justify-content:center;
   transition:transform .22s cubic-bezier(.22,1,.36,1),box-shadow .22s;
   color:#fff;padding:2px;
 }
-#bwChatLauncher:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 14px 34px rgba(48, 101, 154,.55);}
+#bwChatLauncher:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 14px 34px rgba(8, 46, 133,.55);}
 #bwChatLauncher>img{width:100%;height:100%;object-fit:contain;display:block;}
 
 #bwChatPanel{
   position:fixed;right:20px;bottom:92px;z-index:9999;
   width:380px;max-width:calc(100vw - 32px);height:560px;max-height:calc(100vh - 120px);
   background:#fff;border-radius:20px;overflow:hidden;
-  box-shadow:0 24px 60px rgba(15, 25, 33,.28),0 4px 12px rgba(15, 25, 33,.08);
+  box-shadow:0 24px 60px rgba(9, 26, 34,.28),0 4px 12px rgba(9, 26, 34,.08);
   display:none;flex-direction:column;
   transform:translateY(12px) scale(.96);opacity:0;
   transition:transform .26s cubic-bezier(.22,1,.36,1),opacity .22s;
@@ -1334,7 +1356,7 @@ body{overflow-x:visible;}
 #bwChatPanel.open{display:flex;transform:translateY(0) scale(1);opacity:1;}
 
 .bw-chat-header{
-  background:linear-gradient(135deg,#30659a,#4c84c7);color:#fff;
+  background:linear-gradient(135deg,#082e85,#0b3db2);color:#fff;
   padding:14px 16px;display:flex;align-items:center;gap:12px;flex-shrink:0;
 }
 .bw-chat-avatar{
@@ -1354,21 +1376,21 @@ body{overflow-x:visible;}
 
 .bw-chat-body{
   flex:1;overflow-y:auto;padding:16px 14px;
-  background:linear-gradient(180deg,#f7fbfc,#f1f5f9);
+  background:linear-gradient(180deg,#f7fbfc,#f2f5fa);
   display:flex;flex-direction:column;gap:10px;
   scroll-behavior:smooth;
 }
 .bw-chat-body::-webkit-scrollbar{width:6px;}
-.bw-chat-body::-webkit-scrollbar-thumb{background:#c9d6e0;border-radius:3px;}
+.bw-chat-body::-webkit-scrollbar-thumb{background:#3d73f3;border-radius:3px;}
 
 .bw-msg{max-width:84%;padding:10px 13px;border-radius:16px;font-size:.875rem;line-height:1.55;word-wrap:break-word;white-space:pre-wrap;}
-.bw-msg.user{align-self:flex-end;background:linear-gradient(135deg,#30659a,#3c7fc1);color:#fff;border-bottom-right-radius:5px;}
-.bw-msg.bot{align-self:flex-start;background:#fff;color:#1c2a36;border:1px solid #e1e9ef;border-bottom-left-radius:5px;box-shadow:0 1px 2px rgba(15, 25, 33,.04);}
-.bw-msg.bot a{color:#30659a;font-weight:600;}
-.bw-msg.bot strong{color:#214469;}
+.bw-msg.user{align-self:flex-end;background:linear-gradient(135deg,#082e85,#0b3aa9);color:#fff;border-bottom-right-radius:5px;}
+.bw-msg.bot{align-self:flex-start;background:#fff;color:#0f2c3a;border:1px solid #e4e8f1;border-bottom-left-radius:5px;box-shadow:0 1px 2px rgba(9, 26, 34,.04);}
+.bw-msg.bot a{color:#082e85;font-weight:600;}
+.bw-msg.bot strong{color:#18475e;}
 .bw-msg.error{align-self:flex-start;background:#fef2f2;border:1px solid #fecaca;color:#991b1b;font-size:.82rem;}
 
-.bw-typing{align-self:flex-start;background:#fff;border:1px solid #e1e9ef;border-radius:16px;padding:12px 14px;display:flex;gap:4px;}
+.bw-typing{align-self:flex-start;background:#fff;border:1px solid #e4e8f1;border-radius:16px;padding:12px 14px;display:flex;gap:4px;}
 .bw-typing span{width:7px;height:7px;border-radius:50%;background:#94a3b8;animation:bwDot 1.2s infinite;}
 .bw-typing span:nth-child(2){animation-delay:.2s;}
 .bw-typing span:nth-child(3){animation-delay:.4s;}
@@ -1377,25 +1399,25 @@ body{overflow-x:visible;}
 .bw-suggestions{display:flex;gap:6px;flex-wrap:wrap;padding:0 14px 10px;}
 .bw-suggestions.hidden{display:none;}
 .bw-chip{
-  font-size:.76rem;padding:6px 12px;border-radius:999px;border:1px solid #b5d7f7;
-  background:#eaf3fc;color:#214469;cursor:pointer;font-weight:600;
+  font-size:.76rem;padding:6px 12px;border-radius:999px;border:1px solid #3c73f3;
+  background:#eef2fc;color:#18475e;cursor:pointer;font-weight:600;
   transition:all .15s;font-family:inherit;
 }
-.bw-chip:hover{background:#d8e9fa;transform:translateY(-1px);}
+.bw-chip:hover{background:#dfe7f9;transform:translateY(-1px);}
 
 .bw-chat-input-wrap{
-  padding:10px 12px 12px;background:#fff;border-top:1px solid #e1e9ef;
+  padding:10px 12px 12px;background:#fff;border-top:1px solid #e4e8f1;
   display:flex;gap:8px;align-items:flex-end;flex-shrink:0;
 }
 .bw-chat-input{
-  flex:1;border:1.5px solid #e1e9ef;border-radius:14px;padding:9px 12px;
-  font-family:inherit;font-size:.88rem;color:#1c2a36;outline:none;resize:none;
+  flex:1;border:1.5px solid #e4e8f1;border-radius:14px;padding:9px 12px;
+  font-family:inherit;font-size:.88rem;color:#0f2c3a;outline:none;resize:none;
   max-height:100px;min-height:38px;line-height:1.45;
   transition:border-color .15s,box-shadow .15s;
 }
-.bw-chat-input:focus{border-color:#30659a;box-shadow:0 0 0 3px rgba(48, 101, 154,.12);}
+.bw-chat-input:focus{border-color:#082e85;box-shadow:0 0 0 3px rgba(8, 46, 133,.12);}
 .bw-chat-send{
-  background:linear-gradient(135deg,#30659a,#4c84c7);color:#fff;border:none;
+  background:linear-gradient(135deg,#082e85,#0b3db2);color:#fff;border:none;
   width:38px;height:38px;border-radius:12px;cursor:pointer;
   display:grid;place-items:center;flex-shrink:0;
   transition:transform .15s,opacity .15s;
@@ -1693,7 +1715,7 @@ Bạn cần hỏi gì nào?</div>
 })();
 
 </script>
-<script src="assets/js/nav-auth.js?v=20261105b"></script>
+<script src="assets/js/nav-auth.js?v=20261110k"></script>
 <script src="assets/js/cms-service.js"></script>
 <script src="assets/js/admissions-home.js?v=20261104"></script>
 <script src="assets/js/admin-quick.js"></script>
@@ -1701,10 +1723,10 @@ Bạn cần hỏi gì nào?</div>
 
 
 
-<script src="assets/js/waybi.js?v=20261105b"></script>
-<script src="assets/js/waybi-presence.js?v=20261105b"></script>
+<script src="assets/js/waybi.js?v=20261110k"></script>
+<script src="assets/js/waybi-presence.js?v=20261110k"></script>
 
-<script type="module" src="/assets/js/story.js?v=20261105"></script>
+<script type="module" src="/assets/js/story.js?v=20261110k"></script>
 </body>
 </html>
 

@@ -18,80 +18,113 @@ function whenNear(el, fn, margin = '600px') {
   io.observe(el);
 }
 
-/* ---------- The road ----------
-   Drawn once into a narrow layer in the left gutter. Scrolling only moves two composited
-   layers (a clip window and its counter-shifted content), so the browser never repaints the path. */
-function initRail() {
-  const rail = story?.querySelector('.story-rail');
-  if (!rail) return;
-  const trailSvg = rail.querySelector('.story-rail-trail-svg');
-  const roadSvg = rail.querySelector('.story-rail-road-svg');
-  const reveal = rail.querySelector('.story-rail-reveal');
-  const inner = rail.querySelector('.story-rail-inner');
-  const markers = [...story.querySelectorAll('.chapter-marker')];
-  let stops = [];          // marker centre y, in story coordinates
-  let height = 0, storyTop = 0, shown = -1, reachedCount = -1, ticking = false;
+/* ---------- "Chương tiếp": a small cap travels the path at the foot of each chapter ----------
+   Ahead of it the path is dotted (lối), behind it the line is solid (đường). Positions are cached, so a
+   scroll frame only moves one composited element and shortens one small dash. */
+function initTravellers() {
+  const feet = [...document.querySelectorAll('[data-chapter-next]')];
+  if (!feet.length) return { refresh() {} };
+  const items = feet.map(foot => ({
+    foot, chapter: foot.closest('.story-chapter'),
+    traveller: foot.querySelector('.ks-traveller'), behind: foot.querySelector('.ks-wave-behind'),
+    wave: foot.querySelector('.ks-wave'), samples: [], top: 0, height: 1, width: 0, waveH: 0, total: 1, shown: -1,
+  }));
+  const active = new Set();
+  let ticking = false;
 
-  function layout() {
-    const box = story.getBoundingClientRect();
-    const first = document.getElementById('chuong-1');
-    if (!first || !markers.length) return;
-    const points = markers.map(m => { const r = m.getBoundingClientRect(); return { x: r.left - box.left + r.width / 2, y: r.top - box.top + r.height / 2 }; });
-    const width = Math.ceil(Math.max(...points.map(p => p.x)) + 40);
-    const startY = Math.max(0, first.getBoundingClientRect().top - box.top - 72);
-    const sway = box.width < 700 ? 6 : 18;
-    let d = `M${points[0].x} ${startY} L${points[0].x} ${points[0].y}`;
-    for (let i = 1; i < points.length; i++) {
-      const a = points[i - 1], b = points[i], dir = i % 2 ? 1 : -1, third = (b.y - a.y) / 3;
-      d += ` C${a.x + sway * dir} ${a.y + third} ${b.x + sway * dir} ${b.y - third} ${b.x} ${b.y}`;
+  function measure() {
+    for (const it of items) {
+      const r = it.chapter.getBoundingClientRect();
+      it.top = r.top + scrollY; it.height = Math.max(1, r.height);
+      const w = it.wave.getBoundingClientRect();
+      it.width = w.width; it.waveH = w.height;
+      it.total = it.behind.getTotalLength();
+      it.behind.style.strokeDasharray = `${it.total} ${it.total}`;
+      it.samples = Array.from({ length: 41 }, (_, i) => it.behind.getPointAtLength(it.total * i / 40));
+      it.shown = -1;
     }
-    height = Math.ceil(box.height);
-    storyTop = box.top + scrollY;
-    stops = points.map(p => p.y);
-    stops.unshift(startY);
-    rail.style.width = width + 'px';
-    rail.style.height = height + 'px';
-    for (const svg of [trailSvg, roadSvg]) {
-      svg.setAttribute('width', width);
-      svg.setAttribute('height', height);
-      svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-      svg.querySelector('path').setAttribute('d', d);
-    }
-    shown = -1; reachedCount = -1;
-    update();
+    update(true);
   }
 
-  function savedReach() {
-    // Without scroll-linked motion the road shows how far this visitor has actually come.
-    const done = (flow()?.progress() || []).filter(step => step.complete).length;
-    return done ? stops[Math.min(done, stops.length - 1)] : 0;
+  function progressOf(it) {
+    if (reduced.matches) return it.chapter.classList.contains('is-done') ? 1 : 0;
+    return Math.max(0, Math.min(1, (scrollY + innerHeight * 0.85 - it.top) / it.height));
   }
 
-  function update() {
+  function place(it, p) {
+    const k = Math.round(p * 400) / 400;
+    if (k === it.shown) return;
+    it.shown = k;
+    const pt = it.samples[Math.round(k * 40)] || { x: 0, y: 20 };
+    const x = pt.x / 1000 * it.width, y = pt.y / 40 * it.waveH;
+    it.traveller.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0) translate(-50%, -78%)`;
+    it.behind.style.strokeDashoffset = String(it.total * (1 - k));
+  }
+
+  function update(all) {
     ticking = false;
-    if (!stops.length) return;
-    const reach = Math.round(Math.max(0, Math.min(height, reduced.matches ? savedReach() : scrollY + innerHeight * 0.6 - storyTop)));
-    if (reach !== shown) {
-      shown = reach;
-      reveal.style.transform = `translate3d(0, ${reach - height}px, 0)`;
-      inner.style.transform = `translate3d(0, ${height - reach}px, 0)`;
-    }
-    const count = stops.slice(1).filter(y => reach >= y - 1).length;
-    if (count !== reachedCount) {
-      reachedCount = count;
-      markers.forEach((marker, i) => marker.classList.toggle('is-reached', i < count));
-    }
+    for (const it of (all ? items : active)) place(it, progressOf(it));
   }
 
-  addEventListener('scroll', () => { if (!ticking && !reduced.matches) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
-  addEventListener('resize', () => requestAnimationFrame(update), { passive: true });
-  reduced.addEventListener?.('change', update);
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => entries.forEach(e => {
+      const it = items.find(x => x.chapter === e.target);
+      if (e.isIntersecting) active.add(it); else { active.delete(it); if (it) place(it, progressOf(it)); }
+    }), { rootMargin: '200px 0px' });
+    items.forEach(it => io.observe(it.chapter));
+  } else items.forEach(it => active.add(it));
+
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(() => update(false)); } }, { passive: true });
+  reduced.addEventListener?.('change', () => update(true));
   let pending = 0;
-  const relayout = () => { cancelAnimationFrame(pending); pending = requestAnimationFrame(layout); };
-  if ('ResizeObserver' in window) new ResizeObserver(relayout).observe(story);
-  addEventListener('load', relayout);
-  layout();
-  return { refresh: update };
+  const remeasure = () => { cancelAnimationFrame(pending); pending = requestAnimationFrame(measure); };
+  if ('ResizeObserver' in window) new ResizeObserver(remeasure).observe(story);
+  addEventListener('load', remeasure);
+  measure();
+  return { refresh: () => update(true) };
+}
+
+/* ---------- Card rows that slide sideways, with a progress line and arrows ---------- */
+function initRails() {
+  for (const list of document.querySelectorAll('[data-ks-rail]')) {
+    const controls = document.createElement('div');
+    controls.className = 'ks-rail-controls';
+    controls.innerHTML = '<span class="ks-rail-progress" aria-hidden="true"><i></i></span><button type="button" class="ks-rail-btn" data-dir="-1" aria-label="Xem thẻ trước">←</button><button type="button" class="ks-rail-btn" data-dir="1" aria-label="Xem thẻ tiếp">→</button>';
+    list.after(controls);
+    const bar = controls.querySelector('i');
+    const [prev, next] = controls.querySelectorAll('button');
+    let frame = 0;
+    const sync = () => {
+      frame = 0;
+      const max = list.scrollWidth - list.clientWidth;
+      controls.hidden = max < 4;
+      const p = max > 0 ? list.scrollLeft / max : 1;
+      const view = list.scrollWidth ? list.clientWidth / list.scrollWidth : 1;
+      bar.style.transform = `translateX(${(p * (1 - view) * 100).toFixed(2)}%) scaleX(${view.toFixed(3)})`;
+      prev.disabled = list.scrollLeft < 4;
+      next.disabled = list.scrollLeft > max - 4;
+    };
+    list.addEventListener('scroll', () => { if (!frame) frame = requestAnimationFrame(sync); }, { passive: true });
+    controls.addEventListener('click', e => {
+      const b = e.target.closest('[data-dir]');
+      if (b) list.scrollBy({ left: Number(b.dataset.dir) * list.clientWidth * 0.85, behavior: reduced.matches ? 'auto' : 'smooth' });
+    });
+    if ('ResizeObserver' in window) new ResizeObserver(sync).observe(list);
+    new MutationObserver(sync).observe(list, { childList: true });
+    sync();
+  }
+}
+
+/* ---------- Line drawings draw themselves once, when their chapter arrives ---------- */
+function initArt() {
+  const arts = [...document.querySelectorAll('.ks-art')];
+  if (!arts.length || reduced.matches || !('IntersectionObserver' in window)) return;
+  arts.forEach(svg => { svg.querySelectorAll('path, circle, rect').forEach(el => el.setAttribute('pathLength', '1')); svg.classList.add('is-waiting'); });
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('is-drawn'); e.target.classList.remove('is-waiting'); io.unobserve(e.target);
+  }), { threshold: 0.4 });
+  arts.forEach(svg => io.observe(svg));
 }
 
 /* ---------- Returning visitor: hero resume + finished chapters fold to one line ---------- */
@@ -126,7 +159,12 @@ function renderProgress({ fold } = {}) {
     const note = chapter.querySelector('[data-chapter-done]');
     const toggle = chapter.querySelector('[data-chapter-toggle]');
     chapter.classList.toggle('is-done', step.complete);
-    chapter.querySelector('.chapter-marker')?.classList.toggle('is-done', step.complete);
+    const toc = document.querySelector(`[data-toc-step="${i}"]`);
+    if (toc) {
+      toc.classList.toggle('is-done', step.complete);
+      const status = toc.querySelector('[data-toc-status]');
+      if (status) { status.dataset.base ??= status.textContent; status.textContent = step.complete ? `Đã xong · ${step.detail}` : status.dataset.base; }
+    }
     if (note) { note.hidden = !step.complete; note.textContent = step.complete ? `Đã xong: ${step.detail}` : ''; }
     if (toggle) toggle.hidden = !step.complete;
     if (toggle && !fold) toggle.textContent = toggle.getAttribute('aria-expanded') === 'true' ? 'Thu gọn' : 'Xem lại';
@@ -144,7 +182,6 @@ function renderProgress({ fold } = {}) {
     <ol class="story-resume-dots" aria-hidden="true">${steps.map(s => `<li class="${s.complete ? 'is-done' : ''}"></li>`).join('')}</ol>
     <button type="button" class="story-resume-go" data-resume-step="${target}">${all ? 'Xem lại kế hoạch hành động' : `Tiếp tục chương ${target + 1}: ${escape(steps[target].label)}`}</button>`;
   resume.querySelector('[data-resume-step]').addEventListener('click', () => goTo(chapterFor(target)));
-  document.querySelector('.home-journey-picker')?.classList.add('is-returning');
 }
 
 document.addEventListener('click', event => {
@@ -152,7 +189,7 @@ document.addEventListener('click', event => {
   if (!toggle) return;
   const chapter = toggle.closest('.story-chapter');
   setOpen(chapter, toggle.getAttribute('aria-expanded') !== 'true');
-  rail?.refresh();
+  travellers?.refresh();
 });
 
 /* ---------- Chapter 2: three careers for the code ---------- */
@@ -316,12 +353,14 @@ function personalizeWaybi() {
 }
 
 /* ---------- Start ---------- */
-let rail;
+let travellers;
 function start() {
-  rail = initRail();
   renderProgress({ fold: true });
+  travellers = initTravellers();
+  initRails();
+  initArt();
   personalizeWaybi();
-  addEventListener('bw:journey-change', () => { renderProgress(); personalizeWaybi(); rail?.refresh(); });
+  addEventListener('bw:journey-change', () => { renderProgress(); personalizeWaybi(); travellers?.refresh(); });
 }
 if (story) {
   if (flow()) start(); else addEventListener('DOMContentLoaded', start, { once: true });

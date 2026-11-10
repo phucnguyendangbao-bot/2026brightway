@@ -15,7 +15,7 @@ html.bw-lite {
   --motion-lg: var(--motion-sm);
   --motion-stagger: 0ms;
 }
-html.bw-lite body .flow-nav { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(248, 251, 254, .96); }
+html.bw-lite body .flow-nav { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(249, 251, 254, .96); }
 
 @media (prefers-reduced-motion: reduce) {
   :root {
@@ -31,7 +31,7 @@ html.bw-lite body .flow-nav { -webkit-backdrop-filter: none; backdrop-filter: no
 .bw-skeleton {
   display: block;
   border-radius: 12px;
-  background: linear-gradient(90deg, #e1effc 0%, #f0f7fe 50%, #e1effc 100%) 0 0 / 200% 100%;
+  background: linear-gradient(90deg, #e7edfb 0%, #f3f6fd 50%, #e7edfb 100%) 0 0 / 200% 100%;
 }
 .bw-skeleton-text {
   display: inline-block;
@@ -39,7 +39,7 @@ html.bw-lite body .flow-nav { -webkit-backdrop-filter: none; backdrop-filter: no
   height: .9em;
   vertical-align: -.05em;
   border-radius: 6px;
-  background: #d5e7fb;
+  background: #dde5f9;
 }
 .bw-visually-hidden {
   position: absolute !important;

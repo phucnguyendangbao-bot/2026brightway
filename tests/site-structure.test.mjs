@@ -46,8 +46,9 @@ test('every user-facing page loads the shared BrightWay colour theme', () => {
     assert.match(read(file), /\/assets\/css\/brightway-theme\.css\?v=[\w-]+/, file);
   }
   const theme = read('assets/css/brightway-theme.css');
-  assert.match(theme, /--bw-brand:\s*#31659d/);
-  assert.match(theme, /--bw-brand-gradient:\s*linear-gradient\(135deg, #31659d 0%, #386fb0 100%\)/);
+  assert.match(theme, /--bw-brand:\s*#09318d/);
+  for (const tone of ['#02070a', '#09318d', '#fc734d']) assert.match(theme, new RegExp(tone), tone);
+  assert.match(theme, /--bw-brand-gradient:\s*linear-gradient\(135deg, #09318d 0%, #0b3aa6 100%\)/);
   assert.match(read('assets/css/admissions-home.css'), /\.bw-metric-band[^]*background:var\(--bw-brand-gradient\)/);
 });
 
@@ -97,12 +98,13 @@ test('12 study suggestions are separate from official admissions dates', () => {
 test('home foregrounds three clear journeys, a Waybi guide per chapter, and a three-group Holland picker', () => {
   const home = read('index.html');
   const hero = home.slice(home.indexOf('<section class="bw-hero'), home.indexOf('id="chuong-1"'));
-  assert.match(hero, /Đi để lối thành[\s\S]*đường của bạn/);
-  assert.match(hero, /Bạn đang ở bước nào\?/);
+  assert.match(hero, /Đi để lối[\s\S]*thành[\s\S]*đường của bạn/);
+  assert.match(hero, /Một hành trình, năm chương\./);
   assert.match(hero, /href="holland.html"[\s\S]*Chưa biết chọn ngành gì/);
   assert.match(hero, /href="page2.html\?focus=major"[\s\S]*Đã có ngành yêu thích/);
   assert.match(hero, /href="score-calculator.html"[\s\S]*Muốn tính điểm xét tuyển/);
-  assert.equal((hero.match(/class="home-journey-card"/g) || []).length, 3);
+  assert.equal((hero.match(/class="home-journey-card[^"]*"/g) || []).length, 5, 'table of contents lists the five chapters');
+  for (const n of [1, 2, 3, 4, 5]) assert.match(hero, new RegExp(`href="#chuong-${n}"`));
   assert.match(hero, /data-open-waybi/);
   assert.doesNotMatch(home, /id="waybi-home"/);
   for (const n of [1, 2, 3, 4]) assert.match(home, new RegExp(`data-waybi-line="${n}"`));

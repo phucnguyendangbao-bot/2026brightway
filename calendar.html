@@ -5,20 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Lộ trình học tập &amp; lịch tuyển sinh – BrightWay Career</title>
 <meta name="description" content="Tra cứu lịch tuyển sinh 2026 để tham khảo và chuẩn bị cho 2027 theo nguồn đã ghi nhận. Mốc thời gian và quy định được tách riêng theo năm." />
-<link rel="stylesheet" href="/assets/css/admissions-policy.css?v=20261105b">
+<link rel="stylesheet" href="/assets/css/admissions-policy.css?v=20261110k">
 <link rel="stylesheet" href="/assets/css/study-plan.css?v=20261022-polish">
 <link rel="icon" type="image/png" href="/favicon.png?v=20261015">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --bg: linear-gradient(145deg, #e3f0fc 0%, #d8eafa 20%, #d2e4f9 50%, #d6e9fa 80%, #e1f0fc 100%);
-  --grad: linear-gradient(135deg,#3671a9 0%,#31639d 50%,#3668ab 100%);
-  --grad-btn: linear-gradient(135deg,#3b7fbd 0%,#386fb0 100%);
-  --text-dark: #141f2b;
-  --text-mid: #253545;
-  --text-soft: #4b6883;
-  --accent: #30659a;
-  --shadow: 0 8px 32px rgba(48, 101, 154,0.15);
+  --bg: linear-gradient(145deg, #e9eefb 0%, #e0e8fa 20%, #d9e2f8 50%, #dfe7f9 80%, #e8eefb 100%);
+  --grad: linear-gradient(135deg,#0a3395 0%,#082d83 50%,#09308c 100%);
+  --grad-btn: linear-gradient(135deg,#0b3aa8 0%,#093395 100%);
+  --text-dark: #0b202b;
+  --text-mid: #12374a;
+  --text-soft: #092f89;
+  --accent: #082e85;
+  --shadow: 0 8px 32px rgba(8, 46, 133,0.15);
   --font: 'Be Vietnam Pro', system-ui, sans-serif;
   --font-display: 'Quicksand', 'Be Vietnam Pro', sans-serif;
   --font-script: 'Quicksand', 'Be Vietnam Pro', sans-serif;
@@ -34,13 +34,13 @@ body{
 }
 body::before{
   content:'';position:fixed;top:-15%;left:-10%;width:55vw;height:55vw;
-  background:radial-gradient(circle,rgba(53, 106, 167,0.18),transparent 65%);
+  background:radial-gradient(circle,rgba(9, 49, 141,0.18),transparent 65%);
   border-radius:50%;pointer-events:none;z-index:0;
   animation:blobFloat 14s ease-in-out infinite;
 }
 body::after{
   content:'';position:fixed;bottom:-15%;right:-10%;width:50vw;height:50vw;
-  background:radial-gradient(circle,rgba(72, 141, 198,0.16),transparent 65%);
+  background:radial-gradient(circle,rgba(12, 64, 187,0.16),transparent 65%);
   border-radius:50%;pointer-events:none;z-index:0;
   animation:blobFloat 18s ease-in-out infinite reverse;
 }
@@ -52,7 +52,7 @@ body::after{
   background:rgba(255,255,255,0.78);
   backdrop-filter:blur(20px);
   border-bottom:1px solid rgba(255,255,255,0.9);
-  box-shadow:0 2px 20px rgba(48, 101, 154,0.08);
+  box-shadow:0 2px 20px rgba(8, 46, 133,0.08);
 }
 .lp-nav-inner{
   max-width:1200px;margin:0 auto;padding:0 24px;
@@ -62,7 +62,7 @@ body::after{
 .lp-logo-emoji{
   width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;
   background:var(--grad);font-size:18px;
-  box-shadow:0 4px 14px rgba(48, 101, 154,0.3);
+  box-shadow:0 4px 14px rgba(8, 46, 133,0.3);
 }
 .lp-logo-text{font-family:var(--font-display);font-weight:900;font-size:1rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap;}
 .lp-nav-links{display:flex;align-items:center;gap:22px;}
@@ -72,7 +72,7 @@ body::after{
   display:inline-flex;align-items:center;gap:6px;
   background:var(--grad-btn);color:#fff;font-weight:700;font-size:.85rem;
   padding:8px 18px;border-radius:999px;border:none;cursor:pointer;
-  box-shadow:0 6px 18px rgba(48, 101, 154,0.35);
+  box-shadow:0 6px 18px rgba(8, 46, 133,0.35);
   transition:transform .2s;white-space:nowrap;text-decoration:none;
 }
 .lp-nav-cta:hover{transform:translateY(-2px);}
@@ -84,7 +84,7 @@ body::after{
 }
 .cal-tag{
   display:inline-flex;align-items:center;gap:6px;
-  background:rgba(48, 101, 154,0.12);border:1px solid rgba(48, 101, 154,0.22);
+  background:rgba(8, 46, 133,0.12);border:1px solid rgba(8, 46, 133,0.22);
   color:var(--accent);font-weight:700;font-size:.74rem;
   padding:4px 12px;border-radius:999px;margin-bottom:12px;letter-spacing:.04em;
 }
@@ -98,8 +98,8 @@ body::after{
 
 /* ── COUNTDOWN ── */
 .cal-countdown{
-  background:linear-gradient(135deg,rgba(48, 101, 154,0.06),rgba(52, 103, 164,0.06));
-  border:1.5px solid rgba(48, 101, 154,0.18);
+  background:linear-gradient(135deg,rgba(8, 46, 133,0.06),rgba(9, 47, 137,0.06));
+  border:1.5px solid rgba(8, 46, 133,0.18);
   border-radius:14px;padding:12px 18px;
   margin:18px auto 0;max-width:720px;
   display:flex;align-items:center;gap:14px;flex-wrap:wrap;
@@ -122,7 +122,7 @@ body::after{
 .cal-countdown-date{font-size:.7rem;color:var(--text-soft);}
 .cal-countdown-timer{display:flex;gap:5px;}
 .cd-unit{
-  background:#fff;border:1.5px solid rgba(48, 101, 154,0.2);
+  background:#fff;border:1.5px solid rgba(8, 46, 133,0.2);
   border-radius:8px;padding:4px 7px;text-align:center;min-width:42px;
 }
 .cd-unit-num{
@@ -140,18 +140,18 @@ body::after{
 .cal-banner{
   max-width:1100px;margin:24px auto 16px;
   position:relative;z-index:1;
-  background:linear-gradient(135deg,#346fa4 0%,#2f6197 60%,#3668a9 100%);
+  background:linear-gradient(135deg,#093292 0%,#082c80 60%,#09308c 100%);
   border-radius:18px;padding:0;
   overflow:hidden;
   display:flex;align-items:stretch;
-  box-shadow:0 12px 40px rgba(48, 101, 154,0.3);
+  box-shadow:0 12px 40px rgba(8, 46, 133,0.3);
   min-height:120px;
 }
 .cal-banner-year{
   flex:1;display:flex;align-items:center;justify-content:center;
   padding:24px 32px;
   position:relative;
-  background:linear-gradient(135deg,#2e6392 0%,#285381 100%);
+  background:linear-gradient(135deg,#082c81 0%,#07256c 100%);
 }
 .cal-banner-year::after{
   content:'';position:absolute;right:-20px;top:0;bottom:0;width:40px;
@@ -196,8 +196,8 @@ body::after{
 .wb-section{
   max-width:1100px;margin:24px auto 16px;
   position:relative;z-index:1;
-  background:linear-gradient(135deg,rgba(48, 101, 154,0.06),rgba(76, 132, 199,0.08));
-  border:1.5px solid rgba(48, 101, 154,0.18);
+  background:linear-gradient(135deg,rgba(8, 46, 133,0.06),rgba(11, 61, 178,0.08));
+  border:1.5px solid rgba(8, 46, 133,0.18);
   border-radius:18px;padding:20px 22px;
 }
 .wb-head{
@@ -207,7 +207,7 @@ body::after{
 .wb-mascot{
   width:80px;height:80px;border-radius:50%;
   background:#fff;padding:5px;flex-shrink:0;
-  box-shadow:0 6px 18px rgba(48, 101, 154,0.25);
+  box-shadow:0 6px 18px rgba(8, 46, 133,0.25);
   animation:wb-bob 2.8s ease-in-out infinite;
 }
 .wb-mascot img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
@@ -235,9 +235,9 @@ body::after{
   overflow:hidden;display:flex;flex-direction:column;
   transition:transform .2s,box-shadow .2s;
 }
-.wb-m:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(48, 101, 154,0.18);}
+.wb-m:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(8, 46, 133,0.18);}
 .wb-m-head{
-  background:linear-gradient(135deg,#346fa4 0%,#31639d 100%);
+  background:linear-gradient(135deg,#093292 0%,#082d83 100%);
   color:#fff;text-align:center;padding:4px 4px;position:relative;
   font-family:var(--font-display);font-weight:900;font-size:.7rem;letter-spacing:.02em;
 }
@@ -256,7 +256,7 @@ body::after{
   border-radius:3px;position:relative;cursor:default;
 }
 .wb-d.empty{visibility:hidden;}
-.wb-d.sun{color:#ef4444;}.wb-d.sat{color:#2b5d89;}
+.wb-d.sun{color:#ef4444;}.wb-d.sat{color:#082a79;}
 .wb-d.has{
   font-weight:800;color:#fff;
   background:var(--ev-color,var(--accent));
@@ -308,11 +308,11 @@ body::after{
   transition:transform .2s,box-shadow .2s;
   scroll-margin-top:80px;
 }
-.cal-m:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(48, 101, 154,0.15);}
+.cal-m:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(8, 46, 133,0.15);}
 
 /* header mỗi tháng */
 .cal-m-head{
-  background:linear-gradient(135deg,#346fa4 0%,#31639d 100%);
+  background:linear-gradient(135deg,#093292 0%,#082d83 100%);
   color:#fff;
   padding:6px 8px;
   text-align:center;
@@ -338,12 +338,12 @@ body::after{
 .cal-m-week div{
   text-align:center;
   font-size:.55rem;font-weight:800;
-  color:#4b6883;
+  color:#092f89;
   padding:4px 0;
   text-transform:uppercase;letter-spacing:.02em;
 }
 .cal-m-week div.sun{color:#ef4444;}
-.cal-m-week div.sat{color:#2b5d89;}
+.cal-m-week div.sat{color:#082a79;}
 
 /* body ngày */
 .cal-m-body{
@@ -365,8 +365,8 @@ body::after{
 }
 .cal-m-day.empty{visibility:hidden;}
 .cal-m-day.sun{color:#ef4444;}
-.cal-m-day.sat{color:#2b5d89;}
-.cal-m-day:hover{background:rgba(48, 101, 154,0.08);}
+.cal-m-day.sat{color:#082a79;}
+.cal-m-day:hover{background:rgba(8, 46, 133,0.08);}
 .cal-m-day.has-event{
   font-weight:800;
   color:#fff;
@@ -430,8 +430,8 @@ body::after{
 .lp-footer-links a{font-size:.8rem;color:var(--text-soft);text-decoration:none;font-weight:600;transition:color .2s;}
 .lp-footer-links a:hover{color:var(--accent);}
 </style>
-<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261105b">
-<link rel="stylesheet" href="/assets/css/flow.css?v=20261105b">
+<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261110k">
+<link rel="stylesheet" href="/assets/css/flow.css?v=20261110k">
 <script src="/assets/js/flow.js?v=20261022-polish" defer></script>
 </head>
 <body>
@@ -498,8 +498,8 @@ body::after{
   <div class="wb-legend">
     <div class="wb-leg-item"><span class="wb-leg-dot" style="background:#ef4444"></span>📝 Thi</div>
     <div class="wb-leg-item"><span class="wb-leg-dot" style="background:#f59e0b"></span>📤 Nộp hồ sơ</div>
-    <div class="wb-leg-item"><span class="wb-leg-dot" style="background:#3472a7"></span>📊 Công bố</div>
-    <div class="wb-leg-item"><span class="wb-leg-dot" style="background:#3467a4"></span>🎤 Phỏng vấn</div>
+    <div class="wb-leg-item"><span class="wb-leg-dot" style="background:#0a3496"></span>📊 Công bố</div>
+    <div class="wb-leg-item"><span class="wb-leg-dot" style="background:#092f89"></span>🎤 Phỏng vấn</div>
     <div class="wb-leg-item"><span class="wb-leg-dot" style="background:#10b981"></span>📚 Học bạ</div>
     <div class="wb-leg-item"><span class="wb-leg-dot" style="background:#06b6d4"></span>💡 Tư vấn</div>
   </div>
@@ -598,10 +598,10 @@ body::after{
   </div>
 </footer>
 
-<script type="module" src="assets/js/admissions-calendar.js?v=20261105b"></script>
+<script type="module" src="assets/js/admissions-calendar.js?v=20261110k"></script>
 
-<script src="assets/js/waybi.js?v=20261105b"></script>
-<script src="assets/js/waybi-presence.js?v=20261105b"></script>
+<script src="assets/js/waybi.js?v=20261110k"></script>
+<script src="assets/js/waybi-presence.js?v=20261110k"></script>
 </body>
 </html>
 
