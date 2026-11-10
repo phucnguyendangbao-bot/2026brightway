@@ -91,7 +91,7 @@
   flex: none;
   margin-top: 6px;
   padding: 8px 14px;
-  border: 1px solid var(--bw-line, #dce5f9);
+  border: 1px solid var(--bw-line, #efece6);
   border-radius: 999px;
   background: #fff;
   color: var(--bw-brand-text, #07256b);
@@ -138,7 +138,7 @@
   padding: 8px 14px;
   border: 0;
   border-radius: 999px;
-  background: var(--bw-tint, #e9effb);
+  background: var(--bw-tint, #f5f3ef);
   color: var(--bw-brand-text, #07256b);
   font: 700 14px/1 var(--font, sans-serif);
   cursor: pointer;
@@ -150,13 +150,13 @@
 .story-resume {
   margin-top: 20px;
   padding: 18px 20px;
-  border: 1px solid #cddaf6;
+  border: 1px solid #e7e3dc;
   border-radius: 20px;
   background: #fff;
 }
 .story-resume-title { margin: 0 0 10px; color: var(--bw-ink, #0b202b); font-weight: 700; }
 .story-resume-dots { display: flex; gap: 6px; margin: 0 0 14px; padding: 0; list-style: none; }
-.story-resume-dots li { width: 28px; height: 6px; border-radius: 3px; background: #dde5f9; }
+.story-resume-dots li { width: 28px; height: 6px; border-radius: 3px; background: #f0ede6; }
 .story-resume-dots li.is-done { background: var(--bw-brand, #092e86); }
 .story-resume-go {
   padding: 12px 18px;
@@ -197,7 +197,7 @@
   flex-direction: column;
   gap: 8px;
   padding: 18px;
-  border: 1px solid var(--bw-line, #dce5f9);
+  border: 1px solid var(--bw-line, #efece6);
   border-radius: 18px;
   background: #fff;
   color: var(--bw-muted, #12374a);
@@ -214,10 +214,10 @@
 .career-pick-letters b {
   width: 26px; height: 26px; border-radius: 8px;
   display: grid; place-items: center;
-  background: var(--bw-subtle, #f4f7fd); color: var(--bw-soft, #6b7194);
+  background: var(--bw-subtle, #faf9f7); color: var(--bw-soft, #6b7194);
   font-size: 13px;
 }
-.career-pick-letters b.is-match { background: var(--bw-tint, #e9effb); color: var(--bw-brand-text, #07256b); }
+.career-pick-letters b.is-match { background: var(--bw-tint, #f5f3ef); color: var(--bw-brand-text, #07256b); }
 @keyframes pick-in { from { opacity: 0; transform: translateY(10px); } }
 .career-skeleton { height: 150px; }
 .career-empty { grid-column: 1 / -1; margin: 0; color: var(--bw-muted, #12374a); }
@@ -246,7 +246,7 @@ html body #home-view #chuong-3 :is(.university-discovery-heading, .admissions-ho
   align-items: end;
   max-width: 760px;
   padding: 22px;
-  border: 1px solid var(--bw-line, #dce5f9);
+  border: 1px solid var(--bw-line, #efece6);
   border-radius: 22px;
   background: #fff;
 }
@@ -285,14 +285,14 @@ html body #home-view #chuong-3 :is(.university-discovery-heading, .admissions-ho
   min-width: 56px;
   min-height: 44px;
   padding: 8px 12px;
-  border: 1px solid var(--bw-line, #dce5f9);
+  border: 1px solid var(--bw-line, #efece6);
   border-radius: 999px;
   background: #fff;
   color: var(--bw-muted, #12374a);
   font: 700 15px/1 var(--font, sans-serif);
   cursor: pointer;
 }
-.month-strip button.is-past { color: var(--bw-soft, #6b7194); background: var(--bw-subtle, #f4f7fd); }
+.month-strip button.is-past { color: var(--bw-soft, #6b7194); background: var(--bw-subtle, #faf9f7); }
 .month-strip button[aria-pressed="true"] { border-color: var(--bw-brand, #092e86); background: var(--bw-brand, #092e86); color: #fff; }
 .month-strip button:focus-visible { outline: 3px solid var(--bw-ink, #0b202b); outline-offset: 2px; }
 /* The single looping signal on the page: where you are this month. */
@@ -311,7 +311,7 @@ html body #home-view #chuong-3 :is(.university-discovery-heading, .admissions-ho
 .month-card {
   max-width: 720px;
   padding: 20px 22px;
-  border: 1px solid var(--bw-line, #dce5f9);
+  border: 1px solid var(--bw-line, #efece6);
   border-left: 6px solid var(--bw-brand, #092e86);
   border-radius: 18px;
   background: #fff;

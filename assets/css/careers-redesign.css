@@ -1,7 +1,7 @@
 /* Scoped explorer layout; shared navigation and footer keep their own styles. */
-.career-explorer { background: #f8fafc; }
+.career-explorer { background: #fcfbf9; }
 .career-explorer > .container, .career-explorer .bw-hero > .container { max-width: 1240px; }
-.career-explorer .bw-hero { padding: 56px 0 64px; text-align: left; background: radial-gradient(ellipse at 80% 15%,#d4dff7 0,transparent 55%),linear-gradient(120deg,#eef2fc,#f0f4fc); }
+.career-explorer .bw-hero { padding: 56px 0 64px; text-align: left; background: radial-gradient(ellipse at 80% 15%,#eae7e1 0,transparent 55%),linear-gradient(120deg,#f8f6f2,#f9f7f3); }
 .explorer-hero-grid { display: grid; grid-template-columns: minmax(0,1.6fr) minmax(0,1fr); gap: 64px; align-items: center; }
 .explorer-eyebrow { color: #072772; font-size: 11px; font-weight: 800; letter-spacing: 1.6px; margin-bottom: 14px; }
 .career-explorer .bw-hero h1 { font-size: clamp(32px,3.8vw,51px); line-height: 1.2; letter-spacing: -1.8px; margin-bottom: 20px; }
@@ -15,10 +15,10 @@
 .explorer-compass > p:not(.explorer-eyebrow) { max-width: 270px; font-size: 14px; color: #62617f; }
 .explorer-orbit { position: absolute; right: 15px; top: -18px; font-size: 120px; color: #0e4cdd; line-height: 1; opacity: .5; transform: rotate(15deg); }
 .explorer-letters { display: flex; gap: 8px; margin: 22px 0; }
-.explorer-letters span { width: 36px; height: 38px; display: grid; place-items: center; background: #e8eefb; color: #072874; border-radius: 10px; font-weight: 800; }
+.explorer-letters span { width: 36px; height: 38px; display: grid; place-items: center; background: #f5f3ee; color: #072874; border-radius: 10px; font-weight: 800; }
 .explorer-letters span:nth-child(2n) { background: #e8f3f3; color: #31776c; }
 .explorer-compass a { color: #062366; font-size: 13px; font-weight: 700; text-decoration: none; display: flex; justify-content: space-between; }
-.career-explorer .career-panel { padding: 30px; margin: -24px 0 48px; border: 1px solid #e1e6f2; border-radius: 22px; background: var(--surface); box-shadow: 0 12px 32px #12374a07; position: relative; scroll-margin-top: 100px; }
+.career-explorer .career-panel { padding: 30px; margin: -24px 0 48px; border: 1px solid #efebe4; border-radius: 22px; background: var(--surface); box-shadow: 0 12px 32px #12374a07; position: relative; scroll-margin-top: 100px; }
 .career-explorer .career-wrap { max-width: none; }
 .career-explorer .career-intro { text-align: left; margin-bottom: 22px; }
 .career-explorer .career-intro h2 { font-size: 25px; margin-bottom: 6px; }

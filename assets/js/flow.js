@@ -295,8 +295,11 @@
   const GLOW_BANDS = ['.glow-band', 'section.bw-hero', 'header.p2-intro', 'section.calc-hero', 'header.journey-welcome', 'header.cal-hero', 'header.res-hero', 'header.rm-hero', 'section.w-hero', 'section.hero', 'div.hero', 'div.iv-page-hero', 'section.auth-page'];
   function initGlowBand() {
     if (page === 'index.html' || page.startsWith('admin')) return;
-    const band = GLOW_BANDS.map(sel => document.querySelector(sel)).find(Boolean);
+    const band = GLOW_BANDS.flatMap(sel => [...document.querySelectorAll(sel)]).find(el => el.getClientRects().length);
     if (!band) return;
+    // Section tabs above the opening (profile) travel inside it, so the band can still open the page.
+    const tabs = document.querySelector('.profile-view-tabs');
+    if (tabs && tabs.compareDocumentPosition(band) & Node.DOCUMENT_POSITION_FOLLOWING) band.prepend(tabs);
     band.classList.add('glow-band');
     // Light cards inside the band keep dark text.
     const lightness = color => { const m = color.match(/[\d.]+/g); if (!m) return [0, 0]; const [r, g, b, a = 1] = m.map(Number); return [(0.2126 * r + 0.7152 * g + 0.0722 * b) / 255, a]; };
@@ -304,7 +307,7 @@
     for (const el of band.querySelectorAll('*')) {
       if (el.closest('.glow-surface')) continue;
       const [l, a] = lightness(getComputedStyle(el).backgroundColor);
-      if (a > 0.45 && l > 0.78) el.classList.add('glow-surface');
+      if (a > 0.45 && l > 0.78) el.classList.add('glow-surface', ...(a < 0.98 ? ['glow-surface-solid'] : []));
     }
     const nav = document.querySelector('.flow-nav');
     if (!nav) return;
@@ -324,7 +327,21 @@
     // Collapsing margins can shift the result; land the band exactly at the top of the page.
     const drift = Math.round(docTop(band));
     if (drift) band.style.marginTop = `${parseFloat(band.style.marginTop) - drift}px`;
+    // A wrapper that hides overflow would cut the band off under the navigation; clip sideways only.
+    for (let el = band.parentElement; el && el !== document.body; el = el.parentElement) {
+      const s = getComputedStyle(el);
+      if (s.overflowY !== 'visible' && s.overflowY !== 'clip') { el.style.overflowY = 'visible'; el.style.overflowX = 'clip'; }
+    }
+    // Content that tucks up into the opening sits fully on the paper instead of half over the dark.
+    const bandBottom = () => docTop(band) + band.offsetHeight;
+    const next = band.nextElementSibling || band.parentElement?.nextElementSibling;
+    const firstBox = next && [next, ...next.querySelectorAll(':scope > *')].find(el => el.getClientRects().length && el.offsetHeight > 40);
+    const overlap = firstBox ? bandBottom() - docTop(firstBox) : 0;
+    if (overlap > 2 && overlap < 240) band.style.marginBottom = `${(parseFloat(getComputedStyle(band).marginBottom) || 0) + Math.round(overlap) + 24}px`;
+    document.documentElement.style.setProperty('--glow-spill-y', `${Math.round(docTop(band) + band.offsetHeight)}px`);
     if ('IntersectionObserver' in window) {
+      const onScroll = () => document.body.classList.toggle('bw-nav-scrolled', scrollY > 12);
+      addEventListener('scroll', onScroll, { passive: true }); onScroll();
       new IntersectionObserver(([e]) => { document.body.classList.toggle('bw-nav-glass', e.isIntersecting); setTimeout(() => document.body.classList.add('bw-nav-ready'), 400); }, { rootMargin: `-${navH}px 0px 0px 0px` }).observe(band);
     }
   }

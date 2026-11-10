@@ -94,3 +94,28 @@ html body.bw-nav-glass .flow-logo span { background: none !important; color: #ff
 html body.bw-nav-glass .flow-nav { background: rgba(2, 7, 10, .22) !important; border-bottom-color: rgba(247, 245, 241, .1) !important; box-shadow: none !important; }
 html body.bw-nav-glass .flow-menu { color: #fff !important; background: rgba(247, 245, 241, .08) !important; border-color: rgba(247, 245, 241, .3) !important; }
 html body .glow-band .auth-card .auth-sub { color: #3b4550 !important; }
+/* Profile section tabs ride inside the dark opening as glass. */
+html body .glow-band > .profile-view-tabs { flex: 1 0 100%; grid-column: 1 / -1; width: min(760px, 100%); margin: 0 auto 20px !important; background: rgba(247, 245, 241, .08) !important; border-color: rgba(247, 245, 241, .22) !important; box-shadow: none !important; }
+html body .glow-band > .profile-view-tabs a { color: rgba(247, 245, 241, .82) !important; background: transparent !important; box-shadow: none !important; }
+html body .glow-band > .profile-view-tabs a.active { color: #02070a !important; -webkit-text-fill-color: #02070a !important; background: #f7f5f1 !important; }
+
+/* Warm paper below the opening, lit by the band's own light spilling down. Painted once, scrolls with the page. */
+html body:has(.glow-band) {
+  background:
+    radial-gradient(70% 420px at 50% var(--glow-spill-y, 520px), rgba(252, 115, 77, .20), transparent 72%),
+    radial-gradient(45% 520px at 8% var(--glow-spill-y, 520px), rgba(64, 120, 255, .16), transparent 70%),
+    radial-gradient(45% 520px at 92% var(--glow-spill-y, 520px), rgba(255, 150, 110, .16), transparent 70%),
+    #f7f5f1 !important;
+  background-repeat: no-repeat !important;
+}
+/* A soft lit edge instead of a hard cut where the dark opening meets the paper. */
+html body .glow-band { border-bottom: 0 !important; }
+
+/* Light panels inside the opening are crisp paper, never a grey wash over the dark. */
+html body .glow-band .glow-surface-solid {
+  background: linear-gradient(165deg, #ffffff, #f7f5f1) !important;
+  border-color: rgba(247, 245, 241, .55) !important;
+  box-shadow: 0 0 0 1px rgba(247, 245, 241, .14), 0 28px 70px -30px rgba(252, 115, 77, .5) !important;
+}
+/* Once the page moves, the see-through bar darkens so text underneath never collides with the links. */
+html body.bw-nav-glass.bw-nav-scrolled .flow-nav { background: rgba(2, 7, 10, .82) !important; }

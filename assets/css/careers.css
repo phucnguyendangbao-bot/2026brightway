@@ -7,11 +7,11 @@
 /* === THEME TOKENS === */
 :root {
   /* LIGHT (default) */
-  --bg-1: #e9eefb;
-  --bg-2: #e0e8fa;
-  --bg-3: #d9e2f8;
-  --bg-4: #dfe7f9;
-  --bg-5: #e8eefb;
+  --bg-1: #f5f3ef;
+  --bg-2: #f1eee9;
+  --bg-3: #eeeae3;
+  --bg-4: #f1eee7;
+  --bg-5: #f5f3ee;
   --surface: rgba(255,255,255,0.95);
   --surface-2: rgba(255,255,255,0.85);
   --surface-3: rgba(255,255,255,0.7);
@@ -27,7 +27,7 @@
   --pink: #ec4899;
   --grad: linear-gradient(135deg, #082e85, #092f89, #ec4899);
   --grad-btn: linear-gradient(135deg, #082e85, #0b3aa9);
-  --grad-card: linear-gradient(135deg, #f0f4fc, #fdf2f8);
+  --grad-card: linear-gradient(135deg, #f9f7f3, #fdf2f8);
   --radius-lg: 28px;
   --radius-md: 20px;
   color-scheme: light;
@@ -42,8 +42,8 @@
   --surface: rgba(13, 39, 52,0.95);
   --surface-2: rgba(13, 39, 52,0.85);
   --surface-3: rgba(13, 39, 52,0.65);
-  --text: #f4f6fa;
-  --text-mid: #cad7f6;
+  --text: #f9f8f5;
+  --text-mid: #e6e2da;
   --text-soft: #0c41be;
   --border: rgba(13, 73, 210,0.22);
   --border-soft: rgba(13, 73, 210,0.14);
@@ -268,7 +268,7 @@ body {
 }
 .career-sugg-item:last-child { border-bottom: none; }
 .career-sugg-item:hover, .career-sugg-item.active {
-  background: linear-gradient(90deg, #eef2fc, #eef2fc);
+  background: linear-gradient(90deg, #f8f6f2, #f8f6f2);
 }
 :root[data-theme="dark"] .career-sugg-item:hover,
 :root[data-theme="dark"] .career-sugg-item.active {
@@ -554,7 +554,7 @@ body {
   transform: translateX(-50%) translateY(0);
 }
 :root[data-theme="dark"] .fav-toast {
-  background: rgba(244, 246, 250,0.95);
+  background: rgba(249, 248, 245,0.95);
   color: #0b202b;
 }
 

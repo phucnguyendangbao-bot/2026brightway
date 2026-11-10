@@ -1,23 +1,23 @@
 .home-waybi-shortcut {
   display: inline-flex; align-items: center; gap: 9px; margin-top: 16px;
-  padding: 8px 12px; border: 1px solid #d4dff7; border-radius: 14px;
-  background: #f4f6fd; color: #17465d; font-size: 14px; font-weight: 700; cursor: pointer;
+  padding: 8px 12px; border: 1px solid #eae7e1; border-radius: 14px;
+  background: #faf9f7; color: #17465d; font-size: 14px; font-weight: 700; cursor: pointer;
   font-family: inherit; text-align: left;
 }
 .home-waybi-shortcut img { width: 34px; height: 38px; object-fit: contain; }
 .home-holland { padding: 28px 24px; scroll-margin-top: 100px; }
 .home-holland-card {
   max-width: 900px; margin: auto; padding: 28px;
-  background: linear-gradient(135deg,#edf2fc,#f0f4fb); border: 1px solid #d1ddf7;
+  background: linear-gradient(135deg,#f8f6f1,#f8f6f3); border: 1px solid #e9e6df;
   border-radius: 24px; text-align: center; color: #12374a;
 }
 .home-holland-card h2 { display: flex; align-items: center; justify-content: center; gap: 10px; color: #0b202b; font-family: var(--font-display, 'Quicksand', 'Be Vietnam Pro', sans-serif); font-size: 25px; line-height: 1.3; }
 .home-holland-card h2 img { width: 36px; height: 36px; object-fit: contain; }
 .home-holland-card > p { margin: 12px 0 20px; font-size: 14px; line-height: 1.7; }
 .home-holland-groups { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 10px; margin-bottom: 20px; }
-.home-holland-groups button { position:relative; display:flex; flex-direction:column; align-items:center; gap:4px; padding:12px 5px; border-radius:12px; border:1px solid #d4dff7; background:#fff; color:#12374a; font:inherit; font-size:12px; cursor:pointer; transition:.18s ease; }
+.home-holland-groups button { position:relative; display:flex; flex-direction:column; align-items:center; gap:4px; padding:12px 5px; border-radius:12px; border:1px solid #eae7e1; background:#fff; color:#12374a; font:inherit; font-size:12px; cursor:pointer; transition:.18s ease; }
 .home-holland-groups strong { color: #082977; font-size: 21px; }
-.home-holland-groups button:hover { background:#f4f6fd; border-color:#0b39a7; transform:translateY(-2px); }
+.home-holland-groups button:hover { background:#faf9f7; border-color:#0b39a7; transform:translateY(-2px); }
 .home-holland-groups button[aria-pressed="true"] { color:#fff; border-color:transparent; background:var(--bw-brand-gradient); box-shadow:0 8px 20px rgba(9, 46, 134,.24); }
 .home-holland-groups button[aria-pressed="true"] strong { color:#fff; }
 .home-holland-groups small { position:absolute; top:7px; right:8px; display:none; width:20px; height:20px; place-items:center; border-radius:50%; background:#fff; color:var(--bw-brand); font-size:11px; font-weight:800; }
@@ -26,7 +26,7 @@
 .home-holland-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
 .home-holland-actions button:disabled { cursor:not-allowed; opacity:.48; box-shadow:none; }
 .home-holland-clear { margin-top:12px; border:0; background:transparent; color:#194c65; font:inherit; font-size:13px; font-weight:700; text-decoration:underline; cursor:pointer; }
-.home-holland-import { text-align: left; margin-top: 22px; border-top: 1px solid #d1ddf7; padding-top: 18px; }
+.home-holland-import { text-align: left; margin-top: 22px; border-top: 1px solid #e9e6df; padding-top: 18px; }
 .home-holland-import label { display: block; margin-bottom: 10px; font-size: 13px; font-weight: 600; }
 .home-holland-input-row { display: flex; gap: 10px; }
 .home-holland-input-row input { min-width: 0; flex: 1; background: #fff; border: 1px solid #0d46cc; border-radius: 14px; padding: 12px; color: #0b202b; font: inherit; text-transform: uppercase; }

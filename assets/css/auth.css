@@ -182,13 +182,13 @@
   -webkit-tap-highlight-color: transparent;
 }
 .btn-google:hover {
-  background: #f8f9fa;
+  background: #fbfaf7;
   border-color: #c0c4cd;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.10);
 }
 :root[data-theme="dark"] .btn-google {
-  background: #f4f6fa;
+  background: #f9f8f5;
   color: #0b202b;
 }
 :root[data-theme="dark"] .btn-google:hover { background: #fff; }

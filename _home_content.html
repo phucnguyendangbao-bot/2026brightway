@@ -5,7 +5,7 @@
 
 <style>
   #home-view {
-    background: linear-gradient(145deg, #e9eefb 0%, #e0e8fa 20%, #d9e2f8 50%, #dfe7f9 80%, #e8eefb 100%);
+    background: linear-gradient(145deg, #f5f3ef 0%, #f1eee9 20%, #eeeae3 50%, #f1eee7 80%, #f5f3ee 100%);
     color: #0b202b;
     font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
     padding-bottom: 0;
@@ -370,7 +370,7 @@
     color: #082e85;
   }
   .bw-next-card .bw-btn:hover {
-    background: #f7fbfc;
+    background: #fbfaf8;
     color: #072468;
   }
 
@@ -764,7 +764,7 @@
 <!-- ===== MODAL CHỌN TRƯỜNG ===== -->
 <div id="schoolModal" style="display:none;position:fixed;inset:0;background:rgba(6, 19, 25,0.55);z-index:9999;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(6px);">
   <div style="background:#fff;border-radius:20px;width:100%;max-width:720px;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(8, 46, 133,0.35);">
-    <div style="padding:20px 24px;border-bottom:1px solid #e4e8f1;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,#eef2fc,#f1f4fd);">
+    <div style="padding:20px 24px;border-bottom:1px solid #efece6;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,#f8f6f2,#f9f8f5);">
       <div>
         <h3 style="margin:0;font-size:18px;color:#0b202b;">🏫 Chọn trường đại học</h3>
         <p style="margin:4px 0 0;font-size:13px;color:#092f89;">Đã chọn <span id="modalCount">0</span> trường</p>
@@ -772,7 +772,7 @@
       <button id="closeSchoolModal" style="background:none;border:none;font-size:24px;color:#092f89;cursor:pointer;line-height:1;">×</button>
     </div>
 
-    <div style="padding:14px 24px;background:#f7fbfc;border-bottom:1px solid #e4e8f1;">
+    <div style="padding:14px 24px;background:#fbfaf8;border-bottom:1px solid #efece6;">
       <input id="schoolSearch" type="text" placeholder="🔍 Tìm trường theo tên..." style="width:100%;padding:10px 14px;border:1px solid #3d73f3;border-radius:10px;font-size:14px;outline:none;box-sizing:border-box;">
       <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;font-size:12px;">
         <button class="region-btn" data-region="all" style="padding:6px 12px;border-radius:999px;border:1px solid #3d73f3;background:#082e85;color:#fff;cursor:pointer;font-weight:600;">Tất cả</button>
@@ -784,7 +784,7 @@
 
     <div id="schoolList" style="flex:1;overflow-y:auto;padding:12px 24px;"></div>
 
-    <div style="padding:14px 24px;border-top:1px solid #e4e8f1;display:flex;gap:10px;background:#f7fbfc;">
+    <div style="padding:14px 24px;border-top:1px solid #efece6;display:flex;gap:10px;background:#fbfaf8;">
       <button id="saveSchools" style="flex:1;background:linear-gradient(135deg,#0b3aa8,#093395);color:#fff;border:none;padding:12px 20px;border-radius:10px;font-weight:700;cursor:pointer;font-size:14px;">Lưu &amp; đóng</button>
       <button id="clearSchools" style="background:#fff;border:1.5px solid #3d73f3;color:#12374a;padding:12px 20px;border-radius:10px;font-weight:600;cursor:pointer;font-size:14px;">Xóa hết</button>
     </div>
@@ -1245,7 +1245,7 @@
       var html = '<div style="display:flex;flex-direction:column;gap:8px;">';
       filtered.forEach(function(s){
         var isSelected = selected.indexOf(s.code) !== -1;
-        html += '<label style="display:flex;align-items:center;gap:12px;padding:12px;border:1.5px solid ' + (isSelected ? '#082e85' : '#e4e8f1') + ';border-radius:12px;cursor:pointer;background:' + (isSelected ? '#eef2fc' : '#fff') + ';transition:all .15s;">';
+        html += '<label style="display:flex;align-items:center;gap:12px;padding:12px;border:1.5px solid ' + (isSelected ? '#082e85' : '#efece6') + ';border-radius:12px;cursor:pointer;background:' + (isSelected ? '#f8f6f2' : '#fff') + ';transition:all .15s;">';
         html += '<input type="checkbox" data-code="' + s.code + '" ' + (isSelected ? 'checked' : '') + ' style="width:18px;height:18px;accent-color:#082e85;cursor:pointer;">';
         html += '<div style="flex:1;">';
         html += '<div style="font-weight:700;color:#0b202b;font-size:14px;">' + escapeHtml(s.name) + '</div>';
@@ -1277,7 +1277,7 @@
       selected.forEach(function(code){
         var s = SCHOOLS.find(function(x){ return x.code === code; });
         if (!s) return;
-        html += '<div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:10px;padding:10px;background:#f9fbfe;border-radius:10px;border:1px solid #e4e8f1;">';
+        html += '<div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:10px;padding:10px;background:#fdfcfa;border-radius:10px;border:1px solid #efece6;">';
         html += '<span style="color:#082e85;margin-top:2px;">✓</span>';
         html += '<div style="flex:1;">';
         html += '<div style="font-weight:700;color:#0b202b;font-size:14px;">' + escapeHtml(s.name) + '</div>';
@@ -1314,7 +1314,7 @@
 
       overlay.innerHTML = '\
 <div style="background:#fff;border-radius:20px;width:100%;max-width:680px;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(8, 46, 133,0.35);">\
-  <div style="padding:20px 24px;border-bottom:1px solid #e4e8f1;display:flex;align-items:flex-start;justify-content:space-between;background:linear-gradient(135deg,#eef2fc,#f1f4fd);">\
+  <div style="padding:20px 24px;border-bottom:1px solid #efece6;display:flex;align-items:flex-start;justify-content:space-between;background:linear-gradient(135deg,#f8f6f2,#f9f8f5);">\
     <div style="flex:1;padding-right:16px;">\
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">\
         <span style="font-size:13px;font-weight:700;color:#fff;background:' + regionColor + ';padding:3px 10px;border-radius:999px;">' + regionText + '</span>\
@@ -1325,12 +1325,12 @@
     <button id="closeSchoolDetail" style="background:none;border:none;font-size:28px;color:#0c40bb;cursor:pointer;line-height:1;flex-shrink:0;margin-top:-4px;">×</button>\
   </div>\
   <div style="flex:1;overflow-y:auto;padding:20px 24px;">\
-    <p style="margin:0 0 20px;font-size:14px;color:#12374a;line-height:1.6;background:#f9fbfe;padding:14px;border-radius:12px;border-left:3px solid #082e85;">' + escapeHtml(s.desc) + '</p>\
+    <p style="margin:0 0 20px;font-size:14px;color:#12374a;line-height:1.6;background:#fdfcfa;padding:14px;border-radius:12px;border-left:3px solid #082e85;">' + escapeHtml(s.desc) + '</p>\
     <div style="font-size:12px;color:#092f89;margin-bottom:6px;">📌 Ghi chú</div>\
     <div style="font-size:13px;color:#475569;margin-bottom:20px;padding:10px 14px;background:#fffbeb;border-radius:10px;border:1px solid #fde68a;">' + escapeHtml(s.note) + '</div>\
     <div style="font-size:14px;font-weight:700;color:#0b202b;margin-bottom:10px;">💪 Điểm mạnh</div>\
     <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;">' +
-      s.strengths.map(function(st){ return '<span style="font-size:12px;font-weight:600;color:#082e85;background:#eef2fc;padding:5px 10px;border-radius:999px;border:1px solid #3c73f3;">' + escapeHtml(st) + '</span>'; }).join('') +
+      s.strengths.map(function(st){ return '<span style="font-size:12px;font-weight:600;color:#082e85;background:#f8f6f2;padding:5px 10px;border-radius:999px;border:1px solid #3c73f3;">' + escapeHtml(st) + '</span>'; }).join('') +
     '</div>\
     <div style="font-size:14px;font-weight:700;color:#0b202b;margin-bottom:10px;">🎓 Học bổng</div>\
     <div style="background:#f0fdf4;border-radius:12px;padding:14px;margin-bottom:20px;">' +
@@ -1364,13 +1364,13 @@
       var html = '<div style="display:flex;flex-direction:column;gap:8px;">';
       filtered.forEach(function(s){
         var isSelected = selected.indexOf(s.code) !== -1;
-        html += '<div style="display:flex;align-items:center;gap:10px;padding:12px;border:1.5px solid ' + (isSelected ? '#082e85' : '#e4e8f1') + ';border-radius:12px;background:' + (isSelected ? '#eef2fc' : '#fff') + ';transition:all .15s;">';
+        html += '<div style="display:flex;align-items:center;gap:10px;padding:12px;border:1.5px solid ' + (isSelected ? '#082e85' : '#efece6') + ';border-radius:12px;background:' + (isSelected ? '#f8f6f2' : '#fff') + ';transition:all .15s;">';
         html += '<input type="checkbox" data-code="' + s.code + '" ' + (isSelected ? 'checked' : '') + ' style="width:18px;height:18px;accent-color:#082e85;cursor:pointer;flex-shrink:0;">';
         html += '<div style="flex:1;min-width:0;">';
         html += '<div style="font-weight:700;color:#0b202b;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + escapeHtml(s.name) + '</div>';
         html += '<div style="font-size:12px;color:#092f89;margin-top:2px;">' + escapeHtml(s.combo) + ' · ' + regionLabel(s.region) + '</div>';
         html += '</div>';
-        html += '<button type="button" data-code="' + s.code + '" class="list-detail-btn" style="flex-shrink:0;padding:5px 10px;background:#f2f5fa;color:#475569;border:1px solid #e4e8f1;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;">ℹ️</button>';
+        html += '<button type="button" data-code="' + s.code + '" class="list-detail-btn" style="flex-shrink:0;padding:5px 10px;background:#f9f7f3;color:#475569;border:1px solid #efece6;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;">ℹ️</button>';
         html += '</div>';
       });
       html += '</div>';
