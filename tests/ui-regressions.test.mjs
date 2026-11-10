@@ -6,7 +6,9 @@ const read = path => readFileSync(new URL('../' + path, import.meta.url), 'utf8'
 
 test('career cards do not publish unsupported salary or outlook claims', () => {
   const source = read('assets/js/careers.js');
-  assert.match(source, /Chưa có dữ liệu đã đối chiếu/);
+  // Unverified market data is left out entirely; the slot shows who the career suits instead.
+  assert.doesNotMatch(source, /Thị trường lao động/);
+  assert.match(source, /Hợp với ai/);
   assert.doesNotMatch(source, /escapeHtml\(j\.outlook\)/);
   assert.doesNotMatch(source, /escapeHtml\(j\.salary\)/);
 });

@@ -172,7 +172,8 @@
     work: detailIcon('<rect x="3.5" y="7.5" width="17" height="12" rx="2.2"/><path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5M3.5 12.5h17"/>'),
     skills: detailIcon('<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.6" fill="currentColor"/>'),
     study: detailIcon('<path d="M12 4.5 21.5 9 12 13.5 2.5 9z"/><path d="M6.5 11v4.6c3.2 2.4 7.8 2.4 11 0V11"/><path d="M21.5 9v5"/>'),
-    market: detailIcon('<path d="M4 4v16h16"/><path d="m7.5 15 3.8-4 3 3 5-6"/>'),
+    fit: detailIcon('<circle cx="12" cy="8.5" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/><path d="m15.5 4.5 1.2 1.2 2.3-2.3"/>'),
+    similar: detailIcon('<rect x="3.5" y="3.5" width="8" height="8" rx="2"/><rect x="12.5" y="12.5" width="8" height="8" rx="2"/><path d="M15.5 8.5h3v3M8.5 15.5v3h3"/>'),
   };
 
   function renderJob(j) {
@@ -181,6 +182,14 @@
       const m = HOLLAND_META[c];
       return `<span class="job-holland-tag" style="background:${m.color}1a;border:1.5px solid ${m.color};color:${m.color}">${hIcon(c)} ${m.label}</span>`;
     }).join('');
+    // Who this career suits: its Holland groups, matched against the reader's own code when there is one.
+    const myCode = String(state.importedCode || window.BWFlow?.holland?.() || '').toUpperCase().replace(/[^RIASEC]/g, '');
+    const matched = (j.holland || []).filter(c => myCode.includes(c));
+    // Careers with the most Holland groups in common (earlier letters weigh more), then the same field.
+    const weight = (a, b) => (a || []).reduce((sum, c, i) => { const k = (b || []).indexOf(c); return k < 0 ? sum : sum + (3 - i) + (3 - k); }, 0);
+    const similar = state.jobs.filter(o => o.name !== j.name)
+      .map(o => ({ o, score: weight(j.holland, o.holland) + (o.group === j.group ? 2 : 0) }))
+      .filter(x => x.score > 0).sort((a, b) => b.score - a.score).slice(0, 4).map(x => x.o);
 
     r.innerHTML = `
       <div class="career-result">
@@ -213,23 +222,35 @@
             <p class="career-note">Lộ trình định hướng, chưa phải đủ điều kiện tuyển dụng hay cấp phép. Kiểm tra quy định khi đăng ký.</p>
             ${/^https:\/\//.test(j.eduSource || '') ? `<p class="career-note"><a href="${escapeHtml(j.eduSource)}" target="_blank" rel="noopener noreferrer">Nguồn yêu cầu hành nghề ↗</a> · Đối chiếu ${escapeHtml(j.eduReviewedAt)}</p>` : ''}
           </section>
-          <section class="career-block career-market-empty" role="note">
-            <h3 class="career-label">${DETAIL_ICON.market}Thị trường lao động</h3>
-            <p class="career-status">Chưa có dữ liệu đã đối chiếu</p>
-            <p class="career-note">BrightWay chỉ hiện lương và triển vọng khi đủ nguồn, năm khảo sát, đơn vị tiền và mức kinh nghiệm. Hãy xem thêm báo cáo tuyển dụng hiện hành.</p>
+          <section class="career-block career-fit">
+            <h3 class="career-label">${DETAIL_ICON.fit}Hợp với ai</h3>
+            ${myCode ? `<p class="career-status${matched.length ? '' : ' is-quiet'}">${matched.length ? `Khớp ${matched.length}/${(j.holland || []).length} nhóm với mã ${escapeHtml(myCode)} của bạn` : `Chưa khớp nhóm nào với mã ${escapeHtml(myCode)} của bạn`}</p>` : ''}
+            <ul class="career-fit-list">${(j.holland || []).map(c => `<li class="${myCode.includes(c) ? 'is-match' : ''}" style="--c:${HOLLAND_META[c].color}"><span class="career-fit-icon">${hIcon(c)}</span><span><strong>${c} · ${HOLLAND_META[c].label}</strong>${escapeHtml(HOLLAND_META[c].desc)}</span></li>`).join('')}</ul>
           </section>
+          ${similar.length ? `<section class="career-block career-similar">
+            <h3 class="career-label">${DETAIL_ICON.similar}Nghề gần giống</h3>
+            <div class="career-similar-list">${similar.map(o => `<button type="button" data-similar="${escapeHtml(o.name)}"><strong>${escapeHtml(o.name)}</strong><span>${(o.holland || []).map(c => `<b style="color:${HOLLAND_META[c].color}">${c}</b>`).join('')} · ${escapeHtml(o.group)}</span></button>`).join('')}</div>
+          </section>` : ''}
         </div>
       </div>
     `;
     window.BWFlow?.save({ career: { name: j.name, group: j.group } });
     persistFilters();
+    r.querySelectorAll('[data-similar]').forEach(button => button.addEventListener('click', () => {
+      const other = state.jobs.find(o => o.name === button.dataset.similar);
+      if (!other) return;
+      $('careerSearch').value = other.name;
+      renderJob(other);
+      bindFavButton(other);
+      r.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+    }));
     const next = document.createElement('div');
     r.appendChild(next);
     window.BWFlow?.nextStep(next, 'Tìm nơi học cho nghề bạn quan tâm', 'Đọc phần học vấn ở trên, rồi đối chiếu ngành đào tạo và phương thức tuyển sinh tại các trường.', [['Tra cứu trường', 'page2.html?career=' + encodeURIComponent(j.name)], ['Tài liệu & bài viết', 'resources.html']]);
     const pathways = document.createElement('section');
     pathways.className = 'career-pathways';
     pathways.setAttribute('aria-label', 'Ngành đào tạo đã đối chiếu');
-    pathways.textContent = 'Đang đối chiếu ngành đào tạo từ nguồn hiện có…';
+    pathways.hidden = true;   // shown only once there is something to list
     next.before(pathways);
     let pathwayTimer;
     const pathwayTimeout = new Promise((resolve, reject) => { pathwayTimer = setTimeout(() => reject(new Error('Pathways timeout')), 8000); });
@@ -241,9 +262,11 @@
           const params = new URLSearchParams({ mode:'major', q:name, career:j.name, careerReturn:location.pathname + location.search });
           return `<a href="page2.html?${escapeHtml(params.toString())}">${escapeHtml(name)} · Tìm trường →</a>`;
         }).join('') + '</div>'
-        : '<p>Chưa có đối chiếu đủ nguồn giữa nghề này và danh mục ngành. Bạn có thể mở tra cứu trường để tự tìm ngành quan tâm.</p>');
+        : '');
+      if (!majors.length) pathways.remove(); else pathways.hidden = false;
     }).catch(() => {
       if (!pathways.isConnected) return;
+      pathways.hidden = false;
       pathways.textContent = 'Chưa tải được dữ liệu đối chiếu ngành. Bạn vẫn có thể dùng liên kết Tra cứu trường bên dưới. ';
       const retry = document.createElement('button');
       retry.type = 'button'; retry.className = 'flow-clear-filters'; retry.textContent = 'Thử tải lại đối chiếu ngành';
