@@ -102,7 +102,7 @@ html body .glow-band > .profile-view-tabs a.active { color: #02070a !important; 
 /* Below the opening the page wakes up the way the homepage table of contents does:
    lavender with blue light on the left, coral on the right, peach underneath, melting into paper.
    One painted tile placed right under the band; it scrolls with the page and never repaints. */
-html body:has(.glow-band) {
+:root:not([data-theme="dark"]) body:has(.glow-band) {
   --spill: var(--glow-spill-y, 520px);
   background:
     radial-gradient(42% 380px at 8% 22%, rgba(64, 120, 255, .42), transparent 72%) 0 var(--spill) / 100% 820px no-repeat,
