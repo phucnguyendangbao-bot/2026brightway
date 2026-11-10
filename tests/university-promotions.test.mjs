@@ -26,7 +26,7 @@ test('public university discovery never invents sponsored partners and preserves
   assert.ok(home.indexOf('id="hero-actions"') < home.indexOf('id="university-discovery"'));
   assert.match(home, />Trường nổi bật</);
   assert.match(home, /id="admissionsHighlights"/);
-  assert.equal((home.match(/class="slide(?: is-active)?" data-school=/g) || []).length, 8);
+  assert.equal((home.match(/class="glow-thumb" href="page2\.html\?school=/g) || []).length, 6);
   assert.doesNotMatch(home, /<details class="home-tools-disclosure"/);
 });
 

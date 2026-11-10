@@ -352,10 +352,36 @@ function personalizeWaybi() {
   if (code && line) line.textContent = `Mã của bạn là ${code}. Muốn mình giải thích từng chữ và nghề nào hợp nhất không?`;
 }
 
+/* ---------- The glowing opening: see-through nav, this year's months, the saved Holland code ---------- */
+function initGlowHero() {
+  const hero = document.querySelector('.glow-hero');
+  if (!hero) return;
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([e]) => document.body.classList.toggle('bw-nav-glass', e.isIntersecting), { rootMargin: '-72px 0px 0px 0px', threshold: 0 }).observe(hero);
+  }
+  const months = hero.querySelector('[data-glow-months]');
+  if (months) {
+    const order = [9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8], now = tzMonth();
+    months.innerHTML = order.map(m => `<li class="${m === now ? 'is-now' : order.indexOf(m) < order.indexOf(now) ? 'is-past' : ''}"${m === now ? ' aria-current="date"' : ''}>T${m}</li>`).join('');
+    const link = hero.querySelector('[data-glow-month]');
+    if (link) link.textContent = `Tháng ${now}: xem việc cần làm`;
+  }
+  const paint = () => {
+    const code = flow()?.holland() || '';
+    hero.querySelectorAll('.glow-chip').forEach(chip => chip.classList.toggle('is-picked', code.includes(chip.firstChild.textContent.trim())));
+    const foot = hero.querySelector('[data-glow-holland]');
+    if (foot) foot.textContent = code ? `Mã của bạn: ${code}. Xem nghề hợp với mã ở chương 2` : 'Chọn 3 nhóm giống bạn nhất ở chương 1';
+  };
+  paint();
+  addEventListener('bw:journey-change', paint);
+  document.addEventListener('bw:holland-pick', paint);
+}
+
 /* ---------- Start ---------- */
 let travellers;
 function start() {
   renderProgress({ fold: true });
+  initGlowHero();
   travellers = initTravellers();
   initRails();
   initArt();

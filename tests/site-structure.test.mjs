@@ -82,7 +82,7 @@ test('five primary pages ship the shared navigation before JavaScript enhancemen
 test('Can Tho University homepage photo uses a documented official source', () => {
   const home = read('index.html');
   const sources = read('assets/images/hero/SOURCES.md');
-  assert.equal((home.match(/assets\/images\/hero\/02-ctu\.jpg\?v=4/g) || []).length, 2);
+  assert.ok((home.match(/src="assets\/images\/hero\/02-ctu(-640\.webp|\.jpg\?v=4)"/g) || []).length >= 2, "CTU photo in the school library card and the admissions card");
   assert.match(home, /alt="Nhà Điều hành Đại học Cần Thơ tại Khu II"/);
   assert.match(sources, /02-ctu\.jpg[\s\S]*www\.ctu\.edu\.vn\/images\/upload\/images\/IMG_4835\.jpg/);
 });
@@ -98,7 +98,7 @@ test('12 study suggestions are separate from official admissions dates', () => {
 test('home foregrounds three clear journeys, a Waybi guide per chapter, and a three-group Holland picker', () => {
   const home = read('index.html');
   const hero = home.slice(home.indexOf('<section class="bw-hero'), home.indexOf('id="chuong-1"'));
-  assert.match(hero, /Đi để lối[\s\S]*thành[\s\S]*đường của bạn/);
+  assert.match(hero, /Đi để lối[\s\S]*thành[\s\S]*đường của[\s\S]*bạn/);
   assert.match(hero, /Một hành trình, năm chương\./);
   assert.match(hero, /href="holland.html"[\s\S]*Chưa biết chọn ngành gì/);
   assert.match(hero, /href="page2.html\?focus=major"[\s\S]*Đã có ngành yêu thích/);
