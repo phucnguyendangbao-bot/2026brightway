@@ -331,7 +331,7 @@
     const scan = scope => {
       const els = scope.nodeType === 1 ? [scope, ...scope.querySelectorAll('*')] : [];
       for (const el of els) {
-        if (el.classList.contains('bw-glass') || el.classList.contains('bw-clear') || el.matches(SKIP)) continue;
+        if (el === document.body || el === document.documentElement || el.classList.contains('bw-glass') || el.classList.contains('bw-clear') || el.matches(SKIP)) continue;
         const s = getComputedStyle(el);
         if (s.position === 'fixed') continue;
         // A pale wash painted as a gradient counts as a white panel too.
@@ -346,7 +346,7 @@
         const [l, a] = tone(s.backgroundColor);
         if (!paleWash && (a < 0.85 || l < 0.9)) continue;
         const w = el.offsetWidth, h = el.offsetHeight;
-        if (w >= innerWidth * 0.92 && el.tagName !== 'BODY') el.classList.add('bw-clear');
+        if (w >= innerWidth * 0.92) el.classList.add('bw-clear');
         else if (w >= 150 && h >= 56) {
           el.classList.add('bw-glass');
           if (paleWash) el.classList.add('bw-glass-wash');
@@ -397,8 +397,29 @@
         let col = 0;
         for (let j = i - 1; j >= 0 && Math.abs(tops[j] - tops[i]) < 8; j--) col++;
         el.style.setProperty('--bw-i', String(Math.min(col, 5)));
+        arm(el);
       });
     });
+  }
+
+  // A card plays its whole entrance once it reaches the screen, so a grid is never left half-arrived
+  // when the reader stops scrolling. Cards already on screen stay as they are.
+  const riseMotion = matchMedia('(prefers-reduced-motion: no-preference)');
+  let riseWatch = null;
+  function arm(el) {
+    if (!riseMotion.matches || !('IntersectionObserver' in window)) return;
+    const r = el.getBoundingClientRect();
+    if (r.top < innerHeight && r.bottom > 0) return;
+    riseWatch ||= new IntersectionObserver(entries => {
+      for (const e of entries) {
+        if (!e.isIntersecting) continue;
+        riseWatch.unobserve(e.target);
+        e.target.classList.add('is-in');
+        setTimeout(() => e.target.classList.remove('bw-armed', 'is-in'), 1600);
+      }
+    }, { rootMargin: '0px 0px -6% 0px' });
+    el.classList.add('bw-armed');
+    riseWatch.observe(el);
   }
 
   // Desktop only: a soft light follows the pointer behind the glass, and glass cards lean toward it.
