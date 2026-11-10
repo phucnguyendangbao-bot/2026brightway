@@ -303,6 +303,10 @@
     sky.innerHTML = '<i class="bw-sky-dawn"></i><i class="bw-sky-sunset"></i><i class="bw-sky-dusk"></i>';
     document.body.prepend(sky);
     document.body.classList.add('bw-aurora-on');
+    const bar = document.createElement('div');
+    bar.className = 'bw-progress';
+    bar.setAttribute('aria-hidden', 'true');
+    document.body.append(bar);
     if (!(window.CSS && CSS.supports && CSS.supports('animation-timeline: scroll()'))) {
       const [dawn, sunset, dusk] = sky.children;
       let queued = false;
@@ -312,6 +316,7 @@
         dawn.style.opacity = Math.max(0, 1 - p / 0.45);
         sunset.style.opacity = Math.max(0, 1 - Math.abs(p - 0.45) / 0.42);
         dusk.style.opacity = Math.max(0, (p - 0.4) / 0.6);
+        bar.style.transform = `scaleX(${p})`;
       };
       addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(paint); } }, { passive: true });
       addEventListener('resize', paint);
@@ -351,14 +356,91 @@
     scan(host);
     // Headings rise in as they arrive; the dark opening's contents fade and soften as they leave.
     host.querySelectorAll('h2').forEach(h => { if (!h.closest('.glow-band, .glow-hero, .bw-glass, .ks-toc') && getComputedStyle(h).animationName === 'none') h.classList.add('bw-rise'); });
-    document.querySelectorAll('.glow-band > *, .glow-hero .glow-inner > *').forEach(el => { if (getComputedStyle(el).animationName === 'none') el.classList.add('bw-fade-out'); });
+    // The dark opening plays like a film as it scrolls away: each layer drifts at its own depth.
+    document.querySelectorAll('.glow-band').forEach(band => {
+      [...band.children].forEach((el, i) => {
+        if (getComputedStyle(el).animationName !== 'none') return;
+        el.style.setProperty('--bw-depth', String(1 + i * 0.7));
+        el.classList.add('bw-band-out');
+        const h1 = el.matches('h1') ? el : el.querySelector('h1');
+        if (h1 && getComputedStyle(h1).animationName === 'none') h1.classList.add('bw-intro');
+      });
+    });
+    stagger(document);
+    initPointerLight();
+    // Floating buttons and panels get their own GPU layer so scrolling never repaints beneath them.
+    const promote = () => document.querySelectorAll('body > *').forEach(el => { if (getComputedStyle(el).position === 'fixed' && !el.style.willChange) el.style.willChange = 'transform'; });
+    promote(); setTimeout(promote, 1500);
     // Lists that render later (schools, careers, news) join in as they appear.
     let pending = [];
     let timer = 0;
     new MutationObserver(records => {
       for (const r of records) r.addedNodes.forEach(n => { if (n.nodeType === 1) pending.push(n); });
-      if (pending.length && !timer) timer = setTimeout(() => { const batch = pending; pending = []; timer = 0; batch.forEach(n => n.isConnected && scan(n)); }, 120);
+      if (pending.length && !timer) timer = setTimeout(() => { const batch = pending; pending = []; timer = 0; batch.forEach(n => n.isConnected && scan(n)); stagger(document); }, 120);
     }).observe(host, { childList: true, subtree: true });
+  }
+  // Cards side by side arrive as a wave: each one a beat after its left-hand neighbour.
+  function stagger(scope) {
+    const rows = new Map();
+    scope.querySelectorAll('.bw-rise:not([data-bw-wave])').forEach(el => {
+      el.dataset.bwWave = '';
+      const parent = el.parentElement;
+      if (!rows.has(parent)) rows.set(parent, []);
+      rows.get(parent).push(el);
+    });
+    rows.forEach(list => {
+      const tops = list.map(el => el.offsetTop);
+      list.forEach((el, i) => {
+        let col = 0;
+        for (let j = i - 1; j >= 0 && Math.abs(tops[j] - tops[i]) < 8; j--) col++;
+        el.style.setProperty('--bw-i', String(Math.min(col, 5)));
+      });
+    });
+  }
+
+  // Desktop only: a soft light follows the pointer behind the glass, and glass cards lean toward it.
+  function initPointerLight() {
+    if (!matchMedia('(pointer: fine) and (prefers-reduced-motion: no-preference)').matches) return;
+    const glow = document.createElement('div');
+    glow.className = 'bw-cursor-glow';
+    glow.setAttribute('aria-hidden', 'true');
+    document.querySelector('.bw-aurora')?.after(glow);
+    let tx = innerWidth / 2, ty = innerHeight / 3, x = tx, y = ty, running = false;
+    const step = () => {
+      x += (tx - x) * 0.14; y += (ty - y) * 0.14;
+      glow.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0)`;
+      running = Math.abs(tx - x) + Math.abs(ty - y) > 0.5;
+      if (running) requestAnimationFrame(step);
+    };
+    const TILT = '.bw-glass, .ks-toc .home-journey-card, .glow-thumb';
+    let card = null, pending = null, queued = false;
+    const tilt = () => {
+      queued = false;
+      if (!card || !pending) return;
+      const r = card.getBoundingClientRect();
+      if (r.width > 760 || r.height > 640) return;
+      const dx = (pending.x - r.left) / r.width - 0.5, dy = (pending.y - r.top) / r.height - 0.5;
+      card.style.transform = `perspective(900px) rotateX(${(-dy * 8).toFixed(2)}deg) rotateY(${(dx * 10).toFixed(2)}deg) translate3d(0, -4px, 0)`;
+    };
+    const release = el => {
+      el.style.transition = 'transform .6s cubic-bezier(.2, .8, .2, 1)';
+      el.style.transform = '';
+      setTimeout(() => { if (el !== card) el.style.transition = ''; }, 650);
+    };
+    addEventListener('pointermove', e => {
+      tx = e.clientX; ty = e.clientY;
+      glow.classList.add('is-on');
+      if (!running) { running = true; requestAnimationFrame(step); }
+      const next = e.target.closest?.(TILT) || null;
+      if (next !== card) {
+        if (card) release(card);
+        card = next;
+        if (card) card.style.transition = 'transform .15s ease-out';
+      }
+      pending = { x: e.clientX, y: e.clientY };
+      if (card && !queued) { queued = true; requestAnimationFrame(tilt); }
+    }, { passive: true });
+    document.addEventListener('pointerleave', () => { glow.classList.remove('is-on'); if (card) { release(card); card = null; } });
   }
   const GLOW_BANDS = ['.glow-band', 'section.bw-hero', 'header.p2-intro', 'section.calc-hero', 'header.journey-welcome', 'header.cal-hero', 'header.res-hero', 'header.rm-hero', 'section.w-hero', 'section.hero', 'div.hero', 'div.iv-page-hero', 'section.auth-page'];
   function initGlowBand() {

@@ -305,9 +305,18 @@ html body #home-view #chuong-3 :is(.university-discovery-heading, .admissions-ho
   border: 2px solid #fff;
   border-radius: 50%;
   background: #f3a683;
+}
+/* The pulse is a ring that grows and fades: transform and opacity only, so it never repaints the page. */
+.month-now-dot::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: rgba(243, 166, 131, .45);
+  will-change: transform, opacity;
   animation: now-pulse 2.4s ease-in-out infinite;
 }
-@keyframes now-pulse { 50% { box-shadow: 0 0 0 6px rgba(243, 166, 131, .3); } }
+@keyframes now-pulse { 0% { transform: scale(1); opacity: .9; } 70%, 100% { transform: scale(2.2); opacity: 0; } }
 .month-card {
   max-width: 720px;
   padding: 20px 22px;
@@ -396,6 +405,7 @@ html body #home-view #chuong-3 :is(.university-discovery-heading, .admissions-ho
 .story-ending .flow-journey-heading { justify-content: flex-start; }
 
 @media (prefers-reduced-motion: reduce) {
+  .month-now-dot::after { animation: none; opacity: 0; }
   .month-now-dot { animation: none; box-shadow: 0 0 0 4px rgba(243, 166, 131, .3); }
   .career-pick, .holland-code span.is-new, .month-card.is-new { animation: none; }
 }

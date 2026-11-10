@@ -356,6 +356,9 @@ html body #home-view .story-ending .flow-journey { background: var(--ks-paper) !
 /* ---------- "Chương tiếp": the path ---------- */
 .ks-next { position: relative; margin-top: 80px; padding-top: 8px; }
 .ks-wave { display: block; width: 100%; height: 40px; overflow: visible; }
+.ks-wave-box { position: relative; }
+.ks-wave-reveal { position: absolute; inset: -4px 0; overflow: hidden; pointer-events: none; will-change: transform; transform: translate3d(-100%, 0, 0); }
+.ks-wave-reveal-inner { position: absolute; inset: 4px 0; will-change: transform; transform: translate3d(100%, 0, 0); }
 .ks-wave path { fill: none; stroke-linecap: round; }
 .ks-wave-ahead { vector-effect: non-scaling-stroke; }  /* keep the dots round; the solid line stays in path units so its dash matches the traveller */
 .ks-wave-ahead { stroke: rgba(2, 7, 10, .3); stroke-width: 2; stroke-dasharray: 2 9; }

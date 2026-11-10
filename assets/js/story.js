@@ -29,6 +29,23 @@ function initTravellers() {
     traveller: foot.querySelector('.ks-traveller'), behind: foot.querySelector('.ks-wave-behind'),
     wave: foot.querySelector('.ks-wave'), samples: [], top: 0, height: 1, width: 0, waveH: 0, total: 1, shown: -1,
   }));
+  // The travelled part of the line is revealed by sliding two nested layers (no stroke redraw per frame).
+  for (const it of items) {
+    const box = document.createElement('div');
+    box.className = 'ks-wave-box';
+    it.wave.before(box);
+    box.append(it.wave);
+    const reveal = document.createElement('div');
+    reveal.className = 'ks-wave-reveal';
+    const inner = document.createElement('div');
+    inner.className = 'ks-wave-reveal-inner';
+    const solid = it.wave.cloneNode(false);
+    solid.append(it.behind);
+    inner.append(solid);
+    reveal.append(inner);
+    box.append(reveal);
+    it.reveal = reveal; it.revealInner = inner;
+  }
   const active = new Set();
   let ticking = false;
 
@@ -39,7 +56,6 @@ function initTravellers() {
       const w = it.wave.getBoundingClientRect();
       it.width = w.width; it.waveH = w.height;
       it.total = it.behind.getTotalLength();
-      it.behind.style.strokeDasharray = `${it.total} ${it.total}`;
       it.samples = Array.from({ length: 41 }, (_, i) => it.behind.getPointAtLength(it.total * i / 40));
       it.shown = -1;
     }
@@ -58,7 +74,9 @@ function initTravellers() {
     const pt = it.samples[Math.round(k * 40)] || { x: 0, y: 20 };
     const x = pt.x / 1000 * it.width, y = pt.y / 40 * it.waveH;
     it.traveller.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0) translate(-50%, -78%)`;
-    it.behind.style.strokeDashoffset = String(it.total * (1 - k));
+    const hidden = (1 - Math.min(1, pt.x / 1000)) * 100;
+    it.reveal.style.transform = `translate3d(${(-hidden).toFixed(2)}%, 0, 0)`;
+    it.revealInner.style.transform = `translate3d(${hidden.toFixed(2)}%, 0, 0)`;
   }
 
   function update(all) {
