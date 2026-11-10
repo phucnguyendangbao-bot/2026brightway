@@ -303,6 +303,9 @@
     sky.innerHTML = '<i class="bw-sky-dawn"></i><i class="bw-sky-sunset"></i><i class="bw-sky-dusk"></i>';
     document.body.prepend(sky);
     document.body.classList.add('bw-aurora-on');
+    // Once the page moves, a see-through bar darkens so text underneath never collides with the links.
+    const onScroll = () => document.body.classList.toggle('bw-nav-scrolled', scrollY > 12);
+    addEventListener('scroll', onScroll, { passive: true }); onScroll();
     const bar = document.createElement('div');
     bar.className = 'bw-progress';
     bar.setAttribute('aria-hidden', 'true');
@@ -491,8 +494,6 @@
     if (overlap > 2 && overlap < 240) band.style.marginBottom = `${(parseFloat(getComputedStyle(band).marginBottom) || 0) + Math.round(overlap) + 24}px`;
     document.documentElement.style.setProperty('--glow-spill-y', `${Math.round(docTop(band) + band.offsetHeight)}px`);
     if ('IntersectionObserver' in window) {
-      const onScroll = () => document.body.classList.toggle('bw-nav-scrolled', scrollY > 12);
-      addEventListener('scroll', onScroll, { passive: true }); onScroll();
       new IntersectionObserver(([e]) => { document.body.classList.toggle('bw-nav-glass', e.isIntersecting); setTimeout(() => document.body.classList.add('bw-nav-ready'), 400); }, { rootMargin: `-${navH}px 0px 0px 0px` }).observe(band);
     }
   }
