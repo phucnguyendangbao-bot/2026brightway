@@ -316,8 +316,9 @@
     const docTop = el => el.getBoundingClientRect().top + scrollY;
     const navH = nav.offsetHeight;
     const stepbar = document.querySelector('.flow-stepbar');
+    // The journey step bar rides inside the opening; measure only after it has moved.
+    if (stepbar && stepbar.compareDocumentPosition(band) & Node.DOCUMENT_POSITION_FOLLOWING && docTop(band) - docTop(stepbar) < 400) band.prepend(stepbar);
     if (docTop(band) - navH >= 160) return;              // the band does not open the page
-    if (stepbar && stepbar.compareDocumentPosition(band) & Node.DOCUMENT_POSITION_FOLLOWING) band.prepend(stepbar);
     // A band that opens the page slides under the see-through navigation.
     if (scrollY < 40) document.body.classList.add('bw-nav-glass');
     const gap = Math.max(0, docTop(band) - navH);
