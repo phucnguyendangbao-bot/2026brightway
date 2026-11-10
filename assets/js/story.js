@@ -357,7 +357,7 @@ function initGlowHero() {
   const hero = document.querySelector('.glow-hero');
   if (!hero) return;
   if ('IntersectionObserver' in window) {
-    new IntersectionObserver(([e]) => document.body.classList.toggle('bw-nav-glass', e.isIntersecting), { rootMargin: '-72px 0px 0px 0px', threshold: 0 }).observe(hero);
+    new IntersectionObserver(([e]) => { document.body.classList.toggle('bw-nav-glass', e.isIntersecting); setTimeout(() => document.body.classList.add('bw-nav-ready'), 400); }, { rootMargin: '-72px 0px 0px 0px', threshold: 0 }).observe(hero);
   }
   const months = hero.querySelector('[data-glow-months]');
   if (months) {

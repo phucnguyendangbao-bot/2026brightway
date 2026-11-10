@@ -316,6 +316,7 @@
     if (docTop(band) - navH >= 160) return;              // the band does not open the page
     if (stepbar && stepbar.compareDocumentPosition(band) & Node.DOCUMENT_POSITION_FOLLOWING) band.prepend(stepbar);
     // A band that opens the page slides under the see-through navigation.
+    if (scrollY < 40) document.body.classList.add('bw-nav-glass');
     const gap = Math.max(0, docTop(band) - navH);
     const pad = parseFloat(getComputedStyle(band).paddingTop) || 0;
     band.style.marginTop = `-${Math.round(navH + gap)}px`;
@@ -324,7 +325,7 @@
     const drift = Math.round(docTop(band));
     if (drift) band.style.marginTop = `${parseFloat(band.style.marginTop) - drift}px`;
     if ('IntersectionObserver' in window) {
-      new IntersectionObserver(([e]) => document.body.classList.toggle('bw-nav-glass', e.isIntersecting), { rootMargin: `-${navH}px 0px 0px 0px` }).observe(band);
+      new IntersectionObserver(([e]) => { document.body.classList.toggle('bw-nav-glass', e.isIntersecting); setTimeout(() => document.body.classList.add('bw-nav-ready'), 400); }, { rootMargin: `-${navH}px 0px 0px 0px` }).observe(band);
     }
   }
 
