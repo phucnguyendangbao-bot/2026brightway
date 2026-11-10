@@ -364,7 +364,9 @@
       [...band.children].forEach((el, i) => {
         if (getComputedStyle(el).animationName !== 'none') return;
         el.style.setProperty('--bw-depth', String(1 + i * 0.7));
-        el.classList.add('bw-band-out');
+        // Anything you can click or type into stays solid and only drifts; only words fade away.
+        const usable = el.matches('a, button, input, select, textarea, form, .glow-surface, .flow-stepbar, .profile-view-tabs') || el.querySelector('a[href], button, input, select, textarea, .glow-surface');
+        el.classList.add(usable ? 'bw-band-drift' : 'bw-band-out');
         const h1 = el.matches('h1') ? el : el.querySelector('h1');
         if (h1 && getComputedStyle(h1).animationName === 'none') h1.classList.add('bw-intro');
       });
