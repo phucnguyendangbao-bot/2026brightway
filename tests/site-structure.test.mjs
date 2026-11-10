@@ -100,9 +100,11 @@ test('home foregrounds three clear journeys, a Waybi guide per chapter, and a th
   const hero = home.slice(home.indexOf('<section class="bw-hero'), home.indexOf('id="chuong-1"'));
   assert.match(hero, /Đi để lối[\s\S]*thành[\s\S]*đường của[\s\S]*bạn/);
   assert.match(hero, /Một hành trình, năm chương\./);
-  assert.match(hero, /href="holland.html"[\s\S]*Chưa biết chọn ngành gì/);
-  assert.match(hero, /href="page2.html\?focus=major"[\s\S]*Đã có ngành yêu thích/);
-  assert.match(hero, /href="score-calculator.html"[\s\S]*Muốn tính điểm xét tuyển/);
+  // The three starting situations are named on the chapter cards themselves (no duplicate shortcut row).
+  assert.match(hero, /href="#chuong-1"[^>]*>[\s\S]*?Chưa biết chọn ngành gì/);
+  assert.match(hero, /href="#chuong-3"[^>]*>[\s\S]*?Đã có ngành yêu thích/);
+  assert.match(hero, /href="#chuong-4"[^>]*>[\s\S]*?Muốn tính điểm xét tuyển/);
+  assert.doesNotMatch(hero, /Hoặc đi thẳng tới công cụ/);
   assert.equal((hero.match(/class="home-journey-card[^"]*"/g) || []).length, 5, 'table of contents lists the five chapters');
   for (const n of [1, 2, 3, 4, 5]) assert.match(hero, new RegExp(`href="#chuong-${n}"`));
   assert.match(hero, /data-open-waybi/);

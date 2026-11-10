@@ -3,7 +3,7 @@ import { buildUniversityCatalog } from '../data/university-identities.js';
 import sourceRegistry from '../data/school-admissions-sources.js';
 import { detailsForSchool } from '../data/school-profile-details.js';
 import { relevantPrograms, officialUniversityUrl, eligibleOpportunity, verifiedSponsorship, selectSponsoredCampaigns, selectEditorialOpportunities } from './university-promotion-rules.js';
-import { universityCardHTML, renderUniversityLogo, escapeUniversity as escape } from './university-card.js';
+import { universityCardHTML, renderUniversityLogo, escapeUniversity as escape } from './university-card.js?v=20261111o';
 import { promotionMetrics } from './university-promotion-metrics.js';
 
 const profile = school => ({ ...school, programs:detailsForSchool(school.id)?.programs || [] });
@@ -161,7 +161,7 @@ async function initUniversityDiscovery() {
     renderGroup(paidHost, schools, paid, 'home_featured');
     const opportunityHost = host.querySelector('[data-university-opportunities]');
     if (opportunityHost) renderGroup(opportunityHost, schools, selectEditorialOpportunities(universityOpportunities, schools).slice(0,3), 'home_opportunity');
-    status.textContent = 'Lựa chọn biên tập để khám phá, không phải bảng xếp hạng hay danh sách đối tác. Học bổng và tuyển sinh cũ được ghi rõ là tư liệu.';
+    status.textContent = 'Không phải bảng xếp hạng hay danh sách đối tác.';
   } catch (error) {
     status.textContent = 'Chưa tải được khu giới thiệu trường. Bạn vẫn có thể mở thư viện trường; hãy thử tải lại khu này.';
     retry.hidden = false;

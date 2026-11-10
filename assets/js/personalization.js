@@ -19,7 +19,7 @@ function editor() {
   const p=preferences();
   panel=document.createElement('section'); panel.id='personal-profile'; panel.className='personal-section';
   panel.innerHTML=`<div class="personal-heading"><div><span class="flow-kicker">TÙY CHỌN · LƯU TRÊN THIẾT BỊ</span><h2>Cá nhân hóa hành trình</h2></div><a href="#my-choices">Xem nguyện vọng →</a></div>
-    <p>Bạn có thể bỏ qua mọi câu hỏi. Hồ sơ không cần tên, số điện thoại hoặc tài khoản. Dữ liệu có thể mất khi xóa dữ liệu trình duyệt.</p>
+    <p>Câu nào cũng có thể bỏ qua. Không cần tên, số điện thoại hay tài khoản.</p>
     ${p.unsupported?'<p role="status">Phiên bản hồ sơ cá nhân hóa chưa được hỗ trợ. Gợi ý và chia sẻ đang tắt; lựa chọn cũ vẫn được giữ.</p>':''}
     <form id="personalProfileForm"><label class="personal-choice"><input id="personalEnabled" type="checkbox" ${p.enabled?'checked':''}> Bật gợi ý cá nhân hóa</label>
     <div class="personal-form-grid">

@@ -30,7 +30,7 @@ function render() {
   events.forEach(event => (byDate[event.d] ||= []).push(event));
   document.getElementById('calendarYearNote').textContent = year === 2026
     ? 'Lịch chung 2026 đã đối chiếu Quyết định 3037 và Công văn 1257. Mốc riêng của trường cần xem thông báo trường. Các mốc đã qua được giữ để tra cứu.'
-    : 'Chuẩn bị tuyển sinh 2027: chưa có lịch chính thức 2027 trong bộ nguồn đã kiểm tra. Theo dõi thông báo mới; dự thảo đang lấy ý kiến chưa được áp dụng.';
+    : 'Tuyển sinh 2027 chưa có lịch chính thức. Dự thảo đang lấy ý kiến, chưa áp dụng.';
   for (const [hostId, mini] of [['grid', false], ['wbMiniGrid', true]]) {
     const host = document.getElementById(hostId);
     host.innerHTML = '';

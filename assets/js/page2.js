@@ -1,7 +1,7 @@
 import sourceRegistry from '../data/school-admissions-sources.js';
 import { buildUniversityCatalog, canonicalSchoolId, REVIEWED_AT } from '../data/university-identities.js';
 import { detailsForSchool } from '../data/school-profile-details.js';
-import { universityIdentityHTML, renderUniversityLogo } from './university-card.js';
+import { universityIdentityHTML, renderUniversityLogo } from './university-card.js?v=20261111o';
 import { uniqueSchools, normalizeWishes, wishKey, addWish, wishFromProgram, importLegacySchools } from './selection-model.js';
 import { comparisonCells } from './school-comparison-model.js';
 import { canDisplayProgramScores } from './score-provenance.js';
