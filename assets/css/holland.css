@@ -688,3 +688,50 @@ body {
   .q-scale-btns { gap: 4px; }
   .q-btn { width: 40px; height: 40px; font-size: 13px; }
 }
+
+/* Three groups and how they combine */
+.result-emoji { font-size: 44px; letter-spacing: .12em; }
+.result-combo { margin: 0 0 28px; }
+.result-combo h3 {
+  margin: 0 0 12px;
+  color: var(--text);
+  font-family: 'Quicksand', sans-serif;
+  font-size: 19px;
+  font-weight: 800;
+}
+.result-combo h3 + .result-combo-body { margin-top: 4px; }
+.result-groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 26px;
+  padding: 0;
+  list-style: none;
+}
+.result-group {
+  padding: 14px 16px;
+  border: 1px solid rgba(48, 101, 154, .14);
+  border-top: 4px solid var(--group);
+  border-radius: 16px;
+  background: #fff;
+}
+.result-group-rank { display: block; margin-bottom: 4px; color: var(--text-mid); font-size: 12px; font-weight: 700; }
+.result-group strong { display: block; margin-bottom: 6px; color: var(--text); font-size: 15px; line-height: 1.35; }
+.result-group p { margin: 0; color: var(--text-mid); font-size: 14px; line-height: 1.55; }
+.result-combo-body { display: grid; grid-template-columns: 160px 1fr; gap: 20px; align-items: start; }
+.result-combo-body p { margin: 0 0 10px; color: var(--text-mid); font-size: 15px; line-height: 1.65; }
+.result-combo-body strong { color: var(--text); }
+.result-combo-note { padding: 10px 12px; border-radius: 12px; background: rgba(48, 101, 154, .07); font-size: 14px !important; }
+.result-hex { width: 160px; height: auto; }
+.hex-ring { fill: none; stroke: rgba(48, 101, 154, .25); stroke-width: 1.5; }
+.hex-path { fill: none; stroke: var(--primary); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.hex-node circle { fill: #fff; stroke: rgba(48, 101, 154, .3); stroke-width: 1.5; }
+.hex-node text { fill: var(--text-mid); font: 700 12px/1 'Be Vietnam Pro', sans-serif; }
+.hex-node.is-on circle { fill: var(--primary); stroke: var(--primary); }
+.hex-node.is-on text { fill: #fff; }
+@media (max-width: 720px) {
+  .result-groups { grid-template-columns: 1fr; }
+  .result-combo-body { grid-template-columns: 1fr; justify-items: center; }
+  .result-combo-body > div { justify-self: stretch; }
+  .result-type { font-size: 20px; }
+}

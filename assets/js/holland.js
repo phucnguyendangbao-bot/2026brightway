@@ -7,22 +7,22 @@
 
   // ─── 6 nhóm Holland ───
   const TYPES = {
-    R: { name: 'Kỹ thuật (Realistic)', emoji: '🔧', color: '#f59e0b',
+    R: { short: 'làm việc thực hành với máy móc, dụng cụ và vật thể cụ thể', name: 'Kỹ thuật (Realistic)', emoji: '🔧', color: '#f59e0b',
       desc: 'Bạn quan tâm các hoạt động thực hành với máy móc, dụng cụ hoặc vật thể cụ thể. Sở thích không tự xác nhận năng lực kỹ thuật.',
       majors: ['Kỹ thuật cơ khí', 'Điện – Điện tử', 'Xây dựng', 'Nông nghiệp', 'Kiến trúc', 'Lâm nghiệp', 'Hàng không'] },
-    I: { name: 'Nghiên cứu (Investigative)', emoji: '🔬', color: '#30659a',
+    I: { short: 'phân tích, tìm hiểu vì sao và cách mọi thứ vận hành', name: 'Nghiên cứu (Investigative)', emoji: '🔬', color: '#30659a',
       desc: 'Bạn quan tâm việc phân tích, khám phá và giải quyết vấn đề. Hãy trải nghiệm thêm để tìm hiểu năng lực ở lĩnh vực này.',
       majors: ['Khoa học máy tính', 'Toán học', 'Vật lý', 'Hóa học', 'Y khoa', 'Sinh học', 'Dược học', 'Công nghệ AI'] },
-    A: { name: 'Nghệ thuật (Artistic)', emoji: '🎨', color: '#ec4899',
+    A: { short: 'sáng tạo và biểu đạt ý tưởng của riêng mình', name: 'Nghệ thuật (Artistic)', emoji: '🎨', color: '#ec4899',
       desc: 'Bạn thích hoạt động sáng tạo, biểu đạt, nghệ thuật, âm nhạc, viết hoặc thiết kế. Điểm sở thích không phải đánh giá năng khiếu.',
       majors: ['Thiết kế đồ họa', 'Kiến trúc nội thất', 'Âm nhạc', 'Điện ảnh', 'Truyền thông sáng tạo', 'Mỹ thuật', 'Viết sáng tác'] },
-    S: { name: 'Xã hội (Social)', emoji: '🤝', color: '#10b981',
+    S: { short: 'giúp đỡ, hướng dẫn và làm việc cùng con người', name: 'Xã hội (Social)', emoji: '🤝', color: '#10b981',
       desc: 'Bạn thích giao tiếp, hỗ trợ, hướng dẫn và làm việc với mọi người. Có thể tìm hiểu thêm các môi trường học tập và nghề liên quan.',
       majors: ['Sư phạm', 'Tâm lý học', 'Công tác xã hội', 'Y tế cộng đồng', 'Nhân sự (HR)', 'Ngoại giao', 'Xã hội học'] },
-    E: { name: 'Lãnh đạo (Enterprising)', emoji: '🚀', color: '#f97316',
+    E: { short: 'thuyết phục, tổ chức và dẫn dắt người khác', name: 'Lãnh đạo (Enterprising)', emoji: '🚀', color: '#f97316',
       desc: 'Bạn quan tâm việc thuyết phục, tổ chức, kinh doanh hoặc dẫn dắt hoạt động. Nên đối chiếu với trải nghiệm và kỹ năng thực tế.',
       majors: ['Quản trị kinh doanh', 'Marketing', 'Luật', 'Tài chính – Ngân hàng', 'Kinh tế', 'Khởi nghiệp', 'Quan hệ công chúng'] },
-    C: { name: 'Nghiệp vụ (Conventional)', emoji: '📊', color: '#3472a7',
+    C: { short: 'làm việc có trật tự với dữ liệu, con số và quy trình', name: 'Nghiệp vụ (Conventional)', emoji: '📊', color: '#3472a7',
       desc: 'Bạn thích công việc có trật tự, quy trình, dữ liệu hoặc con số. Đây là gợi ý sở thích, không khẳng định phẩm chất hay năng lực.',
       majors: ['Kế toán – Kiểm toán', 'Hệ thống thông tin', 'Thống kê', 'Tài chính', 'Hành chính văn phòng', 'Logistics', 'Ngân hàng'] }
   };
@@ -73,6 +73,72 @@
     { t:'C', q:'Tôi cảm thấy thoải mái với công việc lặp lại nhưng chính xác.' }
   ];
 
+  // ─── Khi hai nhóm kết hợp (theo thứ tự trên lục giác R-I-A-S-E-C) ───
+  const HEX = 'RIASEC';
+  const PAIRS = {
+    RI: { gist: 'Bạn muốn hiểu nguyên lý rồi tự tay làm ra hoặc kiểm chứng nó.', examples: 'kỹ sư, kỹ thuật viên phòng thí nghiệm, công nghệ thông tin, nông nghiệp công nghệ cao' },
+    RA: { gist: 'Bạn thích tạo ra sản phẩm hữu hình vừa dùng được vừa đẹp.', examples: 'kiến trúc, thiết kế công nghiệp, thiết kế nội thất, nhiếp ảnh, chế tác thủ công' },
+    RS: { gist: 'Bạn thích dùng kỹ năng thực hành để trực tiếp giúp người khác.', examples: 'kỹ thuật y học, vật lý trị liệu, giáo viên kỹ thuật và dạy nghề, huấn luyện thể thao, cứu hộ' },
+    RE: { gist: 'Bạn thích làm việc thực tế và điều hành để công việc chạy được.', examples: 'quản lý sản xuất, quản lý xây dựng, kinh doanh thiết bị, logistics, khởi nghiệp sản phẩm' },
+    RC: { gist: 'Bạn thích công việc kỹ thuật chính xác, có quy trình rõ ràng.', examples: 'kiểm định chất lượng, vận hành hệ thống, điện công nghiệp, trắc địa bản đồ, logistics' },
+    IA: { gist: 'Bạn thích khám phá ý tưởng mới và thể hiện chúng theo cách riêng.', examples: 'thiết kế trải nghiệm (UX), kiến trúc, truyền thông khoa học, nghiên cứu xã hội nhân văn' },
+    IS: { gist: 'Bạn muốn hiểu sâu con người để giúp họ một cách có cơ sở.', examples: 'y khoa, dược, tâm lý học, giáo dục, y tế công cộng' },
+    IE: { gist: 'Bạn thích phân tích kỹ để đưa ra quyết định và thuyết phục người khác.', examples: 'kinh tế, phân tích dữ liệu kinh doanh, tư vấn, luật, quản lý công nghệ' },
+    IC: { gist: 'Bạn thích làm việc tỉ mỉ, chính xác với dữ liệu và bằng chứng.', examples: 'thống kê, khoa học dữ liệu, kiểm toán, công nghệ thông tin, xét nghiệm' },
+    AS: { gist: 'Bạn thích sáng tạo để kết nối và truyền cảm hứng cho người khác.', examples: 'báo chí, truyền thông, giáo dục nghệ thuật, tổ chức sự kiện, ngôn ngữ' },
+    AE: { gist: 'Bạn thích biến ý tưởng sáng tạo thành sản phẩm hay thương hiệu.', examples: 'marketing, quảng cáo, sản xuất nội dung, thời trang, khởi nghiệp sáng tạo' },
+    AC: { gist: 'Bạn thích sáng tạo trong một khuôn khổ rõ ràng, chăm chút chi tiết.', examples: 'thiết kế đồ họa, biên tập, xuất bản, dựng phim, thiết kế giao diện' },
+    SE: { gist: 'Bạn thích làm việc với con người và đứng ra dẫn dắt họ.', examples: 'quản trị nhân sự, quản lý giáo dục, công tác xã hội, chăm sóc khách hàng, chính sách công' },
+    SC: { gist: 'Bạn thích hỗ trợ người khác một cách chu đáo và có tổ chức.', examples: 'hành chính, công tác học vụ, quản lý y tế, giao dịch ngân hàng, thư viện' },
+    EC: { gist: 'Bạn thích tổ chức công việc kinh doanh dựa trên số liệu rõ ràng.', examples: 'tài chính – ngân hàng, kế toán quản trị, quản trị kinh doanh, logistics, bất động sản' },
+  };
+  const pairOf = (a, b) => PAIRS[[a, b].sort((x, y) => HEX.indexOf(x) - HEX.indexOf(y)).join('')];
+  const hexDistance = (a, b) => { const d = Math.abs(HEX.indexOf(a) - HEX.indexOf(b)); return Math.min(d, 6 - d); };
+  const escapeText = value => String(value).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[c]);
+
+  function hexagonSVG(code) {
+    // Six groups on the Holland hexagon; the code's path is drawn 1 → 2 → 3.
+    const cx = 80, cy = 78, r = 56;
+    const pos = letter => { const a = (-90 + HEX.indexOf(letter) * 60) * Math.PI / 180; return [cx + r * Math.cos(a), cy + r * Math.sin(a)]; };
+    const ring = [...HEX].map(pos).map(p => p.map(n => n.toFixed(1)).join(',')).join(' ');
+    const path = [...code].map(pos).map(([x, y], i) => `${i ? 'L' : 'M'}${x.toFixed(1)} ${y.toFixed(1)}`).join(' ');
+    const dots = [...HEX].map(letter => {
+      const [x, y] = pos(letter), rank = code.indexOf(letter);
+      const on = rank !== -1;
+      return `<g class="hex-node${on ? ' is-on' : ''}"><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${on ? 15 - rank * 2 : 11}"/><text x="${x.toFixed(1)}" y="${(y + 4.5).toFixed(1)}" text-anchor="middle">${letter}</text></g>`;
+    }).join('');
+    return `<svg class="result-hex" viewBox="0 0 160 156" role="img" aria-label="Vị trí ${code.split('').join(', ')} trên lục giác Holland"><polygon class="hex-ring" points="${ring}"/><path class="hex-path" d="${path}"/>${dots}</svg>`;
+  }
+
+  function explainCode(code, { partial = '' } = {}) {
+    const [a, b, c] = code.split('');
+    const T = TYPES;
+    $('rEmoji').textContent = code.split('').map(l => T[l].emoji).join(' ');
+    $('rType').textContent = code.split('').map(l => T[l].name.split(' (')[0]).join(' · ');
+    $('rCode').textContent = code.split('').join(' – ');
+    $('rDesc').textContent = `${partial}Mã ${code} cho thấy điều bạn hứng thú nhất là ${T[a].short}; tiếp theo là ${T[b].short}; và thêm một phần là ${T[c].short}.`;
+
+    const rankLabel = ['Nổi bật nhất', 'Thứ hai', 'Thứ ba'];
+    const groups = code.split('').map((l, i) => `<li class="result-group" style="--group:${T[l].color}"><span class="result-group-rank">${rankLabel[i]}</span><strong><span aria-hidden="true">${T[l].emoji}</span> ${l} · ${escapeText(T[l].name)}</strong><p>${escapeText(T[l].desc)}</p></li>`).join('');
+
+    const main = pairOf(a, b), withC = pairOf(a, c), d = hexDistance(a, b);
+    const near = { 1: `${a} và ${b} nằm cạnh nhau trên lục giác Holland, nên hai sở thích này thường đi cùng nhau và dễ tìm ngành, nghề đáp ứng cả hai.`,
+                   2: `${a} và ${b} cách nhau một nhóm trên lục giác Holland: khá gần nhau, nhiều ngành nghề kết hợp được cả hai.`,
+                   3: `${a} và ${b} nằm đối diện nhau trên lục giác Holland, tức là hai sở thích khá khác nhau. Điều này không xấu: bạn có thể tìm nghề nối được cả hai, hoặc giữ một sở thích cho công việc và một cho hoạt động ngoài giờ.` }[d];
+    $('rCombo').innerHTML = `
+      <h3>Ba nhóm trong mã của bạn</h3>
+      <ol class="result-groups">${groups}</ol>
+      <h3>Khi ${a}, ${b} và ${c} kết hợp</h3>
+      <div class="result-combo-body">
+        ${hexagonSVG(code)}
+        <div>
+          <p><strong>${a} + ${b}:</strong> ${escapeText(main.gist)} Ví dụ để tìm hiểu: ${escapeText(main.examples)}.</p>
+          <p><strong>Thêm ${c}:</strong> ${escapeText(T[c].short.replace(/^./, ch => ch.toUpperCase()))} là sở thích bổ sung. Kết hợp với ${a}: ${escapeText(withC.gist.replace(/^Bạn /, 'bạn '))}</p>
+          <p class="result-combo-note">${near}</p>
+        </div>
+      </div>`;
+  }
+
   // ─── Constants ───
   const STORAGE_KEY = 'studentHollandV1';
   const IMPORTED_KEY = 'studentHollandImportedV1';
@@ -103,13 +169,9 @@
   }
 
   function showImportedResult(code) {
-    const info = TYPES[code[0]];
     if (state.timerInterval) { clearInterval(state.timerInterval); state.timerInterval = null; }
     clearTimeout(state.saveTimer);
-    $('rEmoji').textContent = info.emoji;
-    $('rType').textContent = info.name;
-    $('rCode').textContent = code.split('').join(' – ');
-    $('rDesc').textContent = info.desc;
+    explainCode(code);
     $('rBars').innerHTML = '<p class="import-hint">Kết quả được nhập từ bài test đã làm; không có điểm chi tiết cho từng nhóm.</p>';
     $('resultTieNote').textContent = '';
     const majors = [...new Set(code.slice(0, 2).split('').flatMap(letter => TYPES[letter].majors))];
@@ -377,16 +439,11 @@
     const counts = { R: 0, I: 0, A: 0, S: 0, E: 0, C: 0 };
     QUESTIONS.forEach(q => counts[q.t]++);
     const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
-    const [topType] = sorted[0];
-    const info = TYPES[topType];
     const top3 = sorted.slice(0, 3).map(([k]) => k);
     state.resultCode = top3.join('');
 
-    $('rEmoji').textContent = info.emoji;
-    $('rType').textContent = info.name;
-    $('rCode').textContent = top3.join(' – ');
+    explainCode(state.resultCode, { partial: !state.completed ? `Kết quả tạm tính: đã trả lời ${QUESTIONS.length - unanswered.length}/42 câu. ` : '' });
     const ties = sorted.filter(([, score]) => score === sorted[0][1]).map(([type]) => type);
-    $('rDesc').textContent = (!state.completed ? `Kết quả tạm tính: đã trả lời ${QUESTIONS.length - unanswered.length}/42 câu. ` : '') + info.desc;
     $('resultTieNote').textContent = ties.length > 1 ? `Các nhóm đồng điểm cao nhất: ${ties.join(', ')}. Thứ tự mã không thể hiện chênh lệch giữa các nhóm này.` : '';
     $('resultCareersLink').href = state.completed ? `careers-holland.html?holland=${top3.join('')}` : 'careers-holland.html?holland=all';
 

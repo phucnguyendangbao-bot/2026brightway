@@ -240,3 +240,16 @@ test('school profiles expose verified coverage and fail closed for missing 2026 
   assert.match(script, /data-action="score-program"/);
   assert.match(script, /target:\s*\{\s*mode:\s*'guided'/);
 });
+
+test('Holland results explain all three groups of the code and how they combine', async () => {
+  const script = read('assets/js/holland.js');
+  const pairs = [...script.matchAll(/^\s{4}([RIASEC]{2}): \{ gist:/gm)].map(m => m[1]);
+  const hex = 'RIASEC';
+  const expected = [];
+  for (let i = 0; i < 6; i++) for (let j = i + 1; j < 6; j++) expected.push(hex[i] + hex[j]);
+  assert.deepEqual(pairs.sort(), expected.sort(), 'one combination note for each of the 15 pairs');
+  assert.match(script, /function explainCode\(code/);
+  assert.equal((script.match(/explainCode\(/g) || []).length, 3, 'imported and quiz results both use the full explanation');
+  for (const letter of hex) assert.match(script, new RegExp(`${letter}: \\{ short: '`));
+  assert.match(read('holland.html'), /id="rCombo"/);
+});
