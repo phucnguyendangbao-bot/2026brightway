@@ -93,3 +93,4 @@ html body.bw-nav-glass .flow-logo,
 html body.bw-nav-glass .flow-logo span { background: none !important; color: #fff !important; -webkit-text-fill-color: #fff !important; }
 html body.bw-nav-glass .flow-nav { background: rgba(2, 7, 10, .22) !important; border-bottom-color: rgba(247, 245, 241, .1) !important; box-shadow: none !important; }
 html body.bw-nav-glass .flow-menu { color: #fff !important; background: rgba(247, 245, 241, .08) !important; border-color: rgba(247, 245, 241, .3) !important; }
+html body .glow-band .auth-card .auth-sub { color: #3b4550 !important; }
