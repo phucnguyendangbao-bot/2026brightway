@@ -80,6 +80,7 @@ html body #home-view #hero-actions .bw-hero-h1 {
   text-wrap: balance;
 }
 html body #home-view #hero-actions .bw-hero-h1 em { font-style: italic; font-weight: 400; }
+html body #home-view #hero-actions :is(.bw-hero-h1, .lede, .bw-hero-meta, .ks-kicker) { text-shadow: 0 1px 2px rgba(2, 7, 10, .45), 0 0 24px rgba(2, 7, 10, .35); }
 html body #home-view #hero-actions .lede {
   max-width: 34em;
   margin: 0 0 28px !important;
@@ -121,8 +122,8 @@ html body #home-view #hero-actions .bw-hero-carousel::after {
   z-index: 1;
   pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(2, 7, 10, .9) 0%, rgba(2, 7, 10, .66) 38%, rgba(2, 7, 10, .18) 72%, rgba(2, 7, 10, .1) 100%),
-    linear-gradient(0deg, rgba(2, 7, 10, .7) 0%, transparent 38%);
+    radial-gradient(ellipse 62% 78% at 20% 64%, rgba(2, 7, 10, .66) 0%, rgba(2, 7, 10, .46) 45%, rgba(2, 7, 10, .12) 78%, transparent 100%),
+    linear-gradient(0deg, rgba(2, 7, 10, .32) 0%, transparent 22%);
 }
 html body #home-view #hero-actions .bw-hero-carousel .nav {
   z-index: 2;
@@ -401,7 +402,7 @@ html body #home-view .bw-faq-item .faq-body { padding-left: 0 !important; color:
 @media (max-width: 700px) {
   html body #home-view #hero-actions { min-height: 86vh; padding: 104px 16px 112px !important; }
   html body #home-view #hero-actions .bw-hero-carousel::after {
-    background: linear-gradient(0deg, rgba(2, 7, 10, .94) 0%, rgba(2, 7, 10, .72) 55%, rgba(2, 7, 10, .35) 100%);
+    background: linear-gradient(0deg, rgba(2, 7, 10, .84) 0%, rgba(2, 7, 10, .6) 55%, rgba(2, 7, 10, .16) 100%);
   }
   html body #home-view #hero-actions .bw-hero-footer { left: 16px; right: auto; bottom: 30px; }
   html body #home-view #hero-actions .bw-hero-carousel .nav.prev { right: 64px; }
