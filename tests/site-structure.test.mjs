@@ -255,3 +255,12 @@ test('Holland results explain all three groups of the code and how they combine'
   for (const letter of hex) assert.match(script, new RegExp(`${letter}: \\{ short: '`));
   assert.match(read('holland.html'), /id="rCombo"/);
 });
+
+test('every user page loads the shared glowing page opening', () => {
+  const pages = ['careers-holland.html', 'page2.html', 'score-calculator.html', 'holland.html', 'profile.html', 'calendar.html', 'resources.html', 'scholarship-roadmap.html', 'waybi.html', 'login.html', 'news.html', 'majors.html', 'essay-review.html', 'interview-prep.html', 'index.html'];
+  for (const file of pages) assert.match(read(file), /\/assets\/css\/glow-page\.css\?v=[\w-]+/, file);
+  const css = read('assets/css/glow-page.css');
+  assert.match(css, /#02070a/); assert.match(css, /rgba\(9, 49, 141/); assert.match(css, /rgba\(252, 115, 77/);
+  assert.doesNotMatch(css, /animation:[^;]*infinite/);
+  assert.match(read('assets/js/flow.js'), /function initGlowBand\(\)/);
+});

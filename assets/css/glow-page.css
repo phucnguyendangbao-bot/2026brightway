@@ -1,0 +1,93 @@
+/* BrightWay page openings: every page starts in the same glowing dark band as the homepage.
+   Ink #02070A sky, deep-blue #09318D light from above, coral #FC734D light from below, fine vertical beams.
+   Light cards inside a band (.glow-surface) keep their dark text. Painted once; nothing loops. */
+html body .glow-band {
+  position: relative;
+  isolation: isolate;
+  color: #f7f5f1 !important;
+  background:
+    radial-gradient(ellipse 78% 90% at 50% 46%, transparent 45%, #02070a 92%),
+    repeating-linear-gradient(90deg, rgba(247, 245, 241, .06) 0 1px, transparent 1px 7px),
+    radial-gradient(ellipse 70% 70% at 50% -10%, rgba(9, 49, 141, .95) 0%, rgba(9, 49, 141, .3) 55%, transparent 80%),
+    radial-gradient(ellipse 40% 60% at 50% 115%, rgba(252, 115, 77, .85) 0%, rgba(252, 115, 77, .3) 45%, transparent 75%),
+    radial-gradient(ellipse 80% 60% at 50% 70%, rgba(9, 49, 141, .55) 0%, transparent 70%),
+    #02070a !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+/* Narrow bands still paint edge to edge. */
+html body .glow-band.glow-band-bleed { box-shadow: 0 0 0 100vmax #02070a !important; clip-path: inset(0 -100vmax); }
+html body .glow-band { padding-bottom: max(64px, var(--glow-pad-bottom, 0px)) !important; }
+html body .glow-band::before, html body .glow-band::after { opacity: .25; }
+
+html body .glow-band :is(h1, h2, h3, h4, strong, b, label, legend, dt, em):not(.glow-surface, .glow-surface *) {
+  color: #f7f5f1 !important;
+  -webkit-text-fill-color: #f7f5f1 !important;
+  background-image: none !important;
+  text-shadow: none !important;
+}
+html body .glow-band :is(h1, h2):not(.glow-surface *) { font-family: var(--bw-serif, 'Newsreader', Georgia, serif) !important; font-weight: 500 !important; letter-spacing: -.015em; }
+html body .glow-band h1:not(.glow-surface *) :is(span, em, i) { font-style: italic; font-weight: 400; }
+html body .glow-band :is(p, li, span, small, dd, figcaption, td, th):not(.glow-surface, .glow-surface *) {
+  color: rgba(247, 245, 241, .82) !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+html body .glow-band a:not(.glow-surface, .glow-surface *) { color: #f7f5f1 !important; }
+html body .glow-band :is([class*="eyebrow"], [class*="kicker"], [class*="badge"], [class*="label"]):not(.glow-surface, .glow-surface *) {
+  color: #fe9677 !important;
+  -webkit-text-fill-color: #fe9677 !important;
+  background: transparent !important;
+  border-color: rgba(252, 115, 77, .45) !important;
+}
+html body .glow-band .glow-surface { color: #02070a; }
+html body .glow-band .auth-card.glow-surface { background: #fff !important; border-color: rgba(247, 245, 241, .4) !important; box-shadow: 0 0 0 1px rgba(247, 245, 241, .18), 0 30px 80px -20px rgba(252, 115, 77, .35) !important; }
+
+/* Primary actions inside a band take the coral light. */
+html body .glow-band :is(.flow-primary, .bw-btn-primary, .quiz-btn-primary, .calc-btn-primary, .btn-primary, .w-cta, .hero-cta):not(.glow-surface *) {
+  background: #fc734d !important;
+  color: #02070a !important;
+  -webkit-text-fill-color: #02070a !important;
+  border-color: #fc734d !important;
+  box-shadow: 0 0 0 6px rgba(252, 115, 77, .12), 0 0 36px rgba(252, 115, 77, .45) !important;
+}
+
+/* The progress bar of a journey step sits inside the band as a pane of glass. */
+html body .glow-band > .flow-stepbar {
+  grid-column: 1 / -1;
+  flex: 1 0 100%;
+  width: min(1280px, 100%);
+  box-sizing: border-box;
+  margin: 0 auto 28px;
+  background: rgba(247, 245, 241, .1) !important;
+  border-color: rgba(247, 245, 241, .22) !important;
+  color: #f7f5f1 !important;
+}
+html body .glow-band > .flow-stepbar :is(span, a) { color: #f7f5f1 !important; -webkit-text-fill-color: #f7f5f1 !important; }
+html body .glow-band > .flow-stepbar progress { accent-color: #fc734d; }
+
+/* See-through navigation while it sits on the dark opening */
+@media (min-width: 1301px) {
+  html body.bw-nav-glass .flow-nav { background: rgba(2, 7, 10, .22) !important; border-bottom-color: rgba(247, 245, 241, .1) !important; box-shadow: none !important; }
+  html body.bw-nav-glass .flow-links > a,
+  html body.bw-nav-glass .flow-more-button,
+  html body.bw-nav-glass .nav-user-name,
+  html body.bw-nav-glass .nav-user-chevron { color: rgba(247, 245, 241, .88) !important; }
+  html body.bw-nav-glass .flow-links > a:hover,
+  html body.bw-nav-glass .flow-links > a.active,
+  html body.bw-nav-glass .flow-more-button:hover,
+  html body.bw-nav-glass .flow-more-button.active,
+  html body.bw-nav-glass .flow-more.open .flow-more-button { color: #fff !important; background: rgba(247, 245, 241, .12) !important; }
+  html body.bw-nav-glass :is(.flow-waybi-link, .senior-toggle, .nav-user-trigger) { color: #fff !important; background: rgba(247, 245, 241, .08) !important; border-color: rgba(247, 245, 241, .3) !important; box-shadow: none !important; }
+  html body.bw-nav-glass .btn-nav-login { background: #f7f5f1 !important; color: #02070a !important; box-shadow: none !important; }
+}
+html body.bw-nav-glass .flow-nav { transition: background-color var(--motion-md, 320ms) ease; }
+html body.bw-nav-glass .flow-logo,
+html body.bw-nav-glass .flow-logo span { background: none !important; color: #fff !important; -webkit-text-fill-color: #fff !important; }
+html body.bw-nav-glass .flow-nav { background: rgba(2, 7, 10, .22) !important; border-bottom-color: rgba(247, 245, 241, .1) !important; box-shadow: none !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+html body.bw-nav-glass .flow-menu { color: #fff !important; background: rgba(247, 245, 241, .08) !important; border-color: rgba(247, 245, 241, .3) !important; }
+
+html body.bw-nav-glass .flow-nav { transition: background-color var(--motion-md, 320ms) ease; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+html body.bw-nav-glass .flow-logo,
+html body.bw-nav-glass .flow-logo span { background: none !important; color: #fff !important; -webkit-text-fill-color: #fff !important; }
+html body.bw-nav-glass .flow-nav { background: rgba(2, 7, 10, .22) !important; border-bottom-color: rgba(247, 245, 241, .1) !important; box-shadow: none !important; }
+html body.bw-nav-glass .flow-menu { color: #fff !important; background: rgba(247, 245, 241, .08) !important; border-color: rgba(247, 245, 241, .3) !important; }

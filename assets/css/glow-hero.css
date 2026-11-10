@@ -171,25 +171,6 @@ a.glow-card-foot:hover { color: #fff; text-decoration: underline; text-underline
 .glow-card-right { animation: glow-rise-tilt-r 640ms var(--motion-ease, ease) 380ms both; }
 .glow-cta { animation: glow-rise 480ms var(--motion-ease, ease) 180ms both; }
 
-/* See-through navigation while it sits on the dark opening */
-@media (min-width: 1301px) {
-  html body.bw-nav-glass .flow-nav { background: rgba(2, 7, 10, .22) !important; border-bottom-color: rgba(247, 245, 241, .1) !important; box-shadow: none !important; }
-  html body.bw-nav-glass .flow-links > a,
-  html body.bw-nav-glass .flow-more-button,
-  html body.bw-nav-glass .nav-user-name,
-  html body.bw-nav-glass .nav-user-chevron { color: rgba(247, 245, 241, .88) !important; }
-  html body.bw-nav-glass .flow-links > a:hover,
-  html body.bw-nav-glass .flow-links > a.active,
-  html body.bw-nav-glass .flow-more-button:hover { color: #fff !important; background: rgba(247, 245, 241, .12) !important; }
-  html body.bw-nav-glass :is(.flow-waybi-link, .senior-toggle, .nav-user-trigger) { color: #fff !important; background: rgba(247, 245, 241, .08) !important; border-color: rgba(247, 245, 241, .3) !important; box-shadow: none !important; }
-  html body.bw-nav-glass .btn-nav-login { background: #f7f5f1 !important; color: #02070a !important; box-shadow: none !important; }
-}
-html body.bw-nav-glass .flow-nav { transition: background-color var(--motion-md, 320ms) ease; }
-html body.bw-nav-glass .flow-logo,
-html body.bw-nav-glass .flow-logo span { background: none !important; color: #fff !important; -webkit-text-fill-color: #fff !important; }
-html body.bw-nav-glass .flow-nav { background: rgba(2, 7, 10, .22) !important; border-bottom-color: rgba(247, 245, 241, .1) !important; box-shadow: none !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
-html body.bw-nav-glass .flow-menu { color: #fff !important; background: rgba(247, 245, 241, .08) !important; border-color: rgba(247, 245, 241, .3) !important; }
-
 @media (max-width: 1000px) {
   .glow-inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "text text" "cta cta" "left right" "cards cards"; row-gap: 32px; }
   .glow-cta { margin-top: 8px; }

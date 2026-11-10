@@ -288,6 +288,40 @@
       document.querySelector('.flow-nav')?.after(bar);
       bar.querySelector('[data-skip-holland]')?.addEventListener('click', () => save({ skipHolland: true }));
     }
+    initGlowBand();
+  }
+
+  // Every page opens in the same glowing dark band as the homepage (styles in glow-page.css).
+  const GLOW_BANDS = ['.glow-band', 'section.bw-hero', 'header.p2-intro', 'section.calc-hero', 'header.journey-welcome', 'header.cal-hero', 'header.res-hero', 'header.rm-hero', 'section.w-hero', 'section.hero', 'div.hero', 'div.iv-page-hero', 'section.auth-page'];
+  function initGlowBand() {
+    if (page === 'index.html' || page.startsWith('admin')) return;
+    const band = GLOW_BANDS.map(sel => document.querySelector(sel)).find(Boolean);
+    if (!band) return;
+    band.classList.add('glow-band');
+    // Light cards inside the band keep dark text.
+    const lightness = color => { const m = color.match(/[\d.]+/g); if (!m) return [0, 0]; const [r, g, b, a = 1] = m.map(Number); return [(0.2126 * r + 0.7152 * g + 0.0722 * b) / 255, a]; };
+    band.querySelectorAll('.auth-card, [data-glow-surface]').forEach(el => el.classList.add('glow-surface'));
+    for (const el of band.querySelectorAll('*')) {
+      if (el.closest('.glow-surface')) continue;
+      const [l, a] = lightness(getComputedStyle(el).backgroundColor);
+      if (a > 0.45 && l > 0.78) el.classList.add('glow-surface');
+    }
+    const nav = document.querySelector('.flow-nav');
+    if (!nav) return;
+    const navBox = nav.getBoundingClientRect(), bandBox = band.getBoundingClientRect();
+    if (bandBox.width < innerWidth - 4) band.classList.add('glow-band-bleed');
+    const stepbar = document.querySelector('.flow-stepbar');
+    // A band that opens the page slides under the see-through navigation.
+    if (bandBox.top + scrollY - (navBox.bottom + scrollY) < 140) {
+      if (stepbar && stepbar.compareDocumentPosition(band) & Node.DOCUMENT_POSITION_FOLLOWING) band.prepend(stepbar);
+      const pad = parseFloat(getComputedStyle(band).paddingTop) || 0;
+      const gap = Math.max(0, bandBox.top - navBox.bottom);
+      band.style.marginTop = `-${Math.round(navBox.height + gap)}px`;
+      band.style.paddingTop = `${Math.round(pad + navBox.height + Math.max(gap, 24))}px`;
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(([e]) => document.body.classList.toggle('bw-nav-glass', e.isIntersecting), { rootMargin: `-${Math.round(navBox.height)}px 0px 0px 0px` }).observe(band);
+      }
+    }
   }
 
   function renderLocalProfile(host) {
