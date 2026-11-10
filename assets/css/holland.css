@@ -735,3 +735,12 @@ body {
   .result-combo-body > div { justify-self: stretch; }
   .result-type { font-size: 20px; }
 }
+
+/* Holland line icons (holland-icons.js) in place of emoji */
+.bw-hicon { display: inline-block; flex: none; width: 1em; height: 1em; vertical-align: -0.15em; }
+.result-emoji { display: flex; justify-content: center; gap: 14px; font-size: 48px; }
+.type-card .emoji { font-size: 34px; }
+.q-type-badge { display: inline-flex; align-items: center; gap: 5px; }
+.q-type-badge .bw-hicon { font-size: 13px; }
+.bar-lbl .bw-hicon { font-size: 15px; }
+.result-group-icon .bw-hicon { font-size: 1.05em; }

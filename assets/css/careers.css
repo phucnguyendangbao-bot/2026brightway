@@ -738,3 +738,14 @@ body {
   .holland-filter-chips { gap: 4px; }
   .holland-chip { padding: 6px 10px; font-size: 11px; }
 }
+
+/* Holland line icons (holland-icons.js) in place of emoji */
+.bw-hicon { display: inline-block; flex: none; width: 1em; height: 1em; vertical-align: -0.15em; }
+.holland-chip .emoji { display: inline-grid; place-items: center; font-size: 18px; color: var(--c); }
+.holland-chip:hover .emoji, .holland-chip.active .emoji { color: currentColor; }
+.badge-h { font-size: 11px; }
+.job-holland-tag .bw-hicon { font-size: 14px; }
+.job-holland-tag.sm { gap: 4px; padding: 3px 8px 3px 6px; font-size: 11px; line-height: 1; }
+.job-holland-tag.sm .bw-hicon { font-size: 13px; }
+.job-holland-tag.sm b { font-weight: 800; letter-spacing: .02em; }
+.holland-wrap .type-card .emoji { font-size: 30px; }

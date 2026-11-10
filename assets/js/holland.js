@@ -26,6 +26,7 @@
       desc: 'Bạn thích công việc có trật tự, quy trình, dữ liệu hoặc con số. Đây là gợi ý sở thích, không khẳng định phẩm chất hay năng lực.',
       majors: ['Kế toán – Kiểm toán', 'Hệ thống thông tin', 'Thống kê', 'Tài chính', 'Hành chính văn phòng', 'Logistics', 'Ngân hàng'] }
   };
+  const hIcon = k => (window.BWHollandIcon && window.BWHollandIcon(k)) || TYPES[k].emoji;
 
   // ─── 42 câu hỏi ───
   const QUESTIONS = [
@@ -113,13 +114,13 @@
   function explainCode(code, { partial = '' } = {}) {
     const [a, b, c] = code.split('');
     const T = TYPES;
-    $('rEmoji').textContent = code.split('').map(l => T[l].emoji).join(' ');
+    $('rEmoji').innerHTML = code.split('').map(l => `<span style="color:${T[l].color}">${hIcon(l)}</span>`).join('');
     $('rType').textContent = code.split('').map(l => T[l].name.split(' (')[0]).join(' · ');
     $('rCode').textContent = code.split('').join(' – ');
     $('rDesc').textContent = `${partial}Mã ${code} cho thấy điều bạn hứng thú nhất là ${T[a].short}; tiếp theo là ${T[b].short}; và thêm một phần là ${T[c].short}.`;
 
     const rankLabel = ['Nổi bật nhất', 'Thứ hai', 'Thứ ba'];
-    const groups = code.split('').map((l, i) => `<li class="result-group" style="--group:${T[l].color}"><span class="result-group-rank">${rankLabel[i]}</span><strong><span aria-hidden="true">${T[l].emoji}</span> ${l} · ${escapeText(T[l].name)}</strong><p>${escapeText(T[l].desc)}</p></li>`).join('');
+    const groups = code.split('').map((l, i) => `<li class="result-group" style="--group:${T[l].color}"><span class="result-group-rank">${rankLabel[i]}</span><strong><span aria-hidden="true" class="result-group-icon">${hIcon(l)}</span> ${l} · ${escapeText(T[l].name)}</strong><p>${escapeText(T[l].desc)}</p></li>`).join('');
 
     const main = pairOf(a, b), withC = pairOf(a, c), d = hexDistance(a, b);
     const near = { 1: `${a} và ${b} nằm cạnh nhau trên lục giác Holland, nên hai sở thích này thường đi cùng nhau và dễ tìm ngành, nghề đáp ứng cả hai.`,
@@ -289,7 +290,7 @@
     if (!grid) return;
     grid.innerHTML = Object.entries(TYPES).map(([k, t]) => `
       <div class="type-card" style="border-top: 4px solid ${t.color};">
-        <span class="emoji">${t.emoji}</span>
+        <span class="emoji" style="color:${t.color}">${hIcon(k)}</span>
         <div class="code">${k}</div>
         <h3>${t.name}</h3>
         <p>${t.desc}</p>
@@ -324,7 +325,7 @@
       const card = document.createElement('div');
       card.className = 'q-card';
       card.innerHTML = `
-        <div class="q-num">CÂU ${i + 1} <span class="q-type-badge" style="background:${TYPES[q.t].color}22;border-color:${TYPES[q.t].color};color:${TYPES[q.t].color}">${TYPES[q.t].emoji} ${TYPES[q.t].name.split(' ')[0]}</span></div>
+        <div class="q-num">CÂU ${i + 1} <span class="q-type-badge" style="background:${TYPES[q.t].color}22;border-color:${TYPES[q.t].color};color:${TYPES[q.t].color}">${hIcon(q.t)} ${TYPES[q.t].name.split(' ')[0]}</span></div>
         <div class="q-text">${q.q}</div>
         <div class="q-scale">
           <span class="q-scale-lbl">Không đúng</span>
@@ -452,7 +453,7 @@
       const max = counts[k] * 5;
       return `
         <div class="bar-row">
-          <div class="bar-lbl">${TYPES[k].emoji} ${TYPES[k].name.split(' ')[0]}</div>
+          <div class="bar-lbl"><span style="color:${TYPES[k].color}">${hIcon(k)}</span> ${TYPES[k].name.split(' ')[0]}</div>
           <div class="bar-track"><div class="bar-fill" style="background:${barColors[k]}" data-pct="${Math.round(v / max * 100)}"></div></div>
           <div class="bar-val">${v}/${max}</div>
         </div>

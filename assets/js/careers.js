@@ -18,6 +18,8 @@
     E: { label: 'Lãnh đạo', emoji: '🚀', color: '#f97316', desc: 'Kinh doanh, thuyết phục, dẫn dắt.' },
     C: { label: 'Nghiệp vụ', emoji: '📊', color: '#0a3496', desc: 'Trật tự, chi tiết, dữ liệu.' }
   };
+  // Line icons from holland-icons.js; the emoji stays only as a fallback if that file did not load.
+  const hIcon = k => (window.BWHollandIcon && window.BWHollandIcon(k)) || HOLLAND_META[k].emoji;
 
   const state = {
     jobs: [],
@@ -82,7 +84,7 @@
               data-code="${k}"
               aria-pressed="${active ? 'true' : 'false'}"
               style="--c:${m.color}">
-        <span class="emoji">${m.emoji}</span>
+        <span class="emoji">${hIcon(k)}</span>
         <span class="label">${m.label}</span>
         ${rank ? `<span class="rank" aria-label="Ưu tiên ${rank}">${rank}</span>` : ''}
       </button>
@@ -93,7 +95,7 @@
         state.activeHolland = btn.dataset.code;
         state.importedCode = '';
         persistFilters();
-        $('hollandFilterLabel').textContent = '🧭 Lọc theo nhóm Holland:';
+        $('hollandFilterLabel').textContent = 'Lọc theo nhóm Holland:';
         // re-render
         renderHollandFilter();
         // re-render result based on current state
@@ -139,7 +141,7 @@
     box.innerHTML = suggestions.map((j, index) => {
       const hollandBadge = (j.holland || []).map(c => {
         const m = HOLLAND_META[c];
-        return `<span class="badge-h" aria-hidden="true" style="background:${m.color}22;border-color:${m.color};color:${m.color}">${m.emoji}</span>`;
+        return `<span class="badge-h" aria-hidden="true" style="background:${m.color}22;border-color:${m.color};color:${m.color}">${hIcon(c)}</span>`;
       }).join('');
       return `
         <button class="career-sugg-item" type="button" role="option" aria-selected="false" id="careerSuggestion${index}" data-name="${escapeHtml(j.name)}">
@@ -168,7 +170,7 @@
     const r = $('careerResult');
     const hollandTags = (j.holland || []).map(c => {
       const m = HOLLAND_META[c];
-      return `<span class="job-holland-tag" style="background:${m.color}1a;border:1.5px solid ${m.color};color:${m.color}">${m.emoji} ${m.label}</span>`;
+      return `<span class="job-holland-tag" style="background:${m.color}1a;border:1.5px solid ${m.color};color:${m.color}">${hIcon(c)} ${m.label}</span>`;
     }).join('');
 
     r.innerHTML = `
@@ -261,7 +263,7 @@
         ${list.slice(0, 20).map(j => {
           const hollandTags = (j.holland || []).map(c => {
             const m = HOLLAND_META[c];
-            return `<span class="job-holland-tag sm" style="background:${m.color}1a;border:1px solid ${m.color};color:${m.color}">${m.emoji}</span>`;
+            return `<span class="job-holland-tag sm" title="${m.label}" style="background:${m.color}1a;border:1px solid ${m.color};color:${m.color}">${hIcon(c)}<b>${c}</b></span>`;
           }).join('');
           return `
             <button class="career-list-item" type="button" data-name="${escapeHtml(j.name)}">
