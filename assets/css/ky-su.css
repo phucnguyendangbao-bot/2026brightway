@@ -225,7 +225,7 @@ html body #home-view .ks-toc .home-journey-card::before,
 html body #home-view .ks-toc .home-journey-card::after { display: none; }
 html body #home-view .ks-toc .home-journey-card:hover { transform: none; }
 html body #home-view .ks-toc .home-journey-card:hover strong { color: var(--ks-deep); }
-.ks-toc-num { grid-row: 1 / span 3; color: #c8461f; font: 500 clamp(2.4rem, 2rem + 1.4vw, 3.25rem)/.95 var(--ks-serif); font-variant-numeric: lining-nums; }
+html body #home-view .ks-toc .home-journey-card > .ks-toc-num { grid-row: 1 / span 3; min-width: 1.4em; color: #c8461f !important; font: 500 clamp(2.4rem, 2rem + 1.4vw, 3.25rem)/.95 var(--ks-serif) !important; font-variant-numeric: lining-nums; }
 html body #home-view .ks-toc .home-journey-card strong { color: var(--ks-ink); font: 600 18px/1.3 var(--ks-sans); }
 html body #home-view .ks-toc .home-journey-card > span:not(.ks-toc-num) { display: block !important; color: var(--ks-muted); font-size: 15px; line-height: 1.5; }
 html body #home-view .ks-toc .home-journey-card small { color: #5b6672; font-size: 13px; }
