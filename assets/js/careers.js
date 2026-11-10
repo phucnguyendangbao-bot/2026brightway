@@ -166,6 +166,15 @@
     });
   }
 
+  // Line icons for the detail sections (same drawing style as the Holland set).
+  const detailIcon = body => `<svg class="career-label-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${body}</svg>`;
+  const DETAIL_ICON = {
+    work: detailIcon('<rect x="3.5" y="7.5" width="17" height="12" rx="2.2"/><path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5M3.5 12.5h17"/>'),
+    skills: detailIcon('<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.6" fill="currentColor"/>'),
+    study: detailIcon('<path d="M12 4.5 21.5 9 12 13.5 2.5 9z"/><path d="M6.5 11v4.6c3.2 2.4 7.8 2.4 11 0V11"/><path d="M21.5 9v5"/>'),
+    market: detailIcon('<path d="M4 4v16h16"/><path d="m7.5 15 3.8-4 3 3 5-6"/>'),
+  };
+
   function renderJob(j) {
     const r = $('careerResult');
     const hollandTags = (j.holland || []).map(c => {
@@ -177,7 +186,7 @@
       <div class="career-result">
         <div class="career-result-hd">
           <div class="career-result-top">
-          <div class="career-code">Mã trong dữ liệu: ${escapeHtml(j.code)} · ${escapeHtml(j.group)} (chưa đối chiếu chuẩn mã nghề)</div>
+          <div class="career-code" title="Mã nội bộ của BrightWay, chưa đối chiếu chuẩn mã nghề">Mã ${escapeHtml(j.code)} · ${escapeHtml(j.group)}</div>
             <button class="btn-fav" id="favBtn" data-name="${escapeHtml(j.name)}" title="Lưu nghề yêu thích" aria-pressed="false">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
@@ -189,28 +198,26 @@
           <div class="career-en">${escapeHtml(j.en)}</div>
           ${hollandTags ? `<div class="career-holland-row">${hollandTags}</div>` : ''}
         </div>
-        <div class="career-section">
-          <div class="career-label">📝 Mô tả nghề</div>
-          <div class="career-body">${escapeHtml(j.desc)}</div>
-        </div>
-        <div class="career-section">
-          <div class="career-label">🎯 Kỹ năng yêu cầu</div>
-          <div class="career-body">
-            <ul>${(j.skills || []).map(s => `<li>${escapeHtml(s)}</li>`).join('')}</ul>
-          </div>
-        </div>
-        <div class="career-section">
-          <div class="career-label">🎓 Học vấn & Con đường học tập</div>
-          <div class="career-body">${escapeHtml(j.edu)}</div>
-          <p class="career-education-note">Lộ trình định hướng, không phải danh sách đầy đủ điều kiện tuyển dụng hoặc cấp phép. Hãy kiểm tra chương trình và quy định tại thời điểm đăng ký.</p>
-          ${/^https:\/\//.test(j.eduSource || '') ? `<p class="career-education-source"><a href="${escapeHtml(j.eduSource)}" target="_blank" rel="noopener noreferrer">Nguồn yêu cầu hành nghề ↗</a> · Đối chiếu ${escapeHtml(j.eduReviewedAt)}</p>` : ''}
-        </div>
-        <div class="career-info-grid career-market-grid">
-          <div class="career-info-item career-market-empty" role="note">
-            <div class="lbl">📊 Dữ liệu thị trường lao động</div>
-            <div class="val career-salary">Chưa có dữ liệu đã đối chiếu</div>
-            <p>BrightWay chưa hiển thị mức lương hoặc nhận định triển vọng cho nghề này vì dữ liệu chưa có đủ nguồn, năm khảo sát, đơn vị tiền và mức kinh nghiệm. Hãy đối chiếu thêm báo cáo tuyển dụng hiện hành trước khi quyết định.</p>
-          </div>
+        <div class="career-detail-grid">
+          <section class="career-block">
+            <h3 class="career-label">${DETAIL_ICON.work}Công việc</h3>
+            <p class="career-body">${escapeHtml(j.desc)}</p>
+          </section>
+          <section class="career-block">
+            <h3 class="career-label">${DETAIL_ICON.skills}Kỹ năng cần có</h3>
+            <ul class="career-skills">${(j.skills || []).map(s => `<li>${escapeHtml(s)}</li>`).join('')}</ul>
+          </section>
+          <section class="career-block">
+            <h3 class="career-label">${DETAIL_ICON.study}Con đường học tập</h3>
+            <p class="career-body">${escapeHtml(j.edu)}</p>
+            <p class="career-note">Lộ trình định hướng, chưa phải đủ điều kiện tuyển dụng hay cấp phép. Kiểm tra quy định khi đăng ký.</p>
+            ${/^https:\/\//.test(j.eduSource || '') ? `<p class="career-note"><a href="${escapeHtml(j.eduSource)}" target="_blank" rel="noopener noreferrer">Nguồn yêu cầu hành nghề ↗</a> · Đối chiếu ${escapeHtml(j.eduReviewedAt)}</p>` : ''}
+          </section>
+          <section class="career-block career-market-empty" role="note">
+            <h3 class="career-label">${DETAIL_ICON.market}Thị trường lao động</h3>
+            <p class="career-status">Chưa có dữ liệu đã đối chiếu</p>
+            <p class="career-note">BrightWay chỉ hiện lương và triển vọng khi đủ nguồn, năm khảo sát, đơn vị tiền và mức kinh nghiệm. Hãy xem thêm báo cáo tuyển dụng hiện hành.</p>
+          </section>
         </div>
       </div>
     `;

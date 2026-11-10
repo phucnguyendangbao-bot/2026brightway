@@ -749,3 +749,49 @@ body {
 .job-holland-tag.sm .bw-hicon { font-size: 13px; }
 .job-holland-tag.sm b { font-weight: 800; letter-spacing: .02em; }
 .holland-wrap .type-card .emoji { font-size: 30px; }
+
+/* ---------- Career detail: four equal cards, one type scale ---------- */
+.career-detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.career-block {
+  display: flex; flex-direction: column; gap: 10px;
+  padding: 20px 22px; border-radius: 16px;
+  background: rgba(255, 255, 255, .62); border: 1px solid rgba(9, 49, 141, .08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9);
+}
+.career-detail-grid .career-label {
+  margin: 0; font: 700 15px/1.3 var(--font, 'Be Vietnam Pro', system-ui, sans-serif);
+  color: #02070a; display: flex; align-items: center; gap: 10px;
+}
+.career-detail-grid .career-label::before { display: none; }
+.career-label-icon {
+  flex: none; width: 34px; height: 34px; padding: 7px; border-radius: 10px;
+  color: #09318d; background: rgba(9, 49, 141, .08);
+}
+.career-market-empty .career-label-icon { color: #c8461f; background: rgba(252, 115, 77, .12); }
+.career-detail-grid .career-body { margin: 0; font-size: 15px; line-height: 1.65; color: #2b3640; }
+.career-skills { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.career-skills li { position: relative; padding-left: 26px; font-size: 15px; line-height: 1.5; color: #2b3640; }
+.career-skills li::before {
+  content: ""; position: absolute; left: 0; top: .2em; width: 17px; height: 17px; border-radius: 50%;
+  background: rgba(9, 49, 141, .1) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2309318d' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12.5 4 4 8-9'/%3E%3C/svg%3E") center / 11px no-repeat;
+}
+.career-note { margin: 0; font-size: 13px; line-height: 1.55; color: #5b6672; }
+.career-note a { color: #09318d; font-weight: 600; }
+.career-status {
+  margin: 0; align-self: flex-start; padding: 5px 12px; border-radius: 999px;
+  font-size: 13px; font-weight: 700; color: #b5401f; background: rgba(252, 115, 77, .12);
+}
+@media (max-width: 760px) {
+  .career-detail-grid { grid-template-columns: 1fr; gap: 12px; }
+  .career-block { padding: 16px; }
+}
+:root[data-theme="dark"] .career-block { background: rgba(255, 255, 255, .05); border-color: rgba(255, 255, 255, .1); }
+:root[data-theme="dark"] .career-detail-grid .career-label { color: #f7f5f1; }
+:root[data-theme="dark"] .career-detail-grid .career-body, :root[data-theme="dark"] .career-skills li { color: #d6dbe2; }
+:root[data-theme="dark"] .career-note { color: #a9b2bd; }
+.career-detail-grid .career-label { font-family: 'Be Vietnam Pro', system-ui, sans-serif !important; letter-spacing: 0; }
+@media (max-width: 760px) {
+  .career-explorer .career-result, .career-result { padding: 16px 14px; }
+  .career-block { padding: 14px 14px 16px; border-radius: 14px; }
+  .career-label-icon { width: 30px; height: 30px; padding: 6px; }
+}
