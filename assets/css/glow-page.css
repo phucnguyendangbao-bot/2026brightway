@@ -103,7 +103,7 @@ html body .glow-band > .profile-view-tabs a.active { color: #02070a !important; 
 html body:has(.glow-band) {
   background:
     radial-gradient(70% 420px at 50% var(--glow-spill-y, 520px), rgba(252, 115, 77, .20), transparent 72%),
-    radial-gradient(45% 520px at 8% var(--glow-spill-y, 520px), rgba(64, 120, 255, .16), transparent 70%),
+    radial-gradient(45% 520px at 8% var(--glow-spill-y, 520px), rgba(64, 120, 255, .09), transparent 70%),
     radial-gradient(45% 520px at 92% var(--glow-spill-y, 520px), rgba(255, 150, 110, .16), transparent 70%),
     #f7f5f1 !important;
   background-repeat: no-repeat !important;
