@@ -289,9 +289,77 @@
       bar.querySelector('[data-skip-holland]')?.addEventListener('click', () => save({ skipHolland: true }));
     }
     initGlowBand();
+    initAurora();
   }
 
   // Every page opens in the same glowing dark band as the homepage (styles in glow-page.css).
+  // Scroll colour: three painted skies behind the page cross-fade as the reader moves down
+  // (dawn blue and coral, sunset peach, dusk periwinkle). Only opacity changes, so nothing repaints.
+  function initAurora() {
+    if (page.startsWith('admin') || document.querySelector('.bw-aurora')) return;
+    const sky = document.createElement('div');
+    sky.className = 'bw-aurora';
+    sky.setAttribute('aria-hidden', 'true');
+    sky.innerHTML = '<i class="bw-sky-dawn"></i><i class="bw-sky-sunset"></i><i class="bw-sky-dusk"></i>';
+    document.body.prepend(sky);
+    document.body.classList.add('bw-aurora-on');
+    if (!(window.CSS && CSS.supports && CSS.supports('animation-timeline: scroll()'))) {
+      const [dawn, sunset, dusk] = sky.children;
+      let queued = false;
+      const paint = () => {
+        queued = false;
+        const p = Math.min(1, scrollY / Math.max(1, document.documentElement.scrollHeight - innerHeight));
+        dawn.style.opacity = Math.max(0, 1 - p / 0.45);
+        sunset.style.opacity = Math.max(0, 1 - Math.abs(p - 0.45) / 0.42);
+        dusk.style.opacity = Math.max(0, (p - 0.4) / 0.6);
+      };
+      addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(paint); } }, { passive: true });
+      addEventListener('resize', paint);
+      paint();
+    }
+    // Opaque white panels become glass over the sky; full-width paper sections let the sky through.
+    const SKIP = 'input, select, textarea, option, img, svg, video, canvas, iframe, table *, dialog, dialog *, [role="dialog"], [role="dialog"] *, .flow-nav, .flow-nav *, .glow-band, .glow-band *, .glow-hero, .glow-hero *, .is-deep, .is-deep *, .bw-aurora, .ks-toc *, .waybi-widget, .waybi-widget *';
+    const tone = color => { const m = color.match(/[\d.]+/g); if (!m) return [0, 0]; const [r, g, b, a = 1] = m.map(Number); return [(0.2126 * r + 0.7152 * g + 0.0722 * b) / 255, a]; };
+    const scan = scope => {
+      const els = scope.nodeType === 1 ? [scope, ...scope.querySelectorAll('*')] : [];
+      for (const el of els) {
+        if (el.classList.contains('bw-glass') || el.classList.contains('bw-clear') || el.matches(SKIP)) continue;
+        const s = getComputedStyle(el);
+        if (s.position === 'fixed') continue;
+        // A pale wash painted as a gradient counts as a white panel too.
+        const img = s.backgroundImage;
+        let paleWash = false;
+        if (img !== 'none') {
+          if (/url\(|radial|conic/.test(img) || !img.startsWith('linear-gradient')) continue;
+          const stops = img.match(/rgba?\([^)]*\)|#[0-9a-f]{3,8}/gi) || [];
+          paleWash = stops.length > 0 && stops.every(c => { const [cl, ca] = tone(c); return c.startsWith('#') ? false : cl > 0.9 && ca > 0.5; });
+          if (!paleWash) continue;
+        }
+        const [l, a] = tone(s.backgroundColor);
+        if (!paleWash && (a < 0.85 || l < 0.9)) continue;
+        const w = el.offsetWidth, h = el.offsetHeight;
+        if (w >= innerWidth * 0.92 && el.tagName !== 'BODY') el.classList.add('bw-clear');
+        else if (w >= 150 && h >= 56) {
+          el.classList.add('bw-glass');
+          if (paleWash) el.classList.add('bw-glass-wash');
+          // Cards rise in one by one; big wrappers stay put so their content does not move twice.
+          if (s.animationName === 'none' && h < innerHeight * 1.1 && !el.parentElement?.closest('.bw-rise')) el.classList.add('bw-rise');
+        }
+      }
+    };
+    const host = document.body;
+    scan(host);
+    // Headings rise in as they arrive; the dark opening's contents fade and soften as they leave.
+    host.querySelectorAll('h2').forEach(h => { if (!h.closest('.glow-band, .glow-hero, .bw-glass, .ks-toc') && getComputedStyle(h).animationName === 'none') h.classList.add('bw-rise'); });
+    document.querySelectorAll('.glow-band > *, .glow-hero .glow-inner > *').forEach(el => { if (getComputedStyle(el).animationName === 'none') el.classList.add('bw-fade-out'); });
+    // Lists that render later (schools, careers, news) join in as they appear.
+    let pending = [];
+    let timer = 0;
+    new MutationObserver(records => {
+      for (const r of records) r.addedNodes.forEach(n => { if (n.nodeType === 1) pending.push(n); });
+      if (pending.length && !timer) timer = setTimeout(() => { const batch = pending; pending = []; timer = 0; batch.forEach(n => n.isConnected && scan(n)); }, 120);
+    }).observe(host, { childList: true, subtree: true });
+  }
   const GLOW_BANDS = ['.glow-band', 'section.bw-hero', 'header.p2-intro', 'section.calc-hero', 'header.journey-welcome', 'header.cal-hero', 'header.res-hero', 'header.rm-hero', 'section.w-hero', 'section.hero', 'div.hero', 'div.iv-page-hero', 'section.auth-page'];
   function initGlowBand() {
     if (page === 'index.html' || page.startsWith('admin')) return;
