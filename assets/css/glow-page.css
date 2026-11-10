@@ -99,14 +99,18 @@ html body .glow-band > .profile-view-tabs { flex: 1 0 100%; grid-column: 1 / -1;
 html body .glow-band > .profile-view-tabs a { color: rgba(247, 245, 241, .82) !important; background: transparent !important; box-shadow: none !important; }
 html body .glow-band > .profile-view-tabs a.active { color: #02070a !important; -webkit-text-fill-color: #02070a !important; background: #f7f5f1 !important; }
 
-/* Warm paper below the opening, lit by the band's own light spilling down. Painted once, scrolls with the page. */
+/* Below the opening the page wakes up the way the homepage table of contents does:
+   lavender with blue light on the left, coral on the right, peach underneath, melting into paper.
+   One painted tile placed right under the band; it scrolls with the page and never repaints. */
 html body:has(.glow-band) {
+  --spill: var(--glow-spill-y, 520px);
   background:
-    radial-gradient(70% 420px at 50% var(--glow-spill-y, 520px), rgba(252, 115, 77, .20), transparent 72%),
-    radial-gradient(45% 520px at 8% var(--glow-spill-y, 520px), rgba(64, 120, 255, .09), transparent 70%),
-    radial-gradient(45% 520px at 92% var(--glow-spill-y, 520px), rgba(255, 150, 110, .16), transparent 70%),
+    radial-gradient(42% 380px at 8% 22%, rgba(64, 120, 255, .42), transparent 72%) 0 var(--spill) / 100% 820px no-repeat,
+    radial-gradient(38% 380px at 92% 15%, rgba(252, 115, 77, .46), transparent 72%) 0 var(--spill) / 100% 820px no-repeat,
+    radial-gradient(45% 300px at 55% 60%, rgba(255, 160, 100, .36), transparent 72%) 0 var(--spill) / 100% 820px no-repeat,
+    radial-gradient(30% 260px at 28% 55%, rgba(120, 90, 255, .22), transparent 72%) 0 var(--spill) / 100% 820px no-repeat,
+    linear-gradient(180deg, #eef0ff 0%, #f6f1fb 25%, #fcf1ec 55%, #f7f5f1 88%) 0 var(--spill) / 100% 820px no-repeat,
     #f7f5f1 !important;
-  background-repeat: no-repeat !important;
 }
 /* A soft lit edge instead of a hard cut where the dark opening meets the paper. */
 html body .glow-band { border-bottom: 0 !important; }
@@ -119,3 +123,6 @@ html body .glow-band .glow-surface-solid {
 }
 /* Once the page moves, the see-through bar darkens so text underneath never collides with the links. */
 html body.bw-nav-glass.bw-nav-scrolled .flow-nav { background: rgba(2, 7, 10, .82) !important; }
+/* Page wrappers that painted their own pale wash would hide the light below the opening. */
+html body:has(.glow-band) .profile-page { background: transparent !important; }
+html body:has(.glow-band) .profile-page::before { display: none !important; }
