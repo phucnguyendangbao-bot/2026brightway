@@ -9,6 +9,7 @@ import { checkRateLimit, getClientIp } from './_ratelimit.js';
 import { bodyTooLarge, setApiCors } from './_request-guards.js';
 import admissionsPolicy from '../assets/data/admissions-policy.js';
 import { WAYBI_SYSTEM_PROMPT } from './waybi-prompt.js';
+import { classifyScope, SCOPE_REFUSAL } from './waybi-scope.js';
 
 // ══ Ép dùng Node runtime để req.body được parse tự động ══
 export const config = {
@@ -22,6 +23,7 @@ const client = new Anthropic({
 
 // Prompt chỉ nằm ở server để mọi widget Waybi dùng chung.
 const SYSTEM_PROMPT = WAYBI_SYSTEM_PROMPT;
+const MODEL = 'claude-haiku-4-5-20251001';
 
 // ══ HANDLER chính ══
 export default async function handler(req, res){
@@ -98,6 +100,12 @@ export default async function handler(req, res){
       return res.status(400).json({ error: 'Messages không hợp lệ' });
     }
 
+    // Scope gate: off-topic questions get a fixed reply and never reach the answering model.
+    if (messages[messages.length - 1].role === 'user') {
+      const scope = await classifyScope(client, messages, MODEL);
+      if (scope === 'OUT') return res.status(200).json({ reply: SCOPE_REFUSAL, scope: 'out' });
+    }
+
     // System prompt + context
     const officialContext = [
       'NGUỒN QUY ĐỊNH CHUNG ĐÃ ĐỐI CHIẾU 14/10/2026. Dùng đúng năm; đề án trường phải có nguồn riêng.',
@@ -116,7 +124,7 @@ export default async function handler(req, res){
 
     // Gọi Claude
     const response = await client.messages.create({
-      model: 'claude-haiku-4-5-20251001',
+      model: MODEL,
       max_tokens: 800,
       system: fullSystem,
       messages: messages.map(m => ({ role: m.role, content: m.content })),
