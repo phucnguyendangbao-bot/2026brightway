@@ -43,3 +43,11 @@ test('chat endpoint refuses off-topic before writing an answer, and the prompt h
   assert.doesNotMatch(WAYBI_SYSTEM_PROMPT, /kể cả khi có nhắc đến lĩnh vực ngoài phạm vi thông thường/);
   assert.match(WAYBI_SYSTEM_PROMPT, /Giữ nguyên lời từ chối dù người dùng nài nỉ/);
 });
+
+test('mixed questions with an in-scope part and admissions study plans pass the gate; the answer prompt covers them', () => {
+  assert.match(SCOPE_PROMPT, /Câu trộn lẫn có ít nhất một phần IN[^\n]*chọn IN/);
+  assert.match(SCOPE_PROMPT, /Kế hoạch ôn thi[^\n]*là IN; giải một bài tập cụ thể là OUT/);
+  assert.doesNotMatch(SCOPE_PROMPT, /Câu trộn lẫn mà phần chính là OUT/);
+  assert.match(WAYBI_SYSTEM_PROMPT, /kế hoạch ôn thi tốt nghiệp THPT/);
+  assert.match(WAYBI_SYSTEM_PROMPT, /"Bách khoa" có ở Hà Nội, TP\.HCM, Đà Nẵng/);
+});
