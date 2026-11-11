@@ -116,7 +116,7 @@ html body:has(.glow-band) .profile-page::before { display: none !important; }
 
 /* ---------- Scroll sky: the page changes colour as you read down ---------- */
 .bw-aurora { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
-.bw-aurora > i { position: absolute; inset: -6%; display: block; will-change: opacity, transform; }
+.bw-aurora > i { position: absolute; inset: 0; display: block; will-change: opacity; }
 .bw-sky-dawn {
   background:
     radial-gradient(42% 48% at 8% 22%, rgba(64, 120, 255, .40), transparent 72%),
@@ -154,14 +154,12 @@ html body:has(.glow-band) .profile-page::before { display: none !important; }
 :root:not([data-theme="dark"]) body.bw-aurora-on #home-view .story-chapter.is-deep::before { background: rgba(9, 49, 141, .9); }
 :root:not([data-theme="dark"]) body.bw-aurora-on #home-view .ks-toc::before { -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent); mask-image: linear-gradient(180deg, #000 55%, transparent); opacity: .85; }
 
-@supports (animation-timeline: scroll()) {
-  .bw-sky-dawn { animation: bw-sky-dawn linear both; animation-timeline: scroll(root); }
-  .bw-sky-sunset { animation: bw-sky-sunset linear both; animation-timeline: scroll(root); }
-  .bw-sky-dusk { animation: bw-sky-dusk linear both; animation-timeline: scroll(root); }
-}
-@keyframes bw-sky-dawn { 0% { opacity: 1; translate: 0 0; } 45% { opacity: 0; translate: 0 -3%; } 100% { opacity: 0; translate: 0 -3%; } }
-@keyframes bw-sky-sunset { 0% { opacity: 0; scale: 1.06; } 45% { opacity: 1; scale: 1; } 88% { opacity: 0; scale: 1.04; } 100% { opacity: 0; } }
-@keyframes bw-sky-dusk { 0% { opacity: 0; } 42% { opacity: 0; translate: 0 3%; } 100% { opacity: 1; translate: 0 0; } }
+/* Sky scenes: flow.js sets html[data-sky] at three points of the page; the layers cross-fade on the GPU. */
+.bw-aurora > i { transition: opacity 1.2s cubic-bezier(.4, 0, .2, 1); }
+html[data-sky="sunset"] .bw-sky-dawn, html[data-sky="dusk"] .bw-sky-dawn { opacity: 0; }
+html[data-sky="sunset"] .bw-sky-sunset { opacity: 1; }
+html[data-sky="dusk"] .bw-sky-dusk { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .bw-aurora > i { transition-duration: .01s; } }
 
 /* ---------- Glass: white panels turn see-through over the sky ---------- */
 :root:not([data-theme="dark"]) .bw-glass {
@@ -222,11 +220,11 @@ html body #home-view .story-chapter.is-deep { view-timeline-name: --deep; }
 @keyframes bw-intro { from { opacity: 0; translate: 0 34px; scale: 1.04; filter: blur(14px); } to { opacity: 1; translate: none; scale: none; filter: none; } }
 @keyframes bw-band-drift { to { translate: 0 calc(var(--bw-depth, 1) * -36px); } }
 @keyframes bw-band-out { to { opacity: 0; translate: 0 calc(var(--bw-depth, 1) * -90px); scale: .94; } }
-@keyframes bw-hero-zoom { to { opacity: 0; translate: 0 -40px; scale: 1.35; } }
+@keyframes bw-hero-zoom { to { opacity: 0; translate: 0 -90px; } }
 @keyframes bw-hero-part-l { to { translate: -48px -24px; } }
 @keyframes bw-hero-part-r { to { translate: 48px -24px; } }
 @keyframes bw-hero-lift { to { translate: 0 -56px; } }
-@keyframes bw-beams { to { scale: 1.8 1.15; opacity: .35; } }
+@keyframes bw-beams { to { opacity: .3; } }
 @keyframes bw-panel-open { from { scale: .9 .97; } to { scale: 1 1; } }
 @media (prefers-reduced-motion: reduce) {
   .bw-sky-dawn, .bw-sky-sunset, .bw-sky-dusk { translate: none !important; scale: none !important; }
@@ -243,11 +241,11 @@ html body.bw-aurora-on *, html body.bw-aurora-on *::before, html body.bw-aurora-
 /* Cards arrive as a wave once they reach the screen and always finish in place. */
 @media (prefers-reduced-motion: no-preference) {
   .bw-rise.bw-armed {
-    opacity: 0; translate: 0 56px; scale: .95; rotate: x 14deg; transform-origin: 50% 100%;
-    transition: opacity .6s ease, translate .9s cubic-bezier(.2, .8, .2, 1), scale .9s cubic-bezier(.2, .8, .2, 1), rotate .9s cubic-bezier(.2, .8, .2, 1);
-    transition-delay: calc(var(--bw-i, 0) * 90ms);
+    opacity: 0; transform: translate3d(0, 36px, 0);
+    transition: opacity .45s ease, transform .6s cubic-bezier(.2, .8, .2, 1);
+    transition-delay: calc(var(--bw-i, 0) * 70ms);
   }
-  .bw-rise.bw-armed.is-in { opacity: 1; translate: none; scale: none; rotate: none; }
+  .bw-rise.bw-armed.is-in { opacity: 1; transform: none; }
 }
 /* Without a backdrop blur, the light bar needs to be nearly solid so content scrolling under it stays hidden. */
 :root:not([data-theme="dark"]) body:not(.bw-nav-glass) .flow-nav { background-color: rgba(253, 252, 250, .98) !important; }
@@ -380,3 +378,4 @@ body.has-compare-dock .waybi-widget, body.has-compare-dock [class*="waybi"][clas
 }
 /* Filter reset appears only when there is something to reset */
 html body #resetSchoolFilters:disabled, html body .flow-clear-filters[hidden] { display: none !important; }
+.bw-sentinel { position: absolute; left: 0; width: 1px; height: 1px; pointer-events: none; visibility: hidden; }

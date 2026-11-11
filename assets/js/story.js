@@ -96,7 +96,12 @@ function initTravellers() {
   reduced.addEventListener?.('change', () => update(true));
   let pending = 0;
   const remeasure = () => { cancelAnimationFrame(pending); pending = requestAnimationFrame(measure); };
-  if ('ResizeObserver' in window) new ResizeObserver(remeasure).observe(story);
+  // Re-measure only when the story really changes size (not on every observer tick).
+  let lastSize = '';
+  if ('ResizeObserver' in window) new ResizeObserver(entries => {
+    const box = entries[0].contentRect, size = `${Math.round(box.width)}x${Math.round(box.height)}`;
+    if (size !== lastSize) { lastSize = size; remeasure(); }
+  }).observe(story);
   addEventListener('load', remeasure);
   measure();
   return { refresh: () => update(true) };

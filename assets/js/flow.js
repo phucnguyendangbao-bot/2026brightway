@@ -304,25 +304,47 @@
     document.body.prepend(sky);
     document.body.classList.add('bw-aurora-on');
     // Once the page moves, a see-through bar darkens so text underneath never collides with the links.
-    const onScroll = () => document.body.classList.toggle('bw-nav-scrolled', scrollY > 12);
-    addEventListener('scroll', onScroll, { passive: true }); onScroll();
+    // Nothing here reads the scroll position: invisible markers at fixed points of the page tell the browser's
+    // IntersectionObserver when they pass the top, so scrolling never forces a style or layout pass.
+    const root = document.documentElement;
+    const marker = name => { const m = document.createElement('div'); m.className = 'bw-sentinel'; m.dataset.marker = name; m.setAttribute('aria-hidden', 'true'); document.body.append(m); return m; };
+    const markers = { nav: marker('nav'), sunset: marker('sunset'), dusk: marker('dusk') };
+    const passed = { nav: false, sunset: false, dusk: false };
+    let scene = '';
+    const place = () => {
+      const max = Math.max(1, root.scrollHeight - innerHeight);
+      markers.nav.style.top = '12px';
+      markers.sunset.style.top = `${Math.round(max * 0.3)}px`;
+      markers.dusk.style.top = `${Math.round(max * 0.68)}px`;
+    };
+    const apply = () => {
+      document.body.classList.toggle('bw-nav-scrolled', passed.nav);
+      const next = passed.dusk ? 'dusk' : passed.sunset ? 'sunset' : 'dawn';
+      if (next !== scene) { scene = next; root.dataset.sky = next; }
+    };
+    place();
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(entries => {
+        for (const e of entries) passed[e.target.dataset.marker] = !e.isIntersecting && e.boundingClientRect.top < 0;
+        apply();
+      }).observe(markers.nav);
+      const io = new IntersectionObserver(entries => {
+        for (const e of entries) passed[e.target.dataset.marker] = !e.isIntersecting && e.boundingClientRect.top < 0;
+        apply();
+      });
+      io.observe(markers.sunset); io.observe(markers.dusk);
+    } else apply();
+    if ('ResizeObserver' in window) { let q = 0; new ResizeObserver(() => { cancelAnimationFrame(q); q = requestAnimationFrame(place); }).observe(document.body); }
+    addEventListener('resize', place);
     const bar = document.createElement('div');
     bar.className = 'bw-progress';
     bar.setAttribute('aria-hidden', 'true');
     document.body.append(bar);
     if (!(window.CSS && CSS.supports && CSS.supports('animation-timeline: scroll()'))) {
-      const [dawn, sunset, dusk] = sky.children;
+      // Older browsers: the reading progress bar follows the page with one batched update per frame.
       let queued = false;
-      const paint = () => {
-        queued = false;
-        const p = Math.min(1, scrollY / Math.max(1, document.documentElement.scrollHeight - innerHeight));
-        dawn.style.opacity = Math.max(0, 1 - p / 0.45);
-        sunset.style.opacity = Math.max(0, 1 - Math.abs(p - 0.45) / 0.42);
-        dusk.style.opacity = Math.max(0, (p - 0.4) / 0.6);
-        bar.style.transform = `scaleX(${p})`;
-      };
+      const paint = () => { queued = false; bar.style.transform = `scaleX(${Math.min(1, scrollY / Math.max(1, root.scrollHeight - innerHeight))})`; };
       addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(paint); } }, { passive: true });
-      addEventListener('resize', paint);
       paint();
     }
     // Opaque white panels become glass over the sky; full-width paper sections let the sky through.

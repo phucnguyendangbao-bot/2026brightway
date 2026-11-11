@@ -61,7 +61,7 @@
         font-size: 11px; font-weight: 800;
         display: flex; align-items: center; justify-content: center;
         border: 2px solid #fff;
-        animation: waybi-pulse 1.5s ease-in-out infinite;
+        animation: waybi-pulse 1.5s ease-in-out 3;
       }
       @keyframes waybi-pulse {
         0%, 100% { transform: scale(1); }
