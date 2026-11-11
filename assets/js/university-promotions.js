@@ -5,6 +5,7 @@ import { detailsForSchool } from '../data/school-profile-details.js';
 import { relevantPrograms, officialUniversityUrl, eligibleOpportunity, verifiedSponsorship, selectSponsoredCampaigns, selectEditorialOpportunities } from './university-promotion-rules.js';
 import { universityCardHTML, renderUniversityLogo, escapeUniversity as escape } from './university-card.js?v=20261111o';
 import { promotionMetrics } from './university-promotion-metrics.js';
+import { researchedScholarships } from '../data/school-research-2026.js?v=20261111t';
 
 const profile = school => ({ ...school, programs:detailsForSchool(school.id)?.programs || [] });
 const observers = new Map();
@@ -136,7 +137,8 @@ export function renderContextualUniversityPromotions(host, catalog, {mode, query
 
 export function renderSchoolOpportunities(host, school) {
   const schools = [profile(school)];
-  const records = [...selectEditorialOpportunities(universityOpportunities, schools), ...selectSponsoredCampaigns(universityCampaigns, universityPartners, schools, {placement:'school_profile'})];
+  // A school's own profile also lists the 2026 scholarships researched from its official pages.
+  const records = [...selectEditorialOpportunities([...universityOpportunities, ...researchedScholarships], schools), ...selectSponsoredCampaigns(universityCampaigns, universityPartners, schools, {placement:'school_profile'})];
   host.innerHTML = records.length ? '<div class="university-opportunity-grid"></div>' : '<p>Chưa có thông tin học bổng, sự kiện hoặc kênh tư vấn đã đối chiếu trong khu giới thiệu này. Không có thông tin không đồng nghĩa trường không có hoạt động; xem website chính thức của trường.</p>';
   if (records.length) renderGroup(host.querySelector('.university-opportunity-grid'), schools, records, 'school_profile');
 }
