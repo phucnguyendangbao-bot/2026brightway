@@ -2,7 +2,13 @@
 // Generated from reviewed research files; edit the research, not this file, when refreshing.
 export const researchedSchoolDetails = {
  "hcmut": {
-  "homepage": "https://hcmut.edu.vn/"
+  "homepage": "https://hcmut.edu.vn/",
+  "tuition": {
+   "year": 2026,
+   "summary": "Khóa 2026, năm học 2026–2027: chương trình chính quy 15.750.000đ/học kỳ (31.500.000đ/năm, dự kiến tăng đến 37.500.000đ/năm ở năm 4); chương trình dạy bằng tiếng Anh, tiên tiến 88.000.000đ/năm; chương trình Nhật Bản 63.000.000đ/năm.",
+   "source": "https://hcmut.edu.vn/bai-viet/thong-bao-dieu-chinh-muc-thu-hoc-phi-nam-hoc-2026-2027",
+   "published": null
+  }
  },
  "uit": {
   "homepage": "https://www.uit.edu.vn/",
@@ -80,10 +86,739 @@ export const researchedSchoolDetails = {
   "homepage": "https://hcmussh.edu.vn/"
  },
  "hcmiu": {
-  "homepage": "https://hcmiu.edu.vn/"
+  "homepage": "https://hcmiu.edu.vn/",
+  "tuition": {
+   "year": 2026,
+   "summary": "Khóa tuyển sinh 2026, học phí mỗi học kỳ, giữ nguyên toàn khóa: 27.000.000đ (Quản trị kinh doanh, Kinh tế, Ngôn ngữ Anh...); 29.500.000đ (CNTT, Khoa học máy tính, Logistics...); 32.000.000đ (Công nghệ sinh học, các ngành kỹ thuật). Liên kết nước ngoài 50–100 t",
+   "source": "https://tuyensinh.hcmiu.edu.vn/wp-content/uploads/2026/04/0420_QSQ_Thong-tin-tuyen-sinh-2026.pdf",
+   "published": "2026-04-20"
+  },
+  "admission": {
+   "summary": "2 phương thức năm 2026: xét tuyển thẳng, ưu tiên xét tuyển theo quy chế của Bộ GD&ĐT; xét tuyển tổng hợp thang 100, kết hợp điểm thi tốt nghiệp THPT 2026, điểm ĐGNL ĐHQG-HCM 2026 và điểm học bạ lớp 10–12.",
+   "source": "https://tuyensinh.hcmiu.edu.vn/wp-content/uploads/2026/04/0420_QSQ_Thong-tin-tuyen-sinh-2026.pdf",
+   "published": "2026-04-20"
+  },
+  "scores": {
+   "source": "https://tuyensinh.hcmiu.edu.vn/tuyen-sinh/thong-bao-muc-diem-trung-tuyen-vao-cac-nganh-theo-phuong-thuc-xet-tuyen-tong-hop-nam-2026-phuong-thuc-2/",
+   "scale": 100,
+   "method": "Điểm trúng tuyển 2026 phương thức xét tuyển tổng hợp (phương thức 2) · thang 100",
+   "note": "Công bố ngày 10/08/2026; gồm ngành do Trường ĐHQT cấp bằng và chương trình liên kết.",
+   "programs": [
+    {
+     "code": "7220201",
+     "name": "Ngôn ngữ Anh",
+     "score": 73
+    },
+    {
+     "code": "7310101",
+     "name": "Kinh tế (Phân tích dữ liệu trong kinh tế)",
+     "score": 62
+    },
+    {
+     "code": "7340101",
+     "name": "Quản trị kinh doanh",
+     "score": 53
+    },
+    {
+     "code": "7340115",
+     "name": "Marketing",
+     "score": 53
+    },
+    {
+     "code": "7340122",
+     "name": "Thương mại điện tử",
+     "score": 53
+    },
+    {
+     "code": "7340201",
+     "name": "Tài chính – Ngân hàng",
+     "score": 53
+    },
+    {
+     "code": "7340301",
+     "name": "Kế toán",
+     "score": 53
+    },
+    {
+     "code": "7420201",
+     "name": "Công nghệ sinh học",
+     "score": 55
+    },
+    {
+     "code": "7440112",
+     "name": "Hóa học (Hóa sinh)",
+     "score": 58
+    },
+    {
+     "code": "7460108",
+     "name": "Khoa học dữ liệu",
+     "score": 62
+    },
+    {
+     "code": "7460112",
+     "name": "Toán ứng dụng (Kỹ thuật tài chính và quản trị rủi ro)",
+     "score": 52
+    },
+    {
+     "code": "7460201",
+     "name": "Thống kê (Thống kê ứng dụng)",
+     "score": 52
+    },
+    {
+     "code": "7480101",
+     "name": "Khoa học máy tính",
+     "score": 65
+    },
+    {
+     "code": "7480201",
+     "name": "Công nghệ thông tin",
+     "score": 62
+    },
+    {
+     "code": "7510605",
+     "name": "Logistics và Quản lý chuỗi cung ứng",
+     "score": 72
+    },
+    {
+     "code": "7520118",
+     "name": "Kỹ thuật hệ thống công nghiệp",
+     "score": 63
+    },
+    {
+     "code": "7520121",
+     "name": "Kỹ thuật không gian (Phân tích và ứng dụng dữ liệu lớn)",
+     "score": 52
+    },
+    {
+     "code": "7520207",
+     "name": "Kỹ thuật Điện tử – Viễn thông",
+     "score": 55
+    },
+    {
+     "code": "7520212",
+     "name": "Kỹ thuật y sinh",
+     "score": 68
+    },
+    {
+     "code": "7520216",
+     "name": "Kỹ thuật Điều khiển và Tự động hóa",
+     "score": 65
+    },
+    {
+     "code": "7520301",
+     "name": "Kỹ thuật hóa học",
+     "score": 58
+    },
+    {
+     "code": "7540101",
+     "name": "Công nghệ thực phẩm",
+     "score": 52
+    },
+    {
+     "code": "7580201",
+     "name": "Kỹ thuật xây dựng",
+     "score": 50
+    },
+    {
+     "code": "7580302",
+     "name": "Quản lý xây dựng",
+     "score": 50
+    },
+    {
+     "code": "7220201W3",
+     "name": "Ngôn ngữ Anh (CTLK với ĐH West of England) (3+1)",
+     "score": 65
+    },
+    {
+     "code": "7220201W4",
+     "name": "Ngôn ngữ Anh (CTLK với ĐH West of England) (4+0)",
+     "score": 65
+    },
+    {
+     "code": "7340101AD",
+     "name": "Quản trị kinh doanh (CTLK với ĐH Andrews) (4+0)",
+     "score": 52
+    },
+    {
+     "code": "7340101MQ",
+     "name": "Quản trị kinh doanh (CTLK với ĐH Macquarie) (2+1;2+1.5)",
+     "score": 54
+    },
+    {
+     "code": "7340101SY",
+     "name": "Quản trị kinh doanh (CTLK với ĐH Sydney) (2+2)",
+     "score": 65
+    },
+    {
+     "code": "7340101W2",
+     "name": "Quản trị kinh doanh (CTLK với ĐH West of England) (2+2)",
+     "score": 52
+    },
+    {
+     "code": "7340101W4",
+     "name": "Quản trị kinh doanh (CTLK với ĐH West of England) (4+0)",
+     "score": 52
+    },
+    {
+     "code": "7340201MQ",
+     "name": "Tài chính (CTLK với ĐH Macquarie) (2+1)",
+     "score": 53
+    },
+    {
+     "code": "7340301MQ",
+     "name": "Kế toán (CTLK với ĐH Macquarie) (2+1)",
+     "score": 53
+    },
+    {
+     "code": "7420201W2",
+     "name": "Công nghệ sinh học (CTLK với ĐH West of England) (2+2)",
+     "score": 62
+    },
+    {
+     "code": "7420201W4",
+     "name": "Công nghệ sinh học định hướng Y Sinh (CTLK với ĐH West of England) (4+0)",
+     "score": 70
+    },
+    {
+     "code": "7480201DK",
+     "name": "Công nghệ thông tin (CTLK với ĐH Deakin) (2+2/3+1)",
+     "score": 60
+    },
+    {
+     "code": "7480201MQ",
+     "name": "Công nghệ thông tin (CTLK với ĐH Macquarie) (2+1)",
+     "score": 60
+    },
+    {
+     "code": "7480201W4",
+     "name": "Công nghệ thông tin (CTLK với ĐH West of England) (4+0)",
+     "score": 60
+    }
+   ]
+  },
+  "programs": {
+   "source": "https://tuyensinh.hcmiu.edu.vn/tuyen-sinh/thong-bao-muc-diem-trung-tuyen-vao-cac-nganh-theo-phuong-thuc-xet-tuyen-tong-hop-nam-2026-phuong-thuc-2/",
+   "note": "Danh sách theo bảng điểm trúng tuyển 2026",
+   "list": [
+    {
+     "code": "7220201",
+     "name": "Ngôn ngữ Anh"
+    },
+    {
+     "code": "7310101",
+     "name": "Kinh tế (Phân tích dữ liệu trong kinh tế)"
+    },
+    {
+     "code": "7340101",
+     "name": "Quản trị kinh doanh"
+    },
+    {
+     "code": "7340115",
+     "name": "Marketing"
+    },
+    {
+     "code": "7340122",
+     "name": "Thương mại điện tử"
+    },
+    {
+     "code": "7340201",
+     "name": "Tài chính – Ngân hàng"
+    },
+    {
+     "code": "7340301",
+     "name": "Kế toán"
+    },
+    {
+     "code": "7420201",
+     "name": "Công nghệ sinh học"
+    },
+    {
+     "code": "7440112",
+     "name": "Hóa học (Hóa sinh)"
+    },
+    {
+     "code": "7460108",
+     "name": "Khoa học dữ liệu"
+    },
+    {
+     "code": "7460112",
+     "name": "Toán ứng dụng (Kỹ thuật tài chính và quản trị rủi ro)"
+    },
+    {
+     "code": "7460201",
+     "name": "Thống kê (Thống kê ứng dụng)"
+    },
+    {
+     "code": "7480101",
+     "name": "Khoa học máy tính"
+    },
+    {
+     "code": "7480201",
+     "name": "Công nghệ thông tin"
+    },
+    {
+     "code": "7510605",
+     "name": "Logistics và Quản lý chuỗi cung ứng"
+    },
+    {
+     "code": "7520118",
+     "name": "Kỹ thuật hệ thống công nghiệp"
+    },
+    {
+     "code": "7520121",
+     "name": "Kỹ thuật không gian (Phân tích và ứng dụng dữ liệu lớn)"
+    },
+    {
+     "code": "7520207",
+     "name": "Kỹ thuật Điện tử – Viễn thông"
+    },
+    {
+     "code": "7520212",
+     "name": "Kỹ thuật y sinh"
+    },
+    {
+     "code": "7520216",
+     "name": "Kỹ thuật Điều khiển và Tự động hóa"
+    },
+    {
+     "code": "7520301",
+     "name": "Kỹ thuật hóa học"
+    },
+    {
+     "code": "7540101",
+     "name": "Công nghệ thực phẩm"
+    },
+    {
+     "code": "7580201",
+     "name": "Kỹ thuật xây dựng"
+    },
+    {
+     "code": "7580302",
+     "name": "Quản lý xây dựng"
+    },
+    {
+     "code": "7220201W3",
+     "name": "Ngôn ngữ Anh (CTLK với ĐH West of England) (3+1)"
+    },
+    {
+     "code": "7220201W4",
+     "name": "Ngôn ngữ Anh (CTLK với ĐH West of England) (4+0)"
+    },
+    {
+     "code": "7340101AD",
+     "name": "Quản trị kinh doanh (CTLK với ĐH Andrews) (4+0)"
+    },
+    {
+     "code": "7340101MQ",
+     "name": "Quản trị kinh doanh (CTLK với ĐH Macquarie) (2+1;2+1.5)"
+    },
+    {
+     "code": "7340101SY",
+     "name": "Quản trị kinh doanh (CTLK với ĐH Sydney) (2+2)"
+    },
+    {
+     "code": "7340101W2",
+     "name": "Quản trị kinh doanh (CTLK với ĐH West of England) (2+2)"
+    },
+    {
+     "code": "7340101W4",
+     "name": "Quản trị kinh doanh (CTLK với ĐH West of England) (4+0)"
+    },
+    {
+     "code": "7340201MQ",
+     "name": "Tài chính (CTLK với ĐH Macquarie) (2+1)"
+    },
+    {
+     "code": "7340301MQ",
+     "name": "Kế toán (CTLK với ĐH Macquarie) (2+1)"
+    },
+    {
+     "code": "7420201W2",
+     "name": "Công nghệ sinh học (CTLK với ĐH West of England) (2+2)"
+    },
+    {
+     "code": "7420201W4",
+     "name": "Công nghệ sinh học định hướng Y Sinh (CTLK với ĐH West of England) (4+0)"
+    },
+    {
+     "code": "7480201DK",
+     "name": "Công nghệ thông tin (CTLK với ĐH Deakin) (2+2/3+1)"
+    },
+    {
+     "code": "7480201MQ",
+     "name": "Công nghệ thông tin (CTLK với ĐH Macquarie) (2+1)"
+    },
+    {
+     "code": "7480201W4",
+     "name": "Công nghệ thông tin (CTLK với ĐH West of England) (4+0)"
+    }
+   ]
+  }
  },
  "uel": {
-  "homepage": "https://www.uel.edu.vn/"
+  "homepage": "https://www.uel.edu.vn/",
+  "tuition": {
+   "year": 2026,
+   "summary": "Dự kiến năm học 2026–2027 (khóa tuyển sinh 2026): chương trình dạy và học bằng tiếng Việt 35.800.000 đ; chương trình Co-op tiếng Anh bán phần 55.000.000 đ; chương trình dạy học bằng tiếng Anh 73.500.000 đ.",
+   "source": "https://tuyensinh.uel.edu.vn/hoc-phi-uel-2026-cap-nhat-muc-thu-va-chinh-sach-ho-tro-tai-chinh/",
+   "published": "2026-03-03"
+  },
+  "scores": {
+   "source": "https://tuyensinh.uel.edu.vn/truong-dai-hoc-kinh-te-luat-cong-bo-ket-qua-tuyen-sinh-dai-hoc-chinh-quy-nam-2026/",
+   "scale": 100,
+   "method": "Điểm chuẩn 2026 phương thức xét tuyển tổng hợp · thang 100",
+   "note": "Đọc từ ảnh công bố trên trang tuyển sinh của trường.",
+   "programs": [
+    {
+     "code": "401",
+     "name": "Kinh tế (Chuyên ngành Kinh tế học)",
+     "score": 74.78
+    },
+    {
+     "code": "403",
+     "name": "Kinh tế (Chuyên ngành Kinh tế và quản lý công)",
+     "score": 74.49
+    },
+    {
+     "code": "421",
+     "name": "Kinh tế (Chuyên ngành Kinh tế số)",
+     "score": 80.84
+    },
+    {
+     "code": "402",
+     "name": "Kinh tế quốc tế (Chuyên ngành Kinh tế đối ngoại)",
+     "score": 84.76
+    },
+    {
+     "code": "413",
+     "name": "Toán kinh tế (Chuyên ngành Toán ứng dụng trong Kinh tế, Quản trị và Tài chính)",
+     "score": 79.65
+    },
+    {
+     "code": "413E",
+     "name": "Toán kinh tế (Chuyên ngành Toán ứng dụng trong Kinh tế, Quản trị và Tài chính) (Tiếng Anh)",
+     "score": 67.22
+    },
+    {
+     "code": "419",
+     "name": "Toán kinh tế (Chuyên ngành Phân tích dữ liệu)",
+     "score": 82.61
+    },
+    {
+     "code": "407",
+     "name": "Quản trị kinh doanh",
+     "score": 80.5
+    },
+    {
+     "code": "407E",
+     "name": "Quản trị kinh doanh (Tiếng Anh)",
+     "score": 70.28
+    },
+    {
+     "code": "415",
+     "name": "Quản trị kinh doanh (Chuyên ngành Quản trị du lịch và lữ hành)",
+     "score": 69.55
+    },
+    {
+     "code": "410",
+     "name": "Marketing",
+     "score": 84.63
+    },
+    {
+     "code": "410E",
+     "name": "Marketing (Tiếng Anh)",
+     "score": 70.09
+    },
+    {
+     "code": "417",
+     "name": "Marketing (Chuyên ngành Digital Marketing)",
+     "score": 82.48
+    },
+    {
+     "code": "408",
+     "name": "Kinh doanh quốc tế",
+     "score": 87.94
+    },
+    {
+     "code": "408E",
+     "name": "Kinh doanh quốc tế (Tiếng Anh)",
+     "score": 82.66
+    },
+    {
+     "code": "420",
+     "name": "Kinh doanh quốc tế (Chuyên ngành Quản lý chuỗi cung ứng và Logistics quốc tế)",
+     "score": 90.01
+    },
+    {
+     "code": "411",
+     "name": "Thương mại điện tử",
+     "score": 86.73
+    },
+    {
+     "code": "411E",
+     "name": "Thương mại điện tử (Tiếng Anh)",
+     "score": 78.36
+    },
+    {
+     "code": "404",
+     "name": "Tài chính – Ngân hàng",
+     "score": 81.4
+    },
+    {
+     "code": "404E",
+     "name": "Tài chính – Ngân hàng (Tiếng Anh)",
+     "score": 72.68
+    },
+    {
+     "code": "414",
+     "name": "Công nghệ tài chính",
+     "score": 82.54
+    },
+    {
+     "code": "414H",
+     "name": "Công nghệ tài chính (Chương trình Co-operative Education) (Tiếng Anh bán phần)",
+     "score": 73.15
+    },
+    {
+     "code": "405",
+     "name": "Kế toán",
+     "score": 80.49
+    },
+    {
+     "code": "405E",
+     "name": "Kế toán (Tích hợp chứng chỉ quốc tế ICAEW – Tiếng Anh)",
+     "score": 70.42
+    },
+    {
+     "code": "422",
+     "name": "Kế toán (Chuyên ngành Kế toán và phân tích dữ liệu)",
+     "score": 79.91
+    },
+    {
+     "code": "409",
+     "name": "Kiểm toán",
+     "score": 85.29
+    },
+    {
+     "code": "418",
+     "name": "Quản lý công",
+     "score": 71.81
+    },
+    {
+     "code": "406",
+     "name": "Hệ thống thông tin quản lý",
+     "score": 86.46
+    },
+    {
+     "code": "406H",
+     "name": "Hệ thống thông tin quản lý (Chương trình Co-operative Education) (Tiếng Anh bán phần)",
+     "score": 86.22
+    },
+    {
+     "code": "416",
+     "name": "Hệ thống thông tin quản lý (Chuyên ngành Kinh doanh số và trí tuệ nhân tạo)",
+     "score": 84.44
+    },
+    {
+     "code": "503",
+     "name": "Luật (Chuyên ngành Luật Dân sự)",
+     "score": 76.01
+    },
+    {
+     "code": "503E",
+     "name": "Luật (Chuyên ngành Luật Dân sự) (Tiếng Anh)",
+     "score": 69.42
+    },
+    {
+     "code": "504",
+     "name": "Luật (Chuyên ngành Luật Tài chính – Ngân hàng)",
+     "score": 65.01
+    },
+    {
+     "code": "505",
+     "name": "Luật (Chuyên ngành Luật và Chính sách công)",
+     "score": 65.54
+    },
+    {
+     "code": "506",
+     "name": "Luật (Chuyên ngành Luật và Công nghệ)",
+     "score": 71.65
+    },
+    {
+     "code": "501",
+     "name": "Luật kinh tế (Chuyên ngành Luật Kinh doanh)",
+     "score": 80.65
+    },
+    {
+     "code": "502",
+     "name": "Luật kinh tế (Chuyên ngành Luật Thương mại quốc tế)",
+     "score": 83.24
+    },
+    {
+     "code": "502E",
+     "name": "Luật kinh tế (Chuyên ngành Luật Thương mại quốc tế) (Tiếng Anh)",
+     "score": 76.72
+    }
+   ]
+  },
+  "programs": {
+   "source": "https://tuyensinh.uel.edu.vn/truong-dai-hoc-kinh-te-luat-cong-bo-ket-qua-tuyen-sinh-dai-hoc-chinh-quy-nam-2026/",
+   "note": "Mã xét tuyển theo bảng điểm chuẩn 2026",
+   "list": [
+    {
+     "code": "401",
+     "name": "Kinh tế (Chuyên ngành Kinh tế học)"
+    },
+    {
+     "code": "403",
+     "name": "Kinh tế (Chuyên ngành Kinh tế và quản lý công)"
+    },
+    {
+     "code": "421",
+     "name": "Kinh tế (Chuyên ngành Kinh tế số)"
+    },
+    {
+     "code": "402",
+     "name": "Kinh tế quốc tế (Chuyên ngành Kinh tế đối ngoại)"
+    },
+    {
+     "code": "413",
+     "name": "Toán kinh tế (Chuyên ngành Toán ứng dụng trong Kinh tế, Quản trị và Tài chính)"
+    },
+    {
+     "code": "413E",
+     "name": "Toán kinh tế (Chuyên ngành Toán ứng dụng trong Kinh tế, Quản trị và Tài chính) (Tiếng Anh)"
+    },
+    {
+     "code": "419",
+     "name": "Toán kinh tế (Chuyên ngành Phân tích dữ liệu)"
+    },
+    {
+     "code": "407",
+     "name": "Quản trị kinh doanh"
+    },
+    {
+     "code": "407E",
+     "name": "Quản trị kinh doanh (Tiếng Anh)"
+    },
+    {
+     "code": "415",
+     "name": "Quản trị kinh doanh (Chuyên ngành Quản trị du lịch và lữ hành)"
+    },
+    {
+     "code": "410",
+     "name": "Marketing"
+    },
+    {
+     "code": "410E",
+     "name": "Marketing (Tiếng Anh)"
+    },
+    {
+     "code": "417",
+     "name": "Marketing (Chuyên ngành Digital Marketing)"
+    },
+    {
+     "code": "408",
+     "name": "Kinh doanh quốc tế"
+    },
+    {
+     "code": "408E",
+     "name": "Kinh doanh quốc tế (Tiếng Anh)"
+    },
+    {
+     "code": "420",
+     "name": "Kinh doanh quốc tế (Chuyên ngành Quản lý chuỗi cung ứng và Logistics quốc tế)"
+    },
+    {
+     "code": "411",
+     "name": "Thương mại điện tử"
+    },
+    {
+     "code": "411E",
+     "name": "Thương mại điện tử (Tiếng Anh)"
+    },
+    {
+     "code": "404",
+     "name": "Tài chính – Ngân hàng"
+    },
+    {
+     "code": "404E",
+     "name": "Tài chính – Ngân hàng (Tiếng Anh)"
+    },
+    {
+     "code": "414",
+     "name": "Công nghệ tài chính"
+    },
+    {
+     "code": "414H",
+     "name": "Công nghệ tài chính (Chương trình Co-operative Education) (Tiếng Anh bán phần)"
+    },
+    {
+     "code": "405",
+     "name": "Kế toán"
+    },
+    {
+     "code": "405E",
+     "name": "Kế toán (Tích hợp chứng chỉ quốc tế ICAEW – Tiếng Anh)"
+    },
+    {
+     "code": "422",
+     "name": "Kế toán (Chuyên ngành Kế toán và phân tích dữ liệu)"
+    },
+    {
+     "code": "409",
+     "name": "Kiểm toán"
+    },
+    {
+     "code": "418",
+     "name": "Quản lý công"
+    },
+    {
+     "code": "406",
+     "name": "Hệ thống thông tin quản lý"
+    },
+    {
+     "code": "406H",
+     "name": "Hệ thống thông tin quản lý (Chương trình Co-operative Education) (Tiếng Anh bán phần)"
+    },
+    {
+     "code": "416",
+     "name": "Hệ thống thông tin quản lý (Chuyên ngành Kinh doanh số và trí tuệ nhân tạo)"
+    },
+    {
+     "code": "503",
+     "name": "Luật (Chuyên ngành Luật Dân sự)"
+    },
+    {
+     "code": "503E",
+     "name": "Luật (Chuyên ngành Luật Dân sự) (Tiếng Anh)"
+    },
+    {
+     "code": "504",
+     "name": "Luật (Chuyên ngành Luật Tài chính – Ngân hàng)"
+    },
+    {
+     "code": "505",
+     "name": "Luật (Chuyên ngành Luật và Chính sách công)"
+    },
+    {
+     "code": "506",
+     "name": "Luật (Chuyên ngành Luật và Công nghệ)"
+    },
+    {
+     "code": "501",
+     "name": "Luật kinh tế (Chuyên ngành Luật Kinh doanh)"
+    },
+    {
+     "code": "502",
+     "name": "Luật kinh tế (Chuyên ngành Luật Thương mại quốc tế)"
+    },
+    {
+     "code": "502E",
+     "name": "Luật kinh tế (Chuyên ngành Luật Thương mại quốc tế) (Tiếng Anh)"
+    }
+   ]
+  }
  },
  "ueh": {
   "homepage": "https://www.ueh.edu.vn/",
@@ -838,6 +1573,12 @@ export const researchedSchoolDetails = {
      "name": "Chương trình Cử nhân tài năng ISB - Công nghệ"
     }
    ]
+  },
+  "tuition": {
+   "year": 2026,
+   "summary": "Khóa 52 (tuyển sinh 2026), năm học 2026–2027, tính theo tín chỉ: chương trình tiên tiến 1.200.000–1.300.000đ/tín chỉ học phần tiếng Việt, 1.680.000–1.820.000đ tiếng Anh; tiên tiến quốc tế và kế toán ICAEW/ACCA 1.400.000đ tiếng Việt, 1.960.000đ tiếng Anh.",
+   "source": "https://tckt.ueh.edu.vn/TinTuc/?m=457&NO_OBJ=400418&KeySign=7ceeee896d8d25a57a1d4f1bef9ee727",
+   "published": "2026-05-21"
   }
  },
  "ftu": {
@@ -855,6 +1596,326 @@ export const researchedSchoolDetails = {
    "summary": "5 phương thức: xét tuyển thẳng, ưu tiên xét tuyển theo quy chế Bộ GD&ĐT; xét tuyển tổng hợp (học tập, thành tích, năng khiếu, chứng chỉ tiếng Anh); điểm thi V-SAT; điểm thi TN THPT 2026; học bạ và phỏng vấn (chương trình quốc tế do đối tác cấp bằng).",
    "source": "https://hub.edu.vn/tin-tuc-su-kien/thong-tin-tuyen-sinh-dai-hoc-chinh-quy-nam-2026-truong-dai-hoc-ngan-hang-tp-hcm-ma-truong-nhs-228347.html",
    "published": "2026-03-04"
+  },
+  "scores": {
+   "source": "https://hub.edu.vn/tin-tuc-su-kien/thong-bao-diem-chuan-trung-tuyen-dai-hoc-chinh-quy-nam-2026-truong-dai-hoc-ngan-hang-tp-ho-chi-minh-229990.html",
+   "scale": 30,
+   "method": "Điểm chuẩn trúng tuyển 2026 · thang 30, áp dụng chung các tổ hợp (đã quy đổi giữa các phương thức)",
+   "note": "Đã gồm điểm ưu tiên. Luật 18,44 và Luật kinh tế TABP 18,00 với phương thức khác. Đọc từ bảng ảnh trên trang trường ngày 10/08/2026.",
+   "programs": [
+    {
+     "code": "7220201",
+     "name": "Ngôn ngữ Anh",
+     "score": 21.83
+    },
+    {
+     "code": "7220201DB",
+     "name": "Ngôn ngữ Anh ĐB",
+     "score": 18.55
+    },
+    {
+     "code": "7220204",
+     "name": "Ngôn ngữ Trung Quốc",
+     "score": 19
+    },
+    {
+     "code": "7340120",
+     "name": "Kinh doanh quốc tế",
+     "score": 24.53
+    },
+    {
+     "code": "7340120TA",
+     "name": "Kinh doanh quốc tế TABP",
+     "score": 23.23
+    },
+    {
+     "code": "7310106",
+     "name": "Kinh tế quốc tế",
+     "score": 22.99
+    },
+    {
+     "code": "7310106TA",
+     "name": "Kinh tế quốc tế TABP",
+     "score": 21
+    },
+    {
+     "code": "7510605",
+     "name": "Logistics và Quản lý chuỗi cung ứng",
+     "score": 23.56
+    },
+    {
+     "code": "7340101",
+     "name": "Quản trị kinh doanh",
+     "score": 22.77
+    },
+    {
+     "code": "7340101QT",
+     "name": "ĐHCQ quốc tế ngành Quản trị kinh doanh",
+     "score": 16
+    },
+    {
+     "code": "7340101SB",
+     "name": "Quản trị kinh doanh (Quốc tế song bằng)",
+     "score": 19.6
+    },
+    {
+     "code": "7340101TA",
+     "name": "Quản trị kinh doanh TABP",
+     "score": 18.35
+    },
+    {
+     "code": "7340115",
+     "name": "Marketing",
+     "score": 23.47
+    },
+    {
+     "code": "7340122",
+     "name": "Thương mại điện tử",
+     "score": 23.96
+    },
+    {
+     "code": "7340122TA",
+     "name": "Thương mại điện tử TABP",
+     "score": 21.5
+    },
+    {
+     "code": "7340201",
+     "name": "Tài chính – Ngân hàng",
+     "score": 23.48
+    },
+    {
+     "code": "7340201TA",
+     "name": "Tài chính – Ngân hàng TABP",
+     "score": 19.03
+    },
+    {
+     "code": "7340201SB",
+     "name": "Tài chính – Ngân hàng (Quốc tế song bằng)",
+     "score": 19.78
+    },
+    {
+     "code": "7340201QT",
+     "name": "ĐHCQ quốc tế Tài chính – Ngân hàng",
+     "score": 16
+    },
+    {
+     "code": "7340201EL",
+     "name": "Tài chính – Ngân hàng chương trình tinh hoa (Elite Class)",
+     "score": 16
+    },
+    {
+     "code": "7340205",
+     "name": "Công nghệ tài chính",
+     "score": 22.82
+    },
+    {
+     "code": "7340301",
+     "name": "Kế toán",
+     "score": 23.48
+    },
+    {
+     "code": "7340301TA",
+     "name": "Kế toán TABP",
+     "score": 19.76
+    },
+    {
+     "code": "7340302",
+     "name": "Kiểm toán",
+     "score": 24.48
+    },
+    {
+     "code": "7340204",
+     "name": "Bảo hiểm",
+     "score": 16.1
+    },
+    {
+     "code": "7340405",
+     "name": "Hệ thống thông tin quản lý",
+     "score": 23.2
+    },
+    {
+     "code": "7340405TA",
+     "name": "Hệ thống thông tin quản lý TABP",
+     "score": 20.5
+    },
+    {
+     "code": "7380101",
+     "name": "Luật",
+     "score": 20
+    },
+    {
+     "code": "7380107",
+     "name": "Luật kinh tế",
+     "score": 21.9
+    },
+    {
+     "code": "7380107TA",
+     "name": "Luật kinh tế TABP",
+     "score": 20
+    },
+    {
+     "code": "7460108",
+     "name": "Khoa học dữ liệu",
+     "score": 21.8
+    },
+    {
+     "code": "7480107",
+     "name": "Trí tuệ nhân tạo",
+     "score": 20.1
+    },
+    {
+     "code": "7480201",
+     "name": "Công nghệ thông tin",
+     "score": 19.3
+    },
+    {
+     "code": "7810201",
+     "name": "Quản trị khách sạn",
+     "score": 19.25
+    }
+   ]
+  },
+  "programs": {
+   "source": "https://hub.edu.vn/tin-tuc-su-kien/thong-bao-diem-chuan-trung-tuyen-dai-hoc-chinh-quy-nam-2026-truong-dai-hoc-ngan-hang-tp-ho-chi-minh-229990.html",
+   "note": "Danh sách theo bảng điểm chuẩn 2026",
+   "list": [
+    {
+     "code": "7220201",
+     "name": "Ngôn ngữ Anh"
+    },
+    {
+     "code": "7220201DB",
+     "name": "Ngôn ngữ Anh ĐB"
+    },
+    {
+     "code": "7220204",
+     "name": "Ngôn ngữ Trung Quốc"
+    },
+    {
+     "code": "7340120",
+     "name": "Kinh doanh quốc tế"
+    },
+    {
+     "code": "7340120TA",
+     "name": "Kinh doanh quốc tế TABP"
+    },
+    {
+     "code": "7310106",
+     "name": "Kinh tế quốc tế"
+    },
+    {
+     "code": "7310106TA",
+     "name": "Kinh tế quốc tế TABP"
+    },
+    {
+     "code": "7510605",
+     "name": "Logistics và Quản lý chuỗi cung ứng"
+    },
+    {
+     "code": "7340101",
+     "name": "Quản trị kinh doanh"
+    },
+    {
+     "code": "7340101QT",
+     "name": "ĐHCQ quốc tế ngành Quản trị kinh doanh"
+    },
+    {
+     "code": "7340101SB",
+     "name": "Quản trị kinh doanh (Quốc tế song bằng)"
+    },
+    {
+     "code": "7340101TA",
+     "name": "Quản trị kinh doanh TABP"
+    },
+    {
+     "code": "7340115",
+     "name": "Marketing"
+    },
+    {
+     "code": "7340122",
+     "name": "Thương mại điện tử"
+    },
+    {
+     "code": "7340122TA",
+     "name": "Thương mại điện tử TABP"
+    },
+    {
+     "code": "7340201",
+     "name": "Tài chính – Ngân hàng"
+    },
+    {
+     "code": "7340201TA",
+     "name": "Tài chính – Ngân hàng TABP"
+    },
+    {
+     "code": "7340201SB",
+     "name": "Tài chính – Ngân hàng (Quốc tế song bằng)"
+    },
+    {
+     "code": "7340201QT",
+     "name": "ĐHCQ quốc tế Tài chính – Ngân hàng"
+    },
+    {
+     "code": "7340201EL",
+     "name": "Tài chính – Ngân hàng chương trình tinh hoa (Elite Class)"
+    },
+    {
+     "code": "7340205",
+     "name": "Công nghệ tài chính"
+    },
+    {
+     "code": "7340301",
+     "name": "Kế toán"
+    },
+    {
+     "code": "7340301TA",
+     "name": "Kế toán TABP"
+    },
+    {
+     "code": "7340302",
+     "name": "Kiểm toán"
+    },
+    {
+     "code": "7340204",
+     "name": "Bảo hiểm"
+    },
+    {
+     "code": "7340405",
+     "name": "Hệ thống thông tin quản lý"
+    },
+    {
+     "code": "7340405TA",
+     "name": "Hệ thống thông tin quản lý TABP"
+    },
+    {
+     "code": "7380101",
+     "name": "Luật"
+    },
+    {
+     "code": "7380107",
+     "name": "Luật kinh tế"
+    },
+    {
+     "code": "7380107TA",
+     "name": "Luật kinh tế TABP"
+    },
+    {
+     "code": "7460108",
+     "name": "Khoa học dữ liệu"
+    },
+    {
+     "code": "7480107",
+     "name": "Trí tuệ nhân tạo"
+    },
+    {
+     "code": "7480201",
+     "name": "Công nghệ thông tin"
+    },
+    {
+     "code": "7810201",
+     "name": "Quản trị khách sạn"
+    }
+   ]
   }
  },
  "ump": {
@@ -1010,7 +2071,250 @@ export const researchedSchoolDetails = {
   }
  },
  "hcmue": {
-  "homepage": "https://hcmue.edu.vn/"
+  "homepage": "https://hcmue.edu.vn/",
+  "scores": {
+   "source": "https://tuyensinh.hcmue.edu.vn/index.php?option=com_content&view=article&id=27828&lang=vi&site=183",
+   "scale": 30,
+   "method": "Điểm trúng tuyển 2026 phương thức điểm thi tốt nghiệp THPT (ngành năng khiếu kết hợp thi năng khiếu), tổ hợp gốc · thang 30",
+   "note": "Trụ sở chính, công bố ngày 11/08/2026. Bảng gốc (tệp đính kèm thông báo) còn có điểm phương thức học bạ kết hợp ĐGNL chuyên biệt và phân hiệu Long An.",
+   "programs": [
+    {
+     "code": "7140101",
+     "name": "Giáo dục học",
+     "score": 24.25
+    },
+    {
+     "code": "7140103",
+     "name": "Công nghệ giáo dục",
+     "score": 20.25
+    },
+    {
+     "code": "7140114",
+     "name": "Quản lý giáo dục",
+     "score": 24.73
+    },
+    {
+     "code": "7140201",
+     "name": "Giáo dục Mầm non",
+     "score": 25.84
+    },
+    {
+     "code": "7140202",
+     "name": "Giáo dục Tiểu học",
+     "score": 26.04
+    },
+    {
+     "code": "7140202SN",
+     "name": "Giáo dục Tiểu học dạy bằng song ngữ Việt – Anh",
+     "score": 26.63
+    },
+    {
+     "code": "7140203",
+     "name": "Giáo dục Đặc biệt",
+     "score": 25.21
+    },
+    {
+     "code": "7140204",
+     "name": "Giáo dục Công dân",
+     "score": 24.76
+    },
+    {
+     "code": "7140205",
+     "name": "Giáo dục Chính trị",
+     "score": 25.79
+    },
+    {
+     "code": "7140206",
+     "name": "Giáo dục Thể chất",
+     "score": 26.67
+    },
+    {
+     "code": "7140208",
+     "name": "Giáo dục Quốc phòng – An ninh",
+     "score": 25.8
+    },
+    {
+     "code": "7140209",
+     "name": "Sư phạm Toán học",
+     "score": 29.49
+    },
+    {
+     "code": "7140210",
+     "name": "Sư phạm Tin học",
+     "score": 25.3
+    },
+    {
+     "code": "7140211",
+     "name": "Sư phạm Vật lý",
+     "score": 29.78
+    },
+    {
+     "code": "7140212",
+     "name": "Sư phạm Hoá học",
+     "score": 29.83
+    },
+    {
+     "code": "7140213",
+     "name": "Sư phạm Sinh học",
+     "score": 27.66
+    },
+    {
+     "code": "7140217",
+     "name": "Sư phạm Ngữ văn",
+     "score": 29.8
+    },
+    {
+     "code": "7140218",
+     "name": "Sư phạm Lịch sử",
+     "score": 29.8
+    },
+    {
+     "code": "7140219",
+     "name": "Sư phạm Địa lý",
+     "score": 27.44
+    },
+    {
+     "code": "7140231",
+     "name": "Sư phạm Tiếng Anh",
+     "score": 27.79
+    },
+    {
+     "code": "7140232",
+     "name": "Sư phạm Tiếng Nga",
+     "score": 23.26
+    },
+    {
+     "code": "7140233",
+     "name": "Sư phạm Tiếng Pháp",
+     "score": 24.17
+    },
+    {
+     "code": "7140234",
+     "name": "Sư phạm Tiếng Trung Quốc",
+     "score": 26.87
+    },
+    {
+     "code": "7140246",
+     "name": "Sư phạm công nghệ",
+     "score": 24.33
+    },
+    {
+     "code": "7140247",
+     "name": "Sư phạm khoa học tự nhiên",
+     "score": 28.15
+    },
+    {
+     "code": "7140249",
+     "name": "Sư phạm Lịch sử – Địa lý",
+     "score": 25.88
+    },
+    {
+     "code": "7220201",
+     "name": "Ngôn ngữ Anh",
+     "score": 25.5
+    },
+    {
+     "code": "7220202",
+     "name": "Ngôn ngữ Nga",
+     "score": 19
+    },
+    {
+     "code": "7220203",
+     "name": "Ngôn ngữ Pháp",
+     "score": 18.5
+    },
+    {
+     "code": "7220204",
+     "name": "Ngôn ngữ Trung Quốc",
+     "score": 23.5
+    },
+    {
+     "code": "7220209",
+     "name": "Ngôn ngữ Nhật",
+     "score": 19.5
+    },
+    {
+     "code": "7220210",
+     "name": "Ngôn ngữ Hàn Quốc",
+     "score": 22
+    },
+    {
+     "code": "7229030",
+     "name": "Văn học",
+     "score": 24.68
+    },
+    {
+     "code": "7310201",
+     "name": "Chính trị học",
+     "score": 22.35
+    },
+    {
+     "code": "7310401",
+     "name": "Tâm lý học",
+     "score": 24.2
+    },
+    {
+     "code": "7310403",
+     "name": "Tâm lý học giáo dục",
+     "score": 22
+    },
+    {
+     "code": "7310501",
+     "name": "Địa lý học",
+     "score": 24.45
+    },
+    {
+     "code": "7310601",
+     "name": "Quốc tế học",
+     "score": 20.25
+    },
+    {
+     "code": "7310630",
+     "name": "Việt Nam học",
+     "score": 21.07
+    },
+    {
+     "code": "7420203",
+     "name": "Sinh học ứng dụng",
+     "score": 22.61
+    },
+    {
+     "code": "7440102",
+     "name": "Vật lý học",
+     "score": 25.05
+    },
+    {
+     "code": "7440112",
+     "name": "Hoá học",
+     "score": 25.89
+    },
+    {
+     "code": "7460112",
+     "name": "Toán ứng dụng",
+     "score": 26.44
+    },
+    {
+     "code": "7480201",
+     "name": "Công nghệ thông tin",
+     "score": 18
+    },
+    {
+     "code": "7760101",
+     "name": "Công tác xã hội",
+     "score": 22.1
+    },
+    {
+     "code": "7760103",
+     "name": "Hỗ trợ giáo dục người khuyết tật",
+     "score": 23.35
+    },
+    {
+     "code": "7810101",
+     "name": "Du lịch",
+     "score": 21.1
+    }
+   ]
+  }
  },
  "sgu": {
   "homepage": "https://sgu.edu.vn/",
@@ -1205,6 +2509,255 @@ export const researchedSchoolDetails = {
     {
      "code": "",
      "name": "Quản trị nhà hàng và dịch vụ ăn uống"
+    }
+   ]
+  },
+  "tuition": {
+   "year": 2026,
+   "summary": "Học phí dự kiến cả khóa, khóa tuyển sinh 2026: các ngành đào tạo giáo viên 84.040.000đ; Quản trị kinh doanh, Kế toán, Tài chính – Ngân hàng, Luật 132.732.600đ; Công nghệ thông tin 165.489.940đ; chương trình chất lượng cao 158.258.100–212.772.780đ.",
+   "source": "https://tuyensinh.sgu.edu.vn/images/files/2026/MPhuLuc6_Hocphi.pdf",
+   "published": null
+  },
+  "scores": {
+   "source": "https://tuyensinh.sgu.edu.vn/images/files/2026/2026DiemTrungTuyen2026.pdf",
+   "scale": 30,
+   "method": "Điểm trúng tuyển đợt 1 năm 2026, quy đổi về tổ hợp gốc · thang 30",
+   "note": "Áp dụng cho mọi phương thức, đã gồm điểm cộng và điểm ưu tiên; công bố ngày 11/08/2026.",
+   "programs": [
+    {
+     "code": "7140114",
+     "name": "Quản lý giáo dục",
+     "score": 24.34
+    },
+    {
+     "code": "7140201",
+     "name": "Giáo dục Mầm non",
+     "score": 25.43
+    },
+    {
+     "code": "7140202",
+     "name": "Giáo dục Tiểu học",
+     "score": 25.97
+    },
+    {
+     "code": "7140205",
+     "name": "Giáo dục chính trị",
+     "score": 25.25
+    },
+    {
+     "code": "7140209",
+     "name": "Sư phạm Toán học",
+     "score": 28.89
+    },
+    {
+     "code": "7140211",
+     "name": "Sư phạm Vật lý",
+     "score": 27.54
+    },
+    {
+     "code": "7140212",
+     "name": "Sư phạm Hoá học",
+     "score": 27.43
+    },
+    {
+     "code": "7140213",
+     "name": "Sư phạm Sinh học",
+     "score": 26.08
+    },
+    {
+     "code": "7140217",
+     "name": "Sư phạm Ngữ văn",
+     "score": 28.07
+    },
+    {
+     "code": "7140218",
+     "name": "Sư phạm Lịch sử",
+     "score": 26.8
+    },
+    {
+     "code": "7140219",
+     "name": "Sư phạm Địa lý",
+     "score": 26.08
+    },
+    {
+     "code": "7140221",
+     "name": "Sư phạm Âm nhạc",
+     "score": 22
+    },
+    {
+     "code": "7140222",
+     "name": "Sư phạm Mỹ thuật",
+     "score": 20.75
+    },
+    {
+     "code": "7140231",
+     "name": "Sư phạm Tiếng Anh",
+     "score": 27.5
+    },
+    {
+     "code": "7140247",
+     "name": "Sư phạm Khoa học tự nhiên (đào tạo giáo viên THCS)",
+     "score": 26.71
+    },
+    {
+     "code": "7140249",
+     "name": "Sư phạm Lịch sử – Địa lý (đào tạo giáo viên THCS)",
+     "score": 25.59
+    },
+    {
+     "code": "7220201",
+     "name": "Ngôn ngữ Anh",
+     "score": 25.38
+    },
+    {
+     "code": "7220201C",
+     "name": "Ngôn ngữ Anh (chương trình chất lượng cao)",
+     "score": 25.05
+    },
+    {
+     "code": "7229010",
+     "name": "Lịch sử",
+     "score": 25.48
+    },
+    {
+     "code": "7310401",
+     "name": "Tâm lý học",
+     "score": 24.15
+    },
+    {
+     "code": "7310501",
+     "name": "Địa lý học",
+     "score": 24.9
+    },
+    {
+     "code": "7310601",
+     "name": "Quốc tế học",
+     "score": 23.06
+    },
+    {
+     "code": "7310630",
+     "name": "Việt Nam học",
+     "score": 23.39
+    },
+    {
+     "code": "7320201",
+     "name": "Thông tin – Thư viện",
+     "score": 22.06
+    },
+    {
+     "code": "7340101",
+     "name": "Quản trị kinh doanh",
+     "score": 22.06
+    },
+    {
+     "code": "7340101C",
+     "name": "Quản trị kinh doanh (chương trình chất lượng cao)",
+     "score": 20.63
+    },
+    {
+     "code": "7340120",
+     "name": "Kinh doanh quốc tế",
+     "score": 23.14
+    },
+    {
+     "code": "7340201",
+     "name": "Tài chính – Ngân hàng",
+     "score": 22.13
+    },
+    {
+     "code": "7340301",
+     "name": "Kế toán",
+     "score": 22.69
+    },
+    {
+     "code": "7340301C",
+     "name": "Kế toán (chương trình chất lượng cao)",
+     "score": 20.92
+    },
+    {
+     "code": "7340302",
+     "name": "Kiểm toán",
+     "score": 23.7
+    },
+    {
+     "code": "7340406",
+     "name": "Quản trị văn phòng",
+     "score": 23
+    },
+    {
+     "code": "7380101",
+     "name": "Luật",
+     "score": 23.84
+    },
+    {
+     "code": "7440301",
+     "name": "Khoa học môi trường",
+     "score": 22.44
+    },
+    {
+     "code": "7460108",
+     "name": "Khoa học dữ liệu",
+     "score": 23.44
+    },
+    {
+     "code": "7460112",
+     "name": "Toán ứng dụng",
+     "score": 25.89
+    },
+    {
+     "code": "7480103",
+     "name": "Kỹ thuật phần mềm",
+     "score": 22.06
+    },
+    {
+     "code": "7480107",
+     "name": "Trí tuệ nhân tạo",
+     "score": 23.11
+    },
+    {
+     "code": "7480201",
+     "name": "Công nghệ thông tin",
+     "score": 20.69
+    },
+    {
+     "code": "7480201C",
+     "name": "Công nghệ thông tin (chương trình chất lượng cao)",
+     "score": 17.06
+    },
+    {
+     "code": "7510301",
+     "name": "Công nghệ kỹ thuật điện, điện tử",
+     "score": 23.48
+    },
+    {
+     "code": "7510302",
+     "name": "Công nghệ kỹ thuật điện tử – viễn thông",
+     "score": 22.63
+    },
+    {
+     "code": "7510406",
+     "name": "Công nghệ kỹ thuật môi trường",
+     "score": 22.09
+    },
+    {
+     "code": "7520201",
+     "name": "Kỹ thuật điện",
+     "score": 23.06
+    },
+    {
+     "code": "7520207",
+     "name": "Kỹ thuật điện tử – viễn thông (Thiết kế vi mạch)",
+     "score": 21.75
+    },
+    {
+     "code": "7810101",
+     "name": "Du lịch",
+     "score": 24.58
+    },
+    {
+     "code": "7810202",
+     "name": "Quản trị nhà hàng và dịch vụ ăn uống",
+     "score": 22.69
     }
    ]
   }
@@ -1598,6 +3151,269 @@ export const researchedSchoolDetails = {
     {
      "code": "7460108",
      "name": "Khoa học dữ liệu"
+    }
+   ]
+  },
+  "scores": {
+   "source": "https://admission.tdtu.edu.vn/sites/admission/files/Tuyen-sinh/2026/TB-Diemtrungtuyen/PL1-Diem-trung-tuyen-DH-2026-PT1-TanHung.pdf",
+   "scale": 100,
+   "method": "Điểm trúng tuyển 2026 phương thức 1, tổ hợp gốc, chương trình tiêu chuẩn tại Tân Hưng · thang 100",
+   "note": "Tổ hợp khác cộng thêm mức chênh lệch ghi trong phụ lục. Phụ lục còn có chương trình tiên tiến, phân hiệu và điểm ĐGNL (phụ lục 2).",
+   "programs": [
+    {
+     "code": "7220201",
+     "name": "Ngôn ngữ Anh",
+     "score": 76.77
+    },
+    {
+     "code": "7220204",
+     "name": "Ngôn ngữ Trung Quốc",
+     "score": 72.3
+    },
+    {
+     "code": "7810101",
+     "name": "Du lịch (Chuyên ngành Quản lý du lịch)",
+     "score": 71.7
+    },
+    {
+     "code": "7810101H",
+     "name": "Du lịch (Chuyên ngành Hướng dẫn du lịch)",
+     "score": 70.92
+    },
+    {
+     "code": "7310301",
+     "name": "Xã hội học",
+     "score": 68.7
+    },
+    {
+     "code": "7760101",
+     "name": "Công tác Xã hội",
+     "score": 66.8
+    },
+    {
+     "code": "7310206",
+     "name": "Quan hệ quốc tế",
+     "score": 73.25
+    },
+    {
+     "code": "7340101",
+     "name": "Quản trị kinh doanh (Chuyên ngành Quản trị nhà hàng – khách sạn)",
+     "score": 69
+    },
+    {
+     "code": "7340101C",
+     "name": "Quản trị kinh doanh (Chuyên ngành Quản trị chuỗi cung ứng)",
+     "score": 74.5
+    },
+    {
+     "code": "7340404",
+     "name": "Quản trị nhân lực",
+     "score": 72.7
+    },
+    {
+     "code": "7340115",
+     "name": "Marketing",
+     "score": 76
+    },
+    {
+     "code": "7340120",
+     "name": "Kinh doanh quốc tế",
+     "score": 75.7
+    },
+    {
+     "code": "7340408",
+     "name": "Quan hệ lao động (Chuyên ngành Quản lý quan hệ lao động, Chuyên ngành Hành vi tổ chức)",
+     "score": 55
+    },
+    {
+     "code": "7340201",
+     "name": "Tài chính – Ngân hàng",
+     "score": 70.2
+    },
+    {
+     "code": "7340201Q",
+     "name": "Tài chính – Ngân hàng (Chuyên ngành Tài chính quốc tế)",
+     "score": 60
+    },
+    {
+     "code": "7340205",
+     "name": "Công nghệ tài chính",
+     "score": 70.9
+    },
+    {
+     "code": "7340301",
+     "name": "Kế toán",
+     "score": 70.05
+    },
+    {
+     "code": "7340302",
+     "name": "Kiểm toán (Chuyên ngành Kiểm toán và Phân tích dữ liệu)",
+     "score": 72.2
+    },
+    {
+     "code": "7380101",
+     "name": "Luật",
+     "score": 66.45
+    },
+    {
+     "code": "7720201",
+     "name": "Dược học",
+     "score": 65
+    },
+    {
+     "code": "7420204",
+     "name": "Khoa học y sinh",
+     "score": 55
+    },
+    {
+     "code": "7420201",
+     "name": "Công nghệ sinh học",
+     "score": 55
+    },
+    {
+     "code": "7520301",
+     "name": "Kỹ thuật hóa học",
+     "score": 70
+    },
+    {
+     "code": "7480101",
+     "name": "Khoa học máy tính",
+     "score": 69.7
+    },
+    {
+     "code": "7480102",
+     "name": "Mạng máy tính và truyền thông dữ liệu",
+     "score": 62.5
+    },
+    {
+     "code": "7480103",
+     "name": "Kỹ thuật phần mềm",
+     "score": 67
+    },
+    {
+     "code": "7480104",
+     "name": "Hệ thống thông tin",
+     "score": 67.7
+    },
+    {
+     "code": "7520201",
+     "name": "Kỹ thuật điện",
+     "score": 74.1
+    },
+    {
+     "code": "7520207",
+     "name": "Kỹ thuật điện tử – viễn thông",
+     "score": 71.1
+    },
+    {
+     "code": "7520207T",
+     "name": "Kỹ thuật điện tử – viễn thông (Chuyên ngành Kỹ thuật thiết kế vi mạch bán dẫn)",
+     "score": 77
+    },
+    {
+     "code": "7520216",
+     "name": "Kỹ thuật điều khiển và tự động hóa",
+     "score": 77.84
+    },
+    {
+     "code": "7520114",
+     "name": "Kỹ thuật cơ điện tử",
+     "score": 75.75
+    },
+    {
+     "code": "7580201",
+     "name": "Kỹ thuật xây dựng",
+     "score": 60.6
+    },
+    {
+     "code": "7580205",
+     "name": "Kỹ thuật xây dựng công trình giao thông",
+     "score": 50
+    },
+    {
+     "code": "7580302",
+     "name": "Quản lý xây dựng",
+     "score": 52
+    },
+    {
+     "code": "7580101",
+     "name": "Kiến trúc",
+     "score": 75
+    },
+    {
+     "code": "7580104",
+     "name": "Kiến trúc đô thị",
+     "score": 67
+    },
+    {
+     "code": "7580105",
+     "name": "Quy hoạch vùng và đô thị",
+     "score": 60
+    },
+    {
+     "code": "7580108",
+     "name": "Thiết kế nội thất",
+     "score": 72.2
+    },
+    {
+     "code": "7210403",
+     "name": "Thiết kế đồ họa",
+     "score": 75.8
+    },
+    {
+     "code": "7210404",
+     "name": "Thiết kế thời trang",
+     "score": 69.5
+    },
+    {
+     "code": "7210408",
+     "name": "Nghệ thuật số (Chuyên ngành Thiết kế truyền thông số)",
+     "score": 78.7
+    },
+    {
+     "code": "7810301",
+     "name": "Quản lý thể dục thể thao (Chuyên ngành Kinh doanh thể thao và tổ chức sự kiện)",
+     "score": 61
+    },
+    {
+     "code": "7810301G",
+     "name": "Quản lý thể dục thể thao (Chuyên ngành Golf)",
+     "score": 50
+    },
+    {
+     "code": "7810301T",
+     "name": "Quản lý thể dục thể thao (Chuyên ngành Truyền thông và tiếp thị thể thao)",
+     "score": 55
+    },
+    {
+     "code": "7850201",
+     "name": "Bảo hộ lao động",
+     "score": 55.95
+    },
+    {
+     "code": "7440301",
+     "name": "Khoa học môi trường",
+     "score": 50
+    },
+    {
+     "code": "7520320",
+     "name": "Kỹ thuật môi trường (Chuyên ngành Môi trường và Phát triển bền vững)",
+     "score": 50
+    },
+    {
+     "code": "7460112",
+     "name": "Toán ứng dụng",
+     "score": 70.8
+    },
+    {
+     "code": "7460201",
+     "name": "Thống kê",
+     "score": 58
+    },
+    {
+     "code": "7460108",
+     "name": "Khoa học dữ liệu",
+     "score": 64.1
     }
    ]
   }
@@ -3069,7 +4885,91 @@ export const researchedSchoolDetails = {
   }
  },
  "ctump": {
-  "homepage": "https://www.ctump.edu.vn/"
+  "homepage": "https://www.ctump.edu.vn/",
+  "tuition": {
+   "year": 2026,
+   "summary": "Năm học 2026–2027, khóa 2026 chính quy, thu theo tín chỉ: Y khoa 2.234.000đ, Dược 2.209.000đ, Răng hàm mặt 2.089.000đ, Điều dưỡng 1.744.000đ; hoặc mức giữ nguyên cả khóa (Y khoa 3.074.000đ, Dược 2.844.000đ); Y tế công cộng, Tâm lý học 1.000.000đ.",
+   "source": "https://www.ctump.edu.vn/vi/muc-thu-hoc-phi-nam-hoc-2026-2027-37183",
+   "published": "2026-04-07"
+  },
+  "scores": {
+   "source": "https://www.ctump.edu.vn/vi/thong-bao-iem-trung-tuyen-ai-hoc-chinh-quy-nam-2026-37746",
+   "scale": 30,
+   "method": "Điểm trúng tuyển đại học chính quy 2026 (điểm thi tốt nghiệp THPT + điểm ưu tiên) · thang 30",
+   "note": "Thông báo 222/TB-ĐHYDCT ngày 12/08/2026.",
+   "programs": [
+    {
+     "code": "7720101",
+     "name": "Y khoa",
+     "score": 25.3
+    },
+    {
+     "code": "7720110",
+     "name": "Y học dự phòng",
+     "score": 20.5
+    },
+    {
+     "code": "7720115",
+     "name": "Y học cổ truyền",
+     "score": 23.55
+    },
+    {
+     "code": "7720201",
+     "name": "Dược học",
+     "score": 23.6
+    },
+    {
+     "code": "7720301",
+     "name": "Điều dưỡng",
+     "score": 22.55
+    },
+    {
+     "code": "7720302",
+     "name": "Hộ sinh",
+     "score": 19.6
+    },
+    {
+     "code": "7720401",
+     "name": "Dinh dưỡng",
+     "score": 20.75
+    },
+    {
+     "code": "7720501",
+     "name": "Răng hàm mặt",
+     "score": 25.25
+    },
+    {
+     "code": "7720601",
+     "name": "Kỹ thuật Xét nghiệm y học",
+     "score": 23.15
+    },
+    {
+     "code": "7720602",
+     "name": "Kỹ thuật Hình ảnh y học",
+     "score": 22.45
+    },
+    {
+     "code": "7720603",
+     "name": "Kỹ thuật Phục hồi chức năng",
+     "score": 22.85
+    },
+    {
+     "code": "7720701",
+     "name": "Y tế công cộng",
+     "score": 21.8
+    },
+    {
+     "code": "7520212",
+     "name": "Kỹ thuật Y sinh",
+     "score": 22.2
+    },
+    {
+     "code": "7310401",
+     "name": "Tâm lý học",
+     "score": 24.45
+    }
+   ]
+  }
  },
  "nlu": {
   "homepage": "https://hcmuaf.edu.vn/",
@@ -3077,6 +4977,515 @@ export const researchedSchoolDetails = {
    "summary": "Xét tuyển thẳng, ưu tiên xét tuyển theo quy chế Bộ GD&ĐT; điểm thi THPT 2026; học bạ THPT; ĐGNL ĐHQG-HCM; điểm thi THPT kết hợp học bạ hoặc chứng chỉ quốc tế; học bạ kết hợp chứng chỉ quốc tế; kết hợp năng khiếu cho ngành GD Mầm non.",
    "source": "https://ts.hcmuaf.edu.vn/vn/tin-tuc/span-style-color-red-thong-tin-tuyen-sinh-dai-hoc-chinh-quy-va-cao-dang-nganh-giao-duc-mam-non-nam-2026-60567",
    "published": "2026-07-03"
+  },
+  "scores": {
+   "source": "https://ts.hcmuaf.edu.vn/vn/tin-tuc/span-style-color-red-diem-trung-tuyen-diem-chuan-cac-nganh-dao-tao-trinh-do-dai-hoc-va-nganh-giao-duc-mam-non-trinh-do-c-60570",
+   "scale": 30,
+   "method": "Điểm trúng tuyển 2026 phương thức điểm thi tốt nghiệp THPT (gồm THPT + học bạ, THPT + chứng chỉ) · thang 30",
+   "note": "Công bố ngày 10/08/2026. Bảng gốc còn có điểm học bạ và ĐGNL. Đọc từ ảnh trên trang trường.",
+   "programs": [
+    {
+     "code": "7140201",
+     "name": "Giáo dục mầm non (đại học)",
+     "score": 20
+    },
+    {
+     "code": "7140215",
+     "name": "Sư phạm Kỹ thuật nông nghiệp",
+     "score": 24
+    },
+    {
+     "code": "7220201",
+     "name": "Ngôn ngữ Anh",
+     "score": 23.1
+    },
+    {
+     "code": "7220201N",
+     "name": "Ngôn ngữ Anh (Phân hiệu Ninh Thuận)",
+     "score": 16
+    },
+    {
+     "code": "7310101",
+     "name": "Kinh tế",
+     "score": 22
+    },
+    {
+     "code": "7310101C",
+     "name": "Kinh tế (chương trình nâng cao, chuyên ngành Kinh tế nông nghiệp)",
+     "score": 22
+    },
+    {
+     "code": "7340101",
+     "name": "Quản trị kinh doanh",
+     "score": 21.3
+    },
+    {
+     "code": "7340101C",
+     "name": "Quản trị kinh doanh (chương trình nâng cao)",
+     "score": 21.3
+    },
+    {
+     "code": "7340101N",
+     "name": "Quản trị kinh doanh (Phân hiệu Ninh Thuận)",
+     "score": 16
+    },
+    {
+     "code": "7340116",
+     "name": "Bất động sản",
+     "score": 19.5
+    },
+    {
+     "code": "7340301",
+     "name": "Kế toán",
+     "score": 23.5
+    },
+    {
+     "code": "7340301N",
+     "name": "Kế toán (Phân hiệu Ninh Thuận)",
+     "score": 16
+    },
+    {
+     "code": "7420201",
+     "name": "Công nghệ sinh học",
+     "score": 23.5
+    },
+    {
+     "code": "7420201C",
+     "name": "Công nghệ sinh học (chương trình nâng cao)",
+     "score": 23.5
+    },
+    {
+     "code": "7440301",
+     "name": "Khoa học môi trường",
+     "score": 21.55
+    },
+    {
+     "code": "7480104",
+     "name": "Hệ thống thông tin",
+     "score": 21.5
+    },
+    {
+     "code": "7480201",
+     "name": "Công nghệ thông tin",
+     "score": 20.5
+    },
+    {
+     "code": "7480201C",
+     "name": "Công nghệ thông tin (chương trình nâng cao)",
+     "score": 20.5
+    },
+    {
+     "code": "7480201N",
+     "name": "Công nghệ thông tin (Phân hiệu Ninh Thuận)",
+     "score": 16
+    },
+    {
+     "code": "7510201",
+     "name": "Công nghệ kỹ thuật cơ khí",
+     "score": 23.65
+    },
+    {
+     "code": "7510201C",
+     "name": "Công nghệ kỹ thuật cơ khí (chương trình nâng cao)",
+     "score": 23.65
+    },
+    {
+     "code": "7510203",
+     "name": "Công nghệ kỹ thuật cơ điện tử",
+     "score": 24.15
+    },
+    {
+     "code": "7510205",
+     "name": "Công nghệ kỹ thuật ô tô",
+     "score": 22.8
+    },
+    {
+     "code": "7510206",
+     "name": "Công nghệ kỹ thuật nhiệt",
+     "score": 23.6
+    },
+    {
+     "code": "7510401",
+     "name": "Công nghệ kỹ thuật hoá học",
+     "score": 24.3
+    },
+    {
+     "code": "7510401C",
+     "name": "Công nghệ kỹ thuật hoá học (chương trình nâng cao)",
+     "score": 24.3
+    },
+    {
+     "code": "7519007",
+     "name": "Công nghệ kỹ thuật năng lượng tái tạo",
+     "score": 22.5
+    },
+    {
+     "code": "7519007N",
+     "name": "Công nghệ kỹ thuật năng lượng tái tạo (Phân hiệu Ninh Thuận)",
+     "score": 16
+    },
+    {
+     "code": "7520216",
+     "name": "Kỹ thuật điều khiển và tự động hoá",
+     "score": 24.85
+    },
+    {
+     "code": "7520320",
+     "name": "Kỹ thuật môi trường",
+     "score": 21.75
+    },
+    {
+     "code": "7540101",
+     "name": "Công nghệ thực phẩm",
+     "score": 23.7
+    },
+    {
+     "code": "7540101C",
+     "name": "Công nghệ thực phẩm (chương trình nâng cao)",
+     "score": 23.7
+    },
+    {
+     "code": "7540101T",
+     "name": "Công nghệ thực phẩm (chương trình tiên tiến)",
+     "score": 23.7
+    },
+    {
+     "code": "7540105",
+     "name": "Công nghệ chế biến thuỷ sản",
+     "score": 20.9
+    },
+    {
+     "code": "7540106",
+     "name": "Đảm bảo chất lượng và An toàn thực phẩm",
+     "score": 22.75
+    },
+    {
+     "code": "7549001",
+     "name": "Công nghệ chế biến lâm sản",
+     "score": 19.2
+    },
+    {
+     "code": "7620105",
+     "name": "Chăn nuôi",
+     "score": 20.8
+    },
+    {
+     "code": "7620105C",
+     "name": "Chăn nuôi (chương trình nâng cao)",
+     "score": 20.8
+    },
+    {
+     "code": "7620109",
+     "name": "Nông học",
+     "score": 20.5
+    },
+    {
+     "code": "7620112",
+     "name": "Bảo vệ thực vật",
+     "score": 21.2
+    },
+    {
+     "code": "7620114",
+     "name": "Kinh doanh nông nghiệp",
+     "score": 21.6
+    },
+    {
+     "code": "7620116",
+     "name": "Phát triển nông thôn",
+     "score": 20
+    },
+    {
+     "code": "7620201",
+     "name": "Lâm học",
+     "score": 19.7
+    },
+    {
+     "code": "7620202",
+     "name": "Lâm nghiệp đô thị",
+     "score": 19
+    },
+    {
+     "code": "7620211",
+     "name": "Quản lý tài nguyên rừng",
+     "score": 19.7
+    },
+    {
+     "code": "7620301",
+     "name": "Nuôi trồng thuỷ sản",
+     "score": 20
+    },
+    {
+     "code": "7640101",
+     "name": "Thú y",
+     "score": 24.6
+    },
+    {
+     "code": "7640101N",
+     "name": "Thú y (Phân hiệu Ninh Thuận)",
+     "score": 18
+    },
+    {
+     "code": "7640101T",
+     "name": "Thú y (chương trình tiên tiến)",
+     "score": 24.6
+    },
+    {
+     "code": "7850101",
+     "name": "Quản lý tài nguyên và môi trường",
+     "score": 21.5
+    },
+    {
+     "code": "7850103",
+     "name": "Quản lý đất đai",
+     "score": 21.2
+    },
+    {
+     "code": "7850103C",
+     "name": "Quản lý đất đai (chương trình nâng cao)",
+     "score": 21.2
+    },
+    {
+     "code": "7859002",
+     "name": "Tài nguyên và Du lịch sinh thái",
+     "score": 20.5
+    },
+    {
+     "code": "7859002N",
+     "name": "Tài nguyên và Du lịch sinh thái (Phân hiệu Ninh Thuận)",
+     "score": 20.5
+    },
+    {
+     "code": "7859007",
+     "name": "Cảnh quan và kỹ thuật hoa viên",
+     "score": 19
+    }
+   ]
+  },
+  "programs": {
+   "source": "https://ts.hcmuaf.edu.vn/vn/tin-tuc/span-style-color-red-diem-trung-tuyen-diem-chuan-cac-nganh-dao-tao-trinh-do-dai-hoc-va-nganh-giao-duc-mam-non-trinh-do-c-60570",
+   "note": "Danh sách theo bảng điểm trúng tuyển 2026 (trình độ đại học)",
+   "list": [
+    {
+     "code": "7140201",
+     "name": "Giáo dục mầm non (đại học)"
+    },
+    {
+     "code": "7140215",
+     "name": "Sư phạm Kỹ thuật nông nghiệp"
+    },
+    {
+     "code": "7220201",
+     "name": "Ngôn ngữ Anh"
+    },
+    {
+     "code": "7220201N",
+     "name": "Ngôn ngữ Anh (Phân hiệu Ninh Thuận)"
+    },
+    {
+     "code": "7310101",
+     "name": "Kinh tế"
+    },
+    {
+     "code": "7310101C",
+     "name": "Kinh tế (chương trình nâng cao, chuyên ngành Kinh tế nông nghiệp)"
+    },
+    {
+     "code": "7340101",
+     "name": "Quản trị kinh doanh"
+    },
+    {
+     "code": "7340101C",
+     "name": "Quản trị kinh doanh (chương trình nâng cao)"
+    },
+    {
+     "code": "7340101N",
+     "name": "Quản trị kinh doanh (Phân hiệu Ninh Thuận)"
+    },
+    {
+     "code": "7340116",
+     "name": "Bất động sản"
+    },
+    {
+     "code": "7340301",
+     "name": "Kế toán"
+    },
+    {
+     "code": "7340301N",
+     "name": "Kế toán (Phân hiệu Ninh Thuận)"
+    },
+    {
+     "code": "7420201",
+     "name": "Công nghệ sinh học"
+    },
+    {
+     "code": "7420201C",
+     "name": "Công nghệ sinh học (chương trình nâng cao)"
+    },
+    {
+     "code": "7440301",
+     "name": "Khoa học môi trường"
+    },
+    {
+     "code": "7480104",
+     "name": "Hệ thống thông tin"
+    },
+    {
+     "code": "7480201",
+     "name": "Công nghệ thông tin"
+    },
+    {
+     "code": "7480201C",
+     "name": "Công nghệ thông tin (chương trình nâng cao)"
+    },
+    {
+     "code": "7480201N",
+     "name": "Công nghệ thông tin (Phân hiệu Ninh Thuận)"
+    },
+    {
+     "code": "7510201",
+     "name": "Công nghệ kỹ thuật cơ khí"
+    },
+    {
+     "code": "7510201C",
+     "name": "Công nghệ kỹ thuật cơ khí (chương trình nâng cao)"
+    },
+    {
+     "code": "7510203",
+     "name": "Công nghệ kỹ thuật cơ điện tử"
+    },
+    {
+     "code": "7510205",
+     "name": "Công nghệ kỹ thuật ô tô"
+    },
+    {
+     "code": "7510206",
+     "name": "Công nghệ kỹ thuật nhiệt"
+    },
+    {
+     "code": "7510401",
+     "name": "Công nghệ kỹ thuật hoá học"
+    },
+    {
+     "code": "7510401C",
+     "name": "Công nghệ kỹ thuật hoá học (chương trình nâng cao)"
+    },
+    {
+     "code": "7519007",
+     "name": "Công nghệ kỹ thuật năng lượng tái tạo"
+    },
+    {
+     "code": "7519007N",
+     "name": "Công nghệ kỹ thuật năng lượng tái tạo (Phân hiệu Ninh Thuận)"
+    },
+    {
+     "code": "7520216",
+     "name": "Kỹ thuật điều khiển và tự động hoá"
+    },
+    {
+     "code": "7520320",
+     "name": "Kỹ thuật môi trường"
+    },
+    {
+     "code": "7540101",
+     "name": "Công nghệ thực phẩm"
+    },
+    {
+     "code": "7540101C",
+     "name": "Công nghệ thực phẩm (chương trình nâng cao)"
+    },
+    {
+     "code": "7540101T",
+     "name": "Công nghệ thực phẩm (chương trình tiên tiến)"
+    },
+    {
+     "code": "7540105",
+     "name": "Công nghệ chế biến thuỷ sản"
+    },
+    {
+     "code": "7540106",
+     "name": "Đảm bảo chất lượng và An toàn thực phẩm"
+    },
+    {
+     "code": "7549001",
+     "name": "Công nghệ chế biến lâm sản"
+    },
+    {
+     "code": "7620105",
+     "name": "Chăn nuôi"
+    },
+    {
+     "code": "7620105C",
+     "name": "Chăn nuôi (chương trình nâng cao)"
+    },
+    {
+     "code": "7620109",
+     "name": "Nông học"
+    },
+    {
+     "code": "7620112",
+     "name": "Bảo vệ thực vật"
+    },
+    {
+     "code": "7620114",
+     "name": "Kinh doanh nông nghiệp"
+    },
+    {
+     "code": "7620116",
+     "name": "Phát triển nông thôn"
+    },
+    {
+     "code": "7620201",
+     "name": "Lâm học"
+    },
+    {
+     "code": "7620202",
+     "name": "Lâm nghiệp đô thị"
+    },
+    {
+     "code": "7620211",
+     "name": "Quản lý tài nguyên rừng"
+    },
+    {
+     "code": "7620301",
+     "name": "Nuôi trồng thuỷ sản"
+    },
+    {
+     "code": "7640101",
+     "name": "Thú y"
+    },
+    {
+     "code": "7640101N",
+     "name": "Thú y (Phân hiệu Ninh Thuận)"
+    },
+    {
+     "code": "7640101T",
+     "name": "Thú y (chương trình tiên tiến)"
+    },
+    {
+     "code": "7850101",
+     "name": "Quản lý tài nguyên và môi trường"
+    },
+    {
+     "code": "7850103",
+     "name": "Quản lý đất đai"
+    },
+    {
+     "code": "7850103C",
+     "name": "Quản lý đất đai (chương trình nâng cao)"
+    },
+    {
+     "code": "7859002",
+     "name": "Tài nguyên và Du lịch sinh thái"
+    },
+    {
+     "code": "7859002N",
+     "name": "Tài nguyên và Du lịch sinh thái (Phân hiệu Ninh Thuận)"
+    },
+    {
+     "code": "7859007",
+     "name": "Cảnh quan và kỹ thuật hoa viên"
+    }
+   ]
   }
  },
  "hufi": {
@@ -3494,6 +5903,12 @@ export const researchedSchoolDetails = {
      "name": "Kinh doanh quốc tế - LK với ĐH Văn hóa Trung Quốc, Đài Loan"
     }
    ]
+  },
+  "tuition": {
+   "year": 2026,
+   "summary": "Học phí dự kiến cho khóa 2026–2030 khoảng 140–170 triệu đồng cho toàn khóa học, tùy ngành và chương trình (áp dụng cả hệ cử nhân và kỹ sư). Trường chưa công bố mức theo tín chỉ hay theo năm học 2026–2027 trên trang đọc được.",
+   "source": "https://huit.edu.vn/news/huit-du-kien-hoc-phi-khoa-2026-2030-khoang-tu-140-trieu-170-trieu-dong-tang-theo-lo-trinh-va-di-kem-nhieu-chinh-sach-ho-tro",
+   "published": "2026-03-18"
   }
  },
  "dthu": {
@@ -4432,13 +6847,63 @@ export const researchedSchoolDetails = {
      "name": "Quản lý đất đai"
     }
    ]
-  }
+  },
+  "homepage": "https://qnu.edu.vn/"
  },
  "duytan": {
   "admission": {
    "summary": "6 phương thức: xét tuyển thẳng theo quy chế Bộ GDĐT; điểm thi tốt nghiệp THPT 2026; học bạ lớp 10, 11, 12; ĐGNL ĐHQG-HCM hoặc V-SAT 2026 (trừ Kiến trúc, Thanh nhạc); điểm thi THPT kết hợp năng khiếu; học bạ kết hợp năng khiếu.",
    "source": "https://tuyensinh2026.duytan.edu.vn/",
    "published": null
+  },
+  "homepage": "https://duytan.edu.vn/",
+  "scores": {
+   "source": "https://duytan.edu.vn/tuyen-sinh/Page/EnrollArticleViewDetail.aspx?id=1028",
+   "scale": 30,
+   "method": "Điểm trúng tuyển đợt 1 năm 2026 phương thức điểm thi tốt nghiệp THPT · thang 30",
+   "note": "Theo nhóm ngành; các ngành còn lại 15 điểm. Ngành sức khỏe, luật có thêm điều kiện học lực lớp 12. Đọc từ ảnh công bố ngày 11/08/2026.",
+   "programs": [
+    {
+     "code": "7720101",
+     "name": "Y khoa",
+     "score": 22
+    },
+    {
+     "code": "7720501",
+     "name": "Răng – Hàm – Mặt",
+     "score": 22
+    },
+    {
+     "code": "7720201",
+     "name": "Dược học",
+     "score": 20
+    },
+    {
+     "code": "7720301",
+     "name": "Điều dưỡng",
+     "score": 18
+    },
+    {
+     "code": "7720601",
+     "name": "Kỹ thuật Xét nghiệm y học",
+     "score": 18
+    },
+    {
+     "code": "7380101",
+     "name": "Luật",
+     "score": 20
+    },
+    {
+     "code": "7380107",
+     "name": "Luật kinh tế",
+     "score": 20
+    },
+    {
+     "code": "7580101",
+     "name": "Kiến trúc",
+     "score": 15
+    }
+   ]
   }
  },
  "dut": {
@@ -4447,13 +6912,223 @@ export const researchedSchoolDetails = {
    "summary": "3 phương thức: xét tuyển thẳng theo quy chế của Bộ GD&ĐT; điểm thi tốt nghiệp THPT 2026; điểm thi Đánh giá tư duy 2026 do ĐH Bách khoa Hà Nội tổ chức.",
    "source": "https://dut.udn.vn/TrangNCKH/Thongbao/id/12208",
    "published": "2026-08-25"
+  },
+  "tuition": {
+   "year": 2026,
+   "summary": "Tạm thu học phí học kỳ I năm học 2026–2027, khóa 2026 (TB 4179/TB-ĐHBK): chương trình truyền thống 13.376.125đ (nhóm ngành 1) hoặc 15.976.125đ (nhóm 2); PFIEV 14.076.125đ; tài năng 16.576.125đ; tiên tiến, dạy bằng tiếng Anh 18.376.125đ.",
+   "source": "https://tuyensinh.dut.udn.vn/cac-khoan-thu",
+   "published": "2026-08-11"
   }
  },
  "due": {
-  "homepage": "https://due.udn.vn/"
+  "homepage": "https://due.udn.vn/",
+  "admission": {
+   "summary": "4 phương thức: xét tuyển thẳng; kết hợp năng lực tiếng Anh và thành tích học tập (chương trình toàn phần, bán phần tiếng Anh); điểm thi tốt nghiệp THPT 2026 và điểm ĐGNL ĐHQG-HCM 2026 (chương trình tiêu chuẩn).",
+   "source": "https://due.udn.vn/vi-vn/daotao/daotaochitiet/id/22895/cid/3419",
+   "published": "2026-06-22"
+  },
+  "programs": {
+   "source": "https://due.udn.vn/vi-vn/daotao/daotaochitiet/id/22895/cid/3419",
+   "note": "Mã xét tuyển theo Thông báo tuyển sinh ĐHCQ năm 2026 (22/06/2026); hậu tố GB/EL: toàn phần tiếng Anh, PR: bán phần tiếng Anh, ST: tiêu chuẩn, QT: liên kết quốc tế. Tổng chỉ tiêu dòng 1–36 là 3.585.",
+   "list": [
+    {
+     "code": "7340120EL",
+     "name": "Kinh doanh quốc tế - Cử nhân tài năng Ngoại thương (DUE-Elite, toàn phần tiếng Anh)"
+    },
+    {
+     "code": "7340120GB",
+     "name": "Kinh doanh quốc tế - Ngoại thương (toàn phần tiếng Anh)"
+    },
+    {
+     "code": "7340120PR",
+     "name": "Kinh doanh quốc tế - Kinh doanh giao nhận và vận tải quốc tế (bán phần tiếng Anh)"
+    },
+    {
+     "code": "7340120ST",
+     "name": "Kinh doanh quốc tế (tiêu chuẩn)"
+    },
+    {
+     "code": "7340115GB",
+     "name": "Marketing - Marketing số (toàn phần tiếng Anh)"
+    },
+    {
+     "code": "7340115PR",
+     "name": "Marketing (bán phần tiếng Anh)"
+    },
+    {
+     "code": "7340115ST",
+     "name": "Marketing (tiêu chuẩn)"
+    },
+    {
+     "code": "7340122GB",
+     "name": "Thương mại điện tử (toàn phần tiếng Anh)"
+    },
+    {
+     "code": "7340122ST",
+     "name": "Thương mại điện tử (tiêu chuẩn)"
+    },
+    {
+     "code": "7340121ST",
+     "name": "Kinh doanh thương mại (tiêu chuẩn)"
+    },
+    {
+     "code": "7460108ST",
+     "name": "Khoa học dữ liệu (tiêu chuẩn)"
+    },
+    {
+     "code": "7340301PR",
+     "name": "Kế toán tích hợp chương trình quốc tế ICAEW (bán phần tiếng Anh)"
+    },
+    {
+     "code": "7340301ST",
+     "name": "Kế toán (tiêu chuẩn)"
+    },
+    {
+     "code": "7340302PR",
+     "name": "Kiểm toán tích hợp chương trình quốc tế ACCA (bán phần tiếng Anh)"
+    },
+    {
+     "code": "7340302ST",
+     "name": "Kiểm toán (tiêu chuẩn)"
+    },
+    {
+     "code": "7340101PR",
+     "name": "Quản trị kinh doanh (bán phần tiếng Anh)"
+    },
+    {
+     "code": "7340101ST",
+     "name": "Quản trị kinh doanh (tiêu chuẩn)"
+    },
+    {
+     "code": "7340404PR",
+     "name": "Quản trị nhân lực - Quản trị nguồn nhân lực (bán phần tiếng Anh)"
+    },
+    {
+     "code": "7340404ST",
+     "name": "Quản trị nhân lực - Quản trị nguồn nhân lực (tiêu chuẩn)"
+    },
+    {
+     "code": "7340201PR",
+     "name": "Tài chính - Ngân hàng (bán phần tiếng Anh)"
+    },
+    {
+     "code": "7340201ST",
+     "name": "Tài chính - Ngân hàng (tiêu chuẩn)"
+    },
+    {
+     "code": "7340205PR",
+     "name": "Công nghệ tài chính (bán phần tiếng Anh)"
+    },
+    {
+     "code": "7340205ST",
+     "name": "Công nghệ tài chính (tiêu chuẩn)"
+    },
+    {
+     "code": "7810103PR",
+     "name": "Quản trị dịch vụ du lịch và lữ hành - Quản trị kinh doanh du lịch (bán phần tiếng Anh)"
+    },
+    {
+     "code": "7810103ST",
+     "name": "Quản trị dịch vụ du lịch và lữ hành (tiêu chuẩn)"
+    },
+    {
+     "code": "7810201PR",
+     "name": "Quản trị khách sạn (bán phần tiếng Anh)"
+    },
+    {
+     "code": "7810201ST",
+     "name": "Quản trị khách sạn (tiêu chuẩn)"
+    },
+    {
+     "code": "7310101PR",
+     "name": "Kinh tế - Kinh tế quốc tế (bán phần tiếng Anh)"
+    },
+    {
+     "code": "7310101ST",
+     "name": "Kinh tế (tiêu chuẩn)"
+    },
+    {
+     "code": "7340405PR",
+     "name": "Hệ thống thông tin quản lý - Trí tuệ nhân tạo trong kinh doanh (bán phần tiếng Anh)"
+    },
+    {
+     "code": "7340405ST",
+     "name": "Hệ thống thông tin quản lý (tiêu chuẩn)"
+    },
+    {
+     "code": "7310107ST",
+     "name": "Thống kê kinh tế (tiêu chuẩn)"
+    },
+    {
+     "code": "7380107PR",
+     "name": "Luật kinh tế - Luật thương mại quốc tế (bán phần tiếng Anh)"
+    },
+    {
+     "code": "7380107ST",
+     "name": "Luật kinh tế (tiêu chuẩn)"
+    },
+    {
+     "code": "7380101ST",
+     "name": "Luật (tiêu chuẩn)"
+    },
+    {
+     "code": "7310205ST",
+     "name": "Quản lý nhà nước (tiêu chuẩn)"
+    },
+    {
+     "code": "7340120QT",
+     "name": "Kinh doanh quốc tế - Chương trình cử nhân liên kết quốc tế"
+    }
+   ]
+  }
  },
  "smp-udn": {
-  "homepage": "https://smp.udn.vn/"
+  "homepage": "https://smp.udn.vn/",
+  "tuition": {
+   "year": 2026,
+   "summary": "Học kỳ 1 năm học 2026–2027, thu theo số tín chỉ đăng ký (sinh viên Việt Nam, khóa tuyển sinh 2026): Y khoa 938.700 đ/tín chỉ; Răng – Hàm – Mặt 793.900 đ; Dược học 917.000 đ; Điều dưỡng 770.580 đ; Kỹ thuật xét nghiệm y học 759.000 đ; Hóa dược 770.580 đ; Tâm lý ",
+   "source": "https://smp.udn.vn/ckfinder/userfiles/files/TH%C3%94NG%20B%C3%81O%20THU%20H%E1%BB%8CC%20PH%C3%8D%20HK1%2C%20NH%2026_27.pdf",
+   "published": "2026-09-23"
+  },
+  "admission": {
+   "summary": "3 phương thức: điểm thi tốt nghiệp THPT 2026 (mã 100, tất cả ngành); kết quả học tập THPT (mã 200; Điều dưỡng, Kỹ thuật xét nghiệm y học, Hóa dược, Tâm lý học); xét tuyển thẳng (mã 301).",
+   "source": "https://smp.udn.vn/thong-bao/thong-tin-tuyen-sinh-nam-2026-cong-bo-ngay-0562026",
+   "published": "2026-06-05"
+  },
+  "programs": {
+   "source": "https://smp.udn.vn/ckfinder/userfiles/files/C%E1%BA%ACP%20NH%E1%BA%ACT_DDY_%20TH%C3%94NG%20TIN%20TUY%E1%BB%82N%20SINH%20TYD%20N%C4%82M%202026(1).pdf",
+   "note": "Mã ngành theo Thông tin tuyển sinh năm 2026 (công bố 05/6/2026); mã trường DDY; tổng chỉ tiêu 714. Đơn vị nay mang tên Trường Y Dược - Đại học Đà Nẵng.",
+   "list": [
+    {
+     "code": "7720101",
+     "name": "Y khoa"
+    },
+    {
+     "code": "7720501",
+     "name": "Răng - Hàm - Mặt"
+    },
+    {
+     "code": "7720301",
+     "name": "Điều dưỡng"
+    },
+    {
+     "code": "7720601",
+     "name": "Kỹ thuật xét nghiệm y học"
+    },
+    {
+     "code": "7720201",
+     "name": "Dược học"
+    },
+    {
+     "code": "7720203",
+     "name": "Hóa dược"
+    },
+    {
+     "code": "7310401",
+     "name": "Tâm lý học (định hướng lâm sàng)"
+    }
+   ]
+  }
  },
  "vku": {
   "homepage": "https://vku.udn.vn/",
@@ -4559,6 +7234,124 @@ export const researchedSchoolDetails = {
     {
      "code": "7320106DA",
      "name": "Công nghệ truyền thông - Chuyên ngành Thiết kế Mỹ thuật số (cử nhân)"
+    }
+   ]
+  },
+  "scores": {
+   "source": "https://vku.udn.vn/vi/cong-bo-diem-chuan-trung-tuyen-tuyen-sinh-dai-hoc-nam-2026/",
+   "scale": 30,
+   "method": "Điểm trúng tuyển 2026 phương thức kết hợp (mã 407: học bạ 60% + thi tốt nghiệp THPT 40%) · thang 30",
+   "note": "Đã gồm điểm cộng và điểm ưu tiên. Điểm ĐGNL (mã 402) từ 586 đến 722. Đọc từ ảnh công bố trên trang trường.",
+   "programs": [
+    {
+     "code": "7480108PT",
+     "name": "Chuyên ngành Đóng gói và kiểm thử vi mạch bán dẫn (kỹ sư)",
+     "score": 24.5
+    },
+    {
+     "code": "7480108IC",
+     "name": "Chuyên ngành Thiết kế vi mạch bán dẫn (kỹ sư)",
+     "score": 24
+    },
+    {
+     "code": "7340101EL",
+     "name": "Chuyên ngành Quản trị Logistics và chuỗi cung ứng số (cử nhân)",
+     "score": 22.5
+    },
+    {
+     "code": "7340101ET",
+     "name": "Chuyên ngành Quản trị dịch vụ du lịch và lữ hành số (cử nhân)",
+     "score": 22.5
+    },
+    {
+     "code": "7320106",
+     "name": "Công nghệ truyền thông (cử nhân)",
+     "score": 21.5
+    },
+    {
+     "code": "7320106DA",
+     "name": "Chuyên ngành Thiết kế Mỹ thuật số (cử nhân)",
+     "score": 21.5
+    },
+    {
+     "code": "7340101DE",
+     "name": "Chuyên ngành Giải trí và truyền thông số (cử nhân)",
+     "score": 21.5
+    },
+    {
+     "code": "7340115",
+     "name": "Marketing (cử nhân)",
+     "score": 21.5
+    },
+    {
+     "code": "7480108",
+     "name": "Công nghệ kỹ thuật máy tính (kỹ sư)",
+     "score": 21.5
+    },
+    {
+     "code": "7480108AS",
+     "name": "Chuyên ngành Kỹ thuật phần mềm ô tô (kỹ sư)",
+     "score": 21.5
+    },
+    {
+     "code": "7340101",
+     "name": "Quản trị kinh doanh (cử nhân)",
+     "score": 21
+    },
+    {
+     "code": "7480107",
+     "name": "Trí tuệ nhân tạo (kỹ sư)",
+     "score": 21
+    },
+    {
+     "code": "7480107DA",
+     "name": "Trí tuệ nhân tạo – Chuyên ngành Phân tích dữ liệu (kỹ sư)",
+     "score": 21
+    },
+    {
+     "code": "7480201",
+     "name": "Công nghệ thông tin (kỹ sư)",
+     "score": 21
+    },
+    {
+     "code": "7340101IM",
+     "name": "Chuyên ngành Quản trị dự án Công nghệ thông tin (cử nhân)",
+     "score": 20.5
+    },
+    {
+     "code": "7480108B",
+     "name": "Công nghệ kỹ thuật máy tính (cử nhân)",
+     "score": 20.5
+    },
+    {
+     "code": "7480108RA",
+     "name": "Chuyên ngành Kỹ thuật Robot và trí tuệ nhân tạo (kỹ sư)",
+     "score": 20.5
+    },
+    {
+     "code": "7480201B",
+     "name": "Công nghệ thông tin (cử nhân)",
+     "score": 20.5
+    },
+    {
+     "code": "7340205",
+     "name": "Công nghệ tài chính (cử nhân)",
+     "score": 20
+    },
+    {
+     "code": "7480108UA",
+     "name": "Chuyên ngành Thiết bị bay không người lái (kỹ sư)",
+     "score": 20
+    },
+    {
+     "code": "7480201GT",
+     "name": "Chuyên ngành Công nghệ game (kỹ sư)",
+     "score": 20
+    },
+    {
+     "code": "7480202",
+     "name": "An toàn thông tin (kỹ sư)",
+     "score": 20
     }
    ]
   }
@@ -4753,6 +7546,49 @@ export const researchedSchoolDetails = {
      "name": "Giáo dục Tiểu học"
     }
    ]
+  },
+  "scores": {
+   "source": "https://donga.edu.vn/tuyensinh/ts-chi-tiet/truong-dai-hoc-dong-a-cong-bo-diem-chuan-trung-tuyen-nam-2026-44629",
+   "scale": 30,
+   "method": "Điểm chuẩn 2026 phương thức điểm thi tốt nghiệp THPT 2026, thí sinh tốt nghiệp năm 2026 · thang 30",
+   "note": "Điểm 3 môn xét tuyển cộng điểm ưu tiên; các ngành sức khỏe, luật có thêm điều kiện học lực lớp 12. Các ngành còn lại: điểm 3 môn từ 15.",
+   "programs": [
+    {
+     "code": "7720101",
+     "name": "Y khoa",
+     "score": 22
+    },
+    {
+     "code": "7720201",
+     "name": "Dược học",
+     "score": 20
+    },
+    {
+     "code": "7380101",
+     "name": "Luật",
+     "score": 20
+    },
+    {
+     "code": "7380107",
+     "name": "Luật kinh tế",
+     "score": 20
+    },
+    {
+     "code": "7720301",
+     "name": "Điều dưỡng",
+     "score": 18
+    },
+    {
+     "code": "7720603",
+     "name": "Kỹ thuật Phục hồi chức năng",
+     "score": 18
+    },
+    {
+     "code": "7720302",
+     "name": "Hộ sinh",
+     "score": 18
+    }
+   ]
   }
  },
  "dnu": {
@@ -4877,6 +7713,12 @@ export const researchedSchoolDetails = {
      "name": "Y tế công cộng"
     }
    ]
+  },
+  "tuition": {
+   "year": 2026,
+   "summary": "Học phí năm học 2026–2027 (dự kiến) cho khóa tuyển sinh 2026, tính theo tín chỉ: Y khoa 1.935.000 đ/tín chỉ (31 TC, 59.985.000 đ); Y học cổ truyền 53.940.000 đ; Dược học 50.605.000 đ; Răng hàm mặt 46.655.000 đ; Y học dự phòng 37.830.000 đ; Kỹ thuật hình ảnh y ",
+   "source": "https://huemed-univ.edu.vn/uploads/Thongbao/TB%20HOC%20PHI_1011.pdf",
+   "published": "2026-04-23"
   }
  },
  "husc": {
@@ -5405,6 +8247,12 @@ export const researchedSchoolDetails = {
      "name": "Quản trị dịch vụ du lịch và lữ hành"
     }
    ]
+  },
+  "tuition": {
+   "year": 2026,
+   "summary": "Học phí dự kiến khóa tuyển sinh 2026 tính theo tín chỉ: 690.000–900.000 đồng/tín chỉ tùy ngành, lộ trình tăng không quá 10%/năm. Trang học phí của trường ghi: Truyền thông đa phương tiện 900.000 đ/tín chỉ; Công nghệ thông tin, Công nghệ kỹ thuật ô tô 830.000 đ",
+   "source": "https://pxu.edu.vn/news/thong-tin-tuyen-sinh-dai-hoc-he-chinh-quy-nam-2026-truong-dai-hoc-phu-xuan-ma-truong-dpx",
+   "published": "2026-05-30"
   }
  },
  "hue-uni": {
@@ -6706,6 +9554,9 @@ export const researchedSchoolDetails = {
     }
    ]
   }
+ },
+ "ntu": {
+  "homepage": "https://ntu.edu.vn/"
  }
 };
 
@@ -7229,5 +10080,213 @@ export const researchedScholarships = [
   "publishedAt": null,
   "verifiedAt": "2026-11-11",
   "sourceUrl": "https://pxu.edu.vn/hoc-bong"
+ },
+ {
+  "id": "ueh-research2-scholarship-1",
+  "schoolId": "ueh",
+  "kind": "scholarship",
+  "funding": "editorial",
+  "status": "verified",
+  "availability": "reference",
+  "title": "Học bổng tuyển sinh Khóa 52",
+  "description": "Xét theo điểm trúng tuyển (không tính điểm ưu tiên đối tượng, khu vực): 50 suất xuất sắc 27 triệu đồng/suất, 170 suất toàn phần 18 triệu đồng/suất, 350 suất bán phần 9 triệu đồng/suất.",
+  "publishedAt": null,
+  "verifiedAt": "2026-11-11",
+  "sourceUrl": "https://nhaphoc.ueh.edu.vn/dinh-huong-sau-nhap-hoc/danh-rieng-cho-dai-hoc-chinh-quy/hoc-bong/thong-tin-chi-tiet-ve-hoc-bong-danh-cho-sinh-vien-dai-hoc-chinh-quy-khoa-52/"
+ },
+ {
+  "id": "ueh-research2-scholarship-2",
+  "schoolId": "ueh",
+  "kind": "scholarship",
+  "funding": "editorial",
+  "status": "verified",
+  "availability": "reference",
+  "title": "Học bổng Hỗ trợ học tập Khóa 52",
+  "description": "Cho sinh viên trúng tuyển UEH năm 2026 thuộc diện mồ côi, hộ nghèo, cận nghèo hoặc hoàn cảnh khó khăn (trừ ISB BBus, Asean Co-op): 50 suất toàn phần 18.000.000 đồng, 100 suất bán phần 9.000.000 đồng; ",
+  "publishedAt": null,
+  "verifiedAt": "2026-11-11",
+  "sourceUrl": "https://nhaphoc.ueh.edu.vn/dinh-huong-sau-nhap-hoc/danh-rieng-cho-dai-hoc-chinh-quy/hoc-bong/thong-tin-chi-tiet-ve-hoc-bong-danh-cho-sinh-vien-dai-hoc-chinh-quy-khoa-52/"
+ },
+ {
+  "id": "pnt-research2-scholarship-1",
+  "schoolId": "pnt",
+  "kind": "scholarship",
+  "funding": "editorial",
+  "status": "verified",
+  "availability": "reference",
+  "title": "Học bổng khuyến học Dương Quang Trung năm học 2026-2027",
+  "description": "Quỹ học bổng của Trường cho sinh viên có hoàn cảnh khó khăn, gồm cả sinh viên năm nhất khóa tuyển sinh 2026 (được miễn tiêu chí điểm TB năm 2025-2026); dự kiến 30 suất, 10.000.000 đồng/suất; nhận hồ s",
+  "publishedAt": "2026-08-11",
+  "verifiedAt": "2026-11-11",
+  "sourceUrl": "https://pctsv.pnt.edu.vn/vi/thong-bao/thong-bao-xet-chon-hoc-bong-khuyen-hoc-duong-quang-trung-nam-hoc-2026-2027"
+ },
+ {
+  "id": "pnt-research2-scholarship-2",
+  "schoolId": "pnt",
+  "kind": "scholarship",
+  "funding": "editorial",
+  "status": "verified",
+  "availability": "reference",
+  "title": "Học bổng Nguyễn Văn Hưởng (toàn khóa) năm 2026",
+  "description": "Do Báo Sài Gòn Giải Phóng triển khai, Phòng CTSV thông báo: 05 suất toàn khóa, 25.000.000 đồng/suất/năm học; hồ sơ gồm giấy báo trúng tuyển đại học và minh chứng hoàn cảnh; duy trì khi đạt học lực khá",
+  "publishedAt": "2026-09-08",
+  "verifiedAt": "2026-11-11",
+  "sourceUrl": "https://pctsv.pnt.edu.vn/vi/thong-bao/thong-tin-nop-ho-so-hoc-bong-nguyen-van-huong-toan-khoa-nam-2026"
+ },
+ {
+  "id": "hcmue-research2-scholarship-1",
+  "schoolId": "hcmue",
+  "kind": "scholarship",
+  "funding": "editorial",
+  "status": "verified",
+  "availability": "reference",
+  "title": "Học bổng Sen Hồng năm học 2026–2027 dành cho nữ sinh viên",
+  "description": "Cho nữ sinh viên chính quy năm nhất hoặc năm hai có hoàn cảnh khó khăn; 500 USD/suất, 10–15 suất, cấp trong 2 năm học liên tiếp nếu duy trì điều kiện; hạn nộp hồ sơ 05/10/2026 (tài trợ: The Relay Fund",
+  "publishedAt": "2026-09-11",
+  "verifiedAt": "2026-11-11",
+  "sourceUrl": "https://hcmue.edu.vn/vi/hop-tac-quoc-te/hoc-bong/3081-chuong-trinh-h-c-b-ng-sen-h-ng-nam-h-c-2026-2027-danh-cho-n-sinh-vien"
+ },
+ {
+  "id": "sgu-research2-scholarship-1",
+  "schoolId": "sgu",
+  "kind": "scholarship",
+  "funding": "editorial",
+  "status": "verified",
+  "availability": "reference",
+  "title": "Học bổng tuyển sinh khóa 2026",
+  "description": "Trường dành hơn 5,5 tỷ đồng cấp học bổng tuyển sinh cho 396 tân sinh viên khóa 2026 (công bố tại lễ khai giảng 27/9/2026); bài không nêu điều kiện và mức từng suất.",
+  "publishedAt": "2026-09-29",
+  "verifiedAt": "2026-11-11",
+  "sourceUrl": "https://www.sgu.edu.vn/le-khai-giang-nam-hoc-2026-2027/"
+ },
+ {
+  "id": "hufi-research2-scholarship-1",
+  "schoolId": "hufi",
+  "kind": "scholarship",
+  "funding": "editorial",
+  "status": "verified",
+  "availability": "reference",
+  "title": "Miễn học phí học kỳ 1 cho thí sinh xét tuyển thẳng",
+  "description": "Thí sinh trúng tuyển thẳng theo Điều 8 được miễn học phí học kỳ 1 và hỗ trợ sinh hoạt phí 3.000.000 đồng/tháng; các học kỳ sau tiếp tục nếu duy trì học lực Giỏi và hoàn thành tốt công tác xã hội.",
+  "publishedAt": "2026-05-19",
+  "verifiedAt": "2026-11-11",
+  "sourceUrl": "https://ts.huit.edu.vn/thong-bao/thong-tin-tuyen-sinh-dai-hoc-nam-2026"
+ },
+ {
+  "id": "hufi-research2-scholarship-2",
+  "schoolId": "hufi",
+  "kind": "scholarship",
+  "funding": "editorial",
+  "status": "verified",
+  "availability": "reference",
+  "title": "Giảm 50% học phí học kỳ đầu cho 9 ngành",
+  "description": "Tân sinh viên trúng tuyển năm 2026 vào các ngành Kỹ thuật nhiệt, Khoa học dinh dưỡng và ẩm thực, Khoa học chế biến món ăn, Công nghệ dệt, may, Kinh doanh thời trang và dệt may, Quản lý tài nguyên và m",
+  "publishedAt": "2026-05-19",
+  "verifiedAt": "2026-11-11",
+  "sourceUrl": "https://ts.huit.edu.vn/thong-bao/thong-tin-tuyen-sinh-dai-hoc-nam-2026"
+ },
+ {
+  "id": "hufi-research2-scholarship-3",
+  "schoolId": "hufi",
+  "kind": "scholarship",
+  "funding": "editorial",
+  "status": "verified",
+  "availability": "reference",
+  "title": "Giảm học phí cho anh chị em ruột",
+  "description": "Sinh viên là anh chị em ruột (kể cả sinh đôi, sinh ba) cùng học tại trường được giảm học phí; trang không nêu mức giảm cụ thể.",
+  "publishedAt": "2026-05-19",
+  "verifiedAt": "2026-11-11",
+  "sourceUrl": "https://ts.huit.edu.vn/thong-bao/thong-tin-tuyen-sinh-dai-hoc-nam-2026"
+ },
+ {
+  "id": "due-research2-scholarship-1",
+  "schoolId": "due",
+  "kind": "scholarship",
+  "funding": "editorial",
+  "status": "verified",
+  "availability": "reference",
+  "title": "Học bổng Tài năng (khóa tuyển sinh 2026)",
+  "description": "Cho tân sinh viên đạt giải Nhất, Nhì, Ba HSG quốc gia/quốc tế môn trường xét tuyển hoặc thuộc top 10 trúng tuyển của mỗi loại hình (toàn phần, bán phần tiếng Anh, tiêu chuẩn); tối thiểu 100% học phí; ",
+  "publishedAt": null,
+  "verifiedAt": "2026-11-11",
+  "sourceUrl": "https://due.udn.vn/vi-vn/tuvantuyensinh2026/gt/cid/6024"
+ },
+ {
+  "id": "due-research2-scholarship-2",
+  "schoolId": "due",
+  "kind": "scholarship",
+  "funding": "editorial",
+  "status": "verified",
+  "availability": "reference",
+  "title": "Học bổng Tinh hoa (chương trình DUE Elite)",
+  "description": "Cho sinh viên chương trình Cử nhân tài năng DUE Elite: mỗi học kỳ 100% học phí cho 25% sinh viên có kết quả cao nhất, 50% học phí cho 25% tiếp theo.",
+  "publishedAt": null,
+  "verifiedAt": "2026-11-11",
+  "sourceUrl": "https://due.udn.vn/vi-vn/tuvantuyensinh2026/gt/cid/6024"
+ },
+ {
+  "id": "due-research2-scholarship-3",
+  "schoolId": "due",
+  "kind": "scholarship",
+  "funding": "editorial",
+  "status": "verified",
+  "availability": "reference",
+  "title": "Học bổng khuyến khích cho sinh viên hoàn cảnh khó khăn",
+  "description": "Sinh viên hộ nghèo, cận nghèo không thuộc diện miễn, giảm học phí của Nhà nước, học tập và rèn luyện từ Giỏi trở lên: tối thiểu 100% học phí; kèm hỗ trợ 100% lãi vay Ngân hàng Chính sách xã hội cho đố",
+  "publishedAt": null,
+  "verifiedAt": "2026-11-11",
+  "sourceUrl": "https://due.udn.vn/vi-vn/tuvantuyensinh2026/gt/cid/6024"
+ },
+ {
+  "id": "husc-research2-scholarship-1",
+  "schoolId": "husc",
+  "kind": "scholarship",
+  "funding": "editorial",
+  "status": "verified",
+  "availability": "reference",
+  "title": "Học bổng 100% học phí theo điểm trúng tuyển 2026",
+  "description": "Cho thí sinh trúng tuyển thẳng và thủ khoa ngành đạt từ 26,00 điểm (thang 30, không tính điểm ưu tiên, khuyến khích); trị giá 7.700.000–9.800.000 đồng, chi sau khi học xong học kỳ 1 và đăng ký học kỳ ",
+  "publishedAt": null,
+  "verifiedAt": "2026-11-11",
+  "sourceUrl": "https://tuyensinh.husc.edu.vn/thongbao.php?id=67"
+ },
+ {
+  "id": "husc-research2-scholarship-2",
+  "schoolId": "husc",
+  "kind": "scholarship",
+  "funding": "editorial",
+  "status": "verified",
+  "availability": "reference",
+  "title": "Học bổng 50% và 25% học phí theo điểm trúng tuyển 2026",
+  "description": "50% học phí (3.800.000–4.900.000 đồng) cho thủ khoa ngành đạt từ 25,00 đến dưới 26,00 điểm; 25% học phí (1.900.000–2.500.000 đồng) cho thí sinh đạt từ 25,00 điểm.",
+  "publishedAt": null,
+  "verifiedAt": "2026-11-11",
+  "sourceUrl": "https://tuyensinh.husc.edu.vn/thongbao.php?id=67"
+ },
+ {
+  "id": "husc-research2-scholarship-3",
+  "schoolId": "husc",
+  "kind": "scholarship",
+  "funding": "editorial",
+  "status": "verified",
+  "availability": "reference",
+  "title": "Học bổng thủ khoa toàn trường 2026",
+  "description": "Thủ khoa toàn trường được cấp tối thiểu 20.000.000 đồng từ học bổng, miễn, giảm học phí; ngoài ra nhiều ngành có học bổng riêng cho thủ khoa ngành (1–3 triệu đồng).",
+  "publishedAt": null,
+  "verifiedAt": "2026-11-11",
+  "sourceUrl": "https://tuyensinh.husc.edu.vn/thongbao.php?id=67"
+ },
+ {
+  "id": "huaf-research2-scholarship-1",
+  "schoolId": "huaf",
+  "kind": "scholarship",
+  "funding": "editorial",
+  "status": "verified",
+  "availability": "reference",
+  "title": "Học bổng chính sách ngành kỹ thuật then chốt (Nghị định 179/2026/NĐ-CP)",
+  "description": "Trường giới thiệu cho tuyển sinh 2026: sinh viên các ngành Kỹ thuật cơ điện tử (7520114), Kỹ thuật cơ sở hạ tầng (7580210) có cơ hội nhận 3,7–5 triệu đồng/tháng, tùy nhóm ngành, đối tượng và kết quả x",
+  "publishedAt": "2026-06-05",
+  "verifiedAt": "2026-11-11",
+  "sourceUrl": "https://tuyensinh.huaf.edu.vn/tuyen-sinh-dai-hoc-2026-cua-khoa-co-khi-va-cong-nghe-truong-dai-hoc-nong-lam-dai-hoc-hue/"
  }
 ];

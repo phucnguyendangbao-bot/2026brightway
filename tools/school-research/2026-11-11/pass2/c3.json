@@ -1,0 +1,124 @@
+{
+  "batch": "c3",
+  "researched_at": "2026-11-11",
+  "schools": [
+    {
+      "school_id": "hub",
+      "website": "https://hub.edu.vn/",
+      "tuition": null,
+      "scholarships": [],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {
+        "scores": "Thông báo điểm chuẩn 2026 (hub.edu.vn, 10/08/2026, thang 30, áp dụng chung các tổ hợp) chỉ có bảng dạng ảnh PNG, mục 'File đính kèm' trống; tracuutrungtuyen.hub.edu.vn chỉ tra cứu theo CCCD; tuyensinh.hub.edu.vn/tin-tuyen-sinh và /thong-bao render bằng JavaScript ('Đang cập nhật...'). Không có bảng điểm dạng chữ trên nguồn chính thức.",
+        "programs": "Bài 'Thông tin tuyển sinh ĐH chính quy 2026' (04/03/2026) chỉ nêu mã trường NHS, không có mã xét tuyển; 2 PDF đính kèm (Thong-tin-tuyen-sinh-dai-hoc-2026.pdf, Danh-sach-truong-ky-ket-vsat-2026.pdf) hiển thị nhãn Download nhưng không có URL trong HTML; tuyensinh.hub.edu.vn/dai-hoc/dai-hoc-chinh-quy-chuan trả lỗi client_error.",
+        "scholarships": "Trang Học bổng của Trung tâm Sinh viên & QHDN (scc.hub.edu.vn) chỉ có học bổng doanh nghiệp/khuyến khích học tập cho sinh viên đang học; bài thông tin tuyển sinh 2026 không nhắc học bổng. Thông báo học bổng 'Chắp cánh ước mơ' 2026–2027 (2.500.000đ/suất, 160 suất, có tiêu chí cho tân sinh viên) đăng trên scc.hub.edu.vn ngày 09/11/2026 nhưng do Trung tâm Quản lý KTX ĐHQG-HCM cấp và chỉ cho sinh viên ở KTX ĐHQG, không phải học bổng tuyển sinh của trường nên không ghi vào. Tin giaoduc.net.vn về hệ thống học bổng 2026–2027 không phải nguồn chính thức và không nêu mức cho tân sinh viên."
+      }
+    },
+    {
+      "school_id": "hcmue",
+      "website": "https://hcmue.edu.vn/",
+      "tuition": null,
+      "scholarships": [
+        {
+          "title": "Học bổng Sen Hồng năm học 2026–2027 dành cho nữ sinh viên",
+          "description": "Cho nữ sinh viên chính quy năm nhất hoặc năm hai có hoàn cảnh khó khăn; 500 USD/suất, 10–15 suất, cấp trong 2 năm học liên tiếp nếu duy trì điều kiện; hạn nộp hồ sơ 05/10/2026 (tài trợ: The Relay Fund – U-Go).",
+          "source": "https://hcmue.edu.vn/vi/hop-tac-quoc-te/hoc-bong/3081-chuong-trinh-h-c-b-ng-sen-h-ng-nam-h-c-2026-2027-danh-cho-n-sinh-vien",
+          "publishedAt": "2026-09-11"
+        }
+      ],
+      "admission": null,
+      "scores": {
+        "source": "https://tuyensinh.hcmue.edu.vn/index.php?option=com_content&view=article&id=27833&lang=vi&site=183",
+        "method": "Điểm thi tốt nghiệp THPT 2026 · đợt 2 (xét tuyển bổ sung)",
+        "scale": 30,
+        "programs": [
+          {"code": "7480201", "name": "Công nghệ thông tin (đào tạo tại trụ sở chính, mã tuyển sinh SPS)", "score": 18.0},
+          {"code": "7220210", "name": "Ngôn ngữ Hàn Quốc (đào tạo tại Phân hiệu Long An, mã tuyển sinh SPT)", "score": 18.0},
+          {"code": "7310601", "name": "Du lịch (đào tạo tại phân hiệu Gia Lai, mã tuyển sinh SPG)", "score": 18.0}
+        ],
+        "note": "Chỉ là điểm trúng tuyển ĐỢT 2 (thông báo 16/09/2026), 3 ngành; cùng bảng ghi 17.00 cho phương thức học bạ kết hợp thi ĐGNL chuyên biệt. Điểm công bố theo tổ hợp gốc; trang không ghi rõ thang điểm. Bảng điểm đợt 1 (thông báo 11/08/2026, bài id=27828) chỉ có trên Google Drive, chưa đọc được."
+      },
+      "programs": null,
+      "not_found": {
+        "tuition": "Không có mức học phí 2026–2027: các bài thông tin tuyển sinh 2026 trên tuyensinh.hcmue.edu.vn (id 27803, 27813, 27814) không ghi học phí; mục Ba công khai trên hcmue.edu.vn mới có đến năm học 2025–2026 và chỉ gồm dự toán/quyết toán ngân sách; mục tin tức tuyển sinh hcmue.edu.vn không có thông báo học phí chính quy 2026; tin muaban.net chỉ là số ước tính, ghi rõ trường chưa công bố.",
+        "scores": "Bảng điểm trúng tuyển đợt 1 nằm trên Google Drive (bị chặn robots), đã điền tạm điểm đợt 2 (bảng chữ trên trang chính thức)."
+      }
+    },
+    {
+      "school_id": "sgu",
+      "website": "https://sgu.edu.vn/",
+      "tuition": null,
+      "scholarships": [
+        {
+          "title": "Học bổng tuyển sinh khóa 2026",
+          "description": "Trường dành hơn 5,5 tỷ đồng cấp học bổng tuyển sinh cho 396 tân sinh viên khóa 2026 (công bố tại lễ khai giảng 27/9/2026); bài không nêu điều kiện và mức từng suất.",
+          "source": "https://www.sgu.edu.vn/le-khai-giang-nam-hoc-2026-2027/",
+          "publishedAt": "2026-09-29"
+        }
+      ],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {
+        "tuition": "Phụ lục 6 Học phí (tuyensinh.sgu.edu.vn/images/files/2026/MPhuLuc6_Hocphi.pdf) là PDF scan không có chữ; trang thông tin tuyển sinh 2026 và thông báo nhập học 2026 (PDF TB262381, OCR lỗi) không có mức học phí dạng chữ; sgu.edu.vn và ctsv.sgu.edu.vn không có thông báo học phí 2026–2027. Tin baomoi (12/3/2026, 'cao nhất 212 triệu đồng/khóa') không phải nguồn chính thức.",
+        "scores": "Thông báo điểm trúng tuyển đợt 1 năm 2026 (11/08/2026) chỉ đính kèm PDF scan 2026DiemTrungTuyen2026.pdf (không có chữ); xettuyen.sgu.edu.vn/public/trung-tuyen-2026 chỉ tra cứu theo CCCD; không có bài điểm dạng chữ khác trong mục Điểm sàn, Điểm trúng tuyển.",
+        "scholarships": "Chỉ tìm được thông tin tổng quát (5,5 tỷ đồng/396 tân sinh viên) trong bài khai giảng; điều kiện học bổng tuyển sinh nằm trong PDF thông tin tuyển sinh chính thức là ảnh scan. Thông báo học bổng VietHope 2026 trên ctsv.sgu.edu.vn (tbc35.pdf) là PDF scan, không xác định được đối tượng."
+      }
+    },
+    {
+      "school_id": "nlu",
+      "website": "https://hcmuaf.edu.vn/",
+      "tuition": null,
+      "scholarships": [],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {
+        "tuition": "Không có học phí 2026–2027 dạng chữ: trang Thông tin tuyển sinh 2026 (ts.hcmuaf.edu.vn, bài 60567) chỉ ghi lệ phí thi năng khiếu 300.000đ; 'Kế hoạch đón tân sinh viên khóa 2026' (bài 60569) chỉ gồm 4 ảnh JPG/PNG; 'Thông tin tuyển sinh và hướng nghiệp 2026' (bài 60560) chỉ dẫn flipbook heyzine ngoài tên miền trường; trang chương trình nâng cao ceft.hcmuaf.edu.vn ghi 'vui lòng liên hệ'; trang tin tức hcmuaf.edu.vn không có thông báo học phí.",
+        "scholarship": "Không tìm thấy thông báo học bổng tân sinh viên 2026 trên ts.hcmuaf.edu.vn, hcmuaf.edu.vn (Tin tức – Sự kiện) hay các trang khoa; bài tienphong 'trao học bổng gần 1,5 tỷ' là của ĐH Nông Lâm – ĐH Huế, không phải NLU.",
+        "scores": "Điểm chuẩn 2026 (ts.hcmuaf.edu.vn bài 60570, 10/08/2026) chỉ có ảnh PNG; trang kết quả tuyển thẳng 2026 (bài 60566) chỉ dẫn link tra cứu dkmh.hcmuaf.edu.vn, không có bảng chữ.",
+        "programs": "Trang Ngành đào tạo (bài 60362) chỉ có ảnh 'nganh dao tao dai hoc 2026.jpg'; trang thông tin tuyển sinh 2026 chỉ có ảnh số lượng tuyển sinh; không có danh mục mã ngành dạng chữ trên nguồn chính thức."
+      }
+    },
+    {
+      "school_id": "nttu",
+      "website": "https://ntt.edu.vn/",
+      "tuition": null,
+      "scholarships": [],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {
+        "tuition": "Vẫn không có nguồn chính thức ghi rõ năm áp dụng: bảng 'học phí học kì 1' trên tuyensinh.ntt.edu.vn/cau-hoi-thuong-gap (Sức khỏe 15,2 triệu; Kinh tế – Luật 12,5 triệu; Cử nhân chuẩn quốc tế 18,6 triệu...) không ghi năm/khóa; thông báo 181/TB-NTT (29/06/2026) về đăng ký học phần HK1 2026–2027 không có mức học phí và chỉ áp dụng khóa 2025 trở về trước; bài ctsv.ntt.edu.vn 02/07/2026 và 15/06/2026 về học bổng 2026 chỉ nêu học bổng 10–12 triệu trừ vào học phí HK1, không có mức học phí; brochure ntt-brochure-2026.pdf trên tuyensinh.ntt.edu.vn trả lỗi client_error."
+      }
+    },
+    {
+      "school_id": "rmit",
+      "website": "https://www.rmit.edu.vn/",
+      "tuition": null,
+      "scholarships": [],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {
+        "tuition": "Trang học phí (vi và en) hiện chỉ đăng 'Học phí chương trình Đại học năm 2027 (tạm tính)' (394.656.000đ/năm; 1.183.968.000đ toàn chương trình 288 tín chỉ; 1.578.624.000đ cho chương trình kỹ sư 384 tín chỉ) và ghi rõ chỉ áp dụng cho sinh viên nhập học 2027. 'Student Fees & Charges Guide 2026' (cập nhật 05/10/2026) đã đọc lại: mục Tuition Fees chỉ dẫn sang Intranet/website, không có số VND. Không có trang chính thức nào còn nêu học phí khóa nhập học 2026; không dùng số 2027.",
+        "scores": "RMIT Việt Nam không xét tuyển theo hệ thống điểm chuẩn quốc gia (không có mã xét tuyển/điểm chuẩn THPT); trường xét hồ sơ theo điều kiện học thuật và tiếng Anh từng ngành, nên không có điểm chuẩn 2026."
+      }
+    }
+  ],
+  "browser_candidates": [
+    {"school_id": "hub", "field": "scores", "url": "https://hub.edu.vn/tin-tuc-su-kien/thong-bao-diem-chuan-trung-tuyen-dai-hoc-chinh-quy-nam-2026-truong-dai-hoc-ngan-hang-tp-ho-chi-minh-229990.html", "why": "Bảng điểm chuẩn 2026 là ảnh: https://fileserver2.hub.edu.vn/IMAGES/2026/08/10/20260810145555-1010cong-bo-diem-chuan-2026-2-06.png"},
+    {"school_id": "hub", "field": "programs", "url": "https://hub.edu.vn/tin-tuc-su-kien/thong-tin-tuyen-sinh-dai-hoc-chinh-quy-nam-2026-truong-dai-hoc-ngan-hang-tp-hcm-ma-truong-nhs-228347.html", "why": "PDF đính kèm 'Thong-tin-tuyen-sinh-dai-hoc-2026.pdf' chỉ tải được qua nút Download (không có URL trong HTML); ảnh chỉ tiêu https://fileserver2.hub.edu.vn/IMAGES/2026/06/03/20260603140540-1010ts.jpg"},
+    {"school_id": "hub", "field": "scholarships", "url": "https://tuyensinh.hub.edu.vn/tin-tuyen-sinh", "why": "Danh sách tin tuyển sinh render bằng JavaScript; có thể có thông báo học bổng tuyển sinh 2026"},
+    {"school_id": "hcmue", "field": "scores", "url": "https://tuyensinh.hcmue.edu.vn/index.php?option=com_content&view=article&id=27828%3Athong-bao-kt-qu-xet-tuyn-cac-nganh-ao-to-trinh-i-hc-nganh-giao-dc-mm-non-trinh-cao-ng-h-chinh-quy-nm-2026&catid=4069%3Atin-tc&Itemid=9677&lang=vi&site=183", "why": "Bảng điểm trúng tuyển đợt 1 năm 2026 chỉ có qua link Google Drive (bị chặn robots với WebFetch)"},
+    {"school_id": "sgu", "field": "tuition", "url": "https://tuyensinh.sgu.edu.vn/images/files/2026/MPhuLuc6_Hocphi.pdf", "why": "Phụ lục 6 Học phí 2026 là PDF scan không có chữ"},
+    {"school_id": "sgu", "field": "scores", "url": "https://tuyensinh.sgu.edu.vn/images/files/2026/2026DiemTrungTuyen2026.pdf", "why": "Điểm trúng tuyển đợt 1 năm 2026 là PDF scan không có chữ"},
+    {"school_id": "sgu", "field": "scholarships", "url": "https://tuyensinh.sgu.edu.vn/images/files/2026/MThongtintuyensinh2026_Chinhthuc.pdf", "why": "PDF thông tin tuyển sinh 2026 chính thức (dạng scan) có thể chứa chính sách học bổng tuyển sinh"},
+    {"school_id": "nlu", "field": "scores", "url": "https://ts.hcmuaf.edu.vn/vn/tin-tuc/span-style-color-red-diem-trung-tuyen-diem-chuan-cac-nganh-dao-tao-trinh-do-dai-hoc-va-nganh-giao-duc-mam-non-trinh-do-c-60570", "why": "Bảng điểm chuẩn 2026 là ảnh PNG"},
+    {"school_id": "nlu", "field": "programs", "url": "https://ts.hcmuaf.edu.vn/beta/media/ts/legacy/ts/data/image/Tuyen%20sinh%202026/nganh%20dao%20tao%20dai%20hoc%202026.jpg", "why": "Danh mục ngành đào tạo đại học 2026 là ảnh JPG"},
+    {"school_id": "nlu", "field": "tuition", "url": "https://ts.hcmuaf.edu.vn/vn/tin-tuc/span-style-color-red-ke-hoach-don-tan-sinh-vien-khoa-2026-60569", "why": "Kế hoạch đón tân sinh viên khóa 2026 gồm 4 ảnh, có thể chứa mức học phí/khoản thu nhập học"},
+    {"school_id": "nttu", "field": "tuition", "url": "https://tuyensinh.ntt.edu.vn/upload/2026/thong-tin-xet-tuyen-2026/4-phuong-thuc/ntt-brochure-2026.pdf", "why": "Brochure tuyển sinh 2026 trả lỗi client_error với WebFetch; có thể có bảng học phí ghi năm 2026"}
+  ]
+}

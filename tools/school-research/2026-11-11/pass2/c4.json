@@ -1,0 +1,110 @@
+{
+  "batch": "c4",
+  "researched_at": "2026-11-11",
+  "schools": [
+    {
+      "school_id": "hufi",
+      "website": null,
+      "tuition": {
+        "summary": "Học phí dự kiến cho khóa 2026–2030 khoảng 140–170 triệu đồng cho toàn khóa học, tùy ngành và chương trình (áp dụng cả hệ cử nhân và kỹ sư). Trường chưa công bố mức theo tín chỉ hay theo năm học 2026–2027 trên trang đọc được.",
+        "source": "https://huit.edu.vn/news/huit-du-kien-hoc-phi-khoa-2026-2030-khoang-tu-140-trieu-170-trieu-dong-tang-theo-lo-trinh-va-di-kem-nhieu-chinh-sach-ho-tro",
+        "published": "2026-03-18"
+      },
+      "scholarships": [
+        {
+          "title": "Miễn học phí học kỳ 1 cho thí sinh xét tuyển thẳng",
+          "description": "Thí sinh trúng tuyển thẳng theo Điều 8 được miễn học phí học kỳ 1 và hỗ trợ sinh hoạt phí 3.000.000 đồng/tháng; các học kỳ sau tiếp tục nếu duy trì học lực Giỏi và hoàn thành tốt công tác xã hội.",
+          "source": "https://ts.huit.edu.vn/thong-bao/thong-tin-tuyen-sinh-dai-hoc-nam-2026",
+          "publishedAt": "2026-05-19"
+        },
+        {
+          "title": "Giảm 50% học phí học kỳ đầu cho 9 ngành",
+          "description": "Tân sinh viên trúng tuyển năm 2026 vào các ngành Kỹ thuật nhiệt, Khoa học dinh dưỡng và ẩm thực, Khoa học chế biến món ăn, Công nghệ dệt, may, Kinh doanh thời trang và dệt may, Quản lý tài nguyên và môi trường, Công nghệ kỹ thuật môi trường, Công nghệ chế biến thủy sản, Công nghệ vật liệu được giảm 50% học phí học kỳ đầu.",
+          "source": "https://ts.huit.edu.vn/thong-bao/thong-tin-tuyen-sinh-dai-hoc-nam-2026",
+          "publishedAt": "2026-05-19"
+        },
+        {
+          "title": "Giảm học phí cho anh chị em ruột",
+          "description": "Sinh viên là anh chị em ruột (kể cả sinh đôi, sinh ba) cùng học tại trường được giảm học phí; trang không nêu mức giảm cụ thể.",
+          "source": "https://ts.huit.edu.vn/thong-bao/thong-tin-tuyen-sinh-dai-hoc-nam-2026",
+          "publishedAt": "2026-05-19"
+        }
+      ],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {
+        "tuition_detail": "Chưa có mức học phí theo tín chỉ/năm học 2026–2027: trang Thông tin tuyển sinh 2026, trang đề án 2026 (HTML), Cẩm nang tuyển sinh 2026 (PDF doc.huit.edu.vn, chỉ ghi 'không tăng học phí trong suốt khóa học' và mã QR) đều không nêu số. Thông báo rút học phí nhập học 2026–2027 (PDF 14/08/2026) là bản scan, không đọc được chữ; PDF đề án de-an-thongtintuyensinh2026_0001.pdf trả lỗi máy chủ. Lưu ý: bài 18/03/2026 nói học phí tăng tối đa khoảng 10%/năm, còn Cẩm nang 2026 ghi không tăng học phí suốt khóa — hai nguồn chính thức không thống nhất nên không đưa mức tăng vào tóm tắt.",
+        "scholarships_detail": "Học bổng Thủ khoa/Á khoa, Khuyến khích học tập, Tiếp sức đến trường, Vượt khó được nêu là dự kiến, không có mức tiền và điều kiện cụ thể nên không đưa vào."
+      }
+    },
+    {
+      "school_id": "tdtu",
+      "website": null,
+      "tuition": null,
+      "scholarships": [],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {
+        "scores": "Điểm trúng tuyển 2026 chỉ có trong PDF PL1 (phương thức 1, thang 100) và PL2 (phương thức 2 ĐGNL, thang 1200) trên admission.tdtu.edu.vn. Văn bản trích từ cả hai PDF (và PDF đợt bổ sung phân hiệu) tách cột điểm khỏi mã/tên ngành, mỗi ngành có nhiều dòng theo tổ hợp, nên không ghép điểm với ngành chắc chắn được. Trang chủ admission.tdtu.edu.vn không có trang HTML công bố điểm; tìm trên tdtu.edu.vn cũng không có bảng HTML. Cần đọc PDF bằng trình duyệt."
+      }
+    },
+    {
+      "school_id": "dthu",
+      "website": "https://dthu.edu.vn/",
+      "tuition": null,
+      "scholarships": [],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {
+        "scholarships": "Không tìm thấy học bổng tân sinh viên 2026 trên nguồn chính thức đọc được: trang tuyensinh.dthu.edu.vn chỉ ghi chung 'nguồn học bổng dồi dào'; thông báo thông tin tuyển sinh 2026 (HTML) không có mục học bổng; thông báo nhập học 4343/TB-ĐHĐT (30/07/2026) không có học bổng; trang Học bổng ctsv.dthu.edu.vn chỉ có quyết định cho khóa 2023; các PDF cmsweb.dthu.edu.vn năm 2026 là thông báo tuyển sinh VLVH/tiến sĩ/xét tuyển thẳng (chỉ có giảm 5% học phí toàn khóa cho hệ vừa làm vừa học, không áp dụng chính quy). PDF 'SPD-thong-tin-tuyen-sinh-dai-hoc-cao-dang-2026-DIEU CHINH' trên media.dthu.edu.vn bị chặn (robots_disallowed) nên không đọc được."
+      }
+    },
+    {
+      "school_id": "duytan",
+      "website": "https://duytan.edu.vn/",
+      "tuition": null,
+      "scholarships": [],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {
+        "tuition": "Không có mức học phí 2026–2027 trên các trang chính thức đã mở: trang Tuyển sinh (duytan.edu.vn/tuyen-sinh), Thông tin tuyển sinh ĐH 2026 (id=1010, 27/02/2026), mục Thông báo, Thủ tục nhập học (chỉ ghi 'chuẩn bị học phí như trong giấy báo nhập học'), trang Học bổng (chỉ có % giảm), PDF Thông báo tuyển sinh chính quy 2026 trên pdaotao.duytan.edu.vn, PDF đăng ký học phần HK I 2026–2027 (không có đơn giá tín chỉ). Các bài báo về học phí Duy Tân dùng số liệu 2025–2026 và không dẫn nguồn chính thức.",
+        "scores": "Bài 'Điểm Trúng tuyển vào Đại học Duy Tân đợt 1 năm 2026' (12/08/2026) đưa bảng điểm theo ngành dưới dạng ảnh (11-8-2026-16-34-5-77.jpg), không đọc được bằng WebFetch. Phần chữ chỉ nêu mức tối thiểu phương thức 100 (thi THPT): các ngành ≥15,0; Luật, Luật kinh tế ≥20,0; Y khoa, Răng–Hàm–Mặt ≥22,0; Dược ≥20,0; Điều dưỡng, Kỹ thuật xét nghiệm y học ≥18,0 — không đủ để lập bảng theo mã ngành nên chưa điền."
+      }
+    },
+    {
+      "school_id": "donga",
+      "website": null,
+      "tuition": null,
+      "scholarships": [],
+      "admission": null,
+      "scores": {
+        "source": "https://donga.edu.vn/tuyensinh/ts-chi-tiet/truong-dai-hoc-dong-a-cong-bo-diem-chuan-trung-tuyen-nam-2026-44629",
+        "method": "Điểm thi tốt nghiệp THPT 2026 · thang 30",
+        "scale": 30,
+        "programs": [
+          {"code": null, "name": "Y khoa", "score": 22},
+          {"code": null, "name": "Dược học", "score": 20},
+          {"code": null, "name": "Luật, Luật kinh tế", "score": 20},
+          {"code": null, "name": "Điều dưỡng", "score": 18},
+          {"code": null, "name": "Các ngành còn lại", "score": 15}
+        ],
+        "note": "Trường công bố theo nhóm ngành, không theo mã ngành; điểm là mức tối thiểu 'Điểm thi 03 môn xét tuyển + Điểm (KV + ƯT)' cho thí sinh tốt nghiệp năm 2026, kèm điều kiện học lực lớp 12 (Y khoa, Dược: Tốt/Giỏi, có môn Hóa hoặc Sinh; Luật: Tốt/Giỏi; Điều dưỡng: Khá). Hàng Kỹ thuật Phục hồi chức năng và Hộ sinh không có giá trị trong bản chữ trích xuất (có thể gộp ô với Điều dưỡng, chưa xác nhận). Phương thức ĐGNL ĐHQG-HCM và học bạ kết hợp có mức riêng. Công bố ngày 09/08/2026."
+      },
+      "programs": null,
+      "not_found": {}
+    }
+  ],
+  "browser_candidates": [
+    {"school_id": "hufi", "field": "tuition", "url": "https://doc.huit.edu.vn/Images/Documents/N00CT/de-an-thongtintuyensinh2026_0001.pdf", "why": "PDF đề án tuyển sinh 2026 (31/05/2026) trả lỗi máy chủ khi WebFetch; có thể có mục học phí."},
+    {"school_id": "hufi", "field": "tuition", "url": "https://doc.huit.edu.vn/Images/Documents/N00CT/thong-bao-rut-hoc-phi-nhap-hoc-nam-hoc-2026-2027-20260820100016-e.pdf", "why": "Thông báo học phí nhập học năm học 2026–2027 là PDF scan, không có lớp chữ."},
+    {"school_id": "hufi", "field": "tuition", "url": "https://doc.huit.edu.vn/Images/Documents/N00CT/cam-nang-tuyen-sinh-2026-fn-dang-web-ts.pdf", "why": "Cẩm nang tuyển sinh 2026 dẫn tới chi tiết học phí qua mã QR; cần mở bằng trình duyệt để xem QR/liên kết."},
+    {"school_id": "tdtu", "field": "scores", "url": "https://admission.tdtu.edu.vn/sites/admission/files/Tuyen-sinh/2026/TB-Diemtrungtuyen/PL1-Diem-trung-tuyen-DH-2026-PT1-TanHung.pdf", "why": "Bảng điểm trúng tuyển 2026 phương thức 1 (thang 100); văn bản trích xuất tách điểm khỏi tên ngành, cần xem bố cục bảng."},
+    {"school_id": "tdtu", "field": "scores", "url": "https://admission.tdtu.edu.vn/sites/admission/files/Tuyen-sinh/2026/TB-Diemtrungtuyen/PL2-Diem-trung-tuyen-DH-2026-PT2-TanHung.pdf", "why": "Bảng điểm trúng tuyển 2026 phương thức 2 (ĐGNL, thang 1200); cùng vấn đề tách cột."},
+    {"school_id": "duytan", "field": "scores", "url": "https://duytan.edu.vn/tuyen-sinh/Page/EnrollArticleViewDetail.aspx?id=1028", "why": "Bảng điểm trúng tuyển đợt 1 năm 2026 theo ngành chỉ có dạng ảnh (https://duytan.edu.vn/tuyen-sinh/upload/images/11-8-2026-16-34-5-77.jpg)."},
+    {"school_id": "donga", "field": "scores", "url": "https://donga.edu.vn/tuyensinh/ts-chi-tiet/truong-dai-hoc-dong-a-cong-bo-diem-chuan-trung-tuyen-nam-2026-44629", "why": "Đã điền theo bản chữ; cần xem bảng để xác nhận cột điểm thi THPT và mức của Kỹ thuật Phục hồi chức năng, Hộ sinh (ô trống trong bản trích xuất)."}
+  ]
+}

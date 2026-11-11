@@ -1,0 +1,100 @@
+{
+  "batch": "c1",
+  "researched_at": "2026-11-11",
+  "schools": [
+    {
+      "school_id": "hcmut",
+      "website": "https://hcmut.edu.vn/",
+      "tuition": null,
+      "scholarships": [],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {
+        "tuition": "Pass 2: hcmut.edu.vn vẫn chỉ trả về thẻ meta (trang JavaScript). oisp.hcmut.edu.vn đọc được nhưng trang học phí (oisp.hcmut.edu.vn/en/?p=763) không ghi năm học (bảng 84/88/94/100 triệu theo năm 1–4), nên không dùng; wp-json của oisp bị robots chặn. Các con số 31,5 triệu/năm (chương trình tiêu chuẩn) và 80–88 triệu/năm (tiếng Anh) chỉ thấy trên báo (daibieunhandan 28/02/2026, plo.vn), không có trang chính thức đọc được. Đã thử: site:hcmut.edu.vn, aao.hcmut.edu.vn, oisp.hcmut.edu.vn, tìm PDF 'Thong tin tuyen sinh 2026' trên hcmut.edu.vn.",
+        "scholarship": "hcmut.edu.vn/hoc-bong vẫn là trang JavaScript không có nội dung. Tìm kiếm (học bổng tuyển sinh 2026, tân sinh viên khóa 2026) chỉ ra học bổng tài trợ cho sinh viên đang học trên fme.hcmut.edu.vn (Fuji Seal, PVcombank, Pony Chung), không phải học bổng tuyển sinh 2026.",
+        "scores": "Điểm chuẩn 2026 (xét tuyển tổng hợp, thang 100, công bố trưa 09/08/2026 theo giaoduc.net.vn) không có trên trang chính thức đọc được: hcmut.edu.vn không render, oisp.hcmut.edu.vn không có bài điểm chuẩn 2026 tìm được, không có PDF trên tên miền hcmut.edu.vn. Không dùng số liệu báo chí/tuyensinh247."
+      }
+    },
+    {
+      "school_id": "ussh",
+      "website": "https://hcmussh.edu.vn/",
+      "tuition": null,
+      "scholarships": [],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {
+        "programs": "Bài 'Công bố thông tin tuyển sinh năm 2026' đọc được tại https://hcmussh.edu.vn/post/44214 (30/05/2026: 4.159 chỉ tiêu, 51 ngành/chương trình; phương thức 301 xét tuyển thẳng và 500 xét tuyển tổng hợp) nhưng không liệt kê ngành; danh mục ngành nằm trong file Google Drive 'QSX_Thong tin tuyen sinh 2026-theo QC-CAP NHAT_30_6_V1.pdf' (chỉ hiện 'Loading…' với WebFetch).",
+        "tuition": "Không tìm thấy văn bản học phí 2026–2027 hay khóa tuyển sinh 2026 đọc được. hcmussh.edu.vn/static/document/20801.pdf là thông báo học phí khóa 2025 (năm học 2025–2026) kèm dự kiến 'Năm 2' không ghi năm học — không dùng. Bài hướng dẫn nhập học 2026 (hcmussh.edu.vn/post/45209) không ghi số tiền học phí. Có thể học phí nằm trong file Drive thông tin tuyển sinh 2026 (không đọc được).",
+        "scholarship": "Không tìm thấy thông báo học bổng tuyển sinh/tân sinh viên 2026 của trường trên hcmussh.edu.vn. Các bài học bổng đọc được là học bổng khuyến khích học tập cho sinh viên đang học (hcmussh.edu.vn/post/44584), học bổng tài trợ (Mitsubishi UFJ, SYLFF, Acecook) hoặc hỗ trợ sau đại học (post/44587). Đã hết lượt tìm kiếm web trước khi thử thêm.",
+        "scores": "Bài chính thức https://hcmussh.edu.vn/post/45179 (10/08/2026, 'Trường ĐH KHXH&NV, ĐHQG-HCM công bố điểm chuẩn xét tuyển đại học chính quy năm 2026', phương thức xét tuyển tổng hợp mã 500, thang 100, 3 nhóm thí sinh) chỉ có bảng điểm dạng ảnh (cms.hcmussh.edu.vn/api/file/...jpg); văn bản chỉ nêu Truyền thông đa phương tiện 88,80 (cả 3 nhóm) và Tâm lý học 87,00 (nhóm 2), không có mã ngành nên không điền."
+      }
+    },
+    {
+      "school_id": "uel",
+      "website": "https://www.uel.edu.vn/",
+      "tuition": {
+        "summary": "Dự kiến năm học 2026–2027 (khóa tuyển sinh 2026): chương trình dạy và học bằng tiếng Việt 35.800.000 đ; chương trình Co-op tiếng Anh bán phần 55.000.000 đ; chương trình dạy học bằng tiếng Anh 73.500.000 đ.",
+        "source": "https://tuyensinh.uel.edu.vn/hoc-phi-uel-2026-cap-nhat-muc-thu-va-chinh-sach-ho-tro-tai-chinh/",
+        "published": "2026-03-03"
+      },
+      "scholarships": [],
+      "admission": null,
+      "scores": {
+        "source": "https://tuyensinh.uel.edu.vn/truong-dai-hoc-kinh-te-luat-cong-bo-ket-qua-tuyen-sinh-dai-hoc-chinh-quy-nam-2026/",
+        "method": "Xét tuyển tổng hợp 2026 · thang 100",
+        "scale": 100,
+        "programs": [
+          {"code": "420", "name": "Kinh doanh quốc tế (Chuyên ngành Quản lý chuỗi cung ứng và Logistics quốc tế)", "score": 90.01},
+          {"code": "408", "name": "Kinh doanh quốc tế", "score": 87.94},
+          {"code": "411", "name": "Thương mại điện tử", "score": 86.73},
+          {"code": "406", "name": "Hệ thống thông tin quản lý (Chuyên ngành Hệ thống thông tin quản lý)", "score": 86.46},
+          {"code": "406H", "name": "Hệ thống thông tin quản lý (Chuyên ngành Hệ thống thông tin quản lý) (Chương trình Co-operative Education) (Tiếng Anh bán phần)", "score": 86.22},
+          {"code": "409", "name": "Kiểm toán", "score": 85.29},
+          {"code": "402", "name": "Kinh tế quốc tế (Chuyên ngành Kinh tế đối ngoại)", "score": 84.76},
+          {"code": "410", "name": "Marketing (Chuyên ngành Marketing)", "score": 84.63},
+          {"code": "416", "name": "Hệ thống thông tin quản lý (Chuyên ngành Kinh doanh số và Trí tuệ nhân tạo)", "score": 84.44},
+          {"code": "502", "name": "Luật kinh tế (Chuyên ngành Luật Thương mại quốc tế)", "score": 83.24}
+        ],
+        "note": "Công bố 09/08/2026. Điểm gồm điểm học lực, điểm cộng và điểm ưu tiên (thí sinh đủ thành phần: ĐGNL ĐHQG-HCM 55%, thi THPT 35%, học bạ 10%). Phần chữ của trang chỉ nêu 10 ngành điểm cao nhất; bảng đầy đủ 38 ngành/chuyên ngành (từ 65,01 đến 90,01) nằm trong ảnh UEL_Cong-bo-diem-chuan-2026."
+      },
+      "programs": null,
+      "not_found": {
+        "programs": "Không có danh mục ngành/mã xét tuyển 2026 đầy đủ ở dạng chữ trên trang chính thức đọc được: trang thông tin tuyển sinh 2026 (tuyensinh.uel.edu.vn/thong-tin-tuyen-sinh-2026/) chỉ có liên kết danh mục; trang ngưỡng đầu vào 2026 (09/07/2026) dẫn tới file Google Drive 'THÔNG TIN HỌC PHÍ, NGÀNH XÉT TUYỂN.pdf' không đọc được; bảng điểm chuẩn đầy đủ là ảnh. Chỉ có 10 mã ngành ghi trong mục scores."
+      }
+    },
+    {
+      "school_id": "hcmiu",
+      "website": "https://hcmiu.edu.vn/",
+      "tuition": null,
+      "scholarships": [],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {
+        "programs": "tuyensinh.hcmiu.edu.vn và hcmiu.edu.vn (kể cả trang /en/ về tuyển sinh 2026 và PDF 0420_QSQ_Thong-tin-tuyen-sinh-2026.pdf) vẫn trả về script chống bot (cookie D1N rồi tải lại). it.hcmiu.edu.vn đọc được nhưng chỉ có điểm trúng tuyển 2025. Không có dữ liệu trên vnuhcm.edu.vn.",
+        "tuition": "Không đọc được trang/PDF học phí 2026–2027 trên tuyensinh.hcmiu.edu.vn/hcmiu.edu.vn (script chống bot). Kết quả trên el.hcmiu.edu.vn (hp-va-hb.pdf, 12/2024) là năm cũ. Số liệu 54–64 triệu/năm chỉ thấy trên trang tổng hợp (huongnghiep360 dẫn VnExpress), không dùng.",
+        "scholarship": "Không đọc được hcmiu.edu.vn/scholarships và tuyensinh.hcmiu.edu.vn (script chống bot); không tìm được trang học bổng tuyển sinh 2026 trên host khác của trường. Đã hết lượt tìm kiếm web.",
+        "admission": "Thông tin tuyển sinh 2026 (PDF 0420_QSQ_Thong-tin-tuyen-sinh-2026.pdf), Quy chế tuyển sinh 2026 (20260424_Quy_che_Tuyen_sinh_DHQT_2026.pdf) và các bài hcmiu.edu.vn/en/... về tuyển sinh 2026 đều bị script chống bot chặn nội dung.",
+        "scores": "Không tìm được trang điểm trúng tuyển 2026 đọc được: tuyensinh.hcmiu.edu.vn bị script chống bot; it.hcmiu.edu.vn chỉ có trang 'Admission Scores 2025'; vnuhcm.edu.vn không đăng điểm chuẩn trường thành viên."
+      }
+    }
+  ],
+  "browser_candidates": [
+    {"school_id": "hcmut", "field": "tuition", "url": "https://hcmut.edu.vn/tuyen-sinh/dai-hoc-chinh-quy/phuong-thuc-tuyen-sinh", "why": "Trang tuyển sinh render bằng JavaScript; WebFetch chỉ thấy thẻ meta. Có thể có mục học phí 2026–2027 trong menu tuyển sinh."},
+    {"school_id": "hcmut", "field": "scholarship", "url": "https://hcmut.edu.vn/hoc-bong", "why": "Trang học bổng render bằng JavaScript, không có nội dung khi fetch."},
+    {"school_id": "hcmut", "field": "scores", "url": "https://hcmut.edu.vn/tuyen-sinh/dai-hoc-chinh-quy/phuong-thuc-tuyen-sinh/xet-tuyen-tong-hop-2026", "why": "Trang JavaScript; điểm chuẩn xét tuyển tổng hợp 2026 (công bố 09/08/2026) có thể được đăng trong mục tuyển sinh/tin tức của hcmut.edu.vn."},
+    {"school_id": "ussh", "field": "scores", "url": "https://hcmussh.edu.vn/post/45179", "why": "Bài công bố điểm chuẩn 2026 chính thức; bảng điểm là 4 ảnh trên cms.hcmussh.edu.vn/api/file/ (27b225ec-...jpg, c97fc7e6-...jpg, 2ef671bf-...jpg, df6f4965-...png), cần xem ảnh."},
+    {"school_id": "ussh", "field": "programs", "url": "https://hcmussh.edu.vn/post/44214", "why": "Bài 'Công bố thông tin tuyển sinh năm 2026' (30/05/2026) dẫn tới PDF thông tin tuyển sinh trên Google Drive (drive.google.com/file/d/1ZvCV3pYHdJ78tki4svUfmHxQFdnx5Gax/preview) chứa danh mục ngành và có thể có học phí; Drive viewer cần trình duyệt."},
+    {"school_id": "ussh", "field": "tuition", "url": "https://hcmussh.edu.vn/post/44214", "why": "Học phí dự kiến khóa 2026 có thể nằm trong PDF thông tin tuyển sinh 2026 trên Google Drive được liên kết từ bài này."},
+    {"school_id": "uel", "field": "scores", "url": "https://tuyensinh.uel.edu.vn/truong-dai-hoc-kinh-te-luat-cong-bo-ket-qua-tuyen-sinh-dai-hoc-chinh-quy-nam-2026/", "why": "Bảng điểm chuẩn đầy đủ 38 ngành/chuyên ngành nằm trong ảnh UEL_Cong-bo-diem-chuan-2026; phần chữ chỉ có 10 ngành."},
+    {"school_id": "uel", "field": "programs", "url": "https://tuyensinh.uel.edu.vn/truong-dai-hoc-kinh-te-luat-dhqg-hcm-cong-bo-nguong-bao-dam-chat-luong-dau-vao-dai-hoc-chinh-quy-nam-2026/", "why": "Liên kết 'Xem thêm Thông tin học phí, Ngành xét tuyển tại đây' trỏ tới PDF Google Drive (drive.google.com/file/d/1b6sSYl_cLRa7GP-dVnQqbcPWYpwUh4ra/view) không đọc được bằng WebFetch."},
+    {"school_id": "hcmiu", "field": "programs", "url": "https://tuyensinh.hcmiu.edu.vn/wp-content/uploads/2026/04/0420_QSQ_Thong-tin-tuyen-sinh-2026.pdf", "why": "PDF thông tin tuyển sinh 2026 chính thức; host trả script chống bot (cookie D1N). Có thể chứa cả danh mục ngành, phương thức, học phí, học bổng."},
+    {"school_id": "hcmiu", "field": "admission", "url": "https://tuyensinh.hcmiu.edu.vn/wp-content/uploads/2026/04/20260424_Quy_che_Tuyen_sinh_DHQT_2026.pdf", "why": "Quy chế tuyển sinh 2026; bị script chống bot."},
+    {"school_id": "hcmiu", "field": "tuition", "url": "https://tuyensinh.hcmiu.edu.vn/wp-content/uploads/2026/04/0420_QSQ_Thong-tin-tuyen-sinh-2026.pdf", "why": "Học phí 2026–2027 có thể nằm trong PDF thông tin tuyển sinh 2026; bị script chống bot."},
+    {"school_id": "hcmiu", "field": "scholarship", "url": "https://hcmiu.edu.vn/scholarships", "why": "Trang học bổng; bị script chống bot."},
+    {"school_id": "hcmiu", "field": "scores", "url": "https://tuyensinh.hcmiu.edu.vn/", "why": "Cổng tuyển sinh, nơi đăng điểm trúng tuyển 2026; bị script chống bot."},
+    {"school_id": "hcmiu", "field": "admission", "url": "https://hcmiu.edu.vn/en/international-university-vnu-hcm-expanding-opportunities-and-enhancing-intake-quality-in-the-2026-admissions/", "why": "Bài chính thức về tuyển sinh 2026; bị script chống bot."}
+  ]
+}

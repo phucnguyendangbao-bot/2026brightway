@@ -1,0 +1,176 @@
+{
+  "batch": "c5",
+  "researched_at": "2026-11-11",
+  "schools": [
+    {
+      "school_id": "due",
+      "website": "https://due.udn.vn/",
+      "tuition": null,
+      "scholarships": [
+        {
+          "title": "Học bổng Tài năng (khóa tuyển sinh 2026)",
+          "description": "Cho tân sinh viên đạt giải Nhất, Nhì, Ba HSG quốc gia/quốc tế môn trường xét tuyển hoặc thuộc top 10 trúng tuyển của mỗi loại hình (toàn phần, bán phần tiếng Anh, tiêu chuẩn); tối thiểu 100% học phí; từ học kỳ 2 cần học lực Giỏi, rèn luyện Tốt.",
+          "source": "https://due.udn.vn/vi-vn/tuvantuyensinh2026/gt/cid/6024",
+          "publishedAt": null
+        },
+        {
+          "title": "Học bổng Tinh hoa (chương trình DUE Elite)",
+          "description": "Cho sinh viên chương trình Cử nhân tài năng DUE Elite: mỗi học kỳ 100% học phí cho 25% sinh viên có kết quả cao nhất, 50% học phí cho 25% tiếp theo.",
+          "source": "https://due.udn.vn/vi-vn/tuvantuyensinh2026/gt/cid/6024",
+          "publishedAt": null
+        },
+        {
+          "title": "Học bổng khuyến khích cho sinh viên hoàn cảnh khó khăn",
+          "description": "Sinh viên hộ nghèo, cận nghèo không thuộc diện miễn, giảm học phí của Nhà nước, học tập và rèn luyện từ Giỏi trở lên: tối thiểu 100% học phí; kèm hỗ trợ 100% lãi vay Ngân hàng Chính sách xã hội cho đối tượng quy định.",
+          "source": "https://due.udn.vn/vi-vn/tuvantuyensinh2026/gt/cid/6024",
+          "publishedAt": null
+        }
+      ],
+      "admission": {
+        "summary": "4 phương thức: xét tuyển thẳng; kết hợp năng lực tiếng Anh và thành tích học tập (chương trình toàn phần, bán phần tiếng Anh); điểm thi tốt nghiệp THPT 2026 và điểm ĐGNL ĐHQG-HCM 2026 (chương trình tiêu chuẩn).",
+        "source": "https://due.udn.vn/vi-vn/daotao/daotaochitiet/id/22895/cid/3419",
+        "published": "2026-06-22"
+      },
+      "scores": null,
+      "programs": {
+        "source": "https://due.udn.vn/vi-vn/daotao/daotaochitiet/id/22895/cid/3419",
+        "list": [
+          {"code": "7340120EL", "name": "Kinh doanh quốc tế - Cử nhân tài năng Ngoại thương (DUE-Elite, toàn phần tiếng Anh)"},
+          {"code": "7340120GB", "name": "Kinh doanh quốc tế - Ngoại thương (toàn phần tiếng Anh)"},
+          {"code": "7340120PR", "name": "Kinh doanh quốc tế - Kinh doanh giao nhận và vận tải quốc tế (bán phần tiếng Anh)"},
+          {"code": "7340120ST", "name": "Kinh doanh quốc tế (tiêu chuẩn)"},
+          {"code": "7340115GB", "name": "Marketing - Marketing số (toàn phần tiếng Anh)"},
+          {"code": "7340115PR", "name": "Marketing (bán phần tiếng Anh)"},
+          {"code": "7340115ST", "name": "Marketing (tiêu chuẩn)"},
+          {"code": "7340122GB", "name": "Thương mại điện tử (toàn phần tiếng Anh)"},
+          {"code": "7340122ST", "name": "Thương mại điện tử (tiêu chuẩn)"},
+          {"code": "7340121ST", "name": "Kinh doanh thương mại (tiêu chuẩn)"},
+          {"code": "7460108ST", "name": "Khoa học dữ liệu (tiêu chuẩn)"},
+          {"code": "7340301PR", "name": "Kế toán tích hợp chương trình quốc tế ICAEW (bán phần tiếng Anh)"},
+          {"code": "7340301ST", "name": "Kế toán (tiêu chuẩn)"},
+          {"code": "7340302PR", "name": "Kiểm toán tích hợp chương trình quốc tế ACCA (bán phần tiếng Anh)"},
+          {"code": "7340302ST", "name": "Kiểm toán (tiêu chuẩn)"},
+          {"code": "7340101PR", "name": "Quản trị kinh doanh (bán phần tiếng Anh)"},
+          {"code": "7340101ST", "name": "Quản trị kinh doanh (tiêu chuẩn)"},
+          {"code": "7340404PR", "name": "Quản trị nhân lực - Quản trị nguồn nhân lực (bán phần tiếng Anh)"},
+          {"code": "7340404ST", "name": "Quản trị nhân lực - Quản trị nguồn nhân lực (tiêu chuẩn)"},
+          {"code": "7340201PR", "name": "Tài chính - Ngân hàng (bán phần tiếng Anh)"},
+          {"code": "7340201ST", "name": "Tài chính - Ngân hàng (tiêu chuẩn)"},
+          {"code": "7340205PR", "name": "Công nghệ tài chính (bán phần tiếng Anh)"},
+          {"code": "7340205ST", "name": "Công nghệ tài chính (tiêu chuẩn)"},
+          {"code": "7810103PR", "name": "Quản trị dịch vụ du lịch và lữ hành - Quản trị kinh doanh du lịch (bán phần tiếng Anh)"},
+          {"code": "7810103ST", "name": "Quản trị dịch vụ du lịch và lữ hành (tiêu chuẩn)"},
+          {"code": "7810201PR", "name": "Quản trị khách sạn (bán phần tiếng Anh)"},
+          {"code": "7810201ST", "name": "Quản trị khách sạn (tiêu chuẩn)"},
+          {"code": "7310101PR", "name": "Kinh tế - Kinh tế quốc tế (bán phần tiếng Anh)"},
+          {"code": "7310101ST", "name": "Kinh tế (tiêu chuẩn)"},
+          {"code": "7340405PR", "name": "Hệ thống thông tin quản lý - Trí tuệ nhân tạo trong kinh doanh (bán phần tiếng Anh)"},
+          {"code": "7340405ST", "name": "Hệ thống thông tin quản lý (tiêu chuẩn)"},
+          {"code": "7310107ST", "name": "Thống kê kinh tế (tiêu chuẩn)"},
+          {"code": "7380107PR", "name": "Luật kinh tế - Luật thương mại quốc tế (bán phần tiếng Anh)"},
+          {"code": "7380107ST", "name": "Luật kinh tế (tiêu chuẩn)"},
+          {"code": "7380101ST", "name": "Luật (tiêu chuẩn)"},
+          {"code": "7310205ST", "name": "Quản lý nhà nước (tiêu chuẩn)"},
+          {"code": "7340120QT", "name": "Kinh doanh quốc tế - Chương trình cử nhân liên kết quốc tế"}
+        ],
+        "note": "Mã xét tuyển theo Thông báo tuyển sinh ĐHCQ năm 2026 (22/06/2026); hậu tố GB/EL: toàn phần tiếng Anh, PR: bán phần tiếng Anh, ST: tiêu chuẩn, QT: liên kết quốc tế. Tổng chỉ tiêu dòng 1–36 là 3.585."
+      },
+      "not_found": {
+        "tuition": "Trang 'Học phí' của cổng tuyển sinh 2026 (due.udn.vn/vi-vn/tuvantuyensinh2026/gt/cid/6436, tiêu đề 'Học phí năm 2026') chỉ có ảnh (Hoc phi 2026 02.jpg), không đọc được số liệu. Thông báo tuyển sinh 22/06/2026 và bản dự thảo không có học phí; tìm site:due.udn.vn 'học phí 2026-2027' và danh sách Thông báo không có văn bản học phí dạng chữ.",
+        "scores": "Bài 'Trường Đại học Kinh tế công bố điểm chuẩn đại học chính quy năm 2026' (due.udn.vn/vi-vn/tuvantuyensinh2026/ct/id/23086/cid/6031, 10/08/2026) chỉ có bảng điểm dạng ảnh (Diemchuan202601.jpg); trang 'Điểm chuẩn các năm' chỉ có ảnh 2025. Không tìm thấy bản chữ/PDF."
+      }
+    },
+    {
+      "school_id": "smp-udn",
+      "website": "https://smp.udn.vn/",
+      "tuition": {
+        "summary": "Học kỳ 1 năm học 2026–2027, thu theo số tín chỉ đăng ký (sinh viên Việt Nam, khóa tuyển sinh 2026): Y khoa 938.700 đ/tín chỉ; Răng – Hàm – Mặt 793.900 đ; Dược học 917.000 đ; Điều dưỡng 770.580 đ; Kỹ thuật xét nghiệm y học 759.000 đ; Hóa dược 770.580 đ; Tâm lý học 550.000 đ/tín chỉ.",
+        "source": "https://smp.udn.vn/ckfinder/userfiles/files/TH%C3%94NG%20B%C3%81O%20THU%20H%E1%BB%8CC%20PH%C3%8D%20HK1%2C%20NH%2026_27.pdf",
+        "published": "2026-09-23"
+      },
+      "scholarships": [],
+      "admission": {
+        "summary": "3 phương thức: điểm thi tốt nghiệp THPT 2026 (mã 100, tất cả ngành); kết quả học tập THPT (mã 200; Điều dưỡng, Kỹ thuật xét nghiệm y học, Hóa dược, Tâm lý học); xét tuyển thẳng (mã 301).",
+        "source": "https://smp.udn.vn/thong-bao/thong-tin-tuyen-sinh-nam-2026-cong-bo-ngay-0562026",
+        "published": "2026-06-05"
+      },
+      "scores": null,
+      "programs": {
+        "source": "https://smp.udn.vn/ckfinder/userfiles/files/C%E1%BA%ACP%20NH%E1%BA%ACT_DDY_%20TH%C3%94NG%20TIN%20TUY%E1%BB%82N%20SINH%20TYD%20N%C4%82M%202026(1).pdf",
+        "list": [
+          {"code": "7720101", "name": "Y khoa"},
+          {"code": "7720501", "name": "Răng - Hàm - Mặt"},
+          {"code": "7720301", "name": "Điều dưỡng"},
+          {"code": "7720601", "name": "Kỹ thuật xét nghiệm y học"},
+          {"code": "7720201", "name": "Dược học"},
+          {"code": "7720203", "name": "Hóa dược"},
+          {"code": "7310401", "name": "Tâm lý học (định hướng lâm sàng)"}
+        ],
+        "note": "Mã ngành theo Thông tin tuyển sinh năm 2026 (công bố 05/6/2026); mã trường DDY; tổng chỉ tiêu 714. Đơn vị nay mang tên Trường Y Dược - Đại học Đà Nẵng."
+      },
+      "not_found": {
+        "scholarship": "Thông tin tuyển sinh 2026 không có mục học bổng; trang Tân sinh viên, danh sách Thông báo và Tuyển sinh của smp.udn.vn không có thông báo học bổng nào cho tân sinh viên 2026 (chỉ có học bổng Chevening cũ). Thông báo hướng dẫn nhập học 2026 (PDF 848/TB-TYD) là bản scan không đọc được.",
+        "scores": "Bài 'Công bố chính thức điểm trúng tuyển ĐHCQ năm 2026' (13/08/2026) không có bảng điểm, chỉ dẫn tới ketqua.udn.vn (chuyển hướng http/https lặp, không tải được). Bài 'Nguyên tắc quy đổi tương đương ... phương thức xét học bạ' không có nội dung bảng điểm."
+      }
+    },
+    {
+      "school_id": "dut",
+      "website": "https://dut.udn.vn/",
+      "tuition": null,
+      "scholarships": [],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {
+        "tuition": "Ngoài các trang lần 1 đã thử, đã kiểm tra trang Công khai năm học 2026-2027 (dut.udn.vn/Tintuc/Gioithieu/id/12198: Đề án TS 2026 là PDF scan, 'Thông tin chung về Trường.xlsx' không đọc được, 'Thu chi tài chính' là tệp .rar), trang Phòng KH-TC (các thông báo 'cập nhật dữ liệu học phí nhập học của khóa tuyển sinh năm 2026' id 12337, 'thu học phí đợt 2 HK I 2026-2027' id 12340, 12387 — mức thu chỉ nằm trong tệp Google Drive, bản tải xuống bị robots chặn), tuyensinh.dut.udn.vn (van-ban-tuyen-sinh, tu-van-tuyen-sinh, bai-viet-tuyen-sinh, bao-cao-xac-dinh-chi-tieu: không có số liệu học phí; de-an-tuyen-sinh lỗi), lịch đăng ký HK1 2026-2027 trên sv.dut.udn.vn (không có học phí). Không có nguồn chữ chính thức."
+      }
+    },
+    {
+      "school_id": "vku",
+      "website": "https://vku.udn.vn/",
+      "tuition": null,
+      "scholarships": [],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {
+        "scores": "Bài trên tuyensinh.vku.udn.vn (thong-bao/6a79472c0619ded1f20e9b44, 09/08/2026) chỉ có số liệu tổng quan (1500 chỉ tiêu, 22 ngành/chuyên ngành, 3 phương thức) và lịch nhập học, không có bảng điểm; trang 'Điểm trúng tuyển các năm' và 'Quy tắc quy đổi tương đương 2026' không có bảng 2026; bài trên vku.udn.vn chỉ có ảnh Cong-bo-TuyenSinh-2026.jpg. Không tìm thấy PDF điểm trúng tuyển 2026 trên vku.udn.vn hay ts.udn.vn."
+      }
+    },
+    {
+      "school_id": "ntu",
+      "website": "https://ntu.edu.vn/",
+      "tuition": null,
+      "scholarships": [],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {
+        "tuition": "Ngoài đề án 2026 và trang điểm chuẩn (lần 1), đã kiểm tra: trang Hướng dẫn nhập học 2026 (tuyensinh.ntu.edu.vn/dai-hoc/nhap-hoc, không có học phí), danh sách thông báo tuyển sinh, Ba công khai và Công khai theo TT36 trên phongdbcl.ntu.edu.vn (mới nhất là năm học 2025-2026, mức thu học phí chỉ có bản năm 2024), Phòng Đào tạo (pdtdaihoc.ntu.edu.vn), Phòng CTSV; tìm site:ntu.edu.vn 'học phí 2026-2027' không có kết quả chính thức.",
+        "scholarship": "Thông báo 'Học bổng Khatoco' (tuyensinh.ntu.edu.vn/thong-bao/hoc-bong-khatoco, 24/08/2026) chỉ có ảnh, không đọc được đối tượng/mức. Phòng CTSV (phongctsv.ntu.edu.vn) chỉ có học bổng KKHT HKII 2025-2026, Minh Phú - NTU HKII 2025-2026, Vallet 2025; không có học bổng tân sinh viên khóa 68/2026. ntu.edu.vn/hoc-bong lỗi."
+      }
+    },
+    {
+      "school_id": "qnu",
+      "website": "https://qnu.edu.vn/",
+      "tuition": null,
+      "scholarships": [],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {
+        "scholarship": "qnu.edu.vn/vi/hoc-bong chuyển hướng tới pctsv.qnu.edu.vn/vi/hoc-bong: chỉ có học bổng khuyến khích học tập các năm 2021-2025, không có bài 2026/K49. Trang nhập học ĐHCQ 2026 trên tuyensinh.qnu.edu.vn chỉ có miễn, giảm học phí theo diện chính sách. Bài 'Học tập tại QNU – chi phí hợp lý...' (06/08/2026) chỉ nêu chung học bổng KKHT, doanh nghiệp, vượt khó (số liệu 2024–2025) và chính sách Nhà nước/tỉnh Gia Lai, không có học bổng riêng cho tân sinh viên 2026."
+      }
+    }
+  ],
+  "browser_candidates": [
+    {"school_id": "due", "field": "tuition", "url": "https://due.udn.vn/vi-vn/tuvantuyensinh2026/gt/cid/6436", "why": "Trang 'Học phí năm 2026' chỉ có ảnh Hoc phi 2026 02.jpg (https://due.udn.vn/Portals/0/Editor/TruyenThong_DUE/Nam%202026/CTDT%202026/Hoc%20phi%202026%2002.jpg)."},
+    {"school_id": "due", "field": "scores", "url": "https://due.udn.vn/vi-vn/tuvantuyensinh2026/ct/id/23086/cid/6031", "why": "Bảng điểm chuẩn 2026 là ảnh: https://due.udn.vn/Portals/0/Editor/TruyenThong_DUE/Nam%202026/CTDT%202026/Diemchuan202601.jpg"},
+    {"school_id": "smp-udn", "field": "scores", "url": "http://ketqua.udn.vn/", "why": "Trang tra cứu điểm trúng tuyển 2026 được smp.udn.vn dẫn tới; WebFetch bị chuyển hướng http/https lặp."},
+    {"school_id": "smp-udn", "field": "scholarship", "url": "https://smp.udn.vn/ckfinder/userfiles/files/2026_848_TB-TYD_Th%C3%B4ng%20b%C3%A1o%20h%C6%B0%E1%BB%9Bng%20d%E1%BA%ABn%20nh%E1%BA%ADp%20h%E1%BB%8Dc%20t%E1%BA%A1i%20TYD-%C4%90H%C4%90N%20n%C4%83m%202026_13082026.pdf", "why": "Thông báo hướng dẫn nhập học 2026 là PDF scan; có thể nêu học bổng/khen thưởng tân sinh viên."},
+    {"school_id": "dut", "field": "tuition", "url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12337", "why": "Thông báo cập nhật dữ liệu học phí nhập học khóa tuyển sinh 2026; mức thu nằm trong tệp Google Drive đính kèm (https://drive.google.com/file/d/1NjgiDEHGxVi4d9v5C3GdjOaTgmqDAVme/preview)."},
+    {"school_id": "dut", "field": "tuition", "url": "https://dut.udn.vn/Files/admin/files/Ba_cong_khai/2026_2027/De%20an%20Tuyen%20sinh%20Dai%20hoc%202026.pdf", "why": "Đề án tuyển sinh ĐH 2026 là PDF scan (không có lớp chữ), có thể có mục học phí."},
+    {"school_id": "vku", "field": "scores", "url": "https://vku.udn.vn/vi/cong-bo-diem-chuan-trung-tuyen-tuyen-sinh-dai-hoc-nam-2026/", "why": "Bảng điểm chuẩn 2026 chỉ có trong ảnh https://vku.udn.vn/wp-content/uploads/2026/08/Cong-bo-TuyenSinh-2026.jpg"},
+    {"school_id": "ntu", "field": "scholarship", "url": "https://tuyensinh.ntu.edu.vn/thong-bao/hoc-bong-khatoco", "why": "Thông báo Học bổng Khatoco (24/08/2026) chỉ có ảnh https://tuyensinh.ntu.edu.vn/uploads/2/images/2026/Tin%20tuc/2-hocbongKHATOCO.jpg; cần xem đối tượng có phải tân sinh viên 2026 không."}
+  ]
+}

@@ -51,6 +51,11 @@ const EXCLUDE = {
   ntu: { scholarships: 'dormitory fee waivers, not scholarships' },
   husc: { scholarships: 'faculty-level page (Khoa Ngữ văn), not school-wide' },
 };
+// Pass 2 review: the hucfl identity is still unresolved; HCMUE's agent row is round 2 only (the full round-1 table was read in the browser).
+const EXCLUDE_PASS2 = {
+  '*': { hucfl: { all: 'record identity unresolved' } },
+  'pass2/c3.json': { hcmue: { scores: 'round-2 table only; the round-1 table was read in the browser' } },
+};
 // Reviewed wording: partial score tables say so, and an amount not quoted verbatim is left out.
 const METHOD_SUFFIX = {
   vlu: 'chỉ gồm các ngành có điểm ghi trong bài công bố; bảng đầy đủ xem tại nguồn',
@@ -60,11 +65,15 @@ const SCHOLARSHIP_TEXT = {
   'dut:Học bổng cho thí sinh đạt giải học sinh giỏi quốc gia': 'Tân sinh viên K2026 đạt giải học sinh giỏi quốc gia nhận học bổng (giải Nhì 60 triệu đồng, giải Ba 50 triệu đồng); xem mức giải Nhất tại nguồn trường.',
 };
 const details = {}; const scholarships = []; const report = {};
-for (const f of fs.readdirSync(dir).filter(f => /^b\d\.json$/.test(f)).sort()) {
+// Pass 1 (b1–b6), then pass 2 (agents c1–c6, then pages read in a browser); a later source replaces a field it fills.
+const PASS2 = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'browser'].map(name => `pass2/${name}.json`);
+const files = [...fs.readdirSync(dir).filter(f => /^b\d\.json$/.test(f)).sort(), ...PASS2.filter(f => fs.existsSync(dir + f))];
+for (const f of files) {
+  const pass2 = f.startsWith('pass2/');
   const batch = JSON.parse(fs.readFileSync(dir + f, 'utf8'));
   for (const s of batch.schools || []) {
     const id = canonicalSchoolId(s.school_id);
-    const ex = EXCLUDE[id] || {};
+    const ex = pass2 ? { ...EXCLUDE_PASS2['*'][id], ...EXCLUDE_PASS2[f]?.[id] } : EXCLUDE[id] || {};
     if (ex.all) { report[id] = { excluded: ex.all }; continue; }
     for (const f of ['tuition', 'admission', 'scores', 'programs']) if (ex[f]) s[f] = null;
     if (ex.scholarships) s.scholarships = [];
@@ -98,7 +107,7 @@ for (const f of fs.readdirSync(dir).filter(f => /^b\d\.json$/.test(f)).sort()) {
       if (!text(sc?.title, 120) || !sc?.source) continue;
       const u = okUrl(id, 'scholarship', sc.source);
       if (!u) continue;
-      scholarships.push({ id: `${id}-research-scholarship-${i + 1}`, schoolId: id, kind: 'scholarship', funding: 'editorial', status: 'verified', availability: 'reference',
+      scholarships.push({ id: `${id}-research${pass2 ? '2' : ''}-scholarship-${i + 1}`, schoolId: id, kind: 'scholarship', funding: 'editorial', status: 'verified', availability: 'reference',
         title: text(sc.title, 120), description: SCHOLARSHIP_TEXT[`${id}:${text(sc.title, 120)}`] || text(sc.description, 200) || 'Xem điều kiện và thời hạn tại nguồn trường.', publishedAt: date(sc.publishedAt), verifiedAt: batch.researched_at || '2026-11-11', sourceUrl: u });
       got.push('scholarship');
     }

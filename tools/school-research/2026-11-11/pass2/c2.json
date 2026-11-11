@@ -1,0 +1,164 @@
+{
+  "batch": "c2",
+  "researched_at": "2026-11-11",
+  "schools": [
+    {
+      "school_id": "ueh",
+      "website": "https://www.ueh.edu.vn/",
+      "tuition": null,
+      "scholarships": [
+        {
+          "title": "Học bổng tuyển sinh Khóa 52",
+          "description": "Xét theo điểm trúng tuyển (không tính điểm ưu tiên đối tượng, khu vực): 50 suất xuất sắc 27 triệu đồng/suất, 170 suất toàn phần 18 triệu đồng/suất, 350 suất bán phần 9 triệu đồng/suất.",
+          "source": "https://nhaphoc.ueh.edu.vn/dinh-huong-sau-nhap-hoc/danh-rieng-cho-dai-hoc-chinh-quy/hoc-bong/thong-tin-chi-tiet-ve-hoc-bong-danh-cho-sinh-vien-dai-hoc-chinh-quy-khoa-52/",
+          "publishedAt": null
+        },
+        {
+          "title": "Học bổng Hỗ trợ học tập Khóa 52",
+          "description": "Cho sinh viên trúng tuyển UEH năm 2026 thuộc diện mồ côi, hộ nghèo, cận nghèo hoặc hoàn cảnh khó khăn (trừ ISB BBus, Asean Co-op): 50 suất toàn phần 18.000.000 đồng, 100 suất bán phần 9.000.000 đồng; đăng ký trực tuyến 17/8–02/9/2026.",
+          "source": "https://nhaphoc.ueh.edu.vn/dinh-huong-sau-nhap-hoc/danh-rieng-cho-dai-hoc-chinh-quy/hoc-bong/thong-tin-chi-tiet-ve-hoc-bong-danh-cho-sinh-vien-dai-hoc-chinh-quy-khoa-52/",
+          "publishedAt": null
+        }
+      ],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {
+        "tuition": "Thông báo chính thức 'Vv mức học phí các hệ đào tạo năm học 2026-2027 (học kỳ cuối 2026, học kỳ đầu 2027)...' (21/05/2026) có trên tckt.ueh.edu.vn nhưng nội dung chỉ là 11 ảnh JPG; WebFetch không đọc được ảnh (tải ảnh trực tiếp báo lỗi máy chủ). Trang học phí của nhaphoc.ueh.edu.vn chỉ hướng dẫn cách nộp, không có mức thu; trang 'Thông tin công khai năm 2026' và xettuyen.ueh.edu.vn không có mức học phí; tuyensinh.ueh.edu.vn bị chặn robots.txt."
+      }
+    },
+    {
+      "school_id": "ftu",
+      "website": "https://ftu.edu.vn/",
+      "tuition": null,
+      "scholarships": [],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {
+        "tuition": "ftu.edu.vn vẫn chặn robots.txt (kiểm tra lại với /hoc-bong). thongtintuyensinh.ftu.edu.vn nay mở được nhưng là ứng dụng Next.js: trang /programs tải dữ liệu bằng JavaScript ('Tìm thấy 0 chương trình đào tạo... Đang tải dữ liệu'), không có học phí dạng tĩnh. cs2.ftu.edu.vn và tuyensinh.ftu.edu.vn (hệ thống xét tuyển trực tuyến) không có thông tin học phí 2026-2027. Các tìm kiếm site:/filetype:pdf chỉ ra báo, không có PDF chính thức đọc được.",
+        "scholarships": "Không có trang chính thức đọc được: ftu.edu.vn chặn robots.txt; thongtintuyensinh.ftu.edu.vn và cs2.ftu.edu.vn không nhắc học bổng tân sinh viên 2026.",
+        "scores": "thongtintuyensinh.ftu.edu.vn/diem-chuan chỉ là form tra cứu theo CCCD, không có bảng điểm; /programs tải bằng JavaScript; thông báo điểm trúng tuyển trên ftu.edu.vn bị chặn robots.txt. Chỉ có số liệu trên báo, không dùng."
+      }
+    },
+    {
+      "school_id": "ump",
+      "website": "https://ump.edu.vn/",
+      "tuition": null,
+      "scholarships": [],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {
+        "tuition": "Mọi host chính thức thử thêm ở pass 2 đều chặn robots.txt: tuyensinh.ump.edu.vn, daotao.ump.edu.vn, duoc.ump.edu.vn (ngoài ump.edu.vn, admin.ump.edu.vn, sv.ump.edu.vn ở pass 1). Tìm kiếm site:/pdf chỉ ra báo (tuoitre, plo, znews), không có bản chính thức trên host khác.",
+        "scholarships": "Thông báo HB tân sinh viên 2026 trên sv.ump.edu.vn bị chặn robots.txt; không tìm thấy bản đăng trên host chính thức khác.",
+        "scores": "Trang danh sách/điểm trúng tuyển 2026 trên ump.edu.vn bị chặn robots.txt; các subdomain khác cũng chặn; không có bản trên moet.gov.vn."
+      }
+    },
+    {
+      "school_id": "pnt",
+      "website": "https://pnt.edu.vn/",
+      "tuition": null,
+      "scholarships": [
+        {
+          "title": "Học bổng khuyến học Dương Quang Trung năm học 2026-2027",
+          "description": "Quỹ học bổng của Trường cho sinh viên có hoàn cảnh khó khăn, gồm cả sinh viên năm nhất khóa tuyển sinh 2026 (được miễn tiêu chí điểm TB năm 2025-2026); dự kiến 30 suất, 10.000.000 đồng/suất; nhận hồ sơ đến hết 21/8/2026.",
+          "source": "https://pctsv.pnt.edu.vn/vi/thong-bao/thong-bao-xet-chon-hoc-bong-khuyen-hoc-duong-quang-trung-nam-hoc-2026-2027",
+          "publishedAt": "2026-08-11"
+        },
+        {
+          "title": "Học bổng Nguyễn Văn Hưởng (toàn khóa) năm 2026",
+          "description": "Do Báo Sài Gòn Giải Phóng triển khai, Phòng CTSV thông báo: 05 suất toàn khóa, 25.000.000 đồng/suất/năm học; hồ sơ gồm giấy báo trúng tuyển đại học và minh chứng hoàn cảnh; duy trì khi đạt học lực khá trở lên; hạn nộp 16g00 ngày 14/9/2026.",
+          "source": "https://pctsv.pnt.edu.vn/vi/thong-bao/thong-tin-nop-ho-so-hoc-bong-nguyen-van-huong-toan-khoa-nam-2026",
+          "publishedAt": "2026-09-08"
+        }
+      ],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {}
+    },
+    {
+      "school_id": "ctump",
+      "website": "https://www.ctump.edu.vn/",
+      "tuition": null,
+      "scholarships": [],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {
+        "tuition": "Trang 'Mức thu học phí năm học 2026 - 2027' trên www.ctump.edu.vn vẫn chỉ trả về khung trang chủ (nội dung tải bằng JavaScript từ CMS vanphongtruong.ctump.edu.vn, cũng yêu cầu JavaScript); không có liên kết PDF. ctsv.ctump.edu.vn và tuyensinh.ctump.edu.vn chặn robots.txt. Tìm kiếm site:ctump.edu.vn/filetype:pdf chỉ ra tài liệu của ĐH Cần Thơ (ctu.edu.vn), không phải CTUMP.",
+        "scholarships": "Không tìm thấy thông báo học bổng tân sinh viên 2026 dạng đọc được: www.ctump.edu.vn tải bằng JavaScript; ctsv.ctump.edu.vn chặn robots.txt; tìm kiếm chỉ ra báo hoặc trang của ctu.edu.vn.",
+        "scores": "Trang 'Thông báo điểm trúng tuyển đại học chính quy năm 2026' trên www.ctump.edu.vn chỉ trả về khung trang chủ (JavaScript), không có PDF/iframe; tuyensinh.ctump.edu.vn chặn robots.txt; không có PDF chính thức qua tìm kiếm."
+      }
+    }
+  ],
+  "browser_candidates": [
+    {
+      "school_id": "ueh",
+      "field": "tuition",
+      "url": "https://tckt.ueh.edu.vn/TinTuc/?m=457&NO_OBJ=400418&KeySign=7ceeee896d8d25a57a1d4f1bef9ee727",
+      "why": "Thông báo chính thức mức học phí năm học 2026-2027 (21/05/2026); nội dung là 11 ảnh JPG, cần xem ảnh trong trình duyệt."
+    },
+    {
+      "school_id": "ueh",
+      "field": "tuition",
+      "url": "https://tuyensinh.ueh.edu.vn/",
+      "why": "Có trang 'Học phí và Chính sách Học bổng UEH 2026' nhưng WebFetch bị chặn robots.txt."
+    },
+    {
+      "school_id": "ftu",
+      "field": "scores",
+      "url": "https://thongtintuyensinh.ftu.edu.vn/programs",
+      "why": "Danh mục chương trình (lọc theo Phân hiệu TP.HCM) tải bằng JavaScript; có thể có mã, điểm trúng tuyển, học phí."
+    },
+    {
+      "school_id": "ftu",
+      "field": "tuition",
+      "url": "https://ftu.edu.vn/tuyensinh/dai-hoc-chinh-quy/209-th%C3%B4ng-tin-tuy%E1%BB%83n-sinh-chung/tha-ng-tin-tuya-n-sinh-chung-n-m-2026",
+      "why": "Thông tin tuyển sinh chung 2026 trên ftu.edu.vn (thường có học phí, học bổng); WebFetch bị chặn robots.txt."
+    },
+    {
+      "school_id": "ftu",
+      "field": "scholarship",
+      "url": "https://ftu.edu.vn/hoc-bong",
+      "why": "Trang học bổng chính thức; WebFetch bị chặn robots.txt."
+    },
+    {
+      "school_id": "ump",
+      "field": "scores",
+      "url": "https://ump.edu.vn/tuyen-sinh-dao-tao/dai-hoc/tuyen-sinh/10840/danh-sach-thi-sinh-trung-tuyen-dai-hoc-he-chinh-quy-nam-2026",
+      "why": "Danh sách/điểm trúng tuyển 2026; WebFetch bị chặn robots.txt."
+    },
+    {
+      "school_id": "ump",
+      "field": "tuition",
+      "url": "https://ump.edu.vn/uploads/ckeditor/files/Truong/DaoTaoDaiHoc/TuyenSinh/2026/2373_27052026_Capnhat_Thongtintuyensinh.pdf",
+      "why": "Thông tin tuyển sinh 2026 cập nhật (27/05/2026), có thể có học phí; WebFetch bị chặn robots.txt."
+    },
+    {
+      "school_id": "ump",
+      "field": "scholarship",
+      "url": "https://sv.ump.edu.vn/sinh-vien/tin-tuc/thong-bao-ve-viec-thuc-hien-chinh-sach-hoc-bong-doi-voi-sinh-vien-trung-tuyen-nam-2026-hb-tan-sinh-vien.html?pIDDanhMuc=2",
+      "why": "Thông báo học bổng tân sinh viên 2026; WebFetch bị chặn robots.txt."
+    },
+    {
+      "school_id": "ctump",
+      "field": "tuition",
+      "url": "https://www.ctump.edu.vn/muc-thu-hoc-phi-nam-hoc-2026-2027.html",
+      "why": "Trang 'Mức thu học phí năm học 2026 - 2027'; nội dung tải bằng JavaScript."
+    },
+    {
+      "school_id": "ctump",
+      "field": "scores",
+      "url": "https://www.ctump.edu.vn/thong-bao-diem-trung-tuyen-dai-hoc-chinh-quy-nam-2026.html",
+      "why": "Thông báo điểm trúng tuyển ĐHCQ 2026; nội dung tải bằng JavaScript."
+    },
+    {
+      "school_id": "ctump",
+      "field": "scholarship",
+      "url": "https://www.ctump.edu.vn/",
+      "why": "Bài 'dành nhiều học bổng hấp dẫn... đến 100 triệu đồng' (pass 1) trên ctump.edu.vn tải bằng JavaScript; cần trình duyệt để xác nhận năm 2026 và điều kiện."
+    }
+  ]
+}

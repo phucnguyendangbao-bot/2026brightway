@@ -1,0 +1,105 @@
+{
+  "batch": "c6",
+  "researched_at": "2026-11-11",
+  "schools": [
+    {
+      "school_id": "huemed",
+      "website": "https://huemed-univ.edu.vn/",
+      "tuition": {
+        "summary": "Học phí năm học 2026–2027 (dự kiến) cho khóa tuyển sinh 2026, tính theo tín chỉ: Y khoa 1.935.000 đ/tín chỉ (31 TC, 59.985.000 đ); Y học cổ truyền 53.940.000 đ; Dược học 50.605.000 đ; Răng hàm mặt 46.655.000 đ; Y học dự phòng 37.830.000 đ; Kỹ thuật hình ảnh y học 37.660.000 đ; Điều dưỡng 36.315.000 đ; Kỹ thuật xét nghiệm y học 34.970.000 đ; Hộ sinh 32.550.000 đ; Dinh dưỡng 30.800.000 đ; Y tế công cộng 29.850.000 đ cho năm học. Không áp dụng cho sinh viên nước ngoài.",
+        "source": "https://huemed-univ.edu.vn/uploads/Thongbao/TB%20HOC%20PHI_1011.pdf",
+        "published": "2026-04-23"
+      },
+      "scholarships": [],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {},
+      "notes": "Thông báo 2400/TB-ĐHYD ngày 23/04/2026; trang HTML: https://www.huemed-univ.edu.vn/thong-bao/cap-nhat/ts2026-tb-ve-muc-thu-hoc-phi-tin-chi-dao-tao-dai-hoc-he-chinh-quy-nam-hoc-2026-2026-doi-voi-khoa-tuyen-sinh-moi-nam-hoc-2026-2027-1011. Mức thu theo tín chỉ từng ngành: Răng hàm mặt 1.505.000; Dược học 1.745.000; Y học cổ truyền 1.860.000; Y học dự phòng 1.455.000; KTXN, KTHA, Điều dưỡng 1.345.000; Hộ sinh 1.085.000; Dinh dưỡng 1.100.000; Y tế công cộng 995.000 đ/tín chỉ. Văn bản ghi các con số là dự kiến."
+    },
+    {
+      "school_id": "husc",
+      "website": "https://husc.edu.vn/",
+      "tuition": null,
+      "scholarships": [
+        {
+          "title": "Học bổng 100% học phí theo điểm trúng tuyển 2026",
+          "description": "Cho thí sinh trúng tuyển thẳng và thủ khoa ngành đạt từ 26,00 điểm (thang 30, không tính điểm ưu tiên, khuyến khích); trị giá 7.700.000–9.800.000 đồng, chi sau khi học xong học kỳ 1 và đăng ký học kỳ 2.",
+          "source": "https://tuyensinh.husc.edu.vn/thongbao.php?id=67",
+          "publishedAt": null
+        },
+        {
+          "title": "Học bổng 50% và 25% học phí theo điểm trúng tuyển 2026",
+          "description": "50% học phí (3.800.000–4.900.000 đồng) cho thủ khoa ngành đạt từ 25,00 đến dưới 26,00 điểm; 25% học phí (1.900.000–2.500.000 đồng) cho thí sinh đạt từ 25,00 điểm.",
+          "source": "https://tuyensinh.husc.edu.vn/thongbao.php?id=67",
+          "publishedAt": null
+        },
+        {
+          "title": "Học bổng thủ khoa toàn trường 2026",
+          "description": "Thủ khoa toàn trường được cấp tối thiểu 20.000.000 đồng từ học bổng, miễn, giảm học phí; ngoài ra nhiều ngành có học bổng riêng cho thủ khoa ngành (1–3 triệu đồng).",
+          "source": "https://tuyensinh.husc.edu.vn/thongbao.php?id=67",
+          "publishedAt": null
+        }
+      ],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {
+        "tuition": "Không tìm được mức học phí 2026–2027 trên nguồn chính thức. File Thông tin tuyển sinh 2026 (https://tuyensinh.husc.edu.vn/IMAGES/files/6a89137d40a24_thong_tin_tuyen_sinh_202611.pdf) lỗi máy chủ cả 2 lần tải; các trang tuyensinh.husc.edu.vn (thongbao id=63, 64, 80, 81), trang chủ husc.edu.vn, tuyensinh.hueuni.edu.vn (Download 10667, 10669, 10722, 10724) không có học phí; nhaphoc.husc.edu.vn bị chặn robots; husc.edu.vn/announcements.php lỗi. Trang học bổng (id=67) chỉ nêu giá trị học bổng 100% học phí là 7.700.000–9.800.000 đồng, không nêu mức học phí năm."
+      },
+      "notes": "Trang chính sách học bổng (thongbao.php?id=67) do trường đăng trên tuyensinh.husc.edu.vn, tiêu đề về chính sách học bổng cho thí sinh xét tuyển 2026 / nhập học năm học 2026–2027; trang không ghi ngày đăng."
+    },
+    {
+      "school_id": "huaf",
+      "website": "https://huaf.edu.vn/",
+      "tuition": null,
+      "scholarships": [
+        {
+          "title": "Học bổng chính sách ngành kỹ thuật then chốt (Nghị định 179/2026/NĐ-CP)",
+          "description": "Trường giới thiệu cho tuyển sinh 2026: sinh viên các ngành Kỹ thuật cơ điện tử (7520114), Kỹ thuật cơ sở hạ tầng (7580210) có cơ hội nhận 3,7–5 triệu đồng/tháng, tùy nhóm ngành, đối tượng và kết quả xét duyệt; đây là chính sách của Nhà nước, điều kiện cụ thể theo hướng dẫn của trường.",
+          "source": "https://tuyensinh.huaf.edu.vn/tuyen-sinh-dai-hoc-2026-cua-khoa-co-khi-va-cong-nghe-truong-dai-hoc-nong-lam-dai-hoc-hue/",
+          "publishedAt": "2026-06-05"
+        }
+      ],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {
+        "scholarships": "Không tìm thấy học bổng tuyển sinh/tân sinh viên 2026 do chính trường đặt ra (mức, điều kiện). Đã xem tuyensinh.huaf.edu.vn (trang chủ, thông tin tuyển sinh 2026, đăng ký xét tuyển, xét tuyển bổ sung, kế hoạch nhập học K60), huaf.edu.vn (trang chủ, /suat-hoc-bong/ chỉ có số liệu năm 2018). Bài 'Đề xuất miễn 100% học phí' (03/11/2026) chỉ là dự thảo sửa Nghị định 238, chưa ban hành. Chỉ tìm được học bổng chính sách Nhà nước theo Nghị định 179 do trường giới thiệu (đã ghi ở trên)."
+      },
+      "notes": "Bài khai giảng K60 (25/09/2026) trên báo Tiền Phong nêu trường trao học bổng cho thủ khoa và sinh viên vượt khó, tổng tài trợ gần 1,5 tỷ đồng, nhưng không có trang chính thức với mức/điều kiện."
+    },
+    {
+      "school_id": "phuxuan",
+      "website": "https://pxu.edu.vn/",
+      "tuition": {
+        "summary": "Học phí dự kiến khóa tuyển sinh 2026 tính theo tín chỉ: 690.000–900.000 đồng/tín chỉ tùy ngành, lộ trình tăng không quá 10%/năm. Trang học phí của trường ghi: Truyền thông đa phương tiện 900.000 đ/tín chỉ; Công nghệ thông tin, Công nghệ kỹ thuật ô tô 830.000 đ/tín chỉ; các ngành còn lại 690.000 đ/tín chỉ.",
+        "source": "https://pxu.edu.vn/news/thong-tin-tuyen-sinh-dai-hoc-he-chinh-quy-nam-2026-truong-dai-hoc-phu-xuan-ma-truong-dpx",
+        "published": "2026-05-30"
+      },
+      "scholarships": [],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {
+        "scores": "Trang chính thức 'PXU công bố điểm trúng tuyển đại học chính quy năm 2026' (https://pxu.edu.vn/news/diem-trung-tuyen-dai-hoc-phu-xuan-2026, 16/08/2026; bản tiếng Anh /en/news/...) không có con số trong phần chữ, bảng điểm nằm trong ảnh (WebFetch bị robots chặn với file ảnh). Trang 'PXU công bố ngưỡng xét tuyển đại học chính quy năm 2026' (https://pxu.edu.vn/news/pxu-cong-bo-nguong-xet-tuyen-dai-hoc-chinh-quy-2026, 12/07/2026) ghi ngưỡng xét tuyển chung cho mọi ngành: điểm thi THPT từ 15 điểm, học bạ từ 18 điểm; đây là ngưỡng, không phải điểm trúng tuyển nên không ghi vào scores.",
+        "tuition_note": "Mức theo từng ngành lấy từ https://pxu.edu.vn/hoc-phi/ (trang không ghi năm học/ngày); mức khung 690.000–900.000 đ/tín chỉ và lộ trình tăng ≤10%/năm lấy từ trang Thông tin tuyển sinh 2026 (30/05/2026). File PDF Thông tin tuyển sinh 2026 (https://pxu.edu.vn/api/files/migrated/2026/05/Thong-tin-tuyen-sinh-chinh-quy-nam-2026-4.pdf) bị robots chặn, không đọc được."
+      },
+      "notes": "Trang ngưỡng xét tuyển 2026 liệt kê mã ngành: CNTT 7480201 (gồm chuyên ngành Đồ họa kỹ thuật số), CNKT ô tô 7510205, QTKD 7340101, Quản lý công nghiệp (trang ghi 7340101), Truyền thông đa phương tiện 7320104, QT dịch vụ du lịch và lữ hành 7810103, Ngôn ngữ Anh 7220201, Ngôn ngữ Trung Quốc 7220204."
+    }
+  ],
+  "browser_candidates": [
+    {
+      "school_id": "husc",
+      "field": "tuition",
+      "url": "https://tuyensinh.husc.edu.vn/IMAGES/files/6a89137d40a24_thong_tin_tuyen_sinh_202611.pdf",
+      "why": "File Thông tin tuyển sinh 2026 của trường, có thể có mục học phí 2026–2027; WebFetch trả lỗi máy chủ (SERVER_ERROR) cả 2 lần."
+    },
+    {
+      "school_id": "phuxuan",
+      "field": "scores",
+      "url": "https://pxu.edu.vn/news/diem-trung-tuyen-dai-hoc-phu-xuan-2026",
+      "why": "Bài công bố điểm trúng tuyển 2026 (16/08/2026); bảng điểm chỉ có trong ảnh (https://pxu.edu.vn/api/files/news/7f8e93ef-685f-478b-a84c-c5f769ebfaaa.png), phần chữ không có số."
+    }
+  ]
+}

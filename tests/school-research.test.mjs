@@ -41,12 +41,19 @@ test('researched data is 2026 only, scores stay within their stated scale and ca
 
 test('reviewed exclusions stay out: draft đề án, mislabelled school, unclear year, flattened table', () => {
   assert.equal(researchedSchoolDetails.hucfl, undefined);
-  assert.equal(researchedSchoolDetails.due?.admission, undefined);
-  assert.equal(researchedSchoolDetails.due?.programs, undefined);
-  assert.equal(researchedSchoolDetails.donga?.scores, undefined);
-  assert.equal(researchedSchoolDetails.phuxuan?.tuition, undefined);
-  assert.ok(!researchedScholarships.some(item => ['hufi', 'ntu', 'husc'].includes(item.schoolId)));
+  // Pass 1 rows that were excluded only come back from a second, cleaner source.
+  assert.equal(researchedSchoolDetails.due.admission.published, '2026-06-22', 'final notice, not the draft');
+  assert.equal(researchedSchoolDetails.phuxuan.tuition.published, '2026-05-30', 'dated 2026 admissions post');
+  assert.ok(researchedSchoolDetails.donga.scores.programs.every(row => /^7\d{6}$/.test(row.code)), 'table re-read with proper codes');
+  assert.ok(!researchedScholarships.some(item => /-research-scholarship-/.test(item.id) && ['hufi', 'ntu', 'husc'].includes(item.schoolId)));
   assert.ok(!researchedScholarships.some(item => /Nhất 70/.test(item.description)));
+});
+
+test('pass 2 fills from tables read on the school pages, with every row inside its scale', () => {
+  const filled = ['hcmiu', 'hub', 'nlu', 'sgu', 'tdtu', 'uel', 'ctump', 'hcmue', 'vku'];
+  for (const id of filled) assert.ok(researchedSchoolDetails[id].scores.programs.length > 0, id);
+  assert.equal(researchedSchoolDetails.hcmue.scores.programs.length, 47, 'round-1 table, not the 3-row round 2');
+  for (const id of ['hcmut', 'ueh', 'dut', 'ctump', 'sgu', 'hcmiu']) assert.match(researchedSchoolDetails[id].tuition.summary, /2026/, id);
 });
 
 test('research only fills gaps: curated 2026 records and scores are kept as they are', () => {
