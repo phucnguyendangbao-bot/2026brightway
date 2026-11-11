@@ -690,3 +690,9 @@ html body #home-view .is-deep .chapter-done { background: rgba(247, 245, 241, .1
 @keyframes resume-dot { from { opacity: 0; scale: 0 1; } to { opacity: 1; scale: none; } }
 @keyframes resume-pop { from { opacity: 0; scale: .85; } to { opacity: 1; scale: none; } }
 html body #home-view #hero-actions .story-resume [data-resume-count] { color: #fe9677; }
+
+/* Start transition veil: a circle of the opening's own light, grown from the pressed button (transform/opacity only). */
+.bw-portal {
+  position: fixed; z-index: 500; border-radius: 50%; pointer-events: none; transform: scale(.02); will-change: transform, opacity;
+  background: radial-gradient(circle, #fc734d 0%, #f08a5d 18%, #7a4f9e 42%, #09318d 66%, #02070a 100%);
+}

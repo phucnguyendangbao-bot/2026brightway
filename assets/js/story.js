@@ -148,14 +148,56 @@ function initArt() {
 /* ---------- Returning visitor: hero resume + finished chapters fold to one line ---------- */
 function chapterFor(stepIndex) { return document.querySelector(`.story-chapter[data-step="${stepIndex}"]`); }
 
-function goTo(chapter) {
+function goTo(chapter, origin) {
   if (!chapter) return;
   setOpen(chapter, true);
+  const land = () => {
+    const title = chapter.querySelector('.chapter-title, h2');
+    title?.setAttribute('tabindex', '-1');
+    title?.focus({ preventScroll: true });
+  };
+  if (origin && !reduced.matches && portal(origin, () => { chapter.scrollIntoView({ behavior: 'auto', block: 'start' }); land(); arrive(chapter); })) return;
   chapter.scrollIntoView({ behavior: reduced.matches ? 'auto' : 'smooth', block: 'start' });
-  const title = chapter.querySelector('.chapter-title');
-  title?.setAttribute('tabindex', '-1');
-  title?.focus({ preventScroll: true });
+  land();
 }
+
+/* ---------- Start transition: light spreads out from the pressed button, the page moves underneath, then clears ---------- */
+let portalBusy = false;
+function portal(origin, jump) {
+  if (portalBusy || !origin?.getBoundingClientRect || !Element.prototype.animate) return false;
+  portalBusy = true;
+  const r = origin.getBoundingClientRect();
+  const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+  const radius = Math.hypot(Math.max(cx, innerWidth - cx), Math.max(cy, innerHeight - cy));
+  const veil = document.createElement('div');
+  veil.className = 'bw-portal';
+  veil.setAttribute('aria-hidden', 'true');
+  Object.assign(veil.style, { left: `${cx - radius}px`, top: `${cy - radius}px`, width: `${radius * 2}px`, height: `${radius * 2}px` });
+  document.body.append(veil);
+  const grow = veil.animate([{ transform: 'scale(0.02)', opacity: 0.9 }, { transform: 'scale(1)', opacity: 1 }], { duration: 520, easing: 'cubic-bezier(.65, 0, .35, 1)', fill: 'forwards' });
+  grow.finished.then(() => {
+    jump();
+    return veil.animate([{ opacity: 1, transform: 'scale(1)' }, { opacity: 0, transform: 'scale(1.15)' }], { duration: 480, easing: 'cubic-bezier(.2, .8, .2, 1)', fill: 'forwards' }).finished;
+  }).catch(() => jump()).finally(() => { veil.remove(); portalBusy = false; });
+  return true;
+}
+function arrive(section) {
+  if (!Element.prototype.animate) return;
+  const parts = [...section.querySelectorAll(':scope .ks-kicker, :scope .chapter-title, :scope .ks-intro, :scope .chapter-done, :scope h2')].slice(0, 4);
+  parts.forEach((el, i) => el.animate([{ opacity: 0, transform: 'translateY(26px)' }, { opacity: 1, transform: 'none' }], { duration: 560, delay: 120 + i * 90, easing: 'cubic-bezier(.2, .8, .2, 1)', fill: 'backwards' }));
+}
+
+// The opening's start button and the table of contents use the same transition.
+document.addEventListener('click', event => {
+  const link = event.target.closest('a.glow-cta[href^="#"], .ks-toc a.home-journey-card[href^="#"]');
+  if (!link || event.metaKey || event.ctrlKey || event.shiftKey || event.button) return;
+  const target = document.querySelector(link.getAttribute('href'));
+  if (!target) return;
+  event.preventDefault();
+  if (target.classList.contains('story-chapter')) goTo(target, link);
+  else if (reduced.matches || !portal(link, () => { target.scrollIntoView({ behavior: 'auto', block: 'start' }); arrive(target); })) target.scrollIntoView({ behavior: reduced.matches ? 'auto' : 'smooth', block: 'start' });
+  history.replaceState(null, '', link.getAttribute('href'));
+});
 
 function setOpen(chapter, open) {
   const toggle = chapter.querySelector('[data-chapter-toggle]');
@@ -252,7 +294,7 @@ function renderProgress({ fold } = {}) {
   resume.innerHTML = `<p class="story-resume-title"><span class="resume-hello">Chào bạn quay lại.</span> <span class="resume-progress">Bạn đã đi được <b data-resume-count>${intro ? 0 : doneCount}</b>/5 bước.</span></p>
     <ol class="story-resume-dots" aria-hidden="true">${steps.map((s, i) => `<li class="${s.complete ? 'is-done' : ''}" style="--d:${i}"></li>`).join('')}</ol>
     <button type="button" class="story-resume-go" data-resume-step="${target}">${all ? 'Xem lại kế hoạch hành động' : `Tiếp tục chương ${target + 1}: ${escape(steps[target].label)}`}</button>`;
-  resume.querySelector('[data-resume-step]').addEventListener('click', () => goTo(chapterFor(target)));
+  resume.querySelector('[data-resume-step]').addEventListener('click', event => goTo(chapterFor(target), event.currentTarget));
   if (intro) {
     const counter = resume.querySelector('[data-resume-count]');
     for (let n = 1; n <= doneCount; n++) setTimeout(() => { if (counter.isConnected) counter.textContent = n; }, 850 + n * 150);
