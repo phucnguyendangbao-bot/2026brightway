@@ -662,3 +662,31 @@ html body #home-view .is-deep .chapter-done { background: rgba(247, 245, 241, .1
   html body #home-view .chapter-done { padding: 14px; }
   .chapter-done .done-schools { grid-template-columns: 1fr; }
 }
+
+/* ---------- Welcome-back intro: plays once when a returning reader lands (≈1.8s, transform/opacity only) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  html body #home-view #hero-actions .story-resume.is-intro { position: relative; overflow: hidden; isolation: isolate; animation: resume-in .7s cubic-bezier(.2, .8, .2, 1) .2s both; }
+  html body #home-view #hero-actions .story-resume.is-intro::before {
+    content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; border-radius: inherit;
+    background: linear-gradient(105deg, transparent 30%, rgba(252, 115, 77, .32) 48%, rgba(255, 190, 150, .18) 54%, transparent 70%);
+    transform: translateX(-110%); animation: resume-sweep 1.2s cubic-bezier(.4, 0, .2, 1) .6s both; will-change: transform;
+  }
+  html body #home-view #hero-actions .story-resume.is-intro .resume-hello,
+  html body #home-view #hero-actions .story-resume.is-intro .resume-progress { display: inline-block; animation: resume-rise .5s cubic-bezier(.2, .8, .2, 1) both; }
+  html body #home-view #hero-actions .story-resume.is-intro .resume-hello { animation-delay: .45s; }
+  html body #home-view #hero-actions .story-resume.is-intro .resume-progress { animation-delay: .75s; }
+  html body #home-view #hero-actions .story-resume.is-intro [data-resume-count] { display: inline-block; min-width: .6em; text-align: center; color: #fe9677; }
+  html body #home-view #hero-actions .story-resume.is-intro .story-resume-dots li { transform-origin: 0 50%; animation: resume-dot .45s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(.95s + var(--d, 0) * .13s); }
+  html body #home-view #hero-actions .story-resume.is-intro .story-resume-go { position: relative; overflow: hidden; animation: resume-pop .6s cubic-bezier(.34, 1.56, .64, 1) 1.55s both; }
+  html body #home-view #hero-actions .story-resume.is-intro .story-resume-go::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, .55) 50%, transparent 65%);
+    transform: translateX(-120%); animation: resume-sweep .9s ease 2s both;
+  }
+}
+@keyframes resume-in { from { opacity: 0; translate: 0 22px; scale: .96; } to { opacity: 1; translate: none; scale: none; } }
+@keyframes resume-sweep { to { transform: translateX(120%); } }
+@keyframes resume-rise { from { opacity: 0; translate: 0 10px; } to { opacity: 1; translate: none; } }
+@keyframes resume-dot { from { opacity: 0; scale: 0 1; } to { opacity: 1; scale: none; } }
+@keyframes resume-pop { from { opacity: 0; scale: .85; } to { opacity: 1; scale: none; } }
+html body #home-view #hero-actions .story-resume [data-resume-count] { color: #fe9677; }

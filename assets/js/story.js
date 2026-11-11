@@ -215,6 +215,7 @@ function doneCard(i, step) {
     <div class="done-actions">${doneLink('profile.html?tab=journey#action-plan', 'Xem kế hoạch →', true)}</div>`;
 }
 
+let resumeIntroPlayed = false;
 function renderProgress({ fold } = {}) {
   const steps = flow()?.progress();
   if (!steps) return;
@@ -244,10 +245,19 @@ function renderProgress({ fold } = {}) {
   const all = nextIndex === -1;
   const target = all ? 4 : nextIndex;
   resume.hidden = false;
-  resume.innerHTML = `<p class="story-resume-title">Chào bạn quay lại. Bạn đã đi được ${doneCount}/5 bước.</p>
-    <ol class="story-resume-dots" aria-hidden="true">${steps.map(s => `<li class="${s.complete ? 'is-done' : ''}"></li>`).join('')}</ol>
+  // The first time a returning reader lands, the card plays a short welcome; later re-renders stay still.
+  const intro = !resumeIntroPlayed && !reduced.matches;
+  resumeIntroPlayed = true;
+  resume.classList.toggle('is-intro', intro);
+  resume.innerHTML = `<p class="story-resume-title"><span class="resume-hello">Chào bạn quay lại.</span> <span class="resume-progress">Bạn đã đi được <b data-resume-count>${intro ? 0 : doneCount}</b>/5 bước.</span></p>
+    <ol class="story-resume-dots" aria-hidden="true">${steps.map((s, i) => `<li class="${s.complete ? 'is-done' : ''}" style="--d:${i}"></li>`).join('')}</ol>
     <button type="button" class="story-resume-go" data-resume-step="${target}">${all ? 'Xem lại kế hoạch hành động' : `Tiếp tục chương ${target + 1}: ${escape(steps[target].label)}`}</button>`;
   resume.querySelector('[data-resume-step]').addEventListener('click', () => goTo(chapterFor(target)));
+  if (intro) {
+    const counter = resume.querySelector('[data-resume-count]');
+    for (let n = 1; n <= doneCount; n++) setTimeout(() => { if (counter.isConnected) counter.textContent = n; }, 850 + n * 150);
+    setTimeout(() => resume.classList.remove('is-intro'), 2600);
+  }
 }
 
 document.addEventListener('click', event => {
