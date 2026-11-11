@@ -167,6 +167,54 @@ function setOpen(chapter, open) {
   chapter.classList.toggle('is-folded', !open);
 }
 
+/* ---------- What you already chose, shown plainly at the top of a finished chapter ---------- */
+const HOLLAND_NAMES = { R: 'Kỹ thuật', I: 'Nghiên cứu', A: 'Nghệ thuật', S: 'Xã hội', E: 'Lãnh đạo', C: 'Nghiệp vụ' };
+let schoolCatalog = null;
+async function loadSchoolCatalog() {
+  if (schoolCatalog) return schoolCatalog;
+  try {
+    const rows = await fetch('/assets/data/schools.json').then(r => r.ok ? r.json() : []);
+    schoolCatalog = new Map((Array.isArray(rows) ? rows : []).map(row => [row.id, row]));
+  } catch { schoolCatalog = new Map(); }
+  renderProgress();
+  return schoolCatalog;
+}
+const doneLink = (href, label, primary = false) => `<a class="done-action${primary ? ' is-primary' : ''}" href="${escape(href)}">${escape(label)}</a>`;
+function doneCard(i, step) {
+  const state = flow()?.read() || {};
+  const head = title => `<p class="done-head"><span class="done-check" aria-hidden="true">✓</span><span class="done-badge">Đã xong</span>${escape(title)}</p>`;
+  if (i === 0) {
+    const code = flow()?.holland() || '';
+    return head('Mã Holland của bạn') + `<ul class="done-chips">${[...code].map(c => `<li><b>${escape(c)}</b>${escape(HOLLAND_NAMES[c] || '')}</li>`).join('')}</ul>
+      <div class="done-actions">${doneLink(`careers-holland.html?holland=${encodeURIComponent(code)}`, 'Xem nghề hợp mã →', true)}${doneLink('holland.html', 'Làm lại trắc nghiệm')}</div>`;
+  }
+  if (i === 1) {
+    const names = [...new Set([state.career?.name, ...(state.savedCareers || []).map(item => item.name)].filter(Boolean))].slice(0, 4);
+    return head('Nghề bạn đang quan tâm') + `<ul class="done-chips">${names.map(name => `<li><a href="careers-holland.html?q=${encodeURIComponent(name)}">${escape(name)}</a></li>`).join('')}</ul>
+      <div class="done-actions">${doneLink('careers-holland.html', 'Khám phá thêm nghề')}</div>`;
+  }
+  if (i === 2) {
+    const saved = (state.savedSchools || []).filter(item => item?.id);
+    if (!schoolCatalog) loadSchoolCatalog();
+    const card = item => {
+      const info = schoolCatalog?.get(item.id) || {};
+      const logo = /^assets\//.test(info.logoUrl || '') ? `<img src="/${escape(info.logoUrl)}" alt="" width="40" height="40" loading="lazy">` : `<span class="done-school-mono" aria-hidden="true">${escape((info.short || item.name || '?').slice(0, 4))}</span>`;
+      return `<li><a class="done-school" href="page2.html?school=${encodeURIComponent(item.id)}">${logo}<span><strong>${escape(item.name || info.name || item.id)}</strong><small>${escape(item.city || info.city || '')}${item.city || info.city ? ' · ' : ''}Xem hồ sơ trường →</small></span></a></li>`;
+    };
+    return head(`Bạn đã lưu ${saved.length} trường`) + `<ul class="done-schools">${saved.slice(0, 6).map(card).join('')}</ul>
+      ${saved.length > 6 ? `<p class="done-more">và ${saved.length - 6} trường khác trong danh sách của bạn.</p>` : ''}
+      <p class="done-next">Bước tiếp: so sánh các trường đã lưu, rồi xếp thứ tự nguyện vọng.</p>
+      <div class="done-actions">${doneLink('profile.html?tab=journey#my-choices', 'Xếp nguyện vọng →', true)}${doneLink('page2.html', saved.length > 1 ? 'So sánh trường đã lưu' : 'Tìm thêm trường')}</div>`;
+  }
+  if (i === 3) {
+    return head('Kết quả tính điểm của bạn') + `<p class="done-text">${escape(state.scores?.summary || step.detail)}</p>
+      <div class="done-actions">${doneLink('score-calculator.html', 'Mở lại kết quả →', true)}</div>`;
+  }
+  const tasks = state.tasks || [];
+  return head('Kế hoạch hành động') + `<p class="done-text">${tasks.length ? `Đã xong ${tasks.filter(task => task.done).length}/${tasks.length} việc bạn tự đặt ra.` : escape(step.detail)}</p>
+    <div class="done-actions">${doneLink('profile.html?tab=journey#action-plan', 'Xem kế hoạch →', true)}</div>`;
+}
+
 function renderProgress({ fold } = {}) {
   const steps = flow()?.progress();
   if (!steps) return;
@@ -183,7 +231,7 @@ function renderProgress({ fold } = {}) {
       const status = toc.querySelector('[data-toc-status]');
       if (status) { status.dataset.base ??= status.textContent; status.textContent = step.complete ? `Đã xong · ${step.detail}` : status.dataset.base; }
     }
-    if (note) { note.hidden = !step.complete; note.textContent = step.complete ? `Đã xong: ${step.detail}` : ''; }
+    if (note) { note.hidden = !step.complete; note.innerHTML = step.complete ? doneCard(i, step) : ''; }
     if (toggle) toggle.hidden = !step.complete;
     if (toggle && !fold) toggle.textContent = toggle.getAttribute('aria-expanded') === 'true' ? 'Thu gọn' : 'Xem lại';
     if (fold && step.complete) setOpen(chapter, false);
