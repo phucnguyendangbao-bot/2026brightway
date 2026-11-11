@@ -1,0 +1,171 @@
+{
+  "batch": "b1-dhqg-hcm",
+  "researched_at": "2026-11-11",
+  "schools": [
+    {
+      "school_id": "hcmut",
+      "website": "https://hcmut.edu.vn/",
+      "tuition": null,
+      "scholarships": [],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {
+        "tuition": "hcmut.edu.vn là trang render bằng JavaScript; WebFetch chỉ nhận được thẻ meta, không có nội dung (đã thử /tuyen-sinh/dai-hoc-chinh-quy/phuong-thuc-tuyen-sinh, /xet-tuyen-tong-hop-2026, /hoc-bong). Không tìm thấy PDF học phí 2026-2027 trên tên miền hcmut.edu.vn qua tìm kiếm (chỉ có báo chí như daibieunhandan.vn 28/02/2026: chương trình tiêu chuẩn khoảng 31,5 triệu/năm, nhưng đây không phải nguồn chính thức). oisp.hcmut.edu.vn và mybk.hcmut.edu.vn bị chặn quyền truy cập trong phiên này.",
+        "scholarship": "Không đọc được hcmut.edu.vn/hoc-bong (trang JavaScript, không có nội dung). Tìm kiếm chỉ ra học bổng tài trợ cho sinh viên đang học (Fuji Seal, PVcombank) trên fme.hcmut.edu.vn, không phải học bổng tuyển sinh 2026.",
+        "scores": "Điểm chuẩn 2026 (xét tuyển tổng hợp, công bố 09/08/2026 theo giaoduc.net.vn) không tìm được trên trang chính thức có thể đọc: hcmut.edu.vn không render, mybk.hcmut.edu.vn bị chặn. Không dùng số liệu từ tuyensinh247/báo chí."
+      }
+    },
+    {
+      "school_id": "uit",
+      "website": "https://www.uit.edu.vn/",
+      "tuition": {
+        "summary": "Khóa 2026, năm học 2026–2027 (dự kiến, thu 2 đợt/năm): chương trình chuẩn 20,9 triệu đồng/đợt (ngành Thiết kế vi mạch 26 triệu/đợt); chương trình tiên tiến 30 triệu/đợt; chương trình dạy bằng tiếng Anh 40 triệu/đợt (Thiết kế vi mạch 42,5 triệu/đợt). Liên kết BCU 84 triệu/năm, Newcastle (2+2) 90 triệu/năm.",
+        "source": "https://tuyensinh.uit.edu.vn/sites/default/files/uploads/files/202607/dean_moi.pdf",
+        "published": null
+      },
+      "scholarships": [
+        {
+          "title": "Học bổng khuyến học chương trình liên kết ĐH Newcastle (Úc) khóa 2026",
+          "description": "Tổng 3 môn thi THPT 2026 từ 28/26/24/22 điểm được 100%/75%/50%/25% học phí năm đầu (khoảng 90/67,5/45/22,5 triệu đồng); 1/3/5/8 suất; hạn nộp 15/10/2026.",
+          "source": "https://tuyensinh.uit.edu.vn/2026-thong-bao-ve-hoc-bong-danh-cho-sinh-vien-chuong-trinh-lien-ket-voi-dai-hoc-newcastle-uc-khoa-2026",
+          "publishedAt": "2026-06-01"
+        },
+        {
+          "title": "Học bổng khuyến học Chương trình quốc tế tài năng (liên kết ĐH Birmingham City, khóa 2026)",
+          "description": "80% học phí năm đầu (khoảng 67,2 triệu đồng), 10 suất/ngành; Khoa học máy tính từ 27 điểm, Mạng máy tính và An toàn thông tin từ 24 điểm (tổng 3 môn thi THPT 2026).",
+          "source": "https://tuyensinh.uit.edu.vn/2026-thong-bao-ve-hoc-bong-danh-cho-sinh-vien-chuong-trinh-lien-ket-voi-dai-hoc-birmingham-city-vuong-quoc-anh-bcu-khoa-2026",
+          "publishedAt": "2026-06-01"
+        },
+        {
+          "title": "Học bổng khuyến học Chương trình quốc tế vượt qua thử thách (liên kết ĐH Birmingham City, khóa 2026)",
+          "description": "50% học phí năm đầu (khoảng 42 triệu đồng), 30 suất/ngành; Khoa học máy tính từ 26 điểm, Mạng máy tính và An toàn thông tin từ 22 điểm (tổng 3 môn thi THPT 2026).",
+          "source": "https://tuyensinh.uit.edu.vn/2026-thong-bao-ve-hoc-bong-danh-cho-sinh-vien-chuong-trinh-lien-ket-voi-dai-hoc-birmingham-city-vuong-quoc-anh-bcu-khoa-2026",
+          "publishedAt": "2026-06-01"
+        }
+      ],
+      "admission": null,
+      "scores": null,
+      "programs": {
+        "source": "https://tuyensinh.uit.edu.vn/sites/default/files/uploads/files/202607/dean_moi.pdf",
+        "list": [
+          {"code": "7480101", "name": "Khoa học máy tính"},
+          {"code": "7480102", "name": "Mạng máy tính và truyền thông dữ liệu"},
+          {"code": "7480103", "name": "Kỹ thuật phần mềm"},
+          {"code": "7480104", "name": "Hệ thống thông tin"},
+          {"code": "7480106", "name": "Kỹ thuật máy tính"},
+          {"code": "7480201", "name": "Công nghệ thông tin"},
+          {"code": "7480202", "name": "An toàn thông tin"},
+          {"code": "7480107", "name": "Trí tuệ nhân tạo"},
+          {"code": "75202A1", "name": "Thiết kế vi mạch"},
+          {"code": "7340122", "name": "Thương mại điện tử"},
+          {"code": "7460108", "name": "Khoa học dữ liệu"},
+          {"code": "7320104", "name": "Truyền thông đa phương tiện"}
+        ],
+        "note": "Chỉ gồm chương trình chuẩn; các mã có hậu tố TA (tiếng Anh), TT (tiên tiến), VN (Việt Nhật), QT không liệt kê."
+      },
+      "not_found": {
+        "scholarship": "Chỉ tìm thấy học bổng tuyển sinh 2026 cho chương trình liên kết (Newcastle, BCU). Trang tuyensinh.uit.edu.vn/hoc-phi-hoc-bong vẫn ghi học bổng 'Toàn diện – Sáng tạo – Phụng sự' cho khóa 2025, nên không dùng. Đề án 2026 chỉ dẫn link.uit.edu.vn/hocbong (quy định chung của ctsv.uit.edu.vn, không có mức cho tân sinh viên 2026).",
+        "scores": "Không bắt buộc. Trang điểm trúng tuyển 2026 (09/08/2026) chỉ có ảnh .jpg, không đọc được bảng."
+      }
+    },
+    {
+      "school_id": "hcmus",
+      "website": "https://hcmus.edu.vn/",
+      "tuition": {
+        "summary": "Định mức năm học 2026–2027 (khóa 2026): chương trình chuẩn 32,6–40,5 triệu đồng/năm tùy ngành (Vật lý học 32,6; Sinh học, Hóa học 38,6; nhóm ngành Máy tính và CNTT, Khoa học dữ liệu, Trí tuệ nhân tạo 40,5); tăng cường tiếng Anh 45–59,8 triệu; Khoa học máy tính (tiên tiến) 70 triệu. Tạm thu HK1: 15,5 triệu (chuẩn), 21,5 triệu (TCTA, tiên tiến).",
+        "source": "https://tuyensinh.hcmus.edu.vn/wp-content/uploads/2026/08/Phu-luc-2-Huong-dan-nhap-hoc-2026_update12.8.pdf",
+        "published": null
+      },
+      "scholarships": [
+        {
+          "title": "Học bổng thành tích xuất sắc kỳ tuyển sinh 2026",
+          "description": "100% học phí thực đóng trong 4 năm cho thí sinh có điểm thi THPT, điểm ĐGNL ĐHQG-HCM hoặc điểm học lực cao nhất, giải HSG quốc tế, giải Nhất HSG quốc gia; điểm cao thứ 2–5 được 100% trong 1 năm; giải Nhì/Ba quốc gia 75%/50%.",
+          "source": "https://tuyensinh.hcmus.edu.vn/hoc-bong/",
+          "publishedAt": "2026-07-15"
+        },
+        {
+          "title": "Học bổng chương trình tiên tiến và tăng cường tiếng Anh",
+          "description": "100% hoặc 50% học phí 1 năm cho thí sinh điểm cao nhất theo kỳ thi và theo ngành (CNTT, Vật lý, Hóa học, Sinh học – CNSH, Điện tử – Viễn thông, Khoa học và Công nghệ vật liệu), theo số suất quy định.",
+          "source": "https://tuyensinh.hcmus.edu.vn/hoc-bong/",
+          "publishedAt": "2026-07-15"
+        },
+        {
+          "title": "Học bổng ngành phục vụ phát triển bền vững và chiến lược quốc gia",
+          "description": "100% hoặc 50% học phí thực đóng, tối đa 1 năm, cho sinh viên chương trình chuẩn các ngành Địa chất học, Hải dương học, Khoa học môi trường, CNKT môi trường, Kỹ thuật địa chất, Kỹ thuật hạt nhân, Vật lý học; số suất do Hiệu trưởng quyết định.",
+          "source": "https://tuyensinh.hcmus.edu.vn/hoc-bong/",
+          "publishedAt": "2026-07-15"
+        }
+      ],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {}
+    },
+    {
+      "school_id": "ussh",
+      "website": "https://hcmussh.edu.vn/",
+      "tuition": null,
+      "scholarships": [],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {
+        "programs": "Trang công bố thông tin tuyển sinh 2026 (hcmussh.edu.vn/bai-viet/cong-bo-thong-tin-tuyen-sinh-nam-2026-...) và hcmussh.edu.vn/tuyensinh bị chặn quyền truy cập trong phiên này. File hcmussh.edu.vn/api/tt/storage/download/29117.pdf là thông báo tuyển sinh thạc sĩ 2026, không phải đại học. Bản PDF thông tin tuyển sinh tìm được nằm trên tuyensinh247 (không chính thức).",
+        "tuition": "Không tìm thấy trang/PDF học phí 2026-2027 trên hcmussh.edu.vn qua tìm kiếm; các kết quả ussh.vnu.edu.vn thuộc ĐH KHXH&NV Hà Nội, không phải trường này.",
+        "scholarship": "Không tìm thấy thông báo học bổng tuyển sinh 2026 trên hcmussh.edu.vn qua tìm kiếm.",
+        "scores": "Không tìm thấy trang điểm trúng tuyển 2026 trên hcmussh.edu.vn có thể đọc được."
+      }
+    },
+    {
+      "school_id": "hcmiu",
+      "website": "https://hcmiu.edu.vn/",
+      "tuition": null,
+      "scholarships": [],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {
+        "programs": "Có PDF chính thức tuyensinh.hcmiu.edu.vn/wp-content/uploads/2026/04/0420_QSQ_Thong-tin-tuyen-sinh-2026.pdf nhưng tuyensinh.hcmiu.edu.vn và hcmiu.edu.vn trả về script chống bot (đặt cookie D1N rồi tải lại), WebFetch không đọc được nội dung. Cần mở bằng trình duyệt.",
+        "tuition": "Cùng lý do: trang/PDF của tuyensinh.hcmiu.edu.vn không đọc được (script chống bot). Số liệu học phí 2026-2027 chỉ thấy trên báo/trang tổng hợp, không dùng.",
+        "scholarship": "Không đọc được trang học bổng (hcmiu.edu.vn/scholarships, tuyensinh.hcmiu.edu.vn) do script chống bot.",
+        "admission": "Thông tin tuyển sinh 2026 và Quy chế tuyển sinh 2026 có trên tuyensinh.hcmiu.edu.vn (PDF 0420_QSQ_Thong-tin-tuyen-sinh-2026.pdf, 20260424_Quy_che_Tuyen_sinh_DHQT_2026.pdf) nhưng không đọc được nội dung.",
+        "scores": "Không đọc được trang điểm chuẩn 2026 trên tuyensinh.hcmiu.edu.vn (script chống bot)."
+      }
+    },
+    {
+      "school_id": "uel",
+      "website": "https://www.uel.edu.vn/",
+      "tuition": null,
+      "scholarships": [
+        {
+          "title": "Học bổng Tiên phong",
+          "description": "3 suất, mỗi suất 40 triệu đồng, cho thí sinh có điểm cao nhất mỗi nhóm phương thức (điểm thi THPT, ĐGNL ĐHQG-HCM, chứng chỉ quốc tế SAT/ACT/A-Level/IB) và đã xác nhận nhập học; xét tự động.",
+          "source": "https://tuyensinh.uel.edu.vn/wp-content/uploads/2026/07/20260708-Thong-bao-hoc-bong-tuyen-sinh-DHCQ_-1-Signed-2.pdf",
+          "publishedAt": null
+        },
+        {
+          "title": "Học bổng Vượt trội",
+          "description": "5 suất, mỗi suất 15 triệu đồng, cho thí sinh có điểm xét tuyển cao nhất (thang 100) sau nhóm Tiên phong và đã xác nhận nhập học; xét tự động.",
+          "source": "https://tuyensinh.uel.edu.vn/wp-content/uploads/2026/07/20260708-Thong-bao-hoc-bong-tuyen-sinh-DHCQ_-1-Signed-2.pdf",
+          "publishedAt": null
+        },
+        {
+          "title": "Học bổng Chắp cánh",
+          "description": "Khoảng 10 suất, tổng giá trị chương trình 1 tỷ đồng (học phí, sinh hoạt phí 4 năm, đào tạo kỹ năng) cho tân sinh viên có hoàn cảnh khó khăn được địa phương xác nhận; nộp hồ sơ trực tuyến trước 16 giờ ngày 10/08/2026.",
+          "source": "https://tuyensinh.uel.edu.vn/wp-content/uploads/2026/07/20260708-Thong-bao-hoc-bong-tuyen-sinh-DHCQ_-1-Signed-2.pdf",
+          "publishedAt": null
+        }
+      ],
+      "admission": null,
+      "scores": null,
+      "programs": null,
+      "not_found": {
+        "programs": "Trang tuyensinh.uel.edu.vn/thong-tin-tuyen-sinh-dai-hoc-chinh-quy-2026/ bị chặn quyền truy cập trong phiên này; tìm kiếm không ra PDF danh mục ngành 2026 trên tên miền uel.edu.vn (chỉ có bản docx trên dantri.com.vn, không chính thức).",
+        "tuition": "Không tìm thấy trang/PDF học phí 2026-2027 trên uel.edu.vn có thể đọc; Tuổi Trẻ (09/07/2026) đưa tin 35,8–73,5 triệu/năm nhưng không phải nguồn chính thức.",
+        "scores": "Không tìm thấy thông báo điểm trúng tuyển 2026 trên tuyensinh.uel.edu.vn qua tìm kiếm; trang chủ tuyển sinh bị chặn quyền truy cập trong phiên này.",
+        "scholarship_note": "Ngày trên văn bản học bổng để trống ('ngày tháng năm 2026'); tên file gợi ý 08/07/2026 nên publishedAt để null."
+      }
+    }
+  ]
+}

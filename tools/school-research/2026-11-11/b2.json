@@ -1,0 +1,1194 @@
+{
+ "batch": "b2-hcm-public",
+ "researched_at": "2026-11-11",
+ "schools": [
+  {
+   "school_id": "ueh",
+   "website": "https://www.ueh.edu.vn/",
+   "tuition": null,
+   "scholarships": [],
+   "admission": null,
+   "scores": {
+    "source": "https://tuyensinhdaihoc.ueh.edu.vn/",
+    "method": "Phương thức tích hợp 2026 (60% điểm thi TN THPT/ĐGNL ĐHQG-HCM/V-SAT + 40% điểm TB THPT + điểm cộng, ưu tiên) · thang 100",
+    "scale": 100,
+    "programs": [
+     {
+      "code": "7220201",
+      "name": "Tiếng Anh thương mại",
+      "score": 83.4
+     },
+     {
+      "code": "7310101",
+      "name": "Kinh tế",
+      "score": 85.2
+     },
+     {
+      "code": "731010201",
+      "name": "Kinh tế chính trị",
+      "score": 77.5
+     },
+     {
+      "code": "731010202",
+      "name": "Kinh tế chính trị quốc tế",
+      "score": 70.0
+     },
+     {
+      "code": "731010401",
+      "name": "Kinh tế đầu tư",
+      "score": 80.5
+     },
+     {
+      "code": "731010402",
+      "name": "Thẩm định giá và Quản trị tài sản",
+      "score": 76.1
+     },
+     {
+      "code": "7310107",
+      "name": "Thống kê kinh doanh",
+      "score": 83.0
+     },
+     {
+      "code": "731010801",
+      "name": "Toán tài chính",
+      "score": 82.2
+     },
+     {
+      "code": "731010802",
+      "name": "Phân tích rủi ro và định phí bảo hiểm",
+      "score": 79.5
+     },
+     {
+      "code": "732010601",
+      "name": "Truyền thông số và thiết kế đa phương tiện",
+      "score": 90.2
+     },
+     {
+      "code": "73201061D",
+      "name": "Truyền thông số và thiết kế đa phương tiện song bằng UEH - Đại học Saint Joseph, Macao",
+      "score": 70.0
+     },
+     {
+      "code": "734010101",
+      "name": "Quản trị kinh doanh",
+      "score": 79.4
+     },
+     {
+      "code": "73401011F",
+      "name": "Quản trị - Tiếng Anh toàn phần",
+      "score": 71.0
+     },
+     {
+      "code": "734010102",
+      "name": "Kinh doanh số",
+      "score": 87.0
+     },
+     {
+      "code": "734010103",
+      "name": "Quản trị bệnh viện",
+      "score": 71.9
+     },
+     {
+      "code": "734010104",
+      "name": "Quản trị bền vững doanh nghiệp và môi trường",
+      "score": 80.7
+     },
+     {
+      "code": "73401014D",
+      "name": "Quản trị bền vững doanh nghiệp và môi trường song bằng UEH - Koblenz University of Applied Sciences (Hochschule Koblenz), Đức",
+      "score": 70.0
+     },
+     {
+      "code": "734011501",
+      "name": "Marketing",
+      "score": 90.2
+     },
+     {
+      "code": "73401151F",
+      "name": "Marketing - Tiếng Anh toàn phần",
+      "score": 86.3
+     },
+     {
+      "code": "734011502",
+      "name": "Công nghệ Marketing",
+      "score": 90.2
+     },
+     {
+      "code": "7340116",
+      "name": "Bất động sản",
+      "score": 72.5
+     },
+     {
+      "code": "734012001",
+      "name": "Kinh doanh quốc tế",
+      "score": 92.5
+     },
+     {
+      "code": "73401201F",
+      "name": "Kinh doanh quốc tế - Tiếng Anh toàn phần",
+      "score": 89.3
+     },
+     {
+      "code": "734012101",
+      "name": "Kinh doanh thương mại",
+      "score": 88.5
+     },
+     {
+      "code": "73401211F",
+      "name": "Kinh doanh thương mại - Tiếng Anh toàn phần",
+      "score": 86.0
+     },
+     {
+      "code": "7340122",
+      "name": "Thương mại điện tử",
+      "score": 89.2
+     },
+     {
+      "code": "734020101",
+      "name": "Tài chính công",
+      "score": 79.0
+     },
+     {
+      "code": "734020102",
+      "name": "Thuế",
+      "score": 78.7
+     },
+     {
+      "code": "734020103",
+      "name": "Ngân hàng",
+      "score": 80.8
+     },
+     {
+      "code": "73402013F",
+      "name": "Ngân hàng - Tiếng Anh toàn phần",
+      "score": 70.0
+     },
+     {
+      "code": "734020104",
+      "name": "Thị trường chứng khoán",
+      "score": 77.0
+     },
+     {
+      "code": "734020105",
+      "name": "Tài chính",
+      "score": 85.2
+     },
+     {
+      "code": "73402015F",
+      "name": "Tài chính - Tiếng Anh toàn phần",
+      "score": 82.2
+     },
+     {
+      "code": "734020106",
+      "name": "Đầu tư tài chính",
+      "score": 83.8
+     },
+     {
+      "code": "73402016F",
+      "name": "Đầu tư tài chính - Tiếng Anh toàn phần",
+      "score": 70.0
+     },
+     {
+      "code": "734020107",
+      "name": "Quản trị Hải quan – Ngoại thương",
+      "score": 86.5
+     },
+     {
+      "code": "73402010D",
+      "name": "Chương trình đào tạo nguồn nhân lực quốc tế cử nhân Tài chính - Ngân hàng song bằng UEH - Đại học Rennes, Pháp",
+      "score": 70.0
+     },
+     {
+      "code": "7340204",
+      "name": "Bảo hiểm",
+      "score": 75.3
+     },
+     {
+      "code": "7340205",
+      "name": "Công nghệ tài chính",
+      "score": 88.7
+     },
+     {
+      "code": "734020601",
+      "name": "Tài chính quốc tế",
+      "score": 92.5
+     },
+     {
+      "code": "73402061F",
+      "name": "Tài chính quốc tế - Tiếng Anh toàn phần",
+      "score": 88.3
+     },
+     {
+      "code": "734030101",
+      "name": "Kế toán doanh nghiệp",
+      "score": 79.1
+     },
+     {
+      "code": "73403011F",
+      "name": "Kế toán doanh nghiệp - Tiếng Anh toàn phần",
+      "score": 70.0
+     },
+     {
+      "code": "734030102",
+      "name": "Kế toán công",
+      "score": 81.0
+     },
+     {
+      "code": "734030103",
+      "name": "Chương trình Kế toán tích hợp chứng chỉ nghề nghiệp quốc tế ICAEW",
+      "score": 70.0
+     },
+     {
+      "code": "734030104",
+      "name": "Chương trình Kế toán tích hợp chứng chỉ nghề nghiệp quốc tế ACCA",
+      "score": 80.0
+     },
+     {
+      "code": "734030201",
+      "name": "Kiểm toán",
+      "score": 91.1
+     },
+     {
+      "code": "73403021F",
+      "name": "Kiểm toán - Tiếng Anh toàn phần",
+      "score": 85.0
+     },
+     {
+      "code": "7340403",
+      "name": "Quản lý công",
+      "score": 76.0
+     },
+     {
+      "code": "7340404",
+      "name": "Quản trị nhân lực",
+      "score": 83.3
+     },
+     {
+      "code": "7340405",
+      "name": "Hệ thống thông tin quản lý",
+      "score": 86.8
+     },
+     {
+      "code": "738010101",
+      "name": "Luật kinh doanh quốc tế",
+      "score": 82.5
+     },
+     {
+      "code": "738010102",
+      "name": "Luật",
+      "score": 76.0
+     },
+     {
+      "code": "7380107",
+      "name": "Luật kinh tế",
+      "score": 82.5
+     },
+     {
+      "code": "7380109",
+      "name": "Luật thương mại quốc tế",
+      "score": 80.0
+     },
+     {
+      "code": "746010801",
+      "name": "Khoa học dữ liệu",
+      "score": 88.1
+     },
+     {
+      "code": "746010802",
+      "name": "Phân tích dữ liệu",
+      "score": 91.5
+     },
+     {
+      "code": "7480101",
+      "name": "Khoa học máy tính",
+      "score": 79.4
+     },
+     {
+      "code": "7480103",
+      "name": "Kỹ thuật phần mềm",
+      "score": 76.6
+     },
+     {
+      "code": "748010701",
+      "name": "Robot và Trí tuệ nhân tạo (hệ kỹ sư)",
+      "score": 75.0
+     },
+     {
+      "code": "74801071D",
+      "name": "Robot và Trí tuệ nhân tạo song bằng UEH - Đại học Kwangwoon, Hàn Quốc (hệ kỹ sư)",
+      "score": 70.0
+     },
+     {
+      "code": "748010702",
+      "name": "Điều khiển thông minh và tự động hóa (hệ kỹ sư)",
+      "score": 77.0
+     },
+     {
+      "code": "74801072D",
+      "name": "Điều khiển thông minh và tự động hóa song bằng UEH - Đại học Kwangwoon, Hàn Quốc (hệ kỹ sư)",
+      "score": 70.0
+     },
+     {
+      "code": "748020101",
+      "name": "Công nghệ thông tin",
+      "score": 78.5
+     },
+     {
+      "code": "748020102",
+      "name": "Công nghệ nghệ thuật",
+      "score": 84.5
+     },
+     {
+      "code": "748020103",
+      "name": "Công nghệ và đổi mới sáng tạo",
+      "score": 78.5
+     },
+     {
+      "code": "7480202",
+      "name": "An toàn thông tin",
+      "score": 77.0
+     },
+     {
+      "code": "7510201",
+      "name": "Sản xuất thông minh (hệ kỹ sư)",
+      "score": 70.0
+     },
+     {
+      "code": "751060501",
+      "name": "Logistics và Quản lý chuỗi cung ứng",
+      "score": 97.0
+     },
+     {
+      "code": "75106051F",
+      "name": "Logistics và Quản lý chuỗi cung ứng - Tiếng Anh toàn phần",
+      "score": 94.0
+     },
+     {
+      "code": "751060502",
+      "name": "Công nghệ Logistics (hệ kỹ sư)",
+      "score": 87.0
+     },
+     {
+      "code": "75106052F",
+      "name": "Công nghệ Logistics tích hợp chứng chỉ quốc tế FIATA - Tiếng Anh toàn phần (hệ kỹ sư)",
+      "score": 88.0
+     },
+     {
+      "code": "7580104SD",
+      "name": "Cử nhân Kiến trúc và thiết kế đô thị thông minh song bằng UEH - Đại học Auckland, New Zealand",
+      "score": 70.0
+     },
+     {
+      "code": "758010402",
+      "name": "Kiến trúc và Thiết kế đô thị thông minh (hệ kiến trúc sư)",
+      "score": 70.0
+     },
+     {
+      "code": "7620114",
+      "name": "Kinh doanh nông nghiệp",
+      "score": 78.3
+     },
+     {
+      "code": "7810103",
+      "name": "Quản trị dịch vụ du lịch và lữ hành",
+      "score": 75.3
+     },
+     {
+      "code": "781020101",
+      "name": "Quản trị khách sạn",
+      "score": 78.5
+     },
+     {
+      "code": "781020102",
+      "name": "Quản trị sự kiện và dịch vụ giải trí",
+      "score": 85.7
+     },
+     {
+      "code": "7840104",
+      "name": "Quản trị vận hành và di chuyển thông minh",
+      "score": 76.5
+     },
+     {
+      "code": "ASACoop01",
+      "name": "Chương trình Cử nhân ASIA Co-op",
+      "score": 70.0
+     },
+     {
+      "code": "ISBCNTN01",
+      "name": "Chương trình Cử nhân tài năng ISB - Kinh doanh",
+      "score": 84.1
+     },
+     {
+      "code": "ISBCNTN02",
+      "name": "Chương trình Cử nhân tài năng ISB - Công nghệ",
+      "score": 79.0
+     }
+    ],
+    "note": "Điểm trúng tuyển 2026 tại cơ sở TP.HCM (mã trường KSA), thang 100, phương thức xét tuyển tích hợp (UEH quy đổi giữa điểm thi TN THPT 2026, ĐGNL ĐHQG-HCM 2026 để chọn mức có lợi). Không phải điểm thi THPT thuần thang 30. Phân hiệu Vĩnh Long (KSV) có bảng riêng, chưa đưa vào. Trang không ghi ngày công bố."
+   },
+   "programs": {
+    "source": "https://tuyensinhdaihoc.ueh.edu.vn/",
+    "list": [
+     {
+      "code": "7220201",
+      "name": "Tiếng Anh thương mại"
+     },
+     {
+      "code": "7310101",
+      "name": "Kinh tế"
+     },
+     {
+      "code": "731010201",
+      "name": "Kinh tế chính trị"
+     },
+     {
+      "code": "731010202",
+      "name": "Kinh tế chính trị quốc tế"
+     },
+     {
+      "code": "731010401",
+      "name": "Kinh tế đầu tư"
+     },
+     {
+      "code": "731010402",
+      "name": "Thẩm định giá và Quản trị tài sản"
+     },
+     {
+      "code": "7310107",
+      "name": "Thống kê kinh doanh"
+     },
+     {
+      "code": "731010801",
+      "name": "Toán tài chính"
+     },
+     {
+      "code": "731010802",
+      "name": "Phân tích rủi ro và định phí bảo hiểm"
+     },
+     {
+      "code": "732010601",
+      "name": "Truyền thông số và thiết kế đa phương tiện"
+     },
+     {
+      "code": "73201061D",
+      "name": "Truyền thông số và thiết kế đa phương tiện song bằng UEH - Đại học Saint Joseph, Macao"
+     },
+     {
+      "code": "734010101",
+      "name": "Quản trị kinh doanh"
+     },
+     {
+      "code": "73401011F",
+      "name": "Quản trị - Tiếng Anh toàn phần"
+     },
+     {
+      "code": "734010102",
+      "name": "Kinh doanh số"
+     },
+     {
+      "code": "734010103",
+      "name": "Quản trị bệnh viện"
+     },
+     {
+      "code": "734010104",
+      "name": "Quản trị bền vững doanh nghiệp và môi trường"
+     },
+     {
+      "code": "73401014D",
+      "name": "Quản trị bền vững doanh nghiệp và môi trường song bằng UEH - Koblenz University of Applied Sciences (Hochschule Koblenz), Đức"
+     },
+     {
+      "code": "734011501",
+      "name": "Marketing"
+     },
+     {
+      "code": "73401151F",
+      "name": "Marketing - Tiếng Anh toàn phần"
+     },
+     {
+      "code": "734011502",
+      "name": "Công nghệ Marketing"
+     },
+     {
+      "code": "7340116",
+      "name": "Bất động sản"
+     },
+     {
+      "code": "734012001",
+      "name": "Kinh doanh quốc tế"
+     },
+     {
+      "code": "73401201F",
+      "name": "Kinh doanh quốc tế - Tiếng Anh toàn phần"
+     },
+     {
+      "code": "734012101",
+      "name": "Kinh doanh thương mại"
+     },
+     {
+      "code": "73401211F",
+      "name": "Kinh doanh thương mại - Tiếng Anh toàn phần"
+     },
+     {
+      "code": "7340122",
+      "name": "Thương mại điện tử"
+     },
+     {
+      "code": "734020101",
+      "name": "Tài chính công"
+     },
+     {
+      "code": "734020102",
+      "name": "Thuế"
+     },
+     {
+      "code": "734020103",
+      "name": "Ngân hàng"
+     },
+     {
+      "code": "73402013F",
+      "name": "Ngân hàng - Tiếng Anh toàn phần"
+     },
+     {
+      "code": "734020104",
+      "name": "Thị trường chứng khoán"
+     },
+     {
+      "code": "734020105",
+      "name": "Tài chính"
+     },
+     {
+      "code": "73402015F",
+      "name": "Tài chính - Tiếng Anh toàn phần"
+     },
+     {
+      "code": "734020106",
+      "name": "Đầu tư tài chính"
+     },
+     {
+      "code": "73402016F",
+      "name": "Đầu tư tài chính - Tiếng Anh toàn phần"
+     },
+     {
+      "code": "734020107",
+      "name": "Quản trị Hải quan – Ngoại thương"
+     },
+     {
+      "code": "73402010D",
+      "name": "Chương trình đào tạo nguồn nhân lực quốc tế cử nhân Tài chính - Ngân hàng song bằng UEH - Đại học Rennes, Pháp"
+     },
+     {
+      "code": "7340204",
+      "name": "Bảo hiểm"
+     },
+     {
+      "code": "7340205",
+      "name": "Công nghệ tài chính"
+     },
+     {
+      "code": "734020601",
+      "name": "Tài chính quốc tế"
+     },
+     {
+      "code": "73402061F",
+      "name": "Tài chính quốc tế - Tiếng Anh toàn phần"
+     },
+     {
+      "code": "734030101",
+      "name": "Kế toán doanh nghiệp"
+     },
+     {
+      "code": "73403011F",
+      "name": "Kế toán doanh nghiệp - Tiếng Anh toàn phần"
+     },
+     {
+      "code": "734030102",
+      "name": "Kế toán công"
+     },
+     {
+      "code": "734030103",
+      "name": "Chương trình Kế toán tích hợp chứng chỉ nghề nghiệp quốc tế ICAEW"
+     },
+     {
+      "code": "734030104",
+      "name": "Chương trình Kế toán tích hợp chứng chỉ nghề nghiệp quốc tế ACCA"
+     },
+     {
+      "code": "734030201",
+      "name": "Kiểm toán"
+     },
+     {
+      "code": "73403021F",
+      "name": "Kiểm toán - Tiếng Anh toàn phần"
+     },
+     {
+      "code": "7340403",
+      "name": "Quản lý công"
+     },
+     {
+      "code": "7340404",
+      "name": "Quản trị nhân lực"
+     },
+     {
+      "code": "7340405",
+      "name": "Hệ thống thông tin quản lý"
+     },
+     {
+      "code": "738010101",
+      "name": "Luật kinh doanh quốc tế"
+     },
+     {
+      "code": "738010102",
+      "name": "Luật"
+     },
+     {
+      "code": "7380107",
+      "name": "Luật kinh tế"
+     },
+     {
+      "code": "7380109",
+      "name": "Luật thương mại quốc tế"
+     },
+     {
+      "code": "746010801",
+      "name": "Khoa học dữ liệu"
+     },
+     {
+      "code": "746010802",
+      "name": "Phân tích dữ liệu"
+     },
+     {
+      "code": "7480101",
+      "name": "Khoa học máy tính"
+     },
+     {
+      "code": "7480103",
+      "name": "Kỹ thuật phần mềm"
+     },
+     {
+      "code": "748010701",
+      "name": "Robot và Trí tuệ nhân tạo (hệ kỹ sư)"
+     },
+     {
+      "code": "74801071D",
+      "name": "Robot và Trí tuệ nhân tạo song bằng UEH - Đại học Kwangwoon, Hàn Quốc (hệ kỹ sư)"
+     },
+     {
+      "code": "748010702",
+      "name": "Điều khiển thông minh và tự động hóa (hệ kỹ sư)"
+     },
+     {
+      "code": "74801072D",
+      "name": "Điều khiển thông minh và tự động hóa song bằng UEH - Đại học Kwangwoon, Hàn Quốc (hệ kỹ sư)"
+     },
+     {
+      "code": "748020101",
+      "name": "Công nghệ thông tin"
+     },
+     {
+      "code": "748020102",
+      "name": "Công nghệ nghệ thuật"
+     },
+     {
+      "code": "748020103",
+      "name": "Công nghệ và đổi mới sáng tạo"
+     },
+     {
+      "code": "7480202",
+      "name": "An toàn thông tin"
+     },
+     {
+      "code": "7510201",
+      "name": "Sản xuất thông minh (hệ kỹ sư)"
+     },
+     {
+      "code": "751060501",
+      "name": "Logistics và Quản lý chuỗi cung ứng"
+     },
+     {
+      "code": "75106051F",
+      "name": "Logistics và Quản lý chuỗi cung ứng - Tiếng Anh toàn phần"
+     },
+     {
+      "code": "751060502",
+      "name": "Công nghệ Logistics (hệ kỹ sư)"
+     },
+     {
+      "code": "75106052F",
+      "name": "Công nghệ Logistics tích hợp chứng chỉ quốc tế FIATA - Tiếng Anh toàn phần (hệ kỹ sư)"
+     },
+     {
+      "code": "7580104SD",
+      "name": "Cử nhân Kiến trúc và thiết kế đô thị thông minh song bằng UEH - Đại học Auckland, New Zealand"
+     },
+     {
+      "code": "758010402",
+      "name": "Kiến trúc và Thiết kế đô thị thông minh (hệ kiến trúc sư)"
+     },
+     {
+      "code": "7620114",
+      "name": "Kinh doanh nông nghiệp"
+     },
+     {
+      "code": "7810103",
+      "name": "Quản trị dịch vụ du lịch và lữ hành"
+     },
+     {
+      "code": "781020101",
+      "name": "Quản trị khách sạn"
+     },
+     {
+      "code": "781020102",
+      "name": "Quản trị sự kiện và dịch vụ giải trí"
+     },
+     {
+      "code": "7840104",
+      "name": "Quản trị vận hành và di chuyển thông minh"
+     },
+     {
+      "code": "ASACoop01",
+      "name": "Chương trình Cử nhân ASIA Co-op"
+     },
+     {
+      "code": "ISBCNTN01",
+      "name": "Chương trình Cử nhân tài năng ISB - Kinh doanh"
+     },
+     {
+      "code": "ISBCNTN02",
+      "name": "Chương trình Cử nhân tài năng ISB - Công nghệ"
+     }
+    ],
+    "note": "Danh mục mã xét tuyển 2026 cơ sở TP.HCM (KSA), lấy từ bảng điểm trúng tuyển 2026; chương trình Kỹ sư tài năng Logistics thông minh không có mã riêng."
+   },
+   "not_found": {
+    "tuition": "WebFetch bị chặn (robots.txt) trên tuyensinh.ueh.edu.vn (trang 'Học phí và Chính sách Học bổng UEH 2026', 'Hiểu đúng về Học phí tín chỉ tại UEH'); tuyensinhdaihoc.ueh.edu.vn và www.ueh.edu.vn không ghi mức học phí; books.ueh.edu.vn (brochure 2026) không truy cập được. Chỉ có số liệu trên báo (plo.vn), không dùng.",
+    "scholarships": "WebFetch bị chặn (robots.txt) trên tuyensinh.ueh.edu.vn; www.ueh.edu.vn/hoc-bong lỗi truy cập; tuyensinhdaihoc.ueh.edu.vn không nêu học bổng tuyển sinh 2026 có mức tiền (chỉ nhắc học bổng theo Nghị định 179/2026/NĐ-CP cho Kỹ sư tài năng Logistics)."
+   }
+  },
+  {
+   "school_id": "ftu",
+   "website": "https://ftu.edu.vn/",
+   "tuition": null,
+   "scholarships": [],
+   "admission": null,
+   "scores": null,
+   "programs": null,
+   "not_found": {
+    "tuition": "WebFetch bị chặn (robots.txt) trên ftu.edu.vn và www.ftu.edu.vn (kể cả trang 'Thông báo ngưỡng điểm trúng tuyển ĐHCQ' 2026); thongtintuyensinh.ftu.edu.vn và cs2.ftu.edu.vn không mở được (không có quyền truy cập / không tìm thấy qua tìm kiếm).",
+    "scholarships": "Như trên: không truy cập được trang chính thức của FTU.",
+    "scores": "Không truy cập được trang chính thức (robots.txt). Báo Tiền Phong (09/8/2026) có điểm cơ sở TP.HCM (mã NTS..., ví dụ NTSKT02 28,5) nhưng không phải nguồn chính thức và không nêu phương thức, nên không ghi."
+   }
+  },
+  {
+   "school_id": "hub",
+   "website": "https://hub.edu.vn/",
+   "tuition": {
+    "summary": "Dự kiến năm học 2026–2027: chương trình chuẩn 12.765.500 đồng/học kỳ; tiếng Anh bán phần và chương trình đào tạo đặc biệt 20.475.000 đồng/học kỳ; Elite Class (tinh hoa) 53.000.000 đồng/năm học; quốc tế song bằng tối đa 236.500.000 đồng/toàn khóa (khoảng 29.500.000 đồng/học kỳ).",
+    "source": "https://hub.edu.vn/tin-tuc-su-kien/thong-tin-tuyen-sinh-dai-hoc-chinh-quy-nam-2026-truong-dai-hoc-ngan-hang-tp-hcm-ma-truong-nhs-228347.html",
+    "published": "2026-03-04"
+   },
+   "scholarships": [],
+   "admission": {
+    "summary": "5 phương thức: xét tuyển thẳng, ưu tiên xét tuyển theo quy chế Bộ GD&ĐT; xét tuyển tổng hợp (học tập, thành tích, năng khiếu, chứng chỉ tiếng Anh); điểm thi V-SAT; điểm thi TN THPT 2026; học bạ và phỏng vấn (chương trình quốc tế do đối tác cấp bằng).",
+    "source": "https://hub.edu.vn/tin-tuc-su-kien/thong-tin-tuyen-sinh-dai-hoc-chinh-quy-nam-2026-truong-dai-hoc-ngan-hang-tp-hcm-ma-truong-nhs-228347.html",
+    "published": "2026-03-04"
+   },
+   "scores": null,
+   "programs": null,
+   "not_found": {
+    "scores": "Thông báo điểm chuẩn 2026 (hub.edu.vn, 10/08/2026, thang 30, quy đổi chung các phương thức): bảng điểm là ảnh, không đọc được. https://hub.edu.vn/tin-tuc-su-kien/thong-bao-diem-chuan-trung-tuyen-dai-hoc-chinh-quy-nam-2026-truong-dai-hoc-ngan-hang-tp-ho-chi-minh-229990.html ; bản trên tuyensinh.hub.edu.vn lỗi truy cập.",
+    "programs": "Trang thông tin tuyển sinh 2026 chỉ có ảnh bảng chỉ tiêu và PDF đính kèm không lấy được URL; tuyensinh.hub.edu.vn render bằng JavaScript/lỗi truy cập.",
+    "scholarships": "Không tìm thấy thông báo học bổng tân sinh viên 2026 trên trang chính thức; trang 'Học bổng cho sinh viên' trên tuyensinh.hub.edu.vn là kế hoạch năm học 2017–2018; bài giaoduc.net.vn (23/6/2026) không phải nguồn chính thức."
+   }
+  },
+  {
+   "school_id": "ump",
+   "website": "https://ump.edu.vn/",
+   "tuition": null,
+   "scholarships": [],
+   "admission": null,
+   "scores": null,
+   "programs": null,
+   "not_found": {
+    "tuition": "WebFetch bị chặn (robots.txt) trên ump.edu.vn, admin.ump.edu.vn và sv.ump.edu.vn; không đọc được trang/PDF chính thức.",
+    "scholarships": "Có thông báo chính thức 'Thông báo về việc thực hiện chính sách học bổng đối với sinh viên trúng tuyển năm 2026 (HB tân sinh viên)' trên sv.ump.edu.vn nhưng bị chặn robots.txt, không đọc được nội dung: https://sv.ump.edu.vn/sinh-vien/tin-tuc/thong-bao-ve-viec-thuc-hien-chinh-sach-hoc-bong-doi-voi-sinh-vien-trung-tuyen-nam-2026-hb-tan-sinh-vien.html?pIDDanhMuc=2",
+    "scores": "WebFetch bị chặn (robots.txt) trên ump.edu.vn (trang danh sách trúng tuyển 2026: https://ump.edu.vn/tuyen-sinh-dao-tao/dai-hoc/tuyen-sinh/10840/danh-sach-thi-sinh-trung-tuyen-dai-hoc-he-chinh-quy-nam-2026)."
+   }
+  },
+  {
+   "school_id": "pnt",
+   "website": "https://pnt.edu.vn/",
+   "tuition": {
+    "summary": "Năm học 2026–2027, sinh viên năm thứ nhất (khóa 2026): Y khoa 81.000.000 đ/năm; Y khoa tăng cường tiếng Anh 97.000.000 đ; Răng Hàm Mặt 81.000.000 đ; Dược học và Y học cổ truyền 68.000.000 đ; khối cử nhân 47.000.000 đ. Đào tạo theo địa chỉ: 84.700.000 đ (Y, Dược, RHM), 60.500.000 đ (cử nhân).",
+    "source": "https://pnt.edu.vn/Resources/Docs/SubDomain/HomePage/Thong%20Bao/2026/07/15/071526_TCKT_2502.pdf",
+    "published": "2026-07-14"
+   },
+   "scholarships": [],
+   "admission": null,
+   "scores": {
+    "source": "https://pnt.edu.vn/Resources/Docs/SubDomain/HomePage/Su%20Kien%20-%20Hoat%20Dong/2026/08/09/30HDTS_TB_DiemTrungTuyen_TS2026-Final-PDFs.pdf",
+    "method": "Điểm thi tốt nghiệp THPT 2026 · thang 30",
+    "scale": 30,
+    "programs": [
+     {
+      "code": "7720101",
+      "name": "Y khoa",
+      "score": 25.8
+     },
+     {
+      "code": "7720115",
+      "name": "Y học cổ truyền",
+      "score": 23.23
+     },
+     {
+      "code": "7720201",
+      "name": "Dược học",
+      "score": 23.23
+     },
+     {
+      "code": "7720301",
+      "name": "Điều dưỡng",
+      "score": 21.25
+     },
+     {
+      "code": "7720302",
+      "name": "Hộ sinh",
+      "score": 21.0
+     },
+     {
+      "code": "7720401",
+      "name": "Dinh dưỡng",
+      "score": 20.35
+     },
+     {
+      "code": "7720501",
+      "name": "Răng Hàm Mặt",
+      "score": 25.8
+     },
+     {
+      "code": "7720601",
+      "name": "Kỹ thuật xét nghiệm y học",
+      "score": 22.5
+     },
+     {
+      "code": "7720602",
+      "name": "Kỹ thuật hình ảnh y học",
+      "score": 22.25
+     },
+     {
+      "code": "7720603",
+      "name": "Kỹ thuật phục hồi chức năng",
+      "score": 22.85
+     },
+     {
+      "code": "7720609",
+      "name": "Khúc xạ nhãn khoa",
+      "score": 22.35
+     },
+     {
+      "code": "7720610",
+      "name": "Kỹ thuật gây mê hồi sức",
+      "score": 22.6
+     },
+     {
+      "code": "7720701",
+      "name": "Y tế công cộng",
+      "score": 19.0
+     },
+     {
+      "code": "7310401",
+      "name": "Tâm lý học",
+      "score": 22.6
+     }
+    ],
+    "note": "Thông báo 30/TB-HĐTS ngày 09/08/2026. Điểm chuẩn áp dụng cho các tổ hợp: Y khoa B00; Y học cổ truyền A01,B00,B08,D01; Dược học A00,B00,D07; Điều dưỡng B00,B03,B08; Hộ sinh B00,B03,B08; Dinh dưỡng A00,B00; Răng Hàm Mặt B00; Kỹ thuật xét nghiệm y học B00; Kỹ thuật hình ảnh y học A00,B00; Kỹ thuật phục hồi chức năng A00,A01,B00; Khúc xạ nhãn khoa A00,A01,B00,D07; Kỹ thuật gây mê hồi sức B00,B03,B08; Y tế công cộng A00,B00,B03,B08; Tâm lý học B00,B03,B08,D01. Điểm gồm điểm ưu tiên, điểm cộng; tiêu chí phụ là điểm môn Toán."
+   },
+   "programs": {
+    "source": "https://pnt.edu.vn/Resources/Docs/SubDomain/HomePage/Su%20Kien%20-%20Hoat%20Dong/2026/08/09/30HDTS_TB_DiemTrungTuyen_TS2026-Final-PDFs.pdf",
+    "list": [
+     {
+      "code": "7720101",
+      "name": "Y khoa"
+     },
+     {
+      "code": "7720115",
+      "name": "Y học cổ truyền"
+     },
+     {
+      "code": "7720201",
+      "name": "Dược học"
+     },
+     {
+      "code": "7720301",
+      "name": "Điều dưỡng"
+     },
+     {
+      "code": "7720302",
+      "name": "Hộ sinh"
+     },
+     {
+      "code": "7720401",
+      "name": "Dinh dưỡng"
+     },
+     {
+      "code": "7720501",
+      "name": "Răng Hàm Mặt"
+     },
+     {
+      "code": "7720601",
+      "name": "Kỹ thuật xét nghiệm y học"
+     },
+     {
+      "code": "7720602",
+      "name": "Kỹ thuật hình ảnh y học"
+     },
+     {
+      "code": "7720603",
+      "name": "Kỹ thuật phục hồi chức năng"
+     },
+     {
+      "code": "7720609",
+      "name": "Khúc xạ nhãn khoa"
+     },
+     {
+      "code": "7720610",
+      "name": "Kỹ thuật gây mê hồi sức"
+     },
+     {
+      "code": "7720701",
+      "name": "Y tế công cộng"
+     },
+     {
+      "code": "7310401",
+      "name": "Tâm lý học"
+     }
+    ],
+    "note": "Lấy từ bảng điểm trúng tuyển 2026."
+   },
+   "not_found": {
+    "scholarships": "Không tìm thấy thông báo học bổng dành riêng cho tân sinh viên 2026 trên pnt.edu.vn; các bài tổng hợp học bổng chính thức có ngày 14/07/2023 và 12/09/2025 (không phải 2026); thông tin tuyển sinh 2026 (QĐ 2231 ngày 29/5/2026) chỉ nhắc học bổng TP.HCM cho lưu học sinh Lào, Campuchia."
+   }
+  },
+  {
+   "school_id": "hcmue",
+   "website": "https://hcmue.edu.vn/",
+   "tuition": null,
+   "scholarships": [],
+   "admission": null,
+   "scores": null,
+   "programs": null,
+   "not_found": {
+    "tuition": "Không tìm thấy học phí 2026–2027 trên tuyensinh.hcmue.edu.vn (các bài thông tin tuyển sinh 2026 không ghi mức học phí); chưa tìm được thông báo học phí trên hcmue.edu.vn (hết lượt tìm kiếm).",
+    "scholarships": "Không tìm thấy thông báo học bổng tân sinh viên 2026 trên trang chính thức.",
+    "scores": "Thông báo kết quả xét tuyển 2026 (tuyensinh.hcmue.edu.vn, bài id=27828, khoảng 11/08/2026) chỉ dẫn link Google Drive; Google Drive bị chặn robots.txt nên không đọc được bảng điểm."
+   }
+  },
+  {
+   "school_id": "sgu",
+   "website": "https://sgu.edu.vn/",
+   "tuition": null,
+   "scholarships": [],
+   "admission": null,
+   "scores": null,
+   "programs": {
+    "source": "https://xettuyen.sgu.edu.vn/public/tra-cuu-xt/nganh-to-hop",
+    "list": [
+     {
+      "code": null,
+      "name": "Quản lý giáo dục"
+     },
+     {
+      "code": null,
+      "name": "Giáo dục Mầm non"
+     },
+     {
+      "code": null,
+      "name": "Giáo dục Tiểu học"
+     },
+     {
+      "code": null,
+      "name": "Giáo dục chính trị"
+     },
+     {
+      "code": null,
+      "name": "Sư phạm Toán học"
+     },
+     {
+      "code": null,
+      "name": "Sư phạm Vật lý"
+     },
+     {
+      "code": null,
+      "name": "Sư phạm Hoá học"
+     },
+     {
+      "code": null,
+      "name": "Sư phạm Sinh học"
+     },
+     {
+      "code": null,
+      "name": "Sư phạm Ngữ văn"
+     },
+     {
+      "code": null,
+      "name": "Sư phạm Lịch sử"
+     },
+     {
+      "code": null,
+      "name": "Sư phạm Địa lý"
+     },
+     {
+      "code": null,
+      "name": "Sư phạm Âm nhạc"
+     },
+     {
+      "code": null,
+      "name": "Sư phạm Mỹ thuật"
+     },
+     {
+      "code": null,
+      "name": "Sư phạm Tiếng Anh"
+     },
+     {
+      "code": null,
+      "name": "Sư phạm Khoa học tự nhiên"
+     },
+     {
+      "code": null,
+      "name": "Sư phạm Lịch sử - Địa lí"
+     },
+     {
+      "code": null,
+      "name": "Ngôn ngữ Anh"
+     },
+     {
+      "code": null,
+      "name": "Ngôn ngữ Anh (CLC)"
+     },
+     {
+      "code": null,
+      "name": "Lịch sử"
+     },
+     {
+      "code": null,
+      "name": "Tâm lý học"
+     },
+     {
+      "code": null,
+      "name": "Địa lý học"
+     },
+     {
+      "code": null,
+      "name": "Quốc tế học"
+     },
+     {
+      "code": null,
+      "name": "Việt Nam học"
+     },
+     {
+      "code": null,
+      "name": "Thông tin - Thư viện"
+     },
+     {
+      "code": null,
+      "name": "Quản trị kinh doanh"
+     },
+     {
+      "code": null,
+      "name": "Quản trị kinh doanh (CLC)"
+     },
+     {
+      "code": null,
+      "name": "Kinh doanh quốc tế"
+     },
+     {
+      "code": null,
+      "name": "Tài chính - Ngân hàng"
+     },
+     {
+      "code": null,
+      "name": "Kế toán"
+     },
+     {
+      "code": null,
+      "name": "Kế toán (CLC)"
+     },
+     {
+      "code": null,
+      "name": "Kiểm toán"
+     },
+     {
+      "code": null,
+      "name": "Quản trị văn phòng"
+     },
+     {
+      "code": null,
+      "name": "Luật"
+     },
+     {
+      "code": null,
+      "name": "Khoa học môi trường"
+     },
+     {
+      "code": null,
+      "name": "Khoa học dữ liệu"
+     },
+     {
+      "code": null,
+      "name": "Toán ứng dụng"
+     },
+     {
+      "code": null,
+      "name": "Kỹ thuật phần mềm"
+     },
+     {
+      "code": null,
+      "name": "Trí tuệ nhân tạo"
+     },
+     {
+      "code": null,
+      "name": "Công nghệ thông tin"
+     },
+     {
+      "code": null,
+      "name": "Công nghệ thông tin (CLC)"
+     },
+     {
+      "code": null,
+      "name": "Công nghệ kỹ thuật điện, điện tử"
+     },
+     {
+      "code": null,
+      "name": "Công nghệ kỹ thuật điện tử – viễn thông"
+     },
+     {
+      "code": null,
+      "name": "Công nghệ kỹ thuật môi trường"
+     },
+     {
+      "code": null,
+      "name": "Kỹ thuật điện"
+     },
+     {
+      "code": null,
+      "name": "Kỹ thuật điện tử - viễn thông (Thiết kế vi mạch)"
+     },
+     {
+      "code": null,
+      "name": "Du lịch"
+     },
+     {
+      "code": null,
+      "name": "Quản trị nhà hàng và dịch vụ ăn uống"
+     }
+    ],
+    "note": "Danh sách ngành xét tuyển 2026 từ trang tra cứu ngành – tổ hợp chính thức; trang không hiển thị mã xét tuyển (mã nằm trong Phụ lục 1 PDF dạng ảnh scan: https://tuyensinh.sgu.edu.vn/images/files/2026/EndMPhuLuc1.pdf)."
+   },
+   "not_found": {
+    "tuition": "Phụ lục 6 Học phí 2026 là PDF scan không có chữ, không đọc được: https://tuyensinh.sgu.edu.vn/images/files/2026/MPhuLuc6_Hocphi.pdf",
+    "scholarships": "Không tìm thấy học bổng tân sinh viên 2026 trên tuyensinh.sgu.edu.vn; PDF thông tin tuyển sinh chính thức là ảnh scan; hết lượt tìm kiếm.",
+    "scores": "Thông báo điểm trúng tuyển đợt 1 năm 2026 (11/08/2026) chỉ đính kèm PDF scan không đọc được: https://tuyensinh.sgu.edu.vn/images/files/2026/2026DiemTrungTuyen2026.pdf"
+   }
+  }
+ ]
+}

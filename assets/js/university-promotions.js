@@ -5,7 +5,7 @@ import { detailsForSchool } from '../data/school-profile-details.js';
 import { relevantPrograms, officialUniversityUrl, eligibleOpportunity, verifiedSponsorship, selectSponsoredCampaigns, selectEditorialOpportunities } from './university-promotion-rules.js';
 import { universityCardHTML, renderUniversityLogo, escapeUniversity as escape } from './university-card.js?v=20261111o';
 import { promotionMetrics } from './university-promotion-metrics.js';
-import { researchedScholarships } from '../data/school-research-2026.js?v=20261111t';
+import { researchedScholarships } from '../data/school-research-2026.js?v=20261111u';
 
 const profile = school => ({ ...school, programs:detailsForSchool(school.id)?.programs || [] });
 const observers = new Map();

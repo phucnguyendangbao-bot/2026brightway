@@ -1,0 +1,622 @@
+{
+ "batch": "b5-danang",
+ "researched_at": "2026-11-11",
+ "schools": [
+  {
+   "school_id": "dut",
+   "website": "https://dut.udn.vn/",
+   "tuition": null,
+   "scholarships": [
+    {
+     "title": "Học bổng thủ khoa khóa tuyển sinh 2026",
+     "description": "Thủ khoa khóa tuyển sinh 2026 của Trường nhận học bổng 40 triệu đồng; thủ khoa mỗi ngành/chương trình đào tạo nhận 10 triệu đồng.",
+     "source": "https://dut.udn.vn/TrangNCKH/Thongbao/id/12208",
+     "publishedAt": "2026-08-25"
+    },
+    {
+     "title": "Học bổng cho thí sinh đạt giải học sinh giỏi quốc gia",
+     "description": "Tân sinh viên K2026 đạt giải học sinh giỏi quốc gia nhận học bổng: giải Nhất 70 triệu đồng, giải Nhì 60 triệu đồng, giải Ba 50 triệu đồng.",
+     "source": "https://dut.udn.vn/TrangNCKH/Thongbao/id/12208",
+     "publishedAt": "2026-08-25"
+    },
+    {
+     "title": "Học bổng theo Nghị định 179/2026/NĐ-CP",
+     "description": "Người học đủ điều kiện có thể nhận 5,5 triệu đồng/tháng (7 chương trình Kỹ sư tài năng), 4,2 triệu đồng/tháng (chương trình vi mạch bán dẫn) hoặc 3,7 triệu đồng/tháng (ngành kỹ thuật then chốt, công nghệ chiến lược).",
+     "source": "https://dut.udn.vn/Tintuc/Tintuc/id/11997",
+     "publishedAt": "2026-05-25"
+    }
+   ],
+   "admission": {
+    "summary": "3 phương thức: xét tuyển thẳng theo quy chế của Bộ GD&ĐT; điểm thi tốt nghiệp THPT 2026; điểm thi Đánh giá tư duy 2026 do ĐH Bách khoa Hà Nội tổ chức.",
+    "source": "https://dut.udn.vn/TrangNCKH/Thongbao/id/12208",
+    "published": "2026-08-25"
+   },
+   "scores": null,
+   "programs": null,
+   "not_found": {
+    "tuition": "Đã tìm trên tuyensinh.dut.udn.vn (cac-khoan-thu, nhaphoc2026, nganh-va-chi-tieu-tuyen-sinh, so-tay-tuyen-sinh), dut.udn.vn và các truy vấn tìm kiếm. Mức học phí chỉ nằm trong các tệp PDF scan không đọc được (Đề án tuyển sinh 2026 tại dut.udn.vn/Files/admin/files/Ba_cong_khai/2026_2027/, TB nhập học 4111) và tệp Google Drive 'Thông báo 4179-TB-ĐHBK các khoản thu nhập học đối với SV khóa tuyển sinh 2026' (không đọc được nội dung). Trang tuyensinh.dut.udn.vn/de-an-tuyen-sinh lỗi khi tải.",
+    "scores": "Không bắt buộc. Bài 12208 chỉ nêu điểm cao nhất (KS tài năng Kỹ thuật Điều khiển và Tự động hóa 27,10; KS tài năng CNTT định hướng KHDL và AI 27,00), không có bảng đầy đủ."
+   }
+  },
+  {
+   "school_id": "due",
+   "website": "https://due.udn.vn/",
+   "tuition": null,
+   "scholarships": [],
+   "admission": {
+    "summary": "3 phương thức (theo dự thảo thông tin tuyển sinh 2026): xét tuyển thẳng; xét kết hợp thành tích học tập và năng lực ngoại ngữ (tuyển sinh riêng); điểm thi tốt nghiệp THPT 2026.",
+    "source": "https://due.udn.vn/Portals/0/Editor/DaoTao/DeanTS/DDQ_Dự thảo Thông tin tuyển sinh ĐHCQ năm 2026.pdf",
+    "published": null
+   },
+   "scores": null,
+   "programs": {
+    "source": "https://due.udn.vn/Portals/0/Editor/DaoTao/DeanTS/DDQ_Dự thảo Thông tin tuyển sinh ĐHCQ năm 2026.pdf",
+    "list": [
+     {
+      "code": "IBS-ELITE",
+      "name": "Kinh doanh quốc tế - Chương trình Cử nhân tài năng Ngoại thương (ELITE - Toàn phần tiếng Anh)"
+     },
+     {
+      "code": "7340120E",
+      "name": "Kinh doanh quốc tế - Chương trình Ngoại thương (E - Toàn phần tiếng Anh)"
+     },
+     {
+      "code": "7340120P",
+      "name": "Kinh doanh quốc tế - Chương trình Kinh doanh giao nhận và vận tải quốc tế (P - Bán phần tiếng Anh)"
+     },
+     {
+      "code": "7340120S",
+      "name": "Kinh doanh quốc tế - Chương trình Kinh doanh quốc tế (S - Tiêu chuẩn)"
+     },
+     {
+      "code": "7340115E",
+      "name": "Marketing - Chương trình Marketing số (E - Toàn phần tiếng Anh)"
+     },
+     {
+      "code": "7340115P",
+      "name": "Marketing - Chương trình Marketing (P - Bán phần tiếng Anh)"
+     },
+     {
+      "code": "7340115S",
+      "name": "Marketing - Chương trình Marketing (S - Tiêu chuẩn)"
+     },
+     {
+      "code": "7340122E",
+      "name": "Thương mại điện tử - Chương trình Thương mại điện tử (E - Toàn phần tiếng Anh)"
+     },
+     {
+      "code": "7340122S",
+      "name": "Thương mại điện tử - Chương trình Thương mại điện tử (S - Tiêu chuẩn)"
+     },
+     {
+      "code": "7340121S",
+      "name": "Kinh doanh thương mại - Chương trình Kinh doanh thương mại (S - Tiêu chuẩn)"
+     },
+     {
+      "code": "7460108S",
+      "name": "Khoa học dữ liệu - Chương trình Khoa học dữ liệu (S - Tiêu chuẩn)"
+     },
+     {
+      "code": "7340301P",
+      "name": "Kế toán - Chương trình Kế toán tích hợp chương trình quốc tế ICAEW (P - Bán phần tiếng Anh)"
+     },
+     {
+      "code": "7340301S",
+      "name": "Kế toán - Chương trình Kế toán (S - Tiêu chuẩn)"
+     },
+     {
+      "code": "7340302P",
+      "name": "Kiểm toán - Chương trình Kiểm toán tích hợp chương trình quốc tế ACCA (P - Bán phần tiếng Anh)"
+     },
+     {
+      "code": "7340302S",
+      "name": "Kiểm toán - Chương trình Kiểm toán (S - Tiêu chuẩn)"
+     },
+     {
+      "code": "7340101P",
+      "name": "Quản trị kinh doanh - Chương trình Quản trị kinh doanh (P - Bán phần tiếng Anh)"
+     },
+     {
+      "code": "7340101S",
+      "name": "Quản trị kinh doanh - Chương trình Quản trị kinh doanh (S - Tiêu chuẩn)"
+     },
+     {
+      "code": "7340404P",
+      "name": "Quản trị nhân lực - Chương trình Quản trị nguồn nhân lực (P - Bán phần tiếng Anh)"
+     },
+     {
+      "code": "7340404S",
+      "name": "Quản trị nhân lực - Chương trình Quản trị nguồn nhân lực (S - Tiêu chuẩn)"
+     },
+     {
+      "code": "7340201P",
+      "name": "Tài chính - Ngân hàng - Chương trình Tài chính - Ngân hàng (P - Bán phần tiếng Anh)"
+     },
+     {
+      "code": "7340201S",
+      "name": "Tài chính - Ngân hàng - Chương trình Tài chính - Ngân hàng (S - Tiêu chuẩn)"
+     },
+     {
+      "code": "7340205P",
+      "name": "Công nghệ tài chính - Chương trình Công nghệ tài chính (P - Bán phần tiếng Anh)"
+     },
+     {
+      "code": "7340205S",
+      "name": "Công nghệ tài chính - Chương trình Công nghệ tài chính (S - Tiêu chuẩn)"
+     },
+     {
+      "code": "7810103P",
+      "name": "Quản trị dịch vụ du lịch và lữ hành - Chương trình Quản trị kinh doanh du lịch (P - Bán phần tiếng Anh)"
+     },
+     {
+      "code": "7810103S",
+      "name": "Quản trị dịch vụ du lịch và lữ hành - Chương trình Quản trị dịch vụ du lịch và lữ hành (S - Tiêu chuẩn)"
+     },
+     {
+      "code": "7810201P",
+      "name": "Quản trị khách sạn - Chương trình Quản trị khách sạn (P - Bán phần tiếng Anh)"
+     },
+     {
+      "code": "7810201S",
+      "name": "Quản trị khách sạn - Chương trình Quản trị khách sạn (S - Tiêu chuẩn)"
+     },
+     {
+      "code": "7310101P",
+      "name": "Kinh tế - Chương trình Kinh tế quốc tế (P - Bán phần tiếng Anh)"
+     },
+     {
+      "code": "7310101S",
+      "name": "Kinh tế - Chương trình Kinh tế (S - Tiêu chuẩn)"
+     },
+     {
+      "code": "7340405P",
+      "name": "Hệ thống thông tin quản lý - Chương trình Trí tuệ nhân tạo trong kinh doanh (P - Bán phần tiếng Anh)"
+     },
+     {
+      "code": "7340405S",
+      "name": "Hệ thống thông tin quản lý - Chương trình Hệ thống thông tin quản lý (S - Tiêu chuẩn)"
+     },
+     {
+      "code": "7310107S",
+      "name": "Thống kê kinh tế - Chương trình Thống kê kinh tế (S - Tiêu chuẩn)"
+     },
+     {
+      "code": "7380107P",
+      "name": "Luật kinh tế - Chương trình Luật thương mại quốc tế (P - Bán phần tiếng Anh)"
+     },
+     {
+      "code": "7380107S",
+      "name": "Luật kinh tế - Chương trình Luật Kinh tế (S - Tiêu chuẩn)"
+     },
+     {
+      "code": "7380101S",
+      "name": "Luật - Chương trình Luật (S - Tiêu chuẩn)"
+     },
+     {
+      "code": "7310205S",
+      "name": "Quản lý nhà nước - Chương trình Quản lý nhà nước (S - Tiêu chuẩn)"
+     },
+     {
+      "code": "7340120QT",
+      "name": "Kinh doanh quốc tế - Chương trình cử nhân liên kết quốc tế"
+     }
+    ],
+    "note": "Lấy từ bản DỰ THẢO Thông tin tuyển sinh ĐHCQ năm 2026 (37 mã xét tuyển); không tìm được bản chính thức cuối cùng để đối chiếu. Chương trình S - Tiêu chuẩn, P - Bán phần tiếng Anh, E - Toàn phần tiếng Anh."
+   },
+   "not_found": {
+    "tuition": "Bản dự thảo thông tin tuyển sinh 2026 không có số liệu học phí. Không tìm thấy thông báo học phí 2026–2027 trên due.udn.vn qua tìm kiếm; các trang due.udn.vn/vi-vn/tuyen-sinh, due.udn.vn/vi-vn/hoc-bong và trang chủ không truy cập được (bị chặn quyền truy cập trong phiên này). Số liệu trên muaban.net không phải nguồn chính thức nên không dùng.",
+    "scholarships": "Bản dự thảo ghi 'Thông báo sau'. Không tìm được trang học bổng tuyển sinh 2026 chính thức; due.udn.vn/vi-vn/hoc-bong bị chặn; bài trên udn.vn/bancthssv bị robots chặn và không rõ năm.",
+    "scores": "Không tìm được thông báo điểm trúng tuyển 2026 trên due.udn.vn. Bảng tổng hợp ĐHĐN tại ts.udn.vn/DHCD/Chinhquy/diemchuan/19567 bị robots chặn. Trang gdqpantt.udn.vn chỉ nêu điểm cao nhất 26 (Kinh doanh quốc tế, DUE-Elite và chương trình toàn phần tiếng Anh).",
+    "admission": "Chỉ tìm được bản dự thảo (không ghi ngày); đã ghi rõ trong summary."
+   }
+  },
+  {
+   "school_id": "smp-udn",
+   "website": "https://smp.udn.vn/",
+   "tuition": null,
+   "scholarships": [],
+   "admission": null,
+   "scores": null,
+   "programs": null,
+   "not_found": {
+    "tuition": "Có thông báo 'Thu học phí đại học hệ chính quy học kỳ 1, năm học 2026-2027' (smp.udn.vn, đăng 23/09/2026) nhưng mức thu nằm trong tệp PDF đính kèm, không tìm được URL tệp để đọc.",
+    "scholarships": "Trang tuyen-sinh và thong-bao của smp.udn.vn không có thông báo học bổng tân sinh viên 2026; smp.udn.vn/hoc-bong lỗi máy chủ.",
+    "admission": "Các trang 'Thông tin tuyển sinh năm 2026' (smp.udn.vn/thong-bao/thong-tin-tuyen-sinh-nam-2026 và bản công bố 05/6/2026) bị chặn quyền truy cập trong phiên; PDF tại ts.udn.vn (ddy thông tin tuyển sinh 27.3) bị robots chặn.",
+    "scores": "Thông báo 'Công bố chính thức điểm trúng tuyển ĐHCQ năm 2026' (smp.udn.vn, 13/08/2026) chỉ dẫn link tra cứu ketqua.udn.vn, không có bảng điểm; ketqua.udn.vn không tải được (chuyển hướng lặp).",
+    "programs": "Cùng lý do với admission: tài liệu thông tin tuyển sinh 2026 không đọc được."
+   }
+  },
+  {
+   "school_id": "vku",
+   "website": "https://vku.udn.vn/",
+   "tuition": {
+    "summary": "Dự kiến năm học 2026–2027: 17.900.000 đồng/năm (Quản trị kinh doanh và các chuyên ngành, Marketing, Công nghệ tài chính); 19.100.000 đồng/năm (Công nghệ truyền thông, kể cả Thiết kế Mỹ thuật số); 20.900.000 đồng/năm (Công nghệ kỹ thuật máy tính, Công nghệ thông tin, Trí tuệ nhân tạo, An toàn thông tin).",
+    "source": "https://ts.udn.vn/files/2026/2026_4_2_27_7_585_2._vku_thong_tin_tuyen_sinh_-_31.3.2026.pdf",
+    "published": "2026-03-31"
+   },
+   "scholarships": [
+    {
+     "title": "Học bổng đầu vào Thủ khoa, Á khoa 2026",
+     "description": "Thủ khoa 70 triệu đồng (100% học phí 6 học kỳ đầu); Á khoa 1 50 triệu (4 học kỳ); Á khoa 2 40 triệu (3 học kỳ). Xét theo điểm học bạ 60% + điểm thi TN THPT 40%; trừ vào học phí, không chi tiền mặt.",
+     "source": "https://tuyensinh.vku.udn.vn/thong-bao/699fedf448d97e2c10006596",
+     "publishedAt": "2026-06-01"
+    },
+    {
+     "title": "Học bổng TOP 10 sinh viên xuất sắc",
+     "description": "25 triệu đồng (100% học phí 2 học kỳ đầu) cho 10 tân sinh viên có thành tích xuất sắc nhất, không tính Thủ khoa và Á khoa.",
+     "source": "https://tuyensinh.vku.udn.vn/thong-bao/699fedf448d97e2c10006596",
+     "publishedAt": "2026-06-01"
+    },
+    {
+     "title": "Hỗ trợ học phí cho người học 2026",
+     "description": "Hỗ trợ 50%–100% học phí một số học kỳ theo giải thưởng, thành tích học tập hoặc điểm xét tuyển từ 26 điểm trở lên (thang 30); hỗ trợ 2.000.000 đồng/sinh viên có hoàn cảnh khó khăn.",
+     "source": "https://tuyensinh.vku.udn.vn/thong-bao/699fedf448d97e2c10006596",
+     "publishedAt": "2026-06-01"
+    }
+   ],
+   "admission": {
+    "summary": "3 phương thức: xét tuyển thẳng theo Quy chế tuyển sinh (mã 301); xét tuyển kết hợp (điểm học bạ 60% + điểm thi tốt nghiệp THPT 2026 40%); điểm thi ĐGNL ĐHQG TP.HCM 2026.",
+    "source": "https://ts.udn.vn/files/2026/2026_4_2_27_7_585_2._vku_thong_tin_tuyen_sinh_-_31.3.2026.pdf",
+    "published": "2026-03-31"
+   },
+   "scores": null,
+   "programs": {
+    "source": "https://ts.udn.vn/files/2026/2026_4_2_27_7_585_2._vku_thong_tin_tuyen_sinh_-_31.3.2026.pdf",
+    "list": [
+     {
+      "code": "7340101",
+      "name": "Quản trị kinh doanh (cử nhân)"
+     },
+     {
+      "code": "7340101EL",
+      "name": "Quản trị kinh doanh - Chuyên ngành Quản trị Logistics và chuỗi cung ứng số (cử nhân)"
+     },
+     {
+      "code": "7340101ET",
+      "name": "Quản trị kinh doanh - Chuyên ngành Quản trị dịch vụ du lịch và lữ hành số (cử nhân)"
+     },
+     {
+      "code": "7340101IM",
+      "name": "Quản trị kinh doanh - Chuyên ngành Quản trị dự án Công nghệ thông tin (cử nhân)"
+     },
+     {
+      "code": "7340101DE",
+      "name": "Quản trị kinh doanh - Chuyên ngành Giải trí và Truyền thông số (cử nhân)"
+     },
+     {
+      "code": "7340115",
+      "name": "Marketing (cử nhân)"
+     },
+     {
+      "code": "7340205",
+      "name": "Công nghệ tài chính (cử nhân)"
+     },
+     {
+      "code": "7480108",
+      "name": "Công nghệ kỹ thuật máy tính (kỹ sư)"
+     },
+     {
+      "code": "7480108IC",
+      "name": "Công nghệ kỹ thuật máy tính - Chuyên ngành Thiết kế vi mạch bán dẫn (kỹ sư)"
+     },
+     {
+      "code": "7480108B",
+      "name": "Công nghệ kỹ thuật máy tính (cử nhân)"
+     },
+     {
+      "code": "7480108AS",
+      "name": "Công nghệ kỹ thuật máy tính - Chuyên ngành Kỹ thuật phần mềm ô tô (kỹ sư)"
+     },
+     {
+      "code": "7480108UA",
+      "name": "Công nghệ kỹ thuật máy tính - Chuyên ngành Thiết bị bay không người lái (kỹ sư)"
+     },
+     {
+      "code": "7480108RA",
+      "name": "Công nghệ kỹ thuật máy tính - Chuyên ngành Kỹ thuật Robot và trí tuệ nhân tạo (kỹ sư)"
+     },
+     {
+      "code": "7480108PT",
+      "name": "Công nghệ kỹ thuật máy tính - Chuyên ngành Đóng gói và kiểm thử vi mạch bán dẫn (kỹ sư)"
+     },
+     {
+      "code": "7480202",
+      "name": "An toàn thông tin (kỹ sư)"
+     },
+     {
+      "code": "7480107",
+      "name": "Trí tuệ nhân tạo"
+     },
+     {
+      "code": "7480107DA",
+      "name": "Trí tuệ nhân tạo - Chuyên ngành Phân tích dữ liệu (kỹ sư)"
+     },
+     {
+      "code": "7480201",
+      "name": "Công nghệ thông tin (kỹ sư)"
+     },
+     {
+      "code": "7480201B",
+      "name": "Công nghệ thông tin (cử nhân)"
+     },
+     {
+      "code": "7480201GT",
+      "name": "Công nghệ thông tin - Chuyên ngành Công nghệ Game (kỹ sư)"
+     },
+     {
+      "code": "7320106",
+      "name": "Công nghệ truyền thông (cử nhân)"
+     },
+     {
+      "code": "7320106DA",
+      "name": "Công nghệ truyền thông - Chuyên ngành Thiết kế Mỹ thuật số (cử nhân)"
+     }
+    ],
+    "note": "22 mã xét tuyển theo Thông tin tuyển sinh năm 2026 (cập nhật 31/3/2026). Có bản cập nhật 09/4/2026 trên ts.udn.vn nhưng không đọc được (robots chặn)."
+   },
+   "not_found": {
+    "scores": "Bài 'Công bố điểm chuẩn trúng tuyển tuyển sinh đại học năm 2026' (vku.udn.vn/vi/cong-bo-diem-chuan-trung-tuyen-tuyen-sinh-dai-hoc-nam-2026/, 09/08/2026) chỉ có ảnh (Cong-bo-TuyenSinh-2026.jpg), không đọc được bảng điểm. Trang gdqpantt.udn.vn chỉ nêu điểm cao nhất 24 (CNKT máy tính – Thiết kế vi mạch bán dẫn).",
+    "tuition_note": "Học phí là mức dự kiến ghi trong Thông tin tuyển sinh 2026 bản 31/3/2026; chưa đối chiếu được với bản cập nhật 09/4/2026."
+   }
+  },
+  {
+   "school_id": "donga",
+   "website": "https://donga.edu.vn/",
+   "tuition": {
+    "summary": "Học phí 2026 tính theo tín chỉ, đơn giá giữ nguyên suốt khóa (từ năm 3 tăng 10%/tín chỉ): phổ biến 575.000–920.000 đồng/tín chỉ (học kỳ 1 khoảng 9,2–14,72 triệu đồng); Dược 1.000.000 đồng/tín chỉ; Y khoa 2.455.000 đồng/tín chỉ (học kỳ 1: 46,645 triệu). Chương trình song ngữ (dự kiến) 1.099.000–1.125.000 đồng/tín chỉ.",
+    "source": "https://donga.edu.vn/tuyensinh/ts-chi-tiet/dai-hoc-dong-a-cong-bo-hoc-phi-nam-2026-bac-dai-hoc-chinh-quy-44617",
+    "published": "2026-08-05"
+   },
+   "scholarships": [
+    {
+     "title": "Học bổng Khuyến học 2026 (Hoa Anh Đào 2026)",
+     "description": "Thí sinh hoàn tất nhập học trước 15/07/2026 nhận 6.000.000 đồng; nhập học trong giai đoạn đến 24/08/2026 nhận 4.000.000 đồng. Chi tiết theo Quy định 1209/QĐ-ĐHĐA-TS ngày 13/06/2026.",
+     "source": "https://donga.edu.vn/tuyensinh/hocbong2026",
+     "publishedAt": null
+    },
+    {
+     "title": "Học bổng Phát triển nguồn nhân lực năm 2026",
+     "description": "40 suất, mỗi suất 50% học phí mỗi năm trong 2 năm học đầu, cho sinh viên chính quy nhập học 2026 ngành Dược học, Luật/Luật Kinh tế, Công nghệ kỹ thuật Xây dựng và Nông nghiệp công nghệ cao.",
+     "source": "https://luat.donga.edu.vn/thong-tin-bai-viet/truong-dai-hoc-dong-a-bo-sung-hoc-bong-phat-trien-nguon-nhan-luc-danh-cho-sinh-vien-khoa-nhap-hoc-nam-2026-44725",
+     "publishedAt": "2026-08-27"
+    }
+   ],
+   "admission": {
+    "summary": "6 phương thức: xét tuyển thẳng; điểm thi tốt nghiệp THPT 2026; học bạ THPT; điểm ĐGNL ĐHQG TP.HCM 2026; chứng chỉ ngoại ngữ quốc tế kết hợp điểm thi THPT; thí sinh tốt nghiệp THPT nước ngoài (ngành Y khoa).",
+    "source": "https://donga.edu.vn/tuyensinh/ts-chi-tiet/thong-tin-tuyen-sinh-dai-hoc-dong-a-nam-2026-42971",
+    "published": "2026-03-09"
+   },
+   "scores": {
+    "source": "https://donga.edu.vn/tuyensinh/ts-chi-tiet/truong-dai-hoc-dong-a-cong-bo-diem-chuan-trung-tuyen-nam-2026-44629",
+    "method": "Điểm thi tốt nghiệp THPT 2026 (tổng 3 môn + điểm KV, ƯT) · thang 30",
+    "scale": 30,
+    "programs": [
+     {
+      "code": "132",
+      "name": "Y khoa",
+      "score": 22
+     },
+     {
+      "code": "133",
+      "name": "Dược học",
+      "score": 20
+     },
+     {
+      "code": "138",
+      "name": "Luật",
+      "score": 20
+     },
+     {
+      "code": "139",
+      "name": "Luật kinh tế",
+      "score": 20
+     },
+     {
+      "code": "134",
+      "name": "Điều dưỡng",
+      "score": 18
+     }
+    ],
+    "note": "Áp dụng cho thí sinh tốt nghiệp THPT 2026, công bố 09/08/2026. Kèm điều kiện điểm thi 3 môn (chưa cộng ưu tiên): Y khoa và Dược học ≥ 20; Luật, Luật kinh tế ≥ 18 và Toán hoặc Ngữ văn ≥ 6; Điều dưỡng ≥ 16,5. Các ngành còn lại theo trang: điểm thi 3 môn ≥ 15. Bảng trên trang bị dàn phẳng khi đọc nên nên đối chiếu lại; trang không ghi mã ngành, mã lấy theo danh mục ngành 2026 của trường."
+   },
+   "programs": {
+    "source": "https://donga.edu.vn/tuyensinh/ts-chi-tiet/thong-tin-tuyen-sinh-dai-hoc-dong-a-nam-2026-42971",
+    "list": [
+     {
+      "code": "101",
+      "name": "Ngôn ngữ Trung Quốc"
+     },
+     {
+      "code": "102",
+      "name": "Ngôn ngữ Anh"
+     },
+     {
+      "code": "103",
+      "name": "Ngôn ngữ Hàn Quốc"
+     },
+     {
+      "code": "104",
+      "name": "Ngôn ngữ Nhật"
+     },
+     {
+      "code": "105",
+      "name": "Quản trị kinh doanh"
+     },
+     {
+      "code": "106",
+      "name": "Marketing"
+     },
+     {
+      "code": "107",
+      "name": "Logistics và quản lý chuỗi cung ứng"
+     },
+     {
+      "code": "108",
+      "name": "Thương mại điện tử"
+     },
+     {
+      "code": "109",
+      "name": "Kế toán"
+     },
+     {
+      "code": "110",
+      "name": "Tài chính - Ngân hàng"
+     },
+     {
+      "code": "111",
+      "name": "Kinh doanh quốc tế"
+     },
+     {
+      "code": "112",
+      "name": "Truyền thông đa phương tiện"
+     },
+     {
+      "code": "113",
+      "name": "Quản trị nhân lực"
+     },
+     {
+      "code": "116",
+      "name": "Quản trị dịch vụ du lịch và lữ hành"
+     },
+     {
+      "code": "117",
+      "name": "Quản trị khách sạn"
+     },
+     {
+      "code": "118",
+      "name": "Quản trị nhà hàng và dịch vụ ăn uống"
+     },
+     {
+      "code": "119",
+      "name": "Công nghệ kỹ thuật ô tô"
+     },
+     {
+      "code": "120",
+      "name": "Công nghệ thông tin"
+     },
+     {
+      "code": "121",
+      "name": "Kỹ thuật máy tính"
+     },
+     {
+      "code": "122",
+      "name": "Trí tuệ nhân tạo"
+     },
+     {
+      "code": "123",
+      "name": "Đồ họa"
+     },
+     {
+      "code": "124",
+      "name": "Công nghệ kỹ thuật điều khiển và tự động hoá"
+     },
+     {
+      "code": "125",
+      "name": "Công nghệ kỹ thuật điện, điện tử"
+     },
+     {
+      "code": "126",
+      "name": "Công nghệ kỹ thuật xây dựng"
+     },
+     {
+      "code": "127",
+      "name": "Kỹ thuật Cơ điện tử"
+     },
+     {
+      "code": "128",
+      "name": "Công nghệ sinh học"
+     },
+     {
+      "code": "129",
+      "name": "Công nghệ thực phẩm"
+     },
+     {
+      "code": "130",
+      "name": "Nông nghiệp"
+     },
+     {
+      "code": "131",
+      "name": "Thú y"
+     },
+     {
+      "code": "132",
+      "name": "Y khoa"
+     },
+     {
+      "code": "133",
+      "name": "Dược học"
+     },
+     {
+      "code": "134",
+      "name": "Điều dưỡng"
+     },
+     {
+      "code": "135",
+      "name": "Kỹ thuật Phục hồi Chức năng"
+     },
+     {
+      "code": "136",
+      "name": "Hộ sinh"
+     },
+     {
+      "code": "137",
+      "name": "Dinh dưỡng"
+     },
+     {
+      "code": "138",
+      "name": "Luật"
+     },
+     {
+      "code": "139",
+      "name": "Luật kinh tế"
+     },
+     {
+      "code": "140",
+      "name": "Giáo dục học"
+     },
+     {
+      "code": "141",
+      "name": "Tâm lý học"
+     },
+     {
+      "code": "142",
+      "name": "Quản lý văn hoá"
+     },
+     {
+      "code": "143",
+      "name": "Văn học (Ứng dụng)"
+     },
+     {
+      "code": "144",
+      "name": "Giáo dục Mầm non"
+     },
+     {
+      "code": "145",
+      "name": "Giáo dục Tiểu học"
+     }
+    ],
+    "note": "Mã ngành theo trang Thông tin tuyển sinh 2026 (cơ sở Đà Nẵng); Giáo dục Mầm non và Giáo dục Tiểu học chờ Bộ GD&ĐT cho phép. Trang còn liệt kê các chuyên ngành có mã riêng (vd 1051DL) chưa đưa vào."
+   },
+   "not_found": {
+    "scholarships_note": "Học bổng Tài năng (100%/50%/30% học phí toàn khóa theo báo chí) không có mức và điều kiện trên trang chính thức đọc được nên không đưa vào."
+   }
+  },
+  {
+   "school_id": "dnu",
+   "website": "https://udn.vn/",
+   "tuition": null,
+   "scholarships": [],
+   "admission": null,
+   "scores": null,
+   "programs": null,
+   "not_found": {
+    "general": "Đại học Đà Nẵng là đại học vùng; ngành, học phí, học bổng và điểm chuẩn công bố theo từng trường thành viên (DUT, DUE, Y Dược, VKU... đã ghi ở các mục riêng).",
+    "admission": "Thông báo tuyển sinh ĐHCQ 2026 của ĐHĐN (ts.udn.vn/DHCD/Chinhquy/DHTbao/19360) và bài udn.vn 'Đại học Đà Nẵng công bố thông tin tuyển sinh năm 2026' đều bị robots chặn, không đọc được.",
+    "scores": "Bảng 'Điểm chuẩn vào các cơ sở đào tạo thuộc ĐHĐN năm 2026' (ts.udn.vn/DHCD/Chinhquy/diemchuan/19567) bị robots chặn.",
+    "tuition": "Không có mức học phí chung cấp ĐHĐN; udn.vn bị robots chặn.",
+    "scholarships": "Không đọc được trang học bổng của udn.vn (robots chặn).",
+    "programs": "Không có danh mục mã xét tuyển chung đọc được; xem theo từng trường thành viên."
+   }
+  }
+ ]
+}

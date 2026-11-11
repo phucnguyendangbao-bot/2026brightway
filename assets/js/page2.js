@@ -1,7 +1,7 @@
 import sourceRegistry from '../data/school-admissions-sources.js';
 import { buildUniversityCatalog, canonicalSchoolId, REVIEWED_AT } from '../data/university-identities.js';
 // Curated 2026 records plus researched 2026 facts from official school pages (see school-research-layer.js).
-import { detailsWithResearch as detailsForSchool, admissionSourceWithResearch, researchedScholarships, homepageFor } from './school-research-layer.js?v=20261111t';
+import { detailsWithResearch as detailsForSchool, admissionSourceWithResearch, researchedScholarships, homepageFor } from './school-research-layer.js?v=20261111u';
 import { universityIdentityHTML, renderUniversityLogo } from './university-card.js?v=20261111o';
 import { uniqueSchools, normalizeWishes, wishKey, addWish, wishFromProgram, importLegacySchools } from './selection-model.js';
 import { comparisonCells } from './school-comparison-model.js';

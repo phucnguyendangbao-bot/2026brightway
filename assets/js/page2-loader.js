@@ -8,7 +8,7 @@ function showModuleError() {
 }
 // A stalled module request must also offer recovery, not only rejected imports.
 const moduleTimer = setTimeout(showModuleError, 8000);
-import('./page2.js?v=20261111t').then(() => clearTimeout(moduleTimer)).catch(() => {
+import('./page2.js?v=20261111u').then(() => clearTimeout(moduleTimer)).catch(() => {
   clearTimeout(moduleTimer);
   showModuleError();
 });

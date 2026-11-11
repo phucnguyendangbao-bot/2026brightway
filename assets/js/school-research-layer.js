@@ -2,7 +2,7 @@
 // fill only what the curated record lacks. Nothing here estimates, ranks or carries data across years.
 import { detailsForSchool as curatedDetails } from '../data/school-profile-details.js';
 import { canonicalSchoolId } from '../data/university-identities.js';
-import { researchedSchoolDetails, researchedScholarships } from '../data/school-research-2026.js?v=20261111t';
+import { researchedSchoolDetails, researchedScholarships } from '../data/school-research-2026.js?v=20261111u';
 import { canDisplayProgramScores } from './score-provenance.js';
 
 const https = value => /^https:\/\//.test(String(value || ''));
@@ -19,7 +19,9 @@ export function detailsWithResearch(id, year = 2026) {
   if (research.tuition && !(base?.tuition?.year === 2026 && https(base.tuition.source))) out.tuition = research.tuition;
   if (research.admission && !https(out.admissionSource)) out.admissionSource = research.admission.source;
   const officialList = research.programs?.list?.length && https(research.programs.source);
-  if (officialList && (!base?.programs?.length || base.programSourceStatus === 'secondary')) {
+  const fuller = officialList && base?.programs?.length && research.programs.list.length > base.programs.length
+    && research.programs.list.some(row => row.code) && !base.programs.some(row => Number.isFinite(row.score) || Number.isFinite(row.quota));
+  if (officialList && (!base?.programs?.length || base.programSourceStatus === 'secondary' || fuller)) {
     out.programs = research.programs.list.map(row => ({ ...row }));
     out.programSource = research.programs.source;
     out.programNote = research.programs.note || `${research.programs.list.length} ngành/chương trình từ nguồn chính thức của trường năm 2026.`;

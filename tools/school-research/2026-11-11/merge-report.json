@@ -1,0 +1,471 @@
+{
+ "issues": [
+  "husc.website: host husc.edu.vn not in hueuni.edu.vn,moet.gov.vn,husc.hueuni.edu.vn (kept for review)",
+  "husc.admission: host tuyensinh.husc.edu.vn not in hueuni.edu.vn,moet.gov.vn,husc.hueuni.edu.vn (kept for review)",
+  "husc.programs: host tuyensinh.husc.edu.vn not in hueuni.edu.vn,moet.gov.vn,husc.hueuni.edu.vn (kept for review)",
+  "phuxuan.website: host pxu.edu.vn not in moet.gov.vn,phuxuan.edu.vn (kept for review)",
+  "phuxuan.admission: host pxu.edu.vn not in moet.gov.vn,phuxuan.edu.vn (kept for review)",
+  "phuxuan.programs: host pxu.edu.vn not in moet.gov.vn,phuxuan.edu.vn (kept for review)",
+  "phuxuan.scholarship: host pxu.edu.vn not in moet.gov.vn,phuxuan.edu.vn (kept for review)",
+  "phuxuan.scholarship: host pxu.edu.vn not in moet.gov.vn,phuxuan.edu.vn (kept for review)",
+  "phuxuan.scholarship: host pxu.edu.vn not in moet.gov.vn,phuxuan.edu.vn (kept for review)"
+ ],
+ "report": {
+  "hcmut": {
+   "got": [
+    "website"
+   ],
+   "not_found": {
+    "tuition": "hcmut.edu.vn là trang render bằng JavaScript; WebFetch chỉ nhận được thẻ meta, không có nội dung (đã thử /tuyen-sinh/dai-hoc-chinh-quy/phuong-thuc-tuyen-sinh, /xet-tuyen-tong-hop-2026, /hoc-bong). Không tìm thấy PDF học phí 2026-2027 trên tên miền hcmut.edu.vn qua tìm kiếm (chỉ có báo chí như daibieunhandan.vn 28/02/2026: chương trình tiêu chuẩn khoảng 31,5 triệu/năm, nhưng đây không phải nguồn chính thức). oisp.hcmut.edu.vn và mybk.hcmut.edu.vn bị chặn quyền truy cập trong phiên này.",
+    "scholarship": "Không đọc được hcmut.edu.vn/hoc-bong (trang JavaScript, không có nội dung). Tìm kiếm chỉ ra học bổng tài trợ cho sinh viên đang học (Fuji Seal, PVcombank) trên fme.hcmut.edu.vn, không phải học bổng tuyển sinh 2026.",
+    "scores": "Điểm chuẩn 2026 (xét tuyển tổng hợp, công bố 09/08/2026 theo giaoduc.net.vn) không tìm được trên trang chính thức có thể đọc: hcmut.edu.vn không render, mybk.hcmut.edu.vn bị chặn. Không dùng số liệu từ tuyensinh247/báo chí."
+   }
+  },
+  "uit": {
+   "got": [
+    "website",
+    "tuition",
+    "programs(12)",
+    "scholarship",
+    "scholarship",
+    "scholarship"
+   ],
+   "not_found": {
+    "scholarship": "Chỉ tìm thấy học bổng tuyển sinh 2026 cho chương trình liên kết (Newcastle, BCU). Trang tuyensinh.uit.edu.vn/hoc-phi-hoc-bong vẫn ghi học bổng 'Toàn diện – Sáng tạo – Phụng sự' cho khóa 2025, nên không dùng. Đề án 2026 chỉ dẫn link.uit.edu.vn/hocbong (quy định chung của ctsv.uit.edu.vn, không có mức cho tân sinh viên 2026).",
+    "scores": "Không bắt buộc. Trang điểm trúng tuyển 2026 (09/08/2026) chỉ có ảnh .jpg, không đọc được bảng."
+   }
+  },
+  "hcmus": {
+   "got": [
+    "website",
+    "tuition",
+    "scholarship",
+    "scholarship",
+    "scholarship"
+   ],
+   "not_found": {}
+  },
+  "ussh": {
+   "got": [
+    "website"
+   ],
+   "not_found": {
+    "programs": "Trang công bố thông tin tuyển sinh 2026 (hcmussh.edu.vn/bai-viet/cong-bo-thong-tin-tuyen-sinh-nam-2026-...) và hcmussh.edu.vn/tuyensinh bị chặn quyền truy cập trong phiên này. File hcmussh.edu.vn/api/tt/storage/download/29117.pdf là thông báo tuyển sinh thạc sĩ 2026, không phải đại học. Bản PDF thông tin tuyển sinh tìm được nằm trên tuyensinh247 (không chính thức).",
+    "tuition": "Không tìm thấy trang/PDF học phí 2026-2027 trên hcmussh.edu.vn qua tìm kiếm; các kết quả ussh.vnu.edu.vn thuộc ĐH KHXH&NV Hà Nội, không phải trường này.",
+    "scholarship": "Không tìm thấy thông báo học bổng tuyển sinh 2026 trên hcmussh.edu.vn qua tìm kiếm.",
+    "scores": "Không tìm thấy trang điểm trúng tuyển 2026 trên hcmussh.edu.vn có thể đọc được."
+   }
+  },
+  "hcmiu": {
+   "got": [
+    "website"
+   ],
+   "not_found": {
+    "programs": "Có PDF chính thức tuyensinh.hcmiu.edu.vn/wp-content/uploads/2026/04/0420_QSQ_Thong-tin-tuyen-sinh-2026.pdf nhưng tuyensinh.hcmiu.edu.vn và hcmiu.edu.vn trả về script chống bot (đặt cookie D1N rồi tải lại), WebFetch không đọc được nội dung. Cần mở bằng trình duyệt.",
+    "tuition": "Cùng lý do: trang/PDF của tuyensinh.hcmiu.edu.vn không đọc được (script chống bot). Số liệu học phí 2026-2027 chỉ thấy trên báo/trang tổng hợp, không dùng.",
+    "scholarship": "Không đọc được trang học bổng (hcmiu.edu.vn/scholarships, tuyensinh.hcmiu.edu.vn) do script chống bot.",
+    "admission": "Thông tin tuyển sinh 2026 và Quy chế tuyển sinh 2026 có trên tuyensinh.hcmiu.edu.vn (PDF 0420_QSQ_Thong-tin-tuyen-sinh-2026.pdf, 20260424_Quy_che_Tuyen_sinh_DHQT_2026.pdf) nhưng không đọc được nội dung.",
+    "scores": "Không đọc được trang điểm chuẩn 2026 trên tuyensinh.hcmiu.edu.vn (script chống bot)."
+   }
+  },
+  "uel": {
+   "got": [
+    "website",
+    "scholarship",
+    "scholarship",
+    "scholarship"
+   ],
+   "not_found": {
+    "programs": "Trang tuyensinh.uel.edu.vn/thong-tin-tuyen-sinh-dai-hoc-chinh-quy-2026/ bị chặn quyền truy cập trong phiên này; tìm kiếm không ra PDF danh mục ngành 2026 trên tên miền uel.edu.vn (chỉ có bản docx trên dantri.com.vn, không chính thức).",
+    "tuition": "Không tìm thấy trang/PDF học phí 2026-2027 trên uel.edu.vn có thể đọc; Tuổi Trẻ (09/07/2026) đưa tin 35,8–73,5 triệu/năm nhưng không phải nguồn chính thức.",
+    "scores": "Không tìm thấy thông báo điểm trúng tuyển 2026 trên tuyensinh.uel.edu.vn qua tìm kiếm; trang chủ tuyển sinh bị chặn quyền truy cập trong phiên này.",
+    "scholarship_note": "Ngày trên văn bản học bổng để trống ('ngày tháng năm 2026'); tên file gợi ý 08/07/2026 nên publishedAt để null."
+   }
+  },
+  "ueh": {
+   "got": [
+    "website",
+    "scores(82)",
+    "programs(82)"
+   ],
+   "not_found": {
+    "tuition": "WebFetch bị chặn (robots.txt) trên tuyensinh.ueh.edu.vn (trang 'Học phí và Chính sách Học bổng UEH 2026', 'Hiểu đúng về Học phí tín chỉ tại UEH'); tuyensinhdaihoc.ueh.edu.vn và www.ueh.edu.vn không ghi mức học phí; books.ueh.edu.vn (brochure 2026) không truy cập được. Chỉ có số liệu trên báo (plo.vn), không dùng.",
+    "scholarships": "WebFetch bị chặn (robots.txt) trên tuyensinh.ueh.edu.vn; www.ueh.edu.vn/hoc-bong lỗi truy cập; tuyensinhdaihoc.ueh.edu.vn không nêu học bổng tuyển sinh 2026 có mức tiền (chỉ nhắc học bổng theo Nghị định 179/2026/NĐ-CP cho Kỹ sư tài năng Logistics)."
+   }
+  },
+  "ftu": {
+   "got": [
+    "website"
+   ],
+   "not_found": {
+    "tuition": "WebFetch bị chặn (robots.txt) trên ftu.edu.vn và www.ftu.edu.vn (kể cả trang 'Thông báo ngưỡng điểm trúng tuyển ĐHCQ' 2026); thongtintuyensinh.ftu.edu.vn và cs2.ftu.edu.vn không mở được (không có quyền truy cập / không tìm thấy qua tìm kiếm).",
+    "scholarships": "Như trên: không truy cập được trang chính thức của FTU.",
+    "scores": "Không truy cập được trang chính thức (robots.txt). Báo Tiền Phong (09/8/2026) có điểm cơ sở TP.HCM (mã NTS..., ví dụ NTSKT02 28,5) nhưng không phải nguồn chính thức và không nêu phương thức, nên không ghi."
+   }
+  },
+  "hub": {
+   "got": [
+    "website",
+    "tuition",
+    "admission"
+   ],
+   "not_found": {
+    "scores": "Thông báo điểm chuẩn 2026 (hub.edu.vn, 10/08/2026, thang 30, quy đổi chung các phương thức): bảng điểm là ảnh, không đọc được. https://hub.edu.vn/tin-tuc-su-kien/thong-bao-diem-chuan-trung-tuyen-dai-hoc-chinh-quy-nam-2026-truong-dai-hoc-ngan-hang-tp-ho-chi-minh-229990.html ; bản trên tuyensinh.hub.edu.vn lỗi truy cập.",
+    "programs": "Trang thông tin tuyển sinh 2026 chỉ có ảnh bảng chỉ tiêu và PDF đính kèm không lấy được URL; tuyensinh.hub.edu.vn render bằng JavaScript/lỗi truy cập.",
+    "scholarships": "Không tìm thấy thông báo học bổng tân sinh viên 2026 trên trang chính thức; trang 'Học bổng cho sinh viên' trên tuyensinh.hub.edu.vn là kế hoạch năm học 2017–2018; bài giaoduc.net.vn (23/6/2026) không phải nguồn chính thức."
+   }
+  },
+  "ump": {
+   "got": [
+    "website"
+   ],
+   "not_found": {
+    "tuition": "WebFetch bị chặn (robots.txt) trên ump.edu.vn, admin.ump.edu.vn và sv.ump.edu.vn; không đọc được trang/PDF chính thức.",
+    "scholarships": "Có thông báo chính thức 'Thông báo về việc thực hiện chính sách học bổng đối với sinh viên trúng tuyển năm 2026 (HB tân sinh viên)' trên sv.ump.edu.vn nhưng bị chặn robots.txt, không đọc được nội dung: https://sv.ump.edu.vn/sinh-vien/tin-tuc/thong-bao-ve-viec-thuc-hien-chinh-sach-hoc-bong-doi-voi-sinh-vien-trung-tuyen-nam-2026-hb-tan-sinh-vien.html?pIDDanhMuc=2",
+    "scores": "WebFetch bị chặn (robots.txt) trên ump.edu.vn (trang danh sách trúng tuyển 2026: https://ump.edu.vn/tuyen-sinh-dao-tao/dai-hoc/tuyen-sinh/10840/danh-sach-thi-sinh-trung-tuyen-dai-hoc-he-chinh-quy-nam-2026)."
+   }
+  },
+  "pnt": {
+   "got": [
+    "website",
+    "tuition",
+    "scores(14)",
+    "programs(14)"
+   ],
+   "not_found": {
+    "scholarships": "Không tìm thấy thông báo học bổng dành riêng cho tân sinh viên 2026 trên pnt.edu.vn; các bài tổng hợp học bổng chính thức có ngày 14/07/2023 và 12/09/2025 (không phải 2026); thông tin tuyển sinh 2026 (QĐ 2231 ngày 29/5/2026) chỉ nhắc học bổng TP.HCM cho lưu học sinh Lào, Campuchia."
+   }
+  },
+  "hcmue": {
+   "got": [
+    "website"
+   ],
+   "not_found": {
+    "tuition": "Không tìm thấy học phí 2026–2027 trên tuyensinh.hcmue.edu.vn (các bài thông tin tuyển sinh 2026 không ghi mức học phí); chưa tìm được thông báo học phí trên hcmue.edu.vn (hết lượt tìm kiếm).",
+    "scholarships": "Không tìm thấy thông báo học bổng tân sinh viên 2026 trên trang chính thức.",
+    "scores": "Thông báo kết quả xét tuyển 2026 (tuyensinh.hcmue.edu.vn, bài id=27828, khoảng 11/08/2026) chỉ dẫn link Google Drive; Google Drive bị chặn robots.txt nên không đọc được bảng điểm."
+   }
+  },
+  "sgu": {
+   "got": [
+    "website",
+    "programs(47)"
+   ],
+   "not_found": {
+    "tuition": "Phụ lục 6 Học phí 2026 là PDF scan không có chữ, không đọc được: https://tuyensinh.sgu.edu.vn/images/files/2026/MPhuLuc6_Hocphi.pdf",
+    "scholarships": "Không tìm thấy học bổng tân sinh viên 2026 trên tuyensinh.sgu.edu.vn; PDF thông tin tuyển sinh chính thức là ảnh scan; hết lượt tìm kiếm.",
+    "scores": "Thông báo điểm trúng tuyển đợt 1 năm 2026 (11/08/2026) chỉ đính kèm PDF scan không đọc được: https://tuyensinh.sgu.edu.vn/images/files/2026/2026DiemTrungTuyen2026.pdf"
+   }
+  },
+  "fpt": {
+   "got": [
+    "website",
+    "tuition",
+    "admission",
+    "scholarship",
+    "scholarship",
+    "scholarship"
+   ],
+   "not_found": {
+    "scholarships": "Trang học bổng không ghi ngày đăng (chỉ có ngày cập nhật 2026-02-24 trong metadata) và không nêu hạn nộp hồ sơ.",
+    "tuition": "Các trang học phí theo campus không ghi ngày đăng; mỗi campus có trang riêng (xem extra_sources)."
+   }
+  },
+  "rmit": {
+   "got": [
+    "website",
+    "admission",
+    "programs(20)",
+    "scholarship",
+    "scholarship",
+    "scholarship"
+   ],
+   "not_found": {
+    "tuition": "Trang học phí chính thức hiện chỉ đăng bảng 'Học phí chương trình Đại học năm 2027 (tạm tính)': 394.656.000đ/năm (96 tín chỉ, 8 môn), 1.183.968.000đ toàn chương trình 288 tín chỉ, 1.578.624.000đ cho các chương trình kỹ sư 384 tín chỉ. Tài liệu '2026 Student Fees & Charges Guide' (cập nhật 05/10/2026) không ghi mức học phí. Không còn trang chính thức nào nêu học phí cho khóa nhập học 2026, nên để trống (không dùng số 2027).",
+    "scores": "RMIT Việt Nam không tham gia hệ thống xét tuyển và điểm chuẩn quốc gia; trường xét hồ sơ theo điều kiện học thuật và tiếng Anh của từng ngành, nên không có điểm chuẩn.",
+    "admission": "Điều kiện tuyển sinh lấy từ trang ngành Digital Marketing; trang không ghi năm áp dụng và hiện hiển thị các hạn nộp năm 2027. Mức ĐTB lớp 12 tối thiểu có thể khác nhau giữa các ngành."
+   }
+  },
+  "vlu": {
+   "got": [
+    "website",
+    "tuition",
+    "scores(8)",
+    "scholarship",
+    "scholarship",
+    "scholarship"
+   ],
+   "not_found": {
+    "scores": "Chỉ có điểm một phần: bảng điểm chuẩn đầy đủ là ảnh, không đọc được. Trang tuyensinh.vlu.edu.vn và ảnh trên S3 bị chặn (yêu cầu cấp quyền truy cập URL đã hết hạn): https://tuyensinh.vlu.edu.vn/, https://tuyensinh.vlu.edu.vn/xet-tuyen/dang-ky-tuyen-sinh-2026, https://www.vanlanguni.edu.vn/hoc-bong, https://vluwebmedia.s3.ap-southeast-1.amazonaws.com/Bang_diem_chuan_1_ce6f50ad9f.png",
+    "tuition": "Trang học phí không ghi ngày đăng; các mức VGS không ghi năm áp dụng (chỉ mức chương trình Tiêu chuẩn ghi rõ năm 2026, khóa 32). Trang tuyensinh.vlu.edu.vn/thong-tin/chinh-sach-hoc-phi cần JavaScript, không đọc được.",
+    "scholarships": "Trang học bổng ghi 'Học bổng tuyển sinh 2026' (khóa 32) nhưng không có ngày đăng."
+   }
+  },
+  "tdtu": {
+   "got": [
+    "website",
+    "tuition",
+    "admission",
+    "programs(52)",
+    "scholarship",
+    "scholarship",
+    "scholarship"
+   ],
+   "not_found": {
+    "scores": "Điểm trúng tuyển 2026 công bố ngày 10/8/2026 trong 2 PDF: PL1 (phương thức 1, thang 100) và PL2 (ĐGNL, thang 1200). Mỗi ngành có nhiều dòng điểm theo tổ hợp, và văn bản trích từ PDF tách khối điểm khỏi tên ngành nên không ghép điểm với ngành chắc chắn được. TDTU không có phương thức riêng chỉ dùng điểm thi THPT.",
+    "tuition": "Trang học phí ghi '(dự kiến)' cho năm học 2026–2027, không có ngày đăng.",
+    "scholarships": "Trang không ghi ngày đăng và không nêu đủ điều kiện, số suất của từng loại."
+   }
+  },
+  "nttu": {
+   "got": [
+    "website",
+    "admission",
+    "scores(10)",
+    "programs(57)",
+    "scholarship",
+    "scholarship",
+    "scholarship"
+   ],
+   "not_found": {
+    "tuition": "Không có trang chính thức ghi rõ học phí 2026–2027. Trang hỏi đáp https://tuyensinh.ntt.edu.vn/cau-hoi-thuong-gap có bảng học phí học kỳ 1 (Sức khỏe 15,2 triệu; Nghệ thuật 17,2; Công nghệ giáo dục 19,5; Kinh tế – Luật 12,5; Kỹ thuật – Công nghệ 14,3; XHNV – Du lịch 13,3; Chuẩn quốc tế 18,6–19,8 triệu) nhưng không ghi năm áp dụng. hocbong.ntt.edu.vn hiện ghi 'Học phí tham khảo năm 2027' và không có số. Thông báo đóng học phí HK1 2026–2027 (ctsv.ntt.edu.vn) không tải được.",
+    "scores": "Chỉ có điểm một phần: bảng điểm đầy đủ là ảnh (NTTU-Diem-chuan.jpg), không đọc được; văn bản chỉ nêu điểm theo khối ngành, không có mã ngành.",
+    "programs": "Trang tuyển sinh không công bố mã xét tuyển; chưa tìm được đề án tuyển sinh 2026 có mã ngành.",
+    "scholarships": "Mức Khuyến học khác nhau giữa các trang: bài 25/3/2026 và trang chính sách ghi 10–12 triệu; hocbong.ntt.edu.vn ghi đến 19.000.000đ cho NV1. Đã ghi mức theo thông báo 25/3/2026."
+   }
+  },
+  "ctu": {
+   "got": [
+    "website",
+    "tuition",
+    "scores(127)",
+    "programs(127)",
+    "scholarship",
+    "scholarship"
+   ],
+   "not_found": {
+    "scholarships": "Học bổng tuyển sinh chung (1.200 suất 6.000.000đ, giảm 50% học phí năm nhất cho nữ ngành kỹ thuật) trên trang hỏi đáp tuyensinh.ctu.edu.vn không ghi năm nên không đưa vào. Hai học bổng ghi ở trên là thông báo dành riêng cho Khóa 52 (2026).",
+    "tuition": "Trang học phí tuyển sinh không ghi ngày đăng. Văn bản Mức học phí 2026–2027 (dfa.ctu.edu.vn) ghi tháng 7/2026 nhưng chưa có số và ngày."
+   }
+  },
+  "ctump": {
+   "got": [
+    "website"
+   ],
+   "not_found": {
+    "tuition": "Có trang 'Mức thu học phí năm học 2026 - 2027' (https://www.ctump.edu.vn/muc-thu-hoc-phi-nam-hoc-2026-2027.html và bản /khoa/) nhưng trang tải nội dung bằng JavaScript; WebFetch chỉ nhận khung trang chủ, không có số liệu.",
+    "scholarships": "Bài 'dành nhiều học bổng hấp dẫn... đến 100 triệu đồng' trên ctump.edu.vn tải bằng JavaScript, không đọc được nội dung và không xác nhận được năm 2026; hết lượt tìm kiếm trước khi tìm được nguồn khác.",
+    "scores": "Trang 'Thông báo điểm trúng tuyển đại học chính quy năm 2026' (https://www.ctump.edu.vn/thong-bao-diem-trung-tuyen-dai-hoc-chinh-quy-nam-2026.html) tải bằng JavaScript, không đọc được; tuyensinh.ctump.edu.vn và ctump.edu.vn (không www) chặn bằng robots.txt."
+   }
+  },
+  "nlu": {
+   "got": [
+    "website",
+    "admission"
+   ],
+   "not_found": {
+    "tuition": "Không tìm thấy học phí 2026–2027 trên ts.hcmuaf.edu.vn (trang Thông tin tuyển sinh 2026 ngày 03/07/2026 và Kế hoạch đón tân sinh viên khóa 2026 ngày 07/08/2026 không có số liệu dạng chữ; nội dung đón tân sinh viên nằm trong 4 ảnh JPG/PNG không đọc được). Trang Phòng Kế hoạch - Tài chính pkhtc.hcmuaf.edu.vn bị chặn khi truy cập.",
+    "scholarship": "Không tìm thấy thông báo học bổng tân sinh viên 2026 trên ts.hcmuaf.edu.vn; trang https://hcmuaf.edu.vn/hoc-bong trả lỗi (client_error).",
+    "scores": "Điểm chuẩn 2026 đã công bố ngày 10/08/2026 tại https://ts.hcmuaf.edu.vn/vn/tin-tuc/span-style-color-red-diem-trung-tuyen-diem-chuan-cac-nganh-dao-tao-trinh-do-dai-hoc-va-nganh-giao-duc-mam-non-trinh-do-c-60570 nhưng bảng điểm là ảnh PNG (diem chuan 2026.png) không đọc được; không có bản chữ/PDF.",
+    "programs": "Danh mục ngành 2026 chỉ có dạng ảnh (trang Ngành đào tạo, ảnh ngưỡng đảm bảo chất lượng 2026, flipbook heyzine ngoài tên miền trường); không có bản chữ chính thức."
+   }
+  },
+  "hufi": {
+   "got": [
+    "admission",
+    "scores(44)",
+    "programs(44)"
+   ],
+   "not_found": {
+    "tuition": "Trang Thông tin tuyển sinh 2026 (19/05/2026) không nêu mức học phí; đề án tuyển sinh 2026 (31/05/2026) chỉ có dạng PDF trên doc.huit.edu.vn, bị chặn khi truy cập nên không đọc được. Trang https://hufi.edu.vn/hoc-bong cũng bị chặn."
+   }
+  },
+  "dthu": {
+   "got": [
+    "website",
+    "tuition",
+    "admission",
+    "scores(59)",
+    "programs(59)"
+   ],
+   "not_found": {
+    "scholarship": "Không tìm thấy thông báo học bổng cho tân sinh viên 2026: thông báo tuyển sinh 09/07/2026 không có mục học bổng; trang Công tác sinh viên (ctsv.dthu.edu.vn) ghi 'Thông tin đang cập nhật', chỉ có quyết định học bổng thu hút học sinh giỏi khóa 2023. Thông báo tuyển sinh chính 2805/TB-ĐHĐT (15/05/2026) không tìm được bản trên web."
+   }
+  },
+  "ntu": {
+   "got": [],
+   "not_found": {
+    "tuition": "Đề án tuyển sinh đại học chính quy năm 2026 (PDF) không có mục học phí; trang Thông tin tuyển sinh 2026 và trang điểm chuẩn 2026 trên tuyensinh.ntu.edu.vn không có học phí; trang https://ntu.edu.vn/hoc-bong trả lỗi.",
+    "scholarship": "Ngoài 2 chính sách miễn phí KTX nêu trên (mục Chính sách ưu tiên của đề án 2026, không phải học bổng tiền mặt), đề án chỉ ghi chung 'nhiều chính sách học bổng, khen thưởng đối với thủ khoa, á khoa', không có tên, mức, điều kiện. Thông báo 'Học bổng Khatoco' (24/08/2026) chỉ có ảnh, không đọc được và không rõ đối tượng."
+   }
+  },
+  "qnu": {
+   "got": [
+    "tuition",
+    "admission",
+    "scores(28)",
+    "programs(53)"
+   ],
+   "not_found": {
+    "scholarship": "Không tìm thấy học bổng dành cho tân sinh viên 2026: TB 1906 không có mục học bổng; bài 'Học tập tại QNU – chi phí hợp lý...' (06/08/2026) chỉ nêu chung học bổng khuyến khích, doanh nghiệp, vượt khó và số liệu năm học 2024–2025. Trang https://qnu.edu.vn/vi/hoc-bong bị chặn khi truy cập."
+   }
+  },
+  "duytan": {
+   "got": [
+    "admission",
+    "scholarship"
+   ],
+   "not_found": {
+    "tuition": "tuyensinh2026.duytan.edu.vn và các trang ngành (vd. Kỹ thuật phần mềm, Y khoa) không nêu học phí 2026–2027; trang thông tin tuyển sinh/mã ngành trên duytan.edu.vn bị chặn khi truy cập.",
+    "scholarship": "Chỉ có con số tổng quát ở trên; trang chi tiết học bổng https://duytan.edu.vn/tuyen-sinh/Page/SchollashipView.aspx bị chặn nên không lấy được tên, mức, điều kiện từng học bổng.",
+    "scores": "Không tìm thấy bảng điểm chuẩn 2026 trên tuyensinh2026.duytan.edu.vn; các trang duytan.edu.vn bị chặn khi truy cập và hạn mức tìm kiếm đã hết."
+   }
+  },
+  "dut": {
+   "got": [
+    "website",
+    "admission",
+    "scholarship",
+    "scholarship",
+    "scholarship"
+   ],
+   "not_found": {
+    "tuition": "Đã tìm trên tuyensinh.dut.udn.vn (cac-khoan-thu, nhaphoc2026, nganh-va-chi-tieu-tuyen-sinh, so-tay-tuyen-sinh), dut.udn.vn và các truy vấn tìm kiếm. Mức học phí chỉ nằm trong các tệp PDF scan không đọc được (Đề án tuyển sinh 2026 tại dut.udn.vn/Files/admin/files/Ba_cong_khai/2026_2027/, TB nhập học 4111) và tệp Google Drive 'Thông báo 4179-TB-ĐHBK các khoản thu nhập học đối với SV khóa tuyển sinh 2026' (không đọc được nội dung). Trang tuyensinh.dut.udn.vn/de-an-tuyen-sinh lỗi khi tải.",
+    "scores": "Không bắt buộc. Bài 12208 chỉ nêu điểm cao nhất (KS tài năng Kỹ thuật Điều khiển và Tự động hóa 27,10; KS tài năng CNTT định hướng KHDL và AI 27,00), không có bảng đầy đủ."
+   }
+  },
+  "due": {
+   "got": [
+    "website"
+   ],
+   "not_found": {
+    "tuition": "Bản dự thảo thông tin tuyển sinh 2026 không có số liệu học phí. Không tìm thấy thông báo học phí 2026–2027 trên due.udn.vn qua tìm kiếm; các trang due.udn.vn/vi-vn/tuyen-sinh, due.udn.vn/vi-vn/hoc-bong và trang chủ không truy cập được (bị chặn quyền truy cập trong phiên này). Số liệu trên muaban.net không phải nguồn chính thức nên không dùng.",
+    "scholarships": "Bản dự thảo ghi 'Thông báo sau'. Không tìm được trang học bổng tuyển sinh 2026 chính thức; due.udn.vn/vi-vn/hoc-bong bị chặn; bài trên udn.vn/bancthssv bị robots chặn và không rõ năm.",
+    "scores": "Không tìm được thông báo điểm trúng tuyển 2026 trên due.udn.vn. Bảng tổng hợp ĐHĐN tại ts.udn.vn/DHCD/Chinhquy/diemchuan/19567 bị robots chặn. Trang gdqpantt.udn.vn chỉ nêu điểm cao nhất 26 (Kinh doanh quốc tế, DUE-Elite và chương trình toàn phần tiếng Anh).",
+    "admission": "Chỉ tìm được bản dự thảo (không ghi ngày); đã ghi rõ trong summary."
+   }
+  },
+  "smp-udn": {
+   "got": [
+    "website"
+   ],
+   "not_found": {
+    "tuition": "Có thông báo 'Thu học phí đại học hệ chính quy học kỳ 1, năm học 2026-2027' (smp.udn.vn, đăng 23/09/2026) nhưng mức thu nằm trong tệp PDF đính kèm, không tìm được URL tệp để đọc.",
+    "scholarships": "Trang tuyen-sinh và thong-bao của smp.udn.vn không có thông báo học bổng tân sinh viên 2026; smp.udn.vn/hoc-bong lỗi máy chủ.",
+    "admission": "Các trang 'Thông tin tuyển sinh năm 2026' (smp.udn.vn/thong-bao/thong-tin-tuyen-sinh-nam-2026 và bản công bố 05/6/2026) bị chặn quyền truy cập trong phiên; PDF tại ts.udn.vn (ddy thông tin tuyển sinh 27.3) bị robots chặn.",
+    "scores": "Thông báo 'Công bố chính thức điểm trúng tuyển ĐHCQ năm 2026' (smp.udn.vn, 13/08/2026) chỉ dẫn link tra cứu ketqua.udn.vn, không có bảng điểm; ketqua.udn.vn không tải được (chuyển hướng lặp).",
+    "programs": "Cùng lý do với admission: tài liệu thông tin tuyển sinh 2026 không đọc được."
+   }
+  },
+  "vku": {
+   "got": [
+    "website",
+    "tuition",
+    "admission",
+    "programs(22)",
+    "scholarship",
+    "scholarship",
+    "scholarship"
+   ],
+   "not_found": {
+    "scores": "Bài 'Công bố điểm chuẩn trúng tuyển tuyển sinh đại học năm 2026' (vku.udn.vn/vi/cong-bo-diem-chuan-trung-tuyen-tuyen-sinh-dai-hoc-nam-2026/, 09/08/2026) chỉ có ảnh (Cong-bo-TuyenSinh-2026.jpg), không đọc được bảng điểm. Trang gdqpantt.udn.vn chỉ nêu điểm cao nhất 24 (CNKT máy tính – Thiết kế vi mạch bán dẫn).",
+    "tuition_note": "Học phí là mức dự kiến ghi trong Thông tin tuyển sinh 2026 bản 31/3/2026; chưa đối chiếu được với bản cập nhật 09/4/2026."
+   }
+  },
+  "donga": {
+   "got": [
+    "website",
+    "tuition",
+    "admission",
+    "programs(43)",
+    "scholarship",
+    "scholarship"
+   ],
+   "not_found": {
+    "scholarships_note": "Học bổng Tài năng (100%/50%/30% học phí toàn khóa theo báo chí) không có mức và điều kiện trên trang chính thức đọc được nên không đưa vào."
+   }
+  },
+  "dnu": {
+   "got": [
+    "website"
+   ],
+   "not_found": {
+    "general": "Đại học Đà Nẵng là đại học vùng; ngành, học phí, học bổng và điểm chuẩn công bố theo từng trường thành viên (DUT, DUE, Y Dược, VKU... đã ghi ở các mục riêng).",
+    "admission": "Thông báo tuyển sinh ĐHCQ 2026 của ĐHĐN (ts.udn.vn/DHCD/Chinhquy/DHTbao/19360) và bài udn.vn 'Đại học Đà Nẵng công bố thông tin tuyển sinh năm 2026' đều bị robots chặn, không đọc được.",
+    "scores": "Bảng 'Điểm chuẩn vào các cơ sở đào tạo thuộc ĐHĐN năm 2026' (ts.udn.vn/DHCD/Chinhquy/diemchuan/19567) bị robots chặn.",
+    "tuition": "Không có mức học phí chung cấp ĐHĐN; udn.vn bị robots chặn.",
+    "scholarships": "Không đọc được trang học bổng của udn.vn (robots chặn).",
+    "programs": "Không có danh mục mã xét tuyển chung đọc được; xem theo từng trường thành viên."
+   }
+  },
+  "huemed": {
+   "got": [
+    "website",
+    "admission",
+    "scores(11)",
+    "programs(11)",
+    "scholarship",
+    "scholarship"
+   ],
+   "not_found": {
+    "tuition": "Trường đã công bố TB 2400/TB-ĐHYD ngày 23/04/2026 về mức thu học phí tín chỉ cho khóa tuyển sinh 2026 (trang https://www.huemed-univ.edu.vn/thong-bao/cap-nhat/ts2026-tb-ve-muc-thu-hoc-phi-tin-chi-dao-tao-dai-hoc-he-chinh-quy-nam-hoc-2026-2026-doi-voi-khoa-tuyen-sinh-moi-nam-hoc-2026-2027-1011), nhưng bảng mức thu nằm trong PDF đính kèm (uploads/Thongbao/TB HOC PHI_1011.pdf) không tải được; trang HTML không có con số.",
+    "scholarships": "Không tìm thấy học bổng dành riêng cho tân sinh viên 2026; chỉ có học bổng chung nêu trong Thông tin tuyển sinh 2026."
+   }
+  },
+  "husc": {
+   "got": [
+    "website",
+    "admission",
+    "scores(29)",
+    "programs(29)"
+   ],
+   "not_found": {
+    "tuition": "Không tìm thấy mức học phí 2026–2027 trên trang chính thức. Thông tin tuyển sinh 2026 (https://tuyensinh.husc.edu.vn/IMAGES/files/6a89137d40a24_thong_tin_tuyen_sinh_202611.pdf) lỗi máy chủ khi tải; bản Thông tin tuyển sinh tìm được chỉ có học phí 2025–2026.",
+    "scholarships_note": "Học bổng lấy từ trang Khoa Ngữ văn (subdomain husc.edu.vn) giới thiệu chính sách HUSC 2026; chưa đối chiếu được với văn bản của trường."
+   }
+  },
+  "huaf": {
+   "got": [
+    "website",
+    "tuition",
+    "admission",
+    "scores(19)",
+    "programs(19)"
+   ],
+   "not_found": {
+    "scholarships": "Không tìm thấy học bổng tuyển sinh/tân sinh viên 2026 do trường công bố (trang huaf.edu.vn/suat-hoc-bong không có chi tiết; bài khai giảng 25/09/2026 chỉ nêu doanh nghiệp tài trợ 375 triệu đồng học bổng, không có điều kiện, mức cụ thể).",
+    "tuition_note": "QĐ 473/QĐ-ĐHNL ngày 26/05/2026 quy định mức học phí 2026–2027 nằm trong PDF không đọc được; số liệu lấy từ thông báo nhập học khóa 60 (học kỳ I, 17 tín chỉ)."
+   }
+  },
+  "hucfl": {
+   "excluded": "BrightWay record is labelled KHXH&NV Huế but research covers ĐH Ngoại ngữ Huế; fix the record identity first"
+  },
+  "phuxuan": {
+   "got": [
+    "website",
+    "admission",
+    "programs(8)",
+    "scholarship",
+    "scholarship",
+    "scholarship"
+   ],
+   "not_found": {
+    "scores": "Không tìm thấy điểm chuẩn/điểm trúng tuyển 2026 trên pxu.edu.vn (trang tuyển sinh, tin tuyển sinh, FAQ không có); hết lượt tìm kiếm web trước khi tìm thêm.",
+    "programs": "Không tìm thấy mã ngành 2026 trên trang chính thức.",
+    "dates": "Các trang tuyển sinh, học phí, học bổng của PXU không ghi ngày đăng; nội dung thuộc mùa tuyển sinh 2026 (học bổng Người tiên phong ghi rõ năm 2026, bảng lệ phí ghi 'Năm 2026'), nhưng mức học phí/tín chỉ không ghi năm học cụ thể."
+   }
+  },
+  "hue-uni": {
+   "got": [
+    "website",
+    "admission",
+    "scores(142)",
+    "programs(142)"
+   ],
+   "not_found": {
+    "tuition": "Đại học Huế không công bố một mức học phí chung; học phí do từng trường thành viên quy định.",
+    "scholarships": "Trang tuyển sinh Đại học Huế chỉ có bài học bổng năm 2020; không tìm thấy học bổng tuyển sinh 2026 cấp Đại học Huế."
+   }
+  }
+ }
+}
