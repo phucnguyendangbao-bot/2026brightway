@@ -63,12 +63,17 @@
     return getFiltered();
   }
 
+  // "Clear all filters" only appears when something is actually filtered.
+  function syncClearFilters() {
+    document.querySelectorAll('a.flow-clear-filters').forEach(link => { link.hidden = !(state.query || state.importedCode || (state.activeHolland && state.activeHolland !== 'all')); });
+  }
   function persistFilters() {
     const params = new URLSearchParams();
     if (state.query) params.set('q', state.query);
     params.set('holland', state.importedCode || state.activeHolland);
     history.replaceState(null, '', '?' + params.toString());
     window.BWFlow?.save({ careerFilters: { query: state.query, holland: state.importedCode || state.activeHolland } });
+    syncClearFilters();
     $('careerCount').textContent = `${getFiltered().length} kết quả / ${state.jobs.length} nghề · Nhóm Holland là gợi ý sở thích`;
   }
 
@@ -489,7 +494,8 @@
         $('hollandFilterLabel').textContent = `Mã của bạn: ${hollandCode} · Đang lọc nghề thuộc ${[...hollandCode].join(', ')}`;
       }
       const count = $('careerCount');
-      if (count) count.textContent = `📚 Cơ sở dữ liệu: ${state.jobs.length} nghề nghiệp phổ biến tại Việt Nam`;
+      if (count) count.textContent = `Cơ sở dữ liệu: ${state.jobs.length} nghề nghiệp phổ biến tại Việt Nam`;
+      syncClearFilters();
       if (!state.jobs.length) {
         $('careerResult').innerHTML = '<p class="career-empty">Chưa có dữ liệu nghề nghiệp hợp lệ. Thử tải lại sau.</p>';
         return;

@@ -126,12 +126,40 @@ function renderCompare() {
   const selected = compareIds.map(id => schools.find(school => school.id === id)).filter(Boolean);
   const status = document.getElementById('compareSelectionStatus');
   if (status) status.textContent = selected.length ? `Đã chọn ${selected.length}/3 trường để so sánh.${selected.length === 1 ? ' Chọn thêm một trường để mở bảng.' : selected.length === 3 ? ' Bỏ một trường để chọn trường khác.' : ''}` : 'Chọn “So sánh” trên 2–3 hồ sơ trường để xem cùng nhau.';
+  renderCompareDock(selected);
   if (!compareHost || !compareTable) return;
   compareHost.hidden = selected.length < 2;
   if (selected.length < 2) { compareTable.innerHTML = ''; return; }
   const rows = [['Khu vực','location'],['Ngành đào tạo · 2026','programs'],['Học phí · 2026','tuition'],['Học bổng · nguồn tham khảo','scholarship'],['Phương thức xét tuyển · 2026','admission'],['Điểm chuẩn theo năm · 2026','scores'],['Website chính thức','website']];
   const cells = selected.map(school => comparisonCells({...school, website: homepageFor(school)}, detailsForSchool(school.id), sourceForSchool(school.id), {year:activeYear,opportunities:comparisonOpportunities}));
   compareTable.innerHTML = `<table class="school-compare-table"><caption>Đối chiếu nguồn trước khi chọn trường. Điểm chuẩn khác phương thức hoặc thang điểm không dùng thay thế cho nhau. Nguồn 2026 chưa xác nhận tuyển sinh 2027.</caption><thead><tr><th scope="col">Tiêu chí</th>${selected.map(school => `<th scope="col"><strong>${escapeHtml(school.name)}</strong><button type="button" class="school-compare-remove" data-action="remove-compare" data-school-id="${escapeHtml(school.id)}" aria-label="Bỏ ${escapeHtml(school.name)} khỏi so sánh">Bỏ trường</button></th>`).join('')}</tr></thead><tbody>${rows.map(([label,key]) => `<tr><th scope="row">${label}</th>${selected.map((school,index) => `<td>${compareCell(school,cells[index][key])}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+}
+// A small bar that follows the reader once schools are picked, so comparing never needs a hunt for the table.
+function renderCompareDock(selected) {
+  let dock = document.getElementById('compareDock');
+  if (!selected.length) { dock?.remove(); document.body.classList.remove('has-compare-dock'); return; }
+  if (!dock) {
+    dock = document.createElement('aside');
+    dock.id = 'compareDock';
+    dock.className = 'compare-dock';
+    dock.setAttribute('aria-label', 'Trường đang chọn để so sánh');
+    document.body.append(dock);
+    dock.addEventListener('click', event => {
+      const remove = event.target.closest('[data-dock-remove]');
+      if (remove) { updateCompare(remove.dataset.dockRemove, false); return; }
+      if (event.target.closest('[data-dock-go]')) {
+        const target = document.getElementById('schoolCompare');
+        target?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+        target?.querySelector('h2')?.setAttribute('tabindex', '-1');
+        target?.querySelector('h2')?.focus({ preventScroll: true });
+      }
+    });
+  }
+  document.body.classList.add('has-compare-dock');
+  const ready = selected.length >= 2;
+  dock.innerHTML = `<p class="compare-dock-count"><strong>${selected.length}/3</strong> trường để so sánh</p>
+    <ul class="compare-dock-list">${selected.map(school => `<li><span>${escapeHtml(school.short || school.name)}</span><button type="button" data-dock-remove="${escapeHtml(school.id)}" aria-label="Bỏ ${escapeHtml(school.name)} khỏi so sánh">×</button></li>`).join('')}</ul>
+    <button type="button" class="flow-primary compare-dock-go" data-dock-go ${ready ? '' : 'disabled'}>${ready ? 'So sánh ngay →' : 'Chọn thêm 1 trường'}</button>`;
 }
 function updateCompare(id, checked, fromCheckbox = false) {
   if (checked && !compareIds.includes(id) && compareIds.length < 3) compareIds.push(id);
@@ -332,6 +360,11 @@ function matchingPrograms(school, query, groupCode = activeGroupCode) {
 }
 
 function filterSchools(value) {
+  // The reset button only shows when there is something to reset.
+  queueMicrotask(() => {
+    const reset = document.getElementById('resetSchoolFilters');
+    if (reset && catalogReady) reset.disabled = !(String(document.getElementById('searchInput')?.value || '').trim() || activeRegion || activeGroupCode || savedOnly);
+  });
   if (!catalogReady) return;
   const query = normalizeText(value.trim());
   activeQuery = value.trim();

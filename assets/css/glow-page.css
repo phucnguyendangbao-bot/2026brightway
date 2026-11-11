@@ -251,3 +251,132 @@ html body.bw-aurora-on *, html body.bw-aurora-on *::before, html body.bw-aurora-
 }
 /* Without a backdrop blur, the light bar needs to be nearly solid so content scrolling under it stays hidden. */
 :root:not([data-theme="dark"]) body:not(.bw-nav-glass) .flow-nav { background-color: rgba(253, 252, 250, .98) !important; }
+
+/* =====================================================================================
+   BrightWay buttons: one system for every page.
+   Primary  – filled deep blue (coral inside the dark openings), the one main action.
+   Secondary – outlined, for the alternative action next to a primary.
+   Compact  – the same two looks at 36px, for actions inside cards and lists.
+   Chips    – filters, tabs and toggles; the selected one fills deep blue.
+   All pill-shaped, Be Vietnam Pro 600, 44px tall (36px compact), coral focus ring.
+   ===================================================================================== */
+:root {
+  --bw-btn-blue: #09318d; --bw-btn-blue-hover: #0b3db0; --bw-btn-coral: #fc734d; --bw-btn-ink: #02070a;
+  --bw-btn-line: rgba(9, 49, 141, .28); --bw-btn-font: 'Be Vietnam Pro', system-ui, sans-serif;
+}
+html body :is(.flow-primary, .flow-continue, .bw-btn-primary, .quiz-btn-primary, .calc-btn-primary, .btn-primary, .w-btn, .submit-btn, .og-submit, .explorer-cta, .choices-actions .is-primary, .story-resume-go, .done-action.is-primary),
+html body :is(.bw-btn-outline, .quiz-btn-secondary, .calc-btn-secondary, .btn-light, .btn-ghost, .btn-outline, .bw-ui-button, .flow-clear-filters, .btn-google, .choices-actions .is-danger, .done-action:not(.is-primary)) {
+  display: inline-flex !important; align-items: center !important; justify-content: center !important; gap: 8px !important;
+  min-height: 44px !important; padding: 10px 20px !important; border-radius: 999px !important;
+  font: 600 15px/1.25 var(--bw-btn-font) !important; letter-spacing: 0 !important; text-transform: none !important;
+  text-decoration: none !important; cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .2s ease, box-shadow .2s ease !important;
+}
+/* Primary on light */
+html body :is(.flow-primary, .flow-continue, .bw-btn-primary, .quiz-btn-primary, .calc-btn-primary, .btn-primary, .w-btn, .submit-btn, .og-submit, .explorer-cta, .choices-actions .is-primary, .story-resume-go, .done-action.is-primary):not(.glow-band *, .glow-hero *, .is-deep *) {
+  background: var(--bw-btn-blue) !important; color: #fff !important; -webkit-text-fill-color: #fff !important;
+  border: 1px solid var(--bw-btn-blue) !important; box-shadow: 0 10px 22px -14px rgba(9, 49, 141, .7) !important;
+}
+html body :is(.flow-primary, .flow-continue, .bw-btn-primary, .quiz-btn-primary, .calc-btn-primary, .btn-primary, .w-btn, .submit-btn, .og-submit, .explorer-cta, .choices-actions .is-primary, .story-resume-go, .done-action.is-primary):not(.glow-band *, .glow-hero *, .is-deep *):hover {
+  background: var(--bw-btn-blue-hover) !important; border-color: var(--bw-btn-blue-hover) !important; transform: translateY(-1px);
+}
+/* Primary inside the dark openings and deep chapters: coral */
+html body :is(.glow-band, .glow-hero, .is-deep) :is(.flow-primary, .flow-continue, .bw-btn-primary, .quiz-btn-primary, .calc-btn-primary, .btn-primary, .w-btn, .submit-btn, .og-submit, .explorer-cta, .story-resume-go, .done-action.is-primary):not(.glow-surface *) {
+  background: var(--bw-btn-coral) !important; color: var(--bw-btn-ink) !important; -webkit-text-fill-color: var(--bw-btn-ink) !important;
+  border: 1px solid var(--bw-btn-coral) !important; box-shadow: 0 0 0 6px rgba(252, 115, 77, .12), 0 12px 30px -12px rgba(252, 115, 77, .6) !important;
+}
+/* Secondary on light */
+html body :is(.bw-btn-outline, .quiz-btn-secondary, .calc-btn-secondary, .btn-light, .btn-ghost, .btn-outline, .bw-ui-button, .flow-clear-filters, .btn-google, .done-action:not(.is-primary)):not(.glow-band *, .glow-hero *, .is-deep *) {
+  background: rgba(255, 255, 255, .78) !important; color: var(--bw-btn-blue) !important; -webkit-text-fill-color: var(--bw-btn-blue) !important;
+  border: 1px solid var(--bw-btn-line) !important; box-shadow: none !important;
+}
+html body :is(.bw-btn-outline, .quiz-btn-secondary, .calc-btn-secondary, .btn-light, .btn-ghost, .btn-outline, .bw-ui-button, .flow-clear-filters, .btn-google, .done-action:not(.is-primary)):not(.glow-band *, .glow-hero *, .is-deep *):hover {
+  border-color: var(--bw-btn-blue) !important; background: #fff !important;
+}
+/* Secondary inside dark areas: light outline */
+html body :is(.glow-band, .glow-hero, .is-deep) :is(.bw-btn-outline, .btn-light, .btn-ghost, .btn-outline, .bw-ui-button, .done-action:not(.is-primary)):not(.glow-surface *) {
+  background: rgba(247, 245, 241, .08) !important; color: #f7f5f1 !important; -webkit-text-fill-color: #f7f5f1 !important; border: 1px solid rgba(247, 245, 241, .45) !important;
+}
+html body .choices-actions .is-danger:not(.glow-band *) { color: #b42318 !important; -webkit-text-fill-color: #b42318 !important; border-color: rgba(180, 35, 24, .35) !important; background: #fff !important; }
+
+/* Compact actions inside cards and lists */
+html body :is(.university-card-actions a, .university-card-actions button, .res-btn, .school-card-open, .school-save-button, .pill, .bw-ui-button.is-compact) {
+  display: inline-flex !important; align-items: center !important; justify-content: center !important; gap: 6px !important;
+  min-height: 36px !important; padding: 7px 14px !important; border-radius: 999px !important;
+  font: 600 13px/1.2 var(--bw-btn-font) !important; letter-spacing: 0 !important; text-transform: none !important; text-decoration: none !important;
+  transition: background-color .2s ease, border-color .2s ease, transform .2s ease !important;
+}
+html body :is(.university-card-actions a:first-child, .res-btn, .school-card-open) {
+  background: var(--bw-btn-blue) !important; color: #fff !important; -webkit-text-fill-color: #fff !important; border: 1px solid var(--bw-btn-blue) !important; box-shadow: none !important;
+}
+html body :is(.university-card-actions a:not(:first-child), .university-card-actions button, .school-save-button) {
+  background: rgba(255, 255, 255, .8) !important; color: var(--bw-btn-blue) !important; -webkit-text-fill-color: var(--bw-btn-blue) !important; border: 1px solid var(--bw-btn-line) !important; box-shadow: none !important;
+}
+html body :is(.university-card-actions a, .res-btn, .school-card-open, .school-save-button):hover { transform: translateY(-1px); }
+html body .school-save-button[aria-pressed="true"] { background: rgba(9, 49, 141, .1) !important; border-color: var(--bw-btn-blue) !important; }
+
+/* Chips: filters, tabs, toggles */
+html body :is(.pill, .holland-chip, .career-chip, .jump-btn, .iv-nav-btn, .iv-ans-tab, .auth-tab) {
+  min-height: 36px !important; padding: 7px 14px !important; border-radius: 999px !important;
+  font: 600 13px/1.2 var(--bw-btn-font) !important; letter-spacing: 0 !important;
+  background: rgba(255, 255, 255, .78) !important; color: #24313d !important; -webkit-text-fill-color: #24313d !important;
+  border: 1px solid rgba(9, 49, 141, .16) !important; box-shadow: none !important;
+}
+html body :is(.pill, .holland-chip, .career-chip, .jump-btn, .iv-nav-btn, .iv-ans-tab, .auth-tab):hover { border-color: var(--bw-btn-blue) !important; color: var(--bw-btn-blue) !important; -webkit-text-fill-color: var(--bw-btn-blue) !important; }
+html body :is(.pill, .holland-chip, .career-chip, .jump-btn, .iv-nav-btn, .iv-ans-tab, .auth-tab):is(.active, .current, .is-active, [aria-pressed="true"], [aria-selected="true"]) {
+  background: var(--bw-btn-blue) !important; color: #fff !important; -webkit-text-fill-color: #fff !important; border-color: var(--bw-btn-blue) !important;
+}
+html body .holland-chip:is(.active, [aria-pressed="true"]) .emoji { color: #fff !important; }
+
+/* Choice cards (pick one of several) share one selected look */
+html body :is(.type-card, .og-school-btn):is(.selected, .sel, [aria-pressed="true"]) { border-color: var(--bw-btn-blue) !important; background: rgba(9, 49, 141, .08) !important; box-shadow: 0 0 0 1px var(--bw-btn-blue) !important; }
+
+/* One focus ring for everything you can press */
+html body :is(a, button, summary, [role="button"], input[type="submit"]):focus-visible { outline: 3px solid rgba(252, 115, 77, .75) !important; outline-offset: 3px !important; }
+html body :is(button, a)[disabled], html body button:disabled { opacity: .5 !important; cursor: not-allowed !important; transform: none !important; box-shadow: none !important; }
+/* More members of the system: "next step" blocks, profile lists, exports, Waybi calendar link */
+html body :is(.flow-actions a, .flow-actions button, .choices-heading > a, #exportWishes, #exportWishesCsv, .cal-cta a, #journeyTaskForm button) {
+  display: inline-flex !important; align-items: center !important; justify-content: center !important; gap: 8px !important;
+  min-height: 44px !important; padding: 10px 20px !important; border-radius: 999px !important;
+  font: 600 15px/1.25 var(--bw-btn-font) !important; letter-spacing: 0 !important; text-decoration: none !important; cursor: pointer;
+  background: rgba(255, 255, 255, .78) !important; color: var(--bw-btn-blue) !important; -webkit-text-fill-color: var(--bw-btn-blue) !important;
+  border: 1px solid var(--bw-btn-line) !important; box-shadow: none !important; background-image: none !important;
+  transition: background-color .2s ease, border-color .2s ease, transform .2s ease !important;
+}
+html body :is(.flow-actions a:first-child, .flow-actions button[type="submit"], #journeyTaskForm button, .cal-cta a):not(.glow-band *, .is-deep *) {
+  background: var(--bw-btn-blue) !important; color: #fff !important; -webkit-text-fill-color: #fff !important; border-color: var(--bw-btn-blue) !important;
+}
+html body :is(#exportWishes, #exportWishesCsv) { min-height: 36px !important; padding: 7px 14px !important; font-size: 13px !important; }
+html body :is(.flow-actions a, .choices-heading > a, #exportWishes, #exportWishesCsv, .cal-cta a):hover { transform: translateY(-1px); border-color: var(--bw-btn-blue) !important; }
+html body .action-btn {
+  display: inline-flex !important; align-items: center !important; justify-content: center !important; min-height: 44px !important; padding: 10px 20px !important;
+  border-radius: 999px !important; font: 600 15px/1.25 var(--bw-btn-font) !important; letter-spacing: 0 !important; cursor: pointer;
+  background: rgba(255, 255, 255, .78) !important; color: var(--bw-btn-blue) !important; border: 1px solid var(--bw-btn-line) !important; box-shadow: none !important; background-image: none !important;
+}
+html body .action-btn.action-btn-primary { background: var(--bw-btn-blue) !important; color: #fff !important; border-color: var(--bw-btn-blue) !important; }
+
+/* Khám phá trường: compare dock */
+.compare-dock {
+  position: fixed; left: 50%; bottom: 18px; z-index: 300; transform: translateX(-50%);
+  display: flex; align-items: center; gap: 14px; width: min(860px, calc(100vw - 24px)); padding: 10px 10px 10px 18px;
+  border-radius: 999px; background: rgba(2, 7, 10, .92); color: #f7f5f1; box-shadow: 0 18px 44px -16px rgba(2, 7, 10, .6);
+  font: 500 14px/1.3 'Be Vietnam Pro', system-ui, sans-serif; will-change: transform;
+}
+.compare-dock-count { margin: 0; white-space: nowrap; color: rgba(247, 245, 241, .8); }
+.compare-dock-count strong { color: #fe9677; font-size: 16px; }
+.compare-dock-list { display: flex; flex: 1; gap: 6px; margin: 0; padding: 0; list-style: none; overflow-x: auto; scrollbar-width: none; }
+.compare-dock-list li { display: inline-flex; align-items: center; gap: 4px; padding: 4px 4px 4px 12px; border-radius: 999px; background: rgba(247, 245, 241, .12); white-space: nowrap; font-weight: 600; }
+.compare-dock-list button { width: 28px; height: 28px; border: 0; border-radius: 50%; background: transparent; color: #f7f5f1; font-size: 18px; line-height: 1; cursor: pointer; }
+.compare-dock-list button:hover { background: rgba(247, 245, 241, .16); }
+html body .compare-dock button.compare-dock-go.flow-primary { flex: none; min-height: 44px !important; background: #fc734d !important; border-color: #fc734d !important; color: #02070a !important; -webkit-text-fill-color: #02070a !important; box-shadow: none !important; }
+html body .compare-dock button.compare-dock-go.flow-primary:disabled { opacity: 1 !important; background: rgba(247, 245, 241, .14) !important; border-color: transparent !important; color: rgba(247, 245, 241, .75) !important; -webkit-text-fill-color: rgba(247, 245, 241, .75) !important; }
+body.has-compare-dock { padding-bottom: 88px; }
+body.has-compare-dock .waybi-widget, body.has-compare-dock [class*="waybi"][class*="float"] { bottom: 96px !important; }
+@media (max-width: 640px) {
+  .compare-dock { flex-wrap: wrap; border-radius: 20px; gap: 8px; padding: 10px 12px; }
+  .compare-dock-list { order: 3; flex-basis: 100%; }
+  html body .compare-dock button.compare-dock-go.flow-primary { margin-left: auto; min-height: 40px !important; padding: 8px 14px !important; }
+  body.has-compare-dock { padding-bottom: 140px; }
+}
+/* Filter reset appears only when there is something to reset */
+html body #resetSchoolFilters:disabled, html body .flow-clear-filters[hidden] { display: none !important; }
