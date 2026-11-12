@@ -19,23 +19,16 @@
  "report": {
   "hcmut": {
    "got": [
-    "tuition"
+    "tuition",
+    "scores(29)"
    ],
    "not_found": {}
   },
   "uit": {
    "got": [
-    "website",
-    "tuition",
-    "programs(12)",
-    "scholarship",
-    "scholarship",
-    "scholarship"
+    "scores(19)"
    ],
-   "not_found": {
-    "scholarship": "Chỉ tìm thấy học bổng tuyển sinh 2026 cho chương trình liên kết (Newcastle, BCU). Trang tuyensinh.uit.edu.vn/hoc-phi-hoc-bong vẫn ghi học bổng 'Toàn diện – Sáng tạo – Phụng sự' cho khóa 2025, nên không dùng. Đề án 2026 chỉ dẫn link.uit.edu.vn/hocbong (quy định chung của ctsv.uit.edu.vn, không có mức cho tân sinh viên 2026).",
-    "scores": "Không bắt buộc. Trang điểm trúng tuyển 2026 (09/08/2026) chỉ có ảnh .jpg, không đọc được bảng."
-   }
+   "not_found": {}
   },
   "hcmus": {
    "got": [
@@ -259,17 +252,10 @@
   },
   "due": {
    "got": [
-    "website",
-    "admission",
-    "programs(37)",
-    "scholarship",
-    "scholarship",
-    "scholarship"
+    "tuition",
+    "scores(19)"
    ],
-   "not_found": {
-    "tuition": "Trang 'Học phí' của cổng tuyển sinh 2026 (due.udn.vn/vi-vn/tuvantuyensinh2026/gt/cid/6436, tiêu đề 'Học phí năm 2026') chỉ có ảnh (Hoc phi 2026 02.jpg), không đọc được số liệu. Thông báo tuyển sinh 22/06/2026 và bản dự thảo không có học phí; tìm site:due.udn.vn 'học phí 2026-2027' và danh sách Thông báo không có văn bản học phí dạng chữ.",
-    "scores": "Bài 'Trường Đại học Kinh tế công bố điểm chuẩn đại học chính quy năm 2026' (due.udn.vn/vi-vn/tuvantuyensinh2026/ct/id/23086/cid/6031, 10/08/2026) chỉ có bảng điểm dạng ảnh (Diemchuan202601.jpg); trang 'Điểm chuẩn các năm' chỉ có ảnh 2025. Không tìm thấy bản chữ/PDF."
-   }
+   "not_found": {}
   },
   "smp-udn": {
    "got": [
