@@ -1075,9 +1075,9 @@
    },
    "scores": {
     "source": "https://hcmut.edu.vn/tintuc/cong-bo-diem-trung-tuyen-phuong-thuc-xet-tuyen-tong-hop-nam-2026",
-    "method": "Điểm chuẩn trúng tuyển 2026, phương thức xét tuyển tổng hợp, thang 100, chương trình tiêu chuẩn",
+    "method": "Điểm chuẩn trúng tuyển 2026, phương thức xét tuyển tổng hợp, thang 100",
     "scale": 100,
-    "note": "Mã là mã tuyển sinh của trường. Chương trình dạy và học bằng tiếng Anh có bảng riêng, chưa đưa vào đây. Đọc từ bảng ảnh trên trang trường.",
+    "note": "Mã là mã tuyển sinh của trường. Gồm chương trình tiêu chuẩn (mã 1xx), chương trình dạy và học bằng tiếng Anh (2xx), tiên tiến, liên kết ĐH Công nghệ Sydney, định hướng Nhật Bản và chuyển tiếp quốc tế (3xx, 4xx). Đọc từ ba bảng ảnh trên trang trường.",
     "programs": [
      {
       "code": "106",
@@ -1223,6 +1223,226 @@
       "code": "159",
       "name": "Kỹ thuật Bán dẫn",
       "score": 85.8
+     },
+     {
+      "code": "206",
+      "name": "Khoa học Máy tính (dạy và học bằng tiếng Anh)",
+      "score": 84.23
+     },
+     {
+      "code": "207",
+      "name": "Kỹ thuật Máy tính (dạy và học bằng tiếng Anh)",
+      "score": 81.54
+     },
+     {
+      "code": "209",
+      "name": "Kỹ thuật Cơ khí (dạy và học bằng tiếng Anh)",
+      "score": 79.07
+     },
+     {
+      "code": "210",
+      "name": "Kỹ thuật Cơ Điện tử (dạy và học bằng tiếng Anh)",
+      "score": 82.14
+     },
+     {
+      "code": "211",
+      "name": "Chuyên ngành Kỹ thuật Robot (dạy và học bằng tiếng Anh)",
+      "score": 78.53
+     },
+     {
+      "code": "214",
+      "name": "Kỹ thuật Hóa học (dạy và học bằng tiếng Anh)",
+      "score": 69.22
+     },
+     {
+      "code": "215",
+      "name": "Nhóm ngành Quản lý dự án Xây dựng và Kỹ thuật Xây dựng (dạy và học bằng tiếng Anh)",
+      "score": 56.65
+     },
+     {
+      "code": "217",
+      "name": "Chuyên ngành Kiến trúc Cảnh quan (dạy và học bằng tiếng Anh)",
+      "score": 55.82
+     },
+     {
+      "code": "218",
+      "name": "Công nghệ Sinh học (dạy và học bằng tiếng Anh)",
+      "score": 59.96
+     },
+     {
+      "code": "219",
+      "name": "Công nghệ Thực phẩm (dạy và học bằng tiếng Anh)",
+      "score": 58.77
+     },
+     {
+      "code": "220",
+      "name": "Kỹ thuật Dầu khí (dạy và học bằng tiếng Anh)",
+      "score": 55.76
+     },
+     {
+      "code": "223",
+      "name": "Quản lý Công nghiệp (dạy và học bằng tiếng Anh)",
+      "score": 65.81
+     },
+     {
+      "code": "225",
+      "name": "Nhóm ngành Tài nguyên và Môi trường (dạy và học bằng tiếng Anh)",
+      "score": 57.04
+     },
+     {
+      "code": "228",
+      "name": "Logistics và Quản lý Chuỗi Cung ứng (dạy và học bằng tiếng Anh)",
+      "score": 78.04
+     },
+     {
+      "code": "229",
+      "name": "Kỹ thuật Vật liệu (dạy và học bằng tiếng Anh)",
+      "score": 67.15
+     },
+     {
+      "code": "237",
+      "name": "Chuyên ngành Kỹ thuật Y sinh (dạy và học bằng tiếng Anh)",
+      "score": 65.9
+     },
+     {
+      "code": "242",
+      "name": "Kỹ thuật Ô tô (dạy và học bằng tiếng Anh)",
+      "score": 71.22
+     },
+     {
+      "code": "245",
+      "name": "Kỹ thuật Hàng không (dạy và học bằng tiếng Anh)",
+      "score": 79.87
+     },
+     {
+      "code": "251",
+      "name": "Khoa học Dữ liệu (dạy và học bằng tiếng Anh)",
+      "score": 80.68
+     },
+     {
+      "code": "252",
+      "name": "Kỹ thuật Đường sắt (dạy và học bằng tiếng Anh)",
+      "score": 58.67
+     },
+     {
+      "code": "253",
+      "name": "Chuyên ngành Kinh doanh số (dạy và học bằng tiếng Anh)",
+      "score": 61.58
+     },
+     {
+      "code": "254",
+      "name": "Chuyên ngành Công nghệ Sinh học số (dạy và học bằng tiếng Anh)",
+      "score": 56.77
+     },
+     {
+      "code": "255",
+      "name": "Chuyên ngành Kinh tế Tuần hoàn (dạy và học bằng tiếng Anh)",
+      "score": 56.36
+     },
+     {
+      "code": "256",
+      "name": "Kỹ thuật Hạt nhân (dạy và học bằng tiếng Anh)",
+      "score": 56.91
+     },
+     {
+      "code": "257",
+      "name": "Chuyên ngành Năng lượng Tái tạo (dạy và học bằng tiếng Anh)",
+      "score": 61.71
+     },
+     {
+      "code": "258",
+      "name": "Thiết kế Vi mạch (dạy và học bằng tiếng Anh)",
+      "score": 85.51
+     },
+     {
+      "code": "259",
+      "name": "Kỹ thuật Bán dẫn (dạy và học bằng tiếng Anh)",
+      "score": 82.66
+     },
+     {
+      "code": "208",
+      "name": "Kỹ thuật Điện - Điện tử (Chương trình Tiên tiến, giảng dạy bằng tiếng Anh)",
+      "score": 83.27
+     },
+     {
+      "code": "406",
+      "name": "Trí tuệ Nhân tạo (Liên kết cử nhân kỹ thuật quốc tế, ĐH Công nghệ Sydney cấp bằng)",
+      "score": 73.21
+     },
+     {
+      "code": "416",
+      "name": "Công nghệ Thông tin (Liên kết cử nhân kỹ thuật quốc tế, ĐH Công nghệ Sydney cấp bằng)",
+      "score": 70.18
+     },
+     {
+      "code": "266",
+      "name": "Khoa học Máy tính (Chương trình định hướng Nhật Bản)",
+      "score": 78.69
+     },
+     {
+      "code": "268",
+      "name": "Cơ Kỹ thuật (Chương trình định hướng Nhật Bản)",
+      "score": 73.96
+     },
+     {
+      "code": "306",
+      "name": "Khoa học Máy tính | Úc, New Zealand (Chuyển tiếp quốc tế)",
+      "score": 70.84
+     },
+     {
+      "code": "307",
+      "name": "Kỹ thuật Máy tính | Úc (Chuyển tiếp quốc tế)",
+      "score": 62.37
+     },
+     {
+      "code": "308",
+      "name": "Kỹ thuật Điện - Điện tử | Úc, Hàn Quốc, Anh Quốc (Chuyển tiếp quốc tế)",
+      "score": 68.85
+     },
+     {
+      "code": "309",
+      "name": "Kỹ thuật Cơ khí | Mỹ, Úc (Chuyển tiếp quốc tế)",
+      "score": 82.42
+     },
+     {
+      "code": "310",
+      "name": "Kỹ thuật Cơ Điện tử | Mỹ, Úc (Chuyển tiếp quốc tế)",
+      "score": 61.51
+     },
+     {
+      "code": "314",
+      "name": "Kỹ thuật Hóa học | Úc, Anh Quốc (Chuyển tiếp quốc tế)",
+      "score": 75.3
+     },
+     {
+      "code": "315",
+      "name": "Kỹ thuật Xây dựng | Úc, Anh Quốc (Chuyển tiếp quốc tế)",
+      "score": 67.58
+     },
+     {
+      "code": "319",
+      "name": "Công nghệ Thực phẩm | New Zealand (Chuyển tiếp quốc tế)",
+      "score": 61.51
+     },
+     {
+      "code": "323",
+      "name": "Quản lý Công nghiệp | Úc, Pháp, Hàn Quốc (Chuyển tiếp quốc tế)",
+      "score": 61.51
+     },
+     {
+      "code": "325",
+      "name": "Kỹ thuật Môi trường; Quản lý Tài nguyên & Môi trường | Úc (Chuyển tiếp quốc tế)",
+      "score": 61.51
+     },
+     {
+      "code": "342",
+      "name": "Kỹ thuật Ô tô | Úc (Chuyển tiếp quốc tế)",
+      "score": 61.51
+     },
+     {
+      "code": "345",
+      "name": "Kỹ thuật Hàng không | Úc (Chuyển tiếp quốc tế)",
+      "score": 78.91
      }
     ]
    }
@@ -3605,7 +3825,7 @@
     "source": "https://hcmussh.edu.vn/bai-viet/truong-dh-khxh-nv-dhqg-hcm-cong-bo-diem-chuan-xet-tuyen-dai-hoc-chinh-quy-nam-2026",
     "method": "Điểm chuẩn 2026, phương thức xét tuyển tổng hợp (mã 500), thang 100, chương trình Chuẩn",
     "scale": 100,
-    "note": "Trường công bố ngày 10/08/2026 theo 3 đối tượng xét tuyển (ĐT01, ĐT02, ĐT03) với các thành phần điểm khác nhau; bảng này lấy cột ĐT01, mức thấp nhất hoặc bằng hai cột còn lại (ĐT02 cao hơn tối đa khoảng 1,4 điểm). Chương trình liên kết 2+2 và Chuẩn quốc tế có bảng riêng, chưa đưa vào. Đọc từ bảng ảnh trên trang trường.",
+    "note": "Trường công bố ngày 10/08/2026 theo 3 đối tượng xét tuyển (ĐT01, ĐT02, ĐT03) với các thành phần điểm khác nhau; bảng này lấy cột ĐT01, mức thấp nhất hoặc bằng hai cột còn lại (ĐT02 cao hơn tối đa khoảng 1,4 điểm). Gồm một phần chương trình Chuẩn quốc tế (Ngôn ngữ Anh, Trung Quốc, Đức) và liên kết 2+2 (có ghi trong tên); các ngành Chuẩn quốc tế khác chưa đưa vào. Đọc từ bảng ảnh trên trang trường.",
     "programs": [
      {
       "code": "7140101",
@@ -3816,6 +4036,41 @@
       "code": "73106A1",
       "name": "Kinh doanh thương mại Hàn Quốc",
       "score": 76.9
+     },
+     {
+      "code": "7220201QT",
+      "name": "Ngôn ngữ Anh (Chuẩn quốc tế)",
+      "score": 80.1
+     },
+     {
+      "code": "7220204QT",
+      "name": "Ngôn ngữ Trung Quốc (Chuẩn quốc tế)",
+      "score": 78.1
+     },
+     {
+      "code": "7220205QT",
+      "name": "Ngôn ngữ Đức (Chuẩn quốc tế)",
+      "score": 72.0
+     },
+     {
+      "code": "7220201LK",
+      "name": "Ngôn ngữ Anh (Liên kết 2+2)",
+      "score": 71.4
+     },
+     {
+      "code": "7220204LK",
+      "name": "Ngôn ngữ Trung Quốc (Liên kết 2+2)",
+      "score": 75.5
+     },
+     {
+      "code": "7310206LK",
+      "name": "Quan hệ quốc tế (Liên kết 2+2)",
+      "score": 70.0
+     },
+     {
+      "code": "7320101LK",
+      "name": "Truyền thông chuyên ngành báo chí (Liên kết 2+2)",
+      "score": 70.0
      }
     ]
    }

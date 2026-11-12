@@ -12,8 +12,8 @@ export const researchedSchoolDetails = {
   "scores": {
    "source": "https://hcmut.edu.vn/tintuc/cong-bo-diem-trung-tuyen-phuong-thuc-xet-tuyen-tong-hop-nam-2026",
    "scale": 100,
-   "method": "Điểm chuẩn trúng tuyển 2026, phương thức xét tuyển tổng hợp, thang 100, chương trình tiêu chuẩn",
-   "note": "Mã là mã tuyển sinh của trường. Chương trình dạy và học bằng tiếng Anh có bảng riêng, chưa đưa vào đây. Đọc từ bảng ảnh trên trang trường.",
+   "method": "Điểm chuẩn trúng tuyển 2026, phương thức xét tuyển tổng hợp, thang 100",
+   "note": "Mã là mã tuyển sinh của trường. Gồm chương trình tiêu chuẩn (mã 1xx), chương trình dạy và học bằng tiếng Anh (2xx), tiên tiến, liên kết ĐH Công nghệ Sydney, định hướng Nhật Bản và chuyển tiếp quốc tế (3xx, 4xx). Đọc từ ba bảng ảnh trên trang trường.",
    "programs": [
     {
      "code": "106",
@@ -159,6 +159,226 @@ export const researchedSchoolDetails = {
      "code": "159",
      "name": "Kỹ thuật Bán dẫn",
      "score": 85.8
+    },
+    {
+     "code": "206",
+     "name": "Khoa học Máy tính (dạy và học bằng tiếng Anh)",
+     "score": 84.23
+    },
+    {
+     "code": "207",
+     "name": "Kỹ thuật Máy tính (dạy và học bằng tiếng Anh)",
+     "score": 81.54
+    },
+    {
+     "code": "209",
+     "name": "Kỹ thuật Cơ khí (dạy và học bằng tiếng Anh)",
+     "score": 79.07
+    },
+    {
+     "code": "210",
+     "name": "Kỹ thuật Cơ Điện tử (dạy và học bằng tiếng Anh)",
+     "score": 82.14
+    },
+    {
+     "code": "211",
+     "name": "Chuyên ngành Kỹ thuật Robot (dạy và học bằng tiếng Anh)",
+     "score": 78.53
+    },
+    {
+     "code": "214",
+     "name": "Kỹ thuật Hóa học (dạy và học bằng tiếng Anh)",
+     "score": 69.22
+    },
+    {
+     "code": "215",
+     "name": "Nhóm ngành Quản lý dự án Xây dựng và Kỹ thuật Xây dựng (dạy và học bằng tiếng Anh)",
+     "score": 56.65
+    },
+    {
+     "code": "217",
+     "name": "Chuyên ngành Kiến trúc Cảnh quan (dạy và học bằng tiếng Anh)",
+     "score": 55.82
+    },
+    {
+     "code": "218",
+     "name": "Công nghệ Sinh học (dạy và học bằng tiếng Anh)",
+     "score": 59.96
+    },
+    {
+     "code": "219",
+     "name": "Công nghệ Thực phẩm (dạy và học bằng tiếng Anh)",
+     "score": 58.77
+    },
+    {
+     "code": "220",
+     "name": "Kỹ thuật Dầu khí (dạy và học bằng tiếng Anh)",
+     "score": 55.76
+    },
+    {
+     "code": "223",
+     "name": "Quản lý Công nghiệp (dạy và học bằng tiếng Anh)",
+     "score": 65.81
+    },
+    {
+     "code": "225",
+     "name": "Nhóm ngành Tài nguyên và Môi trường (dạy và học bằng tiếng Anh)",
+     "score": 57.04
+    },
+    {
+     "code": "228",
+     "name": "Logistics và Quản lý Chuỗi Cung ứng (dạy và học bằng tiếng Anh)",
+     "score": 78.04
+    },
+    {
+     "code": "229",
+     "name": "Kỹ thuật Vật liệu (dạy và học bằng tiếng Anh)",
+     "score": 67.15
+    },
+    {
+     "code": "237",
+     "name": "Chuyên ngành Kỹ thuật Y sinh (dạy và học bằng tiếng Anh)",
+     "score": 65.9
+    },
+    {
+     "code": "242",
+     "name": "Kỹ thuật Ô tô (dạy và học bằng tiếng Anh)",
+     "score": 71.22
+    },
+    {
+     "code": "245",
+     "name": "Kỹ thuật Hàng không (dạy và học bằng tiếng Anh)",
+     "score": 79.87
+    },
+    {
+     "code": "251",
+     "name": "Khoa học Dữ liệu (dạy và học bằng tiếng Anh)",
+     "score": 80.68
+    },
+    {
+     "code": "252",
+     "name": "Kỹ thuật Đường sắt (dạy và học bằng tiếng Anh)",
+     "score": 58.67
+    },
+    {
+     "code": "253",
+     "name": "Chuyên ngành Kinh doanh số (dạy và học bằng tiếng Anh)",
+     "score": 61.58
+    },
+    {
+     "code": "254",
+     "name": "Chuyên ngành Công nghệ Sinh học số (dạy và học bằng tiếng Anh)",
+     "score": 56.77
+    },
+    {
+     "code": "255",
+     "name": "Chuyên ngành Kinh tế Tuần hoàn (dạy và học bằng tiếng Anh)",
+     "score": 56.36
+    },
+    {
+     "code": "256",
+     "name": "Kỹ thuật Hạt nhân (dạy và học bằng tiếng Anh)",
+     "score": 56.91
+    },
+    {
+     "code": "257",
+     "name": "Chuyên ngành Năng lượng Tái tạo (dạy và học bằng tiếng Anh)",
+     "score": 61.71
+    },
+    {
+     "code": "258",
+     "name": "Thiết kế Vi mạch (dạy và học bằng tiếng Anh)",
+     "score": 85.51
+    },
+    {
+     "code": "259",
+     "name": "Kỹ thuật Bán dẫn (dạy và học bằng tiếng Anh)",
+     "score": 82.66
+    },
+    {
+     "code": "208",
+     "name": "Kỹ thuật Điện - Điện tử (Chương trình Tiên tiến, giảng dạy bằng tiếng Anh)",
+     "score": 83.27
+    },
+    {
+     "code": "406",
+     "name": "Trí tuệ Nhân tạo (Liên kết cử nhân kỹ thuật quốc tế, ĐH Công nghệ Sydney cấp bằng)",
+     "score": 73.21
+    },
+    {
+     "code": "416",
+     "name": "Công nghệ Thông tin (Liên kết cử nhân kỹ thuật quốc tế, ĐH Công nghệ Sydney cấp bằng)",
+     "score": 70.18
+    },
+    {
+     "code": "266",
+     "name": "Khoa học Máy tính (Chương trình định hướng Nhật Bản)",
+     "score": 78.69
+    },
+    {
+     "code": "268",
+     "name": "Cơ Kỹ thuật (Chương trình định hướng Nhật Bản)",
+     "score": 73.96
+    },
+    {
+     "code": "306",
+     "name": "Khoa học Máy tính | Úc, New Zealand (Chuyển tiếp quốc tế)",
+     "score": 70.84
+    },
+    {
+     "code": "307",
+     "name": "Kỹ thuật Máy tính | Úc (Chuyển tiếp quốc tế)",
+     "score": 62.37
+    },
+    {
+     "code": "308",
+     "name": "Kỹ thuật Điện - Điện tử | Úc, Hàn Quốc, Anh Quốc (Chuyển tiếp quốc tế)",
+     "score": 68.85
+    },
+    {
+     "code": "309",
+     "name": "Kỹ thuật Cơ khí | Mỹ, Úc (Chuyển tiếp quốc tế)",
+     "score": 82.42
+    },
+    {
+     "code": "310",
+     "name": "Kỹ thuật Cơ Điện tử | Mỹ, Úc (Chuyển tiếp quốc tế)",
+     "score": 61.51
+    },
+    {
+     "code": "314",
+     "name": "Kỹ thuật Hóa học | Úc, Anh Quốc (Chuyển tiếp quốc tế)",
+     "score": 75.3
+    },
+    {
+     "code": "315",
+     "name": "Kỹ thuật Xây dựng | Úc, Anh Quốc (Chuyển tiếp quốc tế)",
+     "score": 67.58
+    },
+    {
+     "code": "319",
+     "name": "Công nghệ Thực phẩm | New Zealand (Chuyển tiếp quốc tế)",
+     "score": 61.51
+    },
+    {
+     "code": "323",
+     "name": "Quản lý Công nghiệp | Úc, Pháp, Hàn Quốc (Chuyển tiếp quốc tế)",
+     "score": 61.51
+    },
+    {
+     "code": "325",
+     "name": "Kỹ thuật Môi trường; Quản lý Tài nguyên & Môi trường | Úc (Chuyển tiếp quốc tế)",
+     "score": 61.51
+    },
+    {
+     "code": "342",
+     "name": "Kỹ thuật Ô tô | Úc (Chuyển tiếp quốc tế)",
+     "score": 61.51
+    },
+    {
+     "code": "345",
+     "name": "Kỹ thuật Hàng không | Úc (Chuyển tiếp quốc tế)",
+     "score": 78.91
     }
    ]
   }
@@ -547,7 +767,7 @@ export const researchedSchoolDetails = {
    "source": "https://hcmussh.edu.vn/bai-viet/truong-dh-khxh-nv-dhqg-hcm-cong-bo-diem-chuan-xet-tuyen-dai-hoc-chinh-quy-nam-2026",
    "scale": 100,
    "method": "Điểm chuẩn 2026, phương thức xét tuyển tổng hợp (mã 500), thang 100, chương trình Chuẩn",
-   "note": "Trường công bố ngày 10/08/2026 theo 3 đối tượng xét tuyển (ĐT01, ĐT02, ĐT03) với các thành phần điểm khác nhau; bảng này lấy cột ĐT01, mức thấp nhất hoặc bằng hai cột còn lại (ĐT02 cao hơn tối đa khoảng 1,4 điểm). Chương trình liên kết 2+2 và Chuẩn quốc tế có ",
+   "note": "Trường công bố ngày 10/08/2026 theo 3 đối tượng xét tuyển (ĐT01, ĐT02, ĐT03) với các thành phần điểm khác nhau; bảng này lấy cột ĐT01, mức thấp nhất hoặc bằng hai cột còn lại (ĐT02 cao hơn tối đa khoảng 1,4 điểm). Gồm một phần chương trình Chuẩn quốc tế (Ngôn ",
    "programs": [
     {
      "code": "7140101",
@@ -758,6 +978,41 @@ export const researchedSchoolDetails = {
      "code": "73106A1",
      "name": "Kinh doanh thương mại Hàn Quốc",
      "score": 76.9
+    },
+    {
+     "code": "7220201QT",
+     "name": "Ngôn ngữ Anh (Chuẩn quốc tế)",
+     "score": 80.1
+    },
+    {
+     "code": "7220204QT",
+     "name": "Ngôn ngữ Trung Quốc (Chuẩn quốc tế)",
+     "score": 78.1
+    },
+    {
+     "code": "7220205QT",
+     "name": "Ngôn ngữ Đức (Chuẩn quốc tế)",
+     "score": 72
+    },
+    {
+     "code": "7220201LK",
+     "name": "Ngôn ngữ Anh (Liên kết 2+2)",
+     "score": 71.4
+    },
+    {
+     "code": "7220204LK",
+     "name": "Ngôn ngữ Trung Quốc (Liên kết 2+2)",
+     "score": 75.5
+    },
+    {
+     "code": "7310206LK",
+     "name": "Quan hệ quốc tế (Liên kết 2+2)",
+     "score": 70
+    },
+    {
+     "code": "7320101LK",
+     "name": "Truyền thông chuyên ngành báo chí (Liên kết 2+2)",
+     "score": 70
     }
    ]
   }
@@ -8995,6 +9250,151 @@ export const researchedSchoolDetails = {
    ]
   }
  },
+ "hucfl": {
+  "homepage": "https://huflis.edu.vn/",
+  "tuition": {
+   "year": 2026,
+   "summary": "Năm học 2026–2027: 685.000 đ/tín chỉ cho khóa 21, 22, 23 (khóa 23 tuyển sinh 2026); 630.000 đ/tín chỉ cho khóa 20 trở về trước. Thông tin tuyển sinh 2026 dự kiến: khối Sư phạm 17,9–23,29 triệu đ/năm; khối Ngôn ngữ và các ngành khác 19,1–26,03 triệu đ/năm.",
+   "source": "https://huflis.edu.vn/vi/index.php/tin-tuc/thong-bao-muc-thu-hoc-phi-he-dai-hoc-chinh-quy-nam-hoc-2026-2027-tai-truong-dai-hoc-ngoai-ngu-dai-hoc-hue",
+   "published": "2026-09-18"
+  },
+  "admission": {
+   "summary": "5 phương thức: điểm thi tốt nghiệp THPT 2026; học bạ THPT; xét tuyển thẳng; kết hợp điểm thi THPT với chứng chỉ ngoại ngữ; kết hợp học bạ với chứng chỉ ngoại ngữ.",
+   "source": "https://tuyensinh.huflis.edu.vn/tin-tuc/thong-tin-tuyen-sinh-dai-hoc-chinh-quy-nam-2026_20251231114356",
+   "published": "2026-03-28"
+  },
+  "scores": {
+   "source": "https://tuyensinh.hueuni.edu.vn/News/Download/10722",
+   "scale": 30,
+   "method": "Điểm thi tốt nghiệp THPT 2026 (cột 'Điểm thi tốt nghiệp THPT/Kết hợp') · thang 30",
+   "note": "Bảng điểm trúng tuyển đợt 1 năm 2026 của Đại học Huế (PDF đính kèm QĐ ngày 10/08/2026). Lấy cột đầu 'Điểm thi tốt nghiệp THPT/ Kết hợp'; phương thức học bạ, ĐGNL có điểm khác. Văn bản không ghi thang điểm; thang 30 suy ra từ giá trị điểm. Trang trường (tuyensi",
+   "programs": [
+    {
+     "code": "7140231",
+     "name": "Sư phạm Tiếng Anh",
+     "score": 27.77
+    },
+    {
+     "code": "7140233",
+     "name": "Sư phạm Tiếng Pháp",
+     "score": 23.7
+    },
+    {
+     "code": "7140234",
+     "name": "Sư phạm Tiếng Trung Quốc",
+     "score": 27.7
+    },
+    {
+     "code": "7220201",
+     "name": "Ngôn ngữ Anh",
+     "score": 20.5
+    },
+    {
+     "code": "7220202",
+     "name": "Ngôn ngữ Nga",
+     "score": 15
+    },
+    {
+     "code": "7220203",
+     "name": "Ngôn ngữ Pháp",
+     "score": 15
+    },
+    {
+     "code": "7220204",
+     "name": "Ngôn ngữ Trung Quốc",
+     "score": 23.5
+    },
+    {
+     "code": "7220209",
+     "name": "Ngôn ngữ Nhật",
+     "score": 15.5
+    },
+    {
+     "code": "7220210",
+     "name": "Ngôn ngữ Hàn Quốc",
+     "score": 20.5
+    },
+    {
+     "code": "7310601",
+     "name": "Quốc tế học",
+     "score": 15
+    },
+    {
+     "code": "7310630",
+     "name": "Việt Nam học",
+     "score": 15
+    },
+    {
+     "code": "7310640",
+     "name": "Hoa Kỳ học",
+     "score": 15
+    },
+    {
+     "code": "7320107",
+     "name": "Truyền thông quốc tế",
+     "score": 15
+    }
+   ]
+  },
+  "programs": {
+   "source": "https://tuyensinh.hueuni.edu.vn/News/Download/10667",
+   "note": "13 ngành theo Thông báo đăng ký xét tuyển 2026 của Đại học Huế (22/05/2026).",
+   "list": [
+    {
+     "code": "7140231",
+     "name": "Sư phạm Tiếng Anh"
+    },
+    {
+     "code": "7140233",
+     "name": "Sư phạm Tiếng Pháp"
+    },
+    {
+     "code": "7140234",
+     "name": "Sư phạm Tiếng Trung Quốc"
+    },
+    {
+     "code": "7220201",
+     "name": "Ngôn ngữ Anh"
+    },
+    {
+     "code": "7220202",
+     "name": "Ngôn ngữ Nga"
+    },
+    {
+     "code": "7220203",
+     "name": "Ngôn ngữ Pháp"
+    },
+    {
+     "code": "7220204",
+     "name": "Ngôn ngữ Trung Quốc"
+    },
+    {
+     "code": "7220209",
+     "name": "Ngôn ngữ Nhật"
+    },
+    {
+     "code": "7220210",
+     "name": "Ngôn ngữ Hàn Quốc"
+    },
+    {
+     "code": "7310601",
+     "name": "Quốc tế học"
+    },
+    {
+     "code": "7310630",
+     "name": "Việt Nam học"
+    },
+    {
+     "code": "7310640",
+     "name": "Hoa Kỳ học"
+    },
+    {
+     "code": "7320107",
+     "name": "Truyền thông quốc tế"
+    }
+   ]
+  }
+ },
  "phuxuan": {
   "homepage": "https://pxu.edu.vn/",
   "admission": {
@@ -10833,6 +11233,32 @@ export const researchedScholarships = [
   "publishedAt": "2026-02-24",
   "verifiedAt": "2026-11-11",
   "sourceUrl": "https://huemed-univ.edu.vn/uploads/Thongbao/TTTS2026_988.pdf"
+ },
+ {
+  "id": "hucfl-research-scholarship-1",
+  "schoolId": "hucfl",
+  "kind": "scholarship",
+  "funding": "editorial",
+  "status": "verified",
+  "availability": "reference",
+  "title": "Học bổng Hiệp định ngành Ngôn ngữ Nga",
+  "description": "Học bổng toàn phần 5 năm dành cho tân sinh viên xuất sắc đạt giải kỳ thi Olympic tiếng Nga (Hà Nội).",
+  "publishedAt": "2026-03-28",
+  "verifiedAt": "2026-11-11",
+  "sourceUrl": "https://tuyensinh.huflis.edu.vn/tin-tuc/thong-tin-tuyen-sinh-dai-hoc-chinh-quy-nam-2026_20251231114356"
+ },
+ {
+  "id": "hucfl-research-scholarship-2",
+  "schoolId": "hucfl",
+  "kind": "scholarship",
+  "funding": "editorial",
+  "status": "verified",
+  "availability": "reference",
+  "title": "Học bổng Vì ngày mai tươi sáng 2026",
+  "description": "Học bổng cho tân sinh viên 2026 do tổ chức Children of Vietnam tại Huế tài trợ, xét chọn theo hồ sơ; trang không ghi mức tiền.",
+  "publishedAt": "2026-10-13",
+  "verifiedAt": "2026-11-11",
+  "sourceUrl": "https://tuyensinh.huflis.edu.vn/tin-tuc/hb-vi-ngay-mai-tuoi-sang-2026-ds"
  },
  {
   "id": "phuxuan-research-scholarship-1",

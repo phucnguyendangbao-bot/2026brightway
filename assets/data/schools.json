@@ -2513,12 +2513,12 @@
     "verified_at": null,
     "reviewed_at": "2026-10-14",
     "verification_note": "Thông tin chi tiết trường cần đối chiếu đề án đúng năm; bộ nguồn Bộ GD&ĐT không xác nhận chỉ tiêu, tổ hợp, học phí hay điểm chuẩn của trường.",
-    "name": "Đại học KHXH & NV – Đại học Huế",
+    "name": "Đại học Ngoại ngữ – Đại học Huế",
     "short": "HUCFL",
     "city": "Huế",
     "logoUrl": "assets/images/logos/hucfl.svg",
     "logoFallback": "📣",
-    "website": "https://husc.hueuni.edu.vn/",
+    "website": "https://huflis.edu.vn/",
     "admissionUrl": "https://hucfl.hueuni.edu.vn/tuyen-sinh",
     "admissionMethods": [
       {
@@ -2561,14 +2561,8 @@
       "social",
       "education"
     ],
-    "campuses": [
-      "Q.Hương Trà, Huế"
-    ],
-    "programs": [
-      "KHXH&NV",
-      "Luật",
-      "Ngôn ngữ"
-    ],
+    "campuses": ["Huế"],
+    "programs": ["Sư phạm ngoại ngữ", "Ngôn ngữ", "Quốc tế học"],
     "provinces": "Thừa Thiên Huế, Quảng Trị, Quảng Nam",
     "cutoffScores": {
       "thptqg": {

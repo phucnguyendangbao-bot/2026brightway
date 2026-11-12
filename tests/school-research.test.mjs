@@ -40,7 +40,7 @@ test('researched data is 2026 only, scores stay within their stated scale and ca
 });
 
 test('reviewed exclusions stay out: draft đề án, mislabelled school, unclear year, flattened table', () => {
-  assert.equal(researchedSchoolDetails.hucfl, undefined);
+  assert.match(researchedSchoolDetails.hucfl.tuition.source, /huflis\.edu\.vn/, 'record renamed to ĐH Ngoại ngữ Huế, so its own research is used');
   // Pass 1 rows that were excluded only come back from a second, cleaner source.
   assert.equal(researchedSchoolDetails.due.admission.published, '2026-06-22', 'final notice, not the draft');
   assert.equal(researchedSchoolDetails.phuxuan.tuition.published, '2026-05-30', 'dated 2026 admissions post');
@@ -50,7 +50,7 @@ test('reviewed exclusions stay out: draft đề án, mislabelled school, unclear
 });
 
 test('pass 2 fills from tables read on the school pages, with every row inside its scale', () => {
-  const filled = ['ussh', 'due', 'uit', 'hcmut', 'hcmus', 'husc', 'hcmiu', 'hub', 'nlu', 'sgu', 'tdtu', 'uel', 'ctump', 'hcmue', 'vku'];
+  const filled = ['hucfl', 'ussh', 'due', 'uit', 'hcmut', 'hcmus', 'husc', 'hcmiu', 'hub', 'nlu', 'sgu', 'tdtu', 'uel', 'ctump', 'hcmue', 'vku'];
   for (const id of filled) assert.ok(researchedSchoolDetails[id].scores.programs.length > 0, id);
   assert.equal(researchedSchoolDetails.hcmue.scores.programs.length, 47, 'round-1 table, not the 3-row round 2');
   for (const id of ['nlu', 'due', 'hcmut', 'ueh', 'dut', 'ctump', 'sgu', 'hcmiu']) assert.match(researchedSchoolDetails[id].tuition.summary, /2026/, id);

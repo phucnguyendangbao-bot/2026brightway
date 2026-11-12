@@ -90,8 +90,8 @@ test('accentless search, abbreviations and synonyms rank exact names above broad
   assert.equal(searchScore(exact,'duoc hoc'),0);
 });
 
-test('all 35 university profiles keep their original program rows and admissions values', () => {
-  assert.equal(schools.length,35);
+test('all 36 university profiles keep their original program rows and admissions values', () => {
+  assert.equal(schools.length,36);
   const populated = schools.filter(school => detailsForSchool(school.id)?.programs?.length);
   assert.equal(populated.length,23);
   for (const school of populated) {

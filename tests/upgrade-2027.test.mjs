@@ -8,14 +8,15 @@ import policy from '../assets/data/admissions-policy.js';
 import registry from '../assets/data/school-admissions-sources.js';
 const schools = JSON.parse(readFileSync(new URL('../assets/data/schools.json',import.meta.url)));
 
-test('40 legacy records become 35 school profiles, 2 regional universities and 1 unresolved identity; original data untouched', () => {
+test('40 legacy records become 36 school profiles and 2 regional universities, with no unresolved identity; original data untouched', () => {
   const before = JSON.stringify(schools);
   const catalog = buildUniversityCatalog(schools,registry.universities);
-  assert.deepEqual(catalog.stats,{universities:35,systems:2,unresolved:1,total:37});
-  assert.equal(new Set(catalog.schools.map(s=>s.id)).size,37);
+  assert.deepEqual(catalog.stats,{universities:36,systems:2,unresolved:0,total:38});
+  assert.equal(new Set(catalog.schools.map(s=>s.id)).size,38);
   assert.equal(canonicalSchoolId('fpt-ai'),'fpt');
   assert.equal(canonicalSchoolId('khtn-hcm'),'hcmus');
-  assert.equal(catalog.unresolved[0].id,'hucfl');
+  assert.equal(catalog.unresolved.length,0);
+  assert.match(catalog.schools.find(s=>s.id==='hucfl').name,/Ngoại ngữ/);
   assert.equal(JSON.stringify(schools),before);
   assert.equal(catalog.schools.some(s=>s.admission_year===2027),false);
   assert.match(catalog.schools.find(s=>s.id==='hufi').name,/Công Thương/);

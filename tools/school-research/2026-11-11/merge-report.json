@@ -13,7 +13,7 @@
   "hcmut": {
    "got": [
     "tuition",
-    "scores(29)"
+    "scores(73)"
    ],
    "not_found": {}
   },
@@ -31,7 +31,7 @@
   },
   "ussh": {
    "got": [
-    "scores(42)"
+    "scores(49)"
    ],
    "not_found": {}
   },
@@ -302,7 +302,18 @@
    }
   },
   "hucfl": {
-   "excluded": "BrightWay record is labelled KHXH&NV Huế but research covers ĐH Ngoại ngữ Huế; fix the record identity first"
+   "got": [
+    "website",
+    "tuition",
+    "admission",
+    "scores(13)",
+    "programs(13)",
+    "scholarship",
+    "scholarship"
+   ],
+   "not_found": {
+    "identity_note": "context.json ghi tên 'Đại học KHXH & NV' nhưng mã hucfl/brief là Trường ĐH Ngoại ngữ, ĐH Huế (nay dùng tên miền huflis.edu.vn). Đại học Huế năm 2026 không có trường KHXH&NV riêng; các ngành Văn học, Lịch sử, Hán Nôm... thuộc ĐH Khoa học (husc). Dữ liệu ở đây là của ĐH Ngoại ngữ."
+   }
   },
   "phuxuan": {
    "got": [

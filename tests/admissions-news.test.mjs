@@ -10,7 +10,7 @@ const schools = buildUniversityCatalog(raw).schools.filter(school => school.iden
 const byId = new Map(schools.map(school => [school.id, school]));
 
 test('only actual university profiles receive dated official 2026/2027 news', () => {
-  assert.equal(schools.length, 35);
+  assert.equal(schools.length, 36);
   assert.ok(admissionNews.length > 0);
   const seen = new Set();
   for (const item of admissionNews) {

@@ -21,7 +21,7 @@ const definitions = [
   ['dut','https://dut.udn.vn/','needs_review'], ['qnu','https://qnu.edu.vn/'],
   ['husc','https://husc.hueuni.edu.vn/','needs_review'], ['huaf','https://huaf.edu.vn/'],
   ['phuxuan','https://pxu.edu.vn/'], ['vku','https://vku.udn.vn/','needs_review'],
-  ['dnu','https://www.udn.vn/'], ['hue-uni','https://hueuni.edu.vn/portal/vi/'],
+  ['dnu','https://www.udn.vn/'], ['hucfl','https://huflis.edu.vn/'], ['hue-uni','https://hueuni.edu.vn/portal/vi/'],
   ['sgu','https://sgu.edu.vn/'], ['uel','https://www.uel.edu.vn/','needs_review'],
 ];
 export const identities = Object.fromEntries(definitions.map(([id, source_url, status = 'identity_source_opened']) => [id, {
@@ -32,11 +32,7 @@ Object.assign(identities.ftu, { name: 'Trường Đại học Ngoại thương',
 Object.assign(identities.hufi, { name: 'Trường Đại học Công Thương TP.HCM', short: 'HUIT' });
 Object.assign(identities['hue-uni'], { short: 'HUEUNI' });
 Object.assign(identities['smp-udn'], { name: 'Trường Y Dược – Đại học Đà Nẵng' });
-identities.hucfl = {
-  id:'hucfl', entity_kind:'unresolved', status:'identity_conflict', updated_at:REVIEWED_AT,
-  source_url:'https://sinhvien.hueuni.edu.vn/',
-  note:'Tên KHXH & NV – Đại học Huế không khớp đơn vị ở nguồn đang có; đường dẫn gốc lại trỏ tới Đại học Khoa học. Chưa đếm là một trường độc lập, không tự gán sang Đại học Ngoại ngữ.',
-};
+Object.assign(identities.hucfl, { name: 'Trường Đại học Ngoại ngữ – Đại học Huế', short: 'HUCFL' });
 
 export function buildUniversityCatalog(raw, registry = []) {
   if (!Array.isArray(raw)) throw new Error('Danh sách trường không hợp lệ');

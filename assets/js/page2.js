@@ -430,10 +430,6 @@ function scrollToTargetFromUrl() {
   try { requested = decodeURIComponent(requested); }
   catch { console.warn('[school catalog] Invalid encoded school identifier'); }
   const target = canonicalSchoolId(requested);
-  if (target === 'hucfl') {
-    mainContent.insertAdjacentHTML('afterbegin', '<div class="school-dialog-empty">Bản ghi trường này đang chờ xác minh danh tính. Vui lòng kiểm tra tại Đại học Huế.</div>');
-    return;
-  }
   if (!target || !schools.some(school => school.id === target)) return;
   if (!document.getElementById(target)) {
     document.getElementById('searchInput').value = '';

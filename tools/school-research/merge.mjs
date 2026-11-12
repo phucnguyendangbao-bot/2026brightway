@@ -10,7 +10,7 @@ const { canonicalSchoolId } = await import(repo + 'assets/data/university-identi
 const PARENTS = {
   hcmut: ['vnuhcm.edu.vn'], uit: ['vnuhcm.edu.vn'], hcmus: ['vnuhcm.edu.vn'], ussh: ['vnuhcm.edu.vn'], hcmiu: ['vnuhcm.edu.vn'], uel: ['vnuhcm.edu.vn'],
   dut: ['udn.vn', 'ud.edu.vn'], due: ['udn.vn', 'ud.edu.vn'], 'smp-udn': ['udn.vn', 'ud.edu.vn'], vku: ['udn.vn', 'ud.edu.vn'],
-  huemed: ['hueuni.edu.vn'], husc: ['hueuni.edu.vn', 'husc.edu.vn'], huaf: ['hueuni.edu.vn'], hucfl: ['hueuni.edu.vn'], 'hue-uni': ['hueuni.edu.vn'],
+  huemed: ['hueuni.edu.vn'], husc: ['hueuni.edu.vn', 'husc.edu.vn'], huaf: ['hueuni.edu.vn'], hucfl: ['hueuni.edu.vn', 'huflis.edu.vn'], 'hue-uni': ['hueuni.edu.vn'],
 };
 const BLOCK = /tuyensinh247|thuvienphapluat|vnexpress|thanhnien|tuoitre|dantri|vietnamnet|wikipedia|facebook|zingnews|znews|kenh14|laodong|nld\.com|giaoducthoidai|baomoi|hocmai|diemthi|kenhtuyensinh|edu2review|vietjack/i;
 const root = host => host.replace(/^www\./, '').split('.').slice(-3).join('.');
@@ -43,7 +43,6 @@ const date = v => /^\d{4}-\d{2}-\d{2}$/.test(v || '') ? v : null;
 
 // Reviewed exclusions: kept out of the site even though a page was found.
 const EXCLUDE = {
-  hucfl: { all: 'BrightWay record is labelled KHXH&NV Huế but research covers ĐH Ngoại ngữ Huế; fix the record identity first' },
   due: { admission: 'draft đề án (dự thảo), not final', programs: 'draft đề án (dự thảo), not final' },
   donga: { scores: 'table extracted flattened; agent asked for visual check' },
   phuxuan: { tuition: 'page does not state the school year' },
@@ -53,7 +52,7 @@ const EXCLUDE = {
 };
 // Pass 2 review: the hucfl identity is still unresolved; HCMUE's agent row is round 2 only (the full round-1 table was read in the browser).
 const EXCLUDE_PASS2 = {
-  '*': { hucfl: { all: 'record identity unresolved' } },
+  '*': {},
   'pass2/c3.json': { hcmue: { scores: 'round-2 table only; the round-1 table was read in the browser' } },
 };
 // Reviewed wording: partial score tables say so, and an amount not quoted verbatim is left out.

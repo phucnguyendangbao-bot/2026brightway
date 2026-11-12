@@ -31,7 +31,7 @@ export const SCHOOL_INDEX = [{"id":"hcmut","short":"HCMUT","name":"Đại học 
  {"id":"qnu","short":"QNU","name":"Đại học Quy Nhơn"},
  {"id":"husc","short":"HUSC","name":"Đại học Khoa học – Đại học Huế"},
  {"id":"huaf","short":"HUAF","name":"Đại học Nông Lâm – Đại học Huế"},
- {"id":"hucfl","short":"HUCFL","name":"Đại học KHXH & NV – Đại học Huế"},
+ {"id":"hucfl","short":"HUCFL","name":"Đại học Ngoại ngữ – Đại học Huế"},
  {"id":"phuxuan","short":"PXU","name":"Đại học Phú Xuân"},
  {"id":"vku","short":"VKU","name":"Đại học Công nghệ TT&TT Việt – Hàn"},
  {"id":"dnu","short":"DN","name":"Đại học Đà Nẵng"},

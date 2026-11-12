@@ -300,9 +300,9 @@ window.UNI_LOGOS = {
     fallback: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=120&h=120&fit=crop'
   },
   'HUCFL': {
-    name: 'ĐH KHXH & NV - ĐH Huế',
+    name: 'ĐH Ngoại ngữ - ĐH Huế',
     short: 'HUCFL',
-    aliases: ['KHXH NV Huế', 'Đại học KHXH NV Đại học Huế', 'KHXH NV Đại học Huế'],
+    aliases: ['Ngoại ngữ Huế', 'Đại học Ngoại ngữ Đại học Huế', 'HUFLIS'],
     logoLocal: 'assets/images/logos/hucfl.svg',
     logo: 'https://upload.wikimedia.org/wikipedia/vi/thumb/c/c7/HUCFL_logo.png/330px-HUCFL_logo.png',
     fallback: 'https://images.unsplash.com/photo-1543269664-7eef42226a21?w=120&h=120&fit=crop'
