@@ -344,3 +344,53 @@ html.bw-lite ::view-transition-old(root), html.bw-lite ::view-transition-new(roo
 /* With the start button carrying on the journey, the welcome card keeps only the greeting and the dots. */
 html body #home-view #hero-actions .story-resume-go[hidden] { display: none !important; }
 html body #home-view #hero-actions .story-resume:has(.story-resume-go[hidden]) { padding-bottom: 18px; }
+
+/* =====================================================================================
+   Depth. The hero cards stand on a shallow curve (the middle pane forward, the side panes turned
+   in), the whole set leans toward the pointer, and it tips
+   back and recedes as the opening scrolls away. The contents cards stand up as they arrive, and
+   the dark chapters open out of the page. Transforms only, so the compositor does the work.
+   ===================================================================================== */
+@media (min-width: 1001px) and (prefers-reduced-motion: no-preference) {
+  html body #home-view #hero-actions .glow-inner { perspective: 1700px; perspective-origin: 50% 75%; }
+  html body #home-view #hero-actions .glow-cards {
+    transform-style: preserve-3d;
+    transform: rotateX(var(--crx, 0deg)) rotateY(var(--cry, 0deg));
+  }
+  html body #home-view #hero-actions .glow-card { backface-visibility: hidden; }
+  html body #home-view #hero-actions .glow-card-mid { translate: 0 0 48px; }
+  html body #home-view #hero-actions .glow-card-left { rotate: y 13deg; }
+  html body #home-view #hero-actions .glow-card-right { rotate: y -13deg; }
+}
+@supports (animation-timeline: scroll()) {
+  @media (min-width: 1001px) and (prefers-reduced-motion: no-preference) {
+    html:not(.bw-cine) body #home-view #hero-actions .glow-cards {
+      animation: bw-hero-lift linear both, cine-recede linear both;
+      animation-timeline: scroll(root), scroll(root);
+      animation-range: 0px 100vh, 0px 100vh;
+    }
+  }
+}
+@keyframes cine-recede { to { rotate: x 26deg; scale: .9; opacity: .5; } }
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* Contents: each chapter card stands up off the page, one a beat after the other. */
+    html body #home-view .ks-toc-list { perspective: 2200px; }
+    html body #home-view .ks-toc-list > li {
+      transform-origin: 50% 100%;
+      animation: cine-stand linear both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 32%;
+    }
+    html body #home-view .ks-toc-list > li:nth-child(2) { animation-range: entry 12% cover 36%; }
+    html body #home-view .ks-toc-list > li:nth-child(3) { animation-range: entry 19% cover 40%; }
+    html body #home-view .ks-toc-list > li:nth-child(4) { animation-range: entry 26% cover 44%; }
+    html body #home-view .ks-toc-list > li:nth-child(5) { animation-range: entry 33% cover 48%; }
+    /* Dark chapters: the panel tips up out of the page as it opens to full width. */
+    html body #home-view .story-chapter.is-deep { perspective: 1600px; perspective-origin: 50% 0; }
+    html body #home-view .story-chapter.is-deep::before { transform-origin: 50% 0; animation-name: cine-panel-open; }
+  }
+}
+@keyframes cine-stand { from { opacity: 0; rotate: x 62deg; translate: 0 48px; } 60% { opacity: 1; } to { opacity: 1; rotate: x 0deg; translate: 0 0; } }
+@keyframes cine-panel-open { from { scale: .9 .97; rotate: x 9deg; } to { scale: 1 1; rotate: x 0deg; } }

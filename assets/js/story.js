@@ -62,9 +62,14 @@ function initTravellers() {
     update(true);
   }
 
-  function progressOf(it) {
-    if (reduced.matches) return it.chapter.classList.contains('is-done') ? 1 : 0;
-    return Math.max(0, Math.min(1, (scrollY + innerHeight * 0.85 - it.top) / it.height));
+  // Read the scroll position and window height once per frame and hand them in: reading them again
+  // between style writes would make the browser lay the page out once per chapter.
+  let still = reduced.matches, vh = innerHeight;
+  reduced.addEventListener?.('change', () => { still = reduced.matches; });
+  addEventListener('resize', () => { vh = innerHeight; }, { passive: true });
+  function progressOf(it, sy = scrollY) {
+    if (still) return it.chapter.classList.contains('is-done') ? 1 : 0;
+    return Math.max(0, Math.min(1, (sy + vh * 0.85 - it.top) / it.height));
   }
 
   function place(it, p) {
@@ -81,7 +86,8 @@ function initTravellers() {
 
   function update(all) {
     ticking = false;
-    for (const it of (all ? items : active)) place(it, progressOf(it));
+    const sy = scrollY;
+    for (const it of (all ? items : active)) place(it, progressOf(it, sy));
   }
 
   if ('IntersectionObserver' in window) {

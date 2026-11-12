@@ -137,8 +137,12 @@
     g.addColorStop(1, 'rgba(252,115,77,0)');
     s.fillStyle = g; s.fillRect(0, 0, 64, 64);
 
-    const dpr = Math.min(1.5, devicePixelRatio || 1);
+    // The sparks are soft dots, so they are painted at reduced resolution and scaled up: a quarter
+    // of the pixels to clear and blend each frame, with no visible difference.
+    const dpr = Math.min(1, devicePixelRatio || 1) * 0.7;
     let w = 0, h = 0, list = [], running = false, visible = false, last = 0, frame = 0;
+    // Quality steps down on its own if this device cannot keep up: 2 full, 1 fewer sparks and no lines, 0 off.
+    let level = 2, slow = 0, sampled = 0, wanted = 0;
     let px = 0, py = 0, tx = 0, ty = 0;
     const rand = (a, b) => a + Math.random() * (b - a);
     const gauss = () => (Math.random() + Math.random() + Math.random()) / 3;
@@ -162,14 +166,35 @@
       w = Math.max(1, r.width); h = Math.max(1, r.height);
       canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const n = Math.round(Math.max(22, Math.min(95, (w * h) / 15000)) * density);
+      wanted = Math.round(Math.max(22, Math.min(80, (w * h) / 16000)) * density);
+      const n = level === 2 ? wanted : Math.round(wanted / 2);
       while (list.length < n) list.push(spawn({}, true));
       list.length = n;
     };
+    let drawn = 0, tick = 0;
     const draw = now => {
       frame = 0;
       if (!running) return;
-      const dt = Math.min(0.05, (now - (last || now)) / 1000);
+      // Watch the real gaps between screen frames for two seconds at a time; many long gaps mean
+      // the device is struggling, and the sparks step down rather than slow the page.
+      if (tick && !document.hidden) {
+        sampled++; if (now - tick > 24) slow++;
+        if (sampled >= 120) {
+          if (slow > 40 && level > 0) {
+            level--;
+            if (level === 0) { canvas.classList.remove('is-on'); running = false; setTimeout(() => canvas.remove(), 1300); return; }
+            list.length = Math.round(wanted / 2);
+          }
+          sampled = 0; slow = 0;
+        }
+      }
+      tick = now;
+      // Thirty paints a second: the sparks drift under a pixel per frame, so the eye cannot tell,
+      // and the page keeps the other half of every second for scrolling.
+      if (now - drawn < 30) { frame = requestAnimationFrame(draw); return; }
+      drawn = now;
+      const gap = now - (last || now);
+      const dt = Math.min(0.05, gap / 1000);
       last = now;
       px += (tx - px) * 0.05; py += (ty - py) * 0.05;
       // Scrolling down sends the sparks streaming up faster, as if you were moving through them.
@@ -194,7 +219,7 @@
       // Close sparks join up for a moment: the way forming between points of light.
       ctx.globalCompositeOperation = 'source-over';
       ctx.lineWidth = 0.6;
-      for (let i = 0; i < near.length; i += 3) {
+      for (let i = 0; level === 2 && i < near.length; i += 3) {
         for (let j = i + 3; j < near.length; j += 3) {
           const dx = near[i] - near[j], dy = near[i + 1] - near[j + 1];
           const d2 = dx * dx + dy * dy;
@@ -208,8 +233,8 @@
       frame = requestAnimationFrame(draw);
     };
     const sync = () => {
-      const should = visible && !document.hidden && motionOK.matches;
-      if (should && !running) { running = true; last = 0; frame = requestAnimationFrame(draw); }
+      const should = level > 0 && visible && !document.hidden && motionOK.matches;
+      if (should && !running) { running = true; last = 0; tick = 0; frame = requestAnimationFrame(draw); }
       if (!should && running) { running = false; cancelAnimationFrame(frame); frame = 0; }
     };
     resize();
@@ -247,6 +272,30 @@
       if (!frame) frame = requestAnimationFrame(step);
     }, { passive: true });
     hero.addEventListener('pointerleave', () => { tx = 0; ty = 0; if (!frame) frame = requestAnimationFrame(step); });
+  }
+
+  /* ---------- The hero cards lean toward the pointer (desktop) ---------- */
+  function depth(hero) {
+    const cards = hero.querySelector('.glow-cards');
+    if (!cards || !finePointer.matches || !motionOK.matches || lite) return;
+    const wide = matchMedia('(min-width: 1001px)');
+    let tx = 0, ty = 0, x = 0, y = 0, frame = 0;
+    const step = () => {
+      // Ease toward the pointer; stop asking for frames once it has settled.
+      x += (tx - x) * 0.09; y += (ty - y) * 0.09;
+      cards.style.setProperty('--crx', `${(-y * 7).toFixed(2)}deg`);
+      cards.style.setProperty('--cry', `${(x * 11).toFixed(2)}deg`);
+      frame = Math.abs(tx - x) + Math.abs(ty - y) > 0.002 ? requestAnimationFrame(step) : 0;
+    };
+    const kick = () => { if (!frame) frame = requestAnimationFrame(step); };
+    hero.addEventListener('pointermove', e => {
+      if (!wide.matches) return;
+      const r = hero.getBoundingClientRect();
+      tx = Math.max(-1, Math.min(1, ((e.clientX - r.left) / r.width - 0.5) * 2));
+      ty = Math.max(-1, Math.min(1, ((e.clientY - r.top) / r.height - 0.6) * 2));
+      kick();
+    }, { passive: true });
+    hero.addEventListener('pointerleave', () => { tx = 0; ty = 0; kick(); });
   }
 
   /* ---------- Chapter titles rise word by word as they arrive ---------- */
@@ -299,31 +348,36 @@
       railSpan = Math.max(0, ol.clientHeight - 22);
       update();
     };
+    let vh = innerHeight, lastP = '', lastY = '', doneKey = '';
     const update = () => {
       ticking = false;
-      const eye = scrollY + innerHeight * 0.45;
-      const show = scrollY + innerHeight * 0.35 > heroBottom && eye < storyBottom;
+      const sy = scrollY;
+      const eye = sy + vh * 0.45;
+      const show = sy + vh * 0.35 > heroBottom && eye < storyBottom;
       if (show !== shown) { shown = show; nav.classList.toggle('is-shown', show); }
       let i = 0;
       while (i < tops.length - 1 && eye >= tops[i + 1]) i++;
       const span = (tops[i + 1] ?? storyBottom) - tops[i];
       const frac = Math.max(0, Math.min(1, (eye - tops[i]) / Math.max(1, span)));
       const p = eye < tops[0] ? 0 : Math.min(1, (i + (i < tops.length - 1 ? frac : 0)) / (tops.length - 1));
-      nav.style.setProperty('--rail-p', p.toFixed(4));
-      head.style.setProperty('--rail-y', `${(p * railSpan).toFixed(1)}px`);
+      // Write only what changed: an unchanged custom property still costs a style pass.
+      const pText = p.toFixed(3), yText = `${(p * railSpan).toFixed(1)}px`;
+      if (pText !== lastP) { lastP = pText; nav.style.setProperty('--rail-p', pText); }
+      if (yText !== lastY) { lastY = yText; head.style.setProperty('--rail-y', yText); }
       const at = eye < tops[0] ? -1 : i;
       if (at !== current) {
         current = at;
         items.forEach((li, k) => { li.classList.toggle('is-current', k === at); li.classList.toggle('is-passed', k < at); });
         items.forEach((li, k) => li.querySelector('a').toggleAttribute('aria-current', k === at));
       }
-      items.forEach((li, k) => li.classList.toggle('is-done', chapters[k].classList.contains('is-done')));
+      const done = chapters.map(ch => ch.classList.contains('is-done') ? 1 : 0).join('');
+      if (done !== doneKey) { doneKey = done; items.forEach((li, k) => li.classList.toggle('is-done', done[k] === '1')); }
     };
     addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
     let pending = 0;
     const remeasure = () => { cancelAnimationFrame(pending); pending = requestAnimationFrame(measure); };
     if ('ResizeObserver' in window) new ResizeObserver(remeasure).observe(story);
-    addEventListener('resize', remeasure);
+    addEventListener('resize', () => { vh = innerHeight; remeasure(); });
     addEventListener('load', remeasure);
     measure();
   }
@@ -380,6 +434,7 @@
       playOpening();
       sparks(hero.querySelector('.glow-sky'), { origin: 0.72, density: 1 });
       skyParallax(hero);
+      depth(hero);
       drop(hero);
       chapterTitles();
       thread();
