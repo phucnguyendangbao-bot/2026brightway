@@ -783,3 +783,152 @@ html { scroll-behavior: smooth; }
 .school-compare-profile { border:0; background:none; cursor:pointer; }
 #resetSchoolFilters, #clearSchoolCompare { color:#17465d; }
 @media(max-width:640px){.school-compare{margin:14px 12px 0;padding:18px 14px;border-radius:20px}.school-compare-heading{display:block}.school-compare-heading .school-save-button{margin-top:12px}.school-compare-table th,.school-compare-table td{padding:10px;font-size:.82rem}}
+
+/* =====================================================================================
+   Comparison, redesigned: a column per school with its logo up top (sticky while you read down),
+   a row per question with an icon, key numbers set large, missing data as a quiet tag, and the
+   source links as small buttons at the foot of each cell. The long caveat sits under the table.
+   ===================================================================================== */
+.school-compare { --cmp-ink: #0e2b39; --cmp-muted: #5d6478; --cmp-line: rgba(9, 49, 141, .1); --cmp-deep: #09318d; --cmp-coral: #fc734d;
+  padding: 26px 26px 20px; border-radius: 28px; }
+.school-compare-heading { align-items: center; margin-bottom: 18px; }
+.school-compare-heading h2 { font: 500 clamp(1.5rem, 1.2rem + .8vw, 1.9rem)/1.15 var(--bw-serif, 'Newsreader', Georgia, serif); letter-spacing: -.01em; }
+.school-compare-heading p { max-width: 52em; line-height: 1.55; }
+.school-compare .bw-visually-hidden { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+.school-compare-table-wrap { overflow: visible; }
+.school-compare-table, .school-compare-table.cmp-cols-2, .school-compare-table.cmp-cols-3 {
+  width: 100%; min-width: 0; table-layout: fixed;
+  border-collapse: separate; border-spacing: 0;
+  border: 1px solid var(--cmp-line); border-radius: 20px; overflow: visible;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(15, 46, 61, .04), 0 18px 40px -24px rgba(17, 52, 69, .25);
+}
+.school-compare-table th:first-child, .school-compare-table td:first-child { width: 190px; }
+.school-compare-table th, .school-compare-table td { padding: 18px 20px; border-bottom: 1px solid var(--cmp-line); vertical-align: top; text-align: left; }
+.school-compare-table td + td, .school-compare-table th + th { border-left: 1px solid var(--cmp-line); }
+.school-compare-table tbody tr:last-child > * { border-bottom: 0; }
+.school-compare-table tbody tr:nth-child(even) > * { background: #fbfaf7; }
+.school-compare-table tbody tr:hover > td { background: #f6f8ff; }
+
+/* School headers stay on screen while you read down the rows. */
+.school-compare-table thead th {
+  position: sticky; top: 72px; z-index: 5;
+  padding: 16px 18px;
+  background: #fff !important;
+  border-bottom: 2px solid rgba(9, 49, 141, .14);
+  box-shadow: 0 10px 18px -16px rgba(17, 52, 69, .5);
+}
+.school-compare-table thead th:first-child { border-top-left-radius: 20px; }
+.school-compare-table thead th:last-child { border-top-right-radius: 20px; }
+.cmp-corner span { display: inline-flex; align-items: center; height: 44px; color: var(--cmp-muted); font: 700 12px/1 var(--bw-font, 'Be Vietnam Pro', sans-serif); letter-spacing: .08em; text-transform: uppercase; }
+.cmp-school { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; align-items: center; gap: 12px; }
+.cmp-logo { width: 44px; height: 44px; display: grid; place-items: center; overflow: hidden; border-radius: 12px; background: #f3f1ec; box-shadow: inset 0 0 0 1px rgba(9, 49, 141, .08); }
+.cmp-logo img { width: 100%; height: 100%; object-fit: contain; padding: 4px; box-sizing: border-box; }
+.cmp-logo span { color: var(--cmp-deep); font: 800 12px/1 var(--bw-font, 'Be Vietnam Pro', sans-serif); }
+.cmp-name { min-width: 0; display: grid; gap: 2px; }
+.cmp-name strong { color: var(--cmp-ink); font: 700 1.05rem/1.2 var(--bw-font, 'Be Vietnam Pro', sans-serif); }
+.cmp-name small { overflow: hidden; color: var(--cmp-muted); font: 500 .8rem/1.35 var(--bw-font, 'Be Vietnam Pro', sans-serif); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.cmp-remove {
+  width: 36px; height: 36px; display: grid; place-items: center;
+  border: 1px solid rgba(9, 49, 141, .14); border-radius: 50%;
+  background: #fff; color: var(--cmp-muted); font: 400 20px/1 var(--bw-font, 'Be Vietnam Pro', sans-serif);
+  cursor: pointer; transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+}
+.cmp-remove:hover { background: #fff1ec; border-color: rgba(252, 115, 77, .5); color: #b8401c; transform: rotate(90deg); }
+.cmp-remove:focus-visible { outline: 3px solid rgba(252, 115, 77, .55); outline-offset: 2px; }
+
+/* Row labels: an icon and the question, with the year as a quiet tag. */
+.school-compare-table tbody th { background: #fbfaf7; }
+.cmp-label { display: flex; align-items: flex-start; gap: 10px; color: var(--cmp-ink); font: 700 .92rem/1.35 var(--bw-font, 'Be Vietnam Pro', sans-serif); }
+.cmp-label small { display: block; margin-top: 3px; color: var(--cmp-muted); font: 500 .75rem/1.3 var(--bw-font, 'Be Vietnam Pro', sans-serif); }
+.cmp-icon { flex: none; width: 20px; height: 20px; margin-top: 1px; fill: none; stroke: var(--cmp-coral); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Cell contents. */
+.school-compare-table td { color: #1f3a4a; font-size: .93rem; }
+.cmp-text { margin: 0; line-height: 1.65; overflow-wrap: anywhere; }
+.cmp-figure { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 10px; margin: 0 0 4px; }
+.cmp-figure b { color: var(--cmp-deep); font: 500 clamp(1.6rem, 1.3rem + .7vw, 2rem)/1.1 var(--bw-serif, 'Newsreader', Georgia, serif); letter-spacing: -.01em; font-variant-numeric: lining-nums; }
+.cmp-figure span { color: var(--cmp-muted); font-weight: 600; }
+.cmp-scale { padding: 3px 9px; border-radius: 999px; background: #eef2ff; color: var(--cmp-deep) !important; font-size: .78rem; }
+.cmp-note { margin: 6px 0 0; color: var(--cmp-muted); font-size: .84rem; line-height: 1.55; }
+.cmp-reviewed { display: block; margin-top: 8px; color: var(--cmp-muted); font-size: .78rem; }
+.cmp-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.cmp-chip { padding: 6px 12px; border-radius: 999px; background: #f1f4fb; color: var(--cmp-ink); font-weight: 600; font-size: .88rem; }
+.cmp-missing {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 11px; border-radius: 999px;
+  background: #f4f2ee; color: #7a7f8f; font-size: .82rem; font-weight: 600;
+}
+.cmp-missing::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #c3c6cf; }
+
+.cmp-more { margin-top: 10px; }
+.cmp-more summary {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 0 14px;
+  border: 1px solid rgba(9, 49, 141, .16); border-radius: 999px;
+  color: var(--cmp-deep); font-weight: 700; font-size: .86rem; cursor: pointer; list-style: none;
+}
+.cmp-more summary::-webkit-details-marker { display: none; }
+.cmp-more summary::after { content: '⌄'; transition: transform .2s ease; }
+.cmp-more[open] summary::after { transform: rotate(180deg); }
+.cmp-more summary:hover { background: #f1f4fb; }
+.cmp-program-list { max-height: 320px; overflow: auto; margin: 10px 0 0; padding: 4px 0; list-style: none; border-top: 1px solid var(--cmp-line); }
+.cmp-program-list li { display: grid; gap: 1px; padding: 8px 2px; border-bottom: 1px dashed var(--cmp-line); line-height: 1.45; overflow-wrap: anywhere; }
+.cmp-program-list small { color: var(--cmp-muted); font-size: .78rem; }
+
+.cmp-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.cmp-link {
+  display: inline-flex; align-items: center; gap: 4px; min-height: 34px; padding: 0 12px;
+  border: 1px solid rgba(9, 49, 141, .16); border-radius: 999px;
+  background: #fff; color: var(--cmp-deep); font: 600 .82rem/1.2 var(--bw-font, 'Be Vietnam Pro', sans-serif);
+  text-decoration: none; cursor: pointer; transition: background .2s ease, border-color .2s ease;
+}
+.cmp-link:hover { background: #f1f4fb; border-color: rgba(9, 49, 141, .3); }
+.cmp-link:focus-visible { outline: 3px solid rgba(9, 49, 141, .35); outline-offset: 2px; }
+.cmp-link-profile { background: var(--cmp-deep); border-color: var(--cmp-deep); color: #fff; }
+.cmp-link-profile:hover { background: #0b3cab; border-color: #0b3cab; }
+.cmp-link-strong { font-weight: 700; }
+.cmp-link-wide { min-height: 0; padding: 7px 12px; border-radius: 14px; line-height: 1.4; text-align: left; }
+
+.cmp-footnote { display: flex; gap: 10px; align-items: flex-start; margin: 14px 4px 0; color: var(--cmp-muted); font-size: .84rem; line-height: 1.55; }
+.cmp-footnote .cmp-icon { width: 18px; height: 18px; stroke: var(--cmp-muted); }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* backwards, not both: a finished row must not keep a transform, or it would paint over the sticky header. */
+  .school-compare:not([hidden]) .school-compare-table { animation: cmp-in .5s cubic-bezier(.2, .8, .2, 1) backwards; }
+  .school-compare-table tbody tr { animation: cmp-in .45s cubic-bezier(.2, .8, .2, 1) backwards; animation-delay: calc(var(--r, 0) * 40ms + 80ms); }
+  .school-compare-table tbody tr:nth-child(2) { --r: 1; } .school-compare-table tbody tr:nth-child(3) { --r: 2; }
+  .school-compare-table tbody tr:nth-child(4) { --r: 3; } .school-compare-table tbody tr:nth-child(5) { --r: 4; }
+  .school-compare-table tbody tr:nth-child(6) { --r: 5; } .school-compare-table tbody tr:nth-child(7) { --r: 6; }
+}
+@keyframes cmp-in { from { opacity: 0; transform: translate3d(0, 10px, 0); } }
+
+/* Narrow screens: the table scrolls sideways under a fixed question column. */
+@media (max-width: 860px) {
+  .school-compare { padding: 18px 12px 16px; }
+  .school-compare-table-wrap { overflow-x: auto; margin: 0 -12px; padding: 0 12px 6px; scroll-snap-type: x proximity; }
+  .school-compare-table, .school-compare-table.cmp-cols-2, .school-compare-table.cmp-cols-3 { min-width: calc(128px + var(--cmp-col, 250px) * 2); }
+  .school-compare-table.cmp-cols-3 { min-width: calc(128px + 250px * 3); }
+  .school-compare-table th:first-child, .school-compare-table td:first-child { width: 128px; }
+  .school-compare-table thead th { position: static; }
+  .school-compare-table tbody th, .school-compare-table thead th:first-child { position: sticky; top: auto; left: 0; z-index: 2; box-shadow: 8px 0 14px -12px rgba(17, 52, 69, .45); }
+  .school-compare-table th, .school-compare-table td { padding: 14px 12px; }
+  .cmp-label { flex-direction: column; gap: 6px; font-size: .85rem; }
+  .cmp-school { grid-template-columns: 36px minmax(0, 1fr) auto; gap: 8px; }
+  .cmp-logo { width: 36px; height: 36px; }
+}
+.school-compare-table tbody tr:last-child > :first-child { border-bottom-left-radius: 20px; }
+.school-compare-table tbody tr:last-child > :last-child { border-bottom-right-radius: 20px; }
+.cmp-scholarships { display: grid; gap: 8px; margin: 8px 0 0; padding: 0; list-style: none; }
+.cmp-scholarships a {
+  display: grid; gap: 4px; padding: 10px 12px;
+  border: 1px solid rgba(9, 49, 141, .12); border-radius: 14px;
+  background: #fff; color: var(--cmp-ink); text-decoration: none;
+  transition: border-color .2s ease, background .2s ease;
+}
+.cmp-scholarships a:hover { border-color: rgba(9, 49, 141, .3); background: #f6f8ff; }
+.cmp-scholarships a:focus-visible { outline: 3px solid rgba(9, 49, 141, .35); outline-offset: 2px; }
+.cmp-scholarships strong { font-weight: 600; font-size: .88rem; line-height: 1.45; }
+.cmp-scholarships strong span { color: var(--cmp-deep); }
+.cmp-tag { justify-self: start; padding: 2px 8px; border-radius: 999px; background: #f4f2ee; color: #6d6f7b; font-size: .74rem; font-weight: 700; }
+.cmp-tag.is-open { background: #e8f6ee; color: #1f6b45; }

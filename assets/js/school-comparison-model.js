@@ -23,11 +23,11 @@ export function comparisonCells(school, details, source, {year = 2026, opportuni
   const format = value => new Intl.NumberFormat('vi-VN',{maximumFractionDigits:2}).format(value);
   return {
     location: {text:school.city || 'Chưa có địa điểm trong hồ sơ.'},
-    programs: programs.length ? {text:`${programs.length} ngành/chương trình · ${year}`, programs:sortedPrograms(programs).map(({program:row}) => ({name:row.name,code:row.code || '',track:row.track || '',campus:row.campus || ''})), source:programsSource, action:'majors'} : missing(),
+    programs: programs.length ? {text:`${programs.length} ngành/chương trình · ${year}`, count:programs.length, programs:sortedPrograms(programs).map(({program:row}) => ({name:row.name,code:row.code || '',track:row.track || '',campus:row.campus || ''})), source:programsSource, action:'majors'} : missing(),
     tuition: tuition?.year === year && tuition.summary && https(tuition.source) ? {text:tuition.summary,source:https(tuition.source)} : missing(),
     scholarship: scholarship.length ? {text:'Nguồn học bổng đã đối chiếu; kiểm tra kỳ tuyển sinh và thời hạn tại trường.',links:scholarship.map(item => ({label:`${item.title} · ${item.availability === 'active' ? 'Đang trong thời gian công bố' : 'Tư liệu tham khảo, chưa xác nhận còn nhận hồ sơ'}`,url:item.sourceUrl}))} : missing(),
     admission: admissionSource ? {text:source.source_summary || `Thông tin tuyển sinh ${year} tại nguồn trường.`,source:admissionSource,reviewed:source.source_verified_at || source.checked_at || '',action:'admission'} : missing(),
-    scores: scoreSource ? {text:scores.length ? `${format(Math.min(...scores))} – ${format(Math.max(...scores))} · năm ${year} · thang ${annual.scoreScale}. ${annual.scoreMethod}` : `Có thông báo điểm chuẩn ${year}; xem bảng gốc theo ngành và phương thức. Chưa có số liệu đủ điều kiện để so sánh.`,source:scoreSource,action:'scores'} : missing(),
+    scores: scoreSource ? {text:scores.length ? `${format(Math.min(...scores))} – ${format(Math.max(...scores))} · năm ${year} · thang ${annual.scoreScale}. ${annual.scoreMethod}` : `Có thông báo điểm chuẩn ${year}; xem bảng gốc theo ngành và phương thức. Chưa có số liệu đủ điều kiện để so sánh.`,...(scores.length ? {range:{min:format(Math.min(...scores)),max:format(Math.max(...scores)),scale:annual.scoreScale,method:annual.scoreMethod || '',count:scores.length}} : {}),source:scoreSource,action:'scores'} : missing(),
     website: https(school.website) ? {text:school.name,source:https(school.website),sourceLabel:'Website chính thức'} : missing(),
   };
 }

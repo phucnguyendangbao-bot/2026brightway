@@ -4,7 +4,7 @@ import { buildUniversityCatalog, canonicalSchoolId, REVIEWED_AT } from '../data/
 import { detailsWithResearch as detailsForSchool, admissionSourceWithResearch, researchedScholarships, homepageFor } from './school-research-layer.js?v=20261111u';
 import { universityIdentityHTML, renderUniversityLogo } from './university-card.js?v=20261111o';
 import { uniqueSchools, normalizeWishes, wishKey, addWish, wishFromProgram, importLegacySchools } from './selection-model.js';
-import { comparisonCells } from './school-comparison-model.js';
+import { comparisonCells } from './school-comparison-model.js?v=20261112a';
 import { canDisplayProgramScores } from './score-provenance.js';
 import { sortedPrograms, searchScore, schoolSearchScore, classifyProgram, catalogVersionForYear, TAXONOMY_SOURCE } from './training-taxonomy.js';
 
@@ -119,8 +119,61 @@ function renderSchools(items) {
   items.forEach(school => renderLogo(school));
 }
 
-function compareCell(school, cell) {
-  return `<p>${escapeHtml(cell.text)}</p>${cell.programs ? `<details><summary>Xem danh mục ngành</summary><ul>${cell.programs.map(program => `<li>${escapeHtml(program.name)}${program.code ? ` · ${escapeHtml(program.code)}` : ''}${program.track ? ` · ${escapeHtml(program.track)}` : ''}${program.campus ? ` · ${escapeHtml(program.campus)}` : ''}</li>`).join('')}</ul></details>` : ''}${cell.reviewed ? `<small>Đối chiếu nguồn: ${escapeHtml(cell.reviewed)}</small>` : ''}${cell.source ? officialLink(cell.source, cell.sourceLabel || 'Xem nguồn chính thức', 'school-compare-source') : ''}${(cell.links || []).map(link => officialLink(link.url, link.label, 'school-compare-source')).join('')}${cell.action ? `<button type="button" class="school-compare-profile" data-action="compare-profile" data-school-id="${escapeHtml(school.id)}" data-tab="${cell.action}">Mở hồ sơ ${escapeHtml(school.short || school.name)} →</button>` : ''}`;
+// ---------- Comparison: one column per school, one row per question ----------
+const MISSING_TEXT = 'Chưa có dữ liệu đã xác minh cho năm này.';
+const CMP_ICONS = {
+  location: '<path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0C18.5 15.4 12 21 12 21z"/><circle cx="12" cy="10" r="2.3"/>',
+  programs: '<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20"/>',
+  tuition: '<rect x="3" y="6" width="18" height="13" rx="2.5"/><path d="M3 10h18"/><path d="M15.5 14.5h2"/>',
+  scholarship: '<path d="M12 3 21 8l-9 5-9-5z"/><path d="M6.5 10.2v4.6c3 2.4 8 2.4 11 0v-4.6"/>',
+  admission: '<rect x="5" y="3.5" width="14" height="17" rx="2.5"/><path d="M9 8.5h6M9 12h6M9 15.5h3.5"/>',
+  scores: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+  website: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 2.6 15.4 0 18M12 3c-2.6 2.6-2.6 15.4 0 18"/>',
+};
+const cmpIcon = key => `<svg class="cmp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${CMP_ICONS[key] || ''}</svg>`;
+const hostOf = url => { try { return new URL(url).hostname.replace(/^www\./, ''); } catch { return ''; } };
+
+function compareCell(school, cell, key) {
+  if (!cell || cell.text === MISSING_TEXT) return '<span class="cmp-missing">Chưa có dữ liệu 2026</span>';
+  let body = '';
+  if (key === 'location') {
+    body = `<div class="cmp-chips">${String(cell.text).split(/\s*\/\s*/).filter(Boolean).map(place => `<span class="cmp-chip">${escapeHtml(place)}</span>`).join('')}</div>`;
+  } else if (key === 'programs' && cell.count) {
+    body = `<p class="cmp-figure"><b>${cell.count}</b><span>ngành / chương trình</span></p>
+      <details class="cmp-more"><summary>Xem danh mục ngành</summary><ul class="cmp-program-list">${cell.programs.map(program => `<li><span>${escapeHtml(program.name)}</span>${program.code || program.track || program.campus ? `<small>${escapeHtml([program.code, program.track, program.campus].filter(Boolean).join(' · '))}</small>` : ''}</li>`).join('')}</ul></details>`;
+  } else if (key === 'scores' && cell.range) {
+    const { min, max, scale, method, count } = cell.range;
+    body = `<p class="cmp-figure"><b>${escapeHtml(min === max ? min : `${min} – ${max}`)}</b><span class="cmp-scale">thang ${escapeHtml(scale)}</span></p>
+      <p class="cmp-note">${escapeHtml(`${count} ngành có điểm. ${method}`)}</p>`;
+  } else if (key === 'scholarship' && cell.links?.length) {
+    // Each scholarship: its name as the link and its status as a small tag, instead of one long line.
+    body = `<p class="cmp-figure"><b>${cell.links.length}</b><span>học bổng tham khảo</span></p><ul class="cmp-scholarships">${cell.links.map(link => {
+      const cut = link.label.lastIndexOf(' · ');
+      const title = cut > 0 ? link.label.slice(0, cut) : link.label, status = cut > 0 ? link.label.slice(cut + 3) : '';
+      const open = /Đang trong thời gian/.test(status);
+      return /^https:\/\//i.test(link.url) ? `<li><a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer"><strong>${escapeHtml(title)} <span aria-hidden="true">↗</span></strong><span class="cmp-tag${open ? ' is-open' : ''}" title="${escapeHtml(status)}">${open ? 'Đang mở' : 'Tham khảo'}</span></a></li>` : '';
+    }).join('')}</ul>`;
+    cell = { ...cell, links: [] };
+  } else if (key === 'website') {
+    body = '';
+  } else {
+    body = `<p class="cmp-text">${escapeHtml(cell.text)}</p>`;
+  }
+  const links = [];
+  if (key === 'website' && cell.source) links.push(officialLink(cell.source, hostOf(cell.source) || 'Website chính thức', 'cmp-link cmp-link-strong'));
+  else if (cell.source) links.push(officialLink(cell.source, 'Nguồn chính thức', 'cmp-link'));
+  (cell.links || []).forEach(link => links.push(officialLink(link.url, link.label, 'cmp-link cmp-link-wide')));
+  if (cell.action) links.push(`<button type="button" class="cmp-link cmp-link-profile" data-action="compare-profile" data-school-id="${escapeHtml(school.id)}" data-tab="${cell.action}">Mở hồ sơ <span aria-hidden="true">→</span></button>`);
+  const reviewed = cell.reviewed ? `<small class="cmp-reviewed">Đối chiếu nguồn ${escapeHtml(cell.reviewed)}</small>` : '';
+  return `${body}${reviewed}${links.filter(Boolean).length ? `<div class="cmp-links">${links.join('')}</div>` : ''}`;
+}
+function compareHead(school) {
+  const logo = /^assets\//.test(school.logoUrl || '')
+    ? `<img src="/${escapeHtml(school.logoUrl)}" alt="" width="44" height="44" loading="lazy" decoding="async">`
+    : `<span>${escapeHtml((school.short || school.name || '?').slice(0, 4))}</span>`;
+  return `<div class="cmp-school"><span class="cmp-logo" aria-hidden="true">${logo}</span>
+    <span class="cmp-name"><strong>${escapeHtml(school.short || school.name)}</strong><small>${escapeHtml(school.name)}</small></span>
+    <button type="button" class="cmp-remove" data-action="remove-compare" data-school-id="${escapeHtml(school.id)}" aria-label="Bỏ ${escapeHtml(school.name)} khỏi so sánh" title="Bỏ khỏi so sánh"><span aria-hidden="true">×</span></button></div>`;
 }
 function renderCompare() {
   const selected = compareIds.map(id => schools.find(school => school.id === id)).filter(Boolean);
@@ -130,9 +183,15 @@ function renderCompare() {
   if (!compareHost || !compareTable) return;
   compareHost.hidden = selected.length < 2;
   if (selected.length < 2) { compareTable.innerHTML = ''; return; }
-  const rows = [['Khu vực','location'],['Ngành đào tạo · 2026','programs'],['Học phí · 2026','tuition'],['Học bổng · nguồn tham khảo','scholarship'],['Phương thức xét tuyển · 2026','admission'],['Điểm chuẩn theo năm · 2026','scores'],['Website chính thức','website']];
+  const rows = [['Khu vực','location'],['Ngành đào tạo','programs'],['Học phí','tuition'],['Học bổng','scholarship'],['Phương thức xét tuyển','admission'],['Điểm chuẩn','scores'],['Website','website']];
+  const hints = { programs:'2026', tuition:'2026', scholarship:'nguồn tham khảo', admission:'2026', scores:'2026' };
   const cells = selected.map(school => comparisonCells({...school, website: homepageFor(school)}, detailsForSchool(school.id), sourceForSchool(school.id), {year:activeYear,opportunities:comparisonOpportunities}));
-  compareTable.innerHTML = `<table class="school-compare-table"><caption>Đối chiếu nguồn trước khi chọn trường. Điểm chuẩn khác phương thức hoặc thang điểm không dùng thay thế cho nhau. Nguồn 2026 chưa xác nhận tuyển sinh 2027.</caption><thead><tr><th scope="col">Tiêu chí</th>${selected.map(school => `<th scope="col"><strong>${escapeHtml(school.name)}</strong><button type="button" class="school-compare-remove" data-action="remove-compare" data-school-id="${escapeHtml(school.id)}" aria-label="Bỏ ${escapeHtml(school.name)} khỏi so sánh">Bỏ trường</button></th>`).join('')}</tr></thead><tbody>${rows.map(([label,key]) => `<tr><th scope="row">${label}</th>${selected.map((school,index) => `<td>${compareCell(school,cells[index][key])}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+  compareTable.innerHTML = `<table class="school-compare-table cmp-cols-${selected.length}">
+    <caption class="bw-visually-hidden">So sánh ${selected.length} trường theo dữ liệu tuyển sinh ${activeYear}</caption>
+    <thead><tr><th scope="col" class="cmp-corner"><span>${selected.length} trường</span></th>${selected.map(school => `<th scope="col">${compareHead(school)}</th>`).join('')}</tr></thead>
+    <tbody>${rows.map(([label,key]) => `<tr data-row="${key}"><th scope="row"><span class="cmp-label">${cmpIcon(key)}<span>${label}${hints[key] ? `<small>${hints[key]}</small>` : ''}</span></span></th>${selected.map((school,index) => `<td>${compareCell(school,cells[index][key],key)}</td>`).join('')}</tr>`).join('')}</tbody>
+  </table>
+  <p class="cmp-footnote"><svg class="cmp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.5v.5"/></svg><span>Đối chiếu nguồn trước khi chọn trường. Điểm chuẩn khác phương thức hoặc thang điểm không dùng thay thế cho nhau. Học bổng “Tham khảo” chưa xác nhận còn nhận hồ sơ: kiểm tra kỳ tuyển sinh và thời hạn tại trường. Nguồn ${activeYear} chưa xác nhận tuyển sinh ${activeYear + 1}.</span></p>`;
 }
 // A small bar that follows the reader once schools are picked, so comparing never needs a hunt for the table.
 function renderCompareDock(selected) {
