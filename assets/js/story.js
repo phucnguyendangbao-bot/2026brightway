@@ -192,9 +192,9 @@ function arrive(section) {
   parts.forEach((el, i) => el.animate([{ opacity: 0, transform: 'translateY(26px)' }, { opacity: 1, transform: 'none' }], { duration: 560, delay: 120 + i * 90, easing: 'cubic-bezier(.2, .8, .2, 1)', fill: 'backwards' }));
 }
 
-// The opening's start button and the table of contents use the same transition.
+// The opening's start button, the table of contents and the side thread use the same transition.
 document.addEventListener('click', event => {
-  const link = event.target.closest('a.glow-cta[href^="#"], .ks-toc a.home-journey-card[href^="#"]');
+  const link = event.target.closest('a.glow-cta[href^="#"], .ks-toc a.home-journey-card[href^="#"], .bw-rail a[href^="#"]');
   if (!link || event.metaKey || event.ctrlKey || event.shiftKey || event.button) return;
   const target = document.querySelector(link.getAttribute('href'));
   if (!target) return;

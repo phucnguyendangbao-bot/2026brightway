@@ -2,6 +2,7 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8" />
+<script>/* Opening film: decided before first paint so nothing flashes. cinema.js plays it; failsafes clear it. */(function(){var d=document.documentElement;try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;}catch(e){return;}var q=false;try{q=sessionStorage.getItem('bwOpeningSeen')==='1';}catch(e){}d.classList.add('bw-cine','bw-cine-wait');if(q)d.classList.add('bw-cine-quick');setTimeout(function(){d.classList.remove('bw-cine-wait');},2500);setTimeout(function(){d.classList.remove('bw-cine','bw-cine-quick');},7000);})();</script>
 <link rel="preconnect" href="https://esm.sh" crossorigin>
 <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 
@@ -335,11 +336,13 @@ body{overflow-x:visible;}
 </style>
 <link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261111e">
 <link rel="stylesheet" href="/assets/css/glow-page.css?v=20261111ag">
+<link rel="stylesheet" href="/assets/css/cinema.css?v=20261112a">
 <link rel="stylesheet" href="/assets/css/flow.css?v=20261111e">
 <link rel="stylesheet" href="/assets/css/selections.css?v=20261111e">
 <script type="module" src="/assets/js/selections.js?v=20261111p"></script>
 <link rel="stylesheet" href="/assets/css/admissions-home.css?v=20261111e">
 <script src="/assets/js/flow.js?v=20261111ah" defer></script>
+<script src="/assets/js/cinema.js?v=20261112a" defer></script>
 <script type="module" src="/assets/js/catalog-stats.js?v=20261015"></script>
 <link rel="stylesheet" href="/assets/css/home-holland.css?v=20261111e">
 <link rel="stylesheet" href="/assets/css/home-journeys.css?v=20261111e">
@@ -1670,7 +1673,7 @@ Bạn cần hỏi gì nào?</div>
 <script src="assets/js/waybi.js?v=20261111ad"></script>
 <script src="assets/js/waybi-presence.js?v=20261111e"></script>
 
-<script type="module" src="/assets/js/story.js?v=20261111ag"></script>
+<script type="module" src="/assets/js/story.js?v=20261112a"></script>
 </body>
 </html>
 

@@ -1,0 +1,233 @@
+/* BrightWay cinema: one motion language for every page.
+   - The homepage opening plays as a short film: dawn, words, light, cards.
+   - Every dark opening (home hero and each page's band) carries the same rising sparks.
+   - On the homepage a thread of light runs down the side and ties the five chapters together.
+   - Moving between pages cross-fades through the same light instead of a hard cut.
+   Everything here is decoration on top of readable content: with motion reduced, on weak devices
+   or without JavaScript, the page is complete and still. */
+
+/* ---------- Sparks layer (canvas painted by cinema.js) ---------- */
+.bw-sparks {
+  position: absolute; inset: 0; z-index: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.bw-sparks.is-on { opacity: 1; }
+/* Inside a page's band the sparks sit just above its background and below all of its content. */
+html body .glow-band.has-sparks { isolation: isolate; }
+html body .glow-band > .bw-sparks { z-index: -1; }
+.glow-sky .bw-sparks { z-index: 1; }
+
+/* ---------- Homepage opening: the film ----------
+   html.bw-cine is set in <head> before paint, so nothing flashes before it starts.
+   html.bw-cine-quick (a return visit in the same session) plays a short version. */
+@media (prefers-reduced-motion: no-preference) {
+  html.bw-cine:not(.bw-lite) .glow-hero .glow-sky {
+    animation: cine-sky 1.6s cubic-bezier(.2, .8, .2, 1) both;
+  }
+  html.bw-cine:not(.bw-lite) .glow-hero .glow-cone {
+    transform-origin: 50% 100%;
+    animation: cine-cone 1.9s cubic-bezier(.16, 1, .3, 1) .15s both;
+  }
+  html.bw-cine:not(.bw-lite) .glow-hero .glow-beams {
+    animation: cine-beams 1.6s cubic-bezier(.2, .8, .2, 1) .35s both;
+  }
+  /* Before the words are split, the headline waits invisibly (a failsafe in <head> clears this). */
+  html.bw-cine-wait .glow-hero .bw-hero-h1 { opacity: 0; }
+
+  html.bw-cine .glow-hero .ks-kicker { animation: cine-up .9s cubic-bezier(.2, .8, .2, 1) .25s both; }
+  html.bw-cine .glow-hero .ks-kicker::after { transform-origin: 0 50%; animation: cine-line .9s cubic-bezier(.2, .8, .2, 1) .6s both; }
+  html.bw-cine .glow-hero .lede { animation: cine-up 1s cubic-bezier(.2, .8, .2, 1) 1.05s both; }
+  html.bw-cine .glow-hero .glow-stats-left { animation: cine-from-left 1.1s cubic-bezier(.16, 1, .3, 1) 1.25s both; }
+  html.bw-cine .glow-hero .glow-stats-right { animation: cine-from-right 1.1s cubic-bezier(.16, 1, .3, 1) 1.25s both; }
+  html.bw-cine .glow-hero .glow-cta { animation: cine-ignite 1.1s cubic-bezier(.16, 1, .3, 1) 1.15s both; }
+  html.bw-cine .glow-hero .glow-cards { perspective: 1400px; }
+  html.bw-cine .glow-hero .glow-card-mid { animation: cine-card 1.2s cubic-bezier(.16, 1, .3, 1) 1.45s both; }
+  html.bw-cine .glow-hero .glow-card-left { animation: cine-card-l 1.2s cubic-bezier(.16, 1, .3, 1) 1.6s both; }
+  html.bw-cine .glow-hero .glow-card-right { animation: cine-card-r 1.2s cubic-bezier(.16, 1, .3, 1) 1.72s both; }
+
+  /* The quick version for a return visit: same order, a third of the time. */
+  html.bw-cine-quick .glow-hero :is(.glow-sky, .glow-cone, .glow-beams, .ks-kicker, .ks-kicker::after, .lede, .glow-stats-left, .glow-stats-right, .glow-cta, .glow-card) {
+    animation-duration: .7s !important;
+    animation-delay: 0s !important;
+  }
+}
+
+/* Words of the headline rise out of a mask, one after another. */
+/* Room above and below for Vietnamese stacked marks (ờ, ể, Đ) so the mask never trims them. */
+.cine-word { display: inline-block; overflow: hidden; vertical-align: top; padding: .24em .04em .16em; margin: -.24em -.04em -.16em; }
+.cine-word > span { display: inline-block; }
+@media (prefers-reduced-motion: no-preference) {
+  .cine-word > span { animation: cine-word 1.15s cubic-bezier(.16, 1, .3, 1) both; animation-delay: calc(.45s + var(--w, 0) * 85ms); }
+  html.bw-cine-quick .cine-word > span { animation-duration: .6s; animation-delay: calc(var(--w, 0) * 30ms); }
+  /* Chapter titles: the same rise, played when the title reaches the screen. */
+  .cine-split.is-waiting .cine-word > span { animation: none; transform: translate3d(0, 105%, 0); opacity: 0; }
+  .cine-split.is-playing .cine-word > span { animation: cine-word .95s cubic-bezier(.16, 1, .3, 1) both; animation-delay: calc(var(--w, 0) * 55ms); }
+}
+
+/* "bạn" catches the light once the words land. */
+html body #home-view #hero-actions.glow-hero .bw-hero-h1 em .cine-word > span,
+html body #home-view #hero-actions.glow-hero .bw-hero-h1 em.cine-shine {
+  background: linear-gradient(100deg, #f7f5f1 0%, #f7f5f1 38%, #ffd2bf 46%, #fc734d 50%, #ffd2bf 54%, #f7f5f1 62%, #f7f5f1 100%) 100% 0 / 260% 100% no-repeat;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html body #home-view #hero-actions.glow-hero .bw-hero-h1 em .cine-word > span {
+    animation: cine-word 1.15s cubic-bezier(.16, 1, .3, 1) both, cine-shine 1.6s cubic-bezier(.4, 0, .2, 1) both;
+    animation-delay: calc(.45s + var(--w, 0) * 85ms), 1.7s;
+  }
+  html.bw-cine-quick body #home-view #hero-actions.glow-hero .bw-hero-h1 em .cine-word > span { animation-delay: calc(var(--w, 0) * 30ms), .5s; animation-duration: .6s, 1.1s; }
+}
+
+/* The start button: a shockwave when it lights, then a slow breath (composited: scale and opacity only). */
+html body #home-view #hero-actions .glow-cta { position: relative; }
+html body #home-view #hero-actions .glow-cta::before,
+html body #home-view #hero-actions .glow-cta::after {
+  content: ''; position: absolute; inset: -1px; border-radius: 50%;
+  border: 1px solid rgba(252, 115, 77, .9);
+  pointer-events: none; opacity: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.bw-cine body #home-view #hero-actions .glow-cta::before { animation: cine-shock 1.4s cubic-bezier(.16, 1, .3, 1) 1.55s both; }
+  html:not(.bw-lite) body #home-view #hero-actions .glow-cta::after { animation: cine-breath 3.6s ease-in-out 3s infinite; }
+  html body #home-view #hero-actions .glow-cta.is-paused::after { animation-play-state: paused; }
+}
+
+/* Numbers count up (cinema.js); they keep their width so the line does not wobble. */
+.cine-count { font-variant-numeric: tabular-nums; }
+
+@keyframes cine-sky { from { opacity: 0; transform: scale(1.12); } to { opacity: 1; transform: none; } }
+@keyframes cine-cone { from { opacity: 0; transform: translateX(-50%) scale(.55, .15); } 60% { opacity: 1; } to { opacity: 1; transform: translateX(-50%) scale(1, 1); } }
+@keyframes cine-beams { from { opacity: 0; clip-path: inset(0 50% 0 50%); } to { opacity: 1; clip-path: inset(0 0 0 0); } }
+@keyframes cine-up { from { opacity: 0; transform: translate3d(0, 24px, 0); filter: blur(8px); } to { opacity: 1; transform: none; filter: none; } }
+@keyframes cine-line { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes cine-word { from { transform: translate3d(0, 105%, 0) rotate(4deg); opacity: 0; filter: blur(6px); } 40% { opacity: 1; } to { transform: none; opacity: 1; filter: none; } }
+@keyframes cine-shine { from { background-position: 100% 0; } to { background-position: 0% 0; } }
+@keyframes cine-from-left { from { opacity: 0; transform: translate3d(-60px, 10px, 0); } to { opacity: 1; transform: none; } }
+@keyframes cine-from-right { from { opacity: 0; transform: translate3d(60px, 10px, 0); } to { opacity: 1; transform: none; } }
+@keyframes cine-ignite { 0% { opacity: 0; transform: scale(.4); filter: brightness(2.2) blur(6px); } 55% { opacity: 1; transform: scale(1.08); filter: brightness(1.4); } 100% { opacity: 1; transform: none; filter: none; } }
+@keyframes cine-shock { 0% { opacity: .9; transform: scale(1); } 100% { opacity: 0; transform: scale(2.6); } }
+@keyframes cine-breath { 0%, 100% { opacity: 0; transform: scale(1); } 50% { opacity: .55; transform: scale(1.28); } }
+@keyframes cine-card { from { opacity: 0; transform: translate3d(0, 90px, 0) rotateX(38deg); filter: blur(10px); } to { opacity: 1; transform: none; filter: none; } }
+@keyframes cine-card-l { from { opacity: 0; transform: translate3d(-40px, 110px, 0) rotate(-12deg) rotateX(38deg); filter: blur(10px); } to { opacity: 1; transform: rotate(-3.5deg) translateY(18px); filter: none; } }
+@keyframes cine-card-r { from { opacity: 0; transform: translate3d(40px, 110px, 0) rotate(12deg) rotateX(38deg); filter: blur(10px); } to { opacity: 1; transform: rotate(3.5deg) translateY(18px); filter: none; } }
+@media (max-width: 1000px) {
+  html.bw-cine .glow-hero :is(.glow-card-left, .glow-card-right) { animation-name: cine-card; }
+}
+
+/* ---------- Leaving the opening: the light falls into the thread ----------
+   A coral line grows out of the bottom of the hero as it scrolls away and meets the table of contents. */
+html body #home-view #hero-actions .cine-drop {
+  position: absolute; left: 50%; bottom: 8px; z-index: 2;
+  width: 2px; height: 120px; margin-left: -1px;
+  background: linear-gradient(180deg, rgba(252, 115, 77, 0), #fc734d 70%, #ffd2bf);
+  transform-origin: 50% 0; transform: scaleY(0);
+  pointer-events: none;
+}
+html body #home-view #hero-actions .cine-drop::after {
+  content: ''; position: absolute; left: 50%; bottom: -5px; width: 10px; height: 10px; margin-left: -5px;
+  border-radius: 50%; background: #ffd2bf; box-shadow: 0 0 0 4px rgba(252, 115, 77, .3), 0 0 22px 6px rgba(252, 115, 77, .8);
+}
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    html body #home-view #hero-actions .cine-drop { animation: cine-drop linear both; animation-timeline: scroll(root); animation-range: 0px 55vh; }
+    /* Only after the opening film has finished (html.bw-cine removed), so the two never fight. */
+    html:not(.bw-cine) body #home-view #hero-actions .glow-cone { animation: cine-cone-out linear both; animation-timeline: scroll(root); animation-range: 0px 90vh; }
+    html:not(.bw-cine) body #home-view #hero-actions .glow-cta { animation: cine-cta-out linear both; animation-timeline: scroll(root); animation-range: 0px 60vh; }
+  }
+}
+@keyframes cine-drop { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes cine-cone-out { to { transform: translateX(-50%) scale(.25, 1.6); opacity: .9; } }
+@keyframes cine-cta-out { to { transform: translate3d(0, 120px, 0) scale(.35); opacity: 0; } }
+
+/* ---------- The thread: chapters tied together down the side (homepage, wide screens) ---------- */
+.bw-rail {
+  position: fixed; z-index: 90;
+  left: max(14px, calc((100vw - 1440px) / 2 - 8px));
+  top: 50%; height: min(60vh, 520px);
+  transform: translate3d(-24px, -50%, 0);
+  opacity: 0; visibility: hidden;
+  transition: opacity .6s cubic-bezier(.2, .8, .2, 1), transform .6s cubic-bezier(.2, .8, .2, 1), visibility 0s linear .6s;
+  pointer-events: none;
+}
+.bw-rail.is-shown { opacity: 1; visibility: visible; transform: translate3d(0, -50%, 0); transition-delay: 0s; pointer-events: auto; }
+.bw-rail ol { position: relative; height: 100%; margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; justify-content: space-between; }
+/* Ahead of you the way is dotted (lối), behind you it is a line (đường). */
+.bw-rail-track, .bw-rail-fill {
+  position: absolute; left: 11px; top: 11px; bottom: 11px; width: 2px; margin-left: -1px;
+}
+.bw-rail-track { background: repeating-linear-gradient(180deg, rgba(9, 49, 141, .35) 0 4px, transparent 4px 10px); }
+.bw-rail-fill {
+  background: linear-gradient(180deg, #09318d, #fc734d);
+  transform-origin: 50% 0; transform: scaleY(var(--rail-p, 0));
+  border-radius: 2px;
+}
+.bw-rail-head {
+  position: absolute; left: 11px; top: 11px; width: 26px; height: 26px; margin: -13px 0 0 -13px;
+  display: grid; place-items: center;
+  border-radius: 50%; background: #fc734d;
+  box-shadow: 0 0 0 4px rgba(252, 115, 77, .22), 0 6px 18px rgba(252, 115, 77, .55);
+  transform: translate3d(0, var(--rail-y, 0px), 0);
+  will-change: transform;
+}
+.bw-rail-head svg { width: 15px; height: 15px; fill: none; stroke: #fff; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round; }
+.bw-rail li { position: relative; }
+.bw-rail a {
+  position: relative; display: flex; align-items: center; gap: 12px;
+  min-height: 24px; color: #0b2a52; text-decoration: none;
+}
+.bw-rail a::before {
+  content: ''; flex: 0 0 auto; width: 12px; height: 12px; margin: 0 5px;
+  border-radius: 50%; background: #f7f5f1; border: 2px solid rgba(9, 49, 141, .45);
+  transition: background .3s ease, border-color .3s ease, transform .3s cubic-bezier(.2, .8, .2, 1);
+}
+.bw-rail li.is-passed a::before { background: #09318d; border-color: #09318d; }
+.bw-rail li.is-current a::before { background: #fc734d; border-color: #fc734d; transform: scale(1.25); }
+.bw-rail li.is-done a::before { background: #1f6b45; border-color: #1f6b45; }
+.bw-rail-label {
+  padding: 5px 10px; border-radius: 999px;
+  background: rgba(253, 252, 250, .94); box-shadow: 0 6px 18px rgba(17, 52, 69, .12);
+  font: 600 12px/1.2 var(--ks-sans, 'Be Vietnam Pro', sans-serif); white-space: nowrap;
+  opacity: 0; transform: translate3d(-6px, 0, 0);
+  transition: opacity .25s ease, transform .25s cubic-bezier(.2, .8, .2, 1);
+}
+.bw-rail-label b { color: #c8461f; font-weight: 700; margin-right: 4px; }
+.bw-rail a:hover .bw-rail-label,
+.bw-rail a:focus-visible .bw-rail-label { opacity: 1; transform: none; }
+.bw-rail a:focus-visible { outline: none; }
+.bw-rail a:focus-visible::before { box-shadow: 0 0 0 3px #fff, 0 0 0 5px #fc734d; }
+/* A soft capsule behind the line keeps it readable over light and dark chapters alike. */
+.bw-rail::before {
+  content: ''; position: absolute; left: -5px; top: -12px; bottom: -12px; width: 32px;
+  border-radius: 999px;
+  background: rgba(253, 252, 250, .86);
+  border: 1px solid rgba(9, 49, 141, .12);
+  box-shadow: 0 10px 30px rgba(2, 7, 10, .14);
+}
+/* Where there is room beside the content, the current chapter keeps its name showing. */
+@media (min-width: 1600px) { .bw-rail li.is-current .bw-rail-label { opacity: 1; transform: none; } }
+@media (max-width: 1180px) { .bw-rail { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .bw-rail, .bw-rail-label, .bw-rail a::before { transition: none; }
+}
+
+/* ---------- Between pages: the same light carries you across ----------
+   Supported browsers cross-fade documents; the navigation bar stays where it is. */
+@view-transition { navigation: auto; }
+html body .flow-nav { view-transition-name: bw-nav; }
+.bw-progress { view-transition-name: bw-progress; }
+::view-transition-group(bw-nav), ::view-transition-group(bw-progress) { animation-duration: 0s; }
+::view-transition-old(root) { animation: bw-page-out .32s cubic-bezier(.4, 0, 1, 1) both; }
+::view-transition-new(root) { animation: bw-page-in .55s cubic-bezier(.16, 1, .3, 1) both; }
+@keyframes bw-page-out { to { opacity: 0; transform: scale(.985); filter: blur(6px) brightness(.85); } }
+@keyframes bw-page-in { from { opacity: 0; transform: translate3d(0, 18px, 0); filter: blur(8px); } }
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+}
+html.bw-lite ::view-transition-old(root), html.bw-lite ::view-transition-new(root) { filter: none; }
+
+/* Leaving a page from a link: a coral sweep along the top, so the click is answered at once. */
+.bw-leaving .bw-progress { transition: transform .3s ease; transform: scaleX(1) !important; }
