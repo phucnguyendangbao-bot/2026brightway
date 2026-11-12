@@ -3598,6 +3598,227 @@
      }
     ]
    }
+  },
+  {
+   "school_id": "ussh",
+   "scores": {
+    "source": "https://hcmussh.edu.vn/bai-viet/truong-dh-khxh-nv-dhqg-hcm-cong-bo-diem-chuan-xet-tuyen-dai-hoc-chinh-quy-nam-2026",
+    "method": "Điểm chuẩn 2026, phương thức xét tuyển tổng hợp (mã 500), thang 100, chương trình Chuẩn",
+    "scale": 100,
+    "note": "Trường công bố ngày 10/08/2026 theo 3 đối tượng xét tuyển (ĐT01, ĐT02, ĐT03) với các thành phần điểm khác nhau; bảng này lấy cột ĐT01, mức thấp nhất hoặc bằng hai cột còn lại (ĐT02 cao hơn tối đa khoảng 1,4 điểm). Chương trình liên kết 2+2 và Chuẩn quốc tế có bảng riêng, chưa đưa vào. Đọc từ bảng ảnh trên trang trường.",
+    "programs": [
+     {
+      "code": "7140101",
+      "name": "Giáo dục học",
+      "score": 75.5
+     },
+     {
+      "code": "7140107",
+      "name": "Quản trị chất lượng giáo dục",
+      "score": 78.5
+     },
+     {
+      "code": "7140114",
+      "name": "Quản lý giáo dục",
+      "score": 79.0
+     },
+     {
+      "code": "7210213",
+      "name": "Nghệ thuật học",
+      "score": 83.5
+     },
+     {
+      "code": "7220104",
+      "name": "Hán Nôm",
+      "score": 73.0
+     },
+     {
+      "code": "7220201",
+      "name": "Ngôn ngữ Anh",
+      "score": 83.1
+     },
+     {
+      "code": "7220202",
+      "name": "Ngôn ngữ Nga",
+      "score": 76.0
+     },
+     {
+      "code": "7220203",
+      "name": "Ngôn ngữ Pháp",
+      "score": 73.5
+     },
+     {
+      "code": "7220204",
+      "name": "Ngôn ngữ Trung Quốc",
+      "score": 81.5
+     },
+     {
+      "code": "7220205",
+      "name": "Ngôn ngữ Đức",
+      "score": 78.7
+     },
+     {
+      "code": "7220206",
+      "name": "Ngôn ngữ Tây Ban Nha",
+      "score": 75.1
+     },
+     {
+      "code": "7220208",
+      "name": "Ngôn ngữ Italia",
+      "score": 71.0
+     },
+     {
+      "code": "7229001",
+      "name": "Triết học",
+      "score": 76.0
+     },
+     {
+      "code": "7229009",
+      "name": "Tôn giáo học",
+      "score": 70.0
+     },
+     {
+      "code": "7229010",
+      "name": "Lịch sử",
+      "score": 80.0
+     },
+     {
+      "code": "7229020",
+      "name": "Ngôn ngữ học",
+      "score": 74.0
+     },
+     {
+      "code": "7229030",
+      "name": "Văn học",
+      "score": 81.0
+     },
+     {
+      "code": "7229040",
+      "name": "Văn hoá học",
+      "score": 79.5
+     },
+     {
+      "code": "7310206",
+      "name": "Quan hệ quốc tế",
+      "score": 82.6
+     },
+     {
+      "code": "7310301",
+      "name": "Xã hội học",
+      "score": 76.5
+     },
+     {
+      "code": "7310302",
+      "name": "Nhân học",
+      "score": 75.0
+     },
+     {
+      "code": "7310401",
+      "name": "Tâm lý học",
+      "score": 86.3
+     },
+     {
+      "code": "7310403",
+      "name": "Tâm lý học giáo dục",
+      "score": 79.5
+     },
+     {
+      "code": "7310501",
+      "name": "Địa lý học",
+      "score": 78.3
+     },
+     {
+      "code": "7310601",
+      "name": "Quốc tế học",
+      "score": 79.5
+     },
+     {
+      "code": "7310608",
+      "name": "Đông phương học",
+      "score": 74.6
+     },
+     {
+      "code": "7310613",
+      "name": "Nhật Bản học",
+      "score": 76.1
+     },
+     {
+      "code": "7310614",
+      "name": "Hàn Quốc học",
+      "score": 76.5
+     },
+     {
+      "code": "7310630",
+      "name": "Việt Nam học",
+      "score": 76.0
+     },
+     {
+      "code": "7320101",
+      "name": "Báo chí",
+      "score": 84.9
+     },
+     {
+      "code": "7320104",
+      "name": "Truyền thông đa phương tiện",
+      "score": 88.8
+     },
+     {
+      "code": "7320108",
+      "name": "Quan hệ công chúng",
+      "score": 85.5
+     },
+     {
+      "code": "7320201",
+      "name": "Thông tin - thư viện",
+      "score": 74.5
+     },
+     {
+      "code": "7320205",
+      "name": "Quản lý thông tin",
+      "score": 79.0
+     },
+     {
+      "code": "7320303",
+      "name": "Lưu trữ học",
+      "score": 74.0
+     },
+     {
+      "code": "7340404",
+      "name": "Quản trị nhân lực",
+      "score": 80.0
+     },
+     {
+      "code": "7340406",
+      "name": "Quản trị văn phòng",
+      "score": 78.0
+     },
+     {
+      "code": "7580109",
+      "name": "Quản lý phát triển đô thị và bất động sản",
+      "score": 70.0
+     },
+     {
+      "code": "7580112",
+      "name": "Đô thị học",
+      "score": 73.3
+     },
+     {
+      "code": "7760101",
+      "name": "Công tác xã hội",
+      "score": 77.25
+     },
+     {
+      "code": "7810103",
+      "name": "Quản trị dịch vụ du lịch và lữ hành",
+      "score": 82.0
+     },
+     {
+      "code": "73106A1",
+      "name": "Kinh doanh thương mại Hàn Quốc",
+      "score": 76.9
+     }
+    ]
+   }
   }
  ]
 }

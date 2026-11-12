@@ -31,14 +31,9 @@
   },
   "ussh": {
    "got": [
-    "website"
+    "scores(42)"
    ],
-   "not_found": {
-    "programs": "Bài 'Công bố thông tin tuyển sinh năm 2026' đọc được tại https://hcmussh.edu.vn/post/44214 (30/05/2026: 4.159 chỉ tiêu, 51 ngành/chương trình; phương thức 301 xét tuyển thẳng và 500 xét tuyển tổng hợp) nhưng không liệt kê ngành; danh mục ngành nằm trong file Google Drive 'QSX_Thong tin tuyen sinh 2026-theo QC-CAP NHAT_30_6_V1.pdf' (chỉ hiện 'Loading…' với WebFetch).",
-    "tuition": "Không tìm thấy văn bản học phí 2026–2027 hay khóa tuyển sinh 2026 đọc được. hcmussh.edu.vn/static/document/20801.pdf là thông báo học phí khóa 2025 (năm học 2025–2026) kèm dự kiến 'Năm 2' không ghi năm học — không dùng. Bài hướng dẫn nhập học 2026 (hcmussh.edu.vn/post/45209) không ghi số tiền học phí. Có thể học phí nằm trong file Drive thông tin tuyển sinh 2026 (không đọc được).",
-    "scholarship": "Không tìm thấy thông báo học bổng tuyển sinh/tân sinh viên 2026 của trường trên hcmussh.edu.vn. Các bài học bổng đọc được là học bổng khuyến khích học tập cho sinh viên đang học (hcmussh.edu.vn/post/44584), học bổng tài trợ (Mitsubishi UFJ, SYLFF, Acecook) hoặc hỗ trợ sau đại học (post/44587). Đã hết lượt tìm kiếm web trước khi thử thêm.",
-    "scores": "Bài chính thức https://hcmussh.edu.vn/post/45179 (10/08/2026, 'Trường ĐH KHXH&NV, ĐHQG-HCM công bố điểm chuẩn xét tuyển đại học chính quy năm 2026', phương thức xét tuyển tổng hợp mã 500, thang 100, 3 nhóm thí sinh) chỉ có bảng điểm dạng ảnh (cms.hcmussh.edu.vn/api/file/...jpg); văn bản chỉ nêu Truyền thông đa phương tiện 88,80 (cả 3 nhóm) và Tâm lý học 87,00 (nhóm 2), không có mã ngành nên không điền."
-   }
+   "not_found": {}
   },
   "hcmiu": {
    "got": [
