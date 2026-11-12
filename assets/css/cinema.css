@@ -82,18 +82,127 @@ html body #home-view #hero-actions.glow-hero .bw-hero-h1 em.cine-shine {
   html.bw-cine-quick body #home-view #hero-actions.glow-hero .bw-hero-h1 em .cine-word > span { animation-delay: calc(var(--w, 0) * 30ms), .5s; animation-duration: .6s, 1.1s; }
 }
 
-/* The start button: a shockwave when it lights, then a slow breath (composited: scale and opacity only). */
-html body #home-view #hero-actions .glow-cta { position: relative; }
-html body #home-view #hero-actions .glow-cta::before,
-html body #home-view #hero-actions .glow-cta::after {
-  content: ''; position: absolute; inset: -1px; border-radius: 50%;
+/* ---------- The start button: a small sun with the five chapters in orbit ----------
+   Layers, back to front: a soft halo, a comet of light running round the rim, five chapter dots
+   circling slowly (a finished chapter glows), and the glass core with the words.
+   Everything that moves is transform or opacity, and it all rests while the opening is off screen. */
+html body #home-view #hero-actions .glow-cta {
+  --cta: 178px;
+  position: relative;
+  width: var(--cta); height: var(--cta);
+  margin-top: 40px;
+  display: grid; place-items: center;
+  padding: 0; border: 0; border-radius: 50%;
+  background: none; box-shadow: none;
+  color: #fff; text-decoration: none;
+  translate: var(--mx, 0px) var(--my, 0px);
+  transition: translate .5s cubic-bezier(.2, .8, .2, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+html body #home-view #hero-actions .glow-cta:hover { transform: none; box-shadow: none; }
+html body #home-view #hero-actions .glow-cta.is-magnet { transition: translate .12s linear; }
+html body #home-view #hero-actions .glow-cta > * { grid-area: 1 / 1; box-sizing: border-box; flex: none; }
+html body #home-view #hero-actions .glow-cta { grid-template: var(--cta) / var(--cta); box-sizing: border-box; }
+
+.cta-halo {
+  width: 100%; height: 100%; border-radius: 50%;
+  background: radial-gradient(circle, rgba(252, 115, 77, .55) 0%, rgba(252, 115, 77, .18) 45%, transparent 70%);
+  transform: scale(1.7);
+  transition: transform .6s cubic-bezier(.2, .8, .2, 1), opacity .6s ease;
+  opacity: .8;
+  pointer-events: none;
+}
+/* A comet running round the rim: a conic sweep cut down to a thin ring. */
+.cta-ring {
+  width: calc(100% + 2px); height: calc(100% + 2px); border-radius: 50%;
+  background: conic-gradient(from 0deg, rgba(252, 115, 77, 0) 0deg, rgba(252, 115, 77, .15) 200deg, #fc734d 320deg, #ffe7dc 352deg, rgba(255, 231, 220, 0) 360deg);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 2px));
+          mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 2px));
+  pointer-events: none;
+}
+.cta-ring::after {
+  content: ''; position: absolute; inset: 0; border-radius: 50%;
+  border: 1px solid rgba(252, 115, 77, .35);
+}
+/* Five chapters in orbit, just outside the rim. */
+.cta-orbit { position: relative; width: calc(100% + 34px); height: calc(100% + 34px); pointer-events: none; }
+/* The orbit itself: a faint dashed circle the five chapters travel on. */
+.cta-orbit::before {
+  content: ''; position: absolute; inset: 13px; border-radius: 50%;
+  border: 1px dashed rgba(247, 245, 241, .22);
+}
+.cta-orbit i {
+  position: absolute; left: 50%; top: 50%; width: 9px; height: 9px; margin: -4.5px;
+  border-radius: 50%;
+  background: #1a2233;
+  box-shadow: 0 0 0 1.5px rgba(247, 245, 241, .55);
+  transform: rotate(calc(var(--o) * 72deg - 90deg)) translateX(calc(var(--cta) / 2 + 4px));
+  transition: background .4s ease, box-shadow .4s ease;
+}
+.cta-orbit i.is-done { background: #fc734d; box-shadow: 0 0 10px 2px rgba(252, 115, 77, .8); }
+.cta-orbit i.is-next { background: #ffe7dc; box-shadow: 0 0 0 3px rgba(252, 115, 77, .45), 0 0 14px 3px rgba(255, 210, 191, .7); }
+
+.cta-core {
+  position: relative;
+  width: calc(100% - 14px); height: calc(100% - 14px);
+  border-radius: 50%;
+  display: grid; place-content: center; justify-items: center; gap: 2px;
+  padding: 0 14px;
+  box-sizing: border-box;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(255, 210, 191, .5) 0%, transparent 55%),
+    radial-gradient(circle at 50% 60%, rgba(252, 115, 77, .85) 0%, rgba(201, 72, 36, .75) 55%, rgba(60, 18, 10, .85) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .45), inset 0 -10px 24px rgba(2, 7, 10, .35), 0 18px 40px -12px rgba(252, 115, 77, .75);
+  transition: transform .45s cubic-bezier(.2, .8, .2, 1), box-shadow .45s ease;
+  overflow: hidden;
+}
+/* A glint crosses the glass when the pointer arrives. */
+.cta-core::before {
+  content: ''; position: absolute; inset: -20%;
+  background: linear-gradient(115deg, transparent 38%, rgba(255, 255, 255, .55) 50%, transparent 62%);
+  transform: translate3d(-75%, 0, 0);
+  pointer-events: none;
+}
+.glow-cta .glow-cta-mark svg { display: block; width: 26px; height: 26px; fill: none; stroke: #fff; stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round; filter: drop-shadow(0 2px 6px rgba(2, 7, 10, .35)); }
+/* The core stays roomy: mark, one word, one short line. */
+.cta-label { margin-top: 2px; font: 500 26px/1.05 var(--ks-serif, 'Newsreader', Georgia, serif); letter-spacing: -.01em; text-shadow: 0 2px 10px rgba(2, 7, 10, .3); }
+.cta-sub { max-width: 100%; text-wrap: balance; font: 600 11.5px/1.3 var(--ks-sans, 'Be Vietnam Pro', sans-serif); color: rgba(255, 245, 240, .92); text-align: center; }
+
+html body #home-view #hero-actions .glow-cta:hover .cta-core,
+html body #home-view #hero-actions .glow-cta:focus-visible .cta-core { transform: scale(1.05); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .55), inset 0 -10px 24px rgba(2, 7, 10, .3), 0 24px 60px -10px rgba(252, 115, 77, .95); }
+html body #home-view #hero-actions .glow-cta:hover .cta-halo { transform: scale(2); opacity: 1; }
+html body #home-view #hero-actions .glow-cta:active .cta-core { transform: scale(.96); transition-duration: .12s; }
+html body #home-view #hero-actions .glow-cta:focus-visible { outline: none; }
+html body #home-view #hero-actions .glow-cta:focus-visible .cta-ring::after { border: 2px solid #fff; inset: -6px; }
+
+/* The shockwave when the button first lights. */
+html body #home-view #hero-actions .glow-cta::before {
+  content: ''; position: absolute; inset: 0; border-radius: 50%;
   border: 1px solid rgba(252, 115, 77, .9);
   pointer-events: none; opacity: 0;
 }
 @media (prefers-reduced-motion: no-preference) {
   html.bw-cine body #home-view #hero-actions .glow-cta::before { animation: cine-shock 1.4s cubic-bezier(.16, 1, .3, 1) 1.55s both; }
-  html:not(.bw-lite) body #home-view #hero-actions .glow-cta::after { animation: cine-breath 3.6s ease-in-out 3s infinite; }
-  html body #home-view #hero-actions .glow-cta.is-paused::after { animation-play-state: paused; }
+  html:not(.bw-lite) .cta-ring { animation: cta-spin 5.5s linear infinite; }
+  html:not(.bw-lite) .cta-orbit { animation: cta-spin 48s linear infinite reverse; }
+  html:not(.bw-lite) .cta-halo { animation: cta-breathe 4.2s ease-in-out infinite; }
+  html body #home-view #hero-actions .glow-cta:hover .cta-halo { animation-play-state: paused; }
+  html body #home-view #hero-actions .glow-cta:hover .cta-core::before { transform: translate3d(75%, 0, 0); transition: transform .9s cubic-bezier(.2, .8, .2, 1); }
+  html body #home-view #hero-actions .glow-cta.is-paused :is(.cta-ring, .cta-orbit, .cta-halo) { animation-play-state: paused; }
+  /* The orbit and its dots arrive after the core has lit. */
+  html.bw-cine .cta-orbit i { animation: cta-dot .7s cubic-bezier(.16, 1, .3, 1) both; animation-delay: calc(1.8s + var(--o) * 90ms); }
+  html.bw-cine-quick .cta-orbit i { animation-delay: calc(.3s + var(--o) * 40ms); }
+}
+@keyframes cta-spin { to { rotate: 360deg; } }
+@keyframes cta-breathe { 0%, 100% { opacity: .65; } 50% { opacity: 1; } }
+@keyframes cta-dot { from { opacity: 0; scale: 0; } }
+
+@media (max-width: 1000px) { html body #home-view #hero-actions .glow-cta { --cta: 156px; margin-top: 18px; } }
+@media (max-width: 700px) {
+  html body #home-view #hero-actions .glow-cta { --cta: 140px; }
+  .cta-label { font-size: 22px; }
+  .cta-sub { font-size: 10.5px; }
+  .glow-cta .glow-cta-mark svg { width: 22px; height: 22px; }
 }
 
 /* Numbers count up (cinema.js); they keep their width so the line does not wobble. */
@@ -231,3 +340,7 @@ html.bw-lite ::view-transition-old(root), html.bw-lite ::view-transition-new(roo
 
 /* Leaving a page from a link: a coral sweep along the top, so the click is answered at once. */
 .bw-leaving .bw-progress { transition: transform .3s ease; transform: scaleX(1) !important; }
+
+/* With the start button carrying on the journey, the welcome card keeps only the greeting and the dots. */
+html body #home-view #hero-actions .story-resume-go[hidden] { display: none !important; }
+html body #home-view #hero-actions .story-resume:has(.story-resume-go[hidden]) { padding-bottom: 18px; }

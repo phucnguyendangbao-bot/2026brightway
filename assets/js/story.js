@@ -285,6 +285,21 @@ function renderProgress({ fold } = {}) {
     if (fold && step.complete) setOpen(chapter, false);
   });
 
+  // The opening's start button follows the journey: its orbit lights finished chapters, and once
+  // something is done it becomes the one way to carry on (the welcome card then needs no button).
+  const cta = document.querySelector('[data-cta]');
+  if (cta) {
+    const nextAt = steps.findIndex(step => !step.complete);
+    cta.querySelectorAll('.cta-orbit i').forEach((dot, i) => {
+      dot.classList.toggle('is-done', !!steps[i]?.complete);
+      dot.classList.toggle('is-next', doneCount > 0 && i === nextAt);
+    });
+    const label = cta.querySelector('[data-cta-label]'), sub = cta.querySelector('[data-cta-sub]');
+    if (!doneCount) { cta.setAttribute('href', '#muc-luc'); label.textContent = 'Bắt đầu'; sub.textContent = 'Hành trình 5\u00a0chương'; }
+    else if (nextAt === -1) { cta.setAttribute('href', '#chuong-5'); label.textContent = 'Xem lại'; sub.textContent = 'Kế hoạch của bạn'; }
+    else { cta.setAttribute('href', `#chuong-${nextAt + 1}`); label.textContent = 'Tiếp tục'; sub.textContent = `Chương\u00a0${nextAt + 1} · ${steps[nextAt].label.replace(/ /g, '\u00a0')}`; }
+  }
+
   const resume = document.querySelector('[data-story-resume]');
   if (!resume) return;
   if (!doneCount) { resume.hidden = true; return; }
@@ -300,6 +315,7 @@ function renderProgress({ fold } = {}) {
     <ol class="story-resume-dots" aria-hidden="true">${steps.map((s, i) => `<li class="${s.complete ? 'is-done' : ''}" style="--d:${i}"></li>`).join('')}</ol>
     <button type="button" class="story-resume-go" data-resume-step="${target}">${all ? 'Xem lại kế hoạch hành động' : `Tiếp tục chương ${target + 1}: ${escape(steps[target].label)}`}</button>`;
   resume.querySelector('[data-resume-step]').addEventListener('click', event => goTo(chapterFor(target), event.currentTarget));
+  if (cta) resume.querySelector('[data-resume-step]').hidden = true;
   if (intro) {
     const counter = resume.querySelector('[data-resume-count]');
     for (let n = 1; n <= doneCount; n++) setTimeout(() => { if (counter.isConnected) counter.textContent = n; }, 850 + n * 150);

@@ -338,6 +338,27 @@
     // The button's slow breath rests while the opening is off screen.
     const cta = hero.querySelector('.glow-cta');
     if (cta && 'IntersectionObserver' in window) new IntersectionObserver(e => cta.classList.toggle('is-paused', !e[0].isIntersecting)).observe(hero);
+    if (cta) magnet(hero, cta);
+  }
+
+  /* ---------- The start button leans toward a pointer that comes near it (desktop) ---------- */
+  function magnet(hero, cta) {
+    if (!finePointer.matches || !motionOK.matches) return;
+    let frame = 0, ev = null;
+    const apply = () => {
+      frame = 0;
+      const r = cta.getBoundingClientRect();
+      const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+      const dx = ev.clientX - cx, dy = ev.clientY - cy, d = Math.hypot(dx, dy), reach = r.width * 1.15;
+      if (d > reach) return release();
+      const pull = (1 - d / reach) * 0.35;
+      cta.classList.add('is-magnet');
+      cta.style.setProperty('--mx', `${Math.max(-16, Math.min(16, dx * pull)).toFixed(1)}px`);
+      cta.style.setProperty('--my', `${Math.max(-16, Math.min(16, dy * pull)).toFixed(1)}px`);
+    };
+    const release = () => { cta.classList.remove('is-magnet'); cta.style.setProperty('--mx', '0px'); cta.style.setProperty('--my', '0px'); };
+    hero.addEventListener('pointermove', e => { ev = e; if (!frame) frame = requestAnimationFrame(apply); }, { passive: true });
+    hero.addEventListener('pointerleave', release);
   }
 
   /* ---------- Leaving the page: answer the click at once ---------- */
