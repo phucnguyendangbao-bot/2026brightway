@@ -336,6 +336,209 @@ export const researchedSchoolDetails = {
    "summary": "Định mức năm học 2026–2027 (khóa 2026): chương trình chuẩn 32,6–40,5 triệu đồng/năm tùy ngành (Vật lý học 32,6; Sinh học, Hóa học 38,6; nhóm ngành Máy tính và CNTT, Khoa học dữ liệu, Trí tuệ nhân tạo 40,5); tăng cường tiếng Anh 45–59,8 triệu; Khoa học máy tính",
    "source": "https://tuyensinh.hcmus.edu.vn/wp-content/uploads/2026/08/Phu-luc-2-Huong-dan-nhap-hoc-2026_update12.8.pdf",
    "published": null
+  },
+  "scores": {
+   "source": "https://hcmus.edu.vn/truong-dai-hoc-khoa-hoc-tu-nhien-dhqg-hcm-cong-bo-diem-chuan-trung-tuyen-dai-hoc-chinh-quy-nam-2026/",
+   "scale": 30,
+   "method": "Điểm chuẩn trúng tuyển 2026, phương thức xét tuyển tổng hợp (phương thức 2), thang 30 (trường công bố song song thang 100)",
+   "note": "Đã gồm điểm cộng và điểm ưu tiên. Trường công bố ngày 10/08/2026; đây là năm đầu áp dụng phương thức tổng hợp. Đọc từ bảng ảnh trên trang trường và đối chiếu hai cột thang 30 và thang 100.",
+   "programs": [
+    {
+     "code": "7140103",
+     "name": "Công nghệ giáo dục",
+     "score": 23.89
+    },
+    {
+     "code": "7420101",
+     "name": "Sinh học",
+     "score": 23.5
+    },
+    {
+     "code": "7420101KD",
+     "name": "Sinh học (CT TCTA)",
+     "score": 22.6
+    },
+    {
+     "code": "7420201",
+     "name": "Công nghệ Sinh học",
+     "score": 24.75
+    },
+    {
+     "code": "7420201KD",
+     "name": "Công nghệ Sinh học (CT TCTA)",
+     "score": 24.1
+    },
+    {
+     "code": "7440102KD",
+     "name": "Vật lý học (CT TCTA)",
+     "score": 24.3
+    },
+    {
+     "code": "7440102NN",
+     "name": "Nhóm ngành Vật lý học, Công nghệ Vật lý điện tử và tin học",
+     "score": 25.88
+    },
+    {
+     "code": "7440107KD",
+     "name": "Công nghệ Vật lý điện tử và tin học (CT TCTA)",
+     "score": 24.86
+    },
+    {
+     "code": "7440112",
+     "name": "Hoá học",
+     "score": 26.15
+    },
+    {
+     "code": "7440112KD",
+     "name": "Hóa học (CT TCTA)",
+     "score": 24.89
+    },
+    {
+     "code": "7440122",
+     "name": "Khoa học Vật liệu",
+     "score": 25.3
+    },
+    {
+     "code": "7440122KD",
+     "name": "Khoa học Vật liệu (CT TCTA)",
+     "score": 24.25
+    },
+    {
+     "code": "74401a1",
+     "name": "Công nghệ bán dẫn",
+     "score": 27.34
+    },
+    {
+     "code": "7440201NN",
+     "name": "Nhóm ngành Địa chất học, Kinh tế đất đai",
+     "score": 22.6
+    },
+    {
+     "code": "7440228",
+     "name": "Hải dương học",
+     "score": 23.92
+    },
+    {
+     "code": "7440228KD",
+     "name": "Hải dương học (CT TCTA)",
+     "score": 21.69
+    },
+    {
+     "code": "7440301",
+     "name": "Khoa học Môi trường",
+     "score": 23.1
+    },
+    {
+     "code": "7440301KD",
+     "name": "Khoa học Môi trường (CT TCTA)",
+     "score": 21.5
+    },
+    {
+     "code": "7460101NN",
+     "name": "Nhóm ngành Toán học (Toán học, Toán ứng dụng, Toán tin)",
+     "score": 26.28
+    },
+    {
+     "code": "7460108KD",
+     "name": "Khoa học dữ liệu (CT TCTA)",
+     "score": 27.48
+    },
+    {
+     "code": "7460108NN",
+     "name": "Nhóm ngành Khoa học dữ liệu, Thống kê",
+     "score": 27.63
+    },
+    {
+     "code": "7460112KD",
+     "name": "Toán ứng dụng (CT TCTA)",
+     "score": 25.7
+    },
+    {
+     "code": "7460117KD",
+     "name": "Toán tin (CT TCTA)",
+     "score": 25.52
+    },
+    {
+     "code": "7480101TT",
+     "name": "Khoa học máy tính (CT Tiên tiến)",
+     "score": 29.32
+    },
+    {
+     "code": "7480107",
+     "name": "Trí tuệ nhân tạo",
+     "score": 28.68
+    },
+    {
+     "code": "7480201KD",
+     "name": "Công nghệ thông tin (CT TCTA)",
+     "score": 24.7
+    },
+    {
+     "code": "7480201NN",
+     "name": "Nhóm ngành máy tính và Công nghệ thông tin",
+     "score": 26.3
+    },
+    {
+     "code": "7510401KD",
+     "name": "Công nghệ kỹ thuật Hóa học (CT TCTA)",
+     "score": 24.9
+    },
+    {
+     "code": "7510402",
+     "name": "Công nghệ Vật liệu",
+     "score": 25.58
+    },
+    {
+     "code": "7510402KD",
+     "name": "Công nghệ Vật liệu (CT TCTA)",
+     "score": 24.5
+    },
+    {
+     "code": "7510406",
+     "name": "Công nghệ kỹ thuật Môi trường",
+     "score": 23.1
+    },
+    {
+     "code": "7520207",
+     "name": "Kỹ thuật điện tử - viễn thông",
+     "score": 26.55
+    },
+    {
+     "code": "7520207KD",
+     "name": "Kỹ thuật điện tử - viễn thông (CT TCTA)",
+     "score": 25.6
+    },
+    {
+     "code": "75202a1",
+     "name": "Thiết kế vi mạch",
+     "score": 27.93
+    },
+    {
+     "code": "7520402",
+     "name": "Kỹ thuật hạt nhân",
+     "score": 26.21
+    },
+    {
+     "code": "7520403",
+     "name": "Vật lý y khoa",
+     "score": 26
+    },
+    {
+     "code": "7520403KD",
+     "name": "Vật lý y khoa (CT TCTA)",
+     "score": 24.8
+    },
+    {
+     "code": "7520501",
+     "name": "Kỹ thuật địa chất",
+     "score": 23.85
+    },
+    {
+     "code": "7850101",
+     "name": "Quản lý tài nguyên và môi trường",
+     "score": 22.3
+    }
+   ]
   }
  },
  "ussh": {
@@ -5234,6 +5437,12 @@ export const researchedSchoolDetails = {
    "source": "https://ts.hcmuaf.edu.vn/vn/tin-tuc/span-style-color-red-thong-tin-tuyen-sinh-dai-hoc-chinh-quy-va-cao-dang-nganh-giao-duc-mam-non-nam-2026-60567",
    "published": "2026-07-03"
   },
+  "tuition": {
+   "year": 2026,
+   "summary": "Học phí học kỳ 1 năm học 2026–2027 theo tín chỉ, chương trình tiêu chuẩn, khóa tuyển sinh 2026: nhóm kỹ thuật – nông nghiệp (phần lớn ngành) 526.000đ/tín chỉ; kinh tế – quản trị (QT, TM, TC, KE, TB) 523.000đ; sư phạm 497.000đ; giáo dục mầm non 511.000đ; công n",
+   "source": "https://pkhtc.hcmuaf.edu.vn/vn/tin-tuc/thong-bao-muc-thu-hoc-phi-hoc-ky-1-nam-hoc-2026-2027-57953",
+   "published": "2026-08-12"
+  },
   "scores": {
    "source": "https://ts.hcmuaf.edu.vn/vn/tin-tuc/span-style-color-red-diem-trung-tuyen-diem-chuan-cac-nganh-dao-tao-trinh-do-dai-hoc-va-nganh-giao-duc-mam-non-trinh-do-c-60570",
    "scale": 30,
@@ -8094,14 +8303,14 @@ export const researchedSchoolDetails = {
    "published": null
   },
   "scores": {
-   "source": "https://tuyensinh.hueuni.edu.vn/News/Download/10722",
+   "source": "https://tuyensinh.husc.edu.vn/thongbao.php?id=81",
    "scale": 30,
-   "method": "Điểm thi tốt nghiệp THPT 2026 (cột 'Điểm thi tốt nghiệp THPT/Kết hợp') · thang 30",
-   "note": "Bảng điểm trúng tuyển đợt 1 năm 2026 của Đại học Huế (PDF đính kèm QĐ ngày 10/08/2026). Lấy cột đầu 'Điểm thi tốt nghiệp THPT/ Kết hợp'; phương thức học bạ, ĐGNL có điểm khác. Văn bản không ghi thang điểm; thang 30 suy ra từ giá trị điểm.",
+   "method": "Điểm chuẩn trúng tuyển 2026 theo điểm thi tốt nghiệp THPT, thang 30",
+   "note": "Trường còn công bố điểm theo học bạ (thang 30), ĐGNL ĐHQG TP.HCM (thang 1200) và ĐGNL ĐHQG Hà Nội (thang 150); bảng này chỉ lấy cột điểm thi THPT. Trích trực tiếp từ bảng trên trang trường.",
    "programs": [
     {
      "code": "7220104",
-     "name": "Hán - Nôm",
+     "name": "Hán Nôm",
      "score": 16
     },
     {
@@ -8171,7 +8380,7 @@ export const researchedSchoolDetails = {
     },
     {
      "code": "7440112",
-     "name": "Hóa học",
+     "name": "Hoá học",
      "score": 20
     },
     {
@@ -8191,12 +8400,12 @@ export const researchedSchoolDetails = {
     },
     {
      "code": "7480201",
-     "name": "Công nghệ thông tin (Cử nhân)",
+     "name": "Công nghệ thông tin",
      "score": 17.5
     },
     {
      "code": "7480201VJ",
-     "name": "Công nghệ thông tin (Kỹ sư Việt - Nhật)",
+     "name": "Công nghệ thông tin (Chương trình đào tạo Kỹ sư Việt-Nhật)",
      "score": 17.75
     },
     {
@@ -8206,7 +8415,7 @@ export const researchedSchoolDetails = {
     },
     {
      "code": "7510302IC",
-     "name": "Công nghệ kỹ thuật điện tử - Viễn thông (Chương trình thiết kế vi mạch)",
+     "name": "Công nghệ kỹ thuật điện tử - viễn thông (Chương trình thiết kế vi mạch)",
      "score": 22.75
     },
     {

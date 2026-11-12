@@ -1823,6 +1823,11 @@
       "name": "Cảnh quan và kỹ thuật hoa viên"
      }
     ]
+   },
+   "tuition": {
+    "summary": "Học phí học kỳ 1 năm học 2026–2027 theo tín chỉ, chương trình tiêu chuẩn, khóa tuyển sinh 2026: nhóm kỹ thuật – nông nghiệp (phần lớn ngành) 526.000đ/tín chỉ; kinh tế – quản trị (QT, TM, TC, KE, TB) 523.000đ; sư phạm 497.000đ; giáo dục mầm non 511.000đ; công nghệ sinh học (ES) 486.000đ; các chương trình đánh dấu KĐCL 728.000–789.000đ/tín chỉ. Học phí cả kỳ phụ thuộc số tín chỉ đăng ký.",
+    "source": "https://pkhtc.hcmuaf.edu.vn/vn/tin-tuc/thong-bao-muc-thu-hoc-phi-hoc-ky-1-nam-hoc-2026-2027-57953",
+    "published": "2026-08-12"
    }
   },
   {
@@ -3022,6 +3027,574 @@
       "code": "75202A1TA",
       "name": "Thiết kế vi mạch (dạy và học bằng tiếng Anh)",
       "score": 24.0
+     }
+    ]
+   }
+  },
+  {
+   "school_id": "hcmus",
+   "scores": {
+    "source": "https://hcmus.edu.vn/truong-dai-hoc-khoa-hoc-tu-nhien-dhqg-hcm-cong-bo-diem-chuan-trung-tuyen-dai-hoc-chinh-quy-nam-2026/",
+    "method": "Điểm chuẩn trúng tuyển 2026, phương thức xét tuyển tổng hợp (phương thức 2), thang 30 (trường công bố song song thang 100)",
+    "scale": 30,
+    "note": "Đã gồm điểm cộng và điểm ưu tiên. Trường công bố ngày 10/08/2026; đây là năm đầu áp dụng phương thức tổng hợp. Đọc từ bảng ảnh trên trang trường và đối chiếu hai cột thang 30 và thang 100.",
+    "programs": [
+     {
+      "code": "7140103",
+      "name": "Công nghệ giáo dục",
+      "score": 23.89
+     },
+     {
+      "code": "7420101",
+      "name": "Sinh học",
+      "score": 23.5
+     },
+     {
+      "code": "7420101KD",
+      "name": "Sinh học (CT TCTA)",
+      "score": 22.6
+     },
+     {
+      "code": "7420201",
+      "name": "Công nghệ Sinh học",
+      "score": 24.75
+     },
+     {
+      "code": "7420201KD",
+      "name": "Công nghệ Sinh học (CT TCTA)",
+      "score": 24.1
+     },
+     {
+      "code": "7440102KD",
+      "name": "Vật lý học (CT TCTA)",
+      "score": 24.3
+     },
+     {
+      "code": "7440102NN",
+      "name": "Nhóm ngành Vật lý học, Công nghệ Vật lý điện tử và tin học",
+      "score": 25.88
+     },
+     {
+      "code": "7440107KD",
+      "name": "Công nghệ Vật lý điện tử và tin học (CT TCTA)",
+      "score": 24.86
+     },
+     {
+      "code": "7440112",
+      "name": "Hoá học",
+      "score": 26.15
+     },
+     {
+      "code": "7440112KD",
+      "name": "Hóa học (CT TCTA)",
+      "score": 24.89
+     },
+     {
+      "code": "7440122",
+      "name": "Khoa học Vật liệu",
+      "score": 25.3
+     },
+     {
+      "code": "7440122KD",
+      "name": "Khoa học Vật liệu (CT TCTA)",
+      "score": 24.25
+     },
+     {
+      "code": "74401a1",
+      "name": "Công nghệ bán dẫn",
+      "score": 27.34
+     },
+     {
+      "code": "7440201NN",
+      "name": "Nhóm ngành Địa chất học, Kinh tế đất đai",
+      "score": 22.6
+     },
+     {
+      "code": "7440228",
+      "name": "Hải dương học",
+      "score": 23.92
+     },
+     {
+      "code": "7440228KD",
+      "name": "Hải dương học (CT TCTA)",
+      "score": 21.69
+     },
+     {
+      "code": "7440301",
+      "name": "Khoa học Môi trường",
+      "score": 23.1
+     },
+     {
+      "code": "7440301KD",
+      "name": "Khoa học Môi trường (CT TCTA)",
+      "score": 21.5
+     },
+     {
+      "code": "7460101NN",
+      "name": "Nhóm ngành Toán học (Toán học, Toán ứng dụng, Toán tin)",
+      "score": 26.28
+     },
+     {
+      "code": "7460108KD",
+      "name": "Khoa học dữ liệu (CT TCTA)",
+      "score": 27.48
+     },
+     {
+      "code": "7460108NN",
+      "name": "Nhóm ngành Khoa học dữ liệu, Thống kê",
+      "score": 27.63
+     },
+     {
+      "code": "7460112KD",
+      "name": "Toán ứng dụng (CT TCTA)",
+      "score": 25.7
+     },
+     {
+      "code": "7460117KD",
+      "name": "Toán tin (CT TCTA)",
+      "score": 25.52
+     },
+     {
+      "code": "7480101TT",
+      "name": "Khoa học máy tính (CT Tiên tiến)",
+      "score": 29.32
+     },
+     {
+      "code": "7480107",
+      "name": "Trí tuệ nhân tạo",
+      "score": 28.68
+     },
+     {
+      "code": "7480201KD",
+      "name": "Công nghệ thông tin (CT TCTA)",
+      "score": 24.7
+     },
+     {
+      "code": "7480201NN",
+      "name": "Nhóm ngành máy tính và Công nghệ thông tin",
+      "score": 26.3
+     },
+     {
+      "code": "7510401KD",
+      "name": "Công nghệ kỹ thuật Hóa học (CT TCTA)",
+      "score": 24.9
+     },
+     {
+      "code": "7510402",
+      "name": "Công nghệ Vật liệu",
+      "score": 25.58
+     },
+     {
+      "code": "7510402KD",
+      "name": "Công nghệ Vật liệu (CT TCTA)",
+      "score": 24.5
+     },
+     {
+      "code": "7510406",
+      "name": "Công nghệ kỹ thuật Môi trường",
+      "score": 23.1
+     },
+     {
+      "code": "7520207",
+      "name": "Kỹ thuật điện tử - viễn thông",
+      "score": 26.55
+     },
+     {
+      "code": "7520207KD",
+      "name": "Kỹ thuật điện tử - viễn thông (CT TCTA)",
+      "score": 25.6
+     },
+     {
+      "code": "75202a1",
+      "name": "Thiết kế vi mạch",
+      "score": 27.93
+     },
+     {
+      "code": "7520402",
+      "name": "Kỹ thuật hạt nhân",
+      "score": 26.21
+     },
+     {
+      "code": "7520403",
+      "name": "Vật lý y khoa",
+      "score": 26.0
+     },
+     {
+      "code": "7520403KD",
+      "name": "Vật lý y khoa (CT TCTA)",
+      "score": 24.8
+     },
+     {
+      "code": "7520501",
+      "name": "Kỹ thuật địa chất",
+      "score": 23.85
+     },
+     {
+      "code": "7850101",
+      "name": "Quản lý tài nguyên và môi trường",
+      "score": 22.3
+     }
+    ]
+   }
+  },
+  {
+   "school_id": "khtn-hcm",
+   "scores": {
+    "source": "https://hcmus.edu.vn/truong-dai-hoc-khoa-hoc-tu-nhien-dhqg-hcm-cong-bo-diem-chuan-trung-tuyen-dai-hoc-chinh-quy-nam-2026/",
+    "method": "Điểm chuẩn trúng tuyển 2026, phương thức xét tuyển tổng hợp (phương thức 2), thang 30 (trường công bố song song thang 100)",
+    "scale": 30,
+    "note": "Đã gồm điểm cộng và điểm ưu tiên. Trường công bố ngày 10/08/2026; đây là năm đầu áp dụng phương thức tổng hợp. Đọc từ bảng ảnh trên trang trường và đối chiếu hai cột thang 30 và thang 100.",
+    "programs": [
+     {
+      "code": "7140103",
+      "name": "Công nghệ giáo dục",
+      "score": 23.89
+     },
+     {
+      "code": "7420101",
+      "name": "Sinh học",
+      "score": 23.5
+     },
+     {
+      "code": "7420101KD",
+      "name": "Sinh học (CT TCTA)",
+      "score": 22.6
+     },
+     {
+      "code": "7420201",
+      "name": "Công nghệ Sinh học",
+      "score": 24.75
+     },
+     {
+      "code": "7420201KD",
+      "name": "Công nghệ Sinh học (CT TCTA)",
+      "score": 24.1
+     },
+     {
+      "code": "7440102KD",
+      "name": "Vật lý học (CT TCTA)",
+      "score": 24.3
+     },
+     {
+      "code": "7440102NN",
+      "name": "Nhóm ngành Vật lý học, Công nghệ Vật lý điện tử và tin học",
+      "score": 25.88
+     },
+     {
+      "code": "7440107KD",
+      "name": "Công nghệ Vật lý điện tử và tin học (CT TCTA)",
+      "score": 24.86
+     },
+     {
+      "code": "7440112",
+      "name": "Hoá học",
+      "score": 26.15
+     },
+     {
+      "code": "7440112KD",
+      "name": "Hóa học (CT TCTA)",
+      "score": 24.89
+     },
+     {
+      "code": "7440122",
+      "name": "Khoa học Vật liệu",
+      "score": 25.3
+     },
+     {
+      "code": "7440122KD",
+      "name": "Khoa học Vật liệu (CT TCTA)",
+      "score": 24.25
+     },
+     {
+      "code": "74401a1",
+      "name": "Công nghệ bán dẫn",
+      "score": 27.34
+     },
+     {
+      "code": "7440201NN",
+      "name": "Nhóm ngành Địa chất học, Kinh tế đất đai",
+      "score": 22.6
+     },
+     {
+      "code": "7440228",
+      "name": "Hải dương học",
+      "score": 23.92
+     },
+     {
+      "code": "7440228KD",
+      "name": "Hải dương học (CT TCTA)",
+      "score": 21.69
+     },
+     {
+      "code": "7440301",
+      "name": "Khoa học Môi trường",
+      "score": 23.1
+     },
+     {
+      "code": "7440301KD",
+      "name": "Khoa học Môi trường (CT TCTA)",
+      "score": 21.5
+     },
+     {
+      "code": "7460101NN",
+      "name": "Nhóm ngành Toán học (Toán học, Toán ứng dụng, Toán tin)",
+      "score": 26.28
+     },
+     {
+      "code": "7460108KD",
+      "name": "Khoa học dữ liệu (CT TCTA)",
+      "score": 27.48
+     },
+     {
+      "code": "7460108NN",
+      "name": "Nhóm ngành Khoa học dữ liệu, Thống kê",
+      "score": 27.63
+     },
+     {
+      "code": "7460112KD",
+      "name": "Toán ứng dụng (CT TCTA)",
+      "score": 25.7
+     },
+     {
+      "code": "7460117KD",
+      "name": "Toán tin (CT TCTA)",
+      "score": 25.52
+     },
+     {
+      "code": "7480101TT",
+      "name": "Khoa học máy tính (CT Tiên tiến)",
+      "score": 29.32
+     },
+     {
+      "code": "7480107",
+      "name": "Trí tuệ nhân tạo",
+      "score": 28.68
+     },
+     {
+      "code": "7480201KD",
+      "name": "Công nghệ thông tin (CT TCTA)",
+      "score": 24.7
+     },
+     {
+      "code": "7480201NN",
+      "name": "Nhóm ngành máy tính và Công nghệ thông tin",
+      "score": 26.3
+     },
+     {
+      "code": "7510401KD",
+      "name": "Công nghệ kỹ thuật Hóa học (CT TCTA)",
+      "score": 24.9
+     },
+     {
+      "code": "7510402",
+      "name": "Công nghệ Vật liệu",
+      "score": 25.58
+     },
+     {
+      "code": "7510402KD",
+      "name": "Công nghệ Vật liệu (CT TCTA)",
+      "score": 24.5
+     },
+     {
+      "code": "7510406",
+      "name": "Công nghệ kỹ thuật Môi trường",
+      "score": 23.1
+     },
+     {
+      "code": "7520207",
+      "name": "Kỹ thuật điện tử - viễn thông",
+      "score": 26.55
+     },
+     {
+      "code": "7520207KD",
+      "name": "Kỹ thuật điện tử - viễn thông (CT TCTA)",
+      "score": 25.6
+     },
+     {
+      "code": "75202a1",
+      "name": "Thiết kế vi mạch",
+      "score": 27.93
+     },
+     {
+      "code": "7520402",
+      "name": "Kỹ thuật hạt nhân",
+      "score": 26.21
+     },
+     {
+      "code": "7520403",
+      "name": "Vật lý y khoa",
+      "score": 26.0
+     },
+     {
+      "code": "7520403KD",
+      "name": "Vật lý y khoa (CT TCTA)",
+      "score": 24.8
+     },
+     {
+      "code": "7520501",
+      "name": "Kỹ thuật địa chất",
+      "score": 23.85
+     },
+     {
+      "code": "7850101",
+      "name": "Quản lý tài nguyên và môi trường",
+      "score": 22.3
+     }
+    ]
+   }
+  },
+  {
+   "school_id": "husc",
+   "scores": {
+    "source": "https://tuyensinh.husc.edu.vn/thongbao.php?id=81",
+    "method": "Điểm chuẩn trúng tuyển 2026 theo điểm thi tốt nghiệp THPT, thang 30",
+    "scale": 30,
+    "note": "Trường còn công bố điểm theo học bạ (thang 30), ĐGNL ĐHQG TP.HCM (thang 1200) và ĐGNL ĐHQG Hà Nội (thang 150); bảng này chỉ lấy cột điểm thi THPT. Trích trực tiếp từ bảng trên trang trường.",
+    "programs": [
+     {
+      "code": "7220104",
+      "name": "Hán Nôm",
+      "score": 16.0
+     },
+     {
+      "code": "7229001",
+      "name": "Triết học",
+      "score": 16.0
+     },
+     {
+      "code": "7229010",
+      "name": "Lịch sử",
+      "score": 23.0
+     },
+     {
+      "code": "7229030",
+      "name": "Văn học",
+      "score": 22.5
+     },
+     {
+      "code": "7229042",
+      "name": "Quản lý văn hóa",
+      "score": 19.0
+     },
+     {
+      "code": "7310205",
+      "name": "Quản lý nhà nước",
+      "score": 18.0
+     },
+     {
+      "code": "7310301",
+      "name": "Xã hội học",
+      "score": 15.5
+     },
+     {
+      "code": "7310608",
+      "name": "Đông phương học",
+      "score": 16.0
+     },
+     {
+      "code": "7320101",
+      "name": "Báo chí",
+      "score": 18.5
+     },
+     {
+      "code": "7320111",
+      "name": "Truyền thông số",
+      "score": 21.25
+     },
+     {
+      "code": "7420101",
+      "name": "Sinh học",
+      "score": 15.0
+     },
+     {
+      "code": "7420201",
+      "name": "Công nghệ sinh học",
+      "score": 19.5
+     },
+     {
+      "code": "7440102",
+      "name": "Vật lý học",
+      "score": 16.0
+     },
+     {
+      "code": "7440102SC",
+      "name": "Vật lý học (Chương trình Công nghệ bán dẫn)",
+      "score": 22.75
+     },
+     {
+      "code": "7440112",
+      "name": "Hoá học",
+      "score": 20.0
+     },
+     {
+      "code": "7440301",
+      "name": "Khoa học môi trường",
+      "score": 15.0
+     },
+     {
+      "code": "7460108",
+      "name": "Khoa học dữ liệu",
+      "score": 17.25
+     },
+     {
+      "code": "7480103",
+      "name": "Kỹ thuật phần mềm",
+      "score": 17.5
+     },
+     {
+      "code": "7480201",
+      "name": "Công nghệ thông tin",
+      "score": 17.5
+     },
+     {
+      "code": "7480201VJ",
+      "name": "Công nghệ thông tin (Chương trình đào tạo Kỹ sư Việt-Nhật)",
+      "score": 17.75
+     },
+     {
+      "code": "7510302",
+      "name": "Công nghệ kỹ thuật điện tử - Viễn thông",
+      "score": 17.5
+     },
+     {
+      "code": "7510302IC",
+      "name": "Công nghệ kỹ thuật điện tử - viễn thông (Chương trình thiết kế vi mạch)",
+      "score": 22.75
+     },
+     {
+      "code": "7510401",
+      "name": "Công nghệ kỹ thuật hóa học",
+      "score": 19.0
+     },
+     {
+      "code": "7520503",
+      "name": "Kỹ thuật trắc địa - bản đồ",
+      "score": 15.25
+     },
+     {
+      "code": "7580101",
+      "name": "Kiến trúc",
+      "score": 16.0
+     },
+     {
+      "code": "7580211",
+      "name": "Địa kỹ thuật xây dựng",
+      "score": 15.0
+     },
+     {
+      "code": "7760101",
+      "name": "Công tác xã hội",
+      "score": 19.5
+     },
+     {
+      "code": "7850101",
+      "name": "Quản lý tài nguyên và môi trường",
+      "score": 15.5
+     },
+     {
+      "code": "7850105",
+      "name": "Quản lý an toàn, sức khỏe và môi trường",
+      "score": 15.25
      }
     ]
    }

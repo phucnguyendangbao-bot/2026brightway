@@ -50,10 +50,10 @@ test('reviewed exclusions stay out: draft đề án, mislabelled school, unclear
 });
 
 test('pass 2 fills from tables read on the school pages, with every row inside its scale', () => {
-  const filled = ['due', 'uit', 'hcmut', 'hcmiu', 'hub', 'nlu', 'sgu', 'tdtu', 'uel', 'ctump', 'hcmue', 'vku'];
+  const filled = ['due', 'uit', 'hcmut', 'hcmus', 'husc', 'hcmiu', 'hub', 'nlu', 'sgu', 'tdtu', 'uel', 'ctump', 'hcmue', 'vku'];
   for (const id of filled) assert.ok(researchedSchoolDetails[id].scores.programs.length > 0, id);
   assert.equal(researchedSchoolDetails.hcmue.scores.programs.length, 47, 'round-1 table, not the 3-row round 2');
-  for (const id of ['due', 'hcmut', 'ueh', 'dut', 'ctump', 'sgu', 'hcmiu']) assert.match(researchedSchoolDetails[id].tuition.summary, /2026/, id);
+  for (const id of ['nlu', 'due', 'hcmut', 'ueh', 'dut', 'ctump', 'sgu', 'hcmiu']) assert.match(researchedSchoolDetails[id].tuition.summary, /2026/, id);
 });
 
 test('research only fills gaps: curated 2026 records and scores are kept as they are', () => {

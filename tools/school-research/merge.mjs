@@ -10,7 +10,7 @@ const { canonicalSchoolId } = await import(repo + 'assets/data/university-identi
 const PARENTS = {
   hcmut: ['vnuhcm.edu.vn'], uit: ['vnuhcm.edu.vn'], hcmus: ['vnuhcm.edu.vn'], ussh: ['vnuhcm.edu.vn'], hcmiu: ['vnuhcm.edu.vn'], uel: ['vnuhcm.edu.vn'],
   dut: ['udn.vn', 'ud.edu.vn'], due: ['udn.vn', 'ud.edu.vn'], 'smp-udn': ['udn.vn', 'ud.edu.vn'], vku: ['udn.vn', 'ud.edu.vn'],
-  huemed: ['hueuni.edu.vn'], husc: ['hueuni.edu.vn'], huaf: ['hueuni.edu.vn'], hucfl: ['hueuni.edu.vn'], 'hue-uni': ['hueuni.edu.vn'],
+  huemed: ['hueuni.edu.vn'], husc: ['hueuni.edu.vn', 'husc.edu.vn'], huaf: ['hueuni.edu.vn'], hucfl: ['hueuni.edu.vn'], 'hue-uni': ['hueuni.edu.vn'],
 };
 const BLOCK = /tuyensinh247|thuvienphapluat|vnexpress|thanhnien|tuoitre|dantri|vietnamnet|wikipedia|facebook|zingnews|znews|kenh14|laodong|nld\.com|giaoducthoidai|baomoi|hocmai|diemthi|kenhtuyensinh|edu2review|vietjack/i;
 const root = host => host.replace(/^www\./, '').split('.').slice(-3).join('.');

@@ -1,18 +1,11 @@
 {
  "issues": [
-  "husc.website: host husc.edu.vn not in hueuni.edu.vn,moet.gov.vn,husc.hueuni.edu.vn (kept for review)",
-  "husc.admission: host tuyensinh.husc.edu.vn not in hueuni.edu.vn,moet.gov.vn,husc.hueuni.edu.vn (kept for review)",
-  "husc.programs: host tuyensinh.husc.edu.vn not in hueuni.edu.vn,moet.gov.vn,husc.hueuni.edu.vn (kept for review)",
   "phuxuan.website: host pxu.edu.vn not in moet.gov.vn,phuxuan.edu.vn (kept for review)",
   "phuxuan.admission: host pxu.edu.vn not in moet.gov.vn,phuxuan.edu.vn (kept for review)",
   "phuxuan.programs: host pxu.edu.vn not in moet.gov.vn,phuxuan.edu.vn (kept for review)",
   "phuxuan.scholarship: host pxu.edu.vn not in moet.gov.vn,phuxuan.edu.vn (kept for review)",
   "phuxuan.scholarship: host pxu.edu.vn not in moet.gov.vn,phuxuan.edu.vn (kept for review)",
   "phuxuan.scholarship: host pxu.edu.vn not in moet.gov.vn,phuxuan.edu.vn (kept for review)",
-  "husc.website: host husc.edu.vn not in hueuni.edu.vn,moet.gov.vn,husc.hueuni.edu.vn (kept for review)",
-  "husc.scholarship: host tuyensinh.husc.edu.vn not in hueuni.edu.vn,moet.gov.vn,husc.hueuni.edu.vn (kept for review)",
-  "husc.scholarship: host tuyensinh.husc.edu.vn not in hueuni.edu.vn,moet.gov.vn,husc.hueuni.edu.vn (kept for review)",
-  "husc.scholarship: host tuyensinh.husc.edu.vn not in hueuni.edu.vn,moet.gov.vn,husc.hueuni.edu.vn (kept for review)",
   "phuxuan.website: host pxu.edu.vn not in moet.gov.vn,phuxuan.edu.vn (kept for review)",
   "phuxuan.tuition: host pxu.edu.vn not in moet.gov.vn,phuxuan.edu.vn (kept for review)"
  ],
@@ -32,11 +25,7 @@
   },
   "hcmus": {
    "got": [
-    "website",
-    "tuition",
-    "scholarship",
-    "scholarship",
-    "scholarship"
+    "scores(39)"
    ],
    "not_found": {}
   },
@@ -196,6 +185,7 @@
   },
   "nlu": {
    "got": [
+    "tuition",
     "scores(55)",
     "programs(55)"
    ],
@@ -303,14 +293,9 @@
   },
   "husc": {
    "got": [
-    "website",
-    "scholarship",
-    "scholarship",
-    "scholarship"
+    "scores(29)"
    ],
-   "not_found": {
-    "tuition": "Không tìm được mức học phí 2026–2027 trên nguồn chính thức. File Thông tin tuyển sinh 2026 (https://tuyensinh.husc.edu.vn/IMAGES/files/6a89137d40a24_thong_tin_tuyen_sinh_202611.pdf) lỗi máy chủ cả 2 lần tải; các trang tuyensinh.husc.edu.vn (thongbao id=63, 64, 80, 81), trang chủ husc.edu.vn, tuyensinh.hueuni.edu.vn (Download 10667, 10669, 10722, 10724) không có học phí; nhaphoc.husc.edu.vn bị chặn robots; husc.edu.vn/announcements.php lỗi. Trang học bổng (id=67) chỉ nêu giá trị học bổng 100% học phí là 7.700.000–9.800.000 đồng, không nêu mức học phí năm."
-   }
+   "not_found": {}
   },
   "huaf": {
    "got": [
