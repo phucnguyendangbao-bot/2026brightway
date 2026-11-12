@@ -67,9 +67,14 @@
     const hero = document.getElementById('hero-actions');
     const h1 = hero.querySelector('.bw-hero-h1');
     const playing = root.classList.contains('bw-cine') && motionOK.matches;
-    if (playing) splitWords(h1);
-    root.classList.remove('bw-cine-wait');
-    if (!playing) { root.classList.remove('bw-cine', 'bw-cine-quick'); return; }
+    if (!playing) { root.classList.remove('bw-cine-wait', 'bw-cine', 'bw-cine-quick'); return; }
+    // The headline's words rise only once the serif face has loaded: a fallback font places
+    // Vietnamese marks badly, and the swap would show mid-rise. Never wait more than a second.
+    const serif = document.fonts?.load ? document.fonts.load('500 64px Newsreader', 'Đi để lối thành đường của bạn') : Promise.resolve();
+    Promise.race([serif, new Promise(r => setTimeout(r, 1000))]).catch(() => {}).then(() => {
+      splitWords(h1);
+      root.classList.remove('bw-cine-wait');
+    });
     const quick = root.classList.contains('bw-cine-quick');
     session.set('bwOpeningSeen', '1');
 
