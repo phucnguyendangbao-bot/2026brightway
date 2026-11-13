@@ -1,14 +1,18 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
-import { ALLOWED_TYPES, buildRequest } from '../api/prompts.js';
 
 const read = path => readFileSync(new URL('../' + path, import.meta.url), 'utf8');
 
-test('AI portfolio/CV tools are removed without disabling essay/outline analysis', () => {
-  assert.deepEqual(ALLOWED_TYPES, ['essay', 'outline']);
-  for (const type of ['portfolio', 'cv']) assert.throws(() => buildRequest({ type, content: 'test' }), { status: 400 });
-  for (const type of ALLOWED_TYPES) assert.ok(buildRequest({ type, content: 'test' }).system);
+test('retired AI tools (CV, essay review, interview prep) and their endpoint are gone; old links redirect', () => {
+  for (const path of ['essay-review.html', 'interview-prep.html', 'api/analyze.js', 'api/prompts.js']) {
+    assert.equal(existsSync(new URL('../' + path, import.meta.url)), false, path);
+  }
+  const vercel = JSON.parse(read('vercel.json'));
+  for (const source of ['/essay-review', '/interview-prep']) {
+    assert.ok(vercel.redirects.some(r => r.source === source && r.destination === '/scholarship-roadmap.html'), source);
+    assert.ok(!vercel.rewrites.some(r => r.source === source), source);
+  }
   for (const path of ['cv-review.html', 'assets/js/cv-review.js', 'assets/css/cv-review.css']) {
     assert.equal(existsSync(new URL('../' + path, import.meta.url)), false, path);
   }
@@ -35,7 +39,7 @@ test('every standalone page uses the transparent BrightWay tab logo', () => {
 test('every user-facing page loads the shared BrightWay colour theme', () => {
   const rootPages = [
     'admin.html', 'calendar.html', 'careers-holland.html', 'careers.html',
-    'essay-review.html', 'holland.html', 'index.html', 'interview-prep.html',
+    'holland.html', 'index.html',
     'login.html', 'major-detail.html', 'majors.html', 'news-detail.html',
     'news.html', 'page2.html', 'profile.html', 'resources.html',
     'scholarship-roadmap.html', 'score-calculator.html', 'waybi.html'
@@ -259,7 +263,7 @@ test('Holland results explain all three groups of the code and how they combine'
 });
 
 test('every user page loads the shared glowing page opening', () => {
-  const pages = ['careers-holland.html', 'page2.html', 'score-calculator.html', 'holland.html', 'profile.html', 'calendar.html', 'resources.html', 'scholarship-roadmap.html', 'waybi.html', 'login.html', 'news.html', 'majors.html', 'essay-review.html', 'interview-prep.html', 'index.html'];
+  const pages = ['careers-holland.html', 'page2.html', 'score-calculator.html', 'holland.html', 'profile.html', 'calendar.html', 'resources.html', 'scholarship-roadmap.html', 'waybi.html', 'login.html', 'news.html', 'majors.html', 'index.html'];
   for (const file of pages) assert.match(read(file), /\/assets\/css\/glow-page\.css\?v=[\w-]+/, file);
   const css = read('assets/css/glow-page.css');
   assert.match(css, /#02070a/); assert.match(css, /rgba\(9, 49, 141/); assert.match(css, /rgba\(252, 115, 77/);

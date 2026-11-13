@@ -23,9 +23,7 @@ test('AI payload cap checks both declared and parsed request size', () => {
 
 test('AI handlers reject foreign browser origins and oversized requests before upstream calls', async () => {
   process.env.ANTHROPIC_API_KEY = 'test-only-key';
-  const [{default:chat},{default:analyze}] = await Promise.all([
-    import('../api/chat.js'),import('../api/analyze.js')
-  ]);
+  const { default: chat } = await import('../api/chat.js');
   const response = () => ({
     headers:{}, statusCode:200, body:null,
     setHeader(name,value) { this.headers[name]=value; },
@@ -33,7 +31,7 @@ test('AI handlers reject foreign browser origins and oversized requests before u
     json(value) { this.body=value; return this; },
     end() { return this; },
   });
-  for (const handler of [chat,analyze]) {
+  for (const handler of [chat]) {
     const forbidden=response();
     await handler({method:'POST',headers:{host:'brightway.example',origin:'https://foreign.example'},body:{}},forbidden);
     assert.equal(forbidden.statusCode,403);

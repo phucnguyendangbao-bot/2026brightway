@@ -16,7 +16,6 @@
   function getContextGreeting() {
     const path = location.pathname.toLowerCase();
     if (path.includes('calendar')) return 'Bạn đang xem lịch tuyển sinh — cần mình giúp tìm mốc nào không?';
-    if (path.includes('essay-review')) return 'Bạn đang tìm hướng dẫn chuẩn bị bài luận học bổng?';
     if (path.includes('score-calculator')) return 'Cần tính điểm xét tuyển hả? Mình hướng dẫn nè!';
     if (path.includes('careers')) return 'Bạn có thể tìm nghề, xem kỹ năng rồi chuyển sang tìm ngành và trường. Bạn muốn bắt đầu ở đâu?';
     if (path.includes('holland')) return 'Holland giúp bạn tìm hiểu sở thích nghề nghiệp. Kết quả là gợi ý để trải nghiệm thêm, không phải kết luận về năng lực.';
@@ -24,7 +23,6 @@
     if (path.includes('page2')) return 'Tìm ngành hoặc trường, lưu trường yêu thích và thêm chương trình từ hồ sơ trường vào nguyện vọng dự kiến. Mở Nguyện vọng của tôi để sắp xếp thứ tự.';
     if (path.includes('majors')) return 'Đang tìm ngành học phù hợp à?';
     if (path.includes('careers')) return 'Bạn muốn khám phá nghề nghiệp hả? Mình gợi ý nè!';
-    if (path.includes('interview-prep')) return 'Chuẩn bị phỏng vấn học bổng à? Mình có tips nè!';
     if (path.includes('resources')) return 'Bạn đang tìm tài liệu tham khảo nè 📚';
     if (path.includes('profile')) return 'Bạn có thể xem trường yêu thích, sắp xếp nguyện vọng dự kiến và xuất danh sách ngay trên thiết bị này.';
     return null;

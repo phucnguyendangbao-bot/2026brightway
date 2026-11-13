@@ -17,7 +17,7 @@ const mime = {
 };
 const publicRoutes = [
   'index.html', 'calendar.html', 'careers-holland.html?holland=all',
-  'essay-review.html', 'holland.html', 'interview-prep.html', 'login.html',
+  'holland.html', 'login.html',
   'major-detail.html', 'majors.html', 'news-detail.html', 'news.html',
   'page2.html?mode=school', 'profile.html?tab=journey', 'resources.html',
   'scholarship-roadmap.html', 'score-calculator.html', 'waybi.html',
@@ -180,7 +180,7 @@ async function captureBaseline() {
       });
 
       await runScenario('05-shared-footer-on-legacy-pages', async page => {
-        for (const route of ['essay-review.html', 'interview-prep.html', 'major-detail.html', 'majors.html', 'news-detail.html', 'news.html']) {
+        for (const route of ['major-detail.html', 'majors.html', 'news-detail.html', 'news.html']) {
           await openFlowPage(page, route);
           await page.locator('.flow-footer').scrollIntoViewIfNeeded();
           assert.ok(await page.locator('.flow-footer').isVisible(), `${route}: footer visible`);

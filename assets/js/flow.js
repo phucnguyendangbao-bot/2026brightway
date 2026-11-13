@@ -142,7 +142,7 @@
       ['Đếm ngược mục tiêu', 'profile.html?tab=journey#countdowns', []],
       ['Lịch Lớp 12', 'calendar.html', ['calendar.html']],
       ['Tin tuyển sinh', 'resources.html', ['resources.html','news.html','news-detail.html']],
-      ['Lộ trình học bổng', 'scholarship-roadmap.html', ['scholarship-roadmap.html','essay-review.html','interview-prep.html']],
+      ['Lộ trình học bổng', 'scholarship-roadmap.html', ['scholarship-roadmap.html']],
     ];
     const hashActive = href => page === 'profile.html' && href.includes(location.hash) && Boolean(location.hash);
     const hasMainActive = items.some(([, , pages]) => pages.includes(page));
