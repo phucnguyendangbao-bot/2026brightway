@@ -46,7 +46,7 @@ function itemCard(item, compact = false) {
 function renderWidget() {
   if (!widget) return;
   const item = nextCountdown(data().items);
-  widget.innerHTML = `<div class="countdown-widget-heading"><div><span class="flow-kicker">BRIGHTWAY COUNTDOWN</span><h2 id="countdownWidgetTitle">Mục tiêu sắp tới</h2></div><a href="profile.html?tab=journey#countdowns">Xem tất cả →</a></div>${item ? itemCard(item, true) : '<div class="countdown-empty"><p>Chưa có mốc nào trên thiết bị này.</p><a href="profile.html?tab=journey#countdowns">Tạo mục tiêu đầu tiên →</a></div>'}`;
+  widget.innerHTML = `<div class="countdown-widget-heading"><div><span class="flow-kicker">ĐẾM NGƯỢC</span><h2 id="countdownWidgetTitle">Mục tiêu sắp tới</h2></div><a href="profile.html?tab=journey#countdowns">Xem tất cả →</a></div>${item ? itemCard(item, true) : '<div class="countdown-empty"><p>Chưa có mốc nào trên thiết bị này.</p><a href="profile.html?tab=journey#countdowns">Tạo mục tiêu đầu tiên →</a></div>'}`;
 }
 
 function filteredItems() {
@@ -93,7 +93,7 @@ function formHTML() {
   </form></details>`;
 }
 function managerHTML() {
-  return `<div class="countdown-heading"><div><span class="flow-kicker">LƯU TRÊN THIẾT BỊ NÀY</span><h2 id="countdownManagerTitle">BrightWay Countdown</h2><p>Đếm ngược đến tương lai theo ngày lịch Việt Nam. Không có thông báo khi website đã đóng.</p></div><span class="countdown-icon" aria-hidden="true">⏳</span></div>${suggestionHTML()}${formHTML()}
+  return `<div class="countdown-heading"><div><span class="flow-kicker">LƯU TRÊN THIẾT BỊ NÀY</span><h2 id="countdownManagerTitle">Đếm ngược mục tiêu</h2><p>Đếm ngược đến tương lai theo ngày lịch Việt Nam. Không có thông báo khi website đã đóng.</p></div><span class="countdown-icon" aria-hidden="true">⏳</span></div>${suggestionHTML()}${formHTML()}
     <div class="countdown-toolbar" aria-label="Lọc mục tiêu">${[['upcoming','Sắp tới'],['completed','Đã hoàn thành'],['overdue','Quá hạn'],['all','Tất cả']].map(([value,label]) => `<button type="button" data-countdown-filter="${value}" aria-pressed="${value === filter}">${label}</button>`).join('')}</div>
     <div id="countdownList" class="countdown-list"></div>
     <div class="countdown-data-actions"><button type="button" id="countdownExport">Xuất countdown .json</button><button type="button" id="countdownDeleteAll" class="is-danger">Xóa toàn bộ countdown</button></div>

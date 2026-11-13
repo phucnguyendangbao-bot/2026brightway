@@ -50,8 +50,17 @@ export function detailsWithResearch(id, year = 2026) {
 }
 
 // Registry rows with an official 2026 notice win; otherwise the researched 2026 admission page fills in.
+// Some curated rows still carry the editor's working note ("link found in the report; read it before
+// entering programs"). That note is for us, not for students: show what the researched official page
+// says instead, or a plain sentence that points to the school's page.
+const EDITOR_NOTE = /trong báo cáo|trước khi nhập dữ liệu/i;
+const PLAIN_SUMMARY = 'Thông tin tuyển sinh 2026 tại trang chính thức của trường: phương thức, tổ hợp và chỉ tiêu.';
 export function admissionSourceWithResearch(source, id) {
-  if (source?.admission_year === 2026 && https(source.source_url)) return source;
+  if (source?.admission_year === 2026 && https(source.source_url)) {
+    if (!EDITOR_NOTE.test(source.source_summary || '')) return source;
+    const researched = researchFor(id)?.admission?.summary;
+    return { ...source, source_summary: researched || PLAIN_SUMMARY };
+  }
   const admission = researchFor(id)?.admission;
   if (!admission || !https(admission.source)) return source;
   return { ...(source || {}), school_id: canonicalSchoolId(id), admission_year: 2026, source_url: admission.source, source_summary: admission.summary, source_verified_at: '2026-11-11' };

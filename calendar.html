@@ -429,12 +429,18 @@ body::after{
 .lp-footer-links{display:flex;gap:18px;flex-wrap:wrap;}
 .lp-footer-links a{font-size:.8rem;color:var(--text-soft);text-decoration:none;font-weight:600;transition:color .2s;}
 .lp-footer-links a:hover{color:var(--accent);}
+/* The large grid opens on request. */
+.cal-full>summary{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin:4px 0 16px;padding:0 18px;border:1px solid rgba(9,49,141,.18);border-radius:999px;background:#fff;color:#09318d;font-weight:700;cursor:pointer;list-style:none}
+.cal-full>summary::-webkit-details-marker{display:none}
+.cal-full>summary::after{content:"⌄";transition:transform .2s ease}
+.cal-full[open]>summary::after{transform:rotate(180deg)}
+.cal-full>summary:hover{background:#f1f4fb}
 </style>
-<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261111e">
+<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261113a">
 <link rel="stylesheet" href="/assets/css/glow-page.css?v=20261111ag">
 <link rel="stylesheet" href="/assets/css/cinema.css?v=20261112f">
-<link rel="stylesheet" href="/assets/css/flow.css?v=20261111e">
-<script src="/assets/js/flow.js?v=20261111ah" defer></script>
+<link rel="stylesheet" href="/assets/css/flow.css?v=20261113a">
+<script src="/assets/js/flow.js?v=20261113a" defer></script>
 <script src="/assets/js/cinema.js?v=20261112f" defer></script>
 </head>
 <body>
@@ -520,10 +526,11 @@ body::after{
 </div>
 -->
 
-<!-- GRID 12 THÁNG -->
-<div class="cal-container">
+<!-- GRID 12 THÁNG: the same months as the overview above, larger; folded so the page is not two calendars in a row. -->
+<details class="cal-container cal-full">
+  <summary>Xem lịch dạng lớn, từng ngày trong 12 tháng</summary>
   <div class="cal-grid" id="grid"></div>
-</div>
+</details>
 <section id="calendarEventList" class="policy-panel" aria-live="polite"></section>
 
 <!-- Study suggestions are independent of the official admissions calendar. -->

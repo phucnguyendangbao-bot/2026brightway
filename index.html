@@ -176,7 +176,7 @@
   *,*::before,*::after{
     animation-duration:.01ms !important;
     animation-iteration-count:1 !important;
-    transition-duration:.01ms !important;
+    transition-duration:0s !important;
   }
 }
 @media (max-width:600px){
@@ -334,21 +334,21 @@ body{overflow-x:visible;}
 }
 
 </style>
-<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261111e">
+<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261113a">
 <link rel="stylesheet" href="/assets/css/glow-page.css?v=20261111ag">
 <link rel="stylesheet" href="/assets/css/cinema.css?v=20261112f">
-<link rel="stylesheet" href="/assets/css/flow.css?v=20261111e">
+<link rel="stylesheet" href="/assets/css/flow.css?v=20261113a">
 <link rel="stylesheet" href="/assets/css/selections.css?v=20261111e">
 <script type="module" src="/assets/js/selections.js?v=20261111p"></script>
 <link rel="stylesheet" href="/assets/css/admissions-home.css?v=20261111e">
-<script src="/assets/js/flow.js?v=20261111ah" defer></script>
+<script src="/assets/js/flow.js?v=20261113a" defer></script>
 <script src="/assets/js/cinema.js?v=20261112f" defer></script>
 <script type="module" src="/assets/js/catalog-stats.js?v=20261015"></script>
 <link rel="stylesheet" href="/assets/css/home-holland.css?v=20261111e">
 <link rel="stylesheet" href="/assets/css/home-journeys.css?v=20261111e">
 <link rel="stylesheet" href="/assets/css/university-promotions.css?v=20261111e">
 <link rel="stylesheet" href="/assets/css/motion.css?v=20261111e">
-<link rel="stylesheet" href="/assets/css/story.css?v=20261111e">
+<link rel="stylesheet" href="/assets/css/story.css?v=20261113a">
 <link rel="stylesheet" href="/assets/css/ky-su.css?v=20261111ac">
 <link rel="stylesheet" href="/assets/css/glow-hero.css?v=20261111e">
 <script type="module" src="/assets/js/university-promotions.js?v=20261111u"></script>
@@ -367,7 +367,7 @@ body{overflow-x:visible;}
     <button type="button" class="flow-menu" aria-controls="navLinks" aria-expanded="false" aria-label="Mở menu chính">Menu <span aria-hidden="true">☰</span></button>
     <div id="navLinks" class="flow-links">
       <a href="index.html" class="active" aria-current="page">Trang chủ</a><a href="careers-holland.html">Khám phá nghề</a><a href="page2.html?mode=school">Khám phá trường</a><a href="score-calculator.html">Tính điểm</a><a href="profile.html?tab=journey">Hành trình của tôi</a>
-      <div class="flow-more"><button type="button" class="flow-more-button" aria-controls="flowMoreMenu" aria-expanded="false">Công cụ <span aria-hidden="true">⌄</span></button><div id="flowMoreMenu" class="flow-more-menu"><a href="holland.html">Trắc nghiệm Holland</a><a href="profile.html?tab=journey#my-choices">Nguyện vọng của tôi</a><a href="profile.html?tab=journey#countdowns">BrightWay Countdown</a><a href="calendar.html">Lịch Lớp 12</a><a href="resources.html">Tin tuyển sinh</a><a href="scholarship-roadmap.html">Lộ trình học bổng</a></div></div>
+      <div class="flow-more"><button type="button" class="flow-more-button" aria-controls="flowMoreMenu" aria-expanded="false">Công cụ <span aria-hidden="true">⌄</span></button><div id="flowMoreMenu" class="flow-more-menu"><a href="holland.html">Trắc nghiệm Holland</a><a href="profile.html?tab=journey#my-choices">Nguyện vọng của tôi</a><a href="profile.html?tab=journey#countdowns">Đếm ngược mục tiêu</a><a href="calendar.html">Lịch Lớp 12</a><a href="resources.html">Tin tuyển sinh</a><a href="scholarship-roadmap.html">Lộ trình học bổng</a></div></div>
       <a class="flow-waybi-link" href="waybi.html">Waybi</a><button type="button" class="senior-toggle" aria-pressed="false" title="Phông chữ lớn hơn, dễ đọc hơn">Chữ lớn</button>
     </div>
   </div>
@@ -1103,10 +1103,9 @@ body{overflow-x:visible;}
     <svg class="ks-art" viewBox="0 0 220 160" aria-hidden="true" focusable="false"><path class="ks-accent" d="M40 62l70-36 70 36z"/><path d="M48 62h124M54 70v58M82 70v58M138 70v58M166 70v58M44 128h132M36 140h148"/><path d="M98 128v-30h24v30"/><path class="ks-thin" d="M110 26V10l16 5-16 5"/></svg>
   </header>
   <div class="chapter-body" id="ch3Body">
-    <p class="chapter-lead">BrightWay có <strong data-catalog-count><span class="bw-skeleton-text" aria-hidden="true"></span><span class="bw-visually-hidden">Đang đếm</span></strong> hồ sơ trường đại học. Đây là 3 trường biên tập chọn để bạn bắt đầu.</p>
     <section class="university-discovery" id="university-discovery" aria-labelledby="universityDiscoveryTitle">
       <header class="university-discovery-heading">
-        <h3 id="universityDiscoveryTitle">Trường nổi bật</h3>
+        <div><h3 id="universityDiscoveryTitle">Trường nổi bật</h3><p class="university-discovery-sub">BrightWay có <strong data-catalog-count><span class="bw-skeleton-text" aria-hidden="true"></span><span class="bw-visually-hidden">Đang đếm</span></strong> hồ sơ trường đại học. Ba trường dưới đây do BrightWay chọn để bạn bắt đầu.</p></div>
         <a href="page2.html">Khám phá tất cả trường</a>
       </header>
       <div class="university-featured-grid" data-featured-universities data-ks-rail>

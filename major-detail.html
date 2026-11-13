@@ -90,11 +90,11 @@ h1.title{font-family:var(--font-display);font-weight:900;font-size:38px;line-hei
   .section{padding:24px;}
 }
 </style>
-<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261111e">
+<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261113a">
 <link rel="stylesheet" href="/assets/css/glow-page.css?v=20261111ag">
 <link rel="stylesheet" href="/assets/css/cinema.css?v=20261112f">
-<link rel="stylesheet" href="/assets/css/flow.css?v=20261111e">
-<script src="/assets/js/flow.js?v=20261111ah" defer></script>
+<link rel="stylesheet" href="/assets/css/flow.css?v=20261113a">
+<script src="/assets/js/flow.js?v=20261113a" defer></script>
 <script src="/assets/js/cinema.js?v=20261112f" defer></script>
 </head>
 <body>
@@ -160,29 +160,12 @@ async function load() {
           ${m.name_en ? `<div class="subtitle">${escapeHtml(m.name_en)}</div>` : ''}
 
           <div class="stats">
-            ${m.job_prospects ? `
-              <div class="stat">
-                <div class="stat-icon">💼</div>
-                <div class="stat-label">Dữ liệu việc làm</div>
-                <div class="stat-value">Chưa có nguồn và năm khảo sát</div>
-              </div>` : ''}
-            ${m.salary_range ? `
-              <div class="stat">
-                <div class="stat-icon">💰</div>
-                <div class="stat-label">Mức lương</div>
-                <div class="stat-value">Chưa có nguồn và năm đối chiếu</div>
-              </div>` : ''}
             ${(m.top_universities || []).length ? `
               <div class="stat">
                 <div class="stat-icon">🎓</div>
                 <div class="stat-label">Trường được biên tập gợi ý</div>
-                <div class="stat-value">${m.top_universities.length} trường cần đối chiếu chương trình</div>
+                <div class="stat-value">${m.top_universities.length} trường · đối chiếu chương trình tại trường</div>
               </div>` : ''}
-            <div class="stat">
-              <div class="stat-icon">👁️</div>
-              <div class="stat-label">Lượt quan tâm</div>
-              <div class="stat-value">${Number(m.views_count) || 0} lượt</div>
-            </div>
           </div>
         </div>
       </div>

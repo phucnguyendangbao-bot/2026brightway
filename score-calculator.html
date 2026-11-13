@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Tính điểm xét tuyển Đại học 2026 – BrightWay</title>
 <link rel="icon" type="image/png" href="/favicon.png?v=20261015" />
-<link rel="stylesheet" href="/assets/css/page2.css?v=20261111e">
+<link rel="stylesheet" href="/assets/css/page2.css?v=20261113a">
 <link rel="stylesheet" href="/assets/css/score-calculator.css?v=20261111e">
-<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261111e">
+<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261113a">
 <link rel="stylesheet" href="/assets/css/glow-page.css?v=20261111ag">
 <link rel="stylesheet" href="/assets/css/cinema.css?v=20261112f">
-<link rel="stylesheet" href="/assets/css/flow.css?v=20261111e">
-<script src="/assets/js/flow.js?v=20261111ah" defer></script>
+<link rel="stylesheet" href="/assets/css/flow.css?v=20261113a">
+<script src="/assets/js/flow.js?v=20261113a" defer></script>
 <script src="/assets/js/cinema.js?v=20261112f" defer></script>
 <link rel="stylesheet" href="/assets/css/admissions-policy.css?v=20261111p">
-<link rel="stylesheet" href="/assets/css/score-redesign.css?v=20261111e">
+<link rel="stylesheet" href="/assets/css/score-redesign.css?v=20261113a">
 </head>
 <body>
 
@@ -24,12 +24,12 @@
     <button type="button" class="flow-menu" aria-controls="navLinks" aria-expanded="false" aria-label="Mở menu chính">Menu <span aria-hidden="true">☰</span></button>
     <div id="navLinks" class="flow-links">
       <a href="index.html">Trang chủ</a><a href="careers-holland.html">Khám phá nghề</a><a href="page2.html?mode=school">Khám phá trường</a><a href="score-calculator.html" class="active" aria-current="page">Tính điểm</a><a href="profile.html?tab=journey">Hành trình của tôi</a>
-      <div class="flow-more"><button type="button" class="flow-more-button" aria-controls="flowMoreMenu" aria-expanded="false">Công cụ <span aria-hidden="true">⌄</span></button><div id="flowMoreMenu" class="flow-more-menu"><a href="holland.html">Trắc nghiệm Holland</a><a href="profile.html?tab=journey#my-choices">Nguyện vọng của tôi</a><a href="profile.html?tab=journey#countdowns">BrightWay Countdown</a><a href="calendar.html">Lịch Lớp 12</a><a href="resources.html">Tin tuyển sinh</a><a href="scholarship-roadmap.html">Lộ trình học bổng</a></div></div>
+      <div class="flow-more"><button type="button" class="flow-more-button" aria-controls="flowMoreMenu" aria-expanded="false">Công cụ <span aria-hidden="true">⌄</span></button><div id="flowMoreMenu" class="flow-more-menu"><a href="holland.html">Trắc nghiệm Holland</a><a href="profile.html?tab=journey#my-choices">Nguyện vọng của tôi</a><a href="profile.html?tab=journey#countdowns">Đếm ngược mục tiêu</a><a href="calendar.html">Lịch Lớp 12</a><a href="resources.html">Tin tuyển sinh</a><a href="scholarship-roadmap.html">Lộ trình học bổng</a></div></div>
       <a class="flow-waybi-link" href="waybi.html">Waybi</a>
     </div>
   </div>
 </nav>
-<div data-flow-toolbar-source hidden><div class="p2-search-bar"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" id="schoolFilter" placeholder="Lọc trường theo tên..." /></div></div>
+
 
 <!-- HEADER -->
 <section class="calc-hero">
@@ -175,7 +175,7 @@
     </div>
 
     <details class="calc-card calc-optional" id="fptCard">
-      <summary>Bổ sung nếu muốn đối chiếu FPT <span>Tùy chọn</span></summary>
+      <summary>Xét vào Đại học FPT? Nhập thêm điểm trung bình lớp 12 <span>Tùy chọn</span></summary>
       <label class="dgnl-input">
         <span>Điểm trung bình cả năm lớp 12, tất cả môn tính điểm (FPT, thang 10)</span>
         <input type="number" id="sGrade12" min="0" max="10" step="0.01" placeholder="Ví dụ: 8.40" />
@@ -256,6 +256,7 @@
     <div class="result-schools" id="resultSchools" hidden>
       <h2 id="resultSchoolsTitle">Đối chiếu nguồn của 9 trường</h2>
       <p class="result-tip">Chỉ hiện phép tính có đủ dữ liệu và công thức công khai. Chưa cộng điểm ưu tiên/khuyến khích, chưa xét ngành, tổ hợp được phép, điều kiện riêng hay điểm chuẩn; <strong>không dự đoán đỗ/trượt</strong>. Mở nguồn từng trường để đối chiếu.</p>
+      <div class="p2-search-bar calc-school-filter"><label for="schoolFilter">Lọc trường trong kết quả</label><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" id="schoolFilter" placeholder="Lọc trường theo tên, ví dụ FPT" /></div>
       <div id="schoolList" class="school-list"></div>
     </div>
 

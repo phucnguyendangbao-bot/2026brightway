@@ -64,3 +64,14 @@ test('research only fills gaps: curated 2026 records and scores are kept as they
   const curated = { admission_year: 2026, source_url: 'https://example.edu.vn/2026', source_summary: 'curated' };
   assert.equal(admissionSourceWithResearch(curated, 'hub'), curated);
 });
+
+test('editor working notes never reach students: placeholder summaries become the researched or a plain summary', async () => {
+  const registry = (await import('../assets/data/school-admissions-sources.js')).default;
+  const rows = (registry?.universities || []).filter(row => /trong báo cáo|trước khi nhập dữ liệu/.test(row.source_summary || ''));
+  assert.ok(rows.length > 0, 'fixture: placeholder rows exist in the curated registry');
+  for (const row of rows) {
+    const shown = admissionSourceWithResearch(row, row.school_id);
+    assert.doesNotMatch(shown.source_summary, /trong báo cáo|trước khi nhập dữ liệu/, row.school_id);
+    assert.equal(shown.source_url, row.source_url, `${row.school_id} keeps its curated source link`);
+  }
+});

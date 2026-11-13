@@ -70,6 +70,7 @@ a{color:inherit;text-decoration:none;}
 .major-desc{color:var(--text-mid);font-size:14px;line-height:1.5;margin-bottom:14px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
 .major-meta{display:flex;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--text-soft);padding-top:14px;border-top:1px solid rgba(8, 46, 133,0.1);}
 .major-meta-item{display:flex;align-items:center;gap:4px;}
+.major-meta:not(:has(*)){display:none;}
 
 .state{max-width:1200px;margin:0 auto;padding:80px 24px;text-align:center;}
 .state .icon{font-size:64px;margin-bottom:16px;}
@@ -91,11 +92,11 @@ a{color:inherit;text-decoration:none;}
   .grid{grid-template-columns:1fr;}
 }
 </style>
-<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261111e">
+<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261113a">
 <link rel="stylesheet" href="/assets/css/glow-page.css?v=20261111ag">
 <link rel="stylesheet" href="/assets/css/cinema.css?v=20261112f">
-<link rel="stylesheet" href="/assets/css/flow.css?v=20261111e">
-<script src="/assets/js/flow.js?v=20261111ah" defer></script>
+<link rel="stylesheet" href="/assets/css/flow.css?v=20261113a">
+<script src="/assets/js/flow.js?v=20261113a" defer></script>
 <script src="/assets/js/cinema.js?v=20261112f" defer></script>
 </head>
 <body>
@@ -119,10 +120,10 @@ a{color:inherit;text-decoration:none;}
 
 <div class="pills" id="pills">
   <button class="pill active" data-cat="">Tất cả</button>
-  <button class="pill" data-cat="khoi_A">Khối A</button>
-  <button class="pill" data-cat="khoi_B">Khối B</button>
-  <button class="pill" data-cat="khoi_C">Khối C</button>
-  <button class="pill" data-cat="khoi_D">Khối D</button>
+  <button class="pill" data-cat="khoi_A">Toán · Lý · Hóa</button>
+  <button class="pill" data-cat="khoi_B">Toán · Hóa · Sinh</button>
+  <button class="pill" data-cat="khoi_C">Văn · Sử · Địa</button>
+  <button class="pill" data-cat="khoi_D">Có Ngoại ngữ</button>
 </div>
 
 <div class="search-box">
@@ -168,7 +169,7 @@ async function loadMajors() {
         <div class="state">
           <div class="icon">🔍</div>
           <h2>Không tìm thấy ngành nào</h2>
-          <p>${currentSearch ? 'Thử tìm với từ khoá khác' : 'Vui lòng chọn khối khác'}</p>
+          <p>${currentSearch ? 'Thử tìm với từ khoá khác' : 'Thử chọn nhóm môn khác'}</p>
         </div>`;
       return;
     }
@@ -178,8 +179,7 @@ async function loadMajors() {
       const tagClass = /^[a-zA-Z0-9_-]+$/.test(m.category || '') ? m.category : 'khoi_khac';
       const tagText = escapeHtml(window.CMS.categoryLabel(m.category));
       const desc = m.description || '';
-      const salary = m.salary_range ? '<span class="major-meta-item">Lương: chưa có nguồn/năm đối chiếu</span>' : '';
-      const prospects = m.job_prospects ? '<span class="major-meta-item">Việc làm: chưa có dữ liệu khảo sát</span>' : '';
+      // Salary and job-outlook figures have no dated source yet, so the cards say nothing rather than repeat "no data".
       // CMS editorial suggestions are not verified school-program relationships.
       const uniList = m.top_universities || [];
       const uniLogos = uniList.slice(0, 5).map(u => {
@@ -204,10 +204,7 @@ async function loadMajors() {
           ${m.name_en ? `<div class="major-name-en">${escapeHtml(m.name_en)}</div>` : ''}
           <p class="major-desc">${escapeHtml(desc)}</p>
           <div class="major-meta">
-            ${prospects}
-            ${salary}
             ${unis}
-            <span class="major-meta-item">👁️ ${Number(m.views_count) || 0}</span>
           </div>
         </article>`;
     }).join('');

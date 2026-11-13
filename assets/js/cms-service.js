@@ -273,11 +273,11 @@
       su_kien: 'Sự kiện',
       chia_se: 'Chia sẻ',
       nganh_hoc: 'Ngành học',
-      khoi_A: 'Khối A (Toán, Lý, Hóa)',
-      khoi_B: 'Khối B (Toán, Hóa, Sinh)',
-      khoi_C: 'Khối C (Văn, Sử, Địa)',
-      khoi_D: 'Khối D (Ngoại ngữ)',
-      khoi_khac: 'Khối khác'
+      khoi_A: 'A00 · Toán, Lý, Hóa',
+      khoi_B: 'B00 · Toán, Hóa, Sinh',
+      khoi_C: 'C00 · Văn, Sử, Địa',
+      khoi_D: 'D01 · Có Ngoại ngữ',
+      khoi_khac: 'Tổ hợp khác'
     };
     return map[cat] || cat;
   }

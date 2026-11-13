@@ -140,7 +140,7 @@ body .flow-next { border-color:rgba(9, 46, 134,.13); box-shadow:0 14px 38px rgba
 }
 @media(prefers-reduced-motion:reduce) {
   html { scroll-behavior:auto!important; }
-  *, *::before, *::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; scroll-behavior:auto!important; }
+  *, *::before, *::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:0s!important; transition-delay:0s!important; scroll-behavior:auto!important; }
 }
 /* Between the mobile menu and wide screens, tighten the links so the bar never scrolls sideways. */
 @media(min-width:1301px) and (max-width:1440px) {

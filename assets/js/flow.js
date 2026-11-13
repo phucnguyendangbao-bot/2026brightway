@@ -139,7 +139,7 @@
     const tools = [
       ['Trắc nghiệm Holland', 'holland.html', ['holland.html']],
       ['Nguyện vọng của tôi', 'profile.html?tab=journey#my-choices', []],
-      ['BrightWay Countdown', 'profile.html?tab=journey#countdowns', []],
+      ['Đếm ngược mục tiêu', 'profile.html?tab=journey#countdowns', []],
       ['Lịch Lớp 12', 'calendar.html', ['calendar.html']],
       ['Tin tuyển sinh', 'resources.html', ['resources.html','news.html','news-detail.html']],
       ['Lộ trình học bổng', 'scholarship-roadmap.html', ['scholarship-roadmap.html','essay-review.html','interview-prep.html']],
@@ -199,7 +199,7 @@
     if (!footer) { footer = document.createElement('footer'); document.body.append(footer); }
     footer.className = 'flow-footer';
     footer.setAttribute('aria-label', 'Thông tin BrightWay Career');
-    footer.innerHTML = `<div class="flow-footer-inner"><div class="flow-footer-brand"><a href="index.html"><img src="assets/images/brand/brightway-mark-96.webp" width="40" height="40" alt=""><strong>BrightWay Career</strong></a><p>Đồng hành cùng học sinh trên hành trình hướng nghiệp và chuẩn bị xét tuyển.</p></div><nav aria-label="Liên kết cuối trang"><a href="careers-holland.html">Khám phá nghề</a><a href="page2.html?mode=school">Khám phá trường</a><a href="profile.html?tab=journey#my-choices">Nguyện vọng</a><a href="profile.html?tab=journey#countdowns">Countdown</a><a href="resources.html">Tin tuyển sinh</a><a href="calendar.html">Lịch Lớp 12</a></nav><div class="flow-footer-meta"><a href="mailto:pdpbrightwaycarrers@gmail.com">pdpbrightwaycarrers@gmail.com</a><a href="tel:+84939249060">0939 249 060</a><p>© ${new Date().getFullYear()} BrightWay Career</p></div></div><p class="flow-footer-note">Thông tin chỉ mang tính tham khảo; hãy kiểm tra nguồn chính thức trước khi đưa ra quyết định tuyển sinh.</p>`;
+    footer.innerHTML = `<div class="flow-footer-inner"><div class="flow-footer-brand"><a href="index.html"><img src="assets/images/brand/brightway-mark-96.webp" width="40" height="40" alt=""><strong>BrightWay Career</strong></a><p>Đồng hành cùng học sinh trên hành trình hướng nghiệp và chuẩn bị xét tuyển.</p></div><nav aria-label="Liên kết cuối trang"><a href="careers-holland.html">Khám phá nghề</a><a href="page2.html?mode=school">Khám phá trường</a><a href="profile.html?tab=journey#my-choices">Nguyện vọng</a><a href="profile.html?tab=journey#countdowns">Đếm ngược</a><a href="resources.html">Tin tuyển sinh</a><a href="calendar.html">Lịch Lớp 12</a></nav><div class="flow-footer-meta"><a href="mailto:pdpbrightwaycarrers@gmail.com">pdpbrightwaycarrers@gmail.com</a><a href="tel:+84939249060">0939 249 060</a><p>© ${new Date().getFullYear()} BrightWay Career</p></div></div><p class="flow-footer-note">Thông tin chỉ mang tính tham khảo; hãy kiểm tra nguồn chính thức trước khi đưa ra quyết định tuyển sinh.</p>`;
   }
 
   document.querySelectorAll('a[href="login.html"]').forEach(anchor => {
@@ -273,7 +273,7 @@
       if (!['index.html','profile.html'].includes(page)) return;
       const host = document.createElement('p');
       host.className = 'flow-status'; host.setAttribute('role','status');
-      host.innerHTML = 'Chưa mở được BrightWay Countdown. Dữ liệu hành trình khác vẫn được giữ. <button type="button">Thử tải lại</button>';
+      host.innerHTML = 'Chưa mở được phần đếm ngược. Dữ liệu hành trình khác vẫn được giữ. <button type="button">Thử tải lại</button>';
       host.querySelector('button').addEventListener('click', () => location.reload());
       if (page === 'profile.html') document.querySelector('.flow-local-profile')?.append(host);
       else document.querySelector('.flow-resume')?.after(host);

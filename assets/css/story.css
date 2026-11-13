@@ -417,3 +417,6 @@ html body #home-view #chuong-3 :is(.university-discovery-heading, .admissions-ho
 /* Glass blur is invisible on this near-solid background but forces a full re-composite on every scroll frame. */
 .story :is(*, *::before, *::after), .bw-faq * { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
 .story .home-journey-card, .story .flow-journey, .story .flow-journey-steps a, .story .countdown-widget, .story .admissions-news-card { background: #fff; }
+/* The catalog line sits under "Trường nổi bật" as its subtitle. */
+html body #home-view #chuong-3 .university-discovery-sub { margin: 6px 0 0; max-width: 60ch; color: var(--ks-muted, #4b5866); font-size: 15px; line-height: 1.55; }
+html body #home-view #chuong-3 .university-discovery-heading { align-items: flex-end; margin-bottom: 18px; }

@@ -932,3 +932,5 @@ html { scroll-behavior: smooth; }
 .cmp-scholarships strong span { color: var(--cmp-deep); }
 .cmp-tag { justify-self: start; padding: 2px 8px; border-radius: 999px; background: #f4f2ee; color: #6d6f7b; font-size: .74rem; font-weight: 700; }
 .cmp-tag.is-open { background: #e8f6ee; color: #1f6b45; }
+.saved-school-filter { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+.saved-school-count { min-width: 22px; height: 22px; padding: 0 7px; display: inline-grid; place-items: center; border-radius: 999px; background: #eef2ff; color: #09318d; font-size: .78rem; font-weight: 700; }

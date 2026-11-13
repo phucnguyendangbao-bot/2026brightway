@@ -1,7 +1,7 @@
 import sourceRegistry from '../data/school-admissions-sources.js';
 import { buildUniversityCatalog, canonicalSchoolId, REVIEWED_AT } from '../data/university-identities.js';
 // Curated 2026 records plus researched 2026 facts from official school pages (see school-research-layer.js).
-import { detailsWithResearch as detailsForSchool, admissionSourceWithResearch, researchedScholarships, homepageFor } from './school-research-layer.js?v=20261111u';
+import { detailsWithResearch as detailsForSchool, admissionSourceWithResearch, researchedScholarships, homepageFor } from './school-research-layer.js?v=20261113a';
 import { universityIdentityHTML, renderUniversityLogo } from './university-card.js?v=20261111o';
 import { uniqueSchools, normalizeWishes, wishKey, addWish, wishFromProgram, importLegacySchools } from './selection-model.js';
 import { comparisonCells } from './school-comparison-model.js?v=20261112a';
@@ -106,7 +106,7 @@ function renderSchools(items) {
     const subtitle = source?.source_summary || 'Mở hồ sơ để xem nguồn tuyển sinh của trường và tình trạng dữ liệu hiện có.';
     return `<section class="school-section" id="${escapeHtml(school.id)}">
       ${universityIdentityHTML(school, {logoId:'icon-' + school.id, titleTag:'h2', interactive:true})}
-      <span class="school-card-status ${details?.programs?.length && !details.programSourceStatus ? 'school-card-status-ready' : ''}">${details?.programSourceStatus === 'secondary' ? 'Danh mục tham khảo · nguồn thứ cấp' : details?.programSourceStatus === 'current_catalog' ? 'Danh mục hiện hành · cần kiểm tra kỳ nhập học' : canDisplayProgramScores(details,activeYear) && details?.programs?.some(program => Number.isFinite(program.score)) ? 'Có ngành và điểm chuẩn 2026' : details?.programs?.length ? `Đã nhập ${details.programs.length} ngành/CT 2026` : details?.scoreSource ? 'Có nguồn điểm chuẩn' : source ? 'Có nguồn tuyển sinh' : 'Đang bổ sung nguồn'}</span>
+      <span class="school-card-status ${details?.programs?.length && !details.programSourceStatus ? 'school-card-status-ready' : ''}">${details?.programSourceStatus === 'secondary' ? 'Danh mục tham khảo · nguồn thứ cấp' : details?.programSourceStatus === 'current_catalog' ? 'Danh mục hiện hành · cần kiểm tra kỳ nhập học' : canDisplayProgramScores(details,activeYear) && details?.programs?.some(program => Number.isFinite(program.score)) ? 'Có ngành và điểm chuẩn 2026' : details?.programs?.length ? `${details.programs.length} ngành/chương trình · 2026` : details?.scoreSource ? 'Có nguồn điểm chuẩn' : source ? 'Có nguồn tuyển sinh' : 'Đang bổ sung nguồn'}</span>
       ${matches.length ? `<div class="school-card-programs" aria-label="Ngành khớp tìm kiếm">${matches.map(program => `<span>${escapeHtml(program.name)}</span>`).join('')}${matching.length > 3 ? `<small>+${matching.length - 3} ngành khác</small>` : ''}</div>` : ''}
       <p class="school-card-description">${escapeHtml(subtitle)}</p>
       <div class="school-card-bottom">
