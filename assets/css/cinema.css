@@ -394,3 +394,21 @@ html body #home-view #hero-actions .story-resume:has(.story-resume-go[hidden]) {
 }
 @keyframes cine-stand { from { opacity: 0; rotate: x 62deg; translate: 0 48px; } 60% { opacity: 1; } to { opacity: 1; rotate: x 0deg; translate: 0 0; } }
 @keyframes cine-panel-open { from { scale: .9 .97; rotate: x 9deg; } to { scale: 1 1; rotate: x 0deg; } }
+
+/* =====================================================================================
+   Icons: one line-drawn set (assets/js/icons.js) on a 24px grid, 1.75 stroke, round ends.
+   They take the colour of the words beside them; an icon standing on its own (a badge) takes
+   the brand blue on light ground and coral inside the dark openings.
+   ===================================================================================== */
+.bw-ico {
+  display: inline-block; flex: none;
+  width: 1.15em; height: 1.15em;
+  vertical-align: -.2em;
+  fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
+  overflow: visible;
+}
+.bw-ico + * , * + .bw-ico { margin-inline-start: 0; }
+.bw-ico-badge { color: #09318d; font-style: normal; line-height: 1; }
+.bw-ico-badge > .bw-ico { vertical-align: middle; }
+:is(.glow-band, .glow-hero, .is-deep, .compare-dock) .bw-ico-badge { color: #fc734d; }
+:root[data-theme="dark"] .bw-ico-badge { color: #ff9a7a; }
