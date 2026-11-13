@@ -70,9 +70,9 @@ test('homepage tells one journey: hero, five chapters in order, then the ending'
   assert.match(home, /data-countdown-slot/);
 });
 
-test('five primary pages ship the shared navigation before JavaScript enhancement', () => {
+test('five primary pages ship the task-based navigation before JavaScript enhancement', () => {
   const pages = ['index.html', 'careers-holland.html', 'page2.html', 'score-calculator.html', 'profile.html'];
-  const labels = ['Trang chủ', 'Khám phá nghề', 'Khám phá trường', 'Tính điểm', 'Hành trình của tôi'];
+  const labels = ['Hiểu mình', 'Ngành &amp; nghề', 'Trường', 'Tính điểm', 'Lịch &amp; hạn nộp', 'Học bổng', 'Tất cả công cụ', 'Của tôi'];
   for (const file of pages) {
     const html = read(file);
     const nav = html.match(/<nav\b[^>]*class="[^"]*flow-nav[^"]*"[^>]*>[\s\S]*?<\/nav>/i)?.[0] || '';
@@ -212,7 +212,7 @@ test('career lookup has no quiz tab or mini-test; full test remains standalone',
   assert.doesNotMatch(careers, /hollandTab|hollandPanel|hollandMini|holland-mini.js|2 công cụ trong/);
   assert.doesNotMatch(script, /switchTab|activeTab/);
   assert.match(careers, /id="hollandFilter"/);
-  assert.match(careers, /href="holland.html">Trắc nghiệm Holland/);
+  assert.match(careers, /href="holland\.html"[^>]*>Hiểu mình|href="holland\.html">Trắc nghiệm Holland/);
   assert.match(read('holland.html'), /id="importForm"/);
   assert.match(script, /state\.importedCode\.includes\(k\)/);
   assert.match(script, /state\.importedCode\.indexOf\(k\) \+ 1/);
@@ -269,4 +269,16 @@ test('every user page loads the shared glowing page opening', () => {
   assert.match(css, /#02070a/); assert.match(css, /rgba\(9, 49, 141/); assert.match(css, /rgba\(252, 115, 77/);
   assert.doesNotMatch(css, /animation:[^;]*infinite/);
   assert.match(read('assets/js/flow.js'), /function initGlowBand\(\)/);
+});
+
+test('one list of tools feeds the menu, quick search, tools page and homepage shortcuts', () => {
+  const flow = read('assets/js/flow.js');
+  for (const label of ['Hiểu mình', 'Ngành & nghề', 'Trường', 'Tính điểm', 'Lịch & hạn nộp', 'Học bổng']) assert.match(flow, new RegExp(`\\['${label}'`), label);
+  assert.match(flow, /data-open-tools/);
+  assert.match(flow, /window\.BWTools/);
+  assert.doesNotMatch(flow, /flow-more-menu/);
+  for (const href of ['majors.html', 'news.html', 'resources.html', 'tools.html']) assert.match(flow, new RegExp(href.replace('.', '\\.')), href);
+  assert.match(read('tools.html'), /window\.BWTools|BWTools/);
+  const home = read('index.html');
+  assert.equal((home.match(/class="home-quick-card"/g) || []).length, 6);
 });

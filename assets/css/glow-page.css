@@ -69,12 +69,12 @@ html body .glow-band > .flow-stepbar progress { accent-color: #fc734d; }
 @media (min-width: 1301px) {
   html body.bw-nav-glass .flow-nav { background: rgba(2, 7, 10, .22) !important; border-bottom-color: rgba(247, 245, 241, .1) !important; box-shadow: none !important; }
   html body.bw-nav-glass .flow-links > a,
-  html body.bw-nav-glass .flow-more-button,
+  html body.bw-nav-glass :is(.flow-more-button, .flow-tools-button),
   html body.bw-nav-glass .nav-user-name,
   html body.bw-nav-glass .nav-user-chevron { color: rgba(247, 245, 241, .88) !important; }
   html body.bw-nav-glass .flow-links > a:hover,
   html body.bw-nav-glass .flow-links > a.active,
-  html body.bw-nav-glass .flow-more-button:hover,
+  html body.bw-nav-glass .flow-tools-button:hover, html body.bw-nav-glass .flow-tools-button.active, html body.bw-nav-glass .flow-more-button:hover,
   html body.bw-nav-glass .flow-more-button.active,
   html body.bw-nav-glass .flow-more.open .flow-more-button { color: #fff !important; background: rgba(247, 245, 241, .12) !important; }
   html body.bw-nav-glass :is(.flow-waybi-link, .senior-toggle, .nav-user-trigger) { color: #fff !important; background: rgba(247, 245, 241, .08) !important; border-color: rgba(247, 245, 241, .3) !important; box-shadow: none !important; }

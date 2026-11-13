@@ -269,8 +269,8 @@ async function testResponsiveAndRegression(browser, base, report) {
 
   const { context, page, errors } = await newCheckedPage(browser, base, { width: 1440, height: 1000 });
   await page.goto(`${base}/index.html`, { waitUntil: 'domcontentloaded' });
-  assert.deepEqual(await page.locator('.flow-links > a').evaluateAll(links => links.slice(0, 5).map(link => link.textContent.trim())), [
-    'Trang chủ', 'Khám phá nghề', 'Khám phá trường', 'Tính điểm', 'Hành trình của tôi',
+  assert.deepEqual(await page.locator('.flow-links > a').evaluateAll(links => links.slice(0, 6).map(link => link.textContent.trim())), [
+    'Hiểu mình', 'Ngành & nghề', 'Trường', 'Tính điểm', 'Lịch & hạn nộp', 'Học bổng',
   ]);
   await page.locator('[data-open-waybi]').first().click();
   await page.locator('#bwChatPanel.open').waitFor();

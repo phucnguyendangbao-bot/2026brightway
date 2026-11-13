@@ -23,7 +23,7 @@ const publicRoutes = [
   'scholarship-roadmap.html', 'score-calculator.html', 'waybi.html',
 ];
 const responsiveWidths = [360, 390, 768, 1024, 1366, 1440, 1920];
-const mainLabels = ['Trang chủ', 'Khám phá nghề', 'Khám phá trường', 'Tính điểm', 'Hành trình của tôi'];
+const mainLabels = ['Hiểu mình', 'Ngành & nghề', 'Trường', 'Tính điểm', 'Lịch & hạn nộp', 'Học bổng', 'Của tôi'];
 const scenarios = [];
 let browser;
 let base;
@@ -95,19 +95,20 @@ async function captureBaseline() {
         const labels = await page.locator('#navLinks > a:not(.flow-waybi-link)').allTextContents();
         assert.deepEqual(labels.map(value => value.trim()), mainLabels);
         assert.equal(await page.locator('.flow-nav').count(), 1);
-        assert.equal(await page.locator('.flow-links > a[aria-current="page"]').innerText(), 'Trang chủ');
-        await page.locator('.flow-more-button').click();
-        assert.equal(await page.locator('.flow-more-button').getAttribute('aria-expanded'), 'true');
-        assert.ok(await page.locator('.flow-more-menu a').count() >= 6);
+        assert.equal(await page.locator('.flow-links > a[aria-current="page"]').count(), 0, 'The logo is home; no menu item claims the homepage');
+        await page.locator('.flow-tools-button').click();
+        await page.locator('dialog.bw-palette[open]').waitFor();
+        assert.ok(await page.locator('.bw-palette-list [role="option"]').count() >= 15, 'Quick search lists every tool');
+        await page.keyboard.type('tinh diem');
+        assert.equal((await page.locator('.bw-palette-list [aria-selected="true"] strong').innerText()).trim(), 'Tính điểm xét tuyển');
         await page.keyboard.press('Escape');
-        assert.equal(await page.locator('.flow-more-button').getAttribute('aria-expanded'), 'false');
+        assert.equal(await page.locator('dialog.bw-palette[open]').count(), 0);
         await page.goto(`${base}/calendar.html`, { waitUntil: 'domcontentloaded' });
         await page.waitForFunction(() => Boolean(window.BWFlow));
-        assert.ok(await page.locator('.flow-more-button').evaluate(node => node.classList.contains('active')), 'Secondary page exposes its active group');
+        assert.equal(await page.locator('.flow-links > a[aria-current="page"]').innerText(), 'Lịch & hạn nộp');
         await page.goto(`${base}/holland.html`, { waitUntil: 'domcontentloaded' });
         await page.waitForFunction(() => Boolean(window.BWFlow));
-        assert.equal(await page.locator('.flow-links > a[aria-current="page"]').innerText(), 'Khám phá nghề');
-        assert.equal(await page.locator('.flow-more-button').evaluate(node => node.classList.contains('active')), false, 'Main category remains the visible active state');
+        assert.equal(await page.locator('.flow-links > a[aria-current="page"]').innerText(), 'Hiểu mình');
         await page.goto(`${base}/waybi.html`, { waitUntil: 'domcontentloaded' });
         await page.waitForFunction(() => Boolean(window.BWFlow));
         assert.equal(await page.locator('.flow-waybi-link').getAttribute('aria-current'), 'page');
@@ -131,20 +132,17 @@ async function captureBaseline() {
         await page.setViewportSize({width:390,height:900});
         assert.equal(await page.locator('.flow-menu').getAttribute('aria-expanded'), 'false', 'Returning from desktop does not reopen a stale mobile menu');
         await page.locator('.flow-menu').click();
-        await page.locator('.flow-more-button').click();
-        assert.equal(await page.locator('.flow-more-button').getAttribute('aria-expanded'), 'true');
-        for (const target of ['.flow-menu', '.flow-more-button', '.flow-more-menu a']) {
+        for (const target of ['.flow-menu', '.flow-links > a', '.flow-tools-button']) {
           const box = await page.locator(target).first().boundingBox();
           assert.ok(box && box.height >= 44, `${target}: touch target must be at least 44px high`);
         }
-        const countdown = page.locator('.flow-more-menu a[href="profile.html?tab=journey#countdowns"]');
-        assert.equal(await countdown.innerText(), 'BrightWay Countdown');
-        await countdown.click();
+        await page.locator('.flow-tools-button').click();
+        await page.keyboard.type('dem nguoc');
+        await page.keyboard.press('Enter');
         await page.waitForURL(/profile\.html\?tab=journey#countdowns$/);
         await page.locator('#countdowns').waitFor();
         await page.locator('.flow-menu').click();
-        await page.locator('.flow-more-button').click();
-        await page.locator('.flow-more-menu a[href="holland.html"]').click();
+        await page.locator('.flow-links a[href="holland.html"]').click();
         await page.waitForURL(/holland\.html$/);
         assert.ok(await page.locator('body').isVisible());
       }, { width: 390, height: 900 });

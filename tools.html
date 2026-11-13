@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tất cả công cụ – BrightWay Career</title>
+<meta name="description" content="Mọi chức năng của BrightWay Career ở một chỗ: trắc nghiệm Holland, nghề và ngành, tra cứu trường, tính điểm, lịch lớp 12, học bổng và hồ sơ của bạn." />
+<link rel="icon" type="image/png" href="/favicon.png?v=20261015">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=20261014">
+<link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261113a">
+<link rel="stylesheet" href="/assets/css/glow-page.css?v=20261113d">
+<link rel="stylesheet" href="/assets/css/cinema.css?v=20261113b">
+<link rel="stylesheet" href="/assets/css/flow.css?v=20261113e">
+<script src="/assets/js/flow.js?v=20261113e" defer></script>
+<script src="/assets/js/cinema.js?v=20261112f" defer></script>
+<script src="/assets/js/icons.js?v=20261113a" defer></script>
+<style>
+  .tools-hero { padding: 64px 24px 56px; text-align: center; }
+  .tools-hero .tools-kicker { margin: 0 auto 12px; color: #fc734d; font: 700 12px/1 'Be Vietnam Pro', sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+  .tools-hero h1 { margin: 0 0 14px; font: 500 clamp(2.4rem, 1.6rem + 3vw, 3.8rem)/1.05 'Newsreader', Georgia, serif; }
+  .tools-hero p { max-width: 38em; margin: 0 auto 26px; line-height: 1.6; }
+  .tools-search { position: relative; max-width: 560px; margin: 0 auto; }
+  .tools-search svg { position: absolute; left: 18px; top: 50%; width: 22px; height: 22px; transform: translateY(-50%); fill: none; stroke: #09318d; stroke-width: 1.8; stroke-linecap: round; pointer-events: none; }
+  .tools-search input { width: 100%; box-sizing: border-box; min-height: 58px; padding: 0 20px 0 52px; border: 0; border-radius: 999px; background: #fdfcfa; color: #0e2b39; font: 500 17px/1.3 'Be Vietnam Pro', sans-serif; box-shadow: 0 18px 40px -18px rgba(252, 115, 77, .6); }
+  .tools-search input:focus { outline: 3px solid #fc734d; outline-offset: 3px; }
+  .tools-main { max-width: 1120px; margin: 0 auto; padding: 40px 20px 72px; }
+  .tools-status { margin: 0 0 18px; color: #5d6478; font-size: 14px; }
+  .tools-group { margin: 0 0 34px; }
+  .tools-group h2 { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; color: #0e2b39; font: 500 1.5rem/1.2 'Newsreader', Georgia, serif; }
+  .tools-group h2 .bw-ico { width: 22px; height: 22px; color: #fc734d; }
+  .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+  .tools-card { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; align-items: center; gap: 14px; height: 100%; box-sizing: border-box; padding: 16px 18px; border: 1px solid rgba(9, 49, 141, .12); border-radius: 18px; background: #fff; color: #0e2b39; text-decoration: none; box-shadow: 0 1px 2px rgba(15, 46, 61, .04); transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
+  .tools-card:hover { border-color: rgba(9, 49, 141, .32); transform: translateY(-2px); box-shadow: 0 16px 30px -18px rgba(17, 52, 69, .45); }
+  .tools-card:focus-visible { outline: 3px solid #09318d; outline-offset: 3px; }
+  .tools-card .bw-ico { width: 44px; height: 44px; padding: 10px; box-sizing: border-box; border-radius: 12px; background: #eef2ff; color: #09318d; }
+  .tools-card strong { display: block; font: 700 16px/1.3 'Be Vietnam Pro', sans-serif; }
+  .tools-card small { display: block; margin-top: 3px; color: #5d6478; font-size: 13.5px; line-height: 1.5; }
+  .tools-card-go { color: #09318d; font-weight: 700; }
+  .tools-empty { padding: 28px; border: 1px dashed rgba(9, 49, 141, .25); border-radius: 18px; text-align: center; color: #5d6478; }
+  .tools-empty a { color: #09318d; font-weight: 700; }
+  .tools-keys { margin: 26px 0 0; color: #6b7183; font-size: 13px; text-align: center; }
+  .tools-keys kbd { padding: 1px 6px; border: 1px solid rgba(9, 49, 141, .2); border-bottom-width: 2px; border-radius: 6px; background: #fff; font: 600 12px/1.4 'Be Vietnam Pro', sans-serif; }
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="Điều hướng chính"><a href="index.html">BrightWay Career</a></nav>
+
+<section class="hero tools-hero" aria-labelledby="toolsTitle">
+  <p class="tools-kicker">Mọi chức năng ở một chỗ</p>
+  <h1 id="toolsTitle">Tất cả công cụ</h1>
+  <p>Biết mình cần làm gì thì gõ vào ô tìm. Chưa biết thì xem theo nhóm bên dưới, sắp theo thứ tự của năm lớp 12.</p>
+  <div class="tools-search" data-glow-surface>
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg>
+    <label for="toolsQuery" class="bw-visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Tìm chức năng</label>
+    <input id="toolsQuery" type="search" autocomplete="off" placeholder="Gõ: tính điểm, học bổng, lịch…" aria-describedby="toolsStatus">
+  </div>
+</section>
+
+<main class="tools-main" id="main">
+  <p class="tools-status" id="toolsStatus" role="status"></p>
+  <div id="toolsList">
+    <noscript>
+      <ul class="tools-grid">
+        <li><a class="tools-card" href="holland.html"><span></span><span><strong>Trắc nghiệm Holland</strong></span></a></li>
+        <li><a class="tools-card" href="careers-holland.html"><span></span><span><strong>Khám phá nghề nghiệp</strong></span></a></li>
+        <li><a class="tools-card" href="page2.html?mode=school"><span></span><span><strong>Tra cứu trường</strong></span></a></li>
+        <li><a class="tools-card" href="score-calculator.html"><span></span><span><strong>Tính điểm xét tuyển</strong></span></a></li>
+        <li><a class="tools-card" href="calendar.html"><span></span><span><strong>Lịch lớp 12</strong></span></a></li>
+        <li><a class="tools-card" href="scholarship-roadmap.html"><span></span><span><strong>Lộ trình học bổng</strong></span></a></li>
+      </ul>
+    </noscript>
+  </div>
+  <p class="tools-keys">Ở bất kỳ trang nào, nhấn <kbd>/</kbd> hoặc <kbd>Ctrl</kbd> + <kbd>K</kbd> để mở ô tìm nhanh.</p>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tools = window.BWTools;
+  const host = document.getElementById('toolsList');
+  const input = document.getElementById('toolsQuery');
+  const status = document.getElementById('toolsStatus');
+  if (!tools) return;
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+  const groupIcon = { 'Hiểu mình': 'compass', 'Ngành & nghề': 'briefcase', 'Trường': 'school', 'Tính điểm': 'calc', 'Lịch & hạn nộp': 'calendar', 'Học bổng': 'trophy', 'Của tôi': 'user' };
+  const card = t => `<li><a class="tools-card" href="${esc(t.href)}">${tools.icon(t.icon)}<span><strong>${esc(t.label)}</strong><small>${esc(t.desc)}</small></span><span class="tools-card-go" aria-hidden="true">→</span></a></li>`;
+  const render = () => {
+    const q = input.value.trim();
+    const found = tools.find(q);
+    if (!found.length) {
+      host.innerHTML = `<div class="tools-empty">Chưa thấy chức năng cho “${esc(q)}”. Thử từ khác, hoặc <a href="waybi.html">hỏi Waybi</a>.</div>`;
+      status.textContent = 'Không có kết quả.';
+      return;
+    }
+    if (q) {
+      host.innerHTML = `<ul class="tools-grid">${found.map(card).join('')}</ul>`;
+      status.textContent = `${found.length} chức năng khớp “${q}”. Nhấn Enter để mở chức năng đầu tiên.`;
+      return;
+    }
+    host.innerHTML = tools.groups.map(g => {
+      const items = found.filter(t => t.group === g);
+      return items.length ? `<section class="tools-group" aria-labelledby="g-${esc(g)}"><h2 id="g-${esc(g)}">${tools.icon(groupIcon[g] || 'sparkle')}${esc(g)}</h2><ul class="tools-grid">${items.map(card).join('')}</ul></section>` : '';
+    }).join('');
+    status.textContent = `${found.length} chức năng, chia theo ${tools.groups.length} nhóm.`;
+  };
+  input.addEventListener('input', render);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') { const first = tools.find(input.value)[0]; if (first && input.value.trim()) location.assign(first.href); } });
+  const q = new URLSearchParams(location.search).get('q');
+  if (q) input.value = q;
+  render();
+});
+</script>
+<script src="assets/js/supabase-client.js"></script>
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/nav-auth.js?v=20261111e"></script>
+<script src="assets/js/waybi.js?v=20261113c"></script>
+<script src="assets/js/waybi-presence.js?v=20261113c"></script>
+</body>
+</html>

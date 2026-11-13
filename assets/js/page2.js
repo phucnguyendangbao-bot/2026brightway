@@ -117,6 +117,23 @@ function renderSchools(items) {
     </section>`;
   }).join('');
   items.forEach(school => renderLogo(school));
+  showCompareTip();
+}
+
+// First visit only: a short tip under the first school card, since the small "So sánh" box is easy to miss.
+function tipSeen() { try { return localStorage.getItem('bwTipCompareSeen') === '1'; } catch { return true; } }
+function markTipSeen() { try { localStorage.setItem('bwTipCompareSeen', '1'); } catch { /* private mode */ } document.querySelector('.bw-tip[data-tip="compare"]')?.remove(); }
+function showCompareTip() {
+  if (tipSeen() || compareIds.length) return;
+  const row = mainContent?.querySelector('.school-section .school-card-bottom');
+  if (!row || row.parentElement.querySelector('.bw-tip')) return;
+  const tip = document.createElement('p');
+  tip.className = 'bw-tip';
+  tip.dataset.tip = 'compare';
+  tip.setAttribute('role', 'note');
+  tip.innerHTML = '<span><strong>Mẹo:</strong> tích ô “So sánh” trên 2–3 trường để đặt chúng cạnh nhau: học phí, điểm chuẩn, học bổng.</span><button type="button">Đã hiểu</button>';
+  tip.querySelector('button').addEventListener('click', markTipSeen);
+  row.after(tip);
 }
 
 // ---------- Comparison: one column per school, one row per question ----------
@@ -221,6 +238,7 @@ function renderCompareDock(selected) {
     <button type="button" class="flow-primary compare-dock-go" data-dock-go ${ready ? '' : 'disabled'}>${ready ? 'So sánh ngay →' : 'Chọn thêm 1 trường'}</button>`;
 }
 function updateCompare(id, checked, fromCheckbox = false) {
+  if (checked) markTipSeen();
   if (checked && !compareIds.includes(id) && compareIds.length < 3) compareIds.push(id);
   if (!checked) compareIds = compareIds.filter(item => item !== id);
   try { localStorage.setItem(compareStorageKey, JSON.stringify(compareIds)); } catch { /* private mode */ }

@@ -122,6 +122,42 @@
   }
 
   window.BWFlow = { read, save, clear, holland, nextStep, progress, renderJourney, addUnique, removeSaved, storage, get storageWarning() { return storageWarning; } };
+  // Every tool, once: the menu, the quick search, the "Tất cả công cụ" page and the homepage shortcuts
+  // all read this list, so a thing keeps one name everywhere. [group, label, description, href, icon, keywords]
+  const TOOL_GROUPS = ['Hiểu mình', 'Ngành & nghề', 'Trường', 'Tính điểm', 'Lịch & hạn nộp', 'Học bổng', 'Của tôi'];
+  const TOOLS = [
+    ['Hiểu mình', 'Trắc nghiệm Holland', '42 câu, khoảng 7 phút, ra mã sở thích nghề nghiệp.', 'holland.html', 'compass', 'holland riasec trac nghiem so thich test'],
+    ['Hiểu mình', 'Nhập mã Holland đã có', 'Đã làm test ở nơi khác? Nhập mã 3 chữ để xem nghề hợp.', 'holland.html#import-result', 'pencil', 'nhap ma holland da co ket qua'],
+    ['Ngành & nghề', 'Khám phá nghề nghiệp', '102 nghề, lọc theo nhóm Holland, xem công việc hằng ngày.', 'careers-holland.html', 'briefcase', 'nghe nghiep cong viec khám pha nghe'],
+    ['Ngành & nghề', 'Danh mục ngành học', 'Ngành học theo tổ hợp môn, kèm trường gợi ý.', 'majors.html', 'book', 'nganh hoc to hop khoi a00 d01'],
+    ['Trường', 'Tra cứu trường', 'Hồ sơ 36 trường: ngành, học phí, điểm chuẩn 2026 có nguồn.', 'page2.html?mode=school', 'school', 'truong dai hoc tra cuu hoc phi diem chuan'],
+    ['Trường', 'Tìm trường theo ngành', 'Gõ tên ngành để thấy trường nào đào tạo.', 'page2.html?mode=major', 'search', 'tim truong theo nganh dao tao'],
+    ['Trường', 'So sánh trường', 'Đặt 2–3 trường cạnh nhau: học phí, điểm chuẩn, phương thức.', 'page2.html?mode=school#schoolCompare', 'scale', 'so sanh truong doi chieu'],
+    ['Trường', 'Tin tuyển sinh', 'Thông báo tuyển sinh từ trang chính thức của trường.', 'resources.html', 'news', 'tin tuc thong bao tuyen sinh de an'],
+    ['Trường', 'Bài viết hướng nghiệp', 'Chia sẻ và kinh nghiệm từ thầy cô, chuyên gia.', 'news.html', 'chat', 'bai viet huong nghiep chia se kinh nghiem'],
+    ['Tính điểm', 'Tính điểm xét tuyển', 'Điểm thi, học bạ, ĐGNL; xem từng bước có căn cứ.', 'score-calculator.html', 'calc', 'tinh diem xet tuyen thpt hoc ba dgnl vact hsa to hop'],
+    ['Lịch & hạn nộp', 'Lịch lớp 12', 'Mốc tuyển sinh có nguồn trong năm học.', 'calendar.html', 'calendar', 'lich moc thoi gian han nop dang ky'],
+    ['Lịch & hạn nộp', 'Lộ trình học 12 tháng', 'Mỗi tháng nên làm gì để không dồn việc cuối năm.', 'calendar.html#study-plan', 'map', 'lo trinh hoc tap ke hoach thang'],
+    ['Lịch & hạn nộp', 'Đếm ngược mục tiêu', 'Đặt mốc riêng và xem còn bao nhiêu ngày.', 'profile.html?tab=journey#countdowns', 'clock', 'dem nguoc countdown muc tieu ngay thi'],
+    ['Học bổng', 'Lộ trình học bổng', 'Chuẩn bị hồ sơ học bổng theo từng giai đoạn.', 'scholarship-roadmap.html', 'trophy', 'hoc bong scholarship ho so essay'],
+    ['Của tôi', 'Nguyện vọng & trường đã lưu', 'Trường đã lưu và thứ tự nguyện vọng dự kiến.', 'profile.html?tab=journey#my-choices', 'heart', 'nguyen vong truong da luu yeu thich'],
+    ['Của tôi', 'Kế hoạch hành động', 'Việc cần làm của riêng bạn, đánh dấu khi xong.', 'profile.html?tab=journey#action-plan', 'check', 'ke hoach viec can lam todo'],
+    ['Của tôi', 'Hỏi Waybi', 'Trợ lý trả lời về ngành, trường, điểm và lịch.', 'waybi.html', 'bot', 'waybi tro ly hoi dap chatbot ai'],
+  ].map(([group, label, desc, href, icon, keys]) => ({ group, label, desc, href, icon, keys }));
+  const fold = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D').toLowerCase();
+  function findTools(query) {
+    const words = fold(query).split(/\s+/).filter(Boolean);
+    if (!words.length) return TOOLS;
+    return TOOLS.map(tool => {
+      const hay = fold(`${tool.label} ${tool.group} ${tool.desc} ${tool.keys}`);
+      const title = fold(tool.label);
+      if (!words.every(w => hay.includes(w))) return null;
+      return { tool, score: words.reduce((s, w) => s + (title.startsWith(w) ? 3 : title.includes(w) ? 2 : 1), 0) };
+    }).filter(Boolean).sort((a, b) => b.score - a.score).map(x => x.tool);
+  }
+  const toolIcon = name => window.BWIcons?.icon ? window.BWIcons.icon(name).outerHTML : '';
+  window.BWTools = { list: TOOLS, groups: TOOL_GROUPS, find: findTools, icon: toolIcon, fold };
+
   const page = location.pathname.split('/').pop() || 'index.html';
   const nav = document.querySelector('nav.bw-nav, nav.p2-nav, nav.lp-nav, nav.nav');
   if (nav) {
@@ -129,28 +165,19 @@
     const senior = nav.querySelector('.senior-toggle');
     const auth = document.getElementById('navAuthSlot');
     const theme = document.getElementById('themeToggle');
+    // The main menu names what a student wants to do, one name per thing (see TOOLS for the full list).
     const items = [
-      ['Trang chủ', 'index.html', ['index.html']],
-      ['Khám phá nghề', 'careers-holland.html', ['careers-holland.html','holland.html','majors.html','major-detail.html']],
-      ['Khám phá trường', 'page2.html?mode=school', ['page2.html']],
+      ['Hiểu mình', 'holland.html', ['holland.html']],
+      ['Ngành & nghề', 'careers-holland.html', ['careers-holland.html','majors.html','major-detail.html']],
+      ['Trường', 'page2.html?mode=school', ['page2.html','resources.html','news.html','news-detail.html']],
       ['Tính điểm', 'score-calculator.html', ['score-calculator.html']],
-      ['Hành trình của tôi', 'profile.html?tab=journey', ['profile.html']],
+      ['Lịch & hạn nộp', 'calendar.html', ['calendar.html']],
+      ['Học bổng', 'scholarship-roadmap.html', ['scholarship-roadmap.html']],
     ];
-    const tools = [
-      ['Trắc nghiệm Holland', 'holland.html', ['holland.html']],
-      ['Nguyện vọng của tôi', 'profile.html?tab=journey#my-choices', []],
-      ['Đếm ngược mục tiêu', 'profile.html?tab=journey#countdowns', []],
-      ['Lịch Lớp 12', 'calendar.html', ['calendar.html']],
-      ['Tin tuyển sinh', 'resources.html', ['resources.html','news.html','news-detail.html']],
-      ['Lộ trình học bổng', 'scholarship-roadmap.html', ['scholarship-roadmap.html']],
-    ];
-    const hashActive = href => page === 'profile.html' && href.includes(location.hash) && Boolean(location.hash);
-    const hasMainActive = items.some(([, , pages]) => pages.includes(page));
-    const hasSecondaryActive = tools.some(([, href, pages]) => pages.includes(page) || hashActive(href));
-    const moreActive = !hasMainActive && hasSecondaryActive;
+    const mine = page === 'profile.html';
     nav.className = 'flow-nav';
     nav.setAttribute('aria-label', 'Điều hướng chính');
-    nav.innerHTML = `<div class="flow-nav-inner"><a class="flow-logo" href="index.html"><img src="assets/images/brand/brightway-mark-96.webp" width="48" height="48" alt="" aria-hidden="true"><span>BrightWay Career</span></a><button type="button" class="flow-menu" aria-controls="navLinks" aria-expanded="false" aria-label="Mở menu chính">Menu <span aria-hidden="true">☰</span></button><div id="navLinks" class="flow-links">${items.map(([label, href, pages]) => `<a href="${href}" ${pages.includes(page) ? 'class="active" aria-current="page"' : ''}>${label}</a>`).join('')}<div class="flow-more"><button type="button" class="flow-more-button ${moreActive ? 'active' : ''}" aria-controls="flowMoreMenu" aria-expanded="false" ${moreActive ? 'aria-label="Công cụ, trang hiện tại thuộc nhóm này"' : ''}>Công cụ <span aria-hidden="true">⌄</span></button><div id="flowMoreMenu" class="flow-more-menu">${tools.map(([label, href, pages]) => `<a href="${href}" ${(pages.includes(page) || hashActive(href)) ? 'class="active" aria-current="page"' : ''}>${label}</a>`).join('')}</div></div><a class="flow-waybi-link ${page === 'waybi.html' ? 'active' : ''}" href="waybi.html" ${page === 'waybi.html' ? 'aria-current="page"' : ''}>Waybi</a></div></div>`;
+    nav.innerHTML = `<div class="flow-nav-inner"><a class="flow-logo" href="index.html" aria-label="BrightWay Career, về trang chủ"><img src="assets/images/brand/brightway-mark-96.webp" width="48" height="48" alt="" aria-hidden="true"><span>BrightWay Career</span></a><button type="button" class="flow-menu" aria-controls="navLinks" aria-expanded="false" aria-label="Mở menu chính">Menu <span aria-hidden="true">☰</span></button><div id="navLinks" class="flow-links">${items.map(([label, href, pages]) => `<a href="${href}" ${pages.includes(page) ? 'class="active" aria-current="page"' : ''}>${label}</a>`).join('')}<span class="flow-links-gap" aria-hidden="true"></span><button type="button" class="flow-tools-button ${page === 'tools.html' ? 'active' : ''}" data-open-tools aria-haspopup="dialog" aria-keyshortcuts="/ Control+K"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="7" height="7" rx="1.8"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.8"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.8"/><circle cx="17" cy="17" r="3.2"/><path d="m19.4 19.4 1.8 1.8"/></svg><span>Tất cả công cụ</span></button><a class="flow-mine ${mine ? 'active' : ''}" href="profile.html?tab=journey" ${mine ? 'aria-current="page"' : ''}><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></svg><span>Của tôi</span></a><a class="flow-waybi-link ${page === 'waybi.html' ? 'active' : ''}" href="waybi.html" ${page === 'waybi.html' ? 'aria-current="page"' : ''}>Waybi</a></div></div>`;
     const links = nav.querySelector('#navLinks');
     if (senior) links.appendChild(senior);
     if (theme) { theme.classList.add('flow-theme'); links.appendChild(theme); }
@@ -167,30 +194,93 @@
       nav.after(toolbar);
     }
     const button = nav.querySelector('.flow-menu');
-    const more = nav.querySelector('.flow-more');
-    const moreButton = nav.querySelector('.flow-more-button');
-    const closeMore = () => { more?.classList.remove('open'); moreButton?.setAttribute('aria-expanded','false'); };
-    const close = () => { links.classList.remove('open'); button.setAttribute('aria-expanded','false'); closeMore(); };
+    const close = () => { links.classList.remove('open'); button.setAttribute('aria-expanded','false'); };
     button.addEventListener('click', () => {
       const open = links.classList.toggle('open');
       button.setAttribute('aria-expanded', String(open));
     });
     links.addEventListener('click', event => { if (event.target.closest('a')) close(); });
-    moreButton?.addEventListener('click', event => {
-      event.stopPropagation();
-      const open = more.classList.toggle('open');
-      moreButton.setAttribute('aria-expanded', String(open));
-    });
-    document.addEventListener('click', event => {
-      if (!nav.contains(event.target)) { close(); return; }
-      if (more?.classList.contains('open') && !event.target.closest('.flow-more')) closeMore();
-    });
+    document.addEventListener('click', event => { if (!nav.contains(event.target)) close(); });
     window.matchMedia('(min-width:1181px)').addEventListener('change', event => { if (event.matches) close(); });
     document.addEventListener('keydown', event => {
       if (event.key !== 'Escape') return;
-      if (more?.classList.contains('open')) { closeMore(); moreButton.focus(); return; }
       if (links.classList.contains('open')) { close(); button.focus(); }
     });
+  }
+
+
+  /* ---------- Quick search: "Tất cả công cụ" in the menu, or press / or Ctrl+K anywhere ---------- */
+  let palette = null, paletteReturn = null;
+  function openPalette() {
+    if (!palette) {
+      palette = document.createElement('dialog');
+      palette.className = 'bw-palette';
+      palette.setAttribute('aria-label', 'Tìm chức năng');
+      palette.innerHTML = `<form method="dialog" class="bw-palette-box"><label class="bw-palette-search"><span class="bw-palette-label">Tìm chức năng</span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg><input type="search" autocomplete="off" placeholder="Gõ: tính điểm, học bổng, lịch…" aria-controls="bwPaletteList" aria-autocomplete="list"></label><ul id="bwPaletteList" class="bw-palette-list" role="listbox" aria-label="Chức năng"></ul><div class="bw-palette-foot"><a href="tools.html">Xem trang Tất cả công cụ →</a><span><kbd>↑</kbd><kbd>↓</kbd> chọn · <kbd>Enter</kbd> mở · <kbd>Esc</kbd> đóng</span></div></form>`;
+      document.body.append(palette);
+      const input = palette.querySelector('input'), list = palette.querySelector('ul');
+      let at = 0, shown = [];
+      const render = () => {
+        shown = findTools(input.value).slice(0, input.value.trim() ? 8 : 40);
+        at = Math.min(at, Math.max(0, shown.length - 1));
+        let group = '';
+        list.innerHTML = shown.length ? shown.map((item, i) => {
+          const head = !input.value.trim() && item.group !== group ? `<li class="bw-palette-group" role="presentation">${escape(group = item.group)}</li>` : '';
+          return `${head}<li role="option" id="bwPal${i}" aria-selected="${i === at}"><a href="${escape(item.href)}" tabindex="-1">${toolIcon(item.icon)}<span><strong>${escape(item.label)}</strong><small>${escape(item.desc)}</small></span></a></li>`;
+        }).join('') : '<li class="bw-palette-empty">Chưa thấy chức năng này. Thử từ khác, hoặc hỏi Waybi.</li>';
+        input.setAttribute('aria-activedescendant', shown.length ? `bwPal${at}` : '');
+      };
+      input.addEventListener('input', () => { at = 0; render(); });
+      input.addEventListener('keydown', event => {
+        if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+          event.preventDefault();
+          at = (at + (event.key === 'ArrowDown' ? 1 : -1) + shown.length) % Math.max(1, shown.length);
+          render();
+          list.querySelector('[aria-selected="true"]')?.scrollIntoView({ block: 'nearest' });
+        } else if (event.key === 'Enter' && shown[at]) { event.preventDefault(); location.assign(shown[at].href); palette.close(); }
+      });
+      list.addEventListener('mousemove', event => {
+        const li = event.target.closest('[role="option"]');
+        if (li) { const i = Number(li.id.slice(5)); if (i !== at) { at = i; list.querySelectorAll('[role="option"]').forEach(o => o.setAttribute('aria-selected', String(o.id === li.id))); } }
+      });
+      palette.addEventListener('click', event => { if (event.target === palette) palette.close(); if (event.target.closest('a')) palette.close(); });
+      palette.addEventListener('close', () => { paletteReturn?.focus?.(); });
+      palette._render = render; palette._input = input;
+    }
+    paletteReturn = document.activeElement;
+    palette._input.value = '';
+    palette._render();
+    if (typeof palette.showModal === 'function') palette.showModal(); else location.assign('tools.html');
+    palette._input.focus();
+  }
+  document.addEventListener('click', event => {
+    const trigger = event.target.closest('[data-open-tools]');
+    if (!trigger) return;
+    event.preventDefault();
+    nav?.querySelector('.flow-links')?.classList.remove('open');
+    openPalette();
+  });
+  document.addEventListener('keydown', event => {
+    const typing = event.target.closest?.('input, textarea, select, [contenteditable]');
+    if ((event.key === '/' && !typing && !event.ctrlKey && !event.metaKey) || (event.key.toLowerCase() === 'k' && (event.ctrlKey || event.metaKey))) {
+      if (palette?.open) return;
+      event.preventDefault();
+      openPalette();
+    }
+  });
+
+  /* ---------- Sections that span two pages show them as tabs of one place ---------- */
+  const SUBNAV = [
+    { pages: ['careers-holland.html', 'majors.html', 'major-detail.html'], label: 'Ngành & nghề', tabs: [['Nghề nghiệp', 'careers-holland.html', ['careers-holland.html']], ['Ngành học', 'majors.html', ['majors.html', 'major-detail.html']]] },
+    { pages: ['resources.html', 'news.html', 'news-detail.html'], label: 'Tin tức', tabs: [['Thông báo tuyển sinh', 'resources.html', ['resources.html']], ['Bài viết hướng nghiệp', 'news.html', ['news.html', 'news-detail.html']]] },
+  ];
+  const sub = SUBNAV.find(s => s.pages.includes(page));
+  if (sub && nav) {
+    const bar = document.createElement('nav');
+    bar.className = 'flow-subnav';
+    bar.setAttribute('aria-label', sub.label);
+    bar.innerHTML = sub.tabs.map(([label, href, pages]) => `<a href="${href}" ${pages.includes(page) ? 'class="active" aria-current="page"' : ''}>${label}</a>`).join('');
+    nav.after(bar);
   }
 
   function ensureSharedFooter() {
@@ -199,7 +289,7 @@
     if (!footer) { footer = document.createElement('footer'); document.body.append(footer); }
     footer.className = 'flow-footer';
     footer.setAttribute('aria-label', 'Thông tin BrightWay Career');
-    footer.innerHTML = `<div class="flow-footer-inner"><div class="flow-footer-brand"><a href="index.html"><img src="assets/images/brand/brightway-mark-96.webp" width="40" height="40" alt=""><strong>BrightWay Career</strong></a><p>Đồng hành cùng học sinh trên hành trình hướng nghiệp và chuẩn bị xét tuyển.</p></div><nav aria-label="Liên kết cuối trang"><a href="careers-holland.html">Khám phá nghề</a><a href="page2.html?mode=school">Khám phá trường</a><a href="profile.html?tab=journey#my-choices">Nguyện vọng</a><a href="profile.html?tab=journey#countdowns">Đếm ngược</a><a href="resources.html">Tin tuyển sinh</a><a href="calendar.html">Lịch Lớp 12</a></nav><div class="flow-footer-meta"><a href="mailto:pdpbrightwaycarrers@gmail.com">pdpbrightwaycarrers@gmail.com</a><a href="tel:+84939249060">0939 249 060</a><p>© ${new Date().getFullYear()} BrightWay Career</p></div></div><p class="flow-footer-note">Thông tin chỉ mang tính tham khảo; hãy kiểm tra nguồn chính thức trước khi đưa ra quyết định tuyển sinh.</p>`;
+    footer.innerHTML = `<div class="flow-footer-inner"><div class="flow-footer-brand"><a href="index.html"><img src="assets/images/brand/brightway-mark-96.webp" width="40" height="40" alt=""><strong>BrightWay Career</strong></a><p>Đồng hành cùng học sinh trên hành trình hướng nghiệp và chuẩn bị xét tuyển.</p></div><nav aria-label="Liên kết cuối trang"><a href="holland.html">Hiểu mình</a><a href="careers-holland.html">Ngành &amp; nghề</a><a href="page2.html?mode=school">Trường</a><a href="score-calculator.html">Tính điểm</a><a href="calendar.html">Lịch &amp; hạn nộp</a><a href="scholarship-roadmap.html">Học bổng</a><a href="resources.html">Tin tuyển sinh</a><a href="profile.html?tab=journey">Của tôi</a><a href="tools.html"><strong>Tất cả công cụ</strong></a></nav><div class="flow-footer-meta"><a href="mailto:pdpbrightwaycarrers@gmail.com">pdpbrightwaycarrers@gmail.com</a><a href="tel:+84939249060">0939 249 060</a><p>© ${new Date().getFullYear()} BrightWay Career</p></div></div><p class="flow-footer-note">Thông tin chỉ mang tính tham khảo; hãy kiểm tra nguồn chính thức trước khi đưa ra quyết định tuyển sinh.</p>`;
   }
 
   document.querySelectorAll('a[href="login.html"]').forEach(anchor => {
@@ -515,6 +605,9 @@
     const navH = nav.offsetHeight;
     const stepbar = document.querySelector('.flow-stepbar');
     // The journey step bar rides inside the opening; measure only after it has moved.
+    // Section tabs (Nghề nghiệp | Ngành học, …) ride inside the opening too, just under the step bar.
+    const subnav = document.querySelector('.flow-subnav');
+    if (subnav && subnav.compareDocumentPosition(band) & Node.DOCUMENT_POSITION_FOLLOWING && docTop(band) - docTop(subnav) < 400) band.prepend(subnav);
     if (stepbar && stepbar.compareDocumentPosition(band) & Node.DOCUMENT_POSITION_FOLLOWING && docTop(band) - docTop(stepbar) < 400) band.prepend(stepbar);
     if (docTop(band) - navH >= 160) return;              // the band does not open the page
     // A band that opens the page slides under the see-through navigation.

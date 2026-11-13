@@ -165,8 +165,17 @@
     return /^[RIASEC]{3}$/.test(code) && new Set(code).size === 3 ? code : '';
   }
 
+  // Majors are shown for reference only: the next step from a Holland code is always the careers
+  // page (step 2), and each career there leads on to the schools that teach it (step 3).
   function majorLinks(majors) {
-    return majors.map(major => `<a class="majors-tag" href="page2.html?mode=major&q=${encodeURIComponent(major)}">${major}</a>`).join('');
+    return majors.map(major => `<span class="majors-tag">${major}</span>`).join('');
+  }
+
+  function setNextStep(href, code) {
+    const next = $('resultNextCareers');
+    if (!next) return;
+    next.href = href;
+    $('resultNextCode').textContent = code || 'của bạn';
   }
 
   function showImportedResult(code) {
@@ -176,8 +185,9 @@
     $('rBars').innerHTML = '<p class="import-hint">Kết quả được nhập từ bài test đã làm; không có điểm chi tiết cho từng nhóm.</p>';
     $('resultTieNote').textContent = '';
     const majors = [...new Set(code.slice(0, 2).split('').flatMap(letter => TYPES[letter].majors))];
-    $('rMajors').innerHTML = `<h3>📚 Ngành học tham khảo</h3><p class="import-hint">Chọn một ngành để xem trường có dữ liệu đào tạo tương ứng.</p><div class="majors-tags">${majorLinks(majors)}</div>`;
+    $('rMajors').innerHTML = `<h3>📚 Sau đó: ngành học liên quan</h3><p class="import-hint">Xem nghề hợp mã trước. Mỗi nghề ở trang tiếp theo dẫn tới ngành học và trường đào tạo.</p><div class="majors-tags">${majorLinks(majors)}</div>`;
     $('resultCareersLink').href = `careers-holland.html?holland=${code}`;
+    setNextStep(`careers-holland.html?holland=${code}`, code);
     window.BWFlow?.save({ holland: { code, source: 'imported', completedAt: Date.now() } });
     $('quizCard').style.display = 'none';
     $('jumpBarWrap').style.display = 'none';
@@ -200,9 +210,9 @@
     input.removeAttribute('aria-invalid');
     error.hidden = true;
     window.BWFlow.storage.set(IMPORTED_KEY, JSON.stringify({ code, savedAt: Date.now() }));
-    showImportedResult(code);
-    $('importResult').open = false;
-    $('resultCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.BWFlow?.save({ holland: { code, source: 'imported', completedAt: Date.now() } });
+    // A code you already have leads to careers first; schools come after you have picked a few careers.
+    location.assign('careers-holland.html?holland=' + encodeURIComponent(code));
   }
 
   function getAnsweredCount() {
@@ -447,6 +457,7 @@
     const ties = sorted.filter(([, score]) => score === sorted[0][1]).map(([type]) => type);
     $('resultTieNote').textContent = ties.length > 1 ? `Các nhóm đồng điểm cao nhất: ${ties.join(', ')}. Thứ tự mã không thể hiện chênh lệch giữa các nhóm này.` : '';
     $('resultCareersLink').href = state.completed ? `careers-holland.html?holland=${top3.join('')}` : 'careers-holland.html?holland=all';
+    setNextStep($('resultCareersLink').href, state.completed ? top3.join('') : '');
 
     const barColors = { R: '#f59e0b', I: '#082e85', A: '#ec4899', S: '#10b981', E: '#f97316', C: '#0a3496' };
     $('rBars').innerHTML = sorted.map(([k, v]) => {
@@ -469,8 +480,8 @@
     const top2 = sorted.slice(0, 2).map(([k]) => k);
     const allMajors = [...new Set([...TYPES[top2[0]].majors, ...TYPES[top2[1]].majors])];
     $('rMajors').innerHTML = `
-      <h3>📚 Ngành học để tìm hiểu thêm</h3>
-      <p class="import-hint">Chọn một ngành để xem trường có dữ liệu đào tạo tương ứng.</p>
+      <h3>📚 Sau đó: ngành học liên quan</h3>
+      <p class="import-hint">Xem nghề hợp mã trước. Mỗi nghề ở trang tiếp theo dẫn tới ngành học và trường đào tạo.</p>
       <div class="majors-tags">${majorLinks(allMajors)}</div>
     `;
 
