@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { uniqueSchools, wishFromProgram, addWish, moveWish, normalizeWishes, wishText, textKey, importLegacySchools } from '../assets/js/selection-model.js';
 import { detailsForSchool } from '../assets/data/school-profile-details.js';
-import { relatedMajorNames } from '../assets/js/career-pathways.js';
+import { relatedMajorNames, suggestedMajorNames } from '../assets/js/career-pathways.js';
 
 const fpt = { id: 'fpt', name: 'Đại học FPT' };
 const first = () => wishFromProgram(fpt, detailsForSchool('fpt'), 0, 2027);
@@ -66,4 +66,15 @@ test('career pathways require a sourced education route and an exact existing ma
   assert.ok(relatedMajorNames(jobs.find(job => job.name === 'Bác sĩ đa khoa')).map(textKey).includes('y khoa'));
   assert.deepEqual(relatedMajorNames(jobs.find(job => job.name === 'Kế toán')), []);
   assert.deepEqual(relatedMajorNames({ name:'Y khoa', edu:'Không nêu ngành', eduSource:'https://example.org' }), []);
+});
+test('suggested majors need a whole list item from the route that names an official 2026 major', () => {
+  const jobs = JSON.parse(fs.readFileSync(new URL('../assets/data/jobs.json', import.meta.url)));
+  const job = name => jobs.find(item => item.name === name);
+  assert.deepEqual(suggestedMajorNames(job('Kế toán')).map(textKey), ['ke toan', 'kiem toan']);
+  // "Kỹ thuật Điện tử" is a different major from "Kỹ thuật điện".
+  assert.deepEqual(suggestedMajorNames(job('Kỹ sư điện tử')), []);
+  // The longest name in one item wins; separate items are both kept.
+  assert.deepEqual(suggestedMajorNames(job('Nhà thiết kế UX/UI')).map(textKey), ['thiet ke do hoa']);
+  assert.ok(suggestedMajorNames(job('Nhà sinh vật học')).map(textKey).includes('sinh hoc'));
+  assert.deepEqual(suggestedMajorNames({ name:'X', edu:'Không nêu ngành cụ thể' }), []);
 });

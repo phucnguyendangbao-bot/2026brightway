@@ -106,7 +106,7 @@
     const hasPlan = Boolean(state.scores?.completedAt);
     return [
       { label: 'Hiểu mình', complete: Boolean(code), href: 'holland.html', detail: code ? `Mã Holland ${code}` : 'Làm Holland hoặc nhập mã đã có' },
-      { label: 'Tìm ngành', complete: hasCareer, href: 'careers-holland.html', detail: hasCareer ? (state.career?.name || `${state.savedCareers.length} nghề đã lưu`) : 'Khám phá nghề và ngành liên quan' },
+      { label: 'Nghề & ngành', complete: hasCareer, href: 'careers-holland.html', detail: hasCareer ? (state.career?.name || `${state.savedCareers.length} nghề đã lưu`) : 'Khám phá nghề và ngành liên quan' },
       { label: 'Chọn trường', complete: hasSchool, href: 'page2.html?focus=major', detail: hasSchool ? `${state.savedSchools.length} trường đã lưu` : 'Tìm theo ngành hoặc tên trường' },
       { label: 'Đối chiếu điểm', complete: hasPlan, href: 'score-calculator.html', detail: hasPlan ? 'Đã có phương thức hoặc kết quả tính' : 'Chọn phương thức và tính điểm' },
       { label: 'Hành động', complete: Boolean(state.tasks?.length && state.tasks.every(task => task.done)), href: 'profile.html?tab=journey#action-plan', detail: 'Ghi việc cần làm và đánh dấu tiến độ' },

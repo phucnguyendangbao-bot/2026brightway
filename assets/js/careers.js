@@ -45,7 +45,7 @@
   function getFiltered() {
     const q = norm(state.query.trim());
     const h = state.activeHolland;
-    return state.jobs.filter(j => {
+    const list = state.jobs.filter(j => {
       const matchQ = !q ||
         norm(j.name).includes(q) ||
         norm(j.en).includes(q) ||
@@ -56,7 +56,24 @@
         : h === 'all' || (j.holland || []).includes(h);
       return matchQ && matchH;
     });
+    return ranked(list);
   }
+
+  // How well a career fits the reader's three-letter code: the code's first letter weighs most,
+  // and so does a group listed first for the career.
+  function matchScore(j, code) {
+    return [...(code || '')].reduce((sum, c, i) => {
+      const k = (j.holland || []).indexOf(c);
+      return k < 0 ? sum : sum + (3 - i) * (3 - Math.min(k, 2));
+    }, 0);
+  }
+  const shared = j => (j.holland || []).filter(c => state.importedCode.includes(c)).length;
+  function ranked(list) {
+    if (!state.importedCode) return list;
+    return list.map((j, i) => ({ j, i, s: matchScore(j, state.importedCode) }))
+      .sort((a, b) => shared(b.j) - shared(a.j) || b.s - a.s || a.i - b.i).map(x => x.j);
+  }
+  let listLimit = 20;
 
   function search(q) {
     state.query = q;
@@ -75,6 +92,29 @@
     window.BWFlow?.save({ careerFilters: { query: state.query, holland: state.importedCode || state.activeHolland } });
     syncClearFilters();
     $('careerCount').textContent = `${getFiltered().length} kết quả / ${state.jobs.length} nghề · Nhóm Holland là gợi ý sở thích`;
+  }
+
+  // A reader who arrives with a code sees it named at once, not a general welcome.
+  function personalise(code) {
+    const names = [...code].map(c => HOLLAND_META[c].label.toLowerCase()).join(', ');
+    const h2 = document.querySelector('.career-intro h2');
+    const intro = document.querySelector('.career-intro p:not(.explorer-eyebrow)');
+    const cta = document.querySelector('.explorer-cta');
+    const note = document.querySelector('.explorer-hero-note');
+    if (h2) h2.textContent = `Nghề hợp mã ${code} của bạn`;
+    if (intro) intro.textContent = `Nghề có nhiều nhóm ${names} đứng đầu danh sách. Chọn một nghề để xem công việc, ngành học liên quan, rồi tới trường đào tạo.`;
+    if (cta) cta.innerHTML = `Xem nghề hợp mã ${escapeHtml(code)} <span aria-hidden="true">↓</span>`;
+    if (note) note.textContent = 'Bước tiếp sau Holland: nghề → ngành học → trường';
+    const compass = document.querySelector('.explorer-compass');
+    if (compass) {
+      compass.querySelector('.explorer-eyebrow').textContent = 'MÃ HOLLAND CỦA BẠN';
+      compass.querySelector('h2').textContent = `${code} · ${[...code].map(c => HOLLAND_META[c].label).join(' – ')}`;
+      const p = compass.querySelector('p:not(.explorer-eyebrow)');
+      if (p) p.textContent = 'Danh sách bên dưới đã xếp theo mã này. Muốn chắc hơn, làm lại trắc nghiệm.';
+      compass.querySelectorAll('.explorer-letters span').forEach(span => span.classList.toggle('is-mine', code.includes(span.textContent)));
+      const link = compass.querySelector('a');
+      if (link) link.innerHTML = 'Làm lại trắc nghiệm <span aria-hidden="true">→</span>';
+    }
   }
 
   // ─── HOLLAND FILTER UI ───
@@ -99,6 +139,7 @@
       btn.addEventListener('click', () => {
         state.activeHolland = btn.dataset.code;
         state.importedCode = '';
+        listLimit = 20;
         persistFilters();
         $('hollandFilterLabel').textContent = 'Lọc theo nhóm Holland:';
         // re-render
@@ -198,6 +239,7 @@
 
     r.innerHTML = `
       <div class="career-result">
+        ${listReturn ? `<button type="button" class="career-back" data-career-back>← ${state.importedCode ? `Danh sách nghề hợp mã ${escapeHtml(state.importedCode)}` : 'Quay lại danh sách nghề'}</button>` : ''}
         <div class="career-result-hd">
           <div class="career-result-top">
           <div class="career-code" title="Mã nội bộ của BrightWay, chưa đối chiếu chuẩn mã nghề">Mã ${escapeHtml(j.code)} · ${escapeHtml(j.group)}</div>
@@ -241,6 +283,18 @@
     `;
     window.BWFlow?.save({ career: { name: j.name, group: j.group } });
     persistFilters();
+    r.querySelector('[data-career-back]')?.addEventListener('click', () => {
+      const back = listReturn;
+      listReturn = null;
+      $('careerSearch').value = back.query;
+      state.query = back.query;
+      listLimit = back.limit;
+      persistFilters();
+      renderListResult(getFiltered());
+      const item = [...r.querySelectorAll('.career-list-item')].find(el => el.dataset.name === j.name);
+      (item || r).scrollIntoView({ block: 'center' });
+      item?.focus({ preventScroll: true });
+    });
     r.querySelectorAll('[data-similar]').forEach(button => button.addEventListener('click', () => {
       const other = state.jobs.find(o => o.name === button.dataset.similar);
       if (!other) return;
@@ -259,11 +313,15 @@
     next.before(pathways);
     let pathwayTimer;
     const pathwayTimeout = new Promise((resolve, reject) => { pathwayTimer = setTimeout(() => reject(new Error('Pathways timeout')), 8000); });
-    Promise.race([import('./career-pathways.js'), pathwayTimeout]).then(({ relatedMajorNames }) => {
+    Promise.race([import('./career-pathways.js?v=20261113f'), pathwayTimeout]).then(({ relatedMajorNames, suggestedMajorNames }) => {
       if (!pathways.isConnected) return;
-      const majors = relatedMajorNames(j);
-      pathways.innerHTML = '<h2>Ngành đào tạo liên quan</h2>' + (majors.length
-        ? '<p>Tên ngành xuất hiện trong lộ trình học vấn có nguồn ở trên và trong danh mục trường năm 2026. Đây là hướng tìm hiểu, không phải kết luận nghề và ngành là một.</p><div class="flow-actions">' + majors.map(name => {
+      const sourced = relatedMajorNames(j);
+      const majors = sourced.length ? sourced : suggestedMajorNames(j);
+      const why = sourced.length
+        ? 'Tên ngành xuất hiện trong lộ trình học vấn có nguồn ở trên và trong danh mục ngành 2026 của trường.'
+        : 'Tên ngành lấy từ lộ trình học gợi ý ở trên, khớp đúng tên trong danh mục ngành 2026 của trường.';
+      pathways.innerHTML = '<h2>Bước tiếp: ngành học cho nghề này</h2>' + (majors.length
+        ? `<p>${why} Đây là hướng tìm hiểu, không phải kết luận nghề và ngành là một. Chọn một ngành để xem trường nào đào tạo.</p><div class="flow-actions">` + majors.map(name => {
           const params = new URLSearchParams({ mode:'major', q:name, career:j.name, careerReturn:location.pathname + location.search });
           return `<a href="page2.html?${escapeHtml(params.toString())}">${escapeHtml(name)} · Tìm trường →</a>`;
         }).join('') + '</div>'
@@ -281,7 +339,9 @@
   }
 
   function renderListResult(list) {
-    $('careerCount').textContent = `${list.length} kết quả / ${state.jobs.length} nghề`;
+    $('careerCount').textContent = state.importedCode
+      ? `${list.length} nghề có ít nhất một nhóm trong mã ${state.importedCode}, xếp từ khớp nhiều nhất`
+      : `${list.length} kết quả / ${state.jobs.length} nghề`;
     const r = $('careerResult');
     if (!list.length) {
       r.innerHTML = `
@@ -295,7 +355,7 @@
     // Show top 20 with holland badges
     r.innerHTML = `
       <div class="career-list">
-        ${list.slice(0, 20).map(j => {
+        ${list.slice(0, listLimit).map(j => {
           const hollandTags = (j.holland || []).map(c => {
             const m = HOLLAND_META[c];
             return `<span class="job-holland-tag sm" title="${m.label}" style="background:${m.color}1a;border:1px solid ${m.color};color:${m.color}">${hIcon(c)}<b>${c}</b></span>`;
@@ -304,17 +364,24 @@
             <button class="career-list-item" type="button" data-name="${escapeHtml(j.name)}">
               <div class="career-list-name">${escapeHtml(j.name)}</div>
               <div class="career-list-meta">${escapeHtml(j.en)} · ${escapeHtml(j.group)}</div>
-              <div class="career-list-holland">${hollandTags}</div>
+              <div class="career-list-holland">${hollandTags}${state.importedCode ? `<span class="career-list-fit${shared(j) === 3 ? ' is-full' : ''}">Khớp ${shared(j)}/3</span>` : ''}</div>
             </button>
           `;
         }).join('')}
-        ${list.length > 20 ? `<div class="career-list-more">+ ${list.length - 20} nghề khác. Hãy nhập tên cụ thể để xem chi tiết.</div>` : ''}
+        ${list.length > listLimit ? `<div class="career-list-more"><button type="button" class="career-more-btn">Xem thêm ${Math.min(20, list.length - listLimit)} nghề</button><span>Còn ${list.length - listLimit} nghề. Hoặc gõ tên nghề vào ô tìm.</span></div>` : ''}
       </div>
     `;
     bindListItemClicks();
+    r.querySelector('.career-more-btn')?.addEventListener('click', () => {
+      const from = listLimit;
+      listLimit += 20;
+      renderListResult(list);
+      r.querySelectorAll('.career-list-item')[from]?.focus();
+    });
   }
 
   function handle(q) {
+    if (q !== state.query) listLimit = 20;
     state.query = q;
     persistFilters();
     const list = getFiltered();
@@ -379,12 +446,15 @@
     }
   }
 
+  let listReturn = null;
   function bindListItemClicks() {
     document.querySelectorAll('.career-list-item').forEach(el => {
       el.addEventListener('click', () => {
         const name = el.dataset.name;
         const job = state.jobs.find(j => j.name === name);
         if (job) {
+          listReturn = { query: state.query, limit: listLimit };
+          $('careerResult').scrollIntoView({ block: 'start' });
           $('careerSearch').value = name;
           handle(name);
         }
@@ -492,6 +562,7 @@
         state.activeHolland = 'all';
         state.importedCode = hollandCode;
         $('hollandFilterLabel').textContent = `Mã của bạn: ${hollandCode} · Đang lọc nghề thuộc ${[...hollandCode].join(', ')}`;
+        personalise(hollandCode);
       }
       const count = $('careerCount');
       if (count) count.textContent = `Cơ sở dữ liệu: ${state.jobs.length} nghề nghiệp phổ biến tại Việt Nam`;

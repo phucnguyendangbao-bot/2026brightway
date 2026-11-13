@@ -66,3 +66,19 @@
   .career-explorer .holland-chip { padding: 8px 10px; }
   .explorer-eyebrow { font-size: 10px; letter-spacing: 1px; }
 }
+
+/* Match with the reader's Holland code, show-more and back-to-list (Holland → nghề → ngành → trường) */
+.career-explorer .career-list-holland { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-start; gap: 6px; width: 100%; }
+.career-list-fit { margin-left: auto; padding: 3px 9px; border-radius: 999px; background: #eef2ff; color: #0a3496; font: 700 11.5px/1.4 'Be Vietnam Pro', sans-serif; white-space: nowrap; }
+.career-list-fit.is-full { background: #0a3496; color: #fff; }
+.career-explorer .career-list-more { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; color: var(--text-soft); }
+.career-more-btn { min-height: 44px; padding: 0 22px; border: 1px solid #0a3496; border-radius: 999px; background: #fff; color: #0a3496; font: 700 14px/1 'Be Vietnam Pro', sans-serif; cursor: pointer; }
+.career-more-btn:hover { background: #0a3496; color: #fff; }
+.career-back { display: inline-flex; align-items: center; min-height: 40px; margin: 0 0 14px; padding: 0 16px; border: 1px solid rgba(10, 52, 150, .22); border-radius: 999px; background: #fff; color: #0a3496; font: 700 13.5px/1 'Be Vietnam Pro', sans-serif; cursor: pointer; }
+.career-back:hover { border-color: #0a3496; }
+html[data-theme="dark"] .career-list-fit { background: rgba(147, 170, 255, .16); color: #c9d6ff; }
+html[data-theme="dark"] .career-list-fit.is-full { background: #8fa8ff; color: #0b1430; }
+html[data-theme="dark"] :is(.career-more-btn, .career-back) { background: transparent; color: #c9d6ff; border-color: rgba(201, 214, 255, .35); }
+.explorer-letters span.is-mine { background: #0a3496; color: #fff; }
+.explorer-letters span:not(.is-mine) { opacity: .45; }
+.explorer-letters:not(:has(.is-mine)) span { opacity: 1; }
