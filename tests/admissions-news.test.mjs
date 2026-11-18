@@ -45,7 +45,7 @@ test('news page has verified-empty state and profile links, without the old CMS 
   assert.match(html, /id="newsYear"/);
   assert.match(html, /id="newsType"/);
   assert.doesNotMatch(html, /resources-data\.js|cms-service\.js|Khóa học/);
-  assert.match(script, /page2\.html#/);
+  assert.match(script, /page2\.html\?school=/);
   assert.match(profiles, /resources\.html\?school=/);
   assert.match(html, /id="policy-sources"/);
   assert.match(html, /id="school-sources"/);

@@ -31,7 +31,7 @@ export function relatedMajorNames(job) {
 // item of its list ("Cử nhân Kế toán, Kiểm toán"), so "Kỹ thuật Điện tử" never yields "Kỹ thuật điện".
 // The page labels these as suggestions taken from the route, not as a sourced pathway.
 export function suggestedMajorNames(job) {
-  const items = String(job?.edu || '').split(/[,.;:/+()–—]|\s-\s|\bhoặc\b|\bvà\b/i).map(words).filter(Boolean);
+  const items = String(job?.edu || '').replace(/\bCNTT\b/g, 'Công nghệ thông tin').split(/[,.;:/+()–—]|\s-\s|\bhoặc\b|\bvà\b/i).map(words).filter(Boolean);
   const found = new Map();
   for (const item of items) {
     // Within one item the longest name wins: "Thiết kế Đồ họa" rather than also "Đồ họa".

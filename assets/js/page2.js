@@ -681,15 +681,23 @@ async function initPage2() {
     renderCompare();
     // Searching is not a decision to save a major.
     document.getElementById('schoolCatalogCount').textContent = `${catalog.stats.universities} trường`;
-    const career = new URLSearchParams(location.search).get('career') || window.BWFlow?.read().career?.name;
-    if (career && !document.getElementById('schoolJourney')) {
+    const career = params.get('career') || window.BWFlow?.read().career?.name;
+    const majorReturn = params.get('majorReturn');
+    const majorBack = /^\/?majors\.html(?:\?[^#]*)?$/.test(majorReturn || '') ? majorReturn : '';
+    if ((career || majorBack) && !document.getElementById('schoolJourney')) {
       const host = document.createElement('div');
       host.id = 'schoolJourney';
       host.className = 'flow-resume';
       document.querySelector('.p2-layout')?.before(host);
       const returnPath = params.get('careerReturn');
-      const back = /^\/?careers-holland\.html\?(?:[^#]*)$/.test(returnPath || '') ? returnPath : 'careers-holland.html?q=' + encodeURIComponent(career);
-      window.BWFlow?.nextStep(host, `Nghề bạn đang quan tâm: ${career}`, 'Đọc danh mục ngành và nguồn tuyển sinh, rồi thêm chương trình muốn tìm hiểu vào nguyện vọng dự kiến.', [['Quay lại nghề đang xem', back], ['Nguyện vọng của tôi', 'profile.html?tab=journey#my-choices']]);
+      const back = /^\/?careers-holland\.html\?(?:[^#]*)$/.test(returnPath || '') ? returnPath : 'careers-holland.html?q=' + encodeURIComponent(career || '');
+      // The way back names where the reader came from: the major list, the career, or both.
+      const links = [];
+      if (majorBack) links.push(['Quay lại danh mục ngành', majorBack]);
+      if (career && (params.get('career') || !majorBack)) links.push(['Quay lại nghề ' + career, back]);
+      links.push(['Nguyện vọng của tôi', 'profile.html?tab=journey#my-choices']);
+      const title = majorBack && !params.get('career') ? `Trường đào tạo ngành ${initialQuery}` : `Nghề bạn đang quan tâm: ${career}`;
+      window.BWFlow?.nextStep(host, title, 'Mở hồ sơ trường để xem phương thức, điểm chuẩn và nguồn tuyển sinh, rồi thêm chương trình muốn tìm hiểu vào nguyện vọng dự kiến.', links);
     }
     requestAnimationFrame(scrollToTargetFromUrl);
     if (params.get('focus') === 'major') requestAnimationFrame(() => document.getElementById('searchInput')?.focus());

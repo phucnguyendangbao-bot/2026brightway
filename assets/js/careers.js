@@ -305,7 +305,8 @@
     }));
     const next = document.createElement('div');
     r.appendChild(next);
-    window.BWFlow?.nextStep(next, 'Tìm nơi học cho nghề bạn quan tâm', 'Đọc phần học vấn ở trên, rồi đối chiếu ngành đào tạo và phương thức tuyển sinh tại các trường.', [['Tra cứu trường', 'page2.html?career=' + encodeURIComponent(j.name)], ['Tài liệu & bài viết', 'resources.html']]);
+    // Shown only when the route names no catalogued major; otherwise the major list below is the next step.
+    const showGeneralNext = () => window.BWFlow?.nextStep(next, 'Tìm ngành học cho nghề này', 'Lộ trình học ở trên chưa ghi tên ngành có trong danh mục 2026 của các trường. Tìm ngành gần nhất trong danh mục, rồi xem trường đào tạo.', [['Danh mục ngành học', 'majors.html?career=' + encodeURIComponent(j.name)], ['Tra cứu trường', 'page2.html?career=' + encodeURIComponent(j.name)]]);
     const pathways = document.createElement('section');
     pathways.className = 'career-pathways';
     pathways.setAttribute('aria-label', 'Ngành đào tạo đã đối chiếu');
@@ -313,7 +314,7 @@
     next.before(pathways);
     let pathwayTimer;
     const pathwayTimeout = new Promise((resolve, reject) => { pathwayTimer = setTimeout(() => reject(new Error('Pathways timeout')), 8000); });
-    Promise.race([import('./career-pathways.js?v=20261113f'), pathwayTimeout]).then(({ relatedMajorNames, suggestedMajorNames }) => {
+    Promise.race([import('./career-pathways.js?v=20261118a'), pathwayTimeout]).then(({ relatedMajorNames, suggestedMajorNames }) => {
       if (!pathways.isConnected) return;
       const sourced = relatedMajorNames(j);
       const majors = sourced.length ? sourced : suggestedMajorNames(j);
@@ -326,10 +327,11 @@
           return `<a href="page2.html?${escapeHtml(params.toString())}">${escapeHtml(name)} · Tìm trường →</a>`;
         }).join('') + '</div>'
         : '');
-      if (!majors.length) pathways.remove(); else pathways.hidden = false;
+      if (!majors.length) { pathways.remove(); showGeneralNext(); } else pathways.hidden = false;
     }).catch(() => {
       if (!pathways.isConnected) return;
       pathways.hidden = false;
+      showGeneralNext();
       pathways.textContent = 'Chưa tải được dữ liệu đối chiếu ngành. Bạn vẫn có thể dùng liên kết Tra cứu trường bên dưới. ';
       const retry = document.createElement('button');
       retry.type = 'button'; retry.className = 'flow-clear-filters'; retry.textContent = 'Thử tải lại đối chiếu ngành';

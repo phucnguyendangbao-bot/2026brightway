@@ -3,253 +3,211 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Danh mục ngành nghề – BrightWay Career</title>
-<meta name="description" content="Tra cứu ngành nghề, thông tin tuyển sinh, cơ hội việc làm và các trường đại học hàng đầu theo từng khối thi." />
+<title>Ngành học 2026 – BrightWay Career</title>
+<meta name="description" content="Các ngành trong danh mục tuyển sinh 2026 chính thức của các trường: trường nào đào tạo, nghề nào liên quan." />
 <link rel="icon" type="image/png" href="/favicon.png?v=20261015">
 <link rel="stylesheet" href="assets/css/admin-quick.css">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-:root{
-  --bg: linear-gradient(145deg, #f5f3ef 0%, #f1eee9 20%, #eeeae3 50%, #f1eee7 80%, #f5f3ee 100%);
-  --glass: rgba(255,255,255,0.62);
-  --glass-border: rgba(255,255,255,0.85);
-  --grad: linear-gradient(135deg,#0a3395 0%,#082d83 50%,#09308c 100%);
-  --text-dark: #0b202b;
-  --text-mid: #12374a;
-  --text-soft: #092f89;
-  --accent: #082e85;
-  --white: #ffffff;
-  --shadow: 0 8px 32px rgba(8, 46, 133,0.15);
-  --font: 'Be Vietnam Pro', system-ui, sans-serif;
-  --font-display: 'Quicksand', 'Be Vietnam Pro', sans-serif;
-  --khoi-A: #ef4444; --khoi-B: #10b981; --khoi-C: #f59e0b; --khoi-D: #092f89; --khoi-khac: #6b7280;
-}
-body{font-family:var(--font);background:var(--bg);color:var(--text-dark);min-height:100vh;}
-a{color:inherit;text-decoration:none;}
-
-.nav{position:sticky;top:0;z-index:100;background:var(--glass);backdrop-filter:blur(20px);border-bottom:1px solid var(--glass-border);padding:14px 24px;}
-.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:24px;}
-.nav-brand{font-family:var(--font-display);font-weight:800;font-size:20px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.nav-links{display:flex;gap:20px;align-items:center;margin-left:auto;}
-.nav-links a{padding:8px 14px;border-radius:10px;font-weight:600;color:var(--text-mid);transition:0.2s;}
-.nav-links a:hover{background:rgba(8, 46, 133,0.1);color:var(--accent);}
-.nav-links a.active{background:var(--grad);color:#fff;}
-
-.hero{max-width:1200px;margin:0 auto;padding:48px 24px 24px;}
-.hero h1{font-family:var(--font-display);font-size:36px;font-weight:900;margin-bottom:8px;}
-.hero p{color:var(--text-soft);font-size:16px;}
-
-.pills{max-width:1200px;margin:0 auto;padding:0 24px 24px;display:flex;gap:10px;flex-wrap:wrap;}
-.pill{padding:8px 16px;border-radius:99px;background:var(--white);border:1px solid var(--glass-border);color:var(--text-mid);font-weight:600;font-size:14px;cursor:pointer;transition:0.2s;}
-.pill:hover{transform:translateY(-2px);box-shadow:var(--shadow);}
-.pill.active{background:var(--grad);color:#fff;border-color:transparent;}
-
-.search-box{max-width:1200px;margin:0 auto;padding:0 24px 24px;}
-.search-box input{width:100%;padding:14px 20px;border-radius:14px;border:1px solid var(--glass-border);background:var(--white);font-size:15px;font-family:var(--font);outline:none;transition:0.2s;}
-.search-box input:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(8, 46, 133,0.1);}
-
-.grid{max-width:1200px;margin:0 auto;padding:0 24px 80px;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;}
-.major-card{background:var(--white);border-radius:18px;padding:24px;box-shadow:var(--shadow);transition:0.3s;cursor:pointer;border:1px solid var(--glass-border);position:relative;overflow:hidden;}
-.major-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(8, 46, 133,0.2);}
-.major-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--khoi-color, var(--accent));}
-.major-card[data-cat="khoi_A"]{--khoi-color:var(--khoi-A);}
-.major-card[data-cat="khoi_B"]{--khoi-color:var(--khoi-B);}
-.major-card[data-cat="khoi_C"]{--khoi-color:var(--khoi-C);}
-.major-card[data-cat="khoi_D"]{--khoi-color:var(--khoi-D);}
-.major-card[data-cat="khoi_khac"]{--khoi-color:var(--khoi-khac);}
-
-.major-tag{display:inline-block;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:700;text-transform:uppercase;color:#fff;margin-bottom:12px;}
-.major-tag.khoi_A{background:var(--khoi-A);}
-.major-tag.khoi_B{background:var(--khoi-B);}
-.major-tag.khoi_C{background:var(--khoi-C);}
-.major-tag.khoi_D{background:var(--khoi-D);}
-.major-tag.khoi_khac{background:var(--khoi-khac);}
-
-.major-name{font-family:var(--font-display);font-weight:800;font-size:20px;margin-bottom:6px;line-height:1.3;}
-.major-name-en{color:var(--text-soft);font-size:13px;font-style:italic;margin-bottom:12px;}
-.major-desc{color:var(--text-mid);font-size:14px;line-height:1.5;margin-bottom:14px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
-.major-meta{display:flex;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--text-soft);padding-top:14px;border-top:1px solid rgba(8, 46, 133,0.1);}
-.major-meta-item{display:flex;align-items:center;gap:4px;}
-.major-meta:not(:has(*)){display:none;}
-
-.state{max-width:1200px;margin:0 auto;padding:80px 24px;text-align:center;}
-.state .icon{font-size:64px;margin-bottom:16px;}
-.state h2{font-family:var(--font-display);font-size:24px;margin-bottom:8px;}
-.state p{color:var(--text-soft);margin-bottom:24px;}
-.spinner{display:inline-block;width:40px;height:40px;border:4px solid rgba(8, 46, 133,0.2);border-top-color:var(--accent);border-radius:50%;animation:spin 0.8s linear infinite;}
-@keyframes spin{to{transform:rotate(360deg);}}
-
-/* Hàng logo các trường đào tạo trong card */
-.major-uni-row{display:flex;align-items:center;gap:6px;margin-top:10px;flex-wrap:wrap;}
-.major-uni-logos{display:flex;}
-.major-uni-logos .uni-mini-logo{width:32px;height:32px;margin-right:-10px;border:2px solid #fff;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,0.08);object-fit:contain;background:#fff;padding:2px;}
-.major-uni-logos .uni-mini-fallback{background:linear-gradient(135deg,#082e85,#0b3db2);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;letter-spacing:0.5px;}
-.major-uni-more{font-size:11px;font-weight:700;color:var(--text-soft);background:rgba(8, 46, 133,0.1);padding:2px 8px;border-radius:99px;margin-left:14px;}
-
-@media(max-width:768px){
-  .hero h1{font-size:26px;}
-  .hero{padding:32px 20px 16px;}
-  .grid{grid-template-columns:1fr;}
-}
-</style>
 <link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261113a">
 <link rel="stylesheet" href="/assets/css/glow-page.css?v=20261113f">
 <link rel="stylesheet" href="/assets/css/cinema.css?v=20261113b">
-<link rel="stylesheet" href="/assets/css/flow.css?v=20261113f">
-<script src="/assets/js/flow.js?v=20261113f" defer></script>
+<link rel="stylesheet" href="/assets/css/flow.css?v=20261118a">
+<script src="/assets/js/flow.js?v=20261118a" defer></script>
 <script src="/assets/js/cinema.js?v=20261112f" defer></script>
 <script src="/assets/js/icons.js?v=20261113a" defer></script>
+<style>
+  .mj-hero { padding: 56px 24px 52px; text-align: center; }
+  .mj-hero .mj-kicker { margin: 0 auto 12px; color: #fc734d; font: 700 12px/1.4 'Be Vietnam Pro', sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+  .mj-hero h1 { margin: 0 0 14px; font: 500 clamp(2.4rem, 1.6rem + 3vw, 3.8rem)/1.05 'Newsreader', Georgia, serif; }
+  .mj-hero p { max-width: 40em; margin: 0 auto 26px; line-height: 1.6; }
+  .mj-search { position: relative; max-width: 560px; margin: 0 auto; }
+  .mj-search svg { position: absolute; left: 18px; top: 50%; width: 22px; height: 22px; transform: translateY(-50%); fill: none; stroke: #09318d; stroke-width: 1.8; stroke-linecap: round; pointer-events: none; }
+  .mj-search input { width: 100%; box-sizing: border-box; min-height: 58px; padding: 0 20px 0 52px; border: 0; border-radius: 999px; background: #fdfcfa; color: #0e2b39; font: 500 17px/1.3 'Be Vietnam Pro', sans-serif; box-shadow: 0 18px 40px -18px rgba(252, 115, 77, .6); }
+  .mj-search input:focus { outline: 3px solid #fc734d; outline-offset: 3px; }
+  .mj-main { max-width: 1180px; margin: 0 auto; padding: 36px 20px 72px; color: #0e2b39; }
+  .mj-block { margin: 0 0 30px; padding: 22px 24px; border: 1px solid rgba(9, 49, 141, .12); border-radius: 20px; background: rgba(255, 255, 255, .82); }
+  .mj-block h2 { margin: 0 0 6px; font: 500 1.45rem/1.25 'Newsreader', Georgia, serif; }
+  .mj-block > p { margin: 0 0 14px; color: #5d6478; font-size: 14px; line-height: 1.55; }
+  .mj-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+  .mj-chips a { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 14px; border: 1px solid rgba(9, 49, 141, .18); border-radius: 999px; background: #fff; color: #0a3496; font: 600 14px/1.2 'Be Vietnam Pro', sans-serif; text-decoration: none; }
+  .mj-chips a:hover { border-color: #0a3496; }
+  .mj-chips small { color: #6b7183; font-weight: 500; }
+  .mj-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin: 0 0 16px; }
+  .mj-tools label { font: 600 14px/1.2 'Be Vietnam Pro', sans-serif; }
+  .mj-tools select { min-height: 44px; padding: 0 12px; border: 1px solid rgba(9, 49, 141, .22); border-radius: 12px; background: #fff; color: #0e2b39; font: 500 14px/1.2 'Be Vietnam Pro', sans-serif; }
+  .mj-tools select { max-width: 100%; min-width: 0; }
+  @media (max-width: 520px) { .mj-tools select { flex: 1 1 100%; } }
+  .mj-status { margin: 0; color: #5d6478; font-size: 14px; }
+  .mj-clear { border: 0; background: none; color: #0a3496; font: 700 14px/1 'Be Vietnam Pro', sans-serif; text-decoration: underline; cursor: pointer; }
+  .mj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
+  .mj-card { display: flex; flex-direction: column; gap: 10px; height: 100%; box-sizing: border-box; padding: 20px; border: 1px solid rgba(9, 49, 141, .12); border-radius: 18px; background: #fff; }
+  .mj-card:target { outline: 3px solid #fc734d; outline-offset: 2px; }
+  .mj-field { color: #6b7183; font: 600 12px/1.3 'Be Vietnam Pro', sans-serif; letter-spacing: .02em; }
+  .mj-card h3 { margin: 0; font: 700 18px/1.3 'Be Vietnam Pro', sans-serif; }
+  .mj-row { margin: 0; font-size: 14px; line-height: 1.55; color: #33405a; }
+  .mj-row b { color: #0e2b39; }
+  .mj-careers { display: flex; flex-wrap: wrap; gap: 6px; }
+  .mj-careers a { padding: 4px 10px; border-radius: 999px; background: #eef2ff; color: #0a3496; font: 600 12.5px/1.4 'Be Vietnam Pro', sans-serif; text-decoration: none; }
+  .mj-careers a:hover { background: #dfe6ff; }
+  .mj-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 6px; }
+  .mj-actions a { display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border-radius: 999px; font: 700 13.5px/1 'Be Vietnam Pro', sans-serif; text-decoration: none; }
+  .mj-go { background: #0a3496; color: #fff; }
+  .mj-read { border: 1px solid rgba(9, 49, 141, .25); color: #0a3496; }
+  .mj-more { display: flex; justify-content: center; margin: 22px 0 0; }
+  .mj-more button { min-height: 46px; padding: 0 24px; border: 1px solid #0a3496; border-radius: 999px; background: #fff; color: #0a3496; font: 700 14px/1 'Be Vietnam Pro', sans-serif; cursor: pointer; }
+  .mj-more button:hover { background: #0a3496; color: #fff; }
+  .mj-empty { padding: 28px; border: 1px dashed rgba(9, 49, 141, .25); border-radius: 18px; text-align: center; color: #5d6478; }
+  .mj-note { margin: 26px 0 0; color: #6b7183; font-size: 13px; line-height: 1.6; }
+  html[data-theme="dark"] :is(.mj-block, .mj-card, .mj-chips a, .mj-more button, .mj-tools select) { background: rgba(20, 28, 52, .82); color: #e8ecf8; border-color: rgba(201, 214, 255, .2); }
+  html[data-theme="dark"] :is(.mj-main, .mj-card h3, .mj-row b) { color: #e8ecf8; }
+  html[data-theme="dark"] .mj-row { color: #c3cbe0; }
+  html[data-theme="dark"] .mj-careers a { background: rgba(147, 170, 255, .16); color: #c9d6ff; }
+</style>
 </head>
 <body>
+<nav class="nav" aria-label="Điều hướng chính"><a href="index.html">BrightWay Career</a></nav>
 
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-brand">BrightWay Career</a>
-    <div class="nav-links">
-      <a href="index.html">Trang chủ</a>
-      <a href="news.html">Tin tức</a>
-      <a href="majors.html" class="active">Ngành nghề</a>
-      <a href="holland.html">Trắc nghiệm</a>
-    </div>
+<section class="hero mj-hero" aria-labelledby="mjTitle">
+  <p class="mj-kicker">Danh mục tuyển sinh 2026 của trường</p>
+  <h1 id="mjTitle">Ngành học</h1>
+  <p id="mjLede">Mỗi ngành cho biết trường nào đào tạo và nghề nào liên quan. Chọn một ngành để xem các trường.</p>
+  <div class="mj-search" data-glow-surface>
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg>
+    <label for="mjQuery" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Tìm ngành hoặc nghề</label>
+    <input id="mjQuery" type="search" autocomplete="off" placeholder="Gõ tên ngành hoặc nghề: Luật, Marketing, Bác sĩ…" aria-describedby="mjStatus">
   </div>
-</nav>
-
-<section class="hero">
-  <h1>Danh mục ngành nghề</h1>
-  <p>Tìm hiểu ngành học và đối chiếu trường, chương trình tuyển sinh theo nguồn chính thức</p>
 </section>
 
-<div class="pills" id="pills">
-  <button class="pill active" data-cat="">Tất cả</button>
-  <button class="pill" data-cat="khoi_A">Toán · Lý · Hóa</button>
-  <button class="pill" data-cat="khoi_B">Toán · Hóa · Sinh</button>
-  <button class="pill" data-cat="khoi_C">Văn · Sử · Địa</button>
-  <button class="pill" data-cat="khoi_D">Có Ngoại ngữ</button>
-</div>
-
-<div class="search-box">
-  <input type="search" id="search-input" aria-label="Tìm kiếm ngành học" placeholder="Tìm kiếm ngành học..." />
-</div>
-
-<main id="main-content">
-  <div class="state">
-    <div class="spinner"></div>
-    <p>Đang tải danh sách ngành...</p>
+<main class="mj-main" id="main">
+  <section class="mj-block" id="mjForCode" hidden></section>
+  <section class="mj-block" id="mjCareer" hidden></section>
+  <div class="mj-tools">
+    <label for="mjField">Lĩnh vực</label>
+    <select id="mjField"><option value="">Tất cả lĩnh vực</option></select>
+    <p class="mj-status" id="mjStatus" role="status">Đang tải danh mục ngành…</p>
+    <button type="button" class="mj-clear" id="mjClear" hidden>Xóa bộ lọc</button>
   </div>
+  <ul class="mj-grid" id="mjList"></ul>
+  <div class="mj-more" id="mjMore" hidden><button type="button">Xem thêm ngành</button></div>
+  <section class="mj-block" id="mjArticles" hidden style="margin-top:34px">
+    <h2>Bài giới thiệu ngành</h2>
+    <p>Bài biên tập của BrightWay về một số ngành phổ biến: học gì, làm gì sau khi ra trường.</p>
+    <ul class="mj-chips" id="mjArticleList"></ul>
+  </section>
+  <p class="mj-note">Danh sách lấy từ danh mục ngành tuyển sinh 2026 mà từng trường công bố. Trường chưa có danh mục 2026 đã kiểm tra thì chưa xuất hiện ở đây; xem thêm ở <a href="page2.html?mode=school">Tra cứu trường</a>. Nghề liên quan là nghề có lộ trình học ghi đúng tên ngành, chỉ để định hướng tìm hiểu.</p>
 </main>
 
 <script src="assets/js/supabase-client.js"></script>
 <script src="assets/js/cms-service.js"></script>
-<script src="assets/js/content-state.js?v=20261022-polish"></script>
-<script src="assets/js/admin-quick.js"></script>
-<script src="assets/js/uni-logos.js?v=20261022-polish"></script>
-<script src="assets/js/uni-logo-svg.js"></script>
 <script type="module">
-import { searchScore } from './assets/js/training-taxonomy.js';
-let currentCategory = '';
-let currentSearch = '';
+import { majorsFromSchools, attachCareers, majorsForCode, filterMajors } from './assets/js/majors-catalog.js?v=20261118a';
+import { textKey } from './assets/js/training-taxonomy.js';
 
-function escapeHtml(s) {
-  return String(s || '').replace(/[&<>"']/g, m => ({
-    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
-  }[m]));
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+const params = new URLSearchParams(location.search);
+const PAGE = 30;
+let all = [], limit = PAGE, articles = new Map();
+
+const schoolsLink = major => 'page2.html?' + new URLSearchParams({ mode: 'major', major: major.name, majorReturn: 'majors.html?' + new URLSearchParams({ q: major.name }) });
+const careerLink = name => 'careers-holland.html?' + new URLSearchParams({ q: name });
+
+function card(major) {
+  const shown = major.schools.slice(0, 6).map(s => esc(s.short)).join(', ');
+  const more = major.schools.length > 6 ? ` và ${major.schools.length - 6} trường khác` : '';
+  const article = articles.get(major.key);
+  return `<li class="mj-card" id="nganh-${esc(major.key.replace(/ /g, '-'))}">
+    <span class="mj-field">${esc(major.field === 'Khác' ? 'Lĩnh vực chưa phân loại' : major.field)}</span>
+    <h3>${esc(major.name)}</h3>
+    <p class="mj-row"><b>${major.schools.length} trường</b> có ngành này: ${shown}${more}.</p>
+    ${major.careers.length ? `<div><p class="mj-row" style="margin-bottom:6px">Nghề liên quan:</p><div class="mj-careers">${major.careers.slice(0, 5).map(c => `<a href="${esc(careerLink(c.name))}">${esc(c.name)}</a>`).join('')}</div></div>` : ''}
+    <div class="mj-actions"><a class="mj-go" href="${esc(schoolsLink(major))}">Xem trường đào tạo →</a>${article ? `<a class="mj-read" href="major-detail.html?slug=${encodeURIComponent(article.slug)}">Đọc giới thiệu</a>` : ''}</div>
+  </li>`;
 }
 
-async function loadMajors() {
-  const main = document.getElementById('main-content');
-  main.className = '';
-  return window.BWContent.load(main, () => window.CMS.listMajors({
-      category: currentCategory || null
-    }), records => {
-    const majors = currentSearch
-      ? records.map((major,index) => ({major,index,rank:searchScore({name:major.name_vi,code:major.code || '',track:major.name_en},currentSearch)}))
-        .filter(item => item.rank > 0).sort((a,b) => b.rank-a.rank || a.index-b.index).map(item => item.major)
-      : records;
-    if (!majors.length) {
-      main.innerHTML = `
-        <div class="state">
-          <div class="icon">🔍</div>
-          <h2>Không tìm thấy ngành nào</h2>
-          <p>${currentSearch ? 'Thử tìm với từ khoá khác' : 'Thử chọn nhóm môn khác'}</p>
-        </div>`;
-      return;
-    }
-
-    main.className = 'grid';
-    main.innerHTML = majors.map(m => {
-      const tagClass = /^[a-zA-Z0-9_-]+$/.test(m.category || '') ? m.category : 'khoi_khac';
-      const tagText = escapeHtml(window.CMS.categoryLabel(m.category));
-      const desc = m.description || '';
-      // Salary and job-outlook figures have no dated source yet, so the cards say nothing rather than repeat "no data".
-      // CMS editorial suggestions are not verified school-program relationships.
-      const uniList = m.top_universities || [];
-      const uniLogos = uniList.slice(0, 5).map(u => {
-        const info = window.UNILogo(u);
-        if (info) return window.UNILogoImg(u, {size:36});
-        // Fallback: badge gradient với initials
-        const initials = (u || '?').replace(/ĐH\s*/i, '').split(' ').slice(0,2).map(w=>w[0]).join('').toUpperCase();
-        return `<div class="uni-mini-logo uni-mini-fallback" title="${escapeHtml(u)}">${escapeHtml(initials)}</div>`;
-      }).join('');
-      const unis = uniList.length ? `
-        <div class="major-uni-row" aria-label="Trường biên tập gợi ý, chưa xác minh chương trình tuyển sinh">
-          <div class="major-uni-logos">${uniLogos}</div>
-          ${uniList.length > 5 ? `<span class="major-uni-more">+${uniList.length - 5}</span>` : ''}
-          <small>Trường gợi ý · cần đối chiếu</small>
-        </div>
-      ` : '';
-
-      return `
-        <article class="major-card" data-cat="${tagClass}" data-major-slug="${escapeHtml(m.slug)}" role="link" tabindex="0">
-          <span class="major-tag ${tagClass}">${tagText}</span>
-          <h3 class="major-name">${escapeHtml(m.name_vi)}</h3>
-          ${m.name_en ? `<div class="major-name-en">${escapeHtml(m.name_en)}</div>` : ''}
-          <p class="major-desc">${escapeHtml(desc)}</p>
-          <div class="major-meta">
-            ${unis}
-          </div>
-        </article>`;
-    }).join('');
-    main.querySelectorAll('[data-major-slug]').forEach(card => {
-      const open = () => location.assign('major-detail.html?slug=' + encodeURIComponent(card.dataset.majorSlug));
-      card.addEventListener('click', open);
-      card.addEventListener('keydown', event => { if (event.key === 'Enter') open(); });
-    });
-  }, {errorTitle:'Không thể tải danh sách ngành',retry:loadMajors,timeoutMs:20000});
+function render() {
+  const query = $('mjQuery').value.trim();
+  const field = $('mjField').value;
+  const list = filterMajors(all, { query, field });
+  $('mjList').innerHTML = list.length ? list.slice(0, limit).map(card).join('')
+    : `<li class="mj-empty">Chưa thấy ngành khớp “${esc(query)}”. Thử tên ngắn hơn, hoặc <a href="${esc(careerLink(query))}">tìm trong danh sách nghề</a>.</li>`;
+  $('mjMore').hidden = list.length <= limit;
+  $('mjStatus').textContent = query || field
+    ? `${list.length} ngành khớp${query ? ` “${query}”` : ''}${field ? ` trong lĩnh vực ${field}` : ''}.`
+    : `${all.length} ngành, xếp theo số trường đào tạo.`;
+  $('mjClear').hidden = !(query || field);
+  const url = new URL(location.href);
+  query ? url.searchParams.set('q', query) : url.searchParams.delete('q');
+  field ? url.searchParams.set('field', field) : url.searchParams.delete('field');
+  history.replaceState(null, '', url);
 }
 
-document.querySelectorAll('.pill').forEach(p => {
-  p.addEventListener('click', () => {
-    document.querySelectorAll('.pill').forEach(x => x.classList.remove('active'));
-    p.classList.add('active');
-    currentCategory = p.dataset.cat;
-    loadMajors();
-  });
-});
+function showForCode() {
+  const code = String(window.BWFlow?.holland?.() || '').toUpperCase();
+  const picks = majorsForCode(all, code).slice(0, 10);
+  if (!picks.length) return;
+  const box = $('mjForCode');
+  box.innerHTML = `<h2>Ngành hay gặp ở nghề hợp mã ${esc(code)}</h2><p>Lấy từ các nghề khớp ít nhất 2 nhóm với mã của bạn. Chọn một ngành để xem trường, hoặc <a href="careers-holland.html?holland=${esc(code)}">xem lại các nghề hợp mã</a>.</p>
+    <ul class="mj-chips">${picks.map(m => `<li><a href="${esc(schoolsLink(m))}">${esc(m.name)} <small>${m.schools.length} trường</small></a></li>`).join('')}</ul>`;
+  box.hidden = false;
+}
 
-let searchTimer;
-document.getElementById('search-input').addEventListener('input', e => {
-  clearTimeout(searchTimer);
-  searchTimer = setTimeout(() => {
-    currentSearch = e.target.value.trim();
-    loadMajors();
-  }, 400);
-});
+function showCareer(name) {
+  const majors = all.filter(m => m.careers.some(c => c.name === name));
+  const box = $('mjCareer');
+  box.innerHTML = `<h2>Ngành cho nghề ${esc(name)}</h2>` + (majors.length
+    ? `<p>Ngành có tên trong lộ trình học của nghề này. Chọn một ngành để xem trường đào tạo.</p><ul class="mj-chips">${majors.map(m => `<li><a href="${esc(schoolsLink(m))}">${esc(m.name)} <small>${m.schools.length} trường</small></a></li>`).join('')}</ul>`
+    : `<p>Lộ trình học của nghề này chưa ghi tên ngành nào có trong danh mục 2026 của các trường. Bạn có thể gõ tên ngành vào ô tìm ở trên.</p>`)
+    + `<p style="margin:12px 0 0"><a href="${esc(careerLink(name))}">← Quay lại nghề ${esc(name)}</a></p>`;
+  box.hidden = false;
+}
+
+async function loadArticles() {
+  try {
+    const rows = await Promise.race([window.CMS?.listMajors?.({}), new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 8000))]);
+    if (!Array.isArray(rows) || !rows.length) return;
+    articles = new Map(rows.filter(r => r.slug && r.name_vi).map(r => [textKey(r.name_vi), r]));
+    $('mjArticleList').innerHTML = rows.filter(r => r.slug && r.name_vi).map(r => `<li><a href="major-detail.html?slug=${encodeURIComponent(r.slug)}">${esc(r.name_vi)}</a></li>`).join('');
+    $('mjArticles').hidden = false;
+    render();
+  } catch { /* the catalogue works without the editorial articles */ }
+}
 
 async function init() {
-  const params = new URLSearchParams(location.search);
-  if (params.get('khoi')) {
-    currentCategory = params.get('khoi');
-    document.querySelectorAll('.pill').forEach(p => {
-      p.classList.toggle('active', p.dataset.cat === currentCategory);
-    });
+  try {
+    const [schools, jobs] = await Promise.all([
+      fetch('/assets/data/schools.json', { signal: AbortSignal.timeout(8000) }).then(r => r.json()),
+      fetch('/assets/data/jobs.json', { signal: AbortSignal.timeout(8000) }).then(r => r.json()).catch(() => []),
+    ]);
+    all = attachCareers(majorsFromSchools(schools), Array.isArray(jobs) ? jobs : []);
+  } catch {
+    $('mjStatus').textContent = 'Chưa tải được danh mục ngành. ';
+    const retry = document.createElement('button');
+    retry.type = 'button'; retry.className = 'mj-clear'; retry.textContent = 'Thử lại';
+    retry.addEventListener('click', () => location.reload());
+    $('mjStatus').appendChild(retry);
+    return;
   }
-  await loadMajors();
+  const fields = [...new Set(all.map(m => m.field))].filter(f => f !== 'Khác').sort((a, b) => a.localeCompare(b, 'vi'));
+  $('mjField').insertAdjacentHTML('beforeend', fields.map(f => `<option>${esc(f)}</option>`).join('') + '<option value="Khác">Chưa phân loại</option>');
+  const schoolCount = new Set(all.flatMap(m => m.schools.map(s => s.id))).size;
+  $('mjLede').textContent = `${all.length} ngành trong danh mục tuyển sinh 2026 của ${schoolCount} trường. Mỗi ngành cho biết trường nào đào tạo và nghề nào liên quan.`;
+  if (params.get('q')) $('mjQuery').value = params.get('q');
+  if (params.get('field')) $('mjField').value = params.get('field');
+  if (params.get('career')) showCareer(params.get('career')); else showForCode();
+  render();
+  let timer;
+  $('mjQuery').addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(() => { limit = PAGE; render(); }, 200); });
+  $('mjField').addEventListener('change', () => { limit = PAGE; render(); });
+  $('mjClear').addEventListener('click', () => { $('mjQuery').value = ''; $('mjField').value = ''; limit = PAGE; render(); $('mjQuery').focus(); });
+  $('mjMore').querySelector('button').addEventListener('click', () => {
+    const from = limit; limit += PAGE; render();
+    $('mjList').children[from]?.querySelector('a')?.focus();
+  });
+  loadArticles();
 }
 init();
 </script>
-
 <script src="assets/js/waybi.js?v=20261113c"></script>
 <script src="assets/js/waybi-presence.js?v=20261113c"></script>
 </body>
 </html>
-

@@ -247,3 +247,19 @@ html body .bw-palette-search input::-webkit-search-cancel-button { -webkit-appea
   body .flow-tools-button, body .flow-links > a.flow-mine { gap: 5px; }
   body .flow-tools-button svg, body .flow-mine svg { width: 16px; height: 16px; }
 }
+/* Step bar: the five steps by name, current one marked, one link forward */
+.flow-stepbar .flow-step-now { flex:0 0 auto; font-weight:800; }
+.flow-step-list { display:flex; flex-wrap:wrap; align-items:center; gap:4px; flex:1 1 auto; margin:0; padding:0; list-style:none; }
+.flow-stepbar .flow-step-list a { min-height:38px; gap:8px; padding:6px 12px; border-radius:999px; font-weight:600; text-decoration:none; opacity:.72; transition:opacity .15s ease, background .15s ease; }
+.flow-stepbar .flow-step-list a:hover { opacity:1; }
+.flow-step-list em { font-style:normal; }
+.flow-step-list b { display:inline-grid; place-items:center; width:22px; height:22px; border:1.5px solid currentColor; border-radius:50%; font-size:11px; line-height:1; }
+.flow-stepbar .flow-step-list a[aria-current="step"] { opacity:1; background:#062366; color:#fff; }
+.flow-step-list .is-done b { border-color:transparent; background:rgba(252,115,77,.9); color:#fff; }
+.flow-stepbar .flow-step-next { margin-left:auto; font-weight:800; text-decoration:underline; text-underline-offset:3px; }
+html body .glow-band > .flow-stepbar .flow-step-list a[aria-current="step"] { background:rgba(247,245,241,.16); }
+@media (max-width:860px) {
+  .flow-stepbar .flow-step-list a:not([aria-current="step"]) em { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+  .flow-stepbar .flow-step-list a:not([aria-current="step"]) { padding:6px; }
+  .flow-stepbar .flow-step-next { margin-left:0; }
+}

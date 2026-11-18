@@ -74,7 +74,23 @@ test('suggested majors need a whole list item from the route that names an offic
   // "Kỹ thuật Điện tử" is a different major from "Kỹ thuật điện".
   assert.deepEqual(suggestedMajorNames(job('Kỹ sư điện tử')), []);
   // The longest name in one item wins; separate items are both kept.
-  assert.deepEqual(suggestedMajorNames(job('Nhà thiết kế UX/UI')).map(textKey), ['thiet ke do hoa']);
+  assert.deepEqual(suggestedMajorNames(job('Nhà thiết kế UX/UI')).map(textKey), ['cong nghe thong tin', 'thiet ke do hoa']);
   assert.ok(suggestedMajorNames(job('Nhà sinh vật học')).map(textKey).includes('sinh hoc'));
   assert.deepEqual(suggestedMajorNames({ name:'X', edu:'Không nêu ngành cụ thể' }), []);
+});
+test('the majors catalogue, career pathways and school search use the same official 2026 lists', async () => {
+  const { majorsFromSchools, attachCareers, majorsForCode, filterMajors } = await import('../assets/js/majors-catalog.js');
+  const schools = JSON.parse(fs.readFileSync(new URL('../assets/data/schools.json', import.meta.url)));
+  const jobs = JSON.parse(fs.readFileSync(new URL('../assets/data/jobs.json', import.meta.url)));
+  const majors = attachCareers(majorsFromSchools(schools), jobs);
+  assert.ok(majors.length > 200);
+  const law = majors.find(m => textKey(m.name) === 'luat');
+  assert.ok(law.schools.length >= 5 && law.careers.some(c => c.name === 'Luật sư'));
+  // Every career that names a major on its page appears on that major's card.
+  for (const job of jobs) for (const name of suggestedMajorNames(job)) {
+    assert.ok(majors.find(m => textKey(m.name) === textKey(name)).careers.some(c => c.name === job.name), `${job.name} → ${name}`);
+  }
+  assert.ok(majorsForCode(majors, 'IAS').length > 0);
+  assert.deepEqual(majorsForCode(majors, 'XYZ'), []);
+  assert.ok(filterMajors(majors, { query: 'luat su' }).some(m => m === law));
 });

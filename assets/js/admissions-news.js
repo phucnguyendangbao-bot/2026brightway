@@ -41,7 +41,7 @@ async function init() {
     const grid = $('resGrid');
     grid.innerHTML = visible.map(item => {
       const school = byId.get(item.schoolId);
-      const profile = `page2.html#${encodeURIComponent(school.id)}`;
+      const profile = `page2.html?school=${encodeURIComponent(school.id)}`;
       const logo = /^assets\/images\//.test(school.logoUrl || '') ? `<img src="${escape(school.logoUrl)}" alt="" loading="lazy">` : `<span class="news-logo-fallback" aria-hidden="true">${escape(school.short || school.name.slice(0, 2))}</span>`;
       return `<article class="res-card news-card">
         <a class="res-thumb news-thumb" href="${escape(item.url)}" target="_blank" rel="noopener noreferrer" aria-label="Mở thông báo gốc: ${escape(item.title)}">${logo}<span class="res-cat">${escape(item.type)}</span><span class="res-badge news-year">${item.year}</span></a>
@@ -55,7 +55,7 @@ async function init() {
     const empty = $('newsEmpty');
     empty.hidden = visible.length > 0;
     $('emptySchoolLink').hidden = filters.school === 'all';
-    $('emptySchoolLink').href = filters.school === 'all' ? 'page2.html' : `page2.html#${encodeURIComponent(filters.school)}`;
+    $('emptySchoolLink').href = filters.school === 'all' ? 'page2.html' : `page2.html?school=${encodeURIComponent(filters.school)}`;
 
     const matchingSchools = filters.school === 'all' ? schools : schools.filter(school => school.id === filters.school);
     const withNews = new Set(selectNews(rows, { ...filters, school:'all', query:'' }).map(item => item.schoolId));
@@ -64,7 +64,7 @@ async function init() {
     unverified.hidden = missing.length === 0;
     if (!missing.length) unverified.open = false;
     $('unverifiedCount').textContent = `(${missing.length})`;
-    $('unverifiedSchools').innerHTML = missing.map(school => `<a href="page2.html#${encodeURIComponent(school.id)}"><span>${escape(school.name)}</span><small>Chưa có thông báo được xác minh</small></a>`).join('');
+    $('unverifiedSchools').innerHTML = missing.map(school => `<a href="page2.html?school=${encodeURIComponent(school.id)}"><span>${escape(school.name)}</span><small>Chưa có thông báo được xác minh</small></a>`).join('');
   }
 
   for (const id of ['newsSchool','newsYear','newsType']) $(id).addEventListener('change', render);

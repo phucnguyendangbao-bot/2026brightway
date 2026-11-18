@@ -106,10 +106,10 @@
     const hasPlan = Boolean(state.scores?.completedAt);
     return [
       { label: 'Hiểu mình', complete: Boolean(code), href: 'holland.html', detail: code ? `Mã Holland ${code}` : 'Làm Holland hoặc nhập mã đã có' },
-      { label: 'Nghề & ngành', complete: hasCareer, href: 'careers-holland.html', detail: hasCareer ? (state.career?.name || `${state.savedCareers.length} nghề đã lưu`) : 'Khám phá nghề và ngành liên quan' },
-      { label: 'Chọn trường', complete: hasSchool, href: 'page2.html?focus=major', detail: hasSchool ? `${state.savedSchools.length} trường đã lưu` : 'Tìm theo ngành hoặc tên trường' },
-      { label: 'Đối chiếu điểm', complete: hasPlan, href: 'score-calculator.html', detail: hasPlan ? 'Đã có phương thức hoặc kết quả tính' : 'Chọn phương thức và tính điểm' },
-      { label: 'Hành động', complete: Boolean(state.tasks?.length && state.tasks.every(task => task.done)), href: 'profile.html?tab=journey#action-plan', detail: 'Ghi việc cần làm và đánh dấu tiến độ' },
+      { label: 'Nghề & ngành', complete: hasCareer, href: state.career?.name ? 'careers-holland.html?q=' + encodeURIComponent(state.career.name) : code ? 'careers-holland.html?holland=' + code : 'careers-holland.html', detail: hasCareer ? (state.career?.name || `${state.savedCareers.length} nghề đã lưu`) : 'Khám phá nghề và ngành liên quan' },
+      { label: 'Trường', complete: hasSchool, href: hasSchool ? 'page2.html?saved=1' : state.career?.name ? 'majors.html?career=' + encodeURIComponent(state.career.name) : 'majors.html', detail: hasSchool ? `${state.savedSchools.length} trường đã lưu` : 'Tìm theo ngành hoặc tên trường' },
+      { label: 'Tính điểm', complete: hasPlan, href: 'score-calculator.html', detail: hasPlan ? 'Đã có phương thức hoặc kết quả tính' : 'Chọn phương thức và tính điểm' },
+      { label: 'Kế hoạch', complete: Boolean(state.tasks?.length && state.tasks.every(task => task.done)), href: 'profile.html?tab=journey#action-plan', detail: 'Ghi việc cần làm và đánh dấu tiến độ' },
     ];
   }
 
@@ -129,7 +129,7 @@
     ['Hiểu mình', 'Trắc nghiệm Holland', '42 câu, khoảng 7 phút, ra mã sở thích nghề nghiệp.', 'holland.html', 'compass', 'holland riasec trac nghiem so thich test'],
     ['Hiểu mình', 'Nhập mã Holland đã có', 'Đã làm test ở nơi khác? Nhập mã 3 chữ để xem nghề hợp.', 'holland.html#import-result', 'pencil', 'nhap ma holland da co ket qua'],
     ['Ngành & nghề', 'Khám phá nghề nghiệp', '102 nghề, lọc theo nhóm Holland, xem công việc hằng ngày.', 'careers-holland.html', 'briefcase', 'nghe nghiep cong viec khám pha nghe'],
-    ['Ngành & nghề', 'Danh mục ngành học', 'Ngành học theo tổ hợp môn, kèm trường gợi ý.', 'majors.html', 'book', 'nganh hoc to hop khoi a00 d01'],
+    ['Ngành & nghề', 'Danh mục ngành học', 'Ngành trong danh mục tuyển sinh 2026 của trường, kèm trường đào tạo và nghề liên quan.', 'majors.html', 'book', 'nganh hoc to hop khoi a00 d01'],
     ['Trường', 'Tra cứu trường', 'Hồ sơ 36 trường: ngành, học phí, điểm chuẩn 2026 có nguồn.', 'page2.html?mode=school', 'school', 'truong dai hoc tra cuu hoc phi diem chuan'],
     ['Trường', 'Tìm trường theo ngành', 'Gõ tên ngành để thấy trường nào đào tạo.', 'page2.html?mode=major', 'search', 'tim truong theo nganh dao tao'],
     ['Trường', 'So sánh trường', 'Đặt 2–3 trường cạnh nhau: học phí, điểm chuẩn, phương thức.', 'page2.html?mode=school#schoolCompare', 'scale', 'so sanh truong doi chieu'],
@@ -335,7 +335,12 @@
       const host = document.createElement('div');
       host.className = 'flow-resume';
       document.querySelector('footer')?.before(host);
-      nextStep(host, 'Chuẩn bị cho bước tiếp theo', 'Xem nguồn tuyển sinh hoặc quay lại hành trình để tiếp tục.', [['Tin tuyển sinh','resources.html'], ['Hành trình của tôi','profile.html?tab=journey']]);
+      // Back into the five steps where the reader left off, plus the sibling planning page.
+      const state = read();
+      const steps = progress(state);
+      const due = steps.find((step, index) => !step.complete && !(index === 0 && state.skipHolland));
+      const sibling = page === 'calendar.html' ? ['Lộ trình học bổng', 'scholarship-roadmap.html'] : ['Lịch & hạn nộp', 'calendar.html'];
+      nextStep(host, due ? `Việc tiếp theo: ${due.label}` : 'Bạn đã đi đủ năm bước', due ? due.detail + '.' : 'Xem lại kế hoạch và nguyện vọng đã lưu.', [due ? [due.label, due.href] : ['Kế hoạch của tôi', 'profile.html?tab=journey#action-plan'], sibling]);
     }
     for (const id of ['waybi-suggest', 'bwChatSuggestions']) {
       const target = document.getElementById(id);
@@ -368,13 +373,15 @@
       if (page === 'profile.html') document.querySelector('.flow-local-profile')?.append(host);
       else document.querySelector('.flow-resume')?.after(host);
     });
-    const stepIndex = { 'holland.html': 0, 'careers-holland.html': 1, 'page2.html': 2, 'score-calculator.html': 3 }[page];
+    const stepIndex = { 'holland.html': 0, 'careers-holland.html': 1, 'majors.html': 1, 'major-detail.html': 1, 'page2.html': 2, 'score-calculator.html': 3 }[page];
     if (stepIndex !== undefined) {
+      // The five steps by the same names as the menu; each links where the reader left off.
       const steps = progress();
-      const bar = document.createElement('section');
+      const next = steps[stepIndex + 1];
+      const bar = document.createElement('nav');
       bar.className = 'flow-stepbar';
-      bar.setAttribute('aria-label', 'Tiến trình hướng nghiệp');
-      bar.innerHTML = `<span>Bước ${stepIndex + 1}/5 · ${escape(steps[stepIndex].label)}</span><progress max="5" value="${steps.filter(step => step.complete).length}" aria-label="Số bước đã hoàn thành"></progress><a href="${stepIndex ? steps[stepIndex - 1].href : 'index.html'}">← Quay lại</a><a href="${steps[stepIndex + 1].href}" ${stepIndex === 0 ? 'data-skip-holland' : ''}>${stepIndex === 0 ? 'Bỏ qua Holland' : 'Tiếp tục'} →</a>`;
+      bar.setAttribute('aria-label', 'Năm bước hướng nghiệp');
+      bar.innerHTML = `<span class="flow-step-now">Bước ${stepIndex + 1}/5</span><ol class="flow-step-list">${steps.map((step, index) => `<li class="${step.complete ? 'is-done' : ''}"><a href="${escape(step.href)}"${index === stepIndex ? ' aria-current="step"' : ''}><b aria-hidden="true">${step.complete ? '✓' : index + 1}</b><em>${escape(step.label)}</em></a></li>`).join('')}</ol><a class="flow-step-next" href="${escape(next.href)}" ${stepIndex === 0 ? 'data-skip-holland' : ''}>${stepIndex === 0 ? 'Bỏ qua, xem nghề' : 'Tiếp: ' + escape(next.label)} →</a>`;
       document.querySelector('.flow-nav')?.after(bar);
       bar.querySelector('[data-skip-holland]')?.addEventListener('click', () => save({ skipHolland: true }));
     }
