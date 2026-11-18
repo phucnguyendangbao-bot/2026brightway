@@ -71,49 +71,50 @@
     // The headline's words rise only once the serif face has loaded: a fallback font places
     // Vietnamese marks badly, and the swap would show mid-rise. Never wait more than a second.
     const serif = document.fonts?.load ? document.fonts.load('500 64px Newsreader', 'Đi để lối thành đường của bạn') : Promise.resolve();
-    Promise.race([serif, new Promise(r => setTimeout(r, 1000))]).catch(() => {}).then(() => {
-      splitWords(h1);
-      root.classList.remove('bw-cine-wait');
-    });
     const quick = root.classList.contains('bw-cine-quick');
     session.set('bwOpeningSeen', '1');
-
-    // Figures beside the button count up as they slide in.
-    const numberDelay = quick ? 100 : 1300, numberTime = quick ? 600 : 1400;
-    hero.querySelectorAll('.glow-stats dt > a').forEach(a => {
-      if (a.querySelector('[data-catalog-count]')) return;
-      countUp(a, numberDelay, numberTime);
-    });
-    const catalog = hero.querySelector('[data-catalog-count]');
-    if (catalog) {
-      const started = performance.now();
-      const once = () => {
-        const text = catalog.textContent.trim();
-        if (!/^\d+$/.test(text)) return false;
-        const left = Math.max(0, numberDelay - (performance.now() - started));
-        countUp(catalog, left, numberTime);
-        return true;
-      };
-      if (!once()) {
-        const watch = new MutationObserver(() => { if (once()) watch.disconnect(); });
-        watch.observe(catalog, { childList: true, characterData: true, subtree: true });
-        setTimeout(() => watch.disconnect(), 6000);
+    // The film's clock starts here, once the headline can be split: every part keys off the same moment.
+    Promise.race([serif, new Promise(r => setTimeout(r, 900))]).catch(() => {}).then(() => {
+      splitWords(h1);
+      root.classList.remove('bw-cine-wait');
+      // Figures beside the button count up as they slide in.
+      const numberDelay = quick ? 100 : 850, numberTime = quick ? 600 : 1200;
+      hero.querySelectorAll('.glow-stats dt > a').forEach(a => {
+        if (a.querySelector('[data-catalog-count]')) return;
+        countUp(a, numberDelay, numberTime);
+      });
+      const catalog = hero.querySelector('[data-catalog-count]');
+      if (catalog) {
+        const started = performance.now();
+        const once = () => {
+          const text = catalog.textContent.trim();
+          if (!/^\d+$/.test(text)) return false;
+          const left = Math.max(0, numberDelay - (performance.now() - started));
+          countUp(catalog, left, numberTime);
+          return true;
+        };
+        if (!once()) {
+          const watch = new MutationObserver(() => { if (once()) watch.disconnect(); });
+          watch.observe(catalog, { childList: true, characterData: true, subtree: true });
+          setTimeout(() => watch.disconnect(), 6000);
+        }
       }
-    }
+      setTimeout(end, quick ? 1000 : 2700);
+    });
 
     // The film ends on its own, or as soon as the reader starts to scroll or type.
     let ended = false;
     const end = () => {
       if (ended) return;
       ended = true;
-      root.classList.remove('bw-cine', 'bw-cine-quick');
+      root.classList.add('bw-cine-done');
+      root.classList.remove('bw-cine', 'bw-cine-quick', 'bw-cine-wait');
       removeEventListener('scroll', onScroll);
       removeEventListener('keydown', end);
     };
     const onScroll = () => { if (scrollY > 40) end(); };
     addEventListener('scroll', onScroll, { passive: true });
     addEventListener('keydown', end);
-    setTimeout(end, quick ? 1300 : 3600);
   }
 
   /* ---------- Rising sparks: light drifting up out of the dark ---------- */

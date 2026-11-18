@@ -22,45 +22,50 @@ html body .glow-band > .bw-sparks { z-index: -1; }
 
 /* ---------- Homepage opening: the film ----------
    html.bw-cine is set in <head> before paint, so nothing flashes before it starts.
-   html.bw-cine-quick (a return visit in the same session) plays a short version. */
+   html.bw-cine-quick (a return visit in the same session) plays a short version.
+   One timeline, one easing, opacity and transform only: the compositor plays it without
+   repainting, so it stays smooth on ordinary phones. No blur, no clip-path, no filters.
+   Order: light opens · kicker · headline word by word · lede · the button lights · figures · cards. */
 @media (prefers-reduced-motion: no-preference) {
-  html.bw-cine:not(.bw-lite) .glow-hero .glow-sky {
-    animation: cine-sky 1.6s cubic-bezier(.2, .8, .2, 1) both;
-  }
-  html.bw-cine:not(.bw-lite) .glow-hero .glow-cone {
-    transform-origin: 50% 100%;
-    animation: cine-cone 1.9s cubic-bezier(.16, 1, .3, 1) .15s both;
-  }
-  html.bw-cine:not(.bw-lite) .glow-hero .glow-beams {
-    animation: cine-beams 1.6s cubic-bezier(.2, .8, .2, 1) .35s both;
-  }
-  /* Before the words are split, the headline waits invisibly (a failsafe in <head> clears this). */
+  html { --cine-ease: cubic-bezier(.22, 1, .36, 1); }
+  /* Until the headline font is ready, the whole film holds its first frame, so every part starts together. */
+  html.bw-cine-wait .glow-hero, html.bw-cine-wait .glow-hero * { animation-play-state: paused !important; }
   html.bw-cine-wait .glow-hero .bw-hero-h1 { opacity: 0; }
 
-  html.bw-cine .glow-hero .ks-kicker { animation: cine-up .9s cubic-bezier(.2, .8, .2, 1) .25s both; }
-  html.bw-cine .glow-hero .ks-kicker::after { transform-origin: 0 50%; animation: cine-line .9s cubic-bezier(.2, .8, .2, 1) .6s both; }
-  html.bw-cine .glow-hero .lede { animation: cine-up 1s cubic-bezier(.2, .8, .2, 1) 1.05s both; }
-  html.bw-cine .glow-hero .glow-stats-left { animation: cine-from-left 1.1s cubic-bezier(.16, 1, .3, 1) 1.25s both; }
-  html.bw-cine .glow-hero .glow-stats-right { animation: cine-from-right 1.1s cubic-bezier(.16, 1, .3, 1) 1.25s both; }
-  html.bw-cine .glow-hero .glow-cta { animation: cine-ignite 1.1s cubic-bezier(.16, 1, .3, 1) 1.15s both; }
-  html.bw-cine .glow-hero .glow-cards { perspective: 1400px; }
-  html.bw-cine .glow-hero .glow-card-mid { animation: cine-card 1.2s cubic-bezier(.16, 1, .3, 1) 1.45s both; }
-  html.bw-cine .glow-hero .glow-card-left { animation: cine-card-l 1.2s cubic-bezier(.16, 1, .3, 1) 1.6s both; }
-  html.bw-cine .glow-hero .glow-card-right { animation: cine-card-r 1.2s cubic-bezier(.16, 1, .3, 1) 1.72s both; }
+  html.bw-cine:not(.bw-lite) .glow-hero .glow-sky { animation: cine-fade 1.2s ease-out both; }
+  html.bw-cine:not(.bw-lite) .glow-hero .glow-cone { transform-origin: 50% 100%; animation: cine-cone 1.5s var(--cine-ease) .05s both; }
+  html.bw-cine:not(.bw-lite) .glow-hero .glow-beams { animation: cine-beams 1.3s var(--cine-ease) .15s both; }
+
+  /* The id-scoped selectors outrank the older one-step rise in ky-su.css, which would otherwise play first. */
+  html.bw-cine body #home-view #hero-actions .bw-hero-text > .bw-hero-h1 { animation: none; }
+  html.bw-cine body #home-view #hero-actions .bw-hero-text > .ks-kicker,
+  html.bw-cine .glow-hero .ks-kicker { animation: cine-up .8s var(--cine-ease) .1s both; }
+  html.bw-cine .glow-hero .ks-kicker::after { transform-origin: 0 50%; animation: cine-line .8s var(--cine-ease) .3s both; }
+  html.bw-cine body #home-view #hero-actions .bw-hero-text > .lede,
+  html.bw-cine .glow-hero .lede { animation: cine-up .8s var(--cine-ease) .7s both; }
+  html.bw-cine .glow-hero .glow-cta { animation: cine-ignite .9s var(--cine-ease) .75s both; }
+  html.bw-cine .glow-hero .glow-stats-left { animation: cine-from-left .9s var(--cine-ease) .85s both; }
+  html.bw-cine .glow-hero .glow-stats-right { animation: cine-from-right .9s var(--cine-ease) .85s both; }
+  html.bw-cine .glow-hero .glow-card-mid { animation: cine-card .9s var(--cine-ease) .95s both; }
+  html.bw-cine .glow-hero .glow-card-left { animation: cine-card-l .9s var(--cine-ease) 1.05s both; }
+  html.bw-cine .glow-hero .glow-card-right { animation: cine-card-r .9s var(--cine-ease) 1.15s both; }
 
   /* The quick version for a return visit: same order, a third of the time. */
   html.bw-cine-quick .glow-hero :is(.glow-sky, .glow-cone, .glow-beams, .ks-kicker, .ks-kicker::after, .lede, .glow-stats-left, .glow-stats-right, .glow-cta, .glow-card) {
-    animation-duration: .7s !important;
+    animation-duration: .55s !important;
     animation-delay: 0s !important;
   }
 }
+/* After the film, everything stays where the film left it (no second entrance). */
+html.bw-cine-done .glow-hero :is(.glow-card, .glow-cta) { animation: none; }
+html.bw-cine-done body #home-view #hero-actions .bw-hero-text > * { animation: none; }
 
 /* Words of the headline rise out of a mask, one after another. */
 /* Room above and below for Vietnamese stacked marks (ờ, ể, Đ) so the mask never trims them. */
 .cine-word { display: inline-block; overflow: hidden; vertical-align: top; padding: .24em .04em .16em; margin: -.24em -.04em -.16em; }
 .cine-word > span { display: inline-block; }
 @media (prefers-reduced-motion: no-preference) {
-  .cine-word > span { animation: cine-word 1.15s cubic-bezier(.16, 1, .3, 1) both; animation-delay: calc(.45s + var(--w, 0) * 85ms); }
+  .cine-word > span { animation: cine-word .9s var(--cine-ease, cubic-bezier(.22, 1, .36, 1)) both; animation-delay: calc(.2s + var(--w, 0) * 60ms); }
   html.bw-cine-quick .cine-word > span { animation-duration: .6s; animation-delay: calc(var(--w, 0) * 30ms); }
   /* Chapter titles: the same rise, played when the title reaches the screen. */
   .cine-split.is-waiting .cine-word > span { animation: none; transform: translate3d(0, 105%, 0); opacity: 0; }
@@ -76,8 +81,8 @@ html body #home-view #hero-actions.glow-hero .bw-hero-h1 em.cine-shine {
 }
 @media (prefers-reduced-motion: no-preference) {
   html body #home-view #hero-actions.glow-hero .bw-hero-h1 em .cine-word > span {
-    animation: cine-word 1.15s cubic-bezier(.16, 1, .3, 1) both, cine-shine 1.6s cubic-bezier(.4, 0, .2, 1) both;
-    animation-delay: calc(.45s + var(--w, 0) * 85ms), 1.7s;
+    animation: cine-word .9s var(--cine-ease, cubic-bezier(.22, 1, .36, 1)) both, cine-shine 1.2s cubic-bezier(.4, 0, .2, 1) both;
+    animation-delay: calc(.2s + var(--w, 0) * 60ms), 1.3s;
   }
   html.bw-cine-quick body #home-view #hero-actions.glow-hero .bw-hero-h1 em .cine-word > span { animation-delay: calc(var(--w, 0) * 30ms), .5s; animation-duration: .6s, 1.1s; }
 }
@@ -182,7 +187,7 @@ html body #home-view #hero-actions .glow-cta::before {
   pointer-events: none; opacity: 0;
 }
 @media (prefers-reduced-motion: no-preference) {
-  html.bw-cine body #home-view #hero-actions .glow-cta::before { animation: cine-shock 1.4s cubic-bezier(.16, 1, .3, 1) 1.55s both; }
+  html.bw-cine body #home-view #hero-actions .glow-cta::before { animation: cine-shock 1.2s var(--cine-ease, ease-out) 1.05s both; }
   html:not(.bw-lite) .cta-ring { animation: cta-spin 5.5s linear infinite; }
   html:not(.bw-lite) .cta-orbit { animation: cta-spin 48s linear infinite reverse; }
   html:not(.bw-lite) .cta-halo { animation: cta-breathe 4.2s ease-in-out infinite; }
@@ -190,7 +195,7 @@ html body #home-view #hero-actions .glow-cta::before {
   html body #home-view #hero-actions .glow-cta:hover .cta-core::before { transform: translate3d(75%, 0, 0); transition: transform .9s cubic-bezier(.2, .8, .2, 1); }
   html body #home-view #hero-actions .glow-cta.is-paused :is(.cta-ring, .cta-orbit, .cta-halo) { animation-play-state: paused; }
   /* The orbit and its dots arrive after the core has lit. */
-  html.bw-cine .cta-orbit i { animation: cta-dot .7s cubic-bezier(.16, 1, .3, 1) both; animation-delay: calc(1.8s + var(--o) * 90ms); }
+  html.bw-cine .cta-orbit i { animation: cta-dot .6s var(--cine-ease, ease-out) both; animation-delay: calc(1.15s + var(--o) * 70ms); }
   html.bw-cine-quick .cta-orbit i { animation-delay: calc(.3s + var(--o) * 40ms); }
 }
 @keyframes cta-spin { to { rotate: 360deg; } }
@@ -208,21 +213,21 @@ html body #home-view #hero-actions .glow-cta::before {
 /* Numbers count up (cinema.js); they keep their width so the line does not wobble. */
 .cine-count { font-variant-numeric: tabular-nums; }
 
-@keyframes cine-sky { from { opacity: 0; transform: scale(1.12); } to { opacity: 1; transform: none; } }
-@keyframes cine-cone { from { opacity: 0; transform: translateX(-50%) scale(.55, .15); } 60% { opacity: 1; } to { opacity: 1; transform: translateX(-50%) scale(1, 1); } }
-@keyframes cine-beams { from { opacity: 0; clip-path: inset(0 50% 0 50%); } to { opacity: 1; clip-path: inset(0 0 0 0); } }
-@keyframes cine-up { from { opacity: 0; transform: translate3d(0, 24px, 0); filter: blur(8px); } to { opacity: 1; transform: none; filter: none; } }
+@keyframes cine-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes cine-cone { from { opacity: 0; transform: translateX(-50%) scale(.7, .3); } to { opacity: 1; transform: translateX(-50%) scale(1, 1); } }
+@keyframes cine-beams { from { opacity: 0; transform: scaleX(.35); } to { opacity: 1; transform: none; } }
+@keyframes cine-up { from { opacity: 0; transform: translate3d(0, 16px, 0); } to { opacity: 1; transform: none; } }
 @keyframes cine-line { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-@keyframes cine-word { from { transform: translate3d(0, 105%, 0) rotate(4deg); opacity: 0; filter: blur(6px); } 40% { opacity: 1; } to { transform: none; opacity: 1; filter: none; } }
+@keyframes cine-word { from { transform: translate3d(0, 100%, 0); opacity: 0; } 35% { opacity: 1; } to { transform: none; opacity: 1; } }
 @keyframes cine-shine { from { background-position: 100% 0; } to { background-position: 0% 0; } }
-@keyframes cine-from-left { from { opacity: 0; transform: translate3d(-60px, 10px, 0); } to { opacity: 1; transform: none; } }
-@keyframes cine-from-right { from { opacity: 0; transform: translate3d(60px, 10px, 0); } to { opacity: 1; transform: none; } }
-@keyframes cine-ignite { 0% { opacity: 0; transform: scale(.4); filter: brightness(2.2) blur(6px); } 55% { opacity: 1; transform: scale(1.08); filter: brightness(1.4); } 100% { opacity: 1; transform: none; filter: none; } }
-@keyframes cine-shock { 0% { opacity: .9; transform: scale(1); } 100% { opacity: 0; transform: scale(2.6); } }
+@keyframes cine-from-left { from { opacity: 0; transform: translate3d(-32px, 0, 0); } to { opacity: 1; transform: none; } }
+@keyframes cine-from-right { from { opacity: 0; transform: translate3d(32px, 0, 0); } to { opacity: 1; transform: none; } }
+@keyframes cine-ignite { from { opacity: 0; transform: scale(.6); } 60% { opacity: 1; } to { opacity: 1; transform: none; } }
+@keyframes cine-shock { 0% { opacity: .8; transform: scale(1); } 100% { opacity: 0; transform: scale(2.2); } }
 @keyframes cine-breath { 0%, 100% { opacity: 0; transform: scale(1); } 50% { opacity: .55; transform: scale(1.28); } }
-@keyframes cine-card { from { opacity: 0; transform: translate3d(0, 90px, 0) rotateX(38deg); filter: blur(10px); } to { opacity: 1; transform: none; filter: none; } }
-@keyframes cine-card-l { from { opacity: 0; transform: translate3d(-40px, 110px, 0) rotate(-12deg) rotateX(38deg); filter: blur(10px); } to { opacity: 1; transform: rotate(-3.5deg) translateY(18px); filter: none; } }
-@keyframes cine-card-r { from { opacity: 0; transform: translate3d(40px, 110px, 0) rotate(12deg) rotateX(38deg); filter: blur(10px); } to { opacity: 1; transform: rotate(3.5deg) translateY(18px); filter: none; } }
+@keyframes cine-card { from { opacity: 0; transform: translate3d(0, 40px, 0); } to { opacity: 1; transform: none; } }
+@keyframes cine-card-l { from { opacity: 0; transform: rotate(-3.5deg) translate3d(-16px, 52px, 0); } to { opacity: 1; transform: rotate(-3.5deg) translate3d(0, 18px, 0); } }
+@keyframes cine-card-r { from { opacity: 0; transform: rotate(3.5deg) translate3d(16px, 52px, 0); } to { opacity: 1; transform: rotate(3.5deg) translate3d(0, 18px, 0); } }
 @media (max-width: 1000px) {
   html.bw-cine .glow-hero :is(.glow-card-left, .glow-card-right) { animation-name: cine-card; }
 }
@@ -329,10 +334,10 @@ html body #home-view #hero-actions .cine-drop::after {
 html body .flow-nav { view-transition-name: bw-nav; }
 .bw-progress { view-transition-name: bw-progress; }
 ::view-transition-group(bw-nav), ::view-transition-group(bw-progress) { animation-duration: 0s; }
-::view-transition-old(root) { animation: bw-page-out .32s cubic-bezier(.4, 0, 1, 1) both; }
-::view-transition-new(root) { animation: bw-page-in .55s cubic-bezier(.16, 1, .3, 1) both; }
-@keyframes bw-page-out { to { opacity: 0; transform: scale(.985); filter: blur(6px) brightness(.85); } }
-@keyframes bw-page-in { from { opacity: 0; transform: translate3d(0, 18px, 0); filter: blur(8px); } }
+::view-transition-old(root) { animation: bw-page-out .22s ease-in both; }
+::view-transition-new(root) { animation: bw-page-in .45s cubic-bezier(.22, 1, .36, 1) both; }
+@keyframes bw-page-out { to { opacity: 0; } }
+@keyframes bw-page-in { from { opacity: 0; transform: translate3d(0, 10px, 0); } }
 @media (prefers-reduced-motion: reduce) {
   @view-transition { navigation: none; }
 }

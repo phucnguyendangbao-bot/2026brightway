@@ -387,6 +387,12 @@
     }
     initGlowBand();
     initAurora();
+    // The page is laid out in its final shape: let it fade in (see html.bw-boot in flow.css).
+    const html = document.documentElement;
+    if (html.classList.contains('bw-boot')) requestAnimationFrame(() => requestAnimationFrame(() => {
+      html.classList.add('bw-booted');
+      setTimeout(() => html.classList.add('bw-boot-out'), 500);
+    }));
   }
 
   // Every page opens in the same glowing dark band as the homepage (styles in glow-page.css).

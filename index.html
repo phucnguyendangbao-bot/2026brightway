@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8" />
-<script>/* Opening film: decided before first paint so nothing flashes. cinema.js plays it; failsafes clear it. */(function(){var d=document.documentElement;try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;}catch(e){return;}var q=false;try{q=sessionStorage.getItem('bwOpeningSeen')==='1';}catch(e){}d.classList.add('bw-cine','bw-cine-wait');if(q)d.classList.add('bw-cine-quick');setTimeout(function(){d.classList.remove('bw-cine-wait');},2500);setTimeout(function(){d.classList.remove('bw-cine','bw-cine-quick');},7000);})();</script>
+<script>/* Opening film: decided before first paint so nothing flashes. cinema.js plays it; failsafes clear it. */(function(){var d=document.documentElement;try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;}catch(e){return;}var q=false;try{q=sessionStorage.getItem('bwOpeningSeen')==='1';}catch(e){}d.classList.add('bw-cine','bw-cine-wait');if(q)d.classList.add('bw-cine-quick');setTimeout(function(){d.classList.remove('bw-cine-wait');},2500);setTimeout(function(){d.classList.add("bw-cine-done");d.classList.remove("bw-cine","bw-cine-quick");},7000);})();</script>
 <link rel="preconnect" href="https://esm.sh" crossorigin>
 <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 
@@ -335,14 +335,14 @@ body{overflow-x:visible;}
 
 </style>
 <link rel="stylesheet" href="/assets/css/brightway-theme.css?v=20261113a">
-<link rel="stylesheet" href="/assets/css/glow-page.css?v=20261113f">
-<link rel="stylesheet" href="/assets/css/cinema.css?v=20261113b">
-<link rel="stylesheet" href="/assets/css/flow.css?v=20261118a">
+<link rel="stylesheet" href="/assets/css/glow-page.css?v=20261118b">
+<link rel="stylesheet" href="/assets/css/cinema.css?v=20261118b">
+<link rel="stylesheet" href="/assets/css/flow.css?v=20261118b">
 <link rel="stylesheet" href="/assets/css/selections.css?v=20261111e">
 <script type="module" src="/assets/js/selections.js?v=20261111p"></script>
 <link rel="stylesheet" href="/assets/css/admissions-home.css?v=20261111e">
-<script src="/assets/js/flow.js?v=20261118a" defer></script>
-<script src="/assets/js/cinema.js?v=20261112f" defer></script>
+<script src="/assets/js/flow.js?v=20261118b" defer></script>
+<script src="/assets/js/cinema.js?v=20261118b" defer></script>
 <script src="/assets/js/icons.js?v=20261113a" defer></script>
 <script type="module" src="/assets/js/catalog-stats.js?v=20261015"></script>
 <link rel="stylesheet" href="/assets/css/home-holland.css?v=20261111e">
@@ -355,7 +355,7 @@ body{overflow-x:visible;}
 <script type="module" src="/assets/js/university-promotions.js?v=20261111u"></script>
 <script src="/assets/js/home-holland.js?v=20261111e" defer></script>
 </head>
-<body>
+<body class="bw-nav-glass">
 <!-- Skip link (a11y) -->
 <a href="#hero-actions" class="bw-skip-link">Bỏ qua đến nội dung chính</a>
 <!-- Fixed background layer (thay thế background-attachment:fixed gây scroll freeze bug) -->

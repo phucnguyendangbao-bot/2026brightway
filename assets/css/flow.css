@@ -263,3 +263,12 @@ html body .glow-band > .flow-stepbar .flow-step-list a[aria-current="step"] { ba
   .flow-stepbar .flow-step-list a:not([aria-current="step"]) { padding:6px; }
   .flow-stepbar .flow-step-next { margin-left:0; }
 }
+/* First paint on a page that opens on the dark band: a dark veil covers the plain layout and lifts once
+   the band is in place (flow.js adds bw-booted), so the page rises out of the dark instead of jumping.
+   The veil only darkens what is under it, so every in-between frame is a dimmer version of the final
+   page, never a grey wash. If the script never runs, the veil lifts by itself after a moment. */
+html.bw-boot::before { content:""; position:fixed; inset:0; z-index:2147483646; background:#02070a; pointer-events:none; animation:bw-boot-lift .35s ease 1.4s forwards; }
+html.bw-boot.bw-booted::before { opacity:0; animation:none; transition:opacity .45s cubic-bezier(.22, 1, .36, 1); }
+html.bw-boot.bw-boot-out::before { display:none; }
+@keyframes bw-boot-lift { to { opacity:0; } }
+@media (prefers-reduced-motion: reduce) { html.bw-boot.bw-booted::before { transition-duration:.15s; } }
