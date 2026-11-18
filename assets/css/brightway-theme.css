@@ -1,5 +1,5 @@
 /* BrightWay's original rounded, purple-gradient visual style. */
-@import url('../fonts/brightway-fonts.css?v=20261110');
+@import url('../fonts/brightway-fonts.css?v=20261118c');
 
 :root {
   --bw-canvas: #f7f5f1;
@@ -32,7 +32,7 @@
   --bw-on-accent: #02070a;
   --bw-deep: #09318d;
   --bw-on-deep: #f7f5f1;
-  --bw-serif: 'Newsreader', 'Noto Serif', Georgia, serif;
+  --bw-serif: 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif;
   --bg: var(--bw-page-gradient) !important;
   --bg-grad: var(--bw-page-gradient) !important;
   --bg-1: #f8f6f3;
@@ -56,8 +56,8 @@
   --pink: var(--bw-brand-2);
   --grad: linear-gradient(135deg, #0b3aa8 0%, #093395 100%) !important;
   --grad-btn: linear-gradient(135deg, #0b3aa8 0%, #093395 100%) !important;
-  --font: 'Be Vietnam Pro', system-ui, sans-serif !important;
-  --font-display: 'Newsreader', 'Noto Serif', Georgia, serif !important;
+  --font: 'Plus Jakarta Sans', system-ui, sans-serif !important;
+  --font-display: 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif !important;
   --radius-md: 20px !important;
   --radius-lg: 28px !important;
   --radius-xl: 32px !important;

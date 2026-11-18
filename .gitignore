@@ -69,3 +69,4 @@ pnpm-lock.yaml
 
 # Vercel-specific
 .vercelignore
+_pv/

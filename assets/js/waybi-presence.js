@@ -70,7 +70,7 @@
       .waybi-banner-mascot img { width: 100%; height: 100%; object-fit: contain; display: block; }
       .waybi-banner-text { flex: 1; min-width: 0; z-index: 1; }
       .waybi-banner-text h3 {
-        font-family: var(--font-display, 'Quicksand', 'Be Vietnam Pro', sans-serif); font-weight: 700;
+        font-family: var(--font-display, 'Bricolage Grotesque', 'Plus Jakarta Sans', sans-serif); font-weight: 700;
         font-size: 1.05rem; margin: 0 0 4px;
         text-shadow: 0 2px 6px rgba(0,0,0,0.15);
       }
@@ -113,7 +113,7 @@
         background: linear-gradient(135deg, rgba(11, 58, 168,0.12), rgba(11, 61, 178,0.12));
         border: 1.5px solid rgba(8, 46, 133,0.25);
         color: var(--accent);
-        font-family: var(--font-display, 'Quicksand', 'Be Vietnam Pro', sans-serif);
+        font-family: var(--font-display, 'Bricolage Grotesque', 'Plus Jakarta Sans', sans-serif);
         font-weight: 800; font-size: 0.72rem;
         padding: 4px 12px 4px 6px;
         border-radius: 999px;
@@ -139,7 +139,7 @@
         width: 100%; height: 100%; object-fit: contain; display: block;
       }
       .waybi-empty h4 {
-        font-family: var(--font-display, 'Quicksand', 'Be Vietnam Pro', sans-serif); font-weight: 700;
+        font-family: var(--font-display, 'Bricolage Grotesque', 'Plus Jakarta Sans', sans-serif); font-weight: 700;
         font-size: 1rem; color: var(--text-dark, #0b202b);
         margin: 0 0 6px;
       }

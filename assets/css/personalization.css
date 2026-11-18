@@ -26,11 +26,11 @@
 .personal-results ul { margin:10px 0 0; padding-left:18px; color:var(--bw-muted,#12374a); }
 .personal-note { padding:12px 16px; border-left:2px solid var(--bw-brand,#092e86); }
 .personal-start { display:block; max-width:1160px; margin:12px auto 0; padding:0 20px; color:var(--bw-brand,#092e86); font-size:13px; }
-.personal-waybi { flex:0 0 auto; padding:7px 14px; background:var(--bw-paper,#fff); color:var(--bw-ink,#0b202b); font:12px/1.5 'Be Vietnam Pro',sans-serif; border-top:1px solid var(--bw-line,#efece6); }
+.personal-waybi { flex:0 0 auto; padding:7px 14px; background:var(--bw-paper,#fff); color:var(--bw-ink,#0b202b); font:12px/1.5 'Plus Jakarta Sans',sans-serif; border-top:1px solid var(--bw-line,#efece6); }
 .personal-waybi label { display:flex; align-items:start; gap:7px; cursor:pointer; }
 .personal-waybi input { width:16px; height:16px; margin:1px 0 0; accent-color:#092e86; }
 .personal-waybi details { margin-top:4px; }
 .personal-waybi summary { cursor:pointer; color:#072469; }
 .personal-waybi details[open] { max-height:125px; overflow:auto; }
-.personal-waybi pre { font:11px/1.6 'Be Vietnam Pro',sans-serif; white-space:pre-wrap; overflow-wrap:anywhere; margin:7px 0; }
+.personal-waybi pre { font:11px/1.6 'Plus Jakarta Sans',sans-serif; white-space:pre-wrap; overflow-wrap:anywhere; margin:7px 0; }
 @media(max-width:600px) { .personal-section { padding:20px; } .personal-form-grid,.personal-checks,.personal-results { grid-template-columns:minmax(0,1fr); } .personal-section h2 { font-size:21px; } .personal-actions { gap:8px; } }

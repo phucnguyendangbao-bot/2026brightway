@@ -70,7 +70,7 @@
     if (!playing) { root.classList.remove('bw-cine-wait', 'bw-cine', 'bw-cine-quick'); return; }
     // The headline's words rise only once the serif face has loaded: a fallback font places
     // Vietnamese marks badly, and the swap would show mid-rise. Never wait more than a second.
-    const serif = document.fonts?.load ? document.fonts.load('500 64px Newsreader', 'Đi để lối thành đường của bạn') : Promise.resolve();
+    const serif = document.fonts?.load ? document.fonts.load("700 64px 'Bricolage Grotesque'", 'Đi để lối thành đường của bạn') : Promise.resolve();
     const quick = root.classList.contains('bw-cine-quick');
     session.set('bwOpeningSeen', '1');
     // The film's clock starts here, once the headline can be split: every part keys off the same moment.

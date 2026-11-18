@@ -48,10 +48,10 @@ html body #home-view #hero-actions.glow-hero .ks-kicker { justify-content: cente
 html body #home-view #hero-actions.glow-hero .ks-kicker::after { content: ''; width: 32px; height: 2px; background: var(--ks-coral, #fc734d); }
 html body #home-view #hero-actions.glow-hero .bw-hero-h1 {
   margin: 0 0 22px !important;
-  font: 500 clamp(2.8rem, 1.5rem + 4.4vw, 5.4rem)/1.04 var(--ks-serif, 'Newsreader', Georgia, serif) !important;
+  font: 700 clamp(2.8rem, 1.5rem + 4.4vw, 5.4rem)/1.04 var(--ks-serif, 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif) !important;
   text-shadow: none;
 }
-html body #home-view #hero-actions.glow-hero .bw-hero-h1 em { font-style: italic; font-weight: 400; }
+html body #home-view #hero-actions.glow-hero .bw-hero-h1 em { font-style: normal; font-weight: inherit; }
 html body #home-view #hero-actions.glow-hero .lede {
   max-width: 36em;
   margin: 0 auto !important;
@@ -65,7 +65,7 @@ html body #home-view #hero-actions.glow-hero .story-resume { max-width: 520px; m
 .glow-stats { display: grid; gap: 26px; margin: 0; }
 .glow-stats-left { grid-area: left; justify-items: start; text-align: left; }
 .glow-stats-right { grid-area: right; justify-items: end; text-align: right; }
-.glow-stats dt { margin: 0; font: 500 clamp(2rem, 1.6rem + 1.2vw, 2.75rem)/1 var(--ks-serif, 'Newsreader', Georgia, serif); }
+.glow-stats dt { margin: 0; font: 700 clamp(2rem, 1.6rem + 1.2vw, 2.75rem)/1 var(--ks-serif, 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif); }
 .glow-stats dt a { color: #f7f5f1; text-decoration: none; }
 .glow-stats dt a:hover { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
 .glow-stats dd { margin: 6px 0 0; color: rgba(247, 245, 241, .72); font-size: 14px; }
@@ -82,7 +82,7 @@ html body #home-view #hero-actions.glow-hero .story-resume { max-width: 520px; m
   background: radial-gradient(circle at 50% 45%, rgba(252, 115, 77, .62) 0%, rgba(252, 115, 77, .2) 62%, rgba(2, 7, 10, .25) 100%);
   box-shadow: 0 0 0 10px rgba(252, 115, 77, .1), 0 0 0 11px rgba(252, 115, 77, .28), 0 0 70px rgba(252, 115, 77, .55);
   color: #fff;
-  font: 600 14px/1.25 var(--ks-sans, 'Be Vietnam Pro', sans-serif);
+  font: 600 14px/1.25 var(--ks-sans, 'Plus Jakarta Sans', sans-serif);
   text-decoration: none;
   transition: box-shadow var(--motion-sm, 200ms) var(--motion-ease, ease), transform var(--motion-sm, 200ms) var(--motion-ease, ease);
 }
@@ -114,7 +114,7 @@ html body #home-view .glow-card-label {
   display: flex; align-items: center; gap: 8px;
   margin: 0 0 14px;
   color: #f7f5f1;
-  font: 600 13px/1.2 var(--ks-sans, 'Be Vietnam Pro', sans-serif) !important;
+  font: 600 13px/1.2 var(--ks-sans, 'Plus Jakarta Sans', sans-serif) !important;
   letter-spacing: 0;
 }
 .glow-card-label::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--ks-coral, #fc734d); }
@@ -136,10 +136,10 @@ a.glow-card-foot:hover { color: #fff; text-decoration: underline; text-underline
   background: rgba(2, 7, 10, .32);
   border: 1px solid rgba(247, 245, 241, .14);
   color: #fff;
-  font: 500 1.6rem/1 var(--ks-serif, 'Newsreader', Georgia, serif);
+  font: 700 1.6rem/1 var(--ks-serif, 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif);
   text-decoration: none;
 }
-.glow-chip small { color: rgba(247, 245, 241, .75); font: 500 11px/1.2 var(--ks-sans, 'Be Vietnam Pro', sans-serif); }
+.glow-chip small { color: rgba(247, 245, 241, .75); font: 500 11px/1.2 var(--ks-sans, 'Plus Jakarta Sans', sans-serif); }
 .glow-chip.is-picked { background: var(--ks-coral, #fc734d); border-color: var(--ks-coral, #fc734d); color: #02070a; }
 .glow-chip.is-picked small { color: #02070a; }
 .glow-chip:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
@@ -156,7 +156,7 @@ a.glow-card-foot:hover { color: #fff; text-decoration: underline; text-underline
   border-radius: 8px;
   background: rgba(247, 245, 241, .08);
   color: rgba(247, 245, 241, .85);
-  font: 600 12px/1 var(--ks-sans, 'Be Vietnam Pro', sans-serif);
+  font: 600 12px/1 var(--ks-sans, 'Plus Jakarta Sans', sans-serif);
   text-align: center;
 }
 .glow-months li.is-past { color: rgba(247, 245, 241, .45); background: transparent; }

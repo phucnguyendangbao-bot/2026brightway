@@ -38,7 +38,7 @@
     if (!wrap) return;
     wrap.innerHTML = `
       <div style="background: rgba(255,255,255,0.92); border: 1.5px solid rgba(8, 46, 133,0.10); border-radius: 20px; padding: 24px;">
-        <h3 style="font-family: 'Quicksand', sans-serif; font-size: 18px; font-weight: 800; color: var(--text); margin-bottom: 6px;">
+        <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 18px; font-weight: 800; color: var(--text); margin-bottom: 6px;">
           🎯 Thử nhanh 4 câu (xem trước)
         </h3>
         <p style="font-size: 13px; color: var(--text-soft); margin-bottom: 18px;">
@@ -59,13 +59,13 @@
             ${TYPES[q.t].emoji} ${TYPES[q.t].name}
           </span>
         </div>
-        <div style="font-family: 'Quicksand', sans-serif; font-size: 16px; font-weight: 700; color: var(--text); line-height: 1.4; margin-bottom: 12px;">
+        <div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 16px; font-weight: 700; color: var(--text); line-height: 1.4; margin-bottom: 12px;">
           ${q.q}
         </div>
         <div style="display: flex; gap: 8px; justify-content: center;">
           ${[1,2,3,4,5].map(n => `
             <button data-i="${i}" data-v="${n}" class="mini-btn" type="button" aria-label="Câu ${i + 1}, mức độ ${n}" aria-pressed="false"
-                    style="width: 44px; height: 44px; border-radius: 50%; border: 2px solid #d1d5db; background: #fff; cursor: pointer; font-size: 14px; font-weight: 800; color: #64748b; font-family: 'Quicksand', sans-serif; transition: all .2s;">
+                    style="width: 44px; height: 44px; border-radius: 50%; border: 2px solid #d1d5db; background: #fff; cursor: pointer; font-size: 14px; font-weight: 800; color: #64748b; font-family: 'Bricolage Grotesque', sans-serif; transition: all .2s;">
               ${n}
             </button>
           `).join('')}

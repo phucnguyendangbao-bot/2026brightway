@@ -23,7 +23,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   background: var(--bg-grad);
   color: var(--text);
   min-height: 100vh;
@@ -58,7 +58,7 @@ body {
   gap: 16px;
 }
 .bw-logo {
-  font-family: var(--font-display, 'Newsreader', Georgia, serif);
+  font-family: var(--font-display, 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif);
   font-weight: 800;
   font-size: 20px;
   background: linear-gradient(135deg, #082e85, #ec4899);
@@ -96,7 +96,7 @@ body {
   margin-bottom: 20px;
 }
 .bw-hero h1 {
-  font-family: var(--font-display, 'Newsreader', Georgia, serif);
+  font-family: var(--font-display, 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif);
   font-size: clamp(32px, 4.6vw, 48px);
   font-weight: 800;
   line-height: 1.15;
@@ -146,13 +146,13 @@ body {
   background: linear-gradient(135deg, rgba(255,255,255,.82), rgba(249, 248, 245,.9));
   box-shadow: var(--shadow-sm); text-align: center;
 }
-.holland-start-card h2 { display:flex; align-items:center; justify-content:center; gap:10px; font-family:'Quicksand',sans-serif; font-size:30px; line-height:1.3; }
+.holland-start-card h2 { display:flex; align-items:center; justify-content:center; gap:10px; font-family:'Bricolage Grotesque',sans-serif; font-size:30px; line-height:1.3; }
 .holland-start-card h2 img { width:34px; height:34px; object-fit:contain; }
 .holland-start-card > p { max-width:780px; margin:12px auto 22px; color:var(--text-mid); font-size:16px; line-height:1.7; }
 .holland-start-groups { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:12px; margin-bottom:22px; }
 .holland-start-groups a { display:flex; flex-direction:column; gap:5px; padding:14px 6px; border:1px solid #eae7e1; border-radius:14px; background:#fff; color:var(--text-mid); text-decoration:none; font-size:13px; transition:all .2s; }
 .holland-start-groups a:hover { background:#faf9f7; border-color:#0b39a7; transform:translateY(-2px); }
-.holland-start-groups strong { color:#082977; font:800 25px 'Quicksand',sans-serif; }
+.holland-start-groups strong { color:#082977; font:800 25px 'Bricolage Grotesque',sans-serif; }
 .holland-start-actions { display:flex; justify-content:center; flex-wrap:wrap; gap:12px; }
 .holland-start-actions .quiz-btn { padding:13px 26px; }
 .import-card {
@@ -166,12 +166,12 @@ body {
 }
 .import-card summary {
   cursor: pointer;
-  font-family: var(--font-display, 'Newsreader', Georgia, serif);
+  font-family: var(--font-display, 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif);
   font-size: 18px;
   font-weight: 800;
   color: var(--primary);
 }
-.import-card summary span { display: block; margin: 3px 0 0 24px; font-family: 'Be Vietnam Pro', sans-serif; font-size: 13px; font-weight: 500; color: var(--text-mid); }
+.import-card summary span { display: block; margin: 3px 0 0 24px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; font-weight: 500; color: var(--text-mid); }
 .import-form { padding-top: 20px; }
 .import-form label { display: block; margin-bottom: 8px; font-size: 14px; font-weight: 700; }
 .import-form-row { display: flex; gap: 10px; align-items: stretch; }
@@ -183,7 +183,7 @@ body {
   border-radius: 14px;
   background: #fff;
   color: var(--text);
-  font: 700 18px 'Quicksand', sans-serif;
+  font: 700 18px 'Bricolage Grotesque', sans-serif;
   text-transform: uppercase;
   letter-spacing: .12em;
 }
@@ -194,7 +194,7 @@ body {
 .import-error[hidden] { display: none; }
 .types-intro { padding: 32px 24px 48px; }
 .types-intro h2 {
-  font-family: var(--font-display, 'Newsreader', Georgia, serif);
+  font-family: var(--font-display, 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif);
   font-size: clamp(22px, 3vw, 30px);
   font-weight: 800;
   text-align: center;
@@ -227,7 +227,7 @@ body {
 }
 .type-card .emoji { font-size: 36px; margin-bottom: 8px; display: block; }
 .type-card h3 {
-  font-family: var(--font-display, 'Newsreader', Georgia, serif);
+  font-family: var(--font-display, 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif);
   font-size: 17px;
   font-weight: 800;
   color: var(--text);
@@ -267,7 +267,7 @@ body {
   gap: 12px;
 }
 .quiz-progress-pct {
-  font-family: var(--font-display, 'Newsreader', Georgia, serif);
+  font-family: var(--font-display, 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif);
   font-size: 18px;
   font-weight: 800;
   color: var(--primary);
@@ -277,7 +277,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-family: var(--font-display, 'Newsreader', Georgia, serif);
+  font-family: var(--font-display, 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif);
   font-size: 16px;
   font-weight: 800;
   color: var(--text-mid);
@@ -343,7 +343,7 @@ body {
   text-transform: none;
 }
 .q-text {
-  font-family: var(--font-display, 'Newsreader', Georgia, serif);
+  font-family: var(--font-display, 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif);
   font-size: 18px;
   font-weight: 700;
   color: var(--text);
@@ -380,7 +380,7 @@ body {
   font-size: 15px;
   font-weight: 800;
   color: #64748b;
-  font-family: var(--font-display, 'Newsreader', Georgia, serif);
+  font-family: var(--font-display, 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif);
   transition: all .2s cubic-bezier(.22,1,.36,1);
   display: flex;
   align-items: center;
@@ -510,7 +510,7 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 .result-type {
-  font-family: var(--font-display, 'Newsreader', Georgia, serif);
+  font-family: var(--font-display, 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif);
   font-size: 28px;
   font-weight: 800;
   color: var(--text);
@@ -569,7 +569,7 @@ body {
   transition: width 1s cubic-bezier(.22,1,.36,1);
 }
 .bar-val {
-  font-family: var(--font-display, 'Newsreader', Georgia, serif);
+  font-family: var(--font-display, 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif);
   font-size: 15px;
   font-weight: 800;
   color: var(--text-mid);
@@ -583,7 +583,7 @@ body {
   margin-bottom: 24px;
 }
 .majors h3 {
-  font-family: var(--font-display, 'Newsreader', Georgia, serif);
+  font-family: var(--font-display, 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif);
   font-size: 18px;
   font-weight: 800;
   color: var(--text);
@@ -641,7 +641,7 @@ body {
   margin-top: 60px;
 }
 .bw-footer .logo {
-  font-family: var(--font-display, 'Newsreader', Georgia, serif);
+  font-family: var(--font-display, 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif);
   font-size: 18px;
   font-weight: 800;
   background: linear-gradient(135deg,#0b3db2 0%,#0e4bda 100%);
@@ -695,7 +695,7 @@ body {
 .result-combo h3 {
   margin: 0 0 12px;
   color: var(--text);
-  font-family: var(--font-display, 'Newsreader', Georgia, serif);
+  font-family: var(--font-display, 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif);
   font-size: 19px;
   font-weight: 800;
 }
@@ -726,7 +726,7 @@ body {
 .hex-ring { fill: none; stroke: rgba(8, 46, 133, .25); stroke-width: 1.5; }
 .hex-path { fill: none; stroke: var(--primary); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
 .hex-node circle { fill: #fff; stroke: rgba(8, 46, 133, .3); stroke-width: 1.5; }
-.hex-node text { fill: var(--text-mid); font: 700 12px/1 'Be Vietnam Pro', sans-serif; }
+.hex-node text { fill: var(--text-mid); font: 700 12px/1 'Plus Jakarta Sans', sans-serif; }
 .hex-node.is-on circle { fill: var(--primary); stroke: var(--primary); }
 .hex-node.is-on text { fill: #fff; }
 @media (max-width: 720px) {

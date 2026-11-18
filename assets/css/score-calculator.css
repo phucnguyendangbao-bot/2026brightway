@@ -13,7 +13,7 @@
   margin: 0 auto;
 }
 .calc-hero h1 {
-  font-family: var(--font-display, 'Quicksand', 'Be Vietnam Pro', sans-serif);
+  font-family: var(--font-display, 'Bricolage Grotesque', 'Plus Jakarta Sans', sans-serif);
   font-size: 1.6rem;
   font-weight: 900;
   margin: 0 0 8px;
@@ -79,7 +79,7 @@
 .result-calculation-context p + p { margin-top:5px; }
 .result-edit-button { margin-top:14px; }
 .calc-section-title {
-  font-family: var(--font-display, 'Quicksand', 'Be Vietnam Pro', sans-serif);
+  font-family: var(--font-display, 'Bricolage Grotesque', 'Plus Jakarta Sans', sans-serif);
   font-size: .95rem;
   font-weight: 800;
   color: var(--text-dark, #0b202b);
@@ -264,7 +264,7 @@
   padding: 22px 24px;
 }
 .result-summary h2 {
-  font-family: var(--font-display, 'Quicksand', 'Be Vietnam Pro', sans-serif);
+  font-family: var(--font-display, 'Bricolage Grotesque', 'Plus Jakarta Sans', sans-serif);
   font-size: 1.15rem;
   font-weight: 800;
   color: #0b202b;
@@ -291,7 +291,7 @@
   margin-bottom: 6px;
 }
 .summary-value {
-  font-family: var(--font-display, 'Quicksand', 'Be Vietnam Pro', sans-serif);
+  font-family: var(--font-display, 'Bricolage Grotesque', 'Plus Jakarta Sans', sans-serif);
   font-size: 1.4rem;
   font-weight: 900;
   background: linear-gradient(135deg, #082e85, #072770);
@@ -303,7 +303,7 @@
 
 /* SCHOOL LIST */
 .result-schools h2 {
-  font-family: var(--font-display, 'Quicksand', 'Be Vietnam Pro', sans-serif);
+  font-family: var(--font-display, 'Bricolage Grotesque', 'Plus Jakarta Sans', sans-serif);
   font-size: 1.15rem;
   font-weight: 800;
   color: #0b202b;
@@ -425,7 +425,7 @@
 .school-row-logo img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
 .school-row-body { min-width: 0; }
 .school-row-name {
-  font-family: var(--font-display, 'Quicksand', 'Be Vietnam Pro', sans-serif);
+  font-family: var(--font-display, 'Bricolage Grotesque', 'Plus Jakarta Sans', sans-serif);
   font-weight: 800;
   font-size: .95rem;
   color: #0b202b;
@@ -448,7 +448,7 @@
 }
 .school-row-score .label { font-size: .68rem; color: #6b7280; font-weight: 600; }
 .school-row-score .value {
-  font-family: var(--font-display, 'Quicksand', 'Be Vietnam Pro', sans-serif);
+  font-family: var(--font-display, 'Bricolage Grotesque', 'Plus Jakarta Sans', sans-serif);
   font-size: 1.1rem;
   font-weight: 900;
   color: #082e85;
@@ -478,7 +478,7 @@
   border-radius: 20px;
 }
 .result-empty h3 {
-  font-family: var(--font-display, 'Quicksand', 'Be Vietnam Pro', sans-serif);
+  font-family: var(--font-display, 'Bricolage Grotesque', 'Plus Jakarta Sans', sans-serif);
   font-size: 1.1rem;
   font-weight: 800;
   color: #0b202b;
@@ -559,7 +559,7 @@
   padding: 9px 12px;
   background: #fdfcfa;
   color: #123749;
-  font: 700 .85rem 'Be Vietnam Pro', sans-serif;
+  font: 700 .85rem 'Plus Jakarta Sans', sans-serif;
   outline: none;
 }
 #comboSelect:focus-visible { border-color: #09308b; box-shadow: 0 0 0 4px rgba(9, 48, 139, .13); }
@@ -604,7 +604,7 @@
 }
 .result-summary { padding: 20px; }
 .result-summary h2 { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; font-size: 1rem; }
-.result-context { font-family: 'Be Vietnam Pro', sans-serif; font-size: .7rem; color: #858aa4; font-weight: 600; }
+.result-context { font-family: 'Plus Jakarta Sans', sans-serif; font-size: .7rem; color: #858aa4; font-weight: 600; }
 .summary-grid { grid-template-columns: 1.4fr repeat(3, minmax(0, 1fr)); gap: 8px; }
 .summary-item { border: 1px solid #f4f2ee; background: #fcfbf9; padding: 11px 9px; }
 .summary-item:first-child { background: linear-gradient(135deg, #082c80, #082c81); border-color: transparent; text-align: left; padding-left: 17px; }

@@ -105,7 +105,7 @@
         color: #fff;
         font-weight: 800;
         font-size: 13px;
-        font-family: 'Quicksand', sans-serif;
+        font-family: 'Bricolage Grotesque', sans-serif;
         flex-shrink: 0;
         overflow: hidden;
         border: 2px solid rgba(255, 255, 255, .92);

@@ -1,4 +1,4 @@
-.countdown-widget,.countdown-manager{box-sizing:border-box;color:var(--bw-ink,#0b202b);font-family:var(--font,'Be Vietnam Pro',sans-serif);text-align:left}
+.countdown-widget,.countdown-manager{box-sizing:border-box;color:var(--bw-ink,#0b202b);font-family:var(--font,'Plus Jakarta Sans',sans-serif);text-align:left}
 .countdown-widget{max-width:1160px;margin:18px auto 34px;padding:22px 24px;border:1px solid rgba(9, 46, 134,.14);border-radius:26px;background:linear-gradient(145deg,rgba(255,255,255,.82),rgba(248, 246, 242,.72));box-shadow:0 18px 50px rgba(17, 50, 67,.09);backdrop-filter:blur(20px)}
 .countdown-manager{margin:24px 0;padding:28px;border:1px solid rgba(9, 46, 134,.15);border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.88),rgba(250, 248, 245,.74));box-shadow:0 20px 52px rgba(17, 50, 67,.09);scroll-margin-top:90px}
 .countdown-widget h2,.countdown-manager h2{margin:4px 0 6px;font-size:clamp(1.35rem,3vw,1.8rem);line-height:1.3}
